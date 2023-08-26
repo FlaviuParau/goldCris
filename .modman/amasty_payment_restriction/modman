@@ -1,0 +1,10 @@
+src/app/etc/modules/Amasty_Commonrules.xml						app/etc/modules/Amasty_Commonrules.xml
+src/app/etc/modules/Amasty_Payrestriction.xml						app/etc/modules/Amasty_Payrestriction.xml
+src/app/etc/modules/Amasty_Regions.xml							app/etc/modules/Amasty_Regions.xml
+
+src/app/code/local/Amasty/Commonrules							app/code/local/Amasty/Commonrules
+src/app/code/local/Amasty/Payrestriction						app/code/local/Amasty/Payrestriction
+src/app/code/local/Amasty/Regions							app/code/local/Amasty/Regions			
+
+src/app/locale/en_US/Amasty_Commonrules.csv						app/locale/en_US/Amasty_Commonrules.csv
+src/app/locale/en_US/Amasty_Regions.csv							app/locale/en_US/Amasty_Regions.csv

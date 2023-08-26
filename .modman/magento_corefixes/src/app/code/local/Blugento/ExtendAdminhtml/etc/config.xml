@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_ExtendAdminhtml>
+            <version>1.0.0</version>
+        </Blugento_ExtendAdminhtml>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_extendadminhtml before="Mage_Adminhtml">Blugento_ExtendAdminhtml</blugento_extendadminhtml>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

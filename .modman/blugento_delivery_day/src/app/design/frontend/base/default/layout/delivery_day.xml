@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layout version="1.0.0">
+    <catalog_product_view>
+        <reference name="product.info">
+                <block type="delivery_day/deliveryDay" name="delivery_day" template="delivery_day.phtml"/>
+            </reference>
+    </catalog_product_view>
+    <checkout_cart_index>
+        <reference name="checkout.cart">
+            <block type="delivery_day/cartDeliveryDay" name="delivery_day_cart" template="delivery_day_cart.phtml" />
+        </reference>
+    </checkout_cart_index>
+</layout>

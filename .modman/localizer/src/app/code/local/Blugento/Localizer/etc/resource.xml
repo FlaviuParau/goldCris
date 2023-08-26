@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<resources>
+    <country>
+        <!--<ro>cms,email,tax,systemconfig</ro>-->
+        <ro_RO>cms,tax,agreements,systemconfig</ro_RO>
+        <de_DE>cms,tax,agreements,systemconfig,country_de</de_DE>
+        <en_US>cms,tax,agreements</en_US>
+    </country>
+</resources>

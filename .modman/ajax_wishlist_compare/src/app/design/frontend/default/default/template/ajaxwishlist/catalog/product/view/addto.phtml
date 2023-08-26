@@ -1,0 +1,123 @@
+<?php
+    $_product = $this->getProduct();
+    $_wishlistSubmitUrl = $this->helper('wishlist')->getAddUrl($_product);
+    $customerHelper = $this->helper('customer');
+    if ($customerHelper->isLoggedIn()) {
+        $wishlist = Mage::getModel('wishlist/item')->load($_product->getId(), 'product_id');
+    }
+?>
+
+<ul class="add-to-links <?php if ($customerHelper->isLoggedIn()): ?>customer-logged-in<?php endif; ?>">
+<?php if ($this->helper('wishlist')->isAllow()) : ?>
+    <?php $inWishlist = false; ?>
+    <?php foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item): ?>
+        <?php if($_product->getId() == $_wishlist_item->getProduct()->getId()): ?>
+            <?php $inWishlist = true; break; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    <li>
+        <a href="#" onclick="wishlistForm.submitAjaxWishlist(this, '<?php echo $_wishlistSubmitUrl ?>','<?php echo $_product->getId()?>'); return false;" class="link-wishlist link-wishlist-product<?php if ($inWishlist): ?> active-wishlist<?php endif; ?>">
+            <span>
+                <?php if ($inWishlist): ?>
+                    <?php echo $this->__('Added') ?>
+                <?php else: ?>
+                    <?php echo $this->__('Wishlist') ?>
+                <?php endif; ?>
+            </span>
+        </a>
+    </li>
+<?php endif; ?>
+
+<?php $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product); ?>
+<?php if($_compareUrl) : ?>
+    <?php $alreadyCompared = false;
+    $collection = $this->helper('catalog/product_compare')->getItemCollection();
+    foreach($collection as $comparingProduct) {
+        if ($comparingProduct->getId() === $_product->getId()) {
+            $alreadyCompared = true;
+        }
+    }
+    ?>
+    <li>
+        <a href="<?php echo $_compareUrl?>','<?php echo $_product->getId()?>" class="link-compare<?php if ($alreadyCompared): ?> active-compare<?php endif; ?>">
+            <span>
+                <?php if ($alreadyCompared): ?>
+                    <?php echo $this->__('Added') ?>
+                <?php else: ?>
+                    <?php echo $this->__('Compare') ?>
+                <?php endif; ?>
+            </span>
+        </a>
+    </li>
+<?php endif; ?>
+</ul>
+
+<script type="text/javascript">
+var wishlistForm = new VarienForm('product_addtocart_form');
+wishlistForm.submitAjaxWishlist = function(button, url,id){
+    if (this.validator) {
+        var nv = Validation.methods;
+        delete Validation.methods['required-entry'];
+        delete Validation.methods['validate-one-required'];
+        delete Validation.methods['validate-one-required-by-name'];
+        if (this.validator.validate()) {
+            if(!jQuery('.product-shop .link-wishlist').hasClass('active-wishlist')) {
+                jQuery('.product-shop .link-wishlist').removeClass('ajax-loading-wishlist');
+                jQuery('.product-shop .link-wishlist').addClass('ajax-loading-wishlist');
+                url = url.replace("wishlist/index", "ajaxwishlist/index");
+                var data = jQuery('#product_addtocart_form').serialize();
+                data += '&isAjax=1';
+
+                if(!jQuery('.customer-logged-in').length) {
+                    jQuery(".ajaxcart-overlay").show();
+                    jQuery(".ajaxcart-modal-wishlist h2").text();
+                }
+
+                jQuery.ajax({
+                    url: url,
+                    dataType: 'json',
+                    type: 'post',
+                    data: data,
+                    success: function (data) {
+                        if (data.status == 'ERROR') {
+                            jQuery(".ajaxcart-modal-wishlist").addClass("ajaxcart-open-wishlist");
+                            jQuery(".ajaxcart-modal-wishlist h2").text(data.message);
+                        } else {
+                            // Add active class for added product in wishlist
+                            jQuery('.product-shop .link-wishlist.ajax-loading-wishlist').addClass('active-wishlist');
+                            jQuery('.product-shop .ajax-loading-wishlist.active-wishlist span').html(Translator.translate('Added'));
+
+                            // Show response message next to clicked link
+                            jQuery('<div class="info-message">' + data.message + '</div>').appendTo('.ajax-loading-wishlist');
+                            jQuery('.product-shop .link-wishlist').removeClass('ajax-loading-wishlist');
+
+                            // Update dropdown wishlist with correct html
+                            if (jQuery('.header-wishlist-count .block-wishlist').length) {
+                                jQuery('.header-wishlist-count .block-wishlist').replaceWith(data.sidebar);
+                                var wishlistCount = jQuery('.header-wishlist-count .block-title small').html(),
+                                    wishlistCountReg = wishlistCount.replace(/[{()}]/g, '');
+                                jQuery('.count-wish span').text(wishlistCountReg);
+                            } else {
+                                if (jQuery('.header-wishlist-count .block-title small').length) {
+                                    jQuery('.header-wishlist-count').prepend(data.sidebar);
+                                    var wishlistCount = jQuery('.header-wishlist-count .block-title small').html(),
+                                        wishlistCountReg = wishlistCount.replace(/[{()}]/g, '');
+                                    jQuery('.count-wish span').text(wishlistCountReg);
+                                }
+                            }
+
+                            // Remove info message once it's shown
+                            setTimeout(function(){
+                                jQuery('.link-wishlist .info-message').remove();
+                            }, 3000);
+                        }
+
+                        jQuery(".ajaxcart-overlay").hide();
+                    }
+                });
+            }
+        }
+        Object.extend(Validation.methods, nv);
+    }
+}.bind(wishlistForm);
+</script>

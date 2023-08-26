@@ -1,0 +1,119 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       screen.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import 'grunt';
+
+@import '../../blugento/scss/variable';
+@import '../../blugento/scss/variable-image';
+@import '../../blugento/scss/variable-layout';
+
+@import 'function/browser';
+@import 'function/util';
+
+@import 'config';
+
+@import 'mixin/font';
+@import 'mixin/grid';
+@import 'mixin/icon';
+@import 'mixin/responsive';
+@import 'mixin/util';
+
+//  ----------------------------------------------------------------------------
+
+@import 'core/reset';
+@import 'core/grid';
+@import 'core/util';
+@import 'core/font';
+@import 'core/typography';
+@import 'core/form';
+
+@import 'component/add-to-links';
+@import 'component/ajax-loader';
+@import 'component/anchor';
+@import 'component/badge';
+@import 'component/block';
+@import 'component/box';
+@import 'component/breadcrumbs';
+@import 'component/buttons-set';
+@import 'component/cvv';
+@import 'component/data-table';
+@import 'component/dock';
+@import 'component/form';
+@import 'component/form-list';
+@import 'component/global-site-notice';
+@import 'component/cookie-notice'; // must be after component/global-site-notice
+@import 'component/icon';
+@import 'component/info-set';
+@import 'component/item-options';
+@import 'component/list';
+@import 'component/message';
+@import 'component/modal';
+@import 'component/nav-mobile';
+@import 'component/nav';
+@import 'component/newsletter';
+@import 'component/pager';
+@import 'component/price-box';
+@import 'component/rating-box';
+@import 'component/reveal';
+@import 'component/sp-methods';
+@import 'component/showcase';
+@import 'component/tab';
+@import 'component/table';
+@import 'component/title';
+@import 'component/toolbar';
+@import 'component/to-top';
+
+@import 'module/catalog';
+@import 'module/catalog-blocks';
+@import 'module/catalog-category';
+@import 'module/catalog-category-grid';
+@import 'module/catalog-product-compare';
+@import 'module/catalog-product-list--grid';
+@import 'module/catalog-product-list--grid-extra';
+@import 'module/catalog-product-list--list';
+@import 'module/catalog-product-list-sort-by';
+@import 'module/catalog-product-list';
+@import 'module/catalog-product-view';
+@import 'module/catalog-product-view-specification';
+@import 'module/catalogsearch-mini-search';
+@import 'module/configurableswatches';
+@import 'module/checkout';
+@import 'module/checkout-agreements';
+@import 'module/checkout-cart';
+@import 'module/checkout-mini-cart';
+@import 'module/cart-modal';
+@import 'module/checkout-multishipping';
+@import 'module/checkout-onepage';
+@import 'module/checkout-onepage-success';
+@import 'module/cms-404';
+@import 'module/cms-home';
+@import 'module/cms-pages';
+@import 'module/cms-contact';
+@import 'module/contacts';
+@import 'module/customer';
+@import 'module/customer-blocks';
+@import 'module/customer-mini-account';
+@import 'module/page';
+@import 'module/page-header';
+@import 'module/page-header-icons';
+@import 'module/page-header-order-icons';
+@import 'module/page-main';
+@import 'module/page-footer';
+@import 'module/review';
+@import 'module/page-socialmedia';
+@import 'module/page-product-compare';
+@import 'module/tag';
+@import 'module/tag-blocks';
+@import 'module/widgets';
+@import 'module/wishlist';
+@import 'module/wishlist-blocks';
+@import 'module/wishlist-mini-wishlist';
+@import 'module/gallery-lightbox';
+@import 'vendor/lightgallery/lightgallery';
+@import 'module/gdpr-cookies';
+
+@import 'build-dev';
+@import 'build-release';

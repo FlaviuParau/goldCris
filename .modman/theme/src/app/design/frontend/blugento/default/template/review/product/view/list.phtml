@@ -1,0 +1,233 @@
+<?php $_items = $this->getReviewsCollection()->getItems(); ?>
+<?php $_helper = Mage::helper('review'); ?>
+<?php $_toggleReviews = (int) ($this->getLayout()->getBlock('root')->getProductViewReviewsToggle() ?: 2); ?>
+<?php if (count($_items) > 0) : ?>
+    <div class="rating-wrapper <?php echo $_helper->isEnabled() ? 'enhanced-reviews' : ''; ?>">
+        <?php if ($_helper->isEnabled() && $this->getAllRatingCount() > 0) : ?>
+            <div class="top-reviews">
+                <ul class="data-table-review">
+                    <li>
+                        <span class="label">
+                            <span><?php echo $this->__('5 stars'); ?></span>
+                        </span>
+                        <span class="value">
+                            <div class="rating-count"
+                                style="width: <?php echo $this->getRatingCount(100); ?>%">
+                            </div>
+                        </span>
+                        <span class="count-rating">(<?php echo $this->getRatingCountperPercent(100); ?>)</span>
+                    </li>
+                    <li>
+                        <span class="label">
+                            <span><?php echo $this->__('4 stars'); ?></span>
+                        </span>
+                        <span class="value">
+                            <div class="rating-count"
+                                style="width: <?php echo $this->getRatingCount(80); ?>%">
+                            </div>
+                        </span>
+                        <span class="count-rating">(<?php echo $this->getRatingCountperPercent(80); ?>)</span>
+                    </li>
+                    <li>
+                        <span class="label">
+                            <span><?php echo $this->__('3 stars'); ?></span>
+                        </span>
+                        <span class="value">
+                            <div class="rating-count"
+                                style="width: <?php echo $this->getRatingCount(60); ?>%">
+                            </div>
+                        </span>
+                        <span class="count-rating">(<?php echo $this->getRatingCountperPercent(60); ?>)</span>
+                    </li>
+                    <li>
+                        <span class="label">
+                            <span><?php echo $this->__('2 stars'); ?></span>
+                        </span>
+                        <span class="value">
+                            <div class="rating-count"
+                                style="width: <?php echo $this->getRatingCount(40); ?>%">
+                            </div>
+                        </span>
+                        <span class="count-rating">(<?php echo $this->getRatingCountperPercent(40); ?>)</span>
+                    </li>
+                    <li>
+                        <span class="label">
+                            <span><?php echo $this->__('1 star'); ?></span>
+                        </span>
+                        <span class="value">
+                            <div class="rating-count"
+                                style="width: <?php echo $this->getRatingCount(20); ?>%">
+                            </div>
+                        </span>
+                        <span class="count-rating">(<?php echo $this->getRatingCountperPercent(20); ?>)</span>
+                    <li>
+                </ul>
+                <div class="review-button">
+                    <h3><?php echo $this->__('Write Your Own Review'); ?></h3>
+                    <a class="button-review" href="#"><?php echo $this->__('Write a Review'); ?></a>
+                </div>
+            </div>
+        <?php endif ?>
+
+        <?php if ($_helper->isEnabled() && count($_items) > 0) : ?>
+            <div class="form-rating-order">
+                <span class="title-order"><?php echo $this->__('Order Reviews By:'); ?></span>
+                <form id="jsform" action="<?php echo Mage::helper('core/url')->getCurrentUrl() ?>?option=option">
+                    <select name="option" onchange="this.form.submit()">
+                        <option value="0"><?php echo $this->__('Select an option...'); ?></option>
+                        <option value="1"><?php echo $this->__('Most Recent'); ?></option>
+                        <option value="2"><?php echo $this->__('Biggest Rating'); ?></option>
+                        <option value="3"><?php echo $this->__('Smallest Rating'); ?></option>
+                        <option value="4"><?php echo $this->__('Most Voted'); ?></option>
+                    </select>
+                </form>
+            </div>
+        <?php endif; ?>
+
+        <div class="box-reviews" id="customer-reviews">
+            <?php if (count($_items)): ?>
+                <div class="review-box">
+                    <?php foreach ($_items as $_review) : ?>
+                        <div class="review">
+                            <?php if ($_helper->isEnabled()) : ?>
+                                <div class="pull-left">
+                                    <label class="user-letter">
+                                        <?php
+                                        $nickname = explode(' ', $_review->getNickname());
+                                        echo substr($nickname[0], 0, 1) . ((count($nickname) > 1) ? substr($nickname[1], 0, 1) : '');
+                                        ?>
+                                    </label>
+                                </div>
+                            <?php endif; ?>
+                        
+                            <div class="review-detail">
+                                <div class="review-info">
+                                    <div class="review-info-left">
+                                        <span class="review-nickname">
+                                            <?php echo $this->__(' %s', $this->escapeHtml($_review->getNickname())); ?>
+                                        </span>
+                                        <div class="review-verified">
+                                            <?php $_votes = $_review->getRatingVotes(); ?>
+                                            <?php if (count($_votes)) : ?>
+                                                <?php foreach ($_votes as $_vote) : ?>
+                                                    <div class="rating-data">
+                                                        <div class="rating-box">
+                                                            <div class="rating"
+                                                                    style="width:<?php echo $_vote->getPercent(); ?>%;"></div>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                            <?php if ($_helper->isEnabled()) : ?>
+                                                <?php if ($_review->getStatusId() == Blugento_Review_Model_Review::STATUS_APPROVED_AND_VERIFIED) : ?>
+                                                    <div class="verified-customer">
+                                                        <span><img alt="verified-customer"
+                                                                    src="<?php echo $this->getSkinUrl('images/verification-symbol-review.svg'); ?>"/></span>
+                                                        <?php echo $this->__('Verified Customer'); ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
+                                    <?php $_ct= new Zend_Date(strtotime($_review->getCreatedAt())); ?>
+                                    <span class="date pull-right"><?php echo $_ct->toString('dd MMM yyyy'); ?></span>
+                                </div>  
+                                <a class="review-title"
+                                href="<?php echo $this->getReviewUrl($_review->getId()); ?>"><?php echo $this->escapeHtml($_review->getTitle()); ?></a>
+                                <div class="review-info-description">
+                                    <p><?php echo nl2br($this->escapeHtml($_review->getDetail())); ?></p>
+                                </div>
+                                <div class="review-info-helpful">
+                                    <?php if ($_helper->isEnabled()) : ?>
+                                        <p>
+                                            <span><?php echo $this->__('Was This Review Helpful ?'); ?></span>
+                                            <a class="thumbs-up" onclick="changeThumbs('<?php echo Mage::getBaseUrl() ?>blugentoreview/index/thumbsup/id/<?php echo $_review->getId() ?>', 'up', '<?php echo $_review->getId() ?>')">
+                                                <span class="thumbs-text">
+                                                    <?php echo $this->__('Yes'); ?>
+                                                </span>
+                                                <img alt="thumbs-up"
+                                                    src="<?php echo $this->getSkinUrl('images/thumbs-up-review.svg'); ?>"/>
+                                                <span id="thumbs-up-<?php echo $_review->getId(); ?>">
+                                                    (<?php echo $_review->getThumbsUp(); ?>)
+                                                </span>
+                                            </a>
+                                            <a class="thumbs-down" onclick="changeThumbs('<?php echo Mage::getBaseUrl() ?>blugentoreview/index/thumbsdown/id/<?php echo $_review->getId() ?>', 'down', '<?php echo $_review->getId() ?>')">
+                                                <span class="thumbs-text">
+                                                    <?php echo $this->__('No'); ?>
+                                                </span>
+                                                <img alt="thumbs-down"
+                                                    src="<?php echo $this->getSkinUrl('images/thumbs-down-review.svg'); ?>"/>
+                                                <span id="thumbs-down-<?php echo $_review->getId(); ?>">
+                                                    (<?php echo $_review->getThumbsDown(); ?>)
+                                                </span>
+                                            </a>
+                                        </p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+	                <?php if ($_toggleReviews == 1 && count($_items) >= 5): ?>
+	                    <a class="button review-see-more"><?php echo $this->__('See more reviews') ?></a>
+	                    <a class="button review-see-less"><?php echo $this->__('See less reviews') ?></a>
+	                <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php if ($_toggleReviews == 1 && count($_items) >= 5): ?>
+	<script>
+		function reviewToggle() {
+			jQuery('#customer-reviews .review').each(function(idx, el) {
+				if (idx >= 5) {
+					jQuery(this).addClass('hide');
+				}
+			});
+		}
+		
+		reviewToggle();
+		
+		jQuery('a.review-see-more').on('click', function () {
+			jQuery('#customer-reviews .review').removeClass('hide');
+			jQuery('a.review-see-less').show();
+			jQuery(this).hide();
+		});
+		
+		jQuery('a.review-see-less').on('click', function () {
+			reviewToggle();
+			jQuery('a.review-see-more').show();
+			jQuery(this).hide();
+		});
+	</script>
+<?php endif; ?>
+
+<?php if ($_helper->isEnabled()): ?>
+	<script>
+	    function changeThumbs(url, type, id) {
+	        new Ajax.Request(url, {
+	            method: 'get',
+	            onSuccess: function(res) {
+	                if (type == 'up') {
+	                    changeThumbsUp(res.responseText, id);
+	                } else {
+	                    changeThumbsDown(res.responseText, id);
+	                }
+	            },
+	            onFailure: function(err) {
+	                console.log(err);
+	                alert('Something went wrong...');
+	            }
+	        });
+	    }
+	
+	    function changeThumbsUp(value, id) {
+	        jQuery('#thumbs-up-' + id).text(value);
+	    }
+	
+	    function changeThumbsDown(value, id) {
+	        jQuery('#thumbs-down-' + id).text(value);
+	    }
+	</script>
+<?php endif; ?>

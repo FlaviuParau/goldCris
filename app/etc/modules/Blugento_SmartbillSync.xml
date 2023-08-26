@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Blugento_SmartbillSync>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <IntelligentIT_SmartBill />
+            </depends>
+        </Blugento_SmartbillSync>
+    </modules>
+</config>

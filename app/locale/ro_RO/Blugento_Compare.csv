@@ -1,0 +1,5 @@
+"Product Compare","Comparare produse"
+"Blugento Compare","Comparare produse"
+"Max Compare Products","Nr. maxim de produse"
+"Reach Limit Message","Mesaj depășire limită produse"
+"Use {{max_number}} to be replaced with max number in message. </br>ie. '..more than {{max_number}} products'","{{max_number}} va fi înlocuit cu numărul maxim de produse permise pentru comparare. </br>Exemplu: '...mai mult de {{max_number}} produse'"

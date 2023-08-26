@@ -1,0 +1,55 @@
+
+<?php
+/* @var $this Mage_Catalog_Block_Product_Compare_Sidebar */
+?>
+<?php
+/* @var Blugento_Compare_Helper_Data $helper */
+if (Mage::helper('core')->isModuleEnabled('Blugento_Compare')) :
+    $helper = Mage::helper('blugento_compare');
+    if ($helper->enableCompare()) :
+        $_helper = $this->helper('catalog/product_compare');
+        $_items = ($_helper->getItemCount() > 0) ? $_helper->getItemCollection() : null;
+        $_maxItems = 4;
+        ?>
+        <div class="block block-compare">
+            <div class="block-content">
+                <?php if ($_helper->getItemCount() > 0): ?>
+                    <ol id="compare-items">
+                        <?php foreach ($_items as $_index => $_item): ?>
+                            <li>
+                                <?php
+                                $product = Mage::getModel("catalog/product")->load($_item->getProductId());
+                                $refererUrl = Mage::registry('referrer_url');
+                                if (empty($refererUrl)) {
+	                                $refererUrl = Mage::getBaseUrl();
+                                }
+                                $deleteUrl = $this->getUrl(
+	                                'catalog/product_compare/remove',
+	                                array(
+		                                'product'=>$_item->getId(),
+		                                Mage_Core_Controller_Front_Action::PARAM_NAME_URL_ENCODED => $this->helper('core/url')->getEncodedUrl($refererUrl)
+	                                )
+                                );
+                                Mage::log($deleteUrl, null, 'd2.log');
+                                ?>
+                                <input type="hidden" class="compare-item-id" value="<?php echo $_item->getId() ?>" />
+                                <div class="product-image-compare" data-hover="true">
+                                    <img src="<?php echo Mage::helper('catalog/image')->init($product, 'image')->resize(40) ?>" alt="<?php echo $_item->getName() ?>" width="40" height="40" />
+                                    <div class="overlay-close">
+                                        <a href="<?php echo $deleteUrl; ?>" title="<?php echo $this->__('Remove This Item') ?>" class="btn-remove" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove this item from the compare products?') ?>');"><?php echo $this->__('Remove This Item') ?></a>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php for ($i = $_maxItems - $_helper->getItemCount(); $i > 0; $i--): ?>
+                            <li class="placeholder"></li>
+                        <?php endfor; ?>
+                    </ol>
+                    <div class="actions">
+                        <a href="<?php echo $this->htmlEscape($_helper->getListUrl()) ?>" target="_blank"><?php echo $this->__('View') ?></a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

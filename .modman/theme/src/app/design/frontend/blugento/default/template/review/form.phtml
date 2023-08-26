@@ -1,0 +1,167 @@
+<div class="form-add-review" id="form-add-review">
+    <?php if ($this->getAllowWriteReviewFlag()): ?>
+        <form action="<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnReview()): ?><?php else: ?><?php echo $this->getAction(); ?><?php endif; ?>" method="post" id="review-form"?>
+            <h2 class="subtitle"><?php echo $this->__('Write Your Own Review') ?></h2>
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <fieldset>
+                <?php echo $this->getChildHtml('form_fields_before') ?>
+                <ul class="form-list">
+                    <li class="stars-wrapper">
+                        <label>
+                            <?php echo $this->__("Rate this product") ?>
+                        </label>
+                        <?php if ($this->getRatings() && $this->getRatings()->getSize()): ?>
+                            <div class="review-ratings">
+                                <span id="input-message-box"></span>
+                                <ul class="form-list row" id="review-form-ratings">
+                                    <?php foreach ($this->getRatings() as $_rating): ?>
+                                        <li>
+                                            <div class="input-box">
+                                                <div class="jq-ratings">
+                                                    <?php foreach ($_rating->getOptions() as $_option): ?>
+                                                        <input type="radio" name="ratings[<?php echo $_rating->getId() ?>]" id="<?php echo $this->escapeHtml($_rating->getRatingCode()) ?>_<?php echo $_option->getValue() ?>" value="<?php echo $_option->getId() ?>" class="radio" />
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <span class="stars-selected"><span class="stars-count"></span> <?php echo $this->__("stars") ?></span>
+                                <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+                            </div>
+                        <?php endif; ?>
+                    </li>
+                    <li>
+                        <label for="nickname_field" class="required"><em>*</em><?php echo $this->__('Your nickname') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="nickname" id="nickname_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getNickname()) ?>" />
+                        </div>
+                    </li>
+                    <li>
+                        <label for="summary_field" class="required"><em>*</em><?php echo $this->__('Review summary') ?></label>
+                        <div class="input-box">
+                            <input type="text" name="title" id="summary_field" class="input-text required-entry" value="<?php echo $this->escapeHtml($data->getTitle()) ?>" />
+                        </div>
+                    </li>
+                    <li>
+                        <label for="review_field" class="required"><em>*</em><?php echo $this->__('Your thoughts') ?></label>
+                        <div class="input-box">
+                            <textarea name="detail" id="review_field" cols="5" rows="3" class="input-text required-entry"><?php echo $this->escapeHtml($data->getDetail()) ?></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+            <?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?>
+                <div class="no-display">
+                    <input type="text" name="noSpam" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('No Spam')) ?>" id="no-spam-review" class="input-text no-display required-entry" />
+                </div>
+            <?php endif; ?>
+            <div class="buttons-set">
+                <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit Review')) ?>" name="send" id="g-recaptcha-review" class="g-recaptcha-review button disabled" data-badge="bottomleft" data-size="invisible"><span><span><?php echo $this->__('Submit Review') ?></span></span></button>
+            </div>
+        </form>
+        <?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnReview()): ?>
+            <script type="text/javascript">
+                // Prevent form to submit if hidden input has value
+                jQuery('#review-form').submit(function(e) {
+                    if (jQuery('#no-spam-review').val() !== '') {
+                        e.preventDefault();
+
+                        window.history.back();
+                    }
+                });
+
+                function onSubmitReview(token) {
+                    setTimeout(function(){
+                        jQuery('.g-recaptcha-review').attr('data-token', token);
+
+                        if (jQuery('#no-spam').val() === '' || jQuery('#no-spam').val() === undefined) {
+                            return new Promise(function (resolve, reject) {
+                                var dataForm = new VarienForm('review-form');
+                                var tokenHash = jQuery('.g-recaptcha-review').attr('data-token');
+
+                                if (tokenHash && tokenHash.length > 100) {
+                                    jQuery('#no-spam-review').removeClass('required-entry');
+
+                                    if (dataForm.validator && dataForm.validator.validate()){
+                                        jQuery('#review-form').attr('action', '<?php echo $this->getAction() ?>');
+                                        document.getElementById("review-form").submit();
+                                    }
+                                }
+                            });
+                        } else {
+                            window.history.back();
+                        }
+                    }, 500);
+                }
+
+                // Check if captcha container have loaded class, if not than captcha will be loaded
+                function loadCaptchaReview() {
+                    setTimeout(function(){
+                        // Fix for google recaptcha from 18 June
+                        if ("NodeList" in window) {
+                            if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+                                NodeList.prototype.each = NodeList.prototype.forEach;
+                            }
+                        }
+
+                        if (!jQuery('.captcha_container_review').length) {
+                            jQuery('#g-recaptcha-review').addClass('captcha_container_review');
+                            var captchaContainer = null;
+                            var loadCaptchaReviewFunction = function() {
+                                captchaContainer = grecaptcha.render('g-recaptcha-review', {
+                                    'sitekey': '<?php echo$this->helper('recaptcha')->getKey(); ?>',
+                                    'callback': onSubmitReview
+                                });
+                            };
+
+                            loadCaptchaReviewFunction();
+                        }
+                    }, 300);
+                };
+
+                // Once user insert a value, loadCaptchaContent will be called
+                jQuery('#review-form input').each(function(e) {
+                    jQuery(this).on('change keyup blur input', function(e) {
+                        loadCaptchaReview();
+                    });
+                });
+
+                jQuery('.g-recaptcha-review').on('click', function(e) {
+                    onSubmitReview();
+                });
+            </script>
+            <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptchaReviewFunction&render=explicit" async defer></script>
+        <?php endif; ?>
+        <script>
+        //<![CDATA[
+            var dataForm = new VarienForm('review-form');
+            Validation.addAllThese(
+            [
+                ['validate-rating', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Please select one of each of the ratings above')) ?>', function(v) {
+                    var inputs = $('review-form-ratings').select('input'),
+                        error = 1;
+	
+	                for (var i in inputs) {
+		                if (inputs[i].checked == true) {
+			                error = 0;
+		                }
+	                }
+
+	                if (error == 1) {
+		                return false;
+	                } else {
+	                    return true;
+	                }
+                }]
+            ]
+            );
+        //]]>
+        </script>
+    <?php else: ?>
+        <h2 class="subtitle"><?php echo $this->__('Write Your Own Review') ?></h2>
+        <p class="review-nologged" id="review-form">
+            <?php echo $this->__('Only registered users can write reviews. Please, <a href="%s">log in</a> or <a href="%s">register</a>', $this->getLoginLink(), Mage::helper('customer')->getRegisterUrl()) ?>
+        </p>
+    <?php endif; ?>
+</div>

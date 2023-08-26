@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addItem" ifconfig="blugento_configurableswatch/general/enabled">
+                <type>skin_css</type>
+                <name>blugento/configurableswatch/css/main.css</name>
+            </action>
+            <action method="addItem" ifconfig="blugento_configurableswatch/general/enabled">
+                <type>skin_js</type>
+                <name>blugento/configurableswatch/js/configurable-blugento.js</name>
+            </action>
+        </reference>
+    </default>
+</layout>

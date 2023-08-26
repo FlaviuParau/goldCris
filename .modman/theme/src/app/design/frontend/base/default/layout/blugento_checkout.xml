@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout>
+
+    <checkout_onepage_review>
+        <reference name="checkout.onepage.review.info.items.before">
+            <block type="checkout/cart_coupon" name="checkout.cart.coupon" as="coupon">
+                <action method="setTemplate">
+                    <template helper="blugento_checkout/data/isCheckoutCouponEnabled" />
+                </action>
+            </block>
+        </reference>
+        <reference name="checkout.onepage.agreements">
+            <block type="core/template" name="checkout.onepage.review.order_comment" as="order_comment" template="blugento/checkout/review/order_comment.phtml" />
+        </reference>
+    </checkout_onepage_review>
+
+    <checkout_multishipping_overview>
+        <refence name="checkout.multishipping.agreements">
+            <block type="core/template" name="checkout.onepage.review.order_comment" as="order_comment" template="blugento/checkout/review/order_comment.phtml" />
+        </refence>
+    </checkout_multishipping_overview>
+
+</layout>

@@ -1,0 +1,49 @@
+<!--@subject Usuwanie danych użytkownika @-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h4>Dzień dobry,</h4>
+            <h4>Twoja prośba o usunięcie została zarejestrowana.</h4>
+            <h4>Twoje dane osobowe zostały usunięte z:</h4>
+            <ul>
+                {{if orders}}
+                    <li>
+                        <h4>Poleceń</h4>
+                    </li>
+                {{/if}}
+
+                {{if quotes}}
+                <li>
+                    <h4>Opuszczonych koszyków zakupowych</h4>
+                </li>
+                {{/if}}
+
+                {{if invoices}}
+                <li>
+                    <h4>Faktur</h4>
+                </li>
+                {{/if}}
+
+                {{if shipments}}
+                <li>
+                    <h4>Dokumentów dostawy</h4>
+                </li>
+                {{/if}}
+
+                {{if creditmemos}}
+                <li>
+                    <h4>Korekt do faktur</h4>
+                </li>
+                {{/if}}
+            </ul>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

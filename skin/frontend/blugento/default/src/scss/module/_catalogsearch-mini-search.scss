@@ -1,0 +1,105 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalogsearch-mini-search.scss
+    Version:        1.0
+    Description:    Mini-Search Styles (in Header)
+    ------------------------------------------------------------------------- */
+
+body.search-open {
+    @include mobile {
+        overflow: hidden;
+        position: fixed;
+        margin-top: 46px;
+    }
+}
+
+// ----------------------------------------------------------------------------
+
+.mini-search {
+    float: right;
+    display: $mini-search_display;
+
+    @include mobile {
+        display: none;
+        float: none;
+        z-index: 9001;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .search-open & {
+        display: block;
+    }
+}
+
+.form-search {
+    position: relative;
+
+    label {
+        display: none;
+    }
+
+    button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 34px;
+        padding: 0;
+        overflow: hidden;
+        text-indent: -9999px;
+        background: transparent $mini-search__button_background-image no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+
+        &:hover {
+            background-image: $mini-search__button--hover_background-image;
+        }
+    }
+
+    input {
+        width: 100%;
+        min-width: 300px;
+        height: 46px;
+        padding-right: 45px;
+        color: color('r');
+
+        @include mobile {
+            width: 100%;
+            padding-left: 20px;
+            border: 0;
+            border-bottom: 3px solid color('e');
+        }
+    }
+
+    &:hover {
+        input {
+            @include desktop {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+.search-autocomplete {
+    z-index: 200;
+    left: 0 !important;
+    overflow: visible !important;
+    width: 100% !important;
+
+    ul {
+        padding: 10px 0;
+        background-color: color('m');
+        color: color('b');
+    }
+
+    li {
+        cursor: pointer;
+        padding: 10px 20px;
+    }
+
+    .amount {
+        float: right;
+    }
+}

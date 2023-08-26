@@ -1,0 +1,66 @@
+<?php
+$_product    = $this->getProduct();
+$_attribute = $this->getAttributeObj();
+$_jsonConfig = $this->getJsonConfig();
+$_config = json_decode($_jsonConfig);
+
+$_swatchInnerWidth = $this->getSwatchInnerWidth();
+$_swatchInnerHeight = $this->getSwatchInnerHeight();
+$_swatchOuterWidth = $this->getSwatchOuterWidth();
+$_swatchOuterHeight = $this->getSwatchOuterHeight();
+
+$_attr = $_attribute->getProductAttribute();
+$_attrCode = $_attr->getAttributeCode();
+$_id = $_attribute->getAttributeId();
+
+$_swatchArray = $_config->attributes->$_id;
+
+$_selectedValue = Mage::getStoreConfig('blugento_configurableswatch/general/selected_option') ? Mage::getStoreConfig('blugento_configurableswatch/general/selected_option'): '';
+$_preselectSingleSwatches = (int) ($this->getLayout()->getBlock('root')->getPreselectSingleSwatches() ?: 1);
+$_swatchImage = (int) ($this->getLayout()->getBlock('root')->getSelectProductSimpleImage() ?: 2);
+$_enableSwatchLabel = (int) (Mage::getStoreConfig('configswatches/general/enable_swatch_label') ?: 0);
+?>
+<dt class="swatch-attr">
+    <label id="<?php echo $_attrCode ?>_label" class="required">
+        <em>*</em><?php echo $_attribute->getLabel() ?>:
+        <span id="select_label_<?php echo $_attrCode ?>" class="select-label"></span>
+    </label>
+</dt>
+<dd class="swatch-attr<?php if ($_attribute->decoratedIsLast) echo ' last'; ?>">
+    <div class="input-box">
+        <select data-image="swatch-image-<?php echo $_swatchImage ?>" name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select no-display swatch-select">
+            <option><?php echo $this->__('Choose an Option...') ?></option>
+        </select>
+        <ul id="configurable_swatch_<?php echo $_attrCode ?>" class="configurable-swatch-list clearfix <?php echo $_selectedValue ?> preselect-swatch-<?php echo $_preselectSingleSwatches ?>">
+            <?php foreach ($_swatchArray->options as $_option): ?>
+                <?php
+                $_optionCode = Mage::helper('configurableswatches')->getHyphenatedString($_option->label);
+                $_swatchUrl = Mage::helper('configurableswatches/productimg')->getSwatchUrl($_product, $_option->label, $_swatchInnerWidth, $_swatchInnerHeight, $_swatchType);
+                $_hasImage = !empty($_swatchUrl);
+                $_liClass = '';
+                $_aClass = 'swatch-link swatch-link-' . $_attribute->getAttributeId();
+                if ($_hasImage && $_enableSwatchLabel === 0) {
+                    $_liClass .= $_swatchType == 'media' ? ' is-media' : '';
+                    $_aClass .= ' has-image';
+                } elseif (strlen($_option->label) > 3) {
+                    $_liClass .= ' wide-swatch';
+                    $_aClass .= ' has-no-image';
+                }
+                ?>
+                <li class="option-<?php echo $_optionCode ?><?php echo $_liClass ?>" id="option<?php echo $_option->id ?>" data-id="<?php echo $_option->id ?>">
+                    <a href="javascript:void(0)" name="<?php echo $_optionCode ?>" id="swatch<?php echo $_option->id ?>" class="<?php echo $_aClass ?>" title="<?php echo $_option->label ?>">
+                        <span class="swatch-label">
+                            <?php if ($_hasImage && $_enableSwatchLabel === 0): ?>
+                                <img data-src="<?php echo $_swatchUrl ?>" alt="<?php echo $_option->label ?>" width="<?php echo $_swatchInnerWidth ?>" height="<?php echo $_swatchInnerHeight ?>" />
+                            <?php else: ?>
+                                <span><?php echo $_option->label ?></span>
+                            <?php endif; ?>
+                        </span>
+                        <span class="x"></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</dd>
+

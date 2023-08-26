@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="root">
+            <block type="core/template" name="end" template="page/html/end.phtml" />
+            <block type="core/template" name="preloader_css" template="page/html/preloader/css.phtml" />
+        </reference>
+        <reference name="head">
+            <action method="removeItem"><type>js</type><name>scriptaculous/builder.js</name></action>
+            <action method="removeItem"><type>js</type><name>scriptaculous/controls.js</name></action>
+            <action method="removeItem"><type>js</type><name>scriptaculous/dragdrop.js</name></action>
+            <action method="removeItem"><type>js</type><name>scriptaculous/slider.js</name></action>
+            <action method="removeItem"><type>js</type><name>varien/menu.js</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/styles-ie.css</name></action>
+            <action method="removeItem"><type>js</type><name>lib/ds-sleight.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/ie6.js</name></action>
+
+            <!-- HTML5 IE Enabling Script -->
+            <block type="core/text" name="html5shiv">
+                <action method="setText"><text><![CDATA[<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->]]></text></action>
+            </block>
+
+            <action method="addItem"><type>skin_css</type><name>css/screen.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/screen-ie.css</name><params /><if><![CDATA[IE]]></if></action>
+
+            <block type="page/html_head" name="final_assets" as="final_assets" template="page/html/final_assets.phtml">
+                <action method="addCss"><stylesheet>blugento/css/final.css</stylesheet></action>
+            </block>
+
+            <!-- 2Performant Big Bear Script -->
+            <block type="core/template" name="performant_big_bear" as="performant_big_bear" template="performant/big_bear/head.phtml" />
+
+            <!-- Vendor -->
+            <action method="addJs"><script>blugento/theme/vendor/jquery/jquery-1.11.3.min.js</script></action>
+            <action method="addJs"><script>blugento/theme/vendor/jquery/noconflict.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/cookie/jquery.cookie.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/yetii/yetii-min.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/vendor/slick-carousel/slick.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/slick-carousel/slick.min.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/vendor/star-rating/rating.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/star-rating/rating.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/mobile-detect/mobile-detect.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/lazyloadxt/jquery.lazyloadxt.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/lazyloadxt/jquery.lazyloadxt.srcset.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/elevatezoom/elevatezoom.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/imagesloaded/imagesloaded.pkgd.min.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/vendor/magnific-popup/magnific-popup.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/vendor/magnific-popup/magnific-popup-gallery.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/magnific-popup/magnific-popup.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/scroll-to-fixed/scrolltofixed.min.js</name></action>
+
+            <!-- Main -->
+            <action method="addItem"><type>skin_js</type><name>js/main.js</name></action>
+        </reference>
+        <reference name="header">
+            <block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml" />
+        </reference>
+        <reference name="footer">
+            <action method="unsetData"><key>cache_lifetime</key></action>
+            <action method="unsetData"><key>cache_tags</key></action>
+        </reference>
+        <reference name="catalog.topnav">
+            <block type="blugento_category/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml" />
+            <block type="page/switch" name="store_language.mobile" as="store_language.mobile" template="page/switch/languages-mobile.phtml" />
+        </reference>
+        <reference name="after_body_start">
+            <block type="core/template" name="preloader_html" template="page/html/preloader/html.phtml" />
+        </reference>
+    </default>
+
+    <print>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/screen.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/screen-ie.css</name><params /><if><![CDATA[IE]]></if></action>
+        </reference>
+    </print>
+
+</layout>

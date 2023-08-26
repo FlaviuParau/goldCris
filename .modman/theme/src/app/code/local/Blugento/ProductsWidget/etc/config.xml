@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!--/**
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to
+* newer versions in the future.
+*
+* @category    Blugento
+* @package     Blugento_ProductsWidget
+* @author      Mihai Rastasan <mihai.rastasan@blugento.ro>
+* @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/-->
+<config>
+	<modules>
+		<Blugento_ProductsWidget>
+            <version>1.0.1</version>
+        </Blugento_ProductsWidget>
+    </modules>
+
+	<global>
+		<models>
+            <blugento_productswidget>
+                <class>Blugento_ProductsWidget_Model</class>
+            </blugento_productswidget>
+	    </models>
+		<resources>
+			<blugento_productswidget_setup>
+				<setup>
+					<module>Blugento_ProductsWidget</module>
+				</setup>
+			</blugento_productswidget_setup>
+		</resources>
+	  	<blocks>
+            <blugento_productswidget>
+                <class>Blugento_ProductsWidget_Block</class>
+            </blugento_productswidget>
+        </blocks>
+		<helpers>
+            <blugento_productswidget>
+                <class>Blugento_ProductsWidget_Helper</class>
+            </blugento_productswidget>
+        </helpers>
+		<events>
+			<catalog_category_change_products>
+				<observers>
+					<blugento_productswidget_category>
+						<class>blugento_productswidget/observer</class>
+						<method>categoryChangeProducts</method>
+					</blugento_productswidget_category>
+				</observers>
+			</catalog_category_change_products>
+			<adminhtml_cache_refresh_type>
+				<observers>
+					<module_alias>
+						<class>blugento_productswidget/observer</class>
+						<type>singleton</type>
+						<method>cleanCacheType</method>
+					</module_alias>
+				</observers>
+			</adminhtml_cache_refresh_type>
+		</events>
+    </global>
+
+	<frontend>
+		<layout>
+			<updates>
+				<blugento_productswidget>
+					<file>blugento_productswidget.xml</file>
+				</blugento_productswidget>
+			</updates>
+		</layout>
+	</frontend>
+
+	<adminhtml>
+		<events>
+			<catalog_product_save_commit_after>
+				<observers>
+					<blugento_productswidget_product>
+						<class>blugento_productswidget/observer</class>
+						<method>productSaveBefore</method>
+					</blugento_productswidget_product>
+				</observers>
+			</catalog_product_save_commit_after>
+		</events>
+	</adminhtml>
+
+    <default>
+		<blugento_productswidget>
+			<general>  
+				<enabled>1</enabled>
+				<add_jquery>0</add_jquery>
+				<add_slick>0</add_slick>
+			</general>
+		</blugento_productswidget>
+	</default>	
+</config>

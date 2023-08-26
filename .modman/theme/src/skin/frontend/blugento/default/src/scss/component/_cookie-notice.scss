@@ -1,0 +1,75 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_cookie-notice.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.notice-cookie {
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 50;
+	padding: 10px;
+	background-color: $notice-cookie_background-color;
+	color: $notice-cookie_color;
+	text-align: center;
+	font-weight: 700;
+	
+	.notice-inner {
+		display: -webkit-flex;
+		display: -moz-box;
+		display: -o-flex;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.notice-text,
+	.actions {
+		display: inline-block;
+	}
+	
+	.notice-text {
+		flex-grow: 1;
+		
+		@include phone-s {
+			margin-right: 15px;
+			text-align: left;
+		}
+	}
+	
+	.actions {
+		float: right;
+		
+		button {
+			font-size: $add-to-links_font-size;
+			text-transform: capitalize;
+			border: 1px solid #fff;
+			padding: 5px 10px;
+			background-color: transparent;
+			
+			&.close-cookie {
+				@extend %btn;
+				width: 14px;
+				height: 14px;
+				padding: 0;
+				border: none;
+				background-image: $icon--remove--a2;
+				
+				@include phone-s {
+					margin: 5px 5px 5px 10px;
+				}
+			}
+		}
+	}
+	
+	@if ($layout--cookie-notice == 2) {
+		top: 0;
+	} @else {
+		bottom: 0;
+	}
+	
+	a {
+		text-decoration: underline;
+	}
+}

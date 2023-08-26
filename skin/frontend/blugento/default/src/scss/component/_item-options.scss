@@ -1,0 +1,59 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_item-options.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.item-options {
+    @include cf;
+
+    margin-bottom: 0;
+
+    dt {
+        clear: left;
+        float: left;
+
+        &:after {
+            content: '\2014';
+            padding: 0 2px;
+        }
+    }
+
+    dd {
+        margin: 0;
+    }
+}
+
+.truncated,
+.truncated a.dots {
+    cursor: help;
+}
+
+.truncated {
+    a.details {
+        cursor: help;
+        height: 16px;
+        line-height: 16px;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    .truncated_full_value {
+        .item-options {
+            display: none;
+
+            > p {
+                margin-bottom: 8px;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .show .item-options {
+        display: block;
+    }
+}

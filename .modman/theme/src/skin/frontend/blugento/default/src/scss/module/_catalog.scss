@@ -1,0 +1,23 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog.scss
+    Version:        1.0
+    Description:    Catalog - General Styles
+    ------------------------------------------------------------------------- */
+
+.product-name {
+    font-size: inherit;
+    line-height: inherit;
+
+    > a {
+        display: inline-block;
+    }
+}
+
+.product-manufacturer {
+    font-size: inherit;
+}
+
+.tax-details {
+    display: block;
+    margin: 5px 0;
+}

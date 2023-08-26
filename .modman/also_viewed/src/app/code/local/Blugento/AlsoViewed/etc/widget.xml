@@ -1,0 +1,109 @@
+<?xml version="1.0" ?>
+<widgets>
+    <alsoviewed type="blugento_alsoviewed/catalog_product_widget_alsoviewed" translate="name description" module="blugento_alsoviewed">
+        <name>Blugento Also Viewed Products</name>
+        <description>List of Products from a Category or a List of IDs</description>
+        <parameters>
+            <title translate="label">
+                <visible>1</visible>
+                <label>Title</label>
+                <type>text</type>
+            </title>
+            <same_category_only translate="label">
+                <visible>1</visible>
+                <label>Same Category Only</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </same_category_only>
+            <product_slider translate="label">
+                <visible>1</visible>
+                <label>Slider</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </product_slider>
+            <slider_animation translate="label">
+                <visible>1</visible>
+                <label>Slider Animation Speed</label>
+                <type>select</type>
+                <source_model>blugento_alsoviewed/source_select_slider_animation</source_model>
+                <depends>
+                    <product_slider>1</product_slider>
+                </depends>
+            </slider_animation>
+            <slider_item_row translate="label">
+                <visible>1</visible>
+                <label>Slides to Show</label>
+                <type>select</type>
+                <source_model>blugento_alsoviewed/source_select_slider_item_row</source_model>
+                <depends>
+                    <product_slider>1</product_slider>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_row>
+            <slider_item_scroll translate="label">
+                <visible>1</visible>
+                <label>Slides to Scroll</label>
+                <type>select</type>
+                <source_model>blugento_alsoviewed/source_select_slider_item_scroll</source_model>
+                <depends>
+                    <product_slider>1</product_slider>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_scroll>
+            <slider_item_loop translate="label">
+                <visible>1</visible>
+                <label>Loop</label>
+                <type>select</type>
+                <source_model>blugento_alsoviewed/source_select_slider_item_loop</source_model>
+                <depends>
+                    <product_slider>1</product_slider>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_loop>
+            <max_items translate="label comment">
+                <visible>1</visible>
+                <label>Max Number of Products to Display</label>
+                <type>text</type>
+                <value>4</value>
+                <required>1</required>
+            </max_items>
+            <template translate="label">
+                <visible>1</visible>
+                <label>Template</label>
+                <type>select</type>
+                <value>catalog/product/widget/alsoviewed/content/alsoviewed_grid.phtml</value>
+                <source_model>blugento_alsoviewed/source_select_template</source_model>
+            </template>
+            <type_of_template translate="label">
+                <visible>1</visible>
+                <label>Grid Template</label>
+                <type>select</type>
+                <value>grid-4 slider-enabled</value>
+                <source_model>blugento_alsoviewed/source_select_template_type</source_model>
+            </type_of_template>
+            <setup translate="label">
+                <visible>0</visible>
+                <label>Setup</label>
+                <type>text</type>
+                <helper_block>
+                    <type>blugento_alsoviewed/adminhtml_widget_setup</type>
+                </helper_block>
+            </setup>
+        </parameters>
+    </alsoviewed>
+</widgets>

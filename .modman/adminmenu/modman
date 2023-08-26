@@ -1,0 +1,7 @@
+src/app/code/local/Blugento/Adminmenu                                       app/code/local/Blugento/Adminmenu
+src/app/design/adminhtml/default/default/layout/blugento_adminmenu.xml      app/design/adminhtml/default/default/layout/blugento_adminmenu.xml
+src/app/design/adminhtml/default/default/template/blugento/adminmenu        app/design/adminhtml/default/default/template/blugento/blugento_adminmenu
+src/app/locale/de_DE/Blugento_Adminmenu.csv                                 app/locale/de_DE/Blugento_Adminmenu.csv
+src/app/locale/en_US/Blugento_Adminmenu.csv                                 app/locale/en_US/Blugento_Adminmenu.csv
+src/app/locale/ro_RO/Blugento_Adminmenu.csv                                 app/locale/ro_RO/Blugento_Adminmenu.csv
+src/app/etc/modules/Blugento_Adminmenu.xml                                  app/etc/modules/Blugento_Adminmenu.xml

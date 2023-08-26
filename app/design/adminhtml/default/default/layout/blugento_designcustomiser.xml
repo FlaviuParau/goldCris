@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_DesignCustomiser
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<layout version="1.0.0">
+
+    <adminhtml_adminhtml_design_index>
+        <reference name="head">
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+            <action method="addItem"><type>skin_css</type><name>blugento/designcustomiser/css/main.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>blugento/designcustomiser/js/main.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>blugento/designcustomiser/js/parser-lib-master/dist/parserlib.js</name></action>
+        </reference>
+        <reference name="content">
+            <block type="blugento_designcustomiser/adminhtml_design_edit" name="adminhtml_design_edit" />
+        </reference>
+        <reference name="left">
+
+            <block type="blugento_designcustomiser/adminhtml_design_edit_tabs" name="adminhtml_tabs">
+                <block type="blugento_designcustomiser/adminhtml_design_edit_tab_styleing" name="adminhtml_design_edit_tab_styleing" />
+                <block type="blugento_designcustomiser/adminhtml_design_edit_tab_images" name="adminhtml_design_edit_tab_images" />
+                <block type="blugento_designcustomiser/adminhtml_layout_edit_tab_layout" name="adminhtml_layout_edit_tab_layout" />
+                <block type="blugento_designcustomiser/adminhtml_design_edit_tab_css" name="adminhtml_design_edit_tab_css" />
+                <block type="blugento_designcustomiser/adminhtml_design_edit_tab_template" name="adminhtml_design_edit_tab_template" />
+                <block type="blugento_designcustomiser/adminhtml_grunt_edit_tab_logs" name="adminhtml_grunt_edit_tab_logs" />
+                <block type="blugento_designcustomiser/adminhtml_grunt_edit_tab_imageLogs" name="adminhtml_grunt_edit_tab_imageLogs" />
+                <block type="blugento_designcustomiser/adminhtml_design_edit_tab_setup" name="adminhtml_design_edit_tab_setup" />
+                <block type="blugento_designcustomiser/adminhtml_design_edit_tab_export" name="adminhtml_design_edit_tab_export" />
+
+
+                <action method="addTab"><name>tab_styleing</name><block>adminhtml_design_edit_tab_styleing</block></action>
+                <action method="addTab"><name>tab_images</name><block>adminhtml_design_edit_tab_images</block></action>
+                <action method="addTab"><name>tab_layout</name><block>adminhtml_layout_edit_tab_layout</block></action>
+                <action method="addTab"><name>tab_css</name><block>adminhtml_design_edit_tab_css</block></action>
+                <action method="addTab"><name>tab_templates</name><block>adminhtml_design_edit_tab_template</block></action>
+                <action method="addTab"><name>tab_export</name><block>adminhtml_design_edit_tab_export</block></action>
+                <action method="addTab"><name>tab_logs</name><block>adminhtml_grunt_edit_tab_logs</block></action>
+                <action method="addTab"><name>tab_imagelogs</name><block>adminhtml_grunt_edit_tab_imageLogs</block></action>
+                <action method="addTab"><name>tab_setup</name><block>adminhtml_design_edit_tab_setup</block></action>
+            </block>
+        </reference>
+    </adminhtml_adminhtml_design_index>
+
+    <adminhtml_adminhtml_grunt_index>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>blugento/designcustomiser/css/main.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="blugento_designcustomiser/adminhtml_grunt_edit" name="adminhtml_grunt_edit" />
+        </reference>
+        <reference name="left">
+            <block type="blugento_designcustomiser/adminhtml_grunt_edit_tabs" name="adminhtml_grunt_tabs">
+                <block type="blugento_designcustomiser/adminhtml_grunt_edit_tab_logs" name="adminhtml_grunt_edit_tab_logs" />
+                <block type="blugento_designcustomiser/adminhtml_grunt_edit_tab_imageLogs" name="adminhtml_grunt_edit_tab_imageLogs" />
+                <block type="blugento_designcustomiser/adminhtml_design_edit_tab_export" name="adminhtml_design_edit_tab_export" />
+                <action method="addTab"><name>tab_logs</name><block>adminhtml_grunt_edit_tab_logs</block></action>
+                <action method="addTab"><name>tab_imagelogs</name><block>adminhtml_grunt_edit_tab_imageLogs</block></action>
+            </block>
+        </reference>
+    </adminhtml_adminhtml_grunt_index>
+
+    <adminhtml_adminhtml_advanced_index>
+        <reference name="head">
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+            <action method="addItem"><type>skin_css</type><name>blugento/designcustomiser/css/main.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>blugento/designcustomiser/js/main.js</name></action>
+	        <action method="addItem"><type>skin_js</type><name>blugento/designcustomiser/js/parser-lib-master/dist/parserlib.js</name></action>
+        </reference>
+        <reference name="content">
+            <block type="blugento_designcustomiser/adminhtml_advanced_edit" name="adminhtml_advanced_edit" />
+        </reference>
+        <reference name="left">
+            <block type="blugento_designcustomiser/adminhtml_advanced_edit_tabs" name="adminhtml_advanced_tabs">
+                <block type="blugento_designcustomiser/adminhtml_advanced_edit_tab_styleing" name="adminhtml_advanced_edit_tab_styleing" />
+                <!--<block type="blugento_designcustomiser/adminhtml_advanced_edit_tab_scss" name="adminhtml_advanced_edit_tab_scss" />-->
+                <block type="blugento_designcustomiser/adminhtml_advanced_edit_tab_images" name="adminhtml_advanced_edit_tab_images" />
+                <block type="blugento_designcustomiser/adminhtml_layout_edit_tab_layout" name="adminhtml_layout_edit_tab_layout" />
+                <block type="blugento_designcustomiser/adminhtml_advanced_edit_tab_css" name="adminhtml_advanced_edit_tab_css" />
+                <block type="blugento_designcustomiser/adminhtml_design_edit_tab_setup" name="adminhtml_design_edit_tab_setup" />
+
+                <action method="addTab"><name>tab_styleing</name><block>adminhtml_advanced_edit_tab_styleing</block></action>
+                <!--<action method="addTab"><name>tab_scss</name><block>adminhtml_advanced_edit_tab_scss</block></action>-->
+                <action method="addTab"><name>tab_images</name><block>adminhtml_advanced_edit_tab_images</block></action>
+                <action method="addTab"><name>tab_layout</name><block>adminhtml_layout_edit_tab_layout</block></action>
+                <action method="addTab"><name>tab_css</name><block>adminhtml_advanced_edit_tab_css</block></action>
+                <action method="addTab"><name>tab_setup</name><block>adminhtml_design_edit_tab_setup</block></action>
+            </block>
+        </reference>
+    </adminhtml_adminhtml_advanced_index>
+
+</layout>

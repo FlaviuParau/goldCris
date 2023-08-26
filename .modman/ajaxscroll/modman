@@ -1,0 +1,14 @@
+src/app/code/community/Strategery/Infinitescroll		                                    app/code/community/Strategery/Infinitescroll
+src/app/design/frontend/base/default/layout/strategery-infinitescroll.xml                   app/design/frontend/base/default/layout/strategery-infinitescroll.xml
+src/app/design/frontend/base/default/template/strategery/infinitescroll                     app/design/frontend/base/default/template/strategery/infinitescroll
+src/app/design/frontend/blugento/default/layout/strategery-infinitescroll.xml               app/design/frontend/blugento/default/layout/strategery-infinitescroll.xml
+src/app/design/frontend/blugento/default/template/strategery/infinitescroll                 app/design/frontend/blugento/default/template/strategery/infinitescroll
+src/app/design/frontend/default/default/template/ajaxscroll                                 app/design/frontend/default/default/template/ajaxscroll
+src/app/etc/modules/Strategery_Infinitescroll.xml                                           app/etc/modules/Strategery_Infinitescroll.xml
+src/js/ajaxscroll                                                                           js/ajaxscroll
+src/js/jquery/infinitescroll                                                                js/jquery/infinitescroll
+src/js/jquery/jquery.1.10.2.min.js                                                          js/jquery/jquery.1.10.2.min.js
+
+
+
+

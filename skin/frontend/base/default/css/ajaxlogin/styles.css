@@ -1,0 +1,559 @@
+.ajaxlogin-enabled.customer-account-login .main-content,
+.ajaxlogin-enabled.customer-account-create .main-content {
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.customer-account-login .ajax-login-modal.dock--right {
+    pointer-events: initial;
+}
+
+.ajaxlogin-window {
+    background:#fff;
+    min-width: 550px;
+    z-index: 999; 
+    position: fixed; 
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: left;
+    outline: none;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
+
+#ajaxlogin-create-window,
+#ajaxlogin-forgot-window,
+#ajaxlogin-login-window,
+#ajaxlogin-logout-window { 
+    display: none;
+}
+
+.d-shadow-wrap #ajaxlogin-create-window,
+.d-shadow-wrap #ajaxlogin-forgot-window,
+.d-shadow-wrap #ajaxlogin-login-window,
+.d-shadow-wrap #ajaxlogin-logout-window { 
+    display: block;
+}
+
+.ajaxlogin-window .content {
+    max-height: calc(100vh - 0px);
+    overflow-y: auto;
+}
+
+.show-login-first #ajaxlogin-login-window {
+    display: block !important;
+}
+
+.show-login-first .mfp-close {
+    display: none;
+}
+
+.loading {
+    background: transparent;
+    padding: 0;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.loading .d-shadow-wrap,
+.loading .mfp-close {
+    display: none;
+}
+
+.ajaxlogin-window .content { 
+    overflow: auto; 
+    overflow-x: hidden; 
+}
+
+.social_account,
+.ajaxlogin-window .page-title,
+.ajaxlogin-window form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.ajaxlogin-window form,
+.ajax-login-modal form {
+    margin-top: 15px;
+}
+
+#please-wait,
+.ajaxlogin-window .fb_button_text:before,
+.ajaxlogin-window .facebook-wrapper .content {
+    display: none;
+}
+
+.loading #please-wait {
+    display: block;
+}
+
+.logo-pop-up {
+    border-bottom: 1px solid #DADADA;
+    padding: 10px;
+    text-align: center;
+}
+
+.ajaxlogin-window h2,
+.ajax-login-modal h2 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.or-divider {
+    display: block;
+    text-align: center;
+    position: relative;
+    margin: 15px 10px 0;
+    text-transform: uppercase;
+}
+
+.or-divider:after {
+    content: '';
+    background: #DADADA;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    right: 0;
+}
+
+.or-divider span {
+    background: #fff;
+    padding: 0 20px;
+    line-height: 20px;
+    z-index: 100;
+    position: relative;
+}
+
+.ajaxlogin-window label { 
+    width: auto; 
+    text-align: left; 
+    margin-bottom: 0; 
+}
+
+.ajaxlogin-window label.required em { 
+    color: #000;
+}
+
+.ajaxlogin-window ul li { 
+    line-height: normal; 
+}
+
+.ajaxlogin-window ul,
+.ajaxlogin-window .form-list { 
+    list-style: none; margin: 0; 
+}
+
+.ajaxlogin-window .form-list li { 
+    margin-bottom: 10px;
+}
+
+.ajaxlogin-window .form-list .input-box { 
+    clear: both; 
+}
+
+.ajaxlogin-window .form-list input.input-text,
+.ajaxlogin-window .form-list textarea { 
+    width: 100%; 
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.ajaxlogin-window .form-list input.input-text:focus,
+.ajaxlogin-window .form-list textarea:focus {
+    border: 1px solid #000;
+}
+
+.ajaxlogin-window .input-box input { 
+    margin: 0;
+}
+
+.ajaxlogin-window .input-box .validation-advice { 
+    line-height: normal; 
+}
+
+.ajaxlogin-window .gdpr-conditions {
+    margin: 0;
+}
+
+.ajaxlogin-window .close { 
+    color: #333; 
+}
+
+.ajaxlogin-window .close:hover { 
+    color: #000; 
+}
+
+.ajaxlogin-window .progress-indicator { 
+    display: block; 
+    text-align: center; 
+    float:right;
+}
+
+.ajaxlogin-window .please-wait { 
+    position:static; 
+    padding:0; 
+    background:none; 
+    border:none; 
+    margin:0; 
+    left:auto; 
+    top:auto; 
+}
+
+.ajaxlogin-window .buttons-set { 
+    margin: 0 0 30px; 
+    padding: 0;
+    text-align: center; 
+}
+
+.ajax-login-modal .buttons-set .back-link {
+    display: block;
+}
+
+.ajaxlogin-window .buttons-set button.button {
+    margin: 20px 0;
+    display: block;
+    text-align: center;
+    float: none;
+    text-transform: none;
+    width: 100%;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.ajaxlogin-window .buttons-set > a:not(.button) {
+    display: block;
+    text-align: right;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.ajaxlogin-window .buttons-set > a:not(.button):hover {
+    text-decoration: none;
+}
+
+.ajaxlogin-window .buttons-set p a {
+    padding: 0;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+#ajaxlogin-create-window .buttons-set p a,
+#ajaxlogin-forgot-window .buttons-set p a {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.ajaxlogin-window .buttons-set p a:hover {
+    text-decoration: none;
+}
+
+.ajaxlogin-window .buttons-set a { 
+    display: block; 
+}
+
+.ajaxlogin-window .form-list .input-box { 
+    width: auto; 
+}
+
+.ajaxlogin-window .buttons-set .back-link { 
+    display: block; 
+    margin: 0; 
+    padding: 0; 
+    text-align: center; 
+ }
+
+.ajaxlogin-window .actionbar { 
+    padding:10px 10px 0; 
+    text-align:right; 
+    font-weight:bold; 
+}
+#ajaxlogin-mask-enabled {
+    display: none;
+}
+
+#ajaxlogin-mask,
+#ajaxlogin-mask-enabled {
+    background:#000; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: 10;
+    opacity: 0.4; 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)"; 
+    filter: alpha(opacity=40);
+}
+
+#ajaxlogin-logout-form {
+    text-align: center;
+}
+
+#ajaxlogin-logout-form .buttons-set button.button {
+    display: inline-block;
+    margin-top: 20px;
+    float: none;
+}
+
+.social_account {
+    max-width: 420px;
+    margin-top: 20px;
+}
+
+.social_account h2 {
+    margin: 0 10px 15px;
+}
+
+.ajaxlogin-window .facebook-wrapper {
+    background: none;
+    padding: 0;
+    float: left;
+    width: 49%;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.ajaxlogin-window .google-connect-login {
+    float: left;
+    width: 49%;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+.ajaxlogin-window .facebook-wrapper .button,
+.ajaxlogin-window .google-connect-login {
+    display: block;
+    margin: 0;
+}
+
+.ajaxlogin-window .fb_button_text,
+.ajaxlogin-window .google-connect-login .button {
+    background: #D44638 url(../../images/ajaxlogin/i_gmail.svg) no-repeat 10px center !important;
+    margin: 0 !important;
+    height: 45px !important;
+    line-height: 45px !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    text-transform: none !important;
+    position: relative !important;
+    padding: 0 !important;
+    width: 100% !important;
+    font-weight: 400 !important;
+    font-size: 0 !important;
+    min-width: inherit !important;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.ajaxlogin-window div.inchoo-google-connect-inner {
+    margin-top: 0 !important;
+}
+
+.ajaxlogin-window .content-popup-text p,
+.ajax-login-modal .content-popup-text p,
+.ajaxlogin-window .gdpr-conditions p,
+.ajax-login-modal .gdpr-conditions p {
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.ajaxlogin-window .google-connect-login .button:before {
+    display: none;
+}
+
+.ajaxlogin-window .fb_button {
+    width: 100%;
+}
+
+.ajaxlogin-window .fb_button_text {
+    background: #1778F2 url(../../images/ajaxlogin/i_fb.svg) no-repeat 10px center !important;
+}
+
+.ajaxlogin-window .google-connect-login .button:after {
+    content: 'Google';
+    font-size: 14px;
+}
+
+.ajaxlogin-window .fb_button_text:after {
+    content: 'Facebook';
+    font-size: 14px;
+}
+
+#ajaxlogin-forgot-window .content p {
+    margin-bottom: 15px;
+}
+
+.top-pop-up-buttons {
+    display: flex;
+}
+
+.top-pop-up-buttons > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+    padding: 20px;
+    text-align: center;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: #f5f5f5;
+    border-right: 1px solid #DADADA;
+    border-bottom: 1px solid #DADADA;
+}
+
+.top-pop-up-buttons > a:hover {
+    background-color: #e5e5e5;
+    text-decoration: none;
+}
+
+#ajaxlogin-login-window .top-pop-up-buttons a:first-child,
+#ajaxlogin-create-window .top-pop-up-buttons a:last-child,
+#ajaxlogin-cms-block-window .top-pop-up-buttons a:last-child {
+    border-bottom: 2px solid;
+}
+
+@media (max-width: 995px)  {
+    .dock-open .ajax-login-modal.dock--right {
+        width: 300px !important;
+        color: inherit;
+    }
+
+    .dock-open .ajaxlogin-window:not(#ajaxlogin-window) { 
+        display: block;
+    }
+
+    .dock-open #ajaxlogin-create-window,
+    .dock-open #ajaxlogin-forgot-window,
+    .dock-open #ajaxlogin-login-window,
+    .dock-open #ajaxlogin-cms-block-window {
+        background:#fff;
+        padding: 0 10px 10px;
+        min-width: inherit;
+        left: inherit;
+        top: inherit;
+        right: inherit;
+        width: inherit;
+        overflow-x: hidden;
+        overflow-y:scroll;
+        height: 100%;
+        box-sizing: border-box;
+        transform: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .ajaxlogin-window .fb_button_text,
+    .ajaxlogin-window .google-connect-login .button {
+        padding-left: 20px !important;
+    }
+}
+
+@media (max-width: 767px)  {
+    .ajaxlogin-window {
+        width: 100%;
+        min-width: initial;
+    }
+    
+    .top-pop-up-buttons > a {
+        padding: 15px;
+        font-size: 14px;
+    }
+    
+    .dock-open #ajaxlogin-create-window, 
+    .dock-open #ajaxlogin-forgot-window, 
+    .dock-open #ajaxlogin-login-window,
+    .dock-open #ajaxlogin-cms-block-window {
+        z-index: 21;
+        position: relative;
+    }
+
+    .login-block .page-header,
+    .login-block .page-main,
+    .login-block .page-footer {
+        pointer-events: none;
+    }
+
+    .login-block .ajax-login-modal {
+        pointer-events: inherit !important;
+    }
+
+    .dock-open #ajaxlogin-create-window .buttons-set button.button {
+        float: none;
+        width: 100%;
+    }
+
+    body.dock-open--right {
+        right: 300px !important;
+    }
+
+    .social_account, 
+    .ajaxlogin-window .page-title, 
+    .ajaxlogin-window form {
+        padding: 0 10px; 
+    }
+
+    .ajaxlogin-window  .buttons-set button.button {
+        float: none;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .ajaxlogin-window .fb_button_text,
+    .ajaxlogin-window .google-connect-login .button {
+        padding-left: 0 !important;
+    }
+
+    .ajax-login-modal .logo-pop-up img {
+        max-width: 100px;
+    }
+
+    .social_account,
+    .ajaxlogin-window form, 
+    .ajax-login-modal form {
+        margin-top: 10px;
+    }
+
+    .ajaxlogin-window .back-link {
+        float: none;
+    }
+
+    .social_account h2,
+    .ajaxlogin-window h2, 
+    .ajax-login-modal h2 {
+        margin: 0 0 10px;
+    }
+
+    .or-divider {
+        margin: 10px 0;
+    }
+
+    .ajaxlogin-window .facebook-wrapper,
+    .ajaxlogin-window .google-connect-login {
+        float: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    .ajaxlogin-window .google-connect-login {
+        margin-bottom: 10px;
+    }
+
+    .ajax-login-modal .gdpr-conditions {
+        margin: 0;
+    }
+}
+
+.messages .error-msg a {
+    text-decoration: underline;
+}

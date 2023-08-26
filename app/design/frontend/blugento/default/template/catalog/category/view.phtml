@@ -1,0 +1,47 @@
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+    $_helper    = $this->helper('catalog/output');
+    $_category  = $this->getCurrentCategory();
+    $_imgHtml   = '';
+    if ($_imgUrl = $_category->getImageUrl()) {
+        $_imgHtml = '<p class="category-image"><img data-src="' . $_imgUrl . '" alt="' . $this->escapeHtml($_category->getName()) . '" title="' . $this->escapeHtml($_category->getName()) . '" /></p>';
+        $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+    $_description = $this->getCurrentCategory()->getDescription();
+    $_categoryDescriptionTruncate = Mage::getStoreConfig('blugento_categoryshowcase/general/category_description_truncate');
+    $_categoryDescriptionTruncateValue = Mage::getStoreConfig('blugento_categoryshowcase/general/category_description_truncate_value') ?: 600;
+?>
+
+<div class="page-title">
+    <h1><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+</div>
+
+<?php if ($_description): ?>
+<div class="category-intro">
+    <?php if ($_imgUrl): ?>
+        <?php echo $_imgHtml ?>
+    <?php endif;  ?>
+    <div class="category-description <?php if ($_categoryDescriptionTruncate): ?> description-truncated<?php endif; ?> std" data-truncated-value="<?php echo $_categoryDescriptionTruncateValue ?>">
+        <span class="description-content"><?php echo nl2br($_helper->categoryAttribute($_category, $_description, 'description')) ?></span>
+        <span class="show-more"><?php echo $this->__('Read More') ?></span>
+        <span class="show-less"><?php echo $this->__('Show less') ?></span>
+    </div>
+</div>
+<?php endif; ?>
+
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+
+<?php if ($this->isContentMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+<?php elseif ($this->isMixedMode()): ?>
+    <?php echo $this->getCmsBlockHtml() ?>
+    <?php echo $this->getProductListHtml() ?>
+<?php else: ?>
+    <?php echo $this->getProductListHtml() ?>
+<?php endif; ?>

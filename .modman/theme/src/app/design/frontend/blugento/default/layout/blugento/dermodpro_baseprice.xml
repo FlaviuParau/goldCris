@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/baseprice.css</name>
+            </action>
+        </reference>
+    </default>
+
+    <catalog_category_default>
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="catalog/baseprice/enableBasePriceList"><template>baseprice/list.phtml</template></action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="product_list">
+            <action method="setTemplate" ifconfig="catalog/baseprice/enableBasePriceList"><template>baseprice/list.phtml</template></action>
+        </reference>
+    </catalog_category_layered>
+
+</layout>

@@ -1,0 +1,128 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_customer-blocks.scss
+    Version:        1.0
+    Description:    Customer - Account Blocks Styles
+    ------------------------------------------------------------------------- */
+
+@if (($my_account_register_new_layout == 1) and ($my_account_login_new_layout == 1)) {
+    .block-account {
+        .block-title {
+            padding: 32px;
+            background-color: color('e');
+            
+            h2,
+            strong {
+                display: inline-block;
+                font-weight: $account__block-content__sidebar_title-font-weight;
+                font-size: $account__block-content__sidebar_title-font-size;
+                font-family: $account__block-content__sidebar_title-font-family;
+                text-transform: $account__block-content__sidebar_title_text-transform;
+                line-height: $account__block-content__sidebar_title_line-height;
+                color: color('b');
+            }
+            
+            .avatar {
+                background-color: color('b');
+                border-radius: 50%;
+                padding: 15px 18px;
+                margin-right: 10px;
+                color: color('e');
+            }
+    
+            @include mobile {
+                display: none;
+            }
+        }
+    
+        .block-content {
+            border: 1px solid $account__block-content_border-color;
+            border-top: none;
+            height: 100%;
+            
+            li {
+                color: $account__block-content__list_color;
+                font-size: $account__block-content__list-font-size;
+                font-family: $account__block-content__list-font-family;
+                font-weight: $account__block-content__list-font-weight;
+                text-transform: $account__block-content__list_text-transform;
+                line-height: 25px;
+                border-bottom: 1px solid $account__block-content_border-color;
+                
+                &:hover {
+                    background-color: $account__block-content__list__current_background-color;
+                    color: $account__block-content__list__current_color;
+                }
+                
+                @include desktop {
+                    &:nth-last-child(2) {
+                        border-bottom: none;
+                    }
+                }
+    
+                &.current {
+                    background-color: $account__block-content__list__current_background-color;
+                    color: $account__block-content__list__current_color;
+                }
+    
+                a {
+                    display: block;
+                    text-decoration: none;
+                    padding: 20px 30px;
+    
+                    @include mobile {
+                        &:hover {
+                            color: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} @else if (($my_account_register_new_layout == 2) and ($my_account_login_new_layout == 2)) {
+    .block-account {
+        .block-title {
+            margin-bottom: 10px;
+            margin-left: 15px;
+            font-weight: 600;
+            font-size: 19px;
+            
+            @include mobile {
+                display: none;
+            }
+        }
+        
+        .block-content {
+            li {
+                color: $account__block-content__list_color;
+                
+                @include mobile {
+                    border-bottom: 1px solid color('t');
+                    color: color('b');
+                }
+                
+                &.current {
+                    background-color: $account__block-content__list__current_background-color;
+                    color: $account__block-content__list__current_color;
+                    
+                    @include mobile {
+                        padding: 0;
+                        background-color: color('g');
+                        color: color('e');
+                    }
+                }
+                
+                a {
+                    display: block;
+                    padding: 12px 15px;
+                    
+                    @include mobile {
+                        &:hover {
+                            text-decoration: none;
+                            color: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

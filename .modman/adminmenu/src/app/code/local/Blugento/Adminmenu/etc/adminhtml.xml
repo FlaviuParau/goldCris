@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Admin Menu
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Adminmenu
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <menu>
+        <blugento_adminmenu translate="title" module="blugento_adminmenu">
+            <title>Blugento</title>
+            <sort_order>10</sort_order>
+            <children>
+                <blugento_designcustomiser translate="title" module="blugento_adminmenu">
+                    <title>Customise Design</title>
+                    <sort_order>10</sort_order>
+                    <action>adminhtml/adminhtml_design</action>
+                </blugento_designcustomiser>
+                <blugento_homepagemanager translate="title" module="blugento_adminmenu">
+                    <title>Homepage Manager</title>
+                    <sort_order>20</sort_order>
+                    <action>adminhtml/adminhtml_blugento/homepage</action>
+                </blugento_homepagemanager>
+                <blugento_sliders translate="title" module="blugento_adminmenu">
+                    <title>Sliders</title>
+                    <sort_order>30</sort_order>
+                    <action>adminhtml/blugento_sliders</action>
+                </blugento_sliders>
+                <configuration translate="title">
+                    <title>Configuration</title>
+                    <sort_order>40</sort_order>
+                    <action>adminhtml/adminhtml_blugento/configuration/section/configuration</action>
+                </configuration>
+            </children>
+        </blugento_adminmenu>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <blugento_adminmenu translate="title" module="blugento_adminmenu">
+                        <title>Blugento</title>
+                        <sort_order>1</sort_order>
+                        <children>
+                            <blugento_homepagemanager translate="title" module="blugento_homepagemanager">
+                                <title>Homepage Manager</title>
+                                <sort_order>10</sort_order>
+                            </blugento_homepagemanager>
+                            <blugento_sliders translate="title" module="blugento_sliders">
+                                <title>Sliders</title>
+                                <sort_order>20</sort_order>
+                            </blugento_sliders>
+                            <configuration translate="title" module="blugento_adminmenu">
+                                <title>Configuration</title>
+                                <sort_order>20</sort_order>
+                            </configuration>
+                        </children>
+                    </blugento_adminmenu>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

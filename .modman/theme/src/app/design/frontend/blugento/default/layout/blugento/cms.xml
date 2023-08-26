@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="header">
+            <block type="cms/block" name="cms_blugento_header_block_1">
+                <action method="setBlockId"><block_id>blugento-header-block-1</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_blugento_header_block_2">
+                <action method="setBlockId"><block_id>blugento-header-block-2</block_id></action>
+            </block>
+        </reference>
+        <reference name="catalog.topnav">
+            <block type="cms/block" name="cms_blugento_navigation_before_links" as="before_links">
+                <action method="setBlockId"><block_id>blugento-navigation-before-links</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_blugento_navigation_after_links" as="after_links">
+                <action method="setBlockId"><block_id>blugento-navigation-after-links</block_id></action>
+            </block>
+        </reference>
+        <reference name="footer">
+            <remove name="cms_footer_links" />
+            <block type="cms/block" name="cms_blugento_footer_marketing">
+                <action method="setBlockId"><block_id>blugento-footer-marketing</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_blugento_footer_links">
+                <action method="setBlockId"><block_id>footer_links</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_blugento_footer_block-1">
+                <action method="setBlockId"><block_id>blugento-footer-block-1</block_id></action>
+            </block>
+            <block type="cms/block" name="cms_blugento_footer_block-2">
+                <action method="setBlockId"><block_id>blugento-footer-block-2</block_id></action>
+            </block>
+        </reference>
+    </default>
+
+</layout>

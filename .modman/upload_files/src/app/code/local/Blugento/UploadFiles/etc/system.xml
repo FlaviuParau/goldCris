@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+/**
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to
+* newer versions in the future.
+*
+* @category    Blugento
+* @package     Blugento_UploadFiles
+* @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>20</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_uploadfiles translate="label" module="blugento_uploadfiles">
+            <label>File Upload</label>
+            <tab>blugento</tab>
+            <sort_order>300</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>File Upload Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <path translate="label">
+                            <label>Upload Path</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip>Upload path is relative to base directory folder. Example: to upload files to 'media/import' add media/import value.</tooltip>
+                        </path>
+                        <check translate="label">
+                            <label>Select File(s)</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>blugento_uploadfiles/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </check>
+                        <info translate="label">
+                            <label></label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_uploadfiles/adminhtml_system_config_form_info</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </info>
+                    </fields>
+                </general>
+            </groups>
+        </blugento_uploadfiles>
+    </sections>
+</config>

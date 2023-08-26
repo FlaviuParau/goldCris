@@ -1,0 +1,23 @@
+<?php
+/**
+ * @see Mage_Checkout_Block_Cart_Totals
+ */
+?>
+<?php if ($this->getTotals()): ?>
+<tfoot>
+<?php $_productImageEnabled = Mage::getStoreConfig('blugento_checkout/general/product_image_enabled') ?>
+    <?php $_colspan = $this->helper('tax')->displayCartBothPrices() ? 5 : ($_productImageEnabled ? 4 : 3); ?>
+    <?php echo htmlspecialchars_decode($this->renderTotals(null, $_colspan)); ?>
+    <?php echo $this->renderTotals('footer', $_colspan); ?>
+    <?php if ($this->needDisplayBaseGrandtotal() && ($this->getQuote()->getPayment()->getMethodInstance()->getCode() != 'cashondelivery' && $this->getQuote()->getPayment()->getMethodInstance()->getCode() != 'zitec_dpd_cashondelivery')): ?>
+    <tr>
+        <td class="a-right" colspan="<?php echo $_colspan; ?>">
+            <?php echo $this->helper('sales')->__('Your credit card will be charged for') ?>
+        </td>
+        <td class="a-right">
+            <?php echo $this->displayBaseGrandtotal() ?>
+        </td>
+    </tr>
+    <?php endif; ?>
+</tfoot>
+<?php endif; ?>

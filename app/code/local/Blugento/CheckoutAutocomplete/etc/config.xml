@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_CheckoutAutocomplete
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_CheckoutAutocomplete>
+            <version>1.0.7</version>
+        </Blugento_CheckoutAutocomplete>
+    </modules>
+
+    <global>
+        <helpers>
+            <blugento_cautocomplete>
+                <class>Blugento_CheckoutAutocomplete_Helper</class>
+            </blugento_cautocomplete>
+        </helpers>
+
+        <models>
+            <blugento_cautocomplete>
+                <class>Blugento_CheckoutAutocomplete_Model</class>
+                <resourceModel>cautocomplete_resource</resourceModel>
+            </blugento_cautocomplete>
+
+            <cautocomplete_resource>
+                <class>Blugento_CheckoutAutocomplete_Model_Resource</class>
+                <entities>
+                    <city>
+                        <table>blugento_cautocomplete_city</table>
+                    </city>
+                </entities>
+            </cautocomplete_resource>
+        </models>
+
+        <resources>
+            <blugento_cautocomplete_setup>
+                <setup>
+                    <module>Blugento_CheckoutAutocomplete</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </blugento_cautocomplete_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_cautocomplete>
+                    <file>blugento_autocomplete.xml</file>
+                </blugento_cautocomplete>
+            </updates>
+        </layout>
+
+        <routers>
+            <blugento_cautocomplete>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_CheckoutAutocomplete</module>
+                    <frontName>cautocomplete</frontName>
+                </args>
+            </blugento_cautocomplete>
+        </routers>
+
+        <translate>
+            <modules>
+                <blugento_cautocomplete>
+                    <files>
+                        <default>Blugento_Autocomplete.csv</default>
+                    </files>
+                </blugento_cautocomplete>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <blugento_cautocomplete>
+                    <files>
+                        <default>Blugento_Autocomplete.csv</default>
+                    </files>
+                </blugento_cautocomplete>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_cautocomplete>
+            <general>
+                <enabled>0</enabled>
+            </general>
+        </blugento_cautocomplete>
+    </default>
+</config>

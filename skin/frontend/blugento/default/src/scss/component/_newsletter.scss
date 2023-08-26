@@ -1,0 +1,117 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_newsletter.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.block-subscribe {
+    display: inline-block;
+    width: 100%;
+
+    &:before {
+        margin-right: 12px;
+        vertical-align: middle;
+        content: $page-footer__marketing-box--newsletter__before;
+    }
+
+    .block-title {
+        display: inline-block;
+        vertical-align: middle;
+
+        h5 {
+            font-size: 16px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+    }
+    
+    .block-content {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 23px;
+    
+        @include phone-sm {
+            display: block;
+            margin: 10px auto 0;
+        }
+    }
+    
+    .input-box {
+        position: relative;
+        float: right;
+        
+        @include phone {
+            float: none;
+        }
+    }
+    
+    .input-text {
+        min-width: 260px;
+        
+        @include phone-s {
+            min-width: 0;
+        }
+    }
+    
+    .button {
+        position: relative;
+        z-index: 1;
+        float: right;
+        padding-left: 12px;
+        padding-right: 12px;
+        background: $page-footer__marketing-box__button_background;
+        color: $page-footer__marketing-box__button_color;
+        height: $input-text_height;
+    }
+    
+    .validation-advice {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        line-height: (17 / 13);
+    }
+    
+    .newsletter-checkbox,
+    .second-newsletter-checkbox {
+        position: relative;
+        max-width: 350px;
+        padding-top: 10px;
+        clear: right;
+        
+        .validate-newsletter {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: $screen-xs-max) {
+    #esns_background_layer {
+        padding: 0 10px;
+    }
+
+    #esns_box_layer,
+    #esns_box_title,
+    #esns_box_subscribe_input input,
+    #esns_box_subscribe_submit a {
+        width: 100%;
+    }
+
+    #esns_box_subscribe_input {
+        width: 70%;
+
+        input {
+            margin-left: 0;
+        }
+    }
+
+    #esns_box_subscribe_submit {
+        width: 29%;
+    }
+}
+
+@media (max-width: $screen-xxs-max) {
+    #esns_box_title {
+        background: none;
+    }
+}

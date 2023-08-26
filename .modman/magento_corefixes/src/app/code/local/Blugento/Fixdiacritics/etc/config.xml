@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_Fixdiacritics
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_Fixdiacritics>
+            <version>0.1.2</version>
+        </Blugento_Fixdiacritics>
+    </modules>
+    <adminhtml>
+        <translate>
+            <modules>
+                <fixdiacritics>
+                    <files>
+                        <default>Blugento_Fixdiacritics.csv</default>
+                    </files>
+                </fixdiacritics>
+            </modules>
+        </translate>
+    </adminhtml>
+    <global>
+        <models>
+            <fixdiacritics>
+                <class>Blugento_Fixdiacritics_Model</class>
+            </fixdiacritics>
+            <catalog>
+                <rewrite>
+                    <product_url>Blugento_Fixdiacritics_Model_Product_Url</product_url>
+                </rewrite>
+            </catalog>
+        </models>
+        <helpers>
+            <fixdiacritics>
+                <class>Blugento_Fixdiacritics_Helper</class>
+            </fixdiacritics>
+        </helpers>
+        <resources>
+            <blugento_fixdiacritics_setup>
+                <setup>
+                    <module>Blugento_Fixdiacritics</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </blugento_fixdiacritics_setup>
+        </resources>
+    </global>
+    <default>
+        <magento_corefixes>
+            <fix_diacritics>
+                <diacritics_to_replace>ș, Ș, ț, Ț, â, Â, ă, Ă, î, Î</diacritics_to_replace>
+                <characters_for_replacement>s, S, t, T, a, A, a, A, i, I</characters_for_replacement>
+            </fix_diacritics>
+        </magento_corefixes>
+    </default>
+</config>

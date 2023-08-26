@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Admin Menu
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Adminmenu
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<layout version="1.0.0">
+    <adminhtml_adminhtml_blugento_configuration>
+        <reference name="content">
+            <block type="blugento_adminmenu/adminhtml_menu_edit" name="adminhtml_menu_edit">
+                <action method="initForm"></action>
+            </block>
+        </reference>
+        <reference name="left">
+            <block type="adminhtml/system_config_switcher" name="adminhtml.system.config.switcher" before="-"/>
+            <block type="blugento_adminmenu/adminhtml_menu_tabs" name="adminhtml_menu_tabs">
+                <action method="initTabs"></action>
+            </block>
+        </reference>
+    </adminhtml_adminhtml_blugento_configuration>
+
+    <adminhtml_adminhtml_blugento_cmsblocks>
+        <reference name="content">
+            <block type="blugento_adminmenu/adminhtml_cms_block" name="adminhtml_menu_cms_block" />
+        </reference>
+        <reference name="left">
+            <block type="blugento_adminmenu/adminhtml_menu_tabs" name="adminhtml_menu_tabs">
+                <action method="initTabs"></action>
+            </block>
+        </reference>
+    </adminhtml_adminhtml_blugento_cmsblocks>
+
+    <adminhtml_adminhtml_blugento_cmspages>
+        <reference name="content">
+            <block type="blugento_adminmenu/adminhtml_cms_page" name="adminhtml_menu_cms_page" />
+        </reference>
+        <reference name="left">
+            <block type="blugento_adminmenu/adminhtml_menu_tabs" name="adminhtml_menu_tabs">
+                <action method="initTabs"></action>
+            </block>
+        </reference>
+    </adminhtml_adminhtml_blugento_cmspages>
+</layout>

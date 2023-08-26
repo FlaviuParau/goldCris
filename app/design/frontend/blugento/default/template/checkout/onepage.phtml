@@ -1,0 +1,177 @@
+<?php
+	$_stickyHeader = (int) ($this->getLayout()->getBlock('root')->getStickyHeader() ?: 2);
+	$_checkoutNewLayOut = (int) ($this->getLayout()->getBlock('root')->getCheckoutViewNewLayout() ?: 2);
+	$_checkoutViewPageOrientation = (int) ($this->getLayout()->getBlock('root')->getCheckoutViewPageOrientation() ?: 1);
+	$_checkoutAsideItems = (int) ($this->getLayout()->getBlock('root')->getCheckoutAsideItems() ?: 2);
+?>
+<?php if ($_checkoutNewLayOut == 2) : ?>
+	<div class="page-title">
+		<h1><?php echo $this->__('Checkout') ?></h1>
+	</div>
+	<script src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+	<script src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+	<ol class="opc" id="checkoutSteps" data-layout="<?php echo $_checkoutNewLayOut; ?>">
+		<?php $index = 1; ?>
+		<?php foreach ($this->getSteps() as $_stepId => $_stepInfo): ?>
+			<?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; ?>
+			<li id="opc-<?php echo $_stepId ?>" class="opc-<?php echo $_stepId ?> section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>">
+				<div class="step-title">
+					<strong><?php echo $index; ?>.</strong>
+					<h2><?php echo $_stepInfo['label'] ?></h2>
+					<a href="#"><?php echo $this->__('Edit') ?></a>
+				</div>
+				<div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display: none;">
+					<?php echo $this->getChildHtml($_stepId) ?>
+				</div>
+			</li>
+			<?php $index++; ?>
+		<?php endforeach; ?>
+	</ol>
+	<script>
+			//<![CDATA[
+			
+			// Customize openSection (before accordion instantiation) #blugento @Daniel
+			Accordion.prototype._openSection = Accordion.prototype.openSection;
+			Accordion.prototype.openSection = function (section) {
+				this._openSection(section);
+				// enable jump to section if sticky header is not enabled
+		    <?php if ($_stickyHeader == 2): ?>
+				if (section != 'opc-login') {
+					var sectionId = section.id != undefined ? section.id : section;
+					Blugento.jumpTo('#' + sectionId);
+				}
+		    <?php endif; ?>
+				Blugento.Checkout.initCards();
+			};
+			
+			var accordion = new Accordion('checkoutSteps', '.step-title', true);
+	  <?php if ($this->getActiveStep()): ?>
+			accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+	  <?php endif; ?>
+			var checkout = new Checkout(accordion, {
+					progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+					review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+					saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+					failure: '<?php echo $this->getUrl('checkout/cart') ?>'
+				}
+			);
+			
+			checkout.gotoSection = function (section, reloadProgressBlock) {
+				Checkout.prototype.gotoSection.call(this, section, reloadProgressBlock);
+		  <?php if($_stickyHeader) : ?>
+				var target = document.getElementById('opc-' + section);
+				if (jQuery('#header-sticky-content').length > 0) {
+					var headerHeight = document.getElementById('header-sticky-content').offsetHeight;
+				}
+				if (!isNaN(headerHeight)) {
+					Blugento.jumpToIfSticky(target, headerHeight);
+				}
+		  <?php else : ?>
+				$('opc-' + section).scrollTo();
+		  <?php endif; ?>
+			};
+			//]]>
+	</script>
+<?php elseif ($_checkoutNewLayOut == 1) : ?>
+	<div class="page-title">
+	    <h1><?php echo $this->__('Checkout') ?></h1>
+	</div>
+	<script src="<?php echo $this->getJsUrl('varien/accordion.js') ?>"></script>
+	<script src="<?php echo $this->getSkinUrl('js/opcheckout.js') ?>"></script>
+	<ol class="opc" id="checkoutSteps" data-layout="<?php echo $_checkoutNewLayOut; ?>"
+	    data-orientation="<?php echo $_checkoutViewPageOrientation; ?>"
+		data-login="<?php echo $this->isCustomerLoggedIn() ?: 0; ?>"
+	>
+	<?php $index = 1; ?>
+	<?php foreach ($this->getSteps() as $_stepId => $_stepInfo): ?>
+	    <?php if (!$this->getChild($_stepId) || !$this->getChild($_stepId)->isShow()): continue; endif; ?>
+	    <li id="opc-<?php echo $_stepId ?>"
+	        class="opc-<?php echo $_stepId ?> section<?php echo !empty($_stepInfo['allow'])?' allow':'' ?><?php echo !empty($_stepInfo['complete'])?' saved':'' ?>"
+	        data-customer="<?php echo $this->customerHasAddresses(); ?>">
+	        <div class="step-title">
+		        <?php echo ($_stepId == 'login' || $_stepId == 'review') ? '<strong></strong>' : '<strong>' . $index . '</strong>'; ?>
+	            <h2><?php echo $_stepInfo['label'] ?></h2>
+	            <a href="#"><?php echo $this->__('Edit') ?></a>
+	        </div>
+	        <div id="checkout-step-<?php echo $_stepId ?>" class="step a-item" style="display: none;">
+	            <?php echo $this->getChildHtml($_stepId) ?>
+	        </div>
+	    </li>
+		<?php if ($_stepId != 'login') : $index++; endif; ?>
+	<?php endforeach; ?>
+	</ol>
+	<script>
+			//<![CDATA[
+			
+			// Customize openSection (before accordion instantiation) #blugento @Daniel
+			Accordion.prototype._openSection = Accordion.prototype.openSection;
+			Accordion.prototype.openSection = function (section) {
+				this._openSection(section);
+				// enable jump to section if sticky header is not enabled
+			<?php if ($_stickyHeader == 2): ?>
+				if (section != 'opc-login') {
+					var sectionId = section.id != undefined ? section.id : section;
+					Blugento.jumpTo('#' + sectionId);
+				}
+			<?php endif; ?>
+				Blugento.Checkout.initCards();
+			};
+			
+			var accordion = new Accordion('checkoutSteps', '.step-title', true);
+	  <?php if ($this->getActiveStep()) : ?>
+			accordion.openSection('opc-<?php echo $this->getActiveStep() ?>');
+	  <?php if ($_checkoutViewPageOrientation == 2) : ?>
+			var currentSection = document.getElementById('opc-<?php echo $this->getActiveStep() ?>');
+			var targetHeight = currentSection.getElementsByClassName('step')[0].offsetHeight;
+			var titleHeight = currentSection.getElementsByClassName('step-title')[0].offsetHeight;
+			if (!isNaN(targetHeight)) {
+				var height = titleHeight + targetHeight;
+				if (document.getElementsByClassName('messages').length != 0) {
+					Element.show('showLogInForm');
+					var logInFormHeight = document.getElementById('showLogInForm').offsetHeight;
+					height += logInFormHeight;
+				}
+				document.getElementById('checkoutSteps').setAttribute('style', 'min-height: ' + height + 'px');
+			}
+	  <?php endif; ?>
+	  <?php endif; ?>
+			var checkout = new Checkout(accordion, {
+					progress: '<?php echo $this->getUrl('checkout/onepage/progress') ?>',
+					review: '<?php echo $this->getUrl('checkout/onepage/review') ?>',
+					saveMethod: '<?php echo $this->getUrl('checkout/onepage/saveMethod') ?>',
+					failure: '<?php echo $this->getUrl('checkout/cart') ?>'
+				}
+			);
+			
+			checkout.gotoSection = function (section, reloadProgressBlock) {
+				Checkout.prototype.gotoSection.call(this, section, reloadProgressBlock);
+				var target = document.getElementById('opc-' + section);
+		  <?php if ($_checkoutViewPageOrientation == 2) : ?>
+				var targetHeight = target.getElementsByClassName('step')[0].offsetHeight;
+				var titleHeight = target.getElementsByClassName('step-title')[0].offsetHeight;
+				if (!isNaN(targetHeight)) {
+					var height = titleHeight + targetHeight;
+					if (section == 'shipping_method' || section == 'payment') {
+						height += 50;
+					}
+					if (section == 'review') {
+						height += 75;
+					}
+					document.getElementById('checkoutSteps').setAttribute('style', 'min-height: ' + height + 'px');
+				}
+		  <?php endif; ?>
+		  <?php if ($_stickyHeader) : ?>
+				var stickyHeader = document.getElementById('header-sticky-content');
+				if (stickyHeader) {
+					var headerHeight = stickyHeader.offsetHeight;
+				}
+				if (!isNaN(headerHeight)) {
+					Blugento.jumpToIfSticky(target, headerHeight);
+				}
+		  <?php else : ?>
+				$('opc-' + section).scrollTo();
+		  <?php endif; ?>
+			};
+			//]]>
+	</script>
+<?php endif; ?>

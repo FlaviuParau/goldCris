@@ -1,0 +1,16 @@
+src/app/code/local/Blugento/AjaxCart                                 app/code/local/Blugento/AjaxCart
+
+src/app/design/frontend/base/default/layout/blugento_ajaxcart.xml    app/design/frontend/base/default/layout/blugento_ajaxcart.xml
+src/app/design/frontend/base/default/template/blugento/ajaxcart      app/design/frontend/base/default/template/blugento/ajaxcart
+
+src/app/etc/modules/Blugento_AjaxCart.xml                            app/etc/modules/Blugento_AjaxCart.xml
+
+src/app/locale/de_DE/*                                               app/locale/de_DE/
+src/app/locale/en_US/*                                               app/locale/en_US/
+src/app/locale/es_ES/*                                               app/locale/es_ES/
+src/app/locale/hu_HU/*                                               app/locale/hu_HU/
+src/app/locale/pl_PL/*                                               app/locale/pl_PL/
+src/app/locale/ro_RO/*                                               app/locale/ro_RO/
+src/app/locale/fr_FR/*                                               app/locale/fr_FR/
+
+src/skin/frontend/base/default/blugento/ajaxcart                     skin/frontend/base/default/blugento/ajaxcart

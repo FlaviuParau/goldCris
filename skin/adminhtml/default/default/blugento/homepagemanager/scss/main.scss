@@ -1,0 +1,193 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       main.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import 'config';
+
+@import 'mixin/grid';
+@import 'mixin/util';
+
+@import 'core/grid';
+@import 'core/util';
+
+.layouts-images {
+    padding-top: 18px;
+
+    > div {
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    label {
+        margin-bottom: 10px;
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    li {
+        float: left;
+        margin-right: 20px;
+
+        img {
+            max-width: 100px;
+        }
+    }
+}
+
+.mce_blugento_homepagemanager img.mceIcon {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 2px;
+}
+
+.hm-layout-data {
+    > li {
+        overflow: hidden;
+        clear: both;
+        float: left;
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        background-color: #777;
+    }
+
+    .row {
+        padding: 2px;
+    }
+}
+
+.hm-fbtn-wrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    border-top: 2px solid #777;
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+}
+
+.hm-fbtn {
+    float: right;
+    cursor: pointer;
+    display: block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    padding: 4px;
+    border-left: 1px solid #f1f1f1;
+    text-align: center;
+    text-decoration: none;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    &:hover {
+        text-decoration: none;
+        background-color: #f1f1f1;
+    }
+
+    &--widget-add {
+        background-image: url('../images/plus.png');
+    }
+
+    &--widget-edit {
+        background-image: url('../images/pencil.png');
+    }
+
+    &--clear {
+        background-image: url('../images/minus.png');
+    }
+
+    &--clear-disabled {
+        cursor: default;
+        background-image: url('../images/minus-gray.png');
+    }
+
+    img {
+        display: block;
+        vertical-align: middle;
+    }
+}
+
+.hm-col-content {
+    position: relative;
+    min-width: 250px;
+    min-height: 150px;
+    background: #f1f1f1;
+}
+
+.hm-row-handler {
+    float: left;
+    width: 30px;
+    height: 144px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    background: #777;
+}
+
+.hm-row-container {
+    * {
+        box-sizing: border-box;
+    }
+
+    > div + div {
+        border-left: 2px solid #777;
+    }
+}
+
+.hm-sort {
+    cursor: move;
+    width: 30px;
+    height: 20px;
+    margin-bottom: 10px;
+    background: url('../images/move.png') no-repeat 50% 50%;
+}
+
+.hm-delete {
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    margin-bottom: 10px;
+    background: url('../images/delete.png') no-repeat 50% 50%;
+}
+
+.hm-full {
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.hm-clone {
+    cursor: pointer;
+    background: url('../images/copy.png') no-repeat 50% 50%;
+    width: 30px;
+    height: 20px;
+}
+
+.hm-widget-preview {
+    display: table;
+
+    img,
+    span {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    img {
+        width: 35px;
+        margin-right: 5px;
+    }
+}
+
+.ui-button-icon-only .ui-icon {
+    margin-top: -8px !important;
+    margin-left: -8px !important;
+}

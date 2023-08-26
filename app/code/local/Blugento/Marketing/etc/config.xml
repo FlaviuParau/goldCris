@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Feeds
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Marketing
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <modules>
+        <Blugento_Marketing>
+            <version>1.0.0</version>
+        </Blugento_Marketing>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_marketing>
+                <class>Blugento_Marketing_Block</class>
+            </blugento_marketing>
+        </blocks>
+
+        <helpers>
+            <blugento_marketing>
+                <class>Blugento_Marketing_Helper</class>
+            </blugento_marketing>
+        </helpers>
+
+        <models>
+            <blugento_marketing>
+                <class>Blugento_Marketing_Model</class>
+            </blugento_marketing>
+        </models>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_marketing>
+                    <file>blugento_marketing.xml</file>
+                </blugento_marketing>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <blugento_marketing>
+                    <files>
+                        <default>Blugento_Marketing.csv</default>
+                    </files>
+                </blugento_marketing>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_Marketing after="Mage_Adminhtml">Blugento_Marketing</Blugento_Marketing>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_marketing>
+                    <file>blugento_marketing.xml</file>
+                </blugento_marketing>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_marketing>
+                    <files>
+                        <default>Blugento_Marketing.csv</default>
+                    </files>
+                </blugento_marketing>
+            </modules>
+        </translate>
+    </adminhtml>
+
+</config>

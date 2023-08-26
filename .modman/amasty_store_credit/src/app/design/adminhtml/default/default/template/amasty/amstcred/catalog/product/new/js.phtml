@@ -1,0 +1,28 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<script type="text/javascript">
+	$('amstcred_price_type').observe('change', function(event){
+		var value = event.element().value;
+		amChangeStoreCreditPriceType(value);
+
+	});
+
+
+	function amChangeStoreCreditPriceType(value){
+		$('amstcred_price_percent').disable();
+		if(value == "1") {
+			$('amstcred_price_percent').enable();
+			$('amstcred_price_percent').addClassName('required-entry')
+		}
+	}
+
+
+	amChangeStoreCreditPriceType($('amstcred_price_type').value);
+
+
+</script>

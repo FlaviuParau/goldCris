@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	 <modules>
+		<Blugento_ProductsWidget>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Blugento_ProductsWidget>
+	 </modules>
+</config>

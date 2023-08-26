@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+-->
+
+<layout version="0.1.0">
+    <adminhtml_catalog_product_amstcred>
+        <reference name="head">
+            <action method="addItem">
+                <type>js</type>
+                <name>amasty/amstcred/prices_options.js</name>
+            </action>
+        </reference>
+        <reference name="js">
+            <block type="core/template" template="amasty/amstcred/catalog/product/new/js.phtml"/>
+        </reference>
+
+    </adminhtml_catalog_product_amstcred>
+
+
+
+
+    <adminhtml_customer_edit>
+        <reference name="customer_edit_tabs">
+            <block type="amstcred/adminhtml_customer_edit_tab_customerBalance" name="am_customer_balance"/>
+            <action method="addTab"><name>am_customer_balance</name><block>am_customer_balance</block></action>
+        </reference>
+        <!--<reference name="js">
+            <block type="enterprise_customerbalance/adminhtml_customer_edit_tab_customerbalance_js" template="enterprise/customerbalance/edit/js.phtml" name="customerbalance_edit_js">
+                <action method="setPrefix"><value>_customerbalance</value></action>
+            </block>
+        </reference>
+
+        <reference name="customer_edit_tab_view">
+            <block type="enterprise_customerbalance/adminhtml_customer_edit_tab_customerbalance_balance" name="customerbalance.balance" template="enterprise/customerbalance/balance.phtml" before="-">
+                <block type="enterprise_customerbalance/adminhtml_customer_edit_tab_customerbalance_balance_grid" name="customer.balance.grid" as="grid"/>
+            </block>
+        </reference>-->
+    </adminhtml_customer_edit>
+
+
+
+    <adminhtml_amstcred_customer_form>
+        <block type="core/text_list" name="root">
+            <block type="amstcred/adminhtml_customer_edit_tab_customerBalance_balance" name="amstcred.customer.balance" template="amasty/amstcred/customer/balance.phtml">
+                <block type="amstcred/adminhtml_customer_edit_tab_customerBalance_balance_grid" name="amstcred.customer.balance.grid" as="grid"/>
+            </block>
+            <block type="amstcred/adminhtml_customer_edit_tab_customerBalance_balance_form" name="amstcred.customer.balance.form"/>
+            <block type="amstcred/adminhtml_customer_edit_tab_customerBalance_balance_history" name="amstcred.customer.balance.history" template="amasty/amstcred/customer/history.phtml">
+                <block type="amstcred/adminhtml_customer_edit_tab_customerBalance_balance_history_grid" name="amstcred.customer.balance.history.grid" as="history_grid"/>
+            </block>
+        </block>
+    </adminhtml_amstcred_customer_form>
+
+
+    <adminhtml_amstcred_history_index>
+        <reference name="content">
+            <block type="amstcred/adminhtml_history" name="amstcred_history">
+                <block type="amstcred/adminhtml_history_grid" name="history.grid"/>
+            </block>
+
+        </reference>
+    </adminhtml_amstcred_history_index>
+
+
+
+
+
+
+
+    <adminhtml_sales_order_view>
+        <reference name="order_items">
+            <action method="addColumnRender">
+                <column>name</column>
+                <block>amstcred/adminhtml_sales_items_column_name_storeCredit</block>
+                <template>sales/items/column/name.phtml</template>
+                <type>amstcred</type>
+            </action>
+        </reference>
+        <reference name="order_totals">
+            <block type="adminhtml/sales_order_totals_item" name="amstcred" template="amasty/amstcred/sales/totals/store_credit.phtml">
+                <action method="setBeforeCondition"><param>customerbalance</param></action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <adminhtml_sales_order_invoice_new>
+        <reference name="order_items">
+            <action method="addColumnRender">
+                <column>name</column>
+                <block>amstcred/adminhtml_sales_items_column_name_storeCredit</block>
+                <template>sales/items/column/name.phtml</template>
+                <type>amstcred</type>
+            </action>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="adminhtml/sales_order_totals_item" name="amstcred" template="amasty/amstcred/sales/totals/store_credit.phtml">
+                <action method="setBeforeCondition"><param>customerbalance</param></action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_invoice_new>
+
+    <adminhtml_sales_order_invoice_updateqty>
+        <reference name="order_items">
+            <action method="addColumnRender">
+                <column>name</column>
+                <block>amstcred/adminhtml_sales_items_column_name_storeCredit</block>
+                <template>sales/items/column/name.phtml</template>
+                <type>amstcred</type>
+            </action>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="adminhtml/sales_order_totals_item" name="amstcred" template="amasty/amstcred/sales/totals/store_credit.phtml">
+                <action method="setBeforeCondition"><param>customerbalance</param></action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_invoice_updateqty>
+
+    <adminhtml_sales_order_invoice_view>
+        <reference name="order_items">
+            <action method="addColumnRender">
+                <column>name</column>
+                <block>amstcred/adminhtml_sales_items_column_name_storeCredit</block>
+                <template>sales/items/column/name.phtml</template>
+                <type>amstcred</type>
+            </action>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="adminhtml/sales_order_totals_item" name="amstcred" template="amasty/amstcred/sales/totals/store_credit.phtml" />
+        </reference>
+    </adminhtml_sales_order_invoice_view>
+
+    <adminhtml_sales_order_creditmemo_new>
+        <reference name="order_items">
+            <action method="addColumnRender">
+                <column>name</column>
+                <block>amstcred/adminhtml_sales_items_column_name_storeCredit</block>
+                <template>sales/items/column/name.phtml</template>
+                <type>amstcred</type>
+            </action>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="amstcred" template="amasty/amstcred/sales/totals/store_credit.phtml" after="-">
+                <action method="setBeforeCondition"><param>customerbalance</param></action>
+            </block>
+        </reference>
+
+        <reference name="submit_before">
+            <block type="amstcred/adminhtml_sales_order_creditmemo_controls" name="amstcred.refund_notice" template="amasty/amstcred/sales/creditmemo/refund_notice.phtml" />
+            <block type="amstcred/adminhtml_sales_order_creditmemo_controls" name="amstcred.refund" template="amasty/amstcred/sales/creditmemo/refund.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="order_items">
+            <action method="addColumnRender">
+                <column>name</column>
+                <block>amstcred/adminhtml_sales_items_column_name_storeCredit</block>
+                <template>sales/items/column/name.phtml</template>
+                <type>amstcred</type>
+            </action>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="amstcred" template="amasty/amstcred/sales/totals/store_credit.phtml" after="-">
+                <action method="setBeforeCondition"><param>customerbalance</param></action>
+            </block>
+        </reference>
+
+        <reference name="submit_before">
+            <block type="amstcred/adminhtml_sales_order_creditmemo_controls" name="amstcred.refund_notice" template="amasty/amstcred/sales/creditmemo/refund_notice.phtml" />
+            <block type="amstcred/adminhtml_sales_order_creditmemo_controls" name="amstcred.refund" template="amasty/amstcred/sales/creditmemo/refund.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
+
+    <adminhtml_sales_order_creditmemo_view>
+        <reference name="order_items">
+            <action method="addColumnRender">
+                <column>name</column>
+                <block>amstcred/adminhtml_sales_items_column_name_storeCredit</block>
+                <template>sales/items/column/name.phtml</template>
+                <type>amstcred</type>
+            </action>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="adminhtml/sales_order_totals_item" name="amstcred" template="amasty/amstcred/sales/totals/store_credit.phtml" after="-">
+                <action method="setBeforeCondition"><param>customerbalance</param></action>
+            </block>
+        </reference>
+    </adminhtml_sales_order_creditmemo_view>
+
+
+
+    <adminhtml_sales_order_create_index>
+        <reference name="billing_method">
+            <block type="amstcred/adminhtml_sales_order_create_payment" template="amasty/amstcred/sales/order/create/payment.phtml" name="reward_points" before="-" />
+        </reference>
+    </adminhtml_sales_order_create_index>
+
+    <adminhtml_sales_order_create_load_block_billing_method>
+        <reference name="billing_method">
+            <block type="amstcred/adminhtml_sales_order_create_payment" template="amasty/amstcred/sales/order/create/payment.phtml" name="reward_points" before="-" />
+        </reference>
+    </adminhtml_sales_order_create_load_block_billing_method>
+
+    <adminhtml_sales_order_create_load_block_data>
+        <reference name="billing_method">
+            <block type="amstcred/adminhtml_sales_order_create_payment" template="amasty/amstcred/sales/order/create/payment.phtml" name="reward_points" before="-" />
+        </reference>
+    </adminhtml_sales_order_create_load_block_data>
+
+
+</layout>

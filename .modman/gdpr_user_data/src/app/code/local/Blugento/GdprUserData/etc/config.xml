@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_GdprUserData
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_GdprUserData>
+            <version>1.0.0</version>
+        </Blugento_GdprUserData>
+    </modules>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_gdpruserdata before="Mage_Adminhtml">Blugento_GdprUserData_Adminhtml</blugento_gdpruserdata>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_gdpruserdata>
+                    <file>blugento_gdpruserdata.xml</file>
+                </blugento_gdpruserdata>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <global>
+        <blocks>
+            <blugento_gdpruserdata>
+                <class>Blugento_GdprUserData_Block</class>
+            </blugento_gdpruserdata>
+        </blocks>
+
+        <helpers>
+            <blugento_gdpruserdata>
+                <class>Blugento_GdprUserData_Helper</class>
+            </blugento_gdpruserdata>
+        </helpers>
+
+        <models>
+            <blugento_gdpruserdata>
+                <class>Blugento_GdprUserData_Model</class>
+                <resourceModel>gdpruserdata_resource</resourceModel>
+            </blugento_gdpruserdata>
+            <gdpruserdata_resource>
+                <class>Blugento_GdprUserData_Model_Resource</class>
+                <entities>
+                    <request>
+                        <table>blugento_gdpruserdata_request</table>
+                    </request >
+                </entities>
+            </gdpruserdata_resource>
+        </models>
+
+        <resources>
+            <blugento_gdpruserdata_setup>
+                <setup>
+                    <module>Blugento_GdprUserData</module>
+                    <class>Mage_Customer_Model_Resource_Setup</class>
+                </setup>
+            </blugento_gdpruserdata_setup>
+        </resources>
+
+        <template>
+            <email>
+                <blugento_gdpruserdata_export_export translate="label" module="blugento_gdpruserdata">
+                    <label>Blugento GDPR Export User Data</label>
+                    <file>gdpruserdata_export.html</file>
+                    <type>html</type>
+                </blugento_gdpruserdata_export_export>
+                <blugento_gdpruserdata_delete_delete translate="label" module="blugento_gdpruserdata">
+                    <label>Blugento GDPR Delete User Data</label>
+                    <file>gdpruserdata_delete.html</file>
+                    <type>html</type>
+                </blugento_gdpruserdata_delete_delete>
+                <blugento_gdpruserdata_delete_reject_exist_account translate="label" module="blugento_gdpruserdata">
+                    <label>Blugento GDPR Reject Exist Account</label>
+                    <file>gdpruserdata_reject_exist_account.html</file>
+                    <type>html</type>
+                </blugento_gdpruserdata_delete_reject_exist_account>
+                <blugento_gdpruserdata_delete_reject_store_owner translate="label" module="blugento_gdpruserdata">
+                    <label>Blugento GDPR Reject Store Owner</label>
+                    <file>gdpruserdata_reject_store_owner.html</file>
+                    <type>html</type>
+                </blugento_gdpruserdata_delete_reject_store_owner>
+            </email>
+        </template>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_gdpruserdata>
+                    <file>blugento_gdpruserdata.xml</file>
+                </blugento_gdpruserdata>
+            </updates>
+        </layout>
+
+        <routers>
+            <gdpruserdata>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_GdprUserData</module>
+                    <frontName>gdpruserdata</frontName>
+                </args>
+            </gdpruserdata>
+        </routers>
+
+        <translate>
+            <modules>
+                <Blugento_GdprUserData>
+                    <files>
+                        <default>Blugento_GdprUserData.csv</default>
+                    </files>
+                </Blugento_GdprUserData>
+            </modules>
+        </translate>
+
+        <events>
+            <controller_action_layout_generate_xml_before>
+                <observers>
+                    <noindex_gdpr>
+                        <type>singleton</type>
+                        <class>blugento_gdpruserdata/observer</class>
+                        <method>changeRobots</method>
+                    </noindex_gdpr>
+                </observers>
+            </controller_action_layout_generate_xml_before>
+        </events>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Blugento_GdprUserData>
+                    <files>
+                        <default>Blugento_GdprUserData.csv</default>
+                    </files>
+                </Blugento_GdprUserData>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <crontab>
+        <jobs>
+            <blugento_gdpruserdata>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>blugento_gdpruserdata/request::cronProcessRequests</model>
+                </run>
+            </blugento_gdpruserdata>
+        </jobs>
+    </crontab>
+    
+    <default>
+        <blugento_gdpruserdata>
+            <general>
+                <enabled>1</enabled>
+            </general>
+        </blugento_gdpruserdata>
+    </default>
+</config>

@@ -1,0 +1,12 @@
+<?php if (Mage::helper('blugento_checkout')->isEnabled() && Mage::helper('blugento_checkout')->isOrderCommentEnabled()): ?>
+    <div class="order-comment">
+        <ul class="form-list">
+            <li>
+                <label for="order-comment-text"><?php echo $this->__('Order Comment') ?></label>
+                <div class="input-box">
+                    <textarea id="order-comment-text" name="order_comment[text]" title="<?php echo $this->__('Order Comment') ?>" rows="5" cols="10" class="input-text"></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+<?php endif; ?>

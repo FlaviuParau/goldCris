@@ -1,0 +1,181 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       blugento-autocomplete.css
+    Version:        1.0
+    Description:    Blugento Autocomplete styling
+------------------------------------------------------------------------- */
+
+.opc .city,
+.opc .region_id,
+#autocomplete-list > ul:empty,
+.awesomplete > ul:empty,
+.awesomplete ul[hidden],
+.awesomplete > ul li span,
+.awesomplete > ul li em {
+    display: none;
+}
+
+.disable-button .opc button {
+    pointer-events: none;
+}
+
+.results-autocomplete {
+    position: relative;
+}
+
+.visually-hidden {
+    display: block;
+    clear: both;
+    margin-top: 5px;
+    font-style: italic;
+    text-align: left;
+}
+
+.results-autocomplete .awe-not-found + ul + .visually-hidden {
+    display: block;
+    color: #f00000;
+}
+
+.results-autocomplete .awe-found + ul + .visually-hidden {
+    display: none;
+}
+
+.results-autocomplete .awe-not-found:focus + ul[hidden] {
+    display: block;
+}
+
+.results-autocomplete .awe-found:focus + ul[hidden]:empty,
+.results-autocomplete .awe-not-found:focus + ul[hidden]:empty {
+    display: none;
+}
+
+.results-autocomplete .awe-not-found:focus + ul[hidden]:before {
+    display: none !important;
+    content: none;
+}
+
+.opc .step .form-list .input-text.awe-not-found {
+    border: 1px solid red;
+}
+
+.results-autocomplete.loading:before,
+.results-autocomplete.loading:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+.results-autocomplete.loading:before {
+	border: 2px solid #777;
+}
+
+.results-autocomplete.loading:after {
+	animation: loader .6s linear;
+	animation-iteration-count: infinite;
+	border-color: #f68832 transparent transparent;
+	border-style: solid;
+	border-width: 2px;
+	box-shadow: 0 0 0 1px transparent;
+}
+
+.results-autocomplete {
+    position: relative;
+    z-index: 10;
+}
+
+#autocomplete-list {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+}
+
+.awesomplete > ul {
+    display: flex;
+    flex-direction: column;
+    border-radius: .3em;
+    margin: .2em 0 0;
+    background: #fff;
+    background: linear-gradient(to bottom right, white, #fff);
+    border: 1px solid #F5F5F5;
+    box-shadow: .05em .2em .6em #F5F5F5;
+    text-shadow: none;
+    z-index: 1;
+    min-width: 100%;
+    box-sizing: border-box;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-height: 100%;
+    max-height: 200px;
+    overflow-y: scroll;
+    position: absolute;
+    left: 0;
+}
+
+.awesomplete > ul:before {
+    content: "";
+    position: absolute;
+    top: -.43em;
+    left: 1em;
+    width: 0; height: 0;
+    padding: .4em;
+    background: white;
+    border: inherit;
+    border-right: 0;
+    border-bottom: 0;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.awesomplete > ul li {
+    border-bottom: 1px solid #F5F5F5;
+    position: relative;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.awesomplete > ul > li[aria-selected="true"] {
+    background: #F5F5F5;
+    color: #000;
+}
+
+.awesomplete mark {
+    background: hsl(65, 100%, 50%);
+}
+
+#awesomplete > ul li:last-child {
+    border-bottom: 0;
+}
+
+.awesomplete > ul li:hover {
+    background: #F5F5F5;
+}
+
+.hide-field .autocomplete-field {
+    display: none;
+}
+
+.hide-field .opc .city,
+.hide-field .opc .region_id {
+    display: block;
+}
+
+@supports (transform: scale(0)) {
+    #awesomplete > ul {
+        transition: .3s cubic-bezier(.4,.2,.5,1.4);
+        transform-origin: 1.43em -.43em;
+    }
+
+    #awesomplete > ul:empty {
+        opacity: 0;
+        transform: scale(0);
+        display: block;
+        transition-timing-function: ease;
+    }
+}
+	

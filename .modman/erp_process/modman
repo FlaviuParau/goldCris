@@ -1,0 +1,8 @@
+src/app/code/local/Blugento/ErpProcess                                     app/code/local/Blugento/ErpProcess
+
+src/app/etc/modules/Blugento_ErpProcess.xml                                app/etc/modules/Blugento_ErpProcess.xml
+
+src/app/design/frontend/base/default/layout/blugento_erpprocess.xml	   app/design/frontend/base/default/layout/blugento_erpprocess.xml
+src/app/design/frontend/base/default/template/blugento/erpprocess	   app/design/frontend/base/default/template/blugento/erpprocess
+
+src/app/locale/ro_RO/Blugento_ErpProcess.csv				   app/locale/ro_RO/Blugento_ErpProcess.csv

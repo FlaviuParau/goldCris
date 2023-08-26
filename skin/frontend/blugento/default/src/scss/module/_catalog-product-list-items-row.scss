@@ -1,0 +1,49 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-list-items-row.scss
+    Version:        1.0
+    Description:    Filters Position: Right Column on Top
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+@if ($layout--layered-nav_layout_list == 2) {
+    .layout-1column {
+        .products-grid {
+            li.item {
+                width: 33.333%;
+            }
+        }
+    }
+
+    .layout-2columns-left,
+    .layout-2columns-right,
+    .layout-3column {
+        .products-grid {
+            li.item {
+                width: 50%;
+            }
+        }
+    }
+}
+
+@if ($layout--layered-nav_layout_list == 3) {
+    @include desktop {
+        .layout-1column {
+            .products-grid {
+                li.item {
+                    width: 25%;
+                }
+            }
+        }
+    
+        .layout-2columns-left,
+        .layout-2columns-right,
+        .layout-3column {
+            .products-grid {
+                li.item {
+                    width: 25%;
+                }
+            }
+        }
+    }
+}

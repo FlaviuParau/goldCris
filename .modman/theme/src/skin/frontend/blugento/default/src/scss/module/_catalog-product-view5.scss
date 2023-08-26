@@ -1,0 +1,44 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view5.scss
+    Version:        1.0
+    Description:    Product Details Page - Small Template with Image
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view == 5) {
+    .product-usp-wrapper {
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -o-flex;
+        display: flex;
+        align-items: flex-start;
+        flex-flow: row wrap;
+        
+        .product-usp-item {
+            flex-basis: 100%;
+            padding: 8px 0;
+        }
+    }
+    
+    .product-collateral {
+        clear: right;
+    }
+
+    @include desktop {
+        .product-view {
+            .product-img-box {
+                width: 35.6%;
+            }
+
+            .product-shop,
+            .box-tags {
+                width: 60%;
+            }
+        }
+
+        .product-collateral {
+            float: right;
+            width: 60%;
+            margin-top: 30px;
+        }
+    }
+}

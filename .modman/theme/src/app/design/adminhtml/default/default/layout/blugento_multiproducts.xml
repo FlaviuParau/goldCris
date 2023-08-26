@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout>
+
+    <adminhtml_cms_page_edit>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>blugento/multiproducts/css/main.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>blugento/multiproducts/js/main.js</name></action>
+        </reference>
+    </adminhtml_cms_page_edit>
+
+</layout>

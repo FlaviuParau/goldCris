@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Feeds
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Feeds
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<layout>
+    <default>
+        <reference name="footer">
+            <block type="blugento_feeds/feeds" name="blugento_datafeeds" as="blugento_datafeeds" />
+        </reference>
+    </default>
+</layout>

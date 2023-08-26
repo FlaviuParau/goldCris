@@ -1,0 +1,8 @@
+src/app/code/local/Blugento/CategorySecondDescription														app/code/local/Blugento/CategorySecondDescription
+
+src/app/design/frontend/base/default/layout/blugento_categoryseconddescription.xml							app/design/frontend/base/default/layout/blugento_categoryseconddescription.xml
+src/app/design/frontend/base/default/template/blugento/categoryseconddescription							app/design/frontend/base/default/template/blugento/categoryseconddescription
+
+src/app/etc/modules/Blugento_CategorySecondDescription.xml													app/etc/modules/Blugento_CategorySecondDescription.xml
+
+src/app/locale/ro_RO/Blugento_CategorySecondDescription.csv													app/locale/ro_RO/Blugento_CategorySecondDescription.csv

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<catalog translate="label">
+			<label>Catalog</label>
+			<sort_order>200</sort_order>
+		</catalog>
+	</tabs>
+	<sections>
+		<configswatches translate="label">
+			<groups>
+				<general>
+					<fields>
+						<dynamic_sku translate="label">
+							<label>Show Associated Product Sku</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</dynamic_sku>
+						<decimal_qty translate="label">
+							<label>Update decimal quantity</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>60</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</decimal_qty>
+						<select_first_swatch translate="label">
+							<label>Select first value for swatch</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>61</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</select_first_swatch>
+						<select_last_swatch translate="label">
+							<label>Select last value for swatch</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>62</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</select_last_swatch>
+						<disable_swatch_hover translate="label">
+							<label>Disable swatch hover</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>63</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</disable_swatch_hover>
+						<enable_swatch_label translate="label">
+							<label>Enable swatch label all the time</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>63</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_swatch_label>
+					</fields>
+				</general>
+			</groups>
+		</configswatches>
+	</sections>
+</config>

@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  Me
+ * @package   Me_Lff
+ * @author    Attila Sági <sagi.attila@magevolve.com>
+ * @copyright 2015 Magevolve Ltd. (http://magevolve.com)
+ * @license   http://magevolve.com/terms-and-conditions Magevolve Ltd. License
+ * @link      http://magevolve.com
+ */
+-->
+<config>
+    <tabs>
+        <me_tab translate="label" module="me_lff">
+            <label>Magevolve Extensions</label>
+            <sort_order>500</sort_order>
+        </me_tab>
+    </tabs>
+    <sections>
+        <lff>
+            <class>separator-top</class>
+            <label>Free Shipping Remaining Cost</label>
+            <tab>me_tab</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>500</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <config translate="label">
+                    <label>Basic</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable Extension</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <backend_model>me_lff/system_config_backend_check</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable extension on frontend.</comment>
+                        </enabled>
+                    </fields>
+                </config>
+                <display translate="label">
+                    <label>Display</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <common_heading translate="label">
+                            <label>Common</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </common_heading>
+                        <notification translate="label">
+                            <label>Notification Text Cart Page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <backend_model>me_lff/system_config_backend_notification</backend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The notification text which will be displayed on cart page. Please note that the "%s" will be replaced with the price, so you have to add it in the proper place within the text. You can use HTML tags also.</comment>
+                            <validate>required-entry</validate>
+                        </notification>
+                        <taxinfo translate="label">
+                            <label>Show Tax Info</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable to show tax information. For example: excl. or incl. tax in parentheses.</comment>
+                        </taxinfo>
+                        <taxsuffix translate="label">
+                            <label>Price and Tax Display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>me_lff/system_config_backend_taxsuffix</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <taxinfo>1</taxinfo>
+                            </depends>
+                            <comment>Please select the tax information text to display after price. If automatic is selected the tax information text will be showed depends on the whole cart tax.</comment>
+                        </taxsuffix>
+                        <sidebar_heading translate="label">
+                            <label>Sidebar</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sidebar_heading>
+                        <sidebar translate="label">
+                            <label>Show in Sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable to show free shipping information in sidebar automatically.</comment>
+                        </sidebar>
+                        <empty translate="label">
+                            <label>Show if Cart is Empty</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sidebar>1</sidebar>
+                            </depends>
+                            <comment>Enable to show free shipping information in sidebar if cart is empty.</comment>
+                        </empty>
+                        <title translate="label">
+                            <label>Block Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sidebar>1</sidebar>
+                            </depends>
+                            <comment>The title of the sidebar's free shipping notification block.</comment>
+                        </title>
+                        <block_notification translate="label">
+                            <label>Notification Text for Block</label>
+                            <frontend_type>textarea</frontend_type>
+                            <backend_model>me_lff/system_config_backend_notification</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sidebar>1</sidebar>
+                            </depends>
+                            <comment>The notification text which will be displayed in the sidebar's free shipping notification block. Please note that the "%s" will be replaced with the price, so you have to add it in the proper place within the text. You can use HTML tags also.</comment>
+                            <validate>required-entry</validate>
+                        </block_notification>
+                        <position translate="label">
+                            <label>Select Sidebar</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>me_lff/system_config_backend_position</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <sidebar>1</sidebar>
+                            </depends>
+                            <comment>Please select left or right sidebar where free shipping notification block will be shown automatically.</comment>
+                        </position>
+                    </fields>
+                </display>
+            </groups>
+        </lff>
+    </sections>
+</config>

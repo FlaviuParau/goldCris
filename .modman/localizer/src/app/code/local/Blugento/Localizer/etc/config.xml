@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_Localizer
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_Localizer>
+            <version>1.0.6</version>
+        </Blugento_Localizer>
+    </modules>
+    <global>
+        <blocks>
+            <blugento_localizer>
+                <class>Blugento_Localizer_Block</class>
+            </blugento_localizer>
+            <catalog>
+                <rewrite>
+                    <product_list>Blugento_Localizer_Block_Catalog_Product_List</product_list>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <helpers>
+            <blugento_localizer>
+                <class>Blugento_Localizer_Helper</class>
+            </blugento_localizer>
+            <catalog>
+                <rewrite>
+                    <product_configuration>Blugento_Localizer_Helper_Catalog_Product_Configuration</product_configuration>
+                </rewrite>
+            </catalog>
+        </helpers>
+        <template>
+            <email>
+                <design_email_support translate="label" module="blugento_localizer">
+                    <label>Email - Support</label>
+                    <file>html/support.html</file>
+                    <type>text</type>
+                </design_email_support>
+            </email>
+        </template>
+        <models>
+            <blugento_localizer>
+                <class>Blugento_Localizer_Model</class>
+            </blugento_localizer>
+        </models>
+        <resources>
+            <blugento_localizer_setup>
+                <setup>
+                    <module>Blugento_Localizer</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </blugento_localizer_setup>
+        </resources>
+        <models>
+            <catalog>
+                <rewrite>
+                    <product_type>Blugento_Localizer_Model_Product_Type</product_type>
+                </rewrite>
+            </catalog>
+        </models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_localizer>
+                    <file>blugento_localizer.xml</file>
+                </blugento_localizer>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Blugento_Localizer>
+                    <files>
+                        <blugento_localizer>Blugento_Localizer.csv</blugento_localizer>
+                    </files>
+                </Blugento_Localizer>
+            </modules>
+        </translate>
+        <routers>
+            <blugento_localizer>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_Localizer</module>
+                    <frontName>localizer</frontName>
+                </args>
+            </blugento_localizer>
+        </routers>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Blugento_Localizer>
+                    <files>
+                        <blugento_localizer>Blugento_Localizer.csv</blugento_localizer>
+                    </files>
+                </Blugento_Localizer>
+            </modules>
+        </translate>
+        <events>
+            <adminhtml_block_html_before>
+                <observers>
+                    <blugento_localizer_observer_agreement>
+                        <class>blugento_localizer/observer</class>
+                        <type>model</type>
+                        <method>addOptionsForAgreements</method>
+                    </blugento_localizer_observer_agreement>
+                </observers>
+            </adminhtml_block_html_before>
+            <adminhtml_catalog_product_attribute_edit_prepare_form>
+                <observers>
+                    <blugento_localizer_observer_visible_on_checkout>
+                        <class>blugento_localizer/observer</class>
+                        <type>model</type>
+                        <method>addIsVisibleOnCheckoutOption</method>
+                    </blugento_localizer_observer_visible_on_checkout>
+                </observers>
+            </adminhtml_catalog_product_attribute_edit_prepare_form>
+        </events>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_localizer before="Mage_Adminhtml">Blugento_Localizer_Adminhtml</blugento_localizer>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <default>
+        <general>
+            <imprint>
+                <shop_name>Any Store</shop_name>
+                <company_first>Any Company Inc.</company_first>
+                <zip>12345</zip>
+                <street>123 Anywhere Street</street>
+                <city>Anytown</city>
+                <email>info@example.com</email>
+            </imprint>
+        </general>
+    </default>
+</config>

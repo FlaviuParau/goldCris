@@ -1,0 +1,121 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_form-list.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.form-list,
+%form-list {
+    @include cf;
+
+    li {
+        list-style-type: none !important;
+    }
+
+    label {
+        display: inline-block;
+
+        + a {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    .link-tip {
+        margin-left: 15px;
+    }
+
+    .input-box,
+    .input-text,
+    select {
+        clear: both;
+        width: 100%;
+    }
+
+    .control,
+    .field,
+    .wide,
+    > li:not(.fields) {
+        margin-bottom: 15px;
+
+        @if ($layout--input-text_layout == 6) {
+            padding-top: 15px;
+        }
+    }
+
+    .fields {
+        > div:not(.field) {
+            display: flex;
+            flex-flow: row wrap;
+            width: 100%;
+        }
+    }
+
+    .field {
+        width: 100%;
+    }
+
+    label {
+        &:first-child {
+            margin-bottom: 3px;
+        }
+    }
+
+    .control {
+        label {
+        }
+    }
+}
+
+.form-list--inline,
+%form-list--inline {
+    label {
+        &:first-child {
+            float: left;
+            width: 120px;
+            margin: 14px 10px 10px 0;
+
+            @include phone-sm {
+                float: none;
+                width: auto;
+                margin: 0 0 3px;
+                padding: 0;
+            }
+        }
+    }
+
+    .input-box {
+        @include cf;
+
+        clear: none;
+        width: auto;
+        overflow: hidden;
+        padding-left: 10px;
+    }
+}
+
+.form-list--horizontal,
+%form-list--horizontal {
+    .fields {
+        @extend %row;
+
+        > .fields {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .field {
+            @extend %col-6;
+
+            @include phone {
+                width: 100%;
+            }
+        }
+
+        .wide {
+            @extend %col-12;
+        }
+    }
+}

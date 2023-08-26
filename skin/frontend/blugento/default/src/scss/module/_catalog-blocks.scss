@@ -1,0 +1,19 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-blocks.scss
+    Version:        1.0
+    Description:    Filters: General Styles
+    ------------------------------------------------------------------------- */
+
+.filters-mobile-trigger {
+    padding: 10px 20px;
+    font-weight: 900;
+    text-decoration: underline;
+    text-transform: uppercase;
+    background-color: color('t');
+    color: color('b');
+}
+
+@import 'catalog-block-layered-nav2';
+@import 'catalog-block-layered-nav1';
+
+@import 'catalog-block-compare';

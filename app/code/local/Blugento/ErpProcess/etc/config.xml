@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_ErpProcess
+ * @author      Mihai Rastasan <mihai.rastasan@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_ErpProcess>
+            <version>1.0.1</version>
+        </Blugento_ErpProcess>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_erpprocess>
+                <class>Blugento_ErpProcess_Block</class>
+            </blugento_erpprocess>
+        </blocks>
+        <models>
+            <blugento_erpprocess>
+                <class>Blugento_ErpProcess_Model</class>
+            </blugento_erpprocess>
+        </models>
+        <helpers>
+            <blugento_erpprocess>
+                <class>Blugento_ErpProcess_Helper</class>
+            </blugento_erpprocess>
+        </helpers>
+        <resources>
+            <blugento_erpprocess_setup>
+                <setup>
+                    <module>Blugento_ErpProcess</module>
+                    <class>Mage_Sales_Model_Mysql4_Setup</class>
+                </setup>
+            </blugento_erpprocess_setup>
+        </resources>
+    </global>
+
+    <adminhtml>
+        <events>
+            <controller_action_layout_render_before_adminhtml_sales_order_view>
+                <observers>
+                    <blugento_erpintegration>
+                        <class>blugento_erpprocess/observer</class>
+                        <method>addDownloadInvoiceAction</method>
+                    </blugento_erpintegration>
+                </observers>
+            </controller_action_layout_render_before_adminhtml_sales_order_view>
+        </events>
+    </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <erpintegration>
+                    <file>blugento_erpprocess.xml</file>
+                </erpintegration>
+            </updates>
+        </layout>
+
+        <routers>
+            <erpprocess>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_ErpProcess</module>
+                    <frontName>erpprocess</frontName>
+                </args>
+            </erpprocess>
+        </routers>
+
+        <translate>
+            <modules>
+                <Blugento_ErpProcess>
+                    <files>
+                        <default>Blugento_ErpProcess.csv</default>
+                    </files>
+                </Blugento_ErpProcess>
+            </modules>
+        </translate>
+    </frontend>
+</config>

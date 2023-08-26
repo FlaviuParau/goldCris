@@ -1,0 +1,105 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-products-list--grid-extra.scss
+    Version:        1.0
+    Description:    Catalog - Product List Styles on Homepage (Grid Mode)
+    ------------------------------------------------------------------------- */
+
+.products-grid.box-image {
+    .item {
+        @include mobile {
+            width: 50%;
+        }
+
+        @include phone-s {
+            width: 100%;
+        }
+
+        .product-box {
+            display: none;
+        }
+    }
+}
+
+.products-grid.box-left,
+.products-grid.box-right {
+    .item {
+        width: 100%;
+
+        @include mobile {
+            width: 100% !important;
+        }
+
+        .col-7 &,
+        .col-8 &,
+        .col-9 &,
+        .col-10 &,
+        .col-12 & {
+            width: 50%;
+        }
+
+        .product-image {
+            width: 50%;
+
+            @include phone-s {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+.products-grid.box-left {
+    .item {
+        .product-image {
+            float: left;
+        }
+    }
+}
+
+.products-grid.box-right {
+    .item {
+        .product-image {
+            float: right;
+        }
+
+        .product-badges {
+            right: 5px;
+            left: auto;
+        }
+    }
+}
+
+/* TODO @Daniel */
+.ideabook-item-view {
+    .ideabook-modal {
+        background-color: color('g') !important;
+
+        .left-content,
+        .right-content,
+        h5 {
+            color: color('e') !important;
+        }
+
+        button {
+            font-size: 11px;
+        }
+
+        h3,
+        h5,
+        .price-box {
+            margin-bottom: 10px !important;
+        }
+    }
+
+    .ideabook-label {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 37px;
+        height: 32px;
+        padding: 9px 0 0 13px;
+        background-image: url('../images/icon--idea-label.png');
+        background-repeat: no-repeat;
+        color: color('b');
+    }
+}

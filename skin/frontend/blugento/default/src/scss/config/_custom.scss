@@ -1,0 +1,45 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       config/_custom.scss
+    Version:        1.0
+    Description:    Custom Variables
+    ------------------------------------------------------------------------- */
+
+$isPageBackgroundImage: ($layout--page_background-image == 1);
+$isPageBackgroundColor: ($page_background-color != $reset-body_background-color);
+$isPageColor: ($page_color != $reset-body_color);
+$isPageContainerBackgroundColor: ($page-container_background-color != $page_background-color);
+$isPageContainerColor: ($page-container_background-color != $page_background-color);
+
+$isFullLayoutMode: ($layout--full-layout_mode == 1);
+
+$isTopNavigation:
+    ($layout--nav_layout == 2) or
+    ($layout--nav_layout == 3) or
+    ($layout--nav_layout == 8) or
+    ($layout--nav_layout == 9) or
+    ($layout--nav_layout == 10) or
+    ($layout--nav_layout == 11) or
+    ($layout--nav_layout == 12) or
+    ($layout--nav_layout == 13);
+
+$isTopNavigationFull:
+    ($layout--nav_layout == 2) or
+    ($layout--nav_layout == 3) or
+    ($layout--nav_layout == 10) or
+    ($layout--nav_layout == 13);
+
+$isContainerPaddingTop:
+    (
+        ($layout--header_layout == 1) and
+        (
+            ($page-header_background-color != $page-container_background-color) or
+            ($layout--full-layout_mode == 1)
+        )
+    ) or
+    ($layout--header_layout != 1);
+
+$pageContainerPadding: (2 * $grid-gutter-width);
+
+@if ($isPageBackgroundImage) {
+    $pageContainerPadding: (2 * $grid-gutter-width) (4 * $grid-gutter-width);
+}

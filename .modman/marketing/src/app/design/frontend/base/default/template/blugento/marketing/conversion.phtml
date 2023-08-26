@@ -1,0 +1,14 @@
+<?php
+$storeId = Mage::app()->getStore()->getStoreId();
+?>
+<?php if (!Mage::getStoreConfig('gdpr_cookies/general/enabled') || Mage::getSingleton('core/cookie')->get('marketing') == 'yes') : ?>
+    <?php echo $this->getConversionCode($storeId); ?>
+<?php endif; ?>
+
+<?php echo $this->getConversionNecessaryCode($storeId); ?>
+
+<?php if (!Mage::getStoreConfig('gdpr_cookies/general/enabled') || Mage::getSingleton('core/cookie')->get('statistics') == 'yes') : ?>
+    <?php echo $this->getConversionAnalyticsCode($storeId); ?>
+<?php endif; ?>
+
+

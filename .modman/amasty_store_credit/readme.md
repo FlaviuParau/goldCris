@@ -1,0 +1,1 @@
+A se intala impreuna cu amasty_base

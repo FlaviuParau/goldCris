@@ -1,0 +1,122 @@
+src/app/code/local/Blugento/Multiproducts                                           app/code/local/Blugento/Multiproducts
+src/app/etc/modules/Blugento_Multiproducts.xml                                      app/etc/modules/Blugento_Multiproducts.xml
+
+src/app/etc/modules/Blugento_Sales.xml                                              app/etc/modules/Blugento_Sales.xml
+src/app/code/local/Blugento/Sales                                                   app/code/local/Blugento/Sales
+src/app/locale/ro_RO/Blugento_Sales.csv                                             app/locale/ro_RO/Blugento_Sales.csv
+src/app/locale/en_US/Blugento_Sales.csv                                             app/locale/en_US/Blugento_Sales.csv
+
+src/app/locale/ro_RO/Blugento_Multiproducts.csv                                     app/locale/ro_RO/Blugento_Multiproducts.csv
+src/app/locale/en_US/Blugento_Multiproducts.csv                                     app/locale/en_US/Blugento_Multiproducts.csv
+src/app/locale/hu_HU/Blugento_Multiproducts.csv                                     app/locale/hu_HU/Blugento_Multiproducts.csv
+src/app/locale/de_DE/Blugento_Multiproducts.csv                                     app/locale/de_DE/Blugento_Multiproducts.csv
+
+src/app/design/adminhtml/default/default/layout/blugento_multiproducts.xml          app/design/adminhtml/default/default/layout/blugento_multiproducts.xml
+src/app/design/adminhtml/default/default/template/blugento/multiproducts            app/design/adminhtml/default/default/template/blugento/multiproducts
+src/skin/adminhtml/default/default/blugento/multiproducts                           skin/adminhtml/default/default/blugento/multiproducts
+
+src/app/code/local/Blugento/Newsletter                                              app/code/local/Blugento/Newsletter
+src/app/etc/modules/Blugento_Newsletter.xml                                         app/etc/modules/Blugento_Newsletter.xml
+
+src/app/code/local/Blugento/Category                                                app/code/local/Blugento/Category
+src/app/etc/modules/Blugento_Category.xml                                           app/etc/modules/Blugento_Category.xml
+
+src/app/code/local/Blugento/Socialmedia                                             app/code/local/Blugento/Socialmedia
+src/app/etc/modules/Blugento_Socialmedia.xml                                        app/etc/modules/Blugento_Socialmedia.xml
+
+src/app/code/local/Blugento/Checkout                                                app/code/local/Blugento/Checkout
+src/app/etc/modules/Blugento_Checkout.xml                                           app/etc/modules/Blugento_Checkout.xml
+src/app/design/frontend/base/default/layout/blugento_checkout.xml                   app/design/frontend/base/default/layout/blugento_checkout.xml
+src/app/design/frontend/base/default/template/blugento/checkout                     app/design/frontend/base/default/template/blugento/checkout
+
+src/app/code/local/Blugento/Newproducts                                             app/code/local/Blugento/Newproducts
+src/app/etc/modules/Blugento_Newproducts.xml                                        app/etc/modules/Blugento_Newproducts.xml
+
+src/app/design/frontend/base/default/template/blugento/socialmedia                  app/design/frontend/base/default/template/blugento/socialmedia
+src/app/design/frontend/base/default/layout/blugento_socialmedia.xml                app/design/frontend/base/default/layout/blugento_socialmedia.xml
+src/app/locale/de_DE/Blugento_Socialmedia.csv                                       app/locale/de_DE/Blugento_Socialmedia.csv
+src/app/locale/de_DE/Blugento_Theme.csv                                             app/locale/de_DE/Blugento_Theme.csv
+src/app/locale/en_US/Blugento_Socialmedia.csv                                       app/locale/en_US/Blugento_Socialmedia.csv
+src/app/locale/en_US/Blugento_Theme.csv                                             app/locale/en_US/Blugento_Theme.csv
+src/app/locale/ro_RO/Blugento_Socialmedia.csv                                       app/locale/ro_RO/Blugento_Socialmedia.csv
+src/app/locale/ro_RO/Blugento_Theme.csv                                             app/locale/ro_RO/Blugento_Theme.csv
+src/app/locale/hu_HU/Blugento_Theme.csv                                             app/locale/hu_HU/Blugento_Theme.csv
+
+src/app/code/local/Blugento/Theme                                                   app/code/local/Blugento/Theme
+src/app/etc/modules/Blugento_Theme.xml                                              app/etc/modules/Blugento_Theme.xml
+
+src/app/code/local/Blugento/Product                                                 app/code/local/Blugento/Product
+src/app/etc/modules/Blugento_Product.xml                                            app/etc/modules/Blugento_Product.xml
+
+src/app/design/frontend/blugento/default/etc                                        app/design/frontend/blugento/default/etc
+src/app/design/frontend/blugento/default/layout/blugento/*                          app/design/frontend/blugento/default/layout/blugento/
+src/app/design/frontend/blugento/default/layout/local.xml                           app/design/frontend/blugento/default/layout/local.xml
+src/app/design/frontend/blugento/default/locale                                     app/design/frontend/blugento/default/locale
+src/app/design/frontend/blugento/default/template/*                                 app/design/frontend/blugento/default/template/
+
+src/js/blugento/*                                                                   js/blugento/
+
+src/skin/frontend/blugento/default/*                                                skin/frontend/blugento/default/
+
+src/grunt                                                                           grunt
+src/boxsizing.htc                                                                   boxsizing.htc
+src/Gruntfile.js                                                                    Gruntfile.js
+src/package.json                                                                    package.json
+src/PIE.htc                                                                         PIE.htc
+
+src/errors/blugento                                                                 errors/blugento
+src/errors/local.xml                                                                errors/local.xml
+
+src/app/code/local/Blugento/ProductsWidget                                          app/code/local/Blugento/ProductsWidget
+src/app/design/frontend/base/default/layout/blugento_productswidget.xml             app/design/frontend/base/default/layout/blugento_productswidget.xml
+src/app/design/frontend/base/default/template/blugento/productswidget               app/design/frontend/base/default/template/blugento/productswidget
+src/app/design/adminhtml/default/default/template/blugento/productswidget           app/design/adminhtml/default/default/template/blugento/productswidget
+src/js/blugento/productswidget                                                      js/blugento/productswidge
+src/skin/frontend/base/default/css/productswidget                                   skin/frontend/base/default/css/productswidget
+src/skin/frontend/base/default/images/catalog/product/placeholder/image_hover.jpg   skin/frontend/base/default/images/catalog/product/placeholder/image_hover.jpg
+src/app/etc/modules/Blugento_ProductsWidget.xml                                     app/etc/modules/Blugento_ProductsWidget.xml
+
+src/app/code/local/Blugento/ProductStatus                                           app/code/local/Blugento/ProductStatus
+src/app/etc/modules/Blugento_ProductStatus.xml                                      app/etc/modules/Blugento_ProductStatus.xml
+
+src/app/code/local/Blugento/Review                                                  app/code/local/Blugento/Review
+src/app/etc/modules/Blugento_Review.xml                                             app/etc/modules/Blugento_Review.xml
+src/app/locale/ro_RO/Blugento_Review.csv                                            app/locale/ro_RO/Blugento_Review.csv
+
+src/app/etc/modules/Blugento_ProductMultitabs.xml                                   app/etc/modules/Blugento_ProductMultitabs.xml
+src/app/code/local/Blugento/ProductMultitabs                                        app/code/local/Blugento/ProductMultitabs
+src/app/locale/ro_RO/Blugento_ProductMultitabs.csv                                  app/locale/ro_RO/Blugento_ProductMultitabs.csv
+src/app/design/adminhtml/default/default/layout/blugento_productmultitabs.xml       app/design/adminhtml/default/default/layout/blugento_productmultitabs.xml
+src/skin/adminhtml/default/default/blugento/product_multitabs                       skin/adminhtml/default/default/blugento/product_multitabs
+
+src/app/code/local/Staempfli/ProductAttachment                                      app/code/local/Staempfli/ProductAttachment
+src/app/etc/modules/Staempfli_ProductAttachment.xml                                 app/etc/modules/Staempfli_ProductAttachment.xml
+src/app/design/adminhtml/default/default/template/staempfli/productattachment       app/design/adminhtml/default/default/template/staempfli/productattachment
+src/app/design/adminhtml/default/default/layout/staempfli/productattachment.xml     app/design/adminhtml/default/default/layout/staempfli/productattachment.xml
+src/app/design/frontend/base/default/layout/productattachment.xml                   app/design/frontend/base/default/layout/productattachment.xml
+src/app/design/frontend/base/default/template/productattachment                     app/design/frontend/base/default/template/productattachment
+src/skin/adminhtml/default/default/staempfli/css/productattachment.css              skin/adminhtml/default/default/staempfli/css/productattachment.css
+src/skin/adminhtml/default/default/staempfli/css/loader.css                         skin/adminhtml/default/default/staempfli/css/loader.css
+src/app/locale/de_DE/Staempfli_ProductAttachment.csv                                app/locale/de_DE/Staempfli_ProductAttachment.csv
+
+src/app/code/local/Blugento/Catalog                                                 app/code/local/Blugento/Catalog
+src/app/etc/modules/Blugento_Catalog.xml                                            app/etc/modules/Blugento_Catalog.xml
+
+src/app/code/local/Blugento/Richsnippets                                            app/code/local/Blugento/Richsnippets
+src/app/design/frontend/base/default/layout/blugento_richsnippets.xml               app/design/frontend/base/default/layout/blugento_richsnippets.xml
+src/app/design/frontend/base/default/template/blugento/richsnippets                 app/design/frontend/base/default/template/blugento/richsnippets
+src/app/etc/modules/Blugento_Richsnippets.xml                                       app/etc/modules/Blugento_Richsnippets.xml
+src/app/locale/ro_RO/Blugento_Richsnippets.csv                                      app/locale/ro_RO/Blugento_Richsnippets.csv
+
+src/app/code/local/Blugento/Swatches						                        app/code/local/Blugento/Swatches
+src/app/etc/modules/Blugento_Swatches.xml					                        app/etc/modules/Blugento_Swatches.xml
+src/app/design/frontend/blugento/default/template/swatches			                app/design/frontend/blugento/default/template/swatches
+
+src/app/code/local/Blugento/CatalogInventory                                        app/code/local/Blugento/CatalogInventory
+src/app/etc/modules/Blugento_CatalogInventory.xml                                   app/etc/modules/Blugento_CatalogInventory.xml
+
+src/app/code/local/Blugento/Reports                                                 app/code/local/Blugento/Reports
+src/app/etc/modules/Blugento_Reports.xml                                            app/etc/modules/Blugento_Reports.xml
+
+src/app/locale/ro_RO/Blugento_Swatches.csv                                          app/locale/ro_RO/Blugento_Swatches.csv
+src/app/locale/pl_PL/Blugento_Swatches.csv                                          app/locale/pl_PL/Blugento_Swatches.csv

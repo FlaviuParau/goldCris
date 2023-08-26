@@ -1,0 +1,63 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_breadcrumbs.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.breadcrumbs {
+    @include cf;
+    
+    display: $breadcrumbs_display;
+    margin-bottom: 15px;
+    font-style: $breadcrumbs_font-style;
+    font-weight: $breadcrumbs_font-weight;
+    font-size: $breadcrumbs_font-size;
+    line-height: (56 / 42);
+    font-family: $breadcrumbs_font-family;
+    text-transform: $breadcrumbs_text-transform;
+    color: $breadcrumbs_color;
+
+    @include mobile {
+        @include one-line-text();
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    @include phone {
+        display: none;
+    }
+
+    ul {
+        @include mobile {
+            display: inline;
+        }
+    }
+
+    li {
+        float: left;
+
+        @include mobile {
+            display: inline;
+        }
+
+        &:last-child {
+            color: $breadcrumbs__leaf_color;
+        }
+    }
+
+    a,
+    span {
+        float: left;
+        color: inherit;
+    }
+
+    li > span {
+        margin: 0 .5em;
+    }
+
+    strong {
+        font-weight: $breadcrumbs_font-weight;
+    }
+}

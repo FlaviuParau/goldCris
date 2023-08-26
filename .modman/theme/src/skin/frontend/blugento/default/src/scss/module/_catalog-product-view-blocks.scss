@@ -1,0 +1,23 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-blocks.scss
+    Version:        1.0
+    Description:    Product Details Page - Blocks
+    ------------------------------------------------------------------------- */
+
+//  ----------------------------------------------------------------------------
+//  Related & Up-sells
+//  ----------------------------------------------------------------------------
+
+.block-related,
+.block-upsell {
+    margin-top: 50px;
+}
+
+.product-essential {
+    .block-related,
+    .block-upsell {
+        clear: both;
+        padding-top: 50px;
+        margin-top: 0;
+    }
+}

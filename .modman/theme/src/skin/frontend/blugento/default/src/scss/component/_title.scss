@@ -1,0 +1,43 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_title.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.page-title {
+    @include cf;
+
+    margin-bottom: 15px;
+
+    h1,
+    h2 {
+        font-style: $page-title_font-style;
+        font-weight: $page-title_font-weight;
+        font-size: $page-title_font-size;
+        line-height: $page-title_line-height;
+        font-family: $page-title_font-family;
+        text-transform: $page-title_text-transform;
+        color: $page-title_color;
+    }
+
+    .link-print {
+        display: none;
+    }
+}
+
+h2,
+strong {
+    &.subtitle {
+        display: block;
+        margin: 0 0 $grid-gutter-width;
+        font-weight: $page-subtitle_font-weight;
+        font-style: $page-subtitle_font-style;
+        font-size: $page-subtitle_font-size;
+        line-height: $page-subtitle_line-height;
+        font-family: $page-subtitle_font-family;
+        text-transform: $page-subtitle_text-transform;
+        color: $page-subtitle_color;
+    }
+}

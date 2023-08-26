@@ -1,0 +1,10 @@
+src/app/etc/modules/Aschroder_Smtppro.xml                   app/etc/modules/Aschroder_Smtppro.xml
+src/app/code/local/Aschroder/Smtppro/                       app/code/local/Aschroder/Smtppro/
+src/app/design/adminhtml/base/default/template/smtppro/     app/design/adminhtml/default/default/template/smtppro/
+src/app/locale/de_DE/Aschroder_Smtppro.csv                  app/locale/de_DE/Aschroder_Smtppro.csv
+src/app/locale/en_US/Aschroder_Smtppro.csv                  app/locale/en_US/Aschroder_Smtppro.csv
+src/app/locale/fr_FR/Aschroder_Smtppro.csv                  app/locale/fr_FR/Aschroder_Smtppro.csv
+src/app/locale/es_ES/Aschroder_Smtppro.csv                  app/locale/es_ES/Aschroder_Smtppro.csv
+src/app/locale/nl_NL/Aschroder_Smtppro.csv                  app/locale/nl_NL/Aschroder_Smtppro.csv
+src/app/locale/pt_BR/Aschroder_Smtppro.csv                  app/locale/pt_BR/Aschroder_Smtppro.csv
+src/app/locale/tr_TR/Aschroder_Smtppro.csv                  app/locale/tr_TR/Aschroder_Smtppro.csv

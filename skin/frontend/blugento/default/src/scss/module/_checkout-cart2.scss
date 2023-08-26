@@ -1,0 +1,102 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_checkout-cart2.scss
+    Version:        1.0
+    Description:    Cart Layout: 1 Column
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+@if ($layout--checkout_cart_layout == 2) {
+    .cart {
+        .cart-table {
+            float: none;
+            width: 100%;
+        }
+
+        .cart-totals {
+            @include cf;
+
+            table {
+                float: right;
+                width: 50%;
+
+                @include mobile {
+                    width: 100%;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .checkout-types {
+                float: left;
+                width: 50%;
+                padding-right: 40px;
+
+                @include mobile {
+                    width: 100%;
+                }
+
+                .button {
+                    @include mobile {
+                        width: 100%;
+                        min-width: 192px;
+                        box-sizing: border-box;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        @if ($layout--checkout_cart_shipping_section == 1) {
+            .shipping {
+                float: right;
+                width: 50%;
+                margin: 0;
+
+                @include mobile {
+                    width: 100%;
+                    padding-left: 0;
+                }
+
+                .shipping-form {
+                    .field {
+                        width: 100%;
+                    }
+                }
+            }
+        } @else {
+            .shipping {
+                display: none;
+            }
+        }
+
+        .discount {
+            float: left;
+            width: 50%;
+            margin: 0;
+            padding-right: 40px;
+
+            @include mobile {
+                width: 100%;
+            }
+        }
+
+        .cart-collaterals {
+            margin-top: 15px;
+            padding-left: 0;
+
+            .crosssell .products-list {
+                li.item {
+                    margin-bottom: 10px;
+
+                    .product-image {
+                        float: none;
+
+                        img {
+                            margin: 0 auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

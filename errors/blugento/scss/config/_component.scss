@@ -1,0 +1,43 @@
+//  ----------------------------------------------------------------------------
+//  Filename:       config/component.scss
+//  Version:        1.0
+//  Description:    -
+//  ----------------------------------------------------------------------------
+
+//  ----------------------------------------------------------------------------
+//  Component :: Box
+//  ----------------------------------------------------------------------------
+
+$box_spacing:                                       15px !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Buttons Set
+//  ----------------------------------------------------------------------------
+
+$buttons-set_border-top-color:                      #ededed;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Form
+//  ----------------------------------------------------------------------------
+
+$button_background-color:                           #ededed;
+$button_color:                                      #fff;
+$button-action_background-color:                    #0076bf;
+$button-action_color:                               #fff;
+$button-secondary_background-color:                 #f68329;
+$button-secondary_color:                            #fff;
+$input-text_border-color:                           #ccc;
+$validation-advice_color:                           #0076bf;
+$required_color:                                    #f00000;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Message
+//  ----------------------------------------------------------------------------
+
+$message_background-color:                          #fff;
+$message--error__background-color:                  #d04437 !default;
+$message--error__background-image:                  url("../images/message--error__background-image.svg");
+$message--notice_background-color:                  #3572b0 !default;
+$message--notice_background-image:                  url("../images/message--notice_background-image.svg");
+$message--success_background-color:                 #8eb021 !default;
+$message--success_background-image:                 url("../images/message--success_background-image.svg");

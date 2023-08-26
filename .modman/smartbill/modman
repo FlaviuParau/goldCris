@@ -1,0 +1,7 @@
+src/app/code/community/IntelligentIT/SmartBill     app/code/community/IntelligentIT/SmartBill
+src/app/etc/modules/IntelligentIT_SmartBill.xml    app/etc/modules/IntelligentIT_SmartBill.xml
+src/errors/default/smartbill.phtml                 errors/default/smartbill.phtml
+src/media/smartbill/logo.png                       media/smartbill/logo.png
+
+src/app/design/frontend/base/default/layout/smartbill.xml	           app/design/frontend/base/default/layout/smartbill.xml
+src/app/design/frontend/base/default/template/blugento/smartbill	   app/design/frontend/base/default/template/blugento/smartbill

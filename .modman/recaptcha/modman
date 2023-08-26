@@ -1,0 +1,6 @@
+src/app/code/local/Magecomp/Recaptcha								app/code/local/Magecomp/Recaptcha
+src/app/design/frontend/base/default/layout/recaptcha.xml			app/design/frontend/base/default/layout/recaptcha.xml
+src/app/design/frontend/base/default/template/recaptcha				app/design/frontend/base/default/template/recaptcha
+src/app/etc/modules/Magecomp_Recaptcha.xml							app/etc/modules/Magecomp_Recaptcha.xml
+src/app/locale/en_US/template/email/mcm_contacts.html				app/locale/en_US/template/email/mcm_contacts.html
+src/app/locale/ro_RO/Magecomp_Recaptcha.csv				            app/locale/ro_RO/Magecomp_Recaptcha.csv

@@ -1,0 +1,171 @@
+<?php
+	$imageHelper = Mage::helper('blog/image');
+	$imageWidth  = '400';
+	$imageHeight = '400';
+	
+	if (Mage::helper('core')->isModuleEnabled('Blugento_ExtendAwBlog')) {
+		$helper = Mage::helper('blugento_extendawblog');
+		$imageWidth  = $helper->getImageWidth();
+		$imageHeight = $helper->getImageHeight();
+	}
+	
+	$imagePath     = Mage::getBaseDir('media') . DS . 'blogpic' . DS;
+	$layoutStyling = $this->getLayoutStylingList();
+	
+	require_once 'MobileDetect/Mobile_Detect.php';
+	$detect = new Mobile_Detect;
+?>
+<?php if ($posts = $this->getRecent()): ?>
+	<div class="blog-wrap blog-<?php echo $layoutStyling ?>">
+		<div class="latest-blog-post">
+			<?php if ($this->getDisplayTitle()): ?>
+				<div class="title">
+					<h2 class="subtitle">
+						<?php if ($this->getTitleLink()): ?>
+							<a href="<?php echo Mage::getUrl(Mage::helper('blog')->getRoute()) ?>">
+						<?php endif; ?>
+							<?php echo $this->__($this->getTitle()) ?>
+						<?php if ($this->getTitleLink()): ?>
+							</a>
+					<?php endif; ?>
+					</h2>
+				</div>
+			<?php endif; ?>
+			<ul class="products-grid <?php echo $this->getTypeOfTemplate() ?>"
+				<?php if ($this->getDisplayType() == 2 || ($this->getMobileSlider() == 1 && $detect->isMobile() && !$detect->isTablet())) : ?>
+					data-slider="<?php echo $this->getDisplayType() ?>"
+					data-slider-animation="<?php echo $this->getSliderAnimation() ?>"
+					data-slider-item-row="<?php echo $this->getSliderItemRow() ?>"
+					data-slider-item-scroll="<?php echo $this->getSliderItemScroll() ?>"
+					data-slider-item-loop="<?php echo $this->getSliderItemLoop() ?>"
+				<?php endif; ?>
+			>
+				<?php foreach ($posts as $post): ?>
+					<?php
+					$postImage = $post->getFeaturedImage();
+					if ($postImage && file_exists($imagePath . $postImage)) {
+						$postImage = $imageHelper->init($postImage)
+							->constrainOnly(false)
+							->keepAspectRatio(true)
+							->keepFrame(true)
+							->backgroundColor(array(255, 255, 255))
+							->resize($postImage, $imageWidth, $imageHeight);
+					} else {
+						$postImage = $this->getSkinUrl('images/catalog/product/placeholder/small_image.jpg');
+					}
+					?>
+					<li class="item">
+						<div class="item-inner">
+							<?php if ($layoutStyling != 'default') : ?><div class="postTitle"><?php endif; ?>
+								<div class="image-box">
+									<?php if ($layoutStyling == 'layout-3'): ?>
+										<a class="overlay" href="<?php echo $post->getAddress(); ?>" title="<?php echo $post->getTitle(); ?>">
+											<img src="<?php echo $postImage; ?>" alt="<?php echo $post->getTitle(); ?>" />
+										</a>
+									<?php else: ?>
+										<a href="<?php echo $post->getAddress(); ?>" title="<?php echo $post->getTitle(); ?>">
+											<img src="<?php echo $postImage; ?>" alt="<?php echo $post->getTitle(); ?>" />
+										</a>
+									<?php endif; ?>
+								</div>
+								<?php if ($layoutStyling == 'layout-3'): ?>
+									<div class="title-date">
+										<div class="info-posted">
+											<?php if ($this->getShowPostUser() == 1): ?>
+												<span class="user"><?php echo $post->getUser(); ?></span>
+											<?php endif; ?>
+											<?php echo mb_strimwidth($post->getCreatedTime(), 0, 10); ?>
+										</div>
+										<h2><a href="<?php echo $post->getAddress(); ?>" class="post-title"><?php echo $post->getTitle(); ?></a></h2>
+										<?php if ($this->getShowPostDetails() == 1): ?>
+											<?php $postCats = $post->getCategories(); ?>
+											<?php if (!empty($postCats)): ?>
+												<strong>
+													<?php echo $this->__('Posted in'); ?>
+													<?php foreach ($postCats as $title => $url) : ?>
+														<a href="<?php echo $url; ?>"><?php echo $title; ?></a>
+													<?php endforeach; ?>
+												</strong>
+											<?php endif; ?>
+										<?php endif; ?>
+									</div>
+								<?php elseif ($layoutStyling == 'layout-2'): ?>
+									<div class="info-posted">
+										<?php if ($this->getShowPostUser() == 1): ?>
+											<span class="user"><?php echo $post->getUser(); ?></span>
+										<?php endif; ?>
+										<?php echo mb_strimwidth($post->getCreatedTime(), 0, 10); ?>
+									</div>
+									<h2><a href="<?php echo $post->getAddress(); ?>" class="post-title"><?php echo $post->getTitle(); ?></a></h2>
+								<?php elseif ($layoutStyling == 'layout-1'): ?>
+									<h2><a href="<?php echo $post->getAddress(); ?>" class="post-title"><?php echo $post->getTitle(); ?></a></h2>
+									<div class="info-posted">
+										<?php echo mb_strimwidth($post->getCreatedTime(), 0, 10); ?>
+									</div>
+								<?php endif; ?>
+								<?php if ($layoutStyling != 'default') : ?></div><?php endif; ?>
+							<?php if ($layoutStyling != 'layout-3'): ?>
+								<div class="content-blog-box">
+									<?php if ($layoutStyling == 'default'): ?>
+										<div class="info-posted">
+											<?php if ($this->getShowPostUser() == 1): ?>
+												<span class="user"><?php echo $post->getUser(); ?></span>
+											<?php endif; ?>
+											<?php echo mb_strimwidth($post->getCreatedTime(), 0, 10); ?>
+										</div>
+										<a href="<?php echo $post->getAddress(); ?>" class="post-title"><?php echo $post->getTitle(); ?></a>
+									<?php endif; ?>
+									<?php if ($layoutStyling != 'default') : ?><div class="postContent std cf"><?php endif; ?>
+										<?php if ($this->getShowShortDescription()): ?>
+											<?php if ($this->getShowShortDescription() == 1): ?>
+												<p class="blog-short-content"><?php echo strip_tags($post->getShortContent()); ?></p>
+											<?php else : ?>
+												<p><?php echo Mage::helper('core/string')->truncate(strip_tags($post->getShortContent()), 150) ?></p>
+											<?php endif; ?>
+										<?php endif; ?>
+										<?php if ($layoutStyling != 'default') : ?>
+											<a href="<?php echo $post->getAddress(); ?>" class="read-more"><?php echo $this->__('Read more') ?></a>
+										<?php endif; ?>
+										<?php if ($layoutStyling != 'default') : ?></div><?php endif; ?>
+									<?php if ($layoutStyling == 'layout-2') : ?>
+										<?php if ($this->getShowPostDetails() == 1): ?>
+											<div class="postDetails">
+												<?php $postCats = $post->getCategories(); ?>
+												<?php if (!empty($postCats)): ?>
+													<strong>
+														<?php echo $this->__('Posted in'); ?>
+														<?php foreach ($postCats as $title => $url) : ?>
+															<a href="<?php echo $url; ?>"><?php echo $title; ?></a>
+														<?php endforeach; ?>
+													</strong>
+												<?php endif; ?>
+											</div>
+										<?php endif; ?>
+									<?php endif; ?>
+									<?php if ($layoutStyling != 'layout-2'): ?>
+										<?php if ($this->getShowPostDetails() == 1): ?>
+											<div class="postDetails">
+												<?php $postCats = $post->getCategories(); ?>
+												<?php if (!empty($postCats)): ?>
+													<strong>
+														<?php echo $this->__('Posted in'); ?>
+														<?php foreach ($postCats as $title => $url) : ?>
+															<a href="<?php echo $url; ?>"><?php echo $title; ?></a>
+														<?php endforeach; ?>
+													</strong>
+												<?php endif; ?>
+											</div>
+										<?php endif; ?>
+									<?php endif; ?>
+								</div>
+								<?php if ($layoutStyling == 'default') : ?>
+									<a href="<?php echo $post->getAddress(); ?>" class="read-more"><?php echo $this->__('Read more') ?></a>
+								<?php endif; ?>
+							<?php endif; ?>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+<?php endif; ?>

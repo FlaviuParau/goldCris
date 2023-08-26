@@ -1,0 +1,140 @@
+<?php
+$cms_page = Mage::registry('cms_page');
+$items = Mage::helper('blugento_homepagemanager')->getLayoutNodes($cms_page->getStoreId());
+$rows = isset($items->nodes->row) && $items->nodes->row ? $items->nodes->row : array();
+?>
+
+<style type="text/css">
+    .entry-edit {
+        background: none !important;
+        box-shadow: none !important;
+    }
+    .hm-toolbar {
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="hm-editor-container" id="hm-builder">
+    <div class="hm-toolbar">
+        <div class="hm-button-group">
+            <button class="hm-insert-layout" id="hm-insert-layout-col1" data-layout="col1" type="button" title="<?php echo $this->__('Insert row with one column'); ?>"><?php echo $this->__('1 Column'); ?></button>
+            <button class="hm-insert-layout" id="hm-insert-layout-col2" data-layout="col2" type="button" title="<?php echo $this->__('Insert row with two columns'); ?>"><?php echo $this->__('2 Columns'); ?></button>
+            <button class="hm-insert-layout" id="hm-insert-layout-col3" data-layout="col3" type="button" title="<?php echo $this->__('Insert row with three columns'); ?>"><?php echo $this->__('3 Columns'); ?></button>
+            <button class="hm-insert-layout" id="hm-insert-layout-col4" data-layout="col4" type="button" title="<?php echo $this->__('Insert row with four columns'); ?>"><?php echo $this->__('4 Columns'); ?></button>
+        </div>
+    </div>
+    <div class="hm-editor">
+        <ul id="hm-layout-container" class="hm-layout-data">
+            <?php foreach ($rows as $row): ?>
+                <li id="row-container-<?php echo $row->id; ?>">
+                    <div class="hm-row-handler">
+                        <div title="<?php echo $this->__('Drag & drop to reorder layout'); ?>" class="hm-sort"></div>
+                        <div title="<?php echo $this->__('Delete this row'); ?>" class="hm-delete"></div>
+                        <div title="<?php echo $this->__('Full Width Row'); ?>" class="hm-full">
+                            <input class="set-full-width" type="checkbox" title="<?php echo $this->__('Full Width Row'); ?>" <?php if ($row->full_width == 1): ?>checked="checked"<?php endif; ?>/>
+                        </div>
+                    </div>
+                    <div id="<?php echo $row->id; ?>" class="row hm-row-container">
+                        <?php
+                        try {
+                            foreach ($row->cols->col as $col):
+                                $colText = trim((string)$col->text);
+                                $colParams = trim((string)$col->params);
+                                $colType = trim((string)$col->type);
+                                ?>
+                                <div id="<?php echo $col->id; ?>" class="<?php echo $col->class; ?>">
+                                    <div id="<?php echo $col->id; ?>-content" class="hm-col-content"><?php
+                                        if ($colType) {
+                                            $block = $this->getLayout()->createBlock(
+                                                'blugento_homepagemanager/adminhtml_widget_preview',
+                                                'adminhtml_widget_preview'
+                                            );
+                                            $block->addData(array(
+                                                'widget_params' => @json_decode($colParams, true),
+                                                'widget_type' => $colType
+                                            ));
+                                            echo $block->toHtml();
+                                        }
+                                    ?></div>
+                                    <script>
+                                        jQuery('.hm-row-container > div:first-child .hm-col-content').each(function() {
+                                            if( jQuery(this).is(':empty') ) {
+                                                jQuery(this).closest('li').remove();
+                                            }
+                                        });
+                                    </script>
+                                    <div id="<?php echo $col->id; ?>-text" style="display: none;"><?php echo $colText; ?></div>
+                                    <div id="<?php echo $col->id; ?>-params" style="display: none;"><?php echo $colParams; ?></div>
+                                    <div id="<?php echo $col->id; ?>-type" style="display: none;"><?php echo $colType; ?></div>
+                                    <div class="hm-fbtn-wrap">
+                                        <a href="javascript: void(0);" class="hm-clear hm-fbtn hm-fbtn--clear <?php echo ($colText) ? '' : 'hm-fbtn--clear-disabled'; ?>" title="<?php echo $this->__('Clear Content'); ?>"></a>
+                                        <a href="javascript: void(0);" class="hm-widget hm-fbtn hm-fbtn--widget <?php echo ($colText) ? 'hm-fbtn--widget-edit' : 'hm-fbtn--widget-add'; ?>" title="<?php echo ($colText) ? $this->__('Edit Widget') : $this->__('Add Widget'); ?>"></a>
+                                    </div>
+                                </div>
+                                <?php
+                            endforeach;
+                        }
+                        catch (Exception $e) {
+                            echo $e->getMessage();
+                        }
+                        ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+
+<div class="hm-layout-dialog" id="hm-layout-dialog-col1" title="<?php echo $this->__('Insert row with one column'); ?>">
+    <div class="layouts-images">
+        <ul>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col1-col12')" id="hm-choose-layout-col1-col12"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c12.jpg'); ?>" alt="" /></a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="hm-layout-dialog" id="hm-layout-dialog-col2" title="<?php echo $this->__('Insert row with two columns'); ?>">
+    <div class="layouts-images">
+        <ul>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col2-col6x6')" class="hm-choose-layout" id="hm-choose-layout-col2-col6x6"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c6x6.jpg'); ?>" alt="" /></a></li>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col2-col4x8')" class="hm-choose-layout" id="hm-choose-layout-col2-col4x8"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c4x8.jpg'); ?>" alt="" /></a></li>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col2-col3x9')" class="hm-choose-layout" id="hm-choose-layout-col2-col3x9"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c3x9.jpg'); ?>" alt="" /></a></li>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col2-col8x4')" class="hm-choose-layout" id="hm-choose-layout-col2-col8x4"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c8x4.jpg'); ?>" alt="" /></a></li>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col2-col9x3')" class="hm-choose-layout" id="hm-choose-layout-col2-col9x3"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c9x3.jpg'); ?>" alt="" /></a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="hm-layout-dialog" id="hm-layout-dialog-col3" title="<?php echo $this->__('Insert row with three columns'); ?>">
+    <div class="layouts-images">
+        <ul>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col3-col4x4x4')" class="hm-choose-layout" id="hm-choose-layout-col3-col4x4x4"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c4x4x4.jpg'); ?>" alt="" /></a></li>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col3-col3x6x3')" class="hm-choose-layout" id="hm-choose-layout-col3-col3x6x3"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c3x6x3.jpg'); ?>" alt="" /></a></li>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col3-col6x3x3')" class="hm-choose-layout" id="hm-choose-layout-col3-col6x3x3"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c6x3x3.jpg'); ?>" alt="" /></a></li>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col3-col3x3x6')" class="hm-choose-layout" id="hm-choose-layout-col3-col3x3x6"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c3x3x6.jpg'); ?>" alt="" /></a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="hm-layout-dialog" id="hm-layout-dialog-col4" title="<?php echo $this->__('Insert row with four columns'); ?>">
+    <div class="layouts-images">
+        <ul>
+            <li><a href="javascript: void(0);" onclick="bluHomepageManager.insertLayout('col4-col3x3x3x3')" class="hm-choose-layout" id="hm-choose-layout-col4-col3x3x3x3"><img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/c3x3x3x3.jpg'); ?>" alt="" /></a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="hm-col-footer" style="display: none;">
+    <div class="hm-fbtn-wrap">
+        <a href="javascript: void(0);" class="hm-clear hm-fbtn hm-fbtn--clear" title="<?php echo $this->__('Clear Content'); ?>"></a>
+        <a href="javascript: void(0);" class="hm-widget hm-fbtn hm-fbtn--widget hm-fbtn--widget-add" title="<?php echo $this->__('Add Widget'); ?>"></a>
+    </div>
+</div>
+
+<div id="hm-row-right" style="display: none;">
+    <div class="hm-sort"></div>
+    <div title="<?php echo $this->__('Delete this row'); ?>" class="hm-delete"></div>
+    <div title="<?php echo $this->__('Full Width Row'); ?>" class="hm-full"><input class="set-full-width" type="checkbox" title="<?php echo $this->__('Full Width Row'); ?>" /></div>
+</div>
+
+<div id="hm-widget-dialog" style="display: none;"></div>

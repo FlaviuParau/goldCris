@@ -1,0 +1,11 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_nav1.scss
+    Version:        1.0
+    Description:    No Navigation
+    ------------------------------------------------------------------------- */
+
+@if ($layout--nav_layout == 1) {
+    .nav-container {
+        display: none;
+    }
+}

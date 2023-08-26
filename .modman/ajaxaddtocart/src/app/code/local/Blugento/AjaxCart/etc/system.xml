@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>10</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_ajaxcart translate="label" module="blugento_ajaxcart">
+            <label>AjaxCart</label>
+            <comment></comment>
+            <tab>blugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable AjaxCart</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <enable_redirect translate="label">
+                            <label>Redirect to category after add to cart</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_redirect>
+                        <checkout_redirect translate="label">
+                            <label><![CDATA[View cart & checkout redirect to]]></label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>blugento_ajaxcart/system_config_source_redirect</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checkout_redirect>
+                        <enableImgPrice translate="label">
+                            <label>Enable Image and Price</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enableImgPrice>
+                        <show_simple_product_image translate="label">
+                            <label>Enable to show simple product image instead of parent for configurable products</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_simple_product_image>
+                        <enable_cart_confirm translate="label">
+                            <label>Enable Cart Item Delete Confirmation</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_cart_confirm>
+                        <enable_related translate="label">
+                            <label>Enable Related Products Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_related>
+                        <enable_upsell translate="label">
+                            <label>Enable Upsell Products Slider</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_upsell>
+                    </fields>
+                </general>
+            </groups>
+        </blugento_ajaxcart>
+    </sections>
+</config>

@@ -1,0 +1,4 @@
+<?php $_product = $this->getProduct(); ?>
+<div class="baseprice-box">
+    <span class="baseprice-label-<?php echo $_product->getId() ?>"><?php echo Mage::helper('baseprice')->getBasePriceLabel($_product) ?></span>
+</div>

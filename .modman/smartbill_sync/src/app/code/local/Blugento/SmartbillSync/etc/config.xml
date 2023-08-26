@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Blugento_SmartbillSync>
+            <version>1.0.0</version>
+        </Blugento_SmartbillSync>
+    </modules>
+    <global>
+        <models>
+            <blugento_smartbillsync>
+                <class>Blugento_SmartbillSync_Model</class>
+            </blugento_smartbillsync>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <blugento_smartbillsync>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_SmartbillSync</module>
+                    <frontName>smartbill_sync_now</frontName>
+                </args>
+            </blugento_smartbillsync>
+        </routers>
+    </frontend>
+    <crontab>
+        <jobs>
+            <blugento_smartbillsync>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>blugento_smartbillsync/sync::cronSyncStock</model>
+                </run>
+            </blugento_smartbillsync>
+        </jobs>
+    </crontab>
+    <default>
+        <blugento_smartbillsync>
+            <general>
+                <days>0,1,2,3,4,5,6</days>
+            </general>
+        </blugento_smartbillsync>
+    </default>
+</config>

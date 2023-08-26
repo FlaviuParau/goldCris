@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Store Pickup Shipping Method
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Storepickup
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <modules>
+        <Blugento_Storepickup>
+            <version>1.0.0</version>
+        </Blugento_Storepickup>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_storepickup>
+                <class>Blugento_Storepickup_Block</class>
+            </blugento_storepickup>
+            <checkout>
+                <rewrite>
+                    <onepage_shipping_method_available>Blugento_Storepickup_Block_Onepage_Shipping_Method_Available</onepage_shipping_method_available>
+                </rewrite>
+            </checkout>
+        </blocks>
+        <helpers>
+            <blugento_storepickup>
+                <class>Blugento_Storepickup_Helper</class>
+            </blugento_storepickup>
+        </helpers>
+        <models>
+            <blugento_storepickup>
+                <class>Blugento_Storepickup_Model</class>
+            </blugento_storepickup>
+        </models>
+    </global>
+
+    <default>
+        <carriers>
+            <storepickup>
+                <active>1</active>
+                <model>blugento_storepickup/carrier</model>
+                <title>Livrare</title>
+                <sort_order>10</sort_order>
+                <sallowspecific>1</sallowspecific>
+            </storepickup>
+            <blugento_storepickup>
+                <method_title>Livrare</method_title>
+                <sort_order>10</sort_order>
+            </blugento_storepickup>
+        </carriers>
+    </default>
+
+    <frontend>        
+        <translate>
+            <modules>
+                <blugento_storepickup>
+                    <files>
+                        <default>Blugento_Storepickup.csv</default>
+                    </files>
+                </blugento_storepickup>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <blugento_storepickup>
+                    <files>
+                        <default>Blugento_Storepickup.csv</default>
+                    </files>
+                </blugento_storepickup>
+            </modules>
+        </translate>
+    </adminhtml>
+
+</config>

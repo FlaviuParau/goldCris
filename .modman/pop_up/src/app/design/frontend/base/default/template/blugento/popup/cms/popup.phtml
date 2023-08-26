@@ -1,0 +1,144 @@
+<?php
+/** @var Blugento_Popup_Block_Cms_Popup $this */
+?>
+
+<?php
+    $helper = Mage::helper('blugento_popup');
+    $popUpGdpr =  Mage::getStoreConfig("blugento_popup/general/category");
+
+    $popups = $this->getPopups();
+?>
+<?php if($helper->isEnabled()): ?>
+    <?php if($popups):  ?>
+        <ul class="pop-up-blugento">
+            <?php foreach ($popups as $popup): ?>
+                <li class="open-popup-link-<?php echo $popup['sort_order']; ?>" data-sort="<?php echo $popup['sort_order']; ?>" data-pop-up="blugentoPopup<?php echo $popup['sort_order']; ?>">
+                    <a href="#blugentoPopup<?php echo $popup['sort_order']; ?>" class="no-display pops"></a>
+                    <div id="blugentoPopup<?php echo $popup['sort_order']; ?>" class="modal blugento-popup">
+                        <div class="sub-container">
+                            <div class="content">
+                                <div class="blugento-popup-content">
+                                    <div><?php echo $this->getPopupContent($popup['id']); ?></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+
+        <script>
+            (function($) {
+                $(window).ready(function () {
+                    sortOrder = [];
+
+                    // Close age pop up verification if user click on yes button
+                    if ($('.pop-up-blugento li:first-child').find('.age-popup-buttons')) {
+                        firstPopUp = $('.pop-up-blugento li:first-child').attr('data-pop-up');
+
+                        // If age verification content exists show pop up
+                        if ($('#' + firstPopUp + ' #yes').length) {
+                            if (blugentoPopup0 != 'yes') {
+                                showBlugentoPopup();
+                            }
+                        }
+
+                        $('#' + firstPopUp + ' #yes').on('click', function () {
+                            $('#' + firstPopUp).magnificPopup('close');
+
+                            nowTime = new Date();
+                            timeHour = nowTime.getTime();
+                            timeHour += 3600 * <?php echo $helper->getCookieExpirationTime(); ?>000;
+                            nowTime.setTime(timeHour);
+
+                            $.cookie('blugentoPopup0', 'yes', {
+                                expires: nowTime
+                            });
+                        });
+                    }
+
+                    function showBlugentoPopup()
+                    {
+                        <?php foreach ($popups as $popup): ?>
+                            if ((document.cookie.indexOf('blugentoPopup<?php echo $popup['sort_order']; ?>') && $.cookie('blugentoPopup<?php echo $popup['sort_order']; ?>') != 'yes') ||
+                                ($.cookie('blugentoPopup<?php echo $popup['sort_order']; ?>') != 'yes' && document.cookie.indexOf(cookieAgeVerification) && blugentoCookieAgeVerification != 'yes')) {
+                                sortOrder.push(<?php echo $popup['sort_order']; ?>);
+
+                                setTimeout(function(){
+                                    $('.open-popup-link-' + sortOrder[0]).find('.pops').trigger('click');
+                                }, <?php echo $helper->getDisplayTime(); ?>);
+
+                                $('.open-popup-link-<?php echo $popup['sort_order']; ?>').magnificPopup({
+                                    items: {
+                                        src: '#blugentoPopup<?php echo $popup['sort_order']; ?>'
+                                    },
+                                    type: 'inline',
+                                    showCloseBtn: 'blugentoPopup<?php echo $popup['sort_order']; ?>' === firstPopUp &&
+                                        $('#' + firstPopUp + ' #yes').length ? false : true,
+                                    <?php if ($helper->isBackgroundClickDisabled()) : ?> closeOnBgClick: false, <?php endif; ?>
+                                    callbacks: {
+                                        close: function() {
+                                            nowTime = new Date();
+                                            timeHour = nowTime.getTime();
+                                            timeHour += 3600 * <?php echo $helper->getCookieExpirationTime(); ?>000;
+                                            nowTime.setTime(timeHour);
+
+                                            $.cookie('blugentoPopup<?php echo $popup['sort_order']; ?>', 'yes', {
+                                                expires: nowTime
+                                            });
+
+                                            setTimeout(function(){
+                                                $('.open-popup-link-<?php echo $popup['sort_order']; ?>').next('li').find('.pops').trigger('click');
+                                            }, <?php echo $helper->getDisplayTime(); ?>);
+                                        }
+                                    }
+                                });
+                            }
+                        <?php endforeach; ?>
+                    }
+
+                    // Delete Cookies
+                    var delete_cookie = function(name) {
+                        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                    }
+
+                    if ($('body').hasClass('gdpr-enabled')) {
+                        // Accept cookies
+                        $('#accept-selected-cookies, #accept-all-cookies').on('click', function(e) {
+                            if (<?php echo $popUpGdpr ?> == '2') {
+                                if ($('#statistics').is(':checked') || $('#statistics').is('[readonly]')) {
+                                    showBlugentoPopup();
+                                }
+                            } else if (<?php echo $popUpGdpr ?> == '3') {
+                                if ($('#marketing').is(':checked') || $('#marketing').is('[readonly]')) {
+                                    showBlugentoPopup();
+                                }
+                            } else if (<?php echo $popUpGdpr ?> == '1') {
+                                showBlugentoPopup();
+                            }
+                        });
+
+                        // Show pop up for all pages if marketing is selected
+                        if ($.cookie('marketing') == 'yes') {
+                            if ($('#marketing').is(':checked') || $('#marketing').is('[readonly]')) {
+                                showBlugentoPopup();
+                            }
+                        }
+
+                        if ($.cookie('statistics') == 'yes') {
+                            if ($('#statistics').is(':checked') || $('#statistics').is('[readonly]')) {
+                                showBlugentoPopup();
+                            }
+                        }
+
+                        if ($('.age-popup-buttons').length || <?php echo $popUpGdpr ?> == '1') {
+                            showBlugentoPopup();
+                        }
+                    } else {
+                        showBlugentoPopup();
+                    }
+                });
+            })(jQuery);
+        </script>
+    <?php endif; ?>
+<?php endif; ?>

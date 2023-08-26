@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<widgets>
+    <catalog_category_link type="blugento_catalog/category_widget_link" translate="name description" module="blugento_catalog">
+        <name>Catalog Category Link</name>
+        <description>Link to a Specified Category</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <anchor_text translate="label description">
+                <visible>1</visible>
+                <label>Custom Title</label>
+                <description>If empty, the Category Name will be used</description>
+                <type>text</type>
+                <sort_order>1</sort_order>
+            </anchor_text>
+            <title translate="label">
+                <visible>1</visible>
+                <label>Anchor Custom Text</label>
+                <type>text</type>
+                <sort_order>2</sort_order>
+            </title>
+            <button_custom_text translate="label">
+                <visible>1</visible>
+                <label>Button Custom Text</label>
+                <type>text</type>
+                <sort_order>3</sort_order>
+            </button_custom_text>
+            <enable_child_categories translate="label">
+                <visible>1</visible>
+                <label>Show child categories</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>0</value>
+                <sort_order>4</sort_order>
+            </enable_child_categories>
+            <enabled_category_short_description>
+                <visible>1</visible>
+                <label>Show category short description</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>0</value>
+                <sort_order>5</sort_order>
+            </enabled_category_short_description>
+            <enabled_category_description>
+                <visible>1</visible>
+                <label>Show category description</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>0</value>
+                <sort_order>6</sort_order>
+            </enabled_category_description>
+            <category_widget_image_width translate="label">
+                <visible>1</visible>
+                <label>Category Image Width</label>
+                <type>select</type>
+                <source_model>blugento_catalog/system_config_source_image</source_model>
+                <value>0</value>
+                <sort_order>7</sort_order>
+            </category_widget_image_width>
+            <category_widget_image_height translate="label">
+                <visible>1</visible>
+                <label>Category Image Height</label>
+                <type>select</type>
+                <source_model>blugento_catalog/system_config_source_image</source_model>
+                <value>0</value>
+                <sort_order>8</sort_order>
+            </category_widget_image_height>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>catalog/category/widget/link/link_block.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>catalog/category/widget/link/link_block.phtml</value>
+                        <label>Category Link Block Template</label>
+                    </default>
+                    <link_inline translate="label">
+                        <value>catalog/category/widget/link/link_inline.phtml</value>
+                        <label>Category Link Inline Template</label>
+                    </link_inline>
+                </values>
+                <sort_order>9</sort_order>
+            </template>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </id_path>
+        </parameters>
+    </catalog_category_link>
+</widgets>

@@ -1,0 +1,58 @@
+<?php
+    $logoSrc = Mage::getStoreConfig('design/header/logo_src');
+    $logoAlt = Mage::getStoreConfig('design/header/logo_alt');
+?>
+<div class="form-formsgenerator">
+    <a id="logo" href="<?php echo $this->getUrl('') ?>">
+        <img src="<?php echo $this->getSkinUrl($logoSrc) ?>" />
+    </a>
+    <ul class="form-list">
+        <?php echo $this->getChildHtml('content') ?>
+    </ul>
+</div>
+
+<style>
+
+    .form-formsgenerator {
+        background-color: #fff;
+        margin-left: 25%;
+        margin-right: 25%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-right: 5%;
+        box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    li {
+        padding-bottom: 15px;
+    }
+
+    .form-list {
+        list-style-type: none;
+    }
+
+    .input-text, .formsgenerator-select {
+        width: 100%;
+        min-height: 35px;
+    }
+
+    button {
+        background-color: #000;
+        color: #fff;
+        min-width: 100px;
+        min-height: 30px;
+    }
+
+    .comment {
+        font-size: 13px;
+    }
+
+    body {
+        background-color: #f0f0f0;
+    }
+
+    #logo {
+        padding-left: 10px;
+    }
+
+</style>

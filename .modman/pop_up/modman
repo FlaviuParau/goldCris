@@ -1,0 +1,8 @@
+src/app/etc/modules/Blugento_Popup.xml																			app/etc/modules/Blugento_Popup.xml
+
+src/app/code/local/Blugento/Popup																				app/code/local/Blugento/Popup
+
+src/app/design/frontend/base/default/layout/blugento_popup.xml                                                  app/design/frontend/base/default/layout/blugento_popup.xml
+src/app/design/frontend/base/default/template/blugento/popup                                                    app/design/frontend/base/default/template/blugento/popup
+
+src/app/locale/ro_RO/Blugento_Popup.csv                                                                         app/locale/ro_RO/Blugento_Popup.csv

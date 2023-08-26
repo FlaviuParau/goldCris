@@ -1,0 +1,85 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /** @var $this Amasty_StoreCredit_Block_Customer_History */ ?>
+
+<h2><?php echo $this->__('Credit Transactions');?></h2>
+
+<?php $_transactions = $this->getTransactions(); ?>
+<?php if($_transactions->getSize() > 0 ): ?>
+
+	<?php echo $this->getPagerHtml(); ?>
+<table cellspacing="0" width="100%" class="data-table box-table" id="amstcred-customer-history-table">
+	<col width="30" />
+	<col/>
+	<col />
+	<col />
+	<col />
+
+
+	<thead>
+	<tr>
+		<th><?php echo $this->__('ID') ?></th>
+		<th><?php echo $this->__('Operation Name') ?></th>
+		<th><?php echo $this->__('Operation Value') ?></th>
+		<th><?php echo $this->__('Balance') ?></th>
+		<th><?php echo $this->__('Date') ?></th>
+	</tr>
+	</thead>
+
+	<tbody>
+		<?php foreach($this->getTransactions() as $_transaction): ?>
+			<?php /** @var $_transaction Amasty_StoreCredit_Model_BalanceHistory */ ?>
+			<tr>
+				<td>
+					<?php echo $_transaction->getId();?>
+				</td>
+
+				<td>
+					<?php
+					$_operationData = $_transaction->getFirstOperationData();
+					switch($_transaction->getAction()) {
+						case Amasty_StoreCredit_Model_BalanceHistory::ACTION_PAY_ORDER:
+						case Amasty_StoreCredit_Model_BalanceHistory::ACTION_REFUND_ORDER:
+						case Amasty_StoreCredit_Model_BalanceHistory::ACTION_PURCHASE:
+								$order = $_transaction->getOrder();
+								if($order->getId()) {
+									$_url = $this->getUrl('sales/order/view', array('order_id'=>$order->getId()));
+									$_operationData = "<a href=\"{$_url}\">{$_operationData}</a>";
+								}
+
+							break;
+					}
+					?>
+					<?php echo $_transaction->getActionName(null, $_operationData);?>
+				</td>
+
+				<td>
+					<?php echo Mage::helper('core')->currency($_transaction->getBalanceDelta());?>
+				</td>
+
+				<td>
+					<?php echo Mage::helper('core')->currency($_transaction->getBalanceAmount());?>
+				</td>
+
+				<td>
+					<?php echo $this->formatDate($_transaction->getUpdatedAt(), Mage_Core_Model_Locale::FORMAT_TYPE_SHORT, true);?>
+				</td>
+
+			</tr>
+
+		<?php endforeach;?>
+
+	</tbody>
+</table>
+
+<?php else: ?>
+<div>
+	<?php echo $this->__('Transaction History is empty');?>
+</div>
+
+<?php endif;?>

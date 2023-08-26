@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Blugento Sliders
+*
+* Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+* LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+*
+* @package Blugento_Sliders
+* @author Daniel Gheoltan <daniel.gheoltan@mindmagnetsoftware.com>
+* @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+* @link http://www.blugento.com
+*/
+-->
+<config>
+    <modules>
+        <Blugento_Sliders>
+            <version>1.0.5</version>
+        </Blugento_Sliders>
+    </modules>
+    <global>
+        <helpers>
+            <blugento_sliders>
+                <class>Blugento_Sliders_Helper</class>
+            </blugento_sliders>
+        </helpers>
+        <blocks>
+            <blugento_sliders>
+                <class>Blugento_Sliders_Block</class>
+            </blugento_sliders>
+        </blocks>
+        <models>
+            <blugento_sliders>
+                <class>Blugento_Sliders_Model</class>
+                <resourceModel>blugento_sliders_mysql4</resourceModel>
+            </blugento_sliders>
+            <blugento_sliders_mysql4>
+                <class>Blugento_Sliders_Model_Mysql4</class>
+                <entities>
+                    <banner>
+                        <table>blugento_sliders_banner</table>
+                    </banner>
+                    <group>
+                        <table>blugento_sliders_group</table>
+                    </group>
+                </entities>
+            </blugento_sliders_mysql4>
+        </models>
+        <resources>
+            <blugento_sliders_setup>
+                <setup>
+                    <module>Blugento_Sliders</module>
+                </setup>
+            </blugento_sliders_setup>
+        </resources>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_sliders>
+                    <file>blugento_sliders.xml</file>
+                </blugento_sliders>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <blugento_sliders>
+                    <files>
+                        <default>Blugento_Sliders.csv</default>
+                    </files>
+                </blugento_sliders>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_sliders before="Mage_Adminhtml">Blugento_Sliders_Adminhtml</blugento_sliders>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_sliders>
+                    <file>blugento_sliders.xml</file>
+                </blugento_sliders>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <blugento_sliders>
+                    <files>
+                        <default>Blugento_Sliders.csv</default>
+                    </files>
+                </blugento_sliders>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <blugento_sliders>
+            <settings>
+                <enabled>1</enabled>
+            </settings>
+        </blugento_sliders>
+    </default>
+</config>

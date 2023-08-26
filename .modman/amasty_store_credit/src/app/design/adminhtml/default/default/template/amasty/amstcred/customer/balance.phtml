@@ -1,0 +1,21 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /** @var $this Amasty_StoreCredit_Block_Adminhtml_Customer_Edit_Tab_CustomerBalance_Balance */ ?>
+<div class="entry-edit">
+	<div class="entry-edit-head">
+		<h4 class="icon-head head-account"><?php echo $this->__('Credit Information')?></h4>
+	</div>
+	<div class="fieldset">
+		<?php if($this->isSingleStoreMode()): ?>
+			<?php $balance = $this->getCustomerBalance();?>
+			<?php echo Mage::helper('core')->currency($balance->getAmount()); ?>
+		<?php else: ?>
+			<?php echo $this->getChildHtml('grid')?>
+		<?php endif;?>
+	</div>
+</div>

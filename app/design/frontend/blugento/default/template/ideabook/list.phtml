@@ -1,0 +1,107 @@
+<?php
+/**
+ * MindMagnet
+ *
+ * @category    MindMagnet
+ * @package     MindMagnet_Ideabook
+ * @author      mihai.rastasan@mindmagnetsoftware.com
+ * @date        11.05.2015
+ * @copyright   Copyright (c) 2015 Mind Magnet Software (http://www.mindmagnetsoftware.com)
+ *
+ */
+
+/* @var MindMagnet_Ideabook_Helper_Image $_imageHelper */
+$_imageHelper = Mage::helper('ideabook/image');
+
+/* @var MindMagnet_Ideabook_Block_List $this */
+$mediaPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+$itemsCollection = $this->getActiveItems();
+
+$includeCategoryData = Mage::getStoreConfig('ideabook/category/insert_details');
+
+$width   = $this->getCategoryImageWidth();
+$height  = $this->getCategoryImageHeight();
+
+//$category = Mage::registry('ideabook_category');
+
+$insertType = Mage::getStoreConfig('ideabook/menu/insert_type');
+?>
+<?php $categories = Mage::getModel('ideabook/category')->getAllCategories();
+
+foreach ($categories as $category) : ?>
+    <?php if ($category->getStatus() && $category->getId() && $includeCategoryData): ?>
+        <?php
+        $categoryImage = $category->getImagePath() ? $mediaPath . 'ideabook/category/' . $category->getImagePath() : null;
+        $categoryName = $category->getName();
+        $categoryDescription = $category->getDescription();
+        ?>
+        <div class="page-title">
+            <h1><?php echo $categoryName; ?></h1>
+        </div>
+        <?php if ($categoryImage): ?>
+            <p class="category-image">
+                <img src="<?php echo $categoryImage; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"
+                     alt=""/>
+            </p>
+        <?php endif; ?>
+        <div class="ideabook-category-description"><?php echo $categoryDescription; ?></div>
+    <?php endif; ?>
+<?php endforeach; ?>
+
+<?php if (!$itemsCollection->count()): ?>
+    <h2 class="note-msg"><?php echo $this->__('There are no items matching the selection.') ?></h2>
+<?php endif; ?>
+
+<?php if ($this->getMode() != 'grid'): // List mode ?>
+
+    <?php $_iterator = 0; ?>
+    <ol class="products-list">
+        <?php foreach ($itemsCollection as $item): ?>
+            <li class="item<?php if (++$_iterator == sizeof($itemsCollection)): ?> last<?php endif; ?>">
+                <div class="ideabook_content">
+                    <div class="item-inner>
+                        <div class="item-image">
+                            <a href="<?php echo $item->getLink(); ?>">
+                                <img src="<?php echo $_imageHelper->init($item, 'image')->resize($width, $height); ?>" alt="<?php echo $item->getTitle(); ?>"
+                            /></a>
+                        </div>
+                        <div class="product-box">
+                            <h3><a href="<?php echo $item->getLink(); ?>"><?php echo $item->getTitle(); ?></a></h3>
+                            <div class="item-desc std"><?php echo $item->getDescription(); ?></div>
+                            <div class="button-container">
+                                <a href="<?php echo $item->getLink(); ?>" class="button"><span><span><?php echo $this->__('See more details') ?></span><span class="marker">&nbsp;</span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
+    </ol>
+
+<?php else: // Grid mode ?>
+
+    <?php $_collectionSize = $itemsCollection->count() ?>
+    <?php $_columnCount = 4; ?>
+    <ul class="products-grid">
+        <?php foreach ($itemsCollection as $item): ?>
+            <li class="item">
+                <div class="item-inner">
+                    <div class="item-image">
+                        <a href="<?php echo $item->getLink(); ?>" title="<?php echo $item->getTitle(); ?>" class="product-image">
+                            <img src="<?php echo $_imageHelper->init($item, 'image')->resize($width, $height); ?>" alt="<?php echo $item->getTitle(); ?>"
+                        /></a>
+                    </div>
+                    <div class="product-box">
+                        <h2 class="product-name"><a href="<?php echo $item->getLink(); ?>"><?php echo $item->getTitle(); ?></a></h2>
+                        <div class="item-details">
+                            <div class="button-container">
+                                <a href="<?php echo $item->getLink(); ?>" class="button"><span><span><?php echo $this->__('See more details') ?></span><span class="marker">&nbsp;</span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach ?>
+    </ul>
+<?php endif; ?>
+<?php echo $this->getToolbarHtml() ?>

@@ -1,0 +1,52 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_icon.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.icon--menu,
+%icon--menu {
+    @include icon-menu();
+}
+
+body[data-dock=".nav-container"],
+body.nav-modal-open {
+    .nav-mobile-trigger {
+        @if ($layout--nav_mobile_new_option == 2) {
+            z-index: 10;
+        }
+    
+        @if ($layout--checkout_cart_modal == 1 and $layout--nav_mobile_new_option == 2) {
+            position: absolute;
+            top: 10px;
+            left: -40px;
+            width: 25px;
+            z-index: 9999;
+        }
+    }
+
+    .icon--menu,
+    %icon--menu {
+        @include icon-menu-fixed();
+    }
+}
+
+.icon--search,
+%icon--search {
+    display: inline-block;
+    position: relative;
+    width: 34px;
+    height: 34px;
+    background: $icon--loupe--a1 no-repeat 50% 50%;
+    background-size: contain;
+}
+
+.icon--profile,
+%icon--profile {
+    display: inline-block;
+    position: relative;
+    width: 34px;
+    height: 34px;
+    background: $icon--profile--a1 no-repeat 50% 50%;
+    background-size: contain;
+}

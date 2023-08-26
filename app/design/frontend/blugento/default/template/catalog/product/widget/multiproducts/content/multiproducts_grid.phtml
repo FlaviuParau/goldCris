@@ -1,0 +1,53 @@
+<?php /* @var Blugento_Multiproducts_Block_Catalog_Product_Widget_Multiproducts $this */ ?>
+
+<?php
+$_productCollection = $this->getProductCollection();
+if (!$_productCollection || !count($_productCollection)) {
+    return;
+}
+
+$_isSlider = $this->getProductSlider();
+?>
+
+<div class="widget-multiproducts">
+    <h2 class="subtitle"><?php echo $this->getTitle(); ?></h2>
+    <ul
+        class="products-grid <?php echo $this->getTypeOfTemplate() ?>"
+        <?php if ($_isSlider): ?>
+            data-slider="<?php echo $this->getProductSlider() ?>"
+            data-slider-animation="<?php echo $this->getSliderAnimation() ?>"
+            data-slider-item-row="<?php echo $this->getSliderItemRow() ?>"
+            data-slider-item-scroll="<?php echo $this->getSliderItemScroll() ?>"
+        <?php endif; ?>
+        >
+        <?php foreach ($_productCollection as $_product): ?>
+            <?php
+            // Provides extra blocks on which to hang some features for products in the list
+            // Features providing UI elements targeting this block will display directly below the product name
+            $_productNameAfter = false;
+            if ($this->getChild('name.after')) {
+                foreach ($this->getChild('name.after')->getSortedChildren() as $_nameAfterChildName) {
+                    $_productNameAfter .= $this->getChild('name.after')->getChild($_nameAfterChildName)->setProduct($_product)->toHtml();
+                }
+            }
+            ?>
+            <?php $_product->setNameAfter($_productNameAfter); ?>
+            <li class="item">
+                <?php echo $this->getLayout()->createBlock('catalog/product_list')->setProduct($_product)->setTemplate('catalog/product/list-grid-item.phtml')->toHtml(); ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        // Set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>

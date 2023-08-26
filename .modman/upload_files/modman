@@ -1,0 +1,5 @@
+src/app/code/local/Blugento/UploadFiles                                     app/code/local/Blugento/UploadFiles
+src/app/etc/modules/Blugento_UploadFiles.xml                                app/etc/modules/Blugento_UploadFiles.xml
+src/app/locale/en_US/Blugento_UploadFiles.csv                               app/locale/en_US/Blugento_UploadFiles.csv
+src/app/locale/ro_RO/Blugento_UploadFiles.csv                               app/locale/ro_RO/Blugento_UploadFiles.csv
+src/app/design/adminhtml/default/default/template/blugento/uploadfiles      app/design/adminhtml/default/default/template/blugento/uploadfiles

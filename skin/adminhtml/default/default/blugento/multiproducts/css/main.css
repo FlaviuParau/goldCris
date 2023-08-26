@@ -1,0 +1,18 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       main.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+.multiproducts-type a { display: block; padding: 8px; margin-bottom: 10px; border: 1px solid #d6d6d6; background-color: whitesmoke; }
+.multiproducts-type a.active { border: 1px solid #000; background-color: wheat; }
+.multiproducts-type a h6 { margin-bottom: 10px; }
+.multiproducts-type a div { font-size: 0; line-height: 0; }
+.multiproducts-type .option span { display: inline-block; width: 38px; height: 38px; margin-right: 5px; border: 1px solid #000; background-color: #fff; }
+.multiproducts-type .option-2 span, .multiproducts-type .option-3 span, .multiproducts-type .option-4 span, .multiproducts-type .option-5 span { width: 23px; height: 23px; }
+.multiproducts-type .option-0 span, .multiproducts-type .option-2 span { border-bottom-width: 10px; }
+.multiproducts-type .option-2 div:after, .multiproducts-type .option-2 div:before, .multiproducts-type .option-3 div:after, .multiproducts-type .option-3 div:before { content: ''; display: inline-block; width: 23px; height: 23px; margin-right: 5px; border: 1px solid #000; border-bottom-width: 10px; background-color: #fff; }
+.multiproducts-type .option-3 div:after, .multiproducts-type .option-3 div:before { border-bottom: 1px solid #000; }
+.multiproducts-type .option-4 span { border-right: 40px solid #000; }
+.multiproducts-type .option-5 span { border-left: 40px solid #000; }
+
+select[name="parameters[type_of_template]"] { display: none; }

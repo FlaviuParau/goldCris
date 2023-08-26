@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Blugento_Wishlist>
+			<version>1.0.1</version>
+		</Blugento_Wishlist>
+	</modules>
+	<global>
+		<resources>
+			<blugento_wishlist_setup>
+				<setup>
+					<module>Blugento_Wishlist</module>
+					<class>Mage_Customer_Model_Resource_Setup</class>
+				</setup>
+			</blugento_wishlist_setup>
+		</resources>
+	</global>
+    <frontend>
+        <routers>
+            <wishlist>
+                <args>
+                    <modules>
+                        <blugento_wishlist before="Mage_Wishlist">Blugento_Wishlist</blugento_wishlist>
+                    </modules>
+                </args>
+            </wishlist>
+        </routers>
+    </frontend>
+	<default>
+		<wishlist>
+			<email>
+				<disable_share>1</disable_share>
+			</email>
+		</wishlist>
+	</default>
+</config>

@@ -1,0 +1,45 @@
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+
+$_productListFiltersHeight = (int) ($this->getLayout()->getBlock('root')->getProductListFiltersHeight() ?: 2);
+$_filterNofollow = Mage::getStoreConfig('blugento_seoenhancements/enhancements_group/add_nofollow_on_filters_link');
+?>
+<?php if ($this->canShowBlock()): ?>
+<div class="filters-mobile-trigger on-mobile" data-dock=".filters-mobile-trigger-box"><?php echo $this->__('Filter') ?></div>
+<div class="block block-layered-nav filters-mobile-trigger-box dock">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Shop By') ?></span></strong>
+    </div>
+    <div class="block-content">
+        <?php
+        $filters = $this->getLayer()->getState()->getFilters();
+        $state = $this->getStateHtml();
+        ?>
+        <?php if ($filters || $state): ?>
+            <div class="currently-wrapper">
+                <?php echo $state ?>
+                <?php if ($filters): ?>
+                    <div class="actions">
+                        <a href="<?php echo $this->getClearUrl() ?>" <?php if ($_filterNofollow): ?>rel="nofollow"<?php endif; ?>><?php echo $this->__('Clear All') ?></a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($this->canShowOptions()): ?>
+            <dl id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter): ?>
+                <?php if ($_filter->getItemsCount()): ?>
+                    <dt><?php echo $this->__($_filter->getName()) ?></dt>
+                    <dd class="<?php if ($_productListFiltersHeight == 1): ?>minimize-filters<?php endif; ?>"><?php echo $_filter->getHtml() ?></dd>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+        <?php endif; ?>
+    </div>
+</div>
+<?php endif; ?>

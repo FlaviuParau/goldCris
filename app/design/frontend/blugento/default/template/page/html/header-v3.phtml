@@ -1,0 +1,281 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+<?php
+$_navLayout = (int) ($this->getLayout()->getBlock('root')->getNavLayout() ?: 2);
+$_stickyHeader = (int) ($this->getLayout()->getBlock('root')->getStickyHeader() ?: 2);
+$_stickyHeaderAll = (int) ($this->getLayout()->getBlock('root')->getStickyHeaderAll() ?: 2);
+$_layoutHeaderOrderIcons = (int) ($this->getLayout()->getBlock('root')->getLayoutHeaderOrderIcons() ?: 1);
+$_headerWishlist = (int) ($this->getLayout()->getBlock('root')->getHeaderWishlist() ?: 2);
+$_stickyHeaderLogo = (int) ($this->getLayout()->getBlock('root')->getStickyHeaderLogo() ?: 1);
+$_stickyHeaderLogoMobile = (int) ($this->getLayout()->getBlock('root')->getStickyHeaderLogoMobile() ?: 1);
+$_mobileHeaderNewLayout = (int) ($this->getLayout()->getBlock('root')->getNavMobileNewOption() ?: 1);
+$_layoutHeaderSearchIcons = (int) ($this->getLayout()->getBlock('header')->getLayoutHeaderSearchIcons() ?: 1);
+$_stickyHeaderLinks = (int) ($this->getLayout()->getBlock('root')->getStickyHeaderLinks() ?: 2);
+?>
+
+<?php
+$helper = $this->helper('customer');
+$customerHelper = $this->helper('customer');
+$topMenu = $this->getChildHtml('topMenu');
+$topSearch = $this->getChildHtml('topSearch');
+$topSearchSticky = $this->getChildHtml('topSearchSticky');
+$cart = $this->getChildHtml('cart_sidebar');
+$account = $this->getChildHtml('topAccount');
+$isNavLeftLayout = in_array($_navLayout, array(4, 5, 6, 7));
+$rootTemplate = Mage::app()->getLayout()->getBlock('root')->getTemplate();
+$rootTemplateHasLeftColumn = in_array($rootTemplate, array('page/2columns-left.phtml', 'page/3columns.phtml'));
+$seoHelper = $this->helper('blugento_seoenhancements/siteLogo');
+
+if ($seoLogo = $seoHelper->getNewSiteLogo()) {
+	$logoImage = $seoLogo;
+} else {
+	// Get logo image from variable-image.xml
+	$logoImage = Mage::helper('blugento_theme')->getVariable('page_brand_logo', 'image', 'var_page_brand_logo.png');
+	$extension = pathinfo($logoImage, PATHINFO_EXTENSION);
+
+    if ($extension == 'svg') {
+        $logoImage = $this->getSkinUrl('blugento/images/' . $logoImage);
+    } else {
+        $logoImage = $this->getSkinUrl('images/' . $logoImage);
+    }
+}
+
+$usps = [];
+if (Mage::helper('core')->isModuleEnabled('Blugento_Usp')) {
+	/**
+	 * @var Blugento_Usp_Block_Cms_Usp $uspBlock
+	 */
+	$uspBlock = $this->getlayout()->createBlock('blugento_usp/cms_usp');
+	$usps = $uspBlock->uspsAllPages();
+}
+?>
+<header class="page-header" data-version="3" data-sticky="<?php echo $_stickyHeader ?>" data-sticky-links="<?php echo $_stickyHeaderLinks ?>" data-nav="<?php echo $_navLayout ?>" data-left-column="<?php echo $rootTemplateHasLeftColumn ? 1 : 0 ?>">
+	<?php if (Mage::helper('core')->isModuleEnabled('Blugento_Usp')) :
+		if (count($usps)) : ?>
+			<div class="usp-wrapper">
+				<div class="page-container usp-container">
+					<?php foreach ($usps as $usp) :
+						echo '<div class="usp-top-item">' . $usp['content'] . '</div>';
+					endforeach; ?>
+				</div>
+			</div>
+		<?php endif;
+	endif; ?>
+    <div class="page-container-wrapper desktop">
+        <div class="page-container">
+            <?php if (Mage::getStoreConfig('quotationmanagerpro/general/enabled')): ?>
+                <div class="header-miniquote">
+                    <?php echo $this->getChildHtml('minicart_quote_head'); ?>
+                </div>
+            <?php endif; ?>
+            <?php if ($helper->isLoggedIn()): ?>
+                <div class="hello-user">
+                    <strong><?php echo $this->__('Hello, %s!', Mage::getSingleton('customer/session')->getCustomer()->getName()); ?></strong>
+                </div>
+            <?php endif;?>
+        </div>
+        <div class="page-container">
+            <div class="page-container-inner">
+	            <?php if (Mage::helper('core')->isModuleEnabled('Anowave_TaxSwitch')): ?>
+		            <?php if (Mage::helper('taxswitch')->isAutoDisplayEnabled()): ?>
+			            <?php echo $this->getChildHtml('tax.switch') ?>
+		            <?php endif; ?>
+	            <?php endif; ?>
+                <?php echo $this->getChildHtml('store_language') ?>
+                <?php echo $this->getChildHtml('currency') ?>
+                <?php echo $this->getChildHtml('cms_blugento_header_block_1') ?>
+                <?php echo $this->getChildHtml('cms_blugento_header_block_2') ?>
+
+                <!-- Layout oder icons default -->
+                <?php if ($_layoutHeaderOrderIcons == 1): ?>
+                    <?php if ($topSearch): ?>
+                        <div class="mini-search" id="mini-search" data-search-version="<?php echo $_layoutHeaderSearchIcons ?>">
+                            <?php echo $topSearch ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php echo $account ?>
+
+                    <?php if ($cart): ?>
+                        <div class="mini-cart" id="mini-cart">
+                            <?php echo $cart ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+
+                <!-- Layout oder icons version 2 -->
+                <?php if ($_layoutHeaderOrderIcons == 2): ?>
+                    <?php if ($topSearch): ?>
+                        <div class="mini-search" id="mini-search" data-search-version="<?php echo $_layoutHeaderSearchIcons ?>">
+                            <?php echo $topSearch ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($cart): ?>
+                        <div class="mini-cart" id="mini-cart">
+                            <?php echo $cart ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php echo $account ?>
+                <?php endif; ?>
+
+                <!-- Layout oder icons version 3 -->
+                <?php if ($_layoutHeaderOrderIcons == 3): ?>
+                    <?php if ($cart): ?>
+                        <div class="mini-cart" id="mini-cart">
+                            <?php echo $cart ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php echo $account ?>
+
+                    <?php if ($topSearch): ?>
+                        <div class="mini-search" id="mini-search" data-search-version="<?php echo $_layoutHeaderSearchIcons ?>">
+                            <?php echo $topSearch ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+
+                <!-- Layout oder icons version 4 -->
+                <?php if ($_layoutHeaderOrderIcons == 4): ?>
+                    <?php echo $account ?>
+
+                    <?php if ($cart): ?>
+                        <div class="mini-cart" id="mini-cart">
+                            <?php echo $cart ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($topSearch): ?>
+                        <div class="mini-search" id="mini-search" data-search-version="<?php echo $_layoutHeaderSearchIcons ?>">
+                            <?php echo $topSearch ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+             </div>
+        </div>
+    </div>
+    <div class="page-container-wrapper page-container-wrapper--nav desktop">
+        <div class="page-container page-container--nav">
+            <div class="page-container-inner">
+                <div class="logo" id="logo">
+                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+                        <img src="<?php echo $logoImage ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                    </a>
+                </div>
+
+                <?php if ($topMenu): ?>
+                    <?php if ($rootTemplateHasLeftColumn && $isNavLeftLayout): ?>
+                        <!-- No navigation in header -->
+                    <?php else: ?>
+                        <?php echo $topMenu ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+	
+	            <?php if($_headerWishlist == 1): ?>
+		            <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('wishlist/wishlist.phtml')->toHtml(); ?>
+	            <?php endif; ?>
+            </div>
+        </div>
+    </div>
+	
+	<?php if ($_stickyHeader == 1): ?>
+		<div class="page-container-wrapper page-container-wrapper--sticky on-desktop" id="header-sticky-content">
+			<div class="page-container">
+				<div class="page-container-inner">
+					<div class="nav-mobile-trigger icon--menu" data-dock=".nav-container" data-new-layout="<?php echo $_mobileHeaderNewLayout; ?>">
+						<span class="diagonal part-1"></span>
+						<span class="horizontal"></span>
+						<span class="diagonal part-2"></span>
+					</div>
+					<?php if ($_stickyHeaderLogo == 1) : ?>
+						<div class="logo-wrapper--sticky" id="logo-wrapper-sticky"></div>
+					<?php endif; ?>
+					<?php if ($_stickyHeaderAll == 1 && $_stickyHeaderLogoMobile == 1) : ?>
+						<div class="tablet-logo">
+							<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+								<img src="<?php echo $logoImage ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+							</a>
+						</div>
+					<?php endif; ?>
+					
+					<div class="nav-container--sticky" id="nav-container-sticky"></div>
+					<div class="mini-search-wrapper--sticky" id="mini-search-wrapper-sticky">
+						<?php if ($topSearch): ?>
+							<div class="mini-search" id="mini-search-sticky" data-search-version="<?php echo $_layoutHeaderSearchIcons ?>">
+								<?php echo $topSearchSticky ?>
+							</div>
+							<div class="mobile-trigger mobile-trigger--search" id="search-mobile-trigger-sticky">
+								<a href="#" title="<?php echo $this->__('Search'); ?>"></a>
+							</div>
+						<?php endif; ?>
+					</div>
+					<?php if ($_stickyHeaderAll == 1): ?>
+						<?php if ($account) : ?>
+							<div class="account--sticky" id="account-sticky"></div>
+							<div class="mobile-trigger mobile-trigger--profile <?php if ($customerHelper->isLoggedIn()): ?> mobile-trigger--profile-login<?php endif; ?>"<?php if ($customerHelper->isLoggedIn()): ?> data-dock=".main-aside .block-account" data-dock-position="right"<?php endif; ?>>
+                                <a class="<?php if (!$customerHelper->isLoggedIn()): ?>login-btn<?php endif; ?>" href="<?php echo Mage::getUrl('customer/account/login') ?>" title="<?php echo $this->__('Log In'); ?>"></a>
+							</div>
+						<?php endif; ?>
+						<?php if ($_headerWishlist == 1) : ?>
+							<div class="wishlist-count--sticky" id="wishlist-count-sticky"></div>
+						<?php endif; ?>
+					<?php endif; ?>
+					<div class="mini-cart-wrapper--sticky" id="mini-cart-wrapper-sticky"></div>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
+
+    <div class="page-container-wrapper on-mobile mobile">
+        <div class="page-container">
+            <div class="phone-logo">
+                <a href="<?php echo $this->getUrl('') ?>">
+                    <img src="<?php echo $logoImage ?>" alt="<?php echo $this->getLogoAlt() ?>" class="center" />
+                </a>
+            </div>
+	
+	        <div class="nav-mobile-trigger icon--menu" data-dock=".nav-container" data-new-layout="<?php echo $_mobileHeaderNewLayout; ?>">
+                <input type="checkbox" id="nav-mobile" />
+                <span class="diagonal part-1"></span>
+                <span class="horizontal"></span>
+                <span class="diagonal part-2"></span>
+            </div>
+
+            <div class="tablet-logo">
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+                    <img src="<?php echo $logoImage ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                </a>
+            </div>
+
+            <?php if ($cart): ?>
+                <div class="mini-cart">
+                    <?php echo $cart ?>
+                </div>
+            <?php endif; ?>
+	
+	        <?php if($_headerWishlist == 1): ?>
+		        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('wishlist/wishlist.phtml')->toHtml(); ?>
+	        <?php endif; ?>
+	        
+            <?php if ($account) : ?>
+		        <div class="mobile-trigger mobile-trigger--profile <?php if ($customerHelper->isLoggedIn()): ?> mobile-trigger--profile-login<?php endif; ?>"<?php if ($customerHelper->isLoggedIn()): ?> data-dock=".main-aside .block-account" data-dock-position="right"<?php endif; ?>>
+                    <a class="<?php if (!$customerHelper->isLoggedIn()): ?>login-btn<?php endif; ?>" href="<?php echo Mage::getUrl('customer/account/login') ?>" title="<?php echo $this->__('Log In'); ?>"></a>
+		        </div>
+	        <?php endif; ?>
+            <?php if ($topSearch): ?>
+                <div class="mobile-trigger mobile-trigger--search" id="search-mobile-trigger">
+                    <a href="#" title="<?php echo $this->__('Search'); ?>"></a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+	<?php if ($_mobileHeaderNewLayout == 2) : ?>
+		<span class="menu-overlay-modal"></span>
+	<?php endif; ?>
+</header>

@@ -1,0 +1,17 @@
+src/app/code/local/AW/Giftwrap						app/code/local/AW/Giftwrap
+src/app/code/local/AW/Lib						app/code/local/AW/Lib
+
+src/app/design/adminhtml/default/default/layout/aw_giftwrap.xml		app/design/adminhtml/default/default/layout/aw_giftwrap.xml
+src/app/design/adminhtml/default/default/template/aw_giftwrap		app/design/adminhtml/default/default/template/aw_giftwrap
+src/app/design/frontend/base/default/layout/aw_giftwrap.xml		app/design/frontend/base/default/layout/aw_giftwrap.xml
+src/app/design/frontend/base/default/template/aw_giftwrap		app/design/frontend/base/default/template/aw_giftwrap
+
+src/app/etc/modules/AW_Giftwrap.xml					app/etc/modules/AW_Giftwrap.xml
+src/app/etc/modules/AW_Lib.xml						app/etc/modules/AW_Lib.xml
+
+src/app/locale/en_US/AW_Giftwrap.csv					app/locale/en_US/AW_Giftwrap.csv
+
+src/media/aw_giftwrap/placeholder.png							media/aw_giftwrap/placeholder.png
+
+src/skin/adminhtml/default/default/aw_giftwrap				skin/adminhtml/default/default/aw_giftwrap
+src/skin/frontend/base/default/aw_giftwrap				skin/frontend/base/default/aw_giftwrap

@@ -1,0 +1,21 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_tag-blocks.scss
+    Version:        1.0
+    Description:    Tag - Aside Blocks Styles
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.block-tags {
+    ul {
+        @include cf;
+
+        margin-top: -5px;
+        margin-left: -15px;
+    }
+
+    li {
+        float: left;
+        margin: 0 0 0 15px;
+    }
+}

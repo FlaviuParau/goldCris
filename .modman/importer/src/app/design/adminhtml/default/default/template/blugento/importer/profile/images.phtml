@@ -1,0 +1,50 @@
+<?php /** @var Blugento_Importer_Block_Adminhtml_System_Convert_Profile_Images $this */ ?>
+
+<?php
+$result = $this->getProcessProfileImages();
+$success = isset($result['success']) ? $result['success'] : null;
+$error   = isset($result['error']) ? $result['error'] : null;
+?>
+
+<ul>
+    <li>
+    <?php if ($this->getProfile()->getId()):?>
+        <img src="<?php echo $this->getSkinUrl('images/note_msg_icon.gif')?>" class="v-middle" style="margin-right:5px"/>
+        <?php echo $this->__("Starting image profile execution, please wait...");?>
+        </li>
+        <li style="background-color:#FFD;">
+        <img src="<?php echo $this->getSkinUrl('images/fam_bullet_error.gif');?>" class="v-middle" style="margin-right:5px"/>
+        <?php echo $this->__("Warning: Please do not close the window during importing/exporting data");?>
+    <?php else:?>
+        <img src="<?php echo $this->getSkinUrl('images/error_msg_icon.gif');?>" class="v-middle" style="margin-right:5px"/>
+        <?php echo $this->__("No profile loaded...");?>
+    <?php endif;?>
+    </li>
+</ul>
+
+<?php if ($this->getProfile()->getId()):?>
+    <ul id="profileRows">
+        <?php if($success):?>
+            <li id="liBeforeFinishd" style="background-color:#77e27c;">
+                <img src="<?php echo $this->getSkinUrl('images/fam_bullet_error.gif');?>" class="v-middle" style="margin-right:5px"/>
+                <?php echo $success;?>
+            </li>
+        <?php endif;?>
+        <?php if($error):?>
+            <li id="liBeforeFinish" style="background-color:#ff694d;">
+                <img src="<?php echo $this->getSkinUrl('images/fam_bullet_error.gif');?>" class="v-middle" style="margin-right:5px"/>
+                <?php echo $error;?>
+            </li>
+        <?php endif;?>
+            <li id="liFinished">
+                <img src="<?php echo $this->getSkinUrl('images/note_msg_icon.gif');?>" class="v-middle" style="margin-right:5px"/>
+                <?php echo $this->__("Finished profile execution.");?>
+            </li>
+    </ul>
+<?php endif;?>
+
+<style type="text/css" >
+    ul { list-style-type:none; padding:0; margin:0; }
+    li { margin-left:0; border:1px solid #ccc; margin:2px; padding:12px 2px 12px 2px; font:normal 12px sans-serif; }
+    img { margin-right:5px; }
+</style>

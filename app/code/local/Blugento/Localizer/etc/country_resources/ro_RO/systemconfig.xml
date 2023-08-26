@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Blugento
+ * @package     Blugento_Localizer
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <default>
+        <localizer>
+            <system_config>
+                <default>
+                    <customer__create_account__confirm>0</customer__create_account__confirm>
+                    <newsletter__subscription__confirm>1</newsletter__subscription__confirm>
+                    <catalog__price__display_block_below_price>0</catalog__price__display_block_below_price>
+                    <catalog__price__cms_page_shipping>livrare</catalog__price__cms_page_shipping>
+                    <catalog__price__including_shipping_costs>0</catalog__price__including_shipping_costs>
+                    <catalog__custom_options__date_fields_order>d,m,y</catalog__custom_options__date_fields_order>
+                    <catalog__custom_options__time_format><![CDATA[24h]]></catalog__custom_options__time_format>
+                    <!--<general__region__state_required>CA,US</general__region__state_required>-->
+                    <sales__reorder__allow>0</sales__reorder__allow>
+                    <design__footer__copyright><![CDATA[&copy; {{year}} {{shop_name}}.]]></design__footer__copyright>
+
+                    <!-- First Day -->
+                    <general__locale__firstday>1</general__locale__firstday>
+
+                    <!-- Checkout agreements -->
+                    <checkout__options__enable_agreements>1</checkout__options__enable_agreements>
+
+                    <!-- Hide middlename -->
+                    <customer__address__middlename_show>0</customer__address__middlename_show>
+
+                    <!-- Set invoice template in Blugento PDF module -->
+                    <sales_pdf__invoice__item_price_column_order><![CDATA[qty,price_excl_tax,tax_rate,tax,subtotal]]></sales_pdf__invoice__item_price_column_order>
+                    <sales_pdf__invoice__engine><![CDATA[blugento_pdf/engine_invoice_romania]]></sales_pdf__invoice__engine>
+                    <sales_pdf__blugento_pdf__show_footer>1</sales_pdf__blugento_pdf__show_footer>
+                    <sales_pdf__invoice__show_delivery_time>0</sales_pdf__invoice__show_delivery_time>
+
+                    <!-- Set credit memo template in Blugento PDF module -->
+                    <sales_pdf__creditmemo__engine><![CDATA[blugento_pdf/engine_creditmemo_romania]]></sales_pdf__creditmemo__engine>
+
+                    <!-- Set tax display in invoice -->
+                    <tax__sales_display__grandtotal>0</tax__sales_display__grandtotal>
+                    <tax__sales_display__hide_grandtotal_excl_tax>0</tax__sales_display__hide_grandtotal_excl_tax>
+                    <tax__sales_display__no_sum_on_details>0</tax__sales_display__no_sum_on_details>
+                    <tax__sales_display__price>2</tax__sales_display__price>
+                    <tax__sales_display__shipping>2</tax__sales_display__shipping>
+                    <tax__sales_display__subtotal>2</tax__sales_display__subtotal>
+                    <tax__sales_display__zero_tax>0</tax__sales_display__zero_tax>
+                    <tax__sales_display__full_summary>0</tax__sales_display__full_summary>
+
+                    <!-- Set shipping tax class -->
+                    <tax__classes__shipping_tax_class>6</tax__classes__shipping_tax_class>
+
+                    <!-- Carriers -->
+                    <carriers__ups__active>0</carriers__ups__active>
+                    <carriers__usps__active>0</carriers__usps__active>
+                    <carriers__fedex__active>0</carriers__fedex__active>
+                    <carriers__dhl__active>0</carriers__dhl__active>
+                    <carriers__dhlint__active>0</carriers__dhlint__active>
+                    <carriers__flatrate__title><![CDATA[Livrare]]></carriers__flatrate__title>
+                    <carriers__flatrate__name><![CDATA[Cost transport:]]></carriers__flatrate__name>
+                    <carriers__flatrate__type>O</carriers__flatrate__type>
+                    <carriers__flatrate__price>15</carriers__flatrate__price>
+
+                    <!-- Allowed data feeds -->
+                    <blugentolocalizer__data_feeds__feeds><![CDATA[shopmania,pricero,compariro,okaziiro,paralero]]></blugentolocalizer__data_feeds__feeds>
+                    <blugentolocalizer__data_feeds__enabled>1</blugentolocalizer__data_feeds__enabled>
+
+                    <!-- Contact page -->
+                    <contacts__content__cms_page>contact</contacts__content__cms_page>
+                    <contacts__content__template>blugento</contacts__content__template>
+
+                    <!-- Cookie restriction enabled -->
+                    <web__cookie__cookie_restriction>0</web__cookie__cookie_restriction>
+
+                    <!-- Payment methods -->
+                    <payment__free__active>0</payment__free__active>
+                    <payment__cashondelivery__title><![CDATA[Plata Ramburs la livrare]]></payment__cashondelivery__title>
+                    <payment__cashondelivery__instructions><![CDATA[Plata se va face la primirea coletului.]]></payment__cashondelivery__instructions>
+
+                    <!-- Catalog SEO -->
+                    <catalog__seo__product_use_categories>0</catalog__seo__product_use_categories>
+
+                    <!-- Catalog Search -->
+                    <catalog__search__search_type>3</catalog__search__search_type>
+                </default>
+            </system_config>
+        </localizer>
+    </default>
+</config>

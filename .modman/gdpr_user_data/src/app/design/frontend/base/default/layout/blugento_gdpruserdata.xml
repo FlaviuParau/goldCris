@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_GdprUserData
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<layout version="0.1.0">
+
+    <default>
+        <reference name="footer">
+            <block type="blugento_gdpruserdata/page_html_links" name="gdpr.links" template="blugento/gdpruserdata/page/html/links.phtml" />
+        </reference>
+    </default>
+
+    <customer_account_edit>
+        <reference name="content">
+            <block type="blugento_gdpruserdata/page_html_links" name="gdpr.links" template="blugento/gdpruserdata/page/html/links.phtml" />
+        </reference>
+    </customer_account_edit>
+
+    <gdpruserdata_exportdata_index>
+        <reference name="content">
+            <block type="blugento_gdpruserdata/export" name="gdpr.export" template="blugento/gdpruserdata/export.phtml" />
+        </reference>
+    </gdpruserdata_exportdata_index>
+
+    <gdpruserdata_deletedata_index>
+        <reference name="content">
+            <block type="blugento_gdpruserdata/delete" name="gdpr.delete" template="blugento/gdpruserdata/delete.phtml" />
+        </reference>
+    </gdpruserdata_deletedata_index>
+
+</layout>

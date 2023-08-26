@@ -1,0 +1,17 @@
+src/app/code/local/Amasty/Acart                                             app/code/local/Amasty/Acart
+
+src/app/design/adminhtml/default/default/layout/amasty/amacart.xml          app/design/adminhtml/default/default/layout/amasty/amacart.xml
+src/app/design/adminhtml/default/default/template/amacart                   app/design/adminhtml/default/default/template/amacart
+
+src/app/design/frontend/base/default/layout/amacart.xml                     app/design/frontend/base/default/layout/amacart.xml
+src/app/design/frontend/base/default/template/amacart                       app/design/frontend/base/default/template/amacart
+
+src/app/etc/modules/Amasty_Acart.xml                                        app/etc/modules/Amasty_Acart.xml
+
+src/app/locale/en_US/template/email/amasty/amacart                          app/locale/en_US/template/email/amasty/amacart
+src/app/locale/en_US/Amasty_Acart.csv                                       app/locale/en_US/Amasty_Acart.csv
+
+src/app/locale/ro_RO/template/email/amasty/amacart                          app/locale/ro_RO/template/email/amasty/amacart
+src/app/locale/ro_RO/Amasty_Acart.csv                                       app/locale/ro_RO/Amasty_Acart.csv
+
+src/skin/frontend/base/default/images/amacart                               skin/frontend/base/default/images/amacart

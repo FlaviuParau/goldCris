@@ -1,0 +1,54 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-list6.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+    
+@if ($layout--product-list_item_box == 6) {
+    .products-grid,
+    %products-grid,
+    .products-list,
+    %products-list {
+        .product-image {
+            padding: 18px 20px;
+        }
+
+        .item-inner {
+            position: relative;
+
+            .product-box {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                background-color: $products-grid__item-inner_background-color;
+            }
+
+            .product-info {
+                .tax-details,
+                .configurable-swatch-list {
+                    display: none;
+                }
+            }
+
+            .product-actions {
+                display: none;
+            }
+
+            .short-info {
+                h2 {
+                    font-size: 14px;
+                    text-transform: none;
+                }
+
+                .desc {
+                    display: none;
+                }
+            }
+
+            .yotpo {
+                display: none;
+            }
+        }
+    }
+}

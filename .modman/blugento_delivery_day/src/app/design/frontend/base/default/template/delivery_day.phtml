@@ -1,0 +1,18 @@
+<?php $storeId = Mage::app()->getStore()->getStoreId(); ?>
+<?php if (Mage::helper('delivery_day')->isEnabled($storeId)) : ?>
+    <?php $_product = $this->getProduct(); ?>
+    <?php $difference = $this->getDifference($_product, $storeId); ?>
+    <?php if ($this->getDeliveryDay($_product, $storeId) && $difference == 0) : ?>
+        <div class="delivery-day" style="color:red">
+            <span class="additional-text-product-page"><?php echo Mage::getStoreConfig('delivery_day/general/additional_text_product_page', $storeId) . ' ' ?></span>
+            <span class="delivery-min" style="color:red"><?php echo $this->getDeliveryDay($_product, $storeId); ?></span>
+        </div>
+    <?php else : ?>
+        <div class="delivery-day" style="color:red">
+            <span class="additional-text-product-page"><?php echo Mage::getStoreConfig('delivery_day/general/additional_text_product_page', $storeId) . ' ' ?></span>
+            <span class="delivery-min"> <?php echo $this->getDeliveryDay($_product, $storeId); ?></span>
+            <span class="delivery-separator"> - </span>
+            <span class="delivery-max"><?php echo $this->getDeliveryDay($_product, $storeId, $difference); ?></span>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

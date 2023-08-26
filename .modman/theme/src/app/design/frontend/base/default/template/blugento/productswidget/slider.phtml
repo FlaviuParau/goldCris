@@ -1,0 +1,567 @@
+<?php
+/* @var Blugento_ProductsWidget_Block_Abstract $this */
+
+$helperCart = false;
+$hideAllAddToCart = false;
+$displayCustomBtn = false;
+$customBtnText = '';
+$customBtnPage = '';
+$displayCstomBtn = false;
+if (Mage::helper('core')->isModuleEnabled('Blugento_Cart')) {
+    $helperCart = Mage::helper('blugento_cart');
+    $hideAllAddToCart = $helperCart->getHideAll();
+    $displayCustomBtn = $helperCart->getDisplayCustomButton();
+    $customBtnPage = $displayCustomBtn ? $helperCart->getCustomBtnPage() : '';
+    if ($displayCustomBtn) {
+	    $customBtnText = ($helperCart->getCategoryCustomBtnText() != '' && $helperCart->getDisplayCustomBtnRedirect()) ? $helperCart->getCategoryCustomBtnText() : $helperCart->getCustomBtnText();
+    }
+}
+$customerHelper = $this->helper('customer');
+$helperTheme = $this->helper('blugento_theme');
+$_imgLazyLoad = (int) ($this->getLayout()->getBlock('root')->getImageLazyLoad() ?: 2);
+
+$_baseUrl = Mage::getBaseUrl();
+$_baseMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+$_baseMediaUrl = str_replace('/media', '', $_baseMedia);
+$_bannerWebp = Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/active') &&
+    Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/webp_conversion') && ($_baseUrl != $_baseMediaUrl);
+$_srcWebp = $_bannerWebp ? '.webp' : '';
+?>
+
+<?php $_YotpoAppKey = Mage::getStoreConfig('yotpo/yotpo_general_group/yotpo_appkey'); ?>
+
+<?php if (($_products = $this->getProductCollection()) && $_products->getSize()): ?>
+    <?php $uniqueSliderId = uniqid(); ?>
+    <div class="products-widget">
+        <?php if ($this->getDisplayTitle()): ?>
+            <div class="title">
+                <h2 class="subtitle"><?php echo $this->__($this->getTitle()) ?></h2>
+            </div>
+        <?php endif; ?>
+
+        <?php $_columnCount = $this->getColumnCount(); ?>
+        <?php $i = 0; ?>
+        <ul class="products-grid <?php echo $this->getTypeOfTemplate() ?> products-grid--max-<?php echo $_columnCount; ?>-col rwd"
+            data-slider="<?php echo $this->getSliderItemRow() ?>"
+            data-slider-animation="<?php echo $this->getSliderAnimation() ?>"
+            data-slider-item-row="<?php echo $this->getSliderItemRow() ?>"
+            data-slider-item-scroll="<?php echo $this->getSliderItemScroll() ?>"
+            data-slider-item-loop="<?php echo $this->getSliderItemLoop() ?>"
+            data-slider-item-autoplay="<?php echo $this->getSliderItemAutoplay() ?>"
+            data-slider-item-cssease="<?php echo $this->getSliderItemCssease() ?>"
+            data-mobile-items="<?php echo $this->getMobileMaxItems(); ?>"
+            data-center="<?php echo $this->getSliderItemCenter(); ?>"
+            data-dots="<?php echo $this->getSliderItemDots(); ?>">
+            <?php foreach ($_products as $_product): ?>
+                <?php
+                    $priceDiscount = $helperTheme->getDiscountValue($_product);
+                    $backOrderStatus = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);
+		            $productImage = (string) $this->helper('catalog/image')->init($_product, 'small_image')->resize($this->getProductListImageResizeWidth(), $this->getProductListImageResizeHeight());
+		            $productImageSrc = (string) $this->helper('catalog/image')->init($_product, 'small_image')->resize($this->getProductListImageResizeWidth() * 2, $this->getProductListImageResizeHeight() * 2);
+                ?>
+                <li class="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php
+                endif; ?>">
+                    <div class="item-inner">
+                        <?php if ($this->getProductListTitleBottomMode() == 2): ?>
+                            <?php if (Mage::getStoreConfig('blugento_theme/general_tag/meta') != ''): ?>
+                                <?php $tag = strip_tags(Mage::getStoreConfig('blugento_theme/general_tag/meta')); ?>
+                                <?php echo '<' . $tag . ' class="product-name">'; ?>
+                                <a href="<?php echo $_product->getUrl(); ?>"
+                                   title="<?php echo $this->stripTags($_product->getName(), null, true); ?>"><?php echo $_product->getName(); ?><?php echo $_product->getName(); ?></a>
+                                <?php echo '</' . $tag . '>'; ?>
+                                <?php if ($_product->getData('product_status') != ''):  ?>
+                                    <div class="product-status"><?php echo $_product->getData('product_status') ?></div>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <h2 class="product-name">
+                                    <a href="<?php echo $_product->getUrl(); ?>"
+                                       title="<?php echo $this->stripTags($_product->getName(), null, true); ?>"><?php $_product->getName(); ?><?php echo $_product->getName(); ?></a>
+                                </h2>
+                                <?php if ($_product->getData('product_status') != ''):  ?>
+                                    <div class="product-status"><?php echo $_product->getData('product_status') ?></div>
+                                <?php endif; ?>
+		                        <?php if (Mage::helper('core')->isModuleEnabled('Amasty_Shopby')) {
+			                        echo Mage::helper('amshopby')->showLinks($_product, $this->getMode());
+		                        } ?>
+                            <?php endif; ?>
+                            <?php if (Mage::helper('core')->isModuleEnabled('Yotpo_Yotpo') && ($_YotpoAppKey != '')): ?>
+                                <?php $this->helper('yotpo')->showBottomline($this, $_product); ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <?php if ($this->getShowShortDescription()): ?>
+                            <?php if ($this->getShowShortDescription() != 0): ?>
+                                <?php if ($this->getProductListShortDescriptionBottomMode() == 2): ?>
+                                    <?php if ($this->getShowShortDescription() == 1): ?>
+                                        <div class="desc std"><?php echo $_product->getShortDescription() ?></div>
+                                    <?php else: ?>
+                                        <div class="desc std"><?php echo Mage::helper('core/string')->truncate(strip_tags($_product->getShortDescription()), 200) ?></div>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <a href="<?php echo $_product->getProductUrl() ?>"
+                           title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"
+                           class="product-image product-image-hover-<?php echo $this->getProductListHover(); ?>">
+                           <?php if ($this->getProductListHover() == 1): ?>
+                                <?php
+                                    $_productImgHoverAttr = ($_product->getImageHover() != 'no_selection' && $_product->getImageHover() != NULL) ? 'image_hover' : 'thumbnail';
+                                    $productHoverImage = (string) $this->helper('catalog/image')->init($_product, $_productImgHoverAttr)->resize($this->getProductListImageResizeWidth(), $this->getProductListImageResizeHeight());
+                                    $productHoverImageSrc = (string) $this->helper('catalog/image')->init($_product, $_productImgHoverAttr)->resize($this->getProductListImageResizeWidth() * 2, $this->getProductListImageResizeHeight() * 2);
+                                ?>
+                            <?php endif; ?>
+                           <?php if ($_bannerWebp): ?>
+                                <picture>
+                                    <source
+                                        class="product-img"
+                                        media="(min-width:320px)"
+                                        width="<?php echo $this->getProductListImageResizeWidth() ?>"
+                                        height="<?php echo $this->getProductListImageResizeHeight() ?>"
+                                        srcset="<?php echo $productImage . $_srcWebp . ' 1x,' . $productImageSrc . $_srcWebp  . ' 2x' ?>"
+                                        type="image/webp"
+                                    />
+                                    <img
+                                        class="product-img"
+                                        src="<?php echo $productImage ?>"
+                                        srcset= "<?php echo $productImage . ' 1x,' . $productImageSrc  . ' 2x' ?>"
+                                        alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                        width="<?php echo $this->getProductListImageResizeWidth() ?>"
+                                        height="<?php echo $this->getProductListImageResizeHeight() ?>"
+                                        id="product-collection-image-<?php echo $_product->getId() ?>"
+                                        <?php echo $_imgLazyLoad == 1 ? 'loading="lazy"' : '' ?>
+                                    />
+                                </picture>
+                                <?php if ($this->getProductListHover() == 1): ?>
+                                    <picture>
+                                        <source
+                                            class="product-img-hover"
+                                            media="(min-width:320px)"
+                                            width="<?php echo $this->getProductListImageResizeWidth() ?>"
+                                            height="<?php echo $this->getProductListImageResizeHeight() ?>"
+                                            srcset="<?php echo $productHoverImage . $_srcWebp . ' 1x,' . $productHoverImageSrc . $_srcWebp . ' 2x' ?>"
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            class="product-img-hover"
+                                            src="<?php echo $productHoverImage ?>"
+                                            srcset= "<?php echo $productHoverImage . ' 1x,' . $productHoverImageSrc  . ' 2x' ?>"
+                                            alt="<?php echo $this->stripTags($_product->getName(), null, true) ?>"
+                                            width="<?php echo $this->getProductListImageResizeWidth() ?>"
+                                            height="<?php echo $this->getProductListImageResizeHeight() ?>"
+                                            id="product-collection-image-hover-<?php echo $_product->getId() ?>"
+                                            <?php echo $_imgLazyLoad == 1 ? 'loading="lazy"' : '' ?>
+                                        />
+                                    </picture>
+                                <?php endif; ?>
+
+                            <?php else : ?>
+                                <img
+                                    class="product-img"
+                                    src="<?php echo $productImage ?>"
+                                    srcset= "<?php echo $productImage . ' 1x,' . $productImageSrc  . ' 2x' ?>"
+                                    alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+                                    width="<?php echo $this->getProductListImageResizeWidth() ?>"
+                                    height="<?php echo $this->getProductListImageResizeHeight() ?>"
+                                    id="product-collection-image-<?php echo $_product->getId() ?>"
+                                    <?php echo $_imgLazyLoad == 1 ? 'loading="lazy"' : '' ?>
+                                />
+                                <?php if ($this->getProductListHover() == 1): ?>
+                                    <img
+                                        class="product-img-hover"
+                                        src="<?php echo $productHoverImage ?>"
+                                        srcset= "<?php echo $productHoverImage . ' 1x,' . $productHoverImageSrc  . ' 2x' ?>"
+                                        alt="<?php echo $this->stripTags($_product->getName(), null, true) ?>"
+                                        width="<?php echo $this->getProductListImageResizeWidth() ?>"
+                                        height="<?php echo $this->getProductListImageResizeHeight() ?>"
+                                        id="product-collection-image-hover-<?php echo $_product->getId() ?>"
+                                        <?php echo $_imgLazyLoad == 1 ? 'loading="lazy"' : '' ?>
+                                    />
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                            <?php if ($this->helper('core')->isModuleEnabled('Blugento_Theme')) : ?>
+                                <?php /* @var Blugento_Theme_Helper_Data $helper */ ?>
+                                <?php $helper = $this->helper('blugento_theme'); ?>
+                                <?php $badges = $helper->getProductBagdes($_product); ?>
+                                <?php if(Mage::helper('core')->isModuleEnabled('Blugento_ProductLabels')): ?>
+                                    <?php if(Mage::helper('blugento_productlabels')->isEnabled()): ?>
+                                        <?php $badges = Mage::helper('blugento_productlabels')->disableCoreLabels($badges, 'category', Mage::app()->getStore()->getStoreId()); ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                                <?php if (count($badges)): ?>
+                                    <div class="product-badges">
+                                        <?php foreach ($badges as $key => $label) : ?>
+                                            <div class="badge <?php echo $key; ?>"><?php echo $label; ?></div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </a>
+
+                        <?php if(Mage::helper('core')->isModuleEnabled('Blugento_ProductLabels')): ?>
+                            <?php
+                            $block = $this->getLayout()
+                                ->createBlock('blugento_productlabels/catalog_category_label');
+                            $block->setProduct($_product);
+                            echo $block->setTemplate('blugento_productlabels/catalog/category/label.phtml')
+                                ->toHtml();
+                            ?>
+                        <?php endif; ?>
+
+                        <?php if ($_product->getManufacturer()): ?>
+                            <div class="mnfr-<?php echo $_product->getManufacturer(); ?> mnfr-list"></div>
+                        <?php endif; ?>
+
+                        <div class="product-box">
+                            <div class="short-info">
+                                <?php if ($_product->getManufacturer()): ?>
+                                    <h3 class="product-manufacturer"><?php echo $_product->getAttributeText('manufacturer'); ?></h3>
+                                <?php endif; ?>
+                                <?php if ($this->getProductListTitleBottomMode() == 1): ?>
+                                    <?php if (Mage::getStoreConfig('blugento_theme/general_tag/meta') != ''): ?>
+                                        <?php $tag = strip_tags(Mage::getStoreConfig('blugento_theme/general_tag/meta')); ?>
+                                        <?php echo '<' . $tag . ' class="product-name">'; ?>
+                                        <a href="<?php echo $_product->getUrl(); ?>"
+                                           title="<?php echo $this->stripTags($_product->getName(), null, true); ?>"><?php echo $_product->getName(); ?></a>
+                                        <?php echo '</' . $tag . '>'; ?>
+                                        <?php if ($_product->getData('product_status') != ''):  ?>
+                                            <div class="product-status"><?php echo $_product->getData('product_status') ?></div>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <h2 class="product-name">
+                                            <a href="<?php echo $_product->getUrl() ?>"
+                                               title="<?php echo $this->stripTags($_product->getName(), null, true); ?>"><?php echo $_product->getName(); ?></a>
+                                        </h2>
+                                        <?php if ($_product->getData('product_status') != ''):  ?>
+                                            <div class="product-status"><?php echo $_product->getData('product_status') ?></div>
+                                        <?php endif; ?>
+		                                <?php if (Mage::helper('core')->isModuleEnabled('Amasty_Shopby')) {
+			                                echo Mage::helper('amshopby')->showLinks($_product, $this->getMode());
+		                                } ?>
+                                    <?php endif; ?>
+                                    <?php if (Mage::helper('core')->isModuleEnabled('Yotpo_Yotpo') && ($_YotpoAppKey != '')): ?>
+                                        <?php $this->helper('yotpo')->showBottomline($this, $_product); ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
+                                <?php if ($this->getShowShortDescription()): ?>
+                                    <?php if ($this->getShowShortDescription() != 0): ?>
+                                        <?php if ($this->getProductListShortDescriptionBottomMode() == 1): ?>
+                                            <?php if ($this->getShowShortDescription() == 1): ?>
+                                                <div class="desc std"><?php echo $_product->getShortDescription() ?></div>
+                                            <?php else: ?>
+                                                <div class="desc std"><?php echo Mage::helper('core/string')->truncate(strip_tags($_product->getShortDescription()), 200) ?></div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+
+                                <?php if (Mage::getStoreConfig('blugento_theme/general_nl2br/show_sku_on_list')) : ?>
+                                    <p class="product-code"><?php echo Mage::helper('blugento_theme')->__('Code: ') . $_product->getSku() ?></p>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="product-info">
+								<?php if ($this->getHelperCart() && !$this->getDisplayCartPriceCustom() && !$_product->getData('blugento_cart_price')) : ?>
+                                    <?php if (Mage::getStoreConfig('blugento_theme/general_nl2br/enable_msrp_list') && $_product->getMsrp() && $this->getShowPrice() == 1) : ?>
+                                        <div class="price-box-suggested">
+                                            <p class="price-label"><?php echo $this->__("Manufacturer's Suggested Retail Price:"); ?></p>
+                                            <span class="price"><?php echo Mage::helper('core')->currency($_product->getMsrp(), true, false); ?></span>
+                                        </div>
+                                    <?php endif; ?>
+								<?php endif; ?>
+
+                                <?php if (Mage::getStoreConfig('blugento_theme/general_nl2br/ratings_on_list')): ?>
+                                    <?php
+                                    if (Mage::helper('core')->isModuleEnabled('Stamped_App')) {
+                                        echo $this->helper('stamped')->showBadge($this, $_product);
+                                    } else {
+	                                    $reviewsCount = $this->getLayout()->createBlock('blugento_reviews/helper')->setProduct($_product)->getReviewsCount();
+                                        $html = Mage::app()->getLayout()->createBlock('catalog/product_list')->getReviewsSummaryHtml($_product, 'short');
+	                                    if ($reviewsCount > 0 && $this->getShowEmptyReviews() == 2) :
+		                                    if ($_product->getRatingSummary() && $rating = $html) :
+			                                    echo '<a href="' . $_product->getUrl() . '#pc-tab-reviews">' . $rating . '</a>';
+		                                    endif;
+	                                    elseif ($this->getShowEmptyReviews() == 1) :
+		                                    if ($_product->getRatingSummary() && $rating = $html) :
+			                                    echo '<a href="' . $_product->getUrl() . '#pc-tab-reviews">' . $rating . '</a>';
+		                                    endif;
+	                                    endif;
+                                    }
+                                    ?>
+                                <?php endif; ?>
+
+								<?php if ($this->getHelperCart() && !$this->getDisplayCartPriceCustom() && !$_product->getData('blugento_cart_price')) : ?>
+                                    <?php if (($this->getShowPrice() == 1) && ($this->getProductAddToCartStatus() == 2 || $this->getCatalogProductListQty() == 2 || Mage::getStoreConfig('blugento_ajaxcart/general/enable'))): ?>
+                                        <?php echo $this->getPriceHtml($_product, true) ?>
+                                        <?php if ($_product->getPriceDiscount() && $this->getProductListDiscountMode()): ?>
+                                            <div class="discount">
+                                                <span><?php echo $_product->getPriceDiscount() ?></span>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php echo $this->getTaxHtml($_product); ?>
+	                            <?php endif; ?>
+                             
+	                            <?php
+                                if ($this->getChild('name.after')) {
+                                    $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+                                    foreach ($_nameAfterChildren as $_nameAfterChildName) {
+                                        $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+                                        $_nameAfterChild->setProduct($_product);
+                                        echo $_nameAfterChild->toHtml();
+                                    }
+                                }
+                                ?>
+                            </div>
+	
+	                        <?php if ($this->getProductListStatus() == 1): ?>
+		                        <?php if ($_product->isAvailable()): ?>
+			                        <?php if ($backOrderStatus->getBackorders() != 0 && $backOrderStatus->getQty() <= 0): ?>
+				                        <div class="availability-box backorder">
+					                        <?php echo $this->__('Backorder') ?>
+				                        </div>
+			                        <?php else: ?>
+				                        <div class="availability-box in-stock">
+					                        <?php echo $this->__('In stock') ?>
+				                        </div>
+			                        <?php endif; ?>
+		                        <?php else: ?>
+			                        <div class="availability-box out-of-stock">
+				                        <?php echo $this->__('Out of stock') ?>
+			                        </div>
+		                        <?php endif; ?>
+	                        <?php endif; ?>
+
+                            <div class="product-actions">
+                                <div class="actions">
+                                    <?php if (!$hideAllAddToCart): ?>
+                                        <?php if ($helperCart && $displayCustomBtn && !$_product->isSaleable()) : ?>
+                                            <div class="qty-wrapper"></div>
+                                            <div class="configurable-swatch-list"></div>
+                                            <?php if ($helperCart->getDisplayCustomBtnRedirect()) : ?>
+                                                <a href="<?php echo $_product->getUrl(); ?>"
+                                                   title="<?php echo $customBtnText; ?>"
+                                                   class="button button--block">
+                                                    <?php echo $customBtnText; ?>
+                                                </a>
+                                            <?php else: ?>
+                                                <a href="<?php echo $helperCart->getButtonURL($_product->getId()); ?>"
+                                                   title="<?php echo $customBtnText; ?>"
+                                                   class="button button--block">
+                                                    <?php echo $customBtnText; ?>
+                                                </a>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <?php if (($_product->getTypeId() == 'simple' || $_product->getTypeId() == 'virtual') && !$_product->getRequiredOptions() && ($this->getProductAddToCartStatus() == 1)): ?>
+                                                <?php if ($_product->isSaleable()): ?>
+                                                    <?php if (!Mage::getStoreConfig('blugento_ajaxcart/general/enable')): ?>
+                                                        <form action="<?php echo $this->helper('checkout/cart')->getAddUrl($_product) ?>" method="post" id="product_addtocart_form_<?php echo $_product->getId(); ?>" <?php if($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+                                                            <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+                                                            <?php if ($this->getCatalogProductListQty() == 1): ?>
+                                                                <div class="qty-wrapper">
+                                                                    <?php
+                                                                    $defValue = $this->getMinimalQty($_product) == null ? 1 : $this->getProductDefaultQty() * 1;
+                                                                    $defIncrement = 1;
+                                                                    if ($backOrderStatus->getData('enable_qty_increments')) {
+                                                                        if ($backOrderStatus->getIsQtyDecimal() == 1) {
+                                                                            $defValue = number_format($backOrderStatus->getData('min_sale_qty'), 2);
+                                                                            $defIncrement = number_format($backOrderStatus->getData('qty_increments'), 2);
+                                                                        } else {
+                                                                            $defValue = number_format($backOrderStatus->getData('min_sale_qty'), 0);
+                                                                            $defIncrement = number_format($backOrderStatus->getData('qty_increments'), 0);
+                                                                        }
+                                                                    }
+                                                                    ?>
+                                                                    <?php if (Mage::helper('core')->isModuleEnabled('Blugento_ProductQuantityDropdown') && Mage::helper('blugento_productquantitydropdown')->isEnabled()): ?>
+                                                                        <?php echo $this->getLayout()->createBlock('core/template')->setProduct($_product)->setTemplate('productquantitydropdown/options-in-listing.phtml')->toHtml(); ?>
+                                                                    <?php else: ?>
+                                                                        <div class="qty-price-alignment">
+                                                                            <input class="<?php if ($backOrderStatus->getIsQtyDecimal() == 1): ?>decimals<?php endif; ?>"
+                                                                                   type="text" name="qty" id="qty_<?php echo $_product->getId(); ?>" maxlength="12"
+                                                                                   data-increment="<?php echo $defIncrement; ?>"
+                                                                                   data-minimum="<?php echo $defValue; ?>"
+                                                                                   value="<?php echo $defValue; ?>"
+                                                                                   title="<?php echo $this->__('Qty') ?>"/>
+                                                                            <div class="button-counter">
+                                                                                <span class="plus"></span>
+                                                                                <span class="minus"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    <?php endif; ?>
+
+                                                                    <div class="price-qty-list">
+                                                                        <?php echo $this->getPriceHtml($_product, true) ?>
+                                                                        <?php if ($_product->getPriceDiscount() && $this->getProductListDiscountMode()): ?>
+                                                                            <div class="discount">
+                                                                                <span><?php echo $_product->getPriceDiscount() ?></span>
+                                                                            </div>
+                                                                        <?php endif; ?>
+                                                                    </div>
+                                                                </div>
+                                                            <?php endif; ?>
+                                                            <?php if(Mage::helper('core')->isModuleEnabled('Blugento_AffiliationSales')): ?>
+                                                                <?php echo $this->getLayout()->createBlock('core/template')->setProduct($_product)->setTemplate('blugento_affiliationsales/product/list/affiliate.phtml')->toHtml(); ?>
+                                                            <?php endif; ?>
+                                                            <?php echo $this->getLayout()->createBlock('core/template')->setProduct($_product)->setTemplate('catalog/product/quantity_buttons.phtml')->toHtml(); ?>
+                                                        </form>
+                                                    <?php else: ?>
+                                                        <div class="qty-wrapper"></div>
+                                                        <div class="configurable-swatch-list"></div>
+														<?php if ($this->getShowAddToCart() == 1) : ?>
+                                                            <?php if(Mage::helper('core')->isModuleEnabled('Blugento_AffiliationSales')): ?>
+                                                                <?php echo $this->getLayout()->createBlock('core/template')->setProduct($_product)->setTemplate('blugento_affiliationsales/product/view/affiliate.phtml')->toHtml(); ?>
+                                                            <?php endif; ?>
+	                                                        <button type="button"
+	                                                                title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>"
+	                                                                class="button btn-cart"
+	                                                                onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')">
+	                                                            <span><span><?php echo $this->__('Add to Cart') ?></span></span>
+	                                                        </button>
+					                                    <?php endif; ?>
+                                                    <?php endif; ?>
+                                                    <?php if ($this->getShowBuyNowButton() == 1) : ?>
+					                                    <?php echo $this->getLayout()->createBlock('catalog/product_list')->setProduct($_product)->setWidgetType('slide')->setTemplate('catalog/product/buy_now.phtml')->toHtml(); ?>
+						                                <script>
+							                                function setCheckoutLocation(location, checkout, id)
+							                                {
+								                                jQuery('#' + id).show();
+								                                jQuery.ajax({
+									                                type: 'GET',
+									                                url: location,
+									                                success:function (data) {
+										                                window.location.href = checkout;
+									                                }
+								                                });
+							                                }
+						                                </script>
+			                                        <?php endif; ?>
+                                                <?php else: ?>
+                                                    <div class="qty-wrapper"></div>
+                                                    <div class="configurable-swatch-list"></div>
+                                                    <?php if ($this->displayProductStockStatus()): ?>
+                                                        <p class="availability out-of-stock">
+                                                            <span><?php echo $this->__('Out of stock') ?></span></p>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+
+
+                                            <?php elseif (($_product->getTypeId() == 'configurable') && $_product->getListSwatchesAttrValues()): ?>
+                                                <?php if ($this->getCatalogProductListQty() == 1): ?>
+                                                    <div class="qty-wrapper">
+                                                        <?php
+                                                        $defValue = $this->getMinimalQty($_product) == null ? 1 : $this->getProductDefaultQty() * 1;
+                                                        $defIncrement = 1;
+                                                        if ($backOrderStatus->getData('enable_qty_increments')) {
+                                                            if ($backOrderStatus->getIsQtyDecimal() == 1) {
+                                                                $defValue = number_format($backOrderStatus->getData('min_sale_qty'), 2);
+                                                                $defIncrement = number_format($backOrderStatus->getData('qty_increments'), 2);
+                                                            } else {
+                                                                $defValue = number_format($backOrderStatus->getData('min_sale_qty'), 0);
+                                                                $defIncrement = number_format($backOrderStatus->getData('qty_increments'), 0);
+                                                            }
+                                                        }
+                                                        ?>
+                                                        <?php if (Mage::helper('core')->isModuleEnabled('Blugento_ProductQuantityDropdown') && Mage::helper('blugento_productquantitydropdown')->isEnabled()): ?>
+                                                            <?php echo $this->getLayout()->createBlock('core/template')->setProduct($_product)->setTemplate('productquantitydropdown/options-in-listing.phtml')->toHtml(); ?>
+                                                        <?php else: ?>
+                                                            <div class="qty-price-alignment">
+	                                                            <span class="<?php if ($backOrderStatus->getIsQtyDecimal() == 1): ?>decimals<?php endif; ?>" id="qty" data-minimum="<?php echo $defValue; ?>" data-increment="<?php echo $defIncrement; ?>"><?php echo $defValue; ?></span>
+                                                                <div class="button-counter">
+                                                                    <span class="plus"></span>
+                                                                    <span class="minus"></span>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif; ?>
+
+	                                                    <?php if ($this->getShowPrice() == 1) : ?>
+	                                                        <div class="price-qty-list">
+	                                                            <?php echo $this->getPriceHtml($_product, true) ?>
+	                                                            <?php if ($_product->getPriceDiscount() && $this->getProductListDiscountMode()): ?>
+	                                                                <div class="discount">
+	                                                                    <span><?php echo $_product->getPriceDiscount() ?></span>
+	                                                                </div>
+	                                                            <?php endif; ?>
+	                                                        </div>
+														<?php endif; ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                                <?php
+                                                if (Mage::helper('core')->isModuleEnabled('Blugento_ConfigurableSwatch') && $this->getShowAddToCart() == 1) {
+                                                    if (Mage::getStoreConfig('blugento_configurableswatch/general/enabled')) {
+                                                        echo $this->getLayout()->createBlock('blugento_configurableswatch/list')->setProduct($_product)->toHtml();
+                                                    }
+                                                }
+                                                ?>
+                                            <?php else: ?>
+                                                <div class="qty-wrapper">
+                                                    <?php if ($this->getCatalogProductListQty() == 1): ?>
+                                                        <div class="price-qty-list">
+                                                            <?php echo $this->getPriceHtml($_product, true) ?>
+                                                            <?php if ($_product->getPriceDiscount() && $this->getProductListDiscountMode()): ?>
+                                                                <div class="discount">
+                                                                    <span><?php echo $_product->getPriceDiscount() ?></span>
+                                                                </div>
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="configurable-swatch-list"></div>
+												<?php if ($this->getShowAddToCart() == 1) : ?>
+	                                                <a href="<?php echo $_product->getUrl() ?>"
+	                                                   title="<?php echo $this->__('View Details') ?>"
+	                                                   class="button button--block"><?php echo $this->__('View Details') ?></a>
+												<?php endif; ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <?php if ($this->getShowAddToWishlist() || $this->getShowAddToCompare()): ?>
+                                        <ul class="add-to-links <?php if ($customerHelper->isLoggedIn()): ?>customer-logged-in<?php endif; ?>">
+                                            <?php if ($this->getShowAddToWishlist()): ?>
+                                                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                                    <li>
+                                                        <a href="<?php echo $this->getAddToWishlistUrl($_product) ?>"
+                                                           class="link-wishlist <?php echo $this->getActiveWishlist($_product->getId()); ?>"
+                                                           title="<?php echo $this->__('Wishlist') ?>"
+                                                        >
+                                                            <span>
+                                                                <?php if ($this->getActiveWishlist($_product->getId())): ?>
+                                                                    <?php echo $this->__('Added') ?>
+                                                                <?php else: ?>
+                                                                    <?php echo $this->__('Wishlist') ?>
+                                                                <?php endif; ?>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                            <?php if ($this->getShowAddToCompare()): ?>
+                                                <?php if ($_compareUrl = $this->getAddToCompareUrl($_product)): ?>
+                                                    <li>
+                                                        <a href="<?php echo $_compareUrl ?>"
+                                                           class="link-compare <?php echo $this->getActiveCompare($_product->getId()); ?>"
+                                                           title="<?php echo $this->__('Compare') ?>"
+                                                        >
+                                                            <span>
+                                                                <?php if ($this->getActiveCompare($_product->getId())): ?>
+                                                                    <?php echo $this->__('Added') ?>
+                                                                <?php else: ?>
+                                                                    <?php echo $this->__('Compare') ?>
+                                                                <?php endif; ?>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,105 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-block-layered-nav1.scss
+    Version:        1.0
+    Description:    Filters Position: Left Column
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+@if ($layout--layered-nav_layout == 2) {
+} @else {
+    .block-layered-nav {
+        padding: 0 18px;
+
+        @include mobile {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .block-title {
+            margin-bottom: 15px;
+            font-style: $block-layered-nav__title_font-style;
+            font-size: $block-layered-nav__title_font-size;
+            font-family: $block-layered-nav__title_font-family;
+            text-transform: $block-layered-nav__title_text-transform;
+
+            @include desktop {
+                color: $block-layered-nav__title_color;
+            }
+
+            strong {
+                font-weight: $block-layered-nav__title_font-weight;
+            }
+        }
+
+        .block-subtitle {
+            display: none;
+        }
+
+        dt,
+        .block-subtitle {
+            margin-bottom: 13px;
+            font-weight: bold;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: $product-category__title_color;
+        }
+
+        dd {
+            margin-bottom: 17px;
+
+            &.active-minimize-filters {
+                ol {
+                    max-height: 250px;
+                    overflow-y: scroll;
+
+                    &::-webkit-scrollbar {
+                        -webkit-appearance: none;
+                        width: 7px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        border-radius: 4px;
+                        background-color: rgba(0,0,0,.5);
+                        -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+                    }
+                }
+            }
+        }
+
+        ol {
+            margin-top: -5px;
+        }
+
+        li {
+            margin-top: 5px;
+
+            a {
+                color: $block-layered-nav__filter-fg;
+            }
+
+            em {
+                float: right;
+                font-style: normal;
+                color: $block-layered-nav__filter-matches-fg;
+            }
+        }
+
+        .currently-wrapper {
+            margin: 0 -18px 40px;
+            padding: 20px;
+            background-color: color('c');
+            color: color('e');
+
+            .btn-remove {
+                float: right;
+            }
+        }
+
+        .currently {
+            li {
+                @include cf;
+            }
+        }
+    }
+}

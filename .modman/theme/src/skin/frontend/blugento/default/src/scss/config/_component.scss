@@ -1,0 +1,325 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       config/_component.scss
+    Version:        1.0
+    Description:    Default Component Variables
+    ------------------------------------------------------------------------- */
+
+//  ----------------------------------------------------------------------------
+//  Component :: Add to Links
+//  ----------------------------------------------------------------------------
+
+$add-to-links_color:                                color('e') !default;
+$add-to-links_text-transform:                       normal !default;
+$add-to-links_font-style:                           inherit !default;
+$add-to-links_font-weight:                          700 !default;
+$add-to-links_font-size:                            12px !default;
+$add-to-links_font-family:                          $font-family-base !default;
+$add-to-links__wishlist_background-image:           image($image--add-to-links__wishlist_background-image) !default;
+$add-to-links__compare_background-image:            image($image--add-to-links__compare_background-image) !default;
+$add-to-links-hover__wishlist_background-image:     image($image--add-to-links-hover__wishlist_background-image) !default;
+$add-to-links-hover__compare_background-image:      image($image--add-to-links-hover__compare_background-image) !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Ajax Loader
+//  ----------------------------------------------------------------------------
+
+$ajax-overlay_background-color:                     rgba(color('b'), .7) !default;
+$ajax-loader_border-color:                          color('d') !default;
+$ajax-loader--highlight_border-color:               color('k') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Badge
+//  ----------------------------------------------------------------------------
+
+$badge_font-weight:                                700 !default;
+$badge_font-size:                                  inherit !default;
+$badge_font-style:                                 inherit !default;
+$badge_font-family:                                inherit !default;
+$badge_text-transform:                             uppercase !default;
+$badge--new_color:                                 color('b') !default;
+$badge--sale_color:                                color('b') !default;
+$badge--new_background-color:                      color('n') !default;
+$badge--sale_background-color:                     color('o') !default;
+$badge--new_display:                               block !default;
+$badge--sale_display:                              block !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Block
+//  ----------------------------------------------------------------------------
+
+$block__block-title_background-color:              color('c') !default;
+$block__block-title_color:                         inherit !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Box
+//  ----------------------------------------------------------------------------
+
+$box_spacing:                                       15px !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Breadcrumbs
+//  ----------------------------------------------------------------------------
+
+$breadcrumbs_display:                               block !default;
+$breadcrumbs_color:                                 color('t') !default;
+$breadcrumbs_font-style:                            $font-style !default;
+$breadcrumbs_font-family:                           $font-family-base !default;
+$breadcrumbs_font-size:                             inherit !default;
+$breadcrumbs_font-weight:                           400 !default;
+$breadcrumbs_text-transform:                        inherit !default;
+$breadcrumbs__leaf_color:                           color('m') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Buttons Set
+//  ----------------------------------------------------------------------------
+
+$buttons-set_border-top-color:                      color('h') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Data Table
+//  ----------------------------------------------------------------------------
+
+$data-table_border-color:                           color('c') !default;
+$data-table__th_background-color:                   color('c') !default;
+$data-table__th_color:                              inherit !default;
+$data-table__td_background-color:                   inherit !default;
+$data-table__td_color:                              inherit !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Form
+//  ----------------------------------------------------------------------------
+
+$button_background-color:                           color('e') !default;
+$button_color:                                      color('b') !default;
+$button-action_background-color:                    color('q') !default;
+$button-action_color:                               color('b') !default;
+$button-secondary_background-color:                 color('o') !default;
+$button-secondary_color:                            color('b') !default;
+$input-text_height:                                 45px !default;
+$input-text_border-width:                           1px !default;
+$input-text_border-base_color:                      $color--secondary !default;
+$input-text_border-color:                           darken($input-text_border-base_color, 20%) !default;
+$input-text_box-shadow:                             lighten($input-text_border-color, 10%) !default;
+$input-text_background-color:                       color('b') !default;
+$validation-advice_color:                           color('p') !default;
+$required_color:                                    color('p') !default;
+$button-action_font-weight:                         700 !default;
+$button-action_font-size:                           13px !default;
+$button-action_font-family:                         $font-family-base !default;
+$button-action_text-transform:                      uppercase !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: List
+//  ----------------------------------------------------------------------------
+
+$list--social__item--facebook__link_background-image:           image($image--list--social__item--facebook__link_background-image);
+$list--social__item--facebook__link--hover_background-image:    image($image--list--social__item--facebook__link--hover_background-image);
+$list--social__item--twitter__link_background-image:            image($image--list--social__item--twitter__link_background-image);
+$list--social__item--twitter__link--hover_background-image:     image($image--list--social__item--twitter__link--hover_background-image);
+$list--social__item--google__link_background-image:             image($image--list--social__item--google__link_background-image);
+$list--social__item--google__link--hover_background-image:      image($image--list--social__item--google__link--hover_background-image);
+$list--social__item--instagram__link_background-image:          image($image--list--social__item--instagram__link_background-image);
+$list--social__item--instagram__link--hover_background-image:   image($image--list--social__item--instagram__link--hover_background-image);
+$list--social__item--linkedin__link_background-image:           image($image--list--social__item--linkedin__link_background-image);
+$list--social__item--linkedin__link--hover_background-image:    image($image--list--social__item--linkedin__link--hover_background-image);
+$list--social__item--pinterest__link_background-image:          image($image--list--social__item--pinterest__link_background-image);
+$list--social__item--pinterest__link--hover_background-image:   image($image--list--social__item--pinterest__link--hover_background-image);
+$list--social__item--tiktok__link_background-image:             image($image--list--social__item--tiktok__link_background-image);
+$list--social__item--tiktok__link--hover_background-image:      image($image--list--social__item--tiktok__link--hover_background-image);
+$list--social__item--youtube__link_background-image:            image($image--list--social__item--youtube__link_background-image);
+$list--social__item--youtube__link--hover_background-image:     image($image--list--social__item--youtube__link--hover_background-image);
+$list--social__item--flickr__link_background-image:             image($image--list--social__item--flickr__link_background-image);
+$list--social__item--flickr__link--hover_background-image:      image($image--list--social__item--flickr__link--hover_background-image);
+$image--whatsapp_social_share:                                  image('whatsapp_white.svg');
+
+//  ----------------------------------------------------------------------------
+//  Component :: Message
+//  ----------------------------------------------------------------------------
+
+$message_background-color:                          rgba(color('b'), .97) !default;
+$message--error__background-color:                  #d04437 !default;
+$message--error__background-image:                  image('var_message--error__background-image.svg') !default;
+$message--notice_background-color:                  #3572b0 !default;
+$message--notice_background-image:                  image('var_message--notice_background-image.svg') !default;
+$message--success_background-color:                 #8eb021 !default;
+$message--success_background-image:                 image('var_message--success_background-image.svg') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Global Site Notice
+//  ----------------------------------------------------------------------------
+
+$global-site-notice_background:                     #f68832 !default;
+$global-site-notice_color:                          #fff !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Notice Cookie
+//  ----------------------------------------------------------------------------
+
+$notice-cookie_background-color:                    rgba($message--notice_background-color, .8) !default;
+$notice-cookie_color:                               color('b') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Nav Mobile
+//  ----------------------------------------------------------------------------
+
+$nav--primary--mobile_background-color:             color('b') !default;
+$nav--primary--mobile_border-color:                 color('m') !default;
+$nav--primary--mobile_color:                        color('e') !default;
+
+$nav--primary--mobile__submenu_padding-top:         10px !default;
+$nav--primary--mobile__submenu_padding-right:       10px !default;
+$nav--primary--mobile__submenu_background-color:    color('b') !default;
+$nav--primary--mobile__submenu_color:               color('e') !default;
+
+$nav--primary--mobile__level0-list_padding-global:  40px !default;
+
+$nav--primary--mobile__level0-link_padding-top:     10px !default;
+$nav--primary--mobile__level0-link_padding-right:   17px !default;
+$nav--primary--mobile__level0-link_font-weight:     900 !default;
+$nav--primary--mobile__level0-link_font-size:       15px !default;
+$nav--primary--mobile__level0-link_line-height:     (17 / 15) !default;
+$nav--primary--mobile__level0-link_text-transform:  false !default;
+$nav--primary--mobile__level0-link_color:           color('e') !default;
+$nav--primary--mobile__level0-link--hover_color:    false !default;
+
+$nav--primary--mobile__level1-link_padding-top:     0 !default;
+$nav--primary--mobile__level1-link_padding-right:   0 !default;
+$nav--primary--mobile__level1-link_font-weight:     700 !default;
+$nav--primary--mobile__level1-link_font-size:       12px !default;
+$nav--primary--mobile__level1-link_line-height:     (14 / 12) !default;
+$nav--primary--mobile__level1-link_text-transform:  uppercase !default;
+$nav--primary--mobile__level1-link_color:           color('e') !default;
+$nav--primary--mobile__level1-link--hover_color:    false !default;
+
+$nav--primary--mobile__level2_background-color:     color('b') !default;
+$nav--primary--mobile__level2-link_padding-top:     false !default;
+$nav--primary--mobile__level2-link_padding-right:   false !default;
+$nav--primary--mobile__level2-link_font-weight:     false !default;
+$nav--primary--mobile__level2-link_font-size:       false !default;
+$nav--primary--mobile__level2-link_line-height:     false !default;
+$nav--primary--mobile__level2-link_text-transform:  false !default;
+$nav--primary--mobile__level2-link_color:           false !default;
+$nav--primary--mobile__level2-link--hover_color:    false !default;
+
+$nav--primary--mobile__level3_background-color:     false !default;
+$nav--primary--mobile__level3-link_padding-top:     false !default;
+$nav--primary--mobile__level3-link_padding-right:   false !default;
+$nav--primary--mobile__level3-link_font-weight:     false !default;
+$nav--primary--mobile__level3-link_font-size:       false !default;
+$nav--primary--mobile__level3-link_text-transform:  false !default;
+$nav--primary--mobile__level3-link_line-height:     false !default;
+$nav--primary--mobile__level3-link_color:           false !default;
+$nav--primary--mobile__level3-link--hover_color:    false !default;
+
+$nav--primary--mobile__level4_background-color:     false !default;
+$nav--primary--mobile__level4-link_padding-top:     false !default;
+$nav--primary--mobile__level4-link_padding-right:   false !default;
+$nav--primary--mobile__level4-link_font-weight:     false !default;
+$nav--primary--mobile__level4-link_font-size:       false !default;
+$nav--primary--mobile__level4-link_line-height:     false !default;
+$nav--primary--mobile__level4-link_text-transform:  false !default;
+$nav--primary--mobile__level4-link_color:           false !default;
+$nav--primary--mobile__level4-link--hover_color:    false !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Nav
+//  ----------------------------------------------------------------------------
+
+$nav--primary_background-color:                     color('m') !default;
+$nav--primary_color:                                color('b') !default;
+
+$nav--primary__submenu_padding-top:                 10px !default;
+$nav--primary__submenu_padding-right:               10px !default;
+$nav--primary__submenu_background-color:            color('g') !default;
+$nav--primary__submenu_color:                       color('m') !default;
+
+$nav--primary__level0-list-separator_color:         $nav--primary_background-color !default;
+
+$nav--primary__level3_background-color:             false !default;
+$nav--primary__level3-link_padding-top:             false !default;
+$nav--primary__level3-link_padding-right:           false !default;
+$nav--primary__level3-link_font-weight:             false !default;
+$nav--primary__level3-link_font-size:               /*$nav--primary__level2-link_font-size*/ 12px !default;
+$nav--primary__level3-link_text-transform:          false !default;
+$nav--primary__level3-link_line-height:             false !default;
+$nav--primary__level3-link_font-family:             $font-family-base !default;
+$nav--primary__level3-link_color:                   false !default;
+$nav--primary__level3-link--hover_color:            false !default;
+
+$nav--primary__level4_background-color:             false !default;
+$nav--primary__level4-link_padding-top:             false !default;
+$nav--primary__level4-link_padding-right:           false !default;
+$nav--primary__level4-link_padding-left:            false !default;
+$nav--primary__level4-link_font-weight:             false !default;
+$nav--primary__level4-link_font-size:               $nav--primary__level3-link_font-size !default;
+$nav--primary__level4-link_font-family:             $font-family-base !default;
+$nav--primary__level4-link_line-height:             false !default;
+$nav--primary__level4-link_text-transform:          false !default;
+$nav--primary__level4-link_color:                   false !default;
+$nav--primary__level4-link--hover_color:            false !default;
+
+$nav__button_padding-top:                           30px;
+$nav__button_padding-right:                         15px;
+$nav__button_font-weight:                           900 !default;
+$nav__button_font-size:                             14px !default;
+$nav__button_line-height:                           (16 / 14) !default;
+$nav__button_text-transform:                        uppercase !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Preloader
+//  ----------------------------------------------------------------------------
+
+$preloader_background-color:                        color('b') !default;
+$preloader_width:                                   46px !default;
+$preloader_height:                                  46px !default;
+$preloader__cicle-1_stroke:                         color('k') !default;
+$preloader__cicle-2_stroke:                         color('q') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Page Title
+//  ----------------------------------------------------------------------------
+
+$page-title_font-style:                             normal !default;
+$page-title_font-weight:                            700 !default;
+$page-title_font-size:                              42px !default;
+$page-title_line-height:                            (56 / 42) !default;
+$page-title_font-family:                            $font-family-base !default;
+$page-title_text-transform:                         inherit !default;
+$page-title_color:                                  color('e') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Page Subtitle
+//  ----------------------------------------------------------------------------
+
+$page-subtitle_font-style:                          normal !default;
+$page-subtitle_font-weight:                         normal !default;
+$page-subtitle_font-size:                           42px !default;
+$page-subtitle_line-height:                         (56 / 42) !default;
+$page-subtitle_font-family:                         $font-family-base !default;
+$page-subtitle_text-transform:                      inherit !default;
+$page-subtitle_color:                               color('s') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Showcase
+//  ----------------------------------------------------------------------------
+
+$showcase__button_border-color:                     color('b') !default;
+$showcase__button_background-color:                 color('m') !default;
+$showcase__button_box-shadow-color:                 rgba(color('e'), .25) !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Toolbar
+//  ----------------------------------------------------------------------------
+
+$toolbar__view-mode_background-color:               color('c') !default;
+$toolbar__view-mode__grid_background-image:         image($image--toolbar__view-mode__grid_background-image) !default;
+$toolbar__view-mode__grid--hover_background-image:  image($image--toolbar__view-mode__grid--hover_background-image) !default;
+$toolbar__view-mode__list_background-image:         image($image--toolbar__view-mode__list_background-image) !default;
+$toolbar__view-mode__list--hover_background-image:  image($image--toolbar__view-mode__list--hover_background-image) !default;
+$toolbar__sort-by-select-border:                    color('d') !default;
+
+//  ----------------------------------------------------------------------------
+//  Component :: Toolbar
+//  ----------------------------------------------------------------------------
+
+$to-top_background-color:                           rgba(color('e'), .7) !default;

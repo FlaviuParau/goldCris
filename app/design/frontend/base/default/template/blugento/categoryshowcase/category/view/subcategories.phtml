@@ -1,0 +1,90 @@
+<?php
+    $_helper = $this->helper('catalog/output');
+
+    /** @var Mage_Catalog_Model_Resource_Category_Collection $_categoriesCollection */
+    $_categoriesCollection = $this->getCurrentCategoryCollection();
+    $_collectionSize = $_categoriesCollection->count();
+    $categoryHoverEnabled = Mage::helper('core')->isModuleEnabled('Blugento_CategoryHover')
+        && Mage::getStoreConfig('blugento_categoryhover/general/enabled') ? true : false;
+    $_categoryDescription = Mage::getStoreConfig('blugento_categoryshowcase/general/category_showcase_description');
+    $_imageResizeWidth    = Mage::getStoreConfig('blugento_categoryshowcase/general/category_showcase_image_width');
+    $_imageResizeHeight   = Mage::getStoreConfig('blugento_categoryshowcase/general/category_showcase_image_height');
+    $_imgLazyLoad = (int) ($this->getLayout()->getBlock('root')->getImageLazyLoad() ?: 2);
+    $_baseUrl = Mage::getBaseUrl();
+    $_baseMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+    $_baseMediaUrl = str_replace('/media', '', $_baseMedia);
+    $_bannerWebp = Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/active') &&
+    Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/webp_conversion') && ($_baseUrl != $_baseMediaUrl);
+    $_srcWebp = $_bannerWebp ? '.webp' : '';
+?>
+
+<?php if ($_collectionSize > 0): ?>
+    <div class="subcategory-products">
+        <ul class="products-grid categories-grid">
+            <?php foreach ($_categoriesCollection as $_category): ?>
+                <?php
+                    $cur_category = Mage::getModel('catalog/category')->load($_category->getId());
+                    $categoryHoverImage = null;
+                ?>
+                <?php if ($categoryHoverEnabled): ?>
+                    <?php $categoryHoverImage = Mage::helper('blugento_categoryhover')->getCategoryHover($_category); ?>
+                <?php endif; ?>
+                <li class="item">
+                    <a href="<?php echo $_category->getUrl() ?>" title="<?php echo $_category->getName() ?>" class="category-image">
+                        <?php $imgPath = $_category->getImageUrl(); ?>
+                        <?php if ($imgPath): ?>
+                            <?php if ($categoryHoverImage): ?>
+                                <img src="<?php echo $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight); ?>"
+                                    onmouseover="this.src='<?php echo $categoryHoverImage; ?>';"
+                                    onmouseout ="this.src='<?php echo $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight); ?>';"
+                                    alt="<?php echo $_category->getName() ?>"
+                                />
+                            <?php else: ?>
+                                <?php if ($_bannerWebp): ?>
+                                    <picture>
+                                        <source
+                                            media="(min-width:320px)"
+                                            width="<?php echo $_imageResizeWidth; ?>"
+                                            height="<?php echo $_imageResizeHeight; ?>"
+                                            srcset="<?php echo $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight) . $_srcWebp . ' 1x,' . $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight) . $_srcWebp . ' 2x' ?>"
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            src="<?php echo $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight) ?>"
+                                            srcset="<?php echo $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight) . ' 1x,' . $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight) . ' 2x' ?>"
+                                            width="<?php echo $_imageResizeWidth; ?>"
+                                            height="<?php echo $_imageResizeHeight; ?>"
+                                            alt="<?php echo $_category->getName() ?>"
+                                            <?php echo $_imgLazyLoad == 1 ? 'loading="lazy"' : '' ?>
+                                        />
+                                    </picture>
+                                <?php else : ?>
+                                    <img
+                                        src="<?php echo $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight); ?>"
+                                        srcset="<?php echo $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight) . ' 1x,' . $this->helper('blugento_categoryshowcase')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight) . ' 2x' ?>"
+                                        alt="<?php echo $_category->getName() ?>"
+                                    />
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            <img
+                                src="<?php echo $this->getSkinUrl('images/catalog/product/placeholder/small_image.jpg'); ?>"
+                                alt="<?php echo $_category->getName() ?>"
+                            />
+                        <?php endif; ?>
+                    </a>
+                    <h2 class="category-name">
+                        <a href="<?php echo $_category->getUrl() ?>" title="<?php echo $_category->getName() ?>">
+                            <?php echo $_category->getName() ?>
+                        </a>
+                    </h2>
+                    <?php if ($_categoryDescription == '1'): ?>
+                        <div class="desc std">
+                            <?php echo Mage::helper('core/string')->truncate($cur_category->getDescription(), 100);  ?>
+                        </div>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

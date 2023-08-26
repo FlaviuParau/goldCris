@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+  ~
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the Open Software License (OSL 3.0)
+  ~ that is bundled with this package in the file LICENSE.txt.
+  ~ It is also available through the world-wide-web at this URL:
+  ~ http://opensource.org/licenses/osl-3.0.php
+  ~
+  ~ DISCLAIMER
+  ~
+  ~ Do not edit or add to this file if you wish to upgrade this extension to
+  ~ newer versions in the future.
+  ~
+  ~ @category    Blugento
+  ~ @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+  ~ @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  ~
+-->
+<config>
+    <api2>
+        <resources>
+            <order_address>
+                <attributes>
+                    <vat_id>Vat ID</vat_id>
+                    <blugento_customer_cnp>CNP</blugento_customer_cnp>
+                    <blugento_customer_reg_no>Reg No</blugento_customer_reg_no>
+                    <blugento_customer_iban>IBAN</blugento_customer_iban>
+                    <blugento_customer_bank>Bank</blugento_customer_bank>
+                    <blugento_customer_headquarter>Headquarter</blugento_customer_headquarter>
+                    <blugento_purchase_type>Purchase Type</blugento_purchase_type>
+                </attributes>
+            </order_address>
+        </resources>
+    </api2>
+</config>

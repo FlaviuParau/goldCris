@@ -1,0 +1,17 @@
+Attribute list,Lista cech
+Add Pagination to Page Title,Dodaj paginacj? do tytu?u strony
+Add Pagination to Page Description,Dodaj paginację do opisu strony
+Enable SEO pagination,W??cz paginacj? SEO
+Force Canonical Link Meta Tag For Filterable Attributes,Wymu? Canonical Link Meta Tag dla atrybut�w filtrowalnych
+Remove Canonical Link Meta Tag For Filterable Attributes,Usu? Canonical Link Meta Tag dla atrybut�w filtrowalnych
+SEO Enhancements,Ulepszenia SEO
+Simplify Category Page Title,Upro?? tytu? strony kategorii
+Simplify Product Page Title,Upro?? tytu? strony produktu
+Use Canonical Link Meta Tag For Attributes,U?yj Canonical Link Meta Tag dla atrybut�w
+Add noindex to filters and sorting page,Dodaj noindex do filtr�w i strony sortowania
+Remove Parent Category Path for Category URLs,Usu? ?cie?k? kategorii nadrz?dnej dla adres�w URL kategorii
+"If enabled removes all parent categories from the URL path, so that /clothing/shoes becomes /shoes. (*Note: URL reindexing is necessary!)","Je?li ta opcja jest w??czona, usuwa wszystkie kategorie nadrz?dne ze ?cie?ki adresu URL, dzi?ki czemu / clothing / shoes staje si? / shoes. (* Uwaga: konieczne jest ponowne indeksowanie adres�w URL!)"
+Include Canonical Link on Review Page,Za??cz Canonical Link na stronie recenzji
+Include Canonical Link on Category Page,Za??cz Canonical Link na stronie kategorii
+"If enabled, the canonical link apears twice on category filter page. You should disable the other option from Sys - Config - Catalog - Search Engine Optimisations - Use Canonical Link Meta Tag For Categories","Je?li ta opcja jest w??czona, link kanoniczny pojawia si? dwukrotnie na stronie filtra kategorii. Nale?y wy??czy? inn? opcj? z Sys - Konfiguracja - Katalog - Optymalizacje wyszukiwarek - U?yj metatagu Canonical Link dla kategorii"
+"Add noindex to filters link","Dodaj link noindex do filtrów"

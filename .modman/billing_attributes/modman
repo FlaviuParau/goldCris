@@ -1,0 +1,9 @@
+src/app/code/local/Mage/Customer                                            app/code/local/Mage/Customer
+src/app/code/local/Blugento/Billing                                         app/code/local/Blugento/Billing
+src/app/design/frontend/base/default/template/blugento/billing              app/design/frontend/base/default/template/blugento/billing
+src/app/design/frontend/base/default/layout/blugento_billing.xml            app/design/frontend/base/default/layout/blugento_billing.xml
+src/app/etc/modules/Blugento_Billing.xml                                    app/etc/modules/Blugento_Billing.xml
+src/app/locale/de_DE/Blugento_Billing.csv                                   app/locale/de_DE/Blugento_Billing.csv
+src/app/locale/en_US/Blugento_Billing.csv                                   app/locale/en_US/Blugento_Billing.csv
+src/app/locale/ro_RO/Blugento_Billing.csv                                   app/locale/ro_RO/Blugento_Billing.csv
+src/app/locale/pl_PL/Blugento_Billing.csv                                   app/locale/pl_PL/Blugento_Billing.csv

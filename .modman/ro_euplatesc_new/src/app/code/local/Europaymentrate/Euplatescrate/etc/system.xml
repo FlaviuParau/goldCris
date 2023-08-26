@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<config>
+ <sections>
+	  <payment>
+		  <groups>
+			  <euplatescrate translate="label" module="euplatescrate">
+				  <label>Euplatesc</label>
+				  <sort_order>670</sort_order>
+				  <show_in_default>1</show_in_default>
+				  <show_in_website>1</show_in_website>
+				  <show_in_store>0</show_in_store>
+
+				  <fields>					 
+					<active translate="label">
+						  <label>Activat</label>
+						  <frontend_type>select</frontend_type>
+						  <source_model>adminhtml/system_config_source_yesno</source_model>
+						  <sort_order>1</sort_order>
+						  <show_in_default>1</show_in_default>
+						  <show_in_website>1</show_in_website>
+						  <show_in_store>0</show_in_store>
+					 </active>
+							<rateactive>
+								<label>Rate active pentru</label>
+								<frontend_type>multiselect</frontend_type>
+								<source_model>euplatescrate/source_rateactive</source_model>
+								<sort_order>15</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>0</show_in_store>
+								<comment>Apasa pe ctrl pentru selectare multipla</comment>
+							</rateactive>
+                        	 <rate1 translate="label">
+                            	  	<label>Rate(1) Alpha Bank</label>
+                            	  	<frontend_type>text</frontend_type>
+                            	  	<sort_order>16</sort_order>
+                            	  	<show_in_default>1</show_in_default>
+                            	  	<show_in_website>1</show_in_website>
+                            	  	<show_in_store>0</show_in_store>
+									<comment>Ex: 2,4,6,12</comment>
+									<validate>validate-eprate</validate>
+                        	 </rate1>
+ 							 <rate2 translate="label">
+                            	  	<label>Rate(2) Banca Comerciala Romana</label>
+                            	  	<frontend_type>text</frontend_type>
+                            	  	<sort_order>17</sort_order>
+                            	  	<show_in_default>1</show_in_default>
+                            	  	<show_in_website>1</show_in_website>
+                            	  	<show_in_store>0</show_in_store>
+									<comment>Ex: 2,4,6,12</comment>
+									<validate>validate-eprate</validate>
+                        	 </rate2>
+							 <rate3 translate="label">
+                            	  	<label>Rate(3) Banca Transilvania</label>
+                            	  	<frontend_type>text</frontend_type>
+                            	  	<sort_order>18</sort_order>
+                            	  	<show_in_default>1</show_in_default>
+                            	  	<show_in_website>1</show_in_website>
+                            	  	<show_in_store>0</show_in_store>
+									<comment>Ex: 2,4,6,12</comment>
+									<validate>validate-eprate</validate>
+                        	 </rate3>
+ 							 <rate4 translate="label">
+                            	  	<label>Rate(4) BRD Finance</label>
+                            	  	<frontend_type>text</frontend_type>
+                            	  	<sort_order>19</sort_order>
+                            	  	<show_in_default>1</show_in_default>
+                            	  	<show_in_website>1</show_in_website>
+                            	  	<show_in_store>0</show_in_store>
+									<comment>Ex: 2,4,6,12</comment>
+									<validate>validate-eprate</validate>
+                        	 </rate4>
+							 <rate5 translate="label">
+                            	  	<label>Rate(5) Raiffeisen Bank</label>
+                            	  	<frontend_type>text</frontend_type>
+                            	  	<sort_order>20</sort_order>
+                            	  	<show_in_default>1</show_in_default>
+                            	  	<show_in_website>1</show_in_website>
+                            	  	<show_in_store>0</show_in_store>
+									<comment>Ex: 2,4,6,12</comment>
+									<validate>validate-eprate</validate>
+                        	 </rate5>
+							 <rateorder translate="label">
+                            	  	<label>Ordine Rate</label>
+                            	  	<frontend_type>text</frontend_type>
+                            	  	<sort_order>21</sort_order>
+                            	  	<show_in_default>1</show_in_default>
+                            	  	<show_in_website>1</show_in_website>
+                            	  	<show_in_store>0</show_in_store>
+									<comment><![CDATA[Ex: 4,2,5,1,3<br>Setat: apar doar ratele specificate si active, in ordinea setata<br>Nesetat: apar doar ratele active, in ordine alfabetica]]></comment>
+									<validate>validate-eporder</validate>
+                        	 </rateorder>
+							 
+							 <ratetype translate="label">
+	                            <label>Mod de afisare restrans</label>
+      	                      <frontend_type>select</frontend_type>
+            	                <source_model>adminhtml/system_config_source_yesno</source_model>
+                  	            <sort_order>22</sort_order>
+                        	    <show_in_default>1</show_in_default>
+	                            <show_in_website>1</show_in_website>
+      	                        <show_in_store>0</show_in_store>
+            	            </ratetype>
+
+                        	<test translate="label">
+	                            <label>Sec_Status</label>
+      	                      <frontend_type>select</frontend_type>
+            	                <source_model>adminhtml/system_config_source_yesno</source_model>
+                  	          <sort_order>5</sort_order>
+                        	    <show_in_default>1</show_in_default>
+	                            <show_in_website>1</show_in_website>
+      	                      <show_in_store>0</show_in_store>
+            	            </test>
+
+                        	<cgi_url>
+                            		<label>Gateway URL</label>
+                          	  <frontend_type>text</frontend_type>
+                         	  <sort_order>6</sort_order>
+              	              <show_in_default>1</show_in_default>
+                   	        <show_in_website>1</show_in_website>
+                 	        	  <show_in_store>0</show_in_store>
+                        	</cgi_url>
+                        <trans_key translate="label">
+                            <label>Cheia de securitate</label>
+                            <frontend_type>password</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </trans_key>
+                        <partner translate="label">
+                            <label>ID Comerciant</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </partner>
+
+						<order_status translate="label">
+							<label>Status comanda noua</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+							<sort_order>7</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</order_status>
+						
+						<order_p_status translate="label">
+							<label>Status comanda platita</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</order_p_status>
+
+						<title translate="label">
+							<label>Titlu</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</title>
+				</fields>
+			  </euplatescrate>
+		  </groups>
+	  </payment>
+  </sections>
+</config>

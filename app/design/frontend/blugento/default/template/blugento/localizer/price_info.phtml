@@ -1,0 +1,44 @@
+<?php
+/**
+ * @category    Blugento
+ * @package     Blugento_Localizer
+ */
+?>
+<?php
+/**
+ * @var $this Blugento_Localizer_Block_Catalog_Product_Price
+ * @var $helper Blugento_Localizer_Helper_Data
+ */
+$helper = $this->helper('blugento_localizer');
+?>
+<?php $shippingCostUrl = '#shipping-info'; ?>
+<?php if (!empty($shippingCostUrl) && $this->getIsShowShippingLink()): ?>
+    <?php if ($this->getPriceDisplayType() == Mage_Tax_Model_Config::DISPLAY_TYPE_EXCLUDING_TAX): ?>
+        <?php if ($this->getIsIncludingShippingCosts()): ?>
+            <span class="tax-details"><?php echo $this->__('Excl. %s Tax', $this->getFormattedTaxRate()) ?><span class="tax-separator">, </span><span class="shipping-cost-details"><?php echo $this->__('incl. <a href="%s">Shipping Cost</a>', $shippingCostUrl) ?></span></span>
+        <?php else: ?>
+            <span class="tax-details"><?php echo $this->__('Excl. %s Tax', $this->getFormattedTaxRate()) ?><span class="tax-separator">, </span><span class="shipping-cost-details"><?php echo $this->__('excl. <a href="%s">Shipping Cost</a>', $shippingCostUrl) ?></span></span>
+        <?php endif; ?>
+    <?php elseif ($this->getPriceDisplayType() == Mage_Tax_Model_Config::DISPLAY_TYPE_INCLUDING_TAX): ?>
+        <?php if ($this->getIsIncludingShippingCosts()): ?>
+            <span class="tax-details"><?php echo $this->__('Incl. %s Tax', $this->getFormattedTaxRate()) ?><span class="tax-separator">, </span><span class="shipping-cost-details"><?php echo $this->__('incl. <a href="%s">Shipping Cost</a>', $shippingCostUrl) ?></span></span>
+        <?php else: ?>
+            <span class="tax-details"><?php echo $this->__('Incl. %s Tax', $this->getFormattedTaxRate()) ?><span class="tax-separator">, </span><span class="shipping-cost-details"><?php echo $this->__('excl. <a href="%s">Shipping Cost</a>', $shippingCostUrl) ?></span></span>
+        <?php endif; ?>
+    <?php elseif ($this->getPriceDisplayType() == Mage_Tax_Model_Config::DISPLAY_TYPE_BOTH): ?>
+        <?php if ($this->getIsIncludingShippingCosts()): ?>
+            <span class="tax-details"><?php echo $this->__('incl. <a href="%s">Shipping Cost</a>', $shippingCostUrl) ?></span>
+        <?php else: ?>
+            <span class="tax-details"><?php echo $this->__('excl. <a href="%s">Shipping Cost</a>', $shippingCostUrl) ?></span>
+        <?php endif; ?>
+    <?php endif; ?>
+    <div id="shipping-info" class="modal mfp-hide">
+        <?php echo $helper->getShippingCostHtml() ?>
+    </div>
+<?php else: ?>
+    <?php if ($this->getPriceDisplayType() == Mage_Tax_Model_Config::DISPLAY_TYPE_EXCLUDING_TAX): ?>
+        <span class="tax-details"><?php echo $this->__('Excl. %s Tax', $this->getFormattedTaxRate()) ?></span>
+    <?php elseif ($this->getPriceDisplayType() == Mage_Tax_Model_Config::DISPLAY_TYPE_INCLUDING_TAX): ?>
+        <span class="tax-details"><?php echo $this->__('Incl. %s Tax', $this->getFormattedTaxRate()) ?></span>
+    <?php endif; ?>
+<?php endif; ?>

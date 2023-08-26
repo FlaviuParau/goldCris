@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<config>
+    <default>
+        <blugento_socialmedia>
+            <share_media>
+                <facebooktitle>Follow via Facebook</facebooktitle>
+                <facebookurl>https://www.facebook.com/</facebookurl>
+                <linkedintitle>Follow via Linkedin</linkedintitle>
+                <twittertitle>Follow via Twitter</twittertitle>
+                <twitterurl>https://twitter.com/</twitterurl>
+                <youtubetitle>Follow via Youtube</youtubetitle>
+                <googleplustitle>Follow via Google +</googleplustitle>
+                <googleplusurl>https://plus.google.com</googleplusurl>
+                <pinteresttitle>Follow via Pinterest</pinteresttitle>
+                <instagramtitle>Follow via Instagram</instagramtitle>
+                <flickrtitle>Follow via Flickr</flickrtitle>
+                <tiktoktitle>Follow via TikTok</tiktoktitle>
+            </share_media>
+        </blugento_socialmedia>
+    </default>
+    <modules>
+        <Blugento_Socialmedia>
+            <version>1.0.0</version>
+        </Blugento_Socialmedia>
+    </modules>
+    <adminhtml>
+        <translate>
+            <modules>
+                <blugento_socialmedia>
+                    <files>
+                        <default>Blugento_Socialmedia.csv</default>
+                    </files>
+                </blugento_socialmedia>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <blugento_socialmedia>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_Socialmedia</module>
+                    <frontName>blugento_socialmedia</frontName>
+                </args>
+            </blugento_socialmedia>
+        </routers>
+        <layout>
+            <updates>
+                <blugento_socialmedia>
+                    <file>blugento_socialmedia.xml</file>
+                </blugento_socialmedia>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <blugento_socialmedia>
+                    <files>
+                        <default>Blugento_Socialmedia.csv</default>
+                    </files>
+                </blugento_socialmedia>
+            </modules>
+        </translate>
+    </frontend>
+    <global>
+        <helpers>
+            <blugento_socialmedia>
+                <class>Blugento_Socialmedia_Helper</class>
+            </blugento_socialmedia>
+        </helpers>
+        <blocks>
+            <blugento_socialmedia>
+                <class>Blugento_Socialmedia_Block</class>
+            </blugento_socialmedia>
+        </blocks>
+    </global>
+</config>

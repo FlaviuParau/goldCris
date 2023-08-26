@@ -1,0 +1,643 @@
+<?php
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+
+<?php
+require_once 'MobileDetect/Mobile_Detect.php';
+
+$_productViewManufacturerPriceMode = (int)($this->getLayout()->getBlock('root')->getProductViewManufacturerPriceMode() ?: 1);
+$_productViewDeliveryTimeMode = (int)($this->getLayout()->getBlock('root')->getProductViewDeliveryTimeMode() ?: 1);
+$_productViewSubtitleMode = (int)($this->getLayout()->getBlock('root')->getProductViewSubtitleMode() ?: 1);
+$_productViewShortDescriptionMode = (int)($this->getLayout()->getBlock('root')->getProductViewShortDescriptionMode() ?: 2);
+$_productViewReviewsMode = (int)($this->getLayout()->getBlock('root')->getProductViewReviewsMode() ?: 2);
+$_productViewDiscountPercentageMode = (int)($this->getLayout()->getBlock('root')->getProductViewDiscountPercentageMode() ?: 2);
+$_productViewDiscountMode = (int)($this->getLayout()->getBlock('root')->getProductViewDiscountMode() ?: 2);
+$_productPageGalleryOrientation = (int)($this->getLayout()->getBlock('root')->getProductPageGalleryOrientation() ?: 1);
+$_productPageMobileGalleryOrientation = (int)($this->getLayout()->getBlock('root')->getProductPageMobileGalleryOrientation() ?: 1);
+$_productViewReviewForm = (int)($this->getLayout()->getBlock('root')->getProductViewReviewForm() ?: 2);
+$_productViewPromotionCountdown = (int)($this->getLayout()->getBlock('root')->getProductViewPromotionCountdown() ?: 2);
+$_productViewCatalogPromotionCountdown = (int) ($this->getLayout()->getBlock('root')->getProductViewCatalogPromotionCountdown() ?: 2);
+$_getProductViewTabsOrientation = (int)($this->getLayout()->getBlock('root')->getProductViewTabsOrientation() ?: 1);
+$_getProductViewTabsStyle = (int)($this->getLayout()->getBlock('root')->getProductViewTabsStyle() ?: 1);
+$_productViewLayoutPricePosition = (int) ($this->getLayout()->getBlock('root')->getProductViewLayoutPricePosition() ?: 1);
+$_productViewLayoutTabsPosition = (int) ($this->getLayout()->getBlock('root')->getProductViewLayoutTabsPosition() ?: 1);
+$_toggleDescription = (int) ($this->getLayout()->getBlock('root')->getProductViewDescriptionToggle() ?: 2);
+$_descriptionTruncateValue = (int) ($this->getLayout()->getBlock('root')->getProductViewDescriptionToggleValue() ?: 10000);
+
+$_helper = $this->helper('catalog/output');
+$helperTheme = $this->helper('blugento_theme');
+$currentCurrency = Mage::app()->getStore()->getBaseCurrencyCode();
+$_product = $this->getProduct();
+$_manufacturerAttr = $_product->getManufacturer();
+$_reviewIsOutputDisabled = Mage::getStoreConfig('advanced/modules_disable_output/Mage_Review');
+$_priceDiscountPercentage = $helperTheme->getDiscountPercentage($_product);
+$_priceDiscount = $helperTheme->getDiscountValue($_product);
+$multitabsHelper = Mage::helper('blugento_productmultitabs');
+$_customTabs = $multitabsHelper->getCustomTabs($_product, Mage::app()->getStore()->getId());
+$_isReviewTab = $multitabsHelper->isTabEnabled('product_reviews');
+$_relatedTab = $multitabsHelper->isTabEnabled('related_products');
+$_tabSort = $multitabsHelper->getTabsSortOrder();
+
+$detect = new Mobile_Detect;
+
+$usps = [];
+if (Mage::helper('core')->isModuleEnabled('Blugento_Usp')) {
+	/**
+	 * @var Blugento_Usp_Block_Cms_Usp $uspBlock
+	 */
+	$uspBlock = $this->getlayout()->createBlock('blugento_usp/cms_usp');
+	$usps = $uspBlock->uspsProduct();
+}
+?>
+
+<script>
+	var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+
+<div class="product-view gallery-orientation-<?php echo $_productPageGalleryOrientation ?>"
+     data-mobile-gallery-orientation="<?php echo $_productPageMobileGalleryOrientation ?>"
+     data-product-type="<?php echo $_product->getTypeId() ?>"
+     data-product-id="<?php echo $_product->getId() ?>"
+     data-product-sku="<?php echo $_product->getSku() ?>"
+>
+	<div class="product-essential row">
+		
+		<?php echo $this->getLayout()->getBlock('breadcrumbs')->toHtml() ?>
+		
+		<div class="col-3 col-sm-12 product-initial-info">
+			
+			<?php if (!$detect->isMobile() && !$detect->isTablet()) : ?>
+				<div class="page-title product-name">
+					<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+				</div>
+				
+				<div class="product-sku">
+                    <?php echo $this->__('SKU') ?>: <span><?php echo $_helper->productAttribute($_product, nl2br($_product->getSku()), 'sku'); ?></span>
+					<?php if(Mage::getStoreConfig('blugento_theme/general_nl2br/manufacturer_display_view')): ?>
+						| <span class="product-manufacturer"><?php echo $this->__('Manufacturer') ?>: <?php echo $_product->getAttributeText('manufacturer'); ?></span>
+					<?php endif; ?>
+				</div>
+				
+				<?php if ($_productViewLayoutPricePosition == 2): ?>
+					<?php if (!$this->getHelperCart() && !$this->getDisplayCartPriceCustom() && !$_product->getData('blugento_cart_price')) : ?>
+						<?php echo $this->getChildHtml('product_type_data') ?>
+					<?php endif; ?>
+					
+					<?php echo $this->getTierPriceHtml() ?>
+					
+					<?php if ($_priceDiscount && ($_productViewDiscountMode == 1)): ?>
+						<div class="discount">
+							<span><?php echo $_priceDiscount; ?></span>
+						</div>
+					<?php endif; ?>
+				<?php endif; ?>
+			<?php endif; ?>
+			
+			<?php if (!$detect->isMobile() && !$detect->isTablet()) : ?>
+				<?php if (($_productViewShortDescriptionMode == 1) && (($_product->getShortDescription()) != '')):  ?>
+					<div class="short-description"><?php echo $this->helper('catalog/output')->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></div>
+				<?php endif; ?>
+			<?php endif; ?>
+			
+			<?php if ($_productViewLayoutTabsPosition == 1): ?>
+				<div id="tab-product-collateral" class="product-collateral toggle-content tabs"
+				     data-active="<?php echo $this->getCollateralActiveTab() ?>"
+				     data-orientation="<?php echo $_getProductViewTabsOrientation; ?>"
+				     data-style="<?php echo $_getProductViewTabsStyle; ?>"
+				>
+					<?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')): ?>
+						<?php $detailedInfoGroup = $multitabsHelper->processTabs($detailedInfoGroup); ?>
+						<ul class="tabs-nav" id="tab-product-collateral-nav">
+							<?php $i = 1; ?>
+							<?php foreach ($detailedInfoGroup as $alias => $html): ?>
+								<li class="tab-<?php echo $alias ?>" <?php if (isset($_tabSort[$alias])): ?>data-order="<?php echo $_tabSort[$alias] ?>" <?php endif; ?>>
+									<a href="#pc-tab-<?php echo $alias ?>"><?php echo $this->escapeHtml($this->__($this->getChildData($alias, 'title'))) ?></a>
+								</li>
+								<?php $i++; ?>
+							<?php endforeach; ?>
+							<?php if ($_relatedTab): ?>
+								<li class="tab-related" data-order="<?php echo $_tabSort['related_products'] ?>">
+									<a href="#pc-tab-related"><?php echo $this->__('Related Products') ?></a>
+								</li>
+							<?php endif; ?>
+							<?php foreach ($_customTabs as $tab): ?>
+								<li class="tab-<?php echo $tab['identifier'] ?>" data-order="<?php echo $_tabSort[$tab['identifier']] ?>">
+									<a href="#pc-tab-<?php echo $tab['identifier'] ?>"><?php echo $tab['name'] ?></a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+						<div class="tabs-container">
+							<?php $i = 1; ?>
+							<?php foreach ($detailedInfoGroup as $alias => $html): ?>
+								<?php if (isset($_tabSort[$alias])): ?> <span data-order="<?php echo $_tabSort[$alias] ?>"> <?php endif; ?>
+									<a href="#" class="tab-nav" data-rel="#pc-tab-<?php echo $alias ?>"><?php echo $this->escapeHtml($this->__($this->getChildData($alias, 'title'))) ?></a>
+									<div class="tab <?php echo $alias ?>" id="pc-tab-<?php echo $alias ?>" <?php echo $alias == 'description' && $_toggleDescription == 1 ? "data-toggle='true' data-truncated-value='$_descriptionTruncateValue'" : '' ?>>
+										<?php echo $html ?>
+										<?php if ($alias == 'description' && $_toggleDescription == 1): ?>
+											<a class="button show-description"><?php echo $this->__('See more') ?></a>
+											<a class="button hide-description"><?php echo $this->__('See less') ?></a>
+										<?php endif; ?>
+									</div>
+								<?php if (isset($_tabSort[$alias])): ?> </span> <?php endif; ?>
+								<?php $i++; ?>
+							<?php endforeach; ?>
+							<?php if ($_relatedTab): ?>
+								<span data-order="<?php echo $_tabSort['related_products'] ?>" class="related-products-container">
+									<a href="#" class="tab-nav" data-rel="#pc-tab-related"><?php echo $this->__('Related Products') ?></a>
+									<div class="tab related" id="pc-tab-related">
+										<?php echo $this->getChildHtml('related_products') ?>
+									</div>
+								</span>
+							<?php endif; ?>
+							<?php foreach($_customTabs as $tab): ?>
+								<span data-order="<?php echo $_tabSort[$tab['identifier']] ?>">
+									<a href="#" class="tab-nav" data-rel="#pc-tab-<?php echo $tab['identifier'] ?>"><?php echo $tab['name'] ?></a>
+									<div class="tab custom" id="pc-tab-<?php echo $tab['identifier'] ?>">
+										<?php echo $tab['html']; ?>
+									</div>
+								</span>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
+		</div>
+		
+		<div class="col-6 col-sm-6 col-xs-12">
+			<div id="product-img-box" class="product-img-box cf<?php echo (Mage::helper('core')->isModuleEnabled('Milople_Personalized') && Mage::helper('personalized/personalized')->isEnabled() && Mage::helper('personalized/personalized')->allowPersonalization($_product)) ? ' personalized-product' : ''; ?>">
+				<?php if (Mage::helper('core')->isModuleEnabled('Milople_Personalized') && Mage::helper('personalized/personalized')->isEnabled() && Mage::helper('personalized/personalized')->allowPersonalization($_product)) : ?>
+					<?php echo $this->getLayout()->createBlock('catalog/product_view_media')->setTemplate('personalized/product/media.phtml')->toHtml(); ?>
+				<?php else : ?>
+					<?php echo $this->getChildHtml('media') ?>
+					<?php echo $this->getChildHtml('product.label') ?>
+					<?php if ($_manufacturerAttr): ?>
+						<div class="mnfr-<?php echo $_manufacturerAttr; ?> mnfr-product"></div>
+					<?php endif; ?>
+					<?php if ($_priceDiscountPercentage && ($_productViewDiscountPercentageMode == 1)): ?>
+						<div class="discount-percentage">
+							<span><?php echo $_priceDiscountPercentage ?></span>
+						</div>
+					<?php endif; ?>
+					<?php /* @var Blugento_Theme_Helper_Data $helper */ ?>
+					<?php $helper = $this->helper('blugento_theme'); ?>
+					<?php $badges = $helper->getProductBagdes($_product); ?>
+					<?php if (Mage::helper('core')->isModuleEnabled('Blugento_ProductLabels')) : ?>
+						<?php if (Mage::helper('blugento_productlabels')->isEnabled()) : ?>
+							<?php $badges = Mage::helper('blugento_productlabels')->disableCoreLabels($badges, 'product', Mage::app()->getStore()->getStoreId()); ?>
+						<?php endif; ?>
+					<?php endif; ?>
+					<?php if (count($badges)): ?>
+						<div class="product-badges">
+							<?php foreach ($badges as $key => $label) : ?>
+								<div class="badge <?php echo $key; ?>"><?php echo $label; ?></div>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+				<?php endif; ?>
+			</div>
+		</div>
+		
+		<div class="col-3 col-sm-6 col-xs-12">
+			<div class="product-shop<?php echo (Mage::helper('core')->isModuleEnabled('Milople_Personalized') && Mage::helper('personalized/personalized')->isEnabled() && Mage::helper('personalized/personalized')->allowPersonalization($_product)) ? ' personalized-product' : ''; ?>">
+				<form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+					<?php echo $this->getBlockHtml('formkey') ?>
+					
+					<div class="no-display">
+						<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+						<input type="hidden" name="related_product" id="related-products-field" value="" />
+					</div>
+					
+					<?php if ($detect->isMobile() && !$detect->isTablet()) : ?>
+						<div class="page-title product-name">
+							<h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+						</div>
+						
+						<div class="product-sku">
+                            <?php echo $this->__('SKU') ?>: <span><?php echo $_helper->productAttribute($_product, nl2br($_product->getSku()), 'sku'); ?></span>
+							<?php if(Mage::getStoreConfig('blugento_theme/general_nl2br/manufacturer_display_view')): ?>
+								| <span class="product-manufacturer"><?php echo $this->__('Manufacturer') ?>: <?php echo $_product->getAttributeText('manufacturer'); ?></span>
+							<?php endif; ?>
+						</div>
+						
+						<?php if (($_productViewShortDescriptionMode == 1) && (($_product->getShortDescription()) != '')):  ?>
+							<div class="short-description"><?php echo $this->helper('catalog/output')->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></div>
+						<?php endif; ?>
+						
+						<?php if (!$this->getHelperCart() && !$this->getDisplayCartPriceCustom() && !$_product->getData('blugento_cart_price')) : ?>
+							<?php echo $this->getChildHtml('product_type_data') ?>
+						<?php endif; ?>
+						
+						<?php echo $this->getTierPriceHtml() ?>
+						
+						<?php if ($_priceDiscount && ($_productViewDiscountMode == 1)): ?>
+							<div class="discount">
+								<span><?php echo $_priceDiscount; ?></span>
+							</div>
+						<?php endif; ?>
+					<?php endif; ?>
+					
+					<?php if (Mage::helper('core')->isModuleEnabled('Amasty_Shopby')) :
+						echo Mage::helper('amshopby')->showLinks($_product);
+					endif; ?>
+					
+					<?php if (Mage::helper('core')->isModuleEnabled('Amasty_Brands')) :
+						echo Mage::helper('ambrands')->showIcon($_product, $this->getMode(), 'product-view');
+					endif; ?>
+					
+					<?php if (Mage::helper('core')->isModuleEnabled('TM_FacebookLB')) :
+						if (Mage::getConfig()->getNode('modules/TM_FacebookLB')) :
+							echo $this->getLayout()->createBlock('core/template')->setTemplate('tm/facebooklb/like.phtml')->toHtml();
+						endif;
+					endif; ?>
+					
+					<?php if (($_productViewSubtitleMode == 2) && (($_product->getData('subtitle')) != '')) : ?>
+						<h2 class="attr-subtitle"><?php echo $_product->getData('subtitle') ?></h2>
+					<?php endif; ?>
+					
+					<?php if ($this->canEmailToFriend()) : ?>
+						<p class="email-friend"><a href="<?php echo $this->helper('catalog/product')->getEmailToFriendUrl($_product) ?>"><?php echo $this->__('Email to a Friend') ?></a></p>
+					<?php endif; ?>
+					
+					<div id="product-baseprice" class="product-baseprice"></div>
+					
+					<?php if ($_product->getData('product_status') != ''):  ?>
+						<div class="product-status"><?php echo $_product->getData('product_status') ?></div>
+					<?php endif; ?>
+					
+					<?php echo $this->getChildHtml('alert_urls') ?>
+					
+					<?php if (!$detect->isMobile() && !$detect->isTablet()) : ?>
+						<?php if ($_productViewLayoutPricePosition == 1): ?>
+							<?php if (!$this->getHelperCart() && !$this->getDisplayCartPriceCustom() && !$_product->getData('blugento_cart_price')) : ?>
+								<?php echo $this->getChildHtml('product_type_data') ?>
+							<?php endif; ?>
+							
+							<?php echo $this->getTierPriceHtml() ?>
+							
+							<?php if ($_priceDiscount && ($_productViewDiscountMode == 1)): ?>
+								<div class="discount">
+									<span><?php echo $_priceDiscount; ?></span>
+								</div>
+							<?php endif; ?>
+						<?php endif; ?>
+					<?php endif; ?>
+
+					<?php if ($_productViewPromotionCountdown == 1 && $_productViewCatalogPromotionCountdown == 2) : ?>
+						<?php
+						$nowstr = Mage::getModel('core/date')->timestamp(time());
+						$now = date('Y/m/d H:i:s', $nowstr);
+						$end_datetime = strtotime($_product->getSpecialToDate()) + 86400;
+						$date = date("Y/m/d H:i:s", $end_datetime);
+
+						if ($_product->getSpecialPrice() && strtotime($now) <= strtotime($end_datetime)): ?>
+							<div class="countdown" id="countdown" >
+							<script>getTimer('<?php echo $date?>', '<?php echo $now ?>')</script>
+						</div>
+						<?php endif; ?>
+                	<?php elseif ($_productViewCatalogPromotionCountdown == 1 && $_productViewPromotionCountdown == 2) : ?>
+						<?php
+						$nowstr = Mage::getModel('core/date')->timestamp(time());
+						$now = date('Y/m/d H:i:s', $nowstr);
+						$end_datetime =
+							strtotime($now) <= strtotime($_catalogRuleToDate->toDate)
+								? strtotime($_catalogRuleToDate->toDate)
+								: '';
+						$date = date("Y/m/d H:i:s", $end_datetime + 86400);
+
+						if ($_catalogRuleToDate->rulePrice && strtotime($now) <= $end_datetime): ?>
+							<div class="countdown" id="countdown" >
+							<script>getTimer('<?php echo $date?>', '<?php echo $now ?>')</script>
+						</div>
+						<?php endif; ?>
+					<?php elseif ($_productViewCatalogPromotionCountdown == 1 && $_productViewPromotionCountdown == 1) : ?>
+						<?php
+						$nowstr = Mage::getModel('core/date')->timestamp(time());
+						$now = date('Y/m/d H:i:s', $nowstr);
+						$end_datetime =
+							strtotime($now) <= strtotime($_catalogRuleToDate)
+								? strtotime($_catalogRuleToDate)
+								: (
+									strtotime($_product->getSpecialToDate()) + 86400
+								);
+						$date = date("Y/m/d H:i:s", $end_datetime);
+
+						if (
+							($_product->getSpecialPrice() || $_catalogRuleToDate->rulePrice)
+							&& strtotime($now) <= $end_datetime
+						): ?>
+							<div class="countdown" id="countdown" >
+							<script>getTimer('<?php echo $date?>', '<?php echo $now ?>')</script>
+						</div>
+						<?php endif; ?>
+                	<?php endif; ?>
+					
+					<?php echo $this->getChildHtml('extrahint') ?>
+					
+					<?php if (($_productViewManufacturerPriceMode == 1) && ($_product->getMsrp() != 0)): ?>
+						<div class="price-box-suggested">
+							<p class="price-label"><?php echo $this->__('Manufacturer\'s Suggested Retail Price') ?>:</p>
+							<span class="price"><?php echo Mage::helper('core')->currency($_product->getMsrp(), true, false) ?></span>
+						</div>
+					<?php endif; ?>
+					
+					<div class="invitation-box">
+						<?php if (Mage::helper('core')->isModuleEnabled('Blugento_InvitationTemplate') && Mage::helper('blugento_invitationtemplate')->validToDisplay($this->getProduct())) :?>
+							<?php /** @var Blugento_InvitationTemplate_Helper_Data $helper */ ?>
+							<?php $helper = Mage::helper('blugento_invitationtemplate'); ?>
+							<?php $categories = $helper->getInvitationTemplate(); ?>
+							<?php if (count($categories)): ?>
+								<select name="invitation" id="invitation" class="product-custom-option" title="">
+									<option data-conten="" value="">-- Please Select --</option>
+									<?php foreach ($categories as $catName=>$catData) : ?>
+										<optgroup label="<?php echo $catName; ?>"></optgroup>
+										<?php foreach ($catData as $itemName=>$itemData) : ?>
+											<option data-conten= '<?php echo $itemData;?>' value="<?php echo $itemName; ?>" ><?php echo $itemName; ?></option>
+										<?php endforeach; ?>
+									<?php endforeach; ?>
+								</select>
+								<div contenteditable="true" class="invitation-template"></div>
+								<div class="invitation-template-wrap">
+									<input class="invitation-template-input required-entry no-display" type="text" name="hidden">
+								</div>
+								<script>
+									jQuery('#invitation').change(function() {
+										jQuery('.invitation-template').fadeIn(313);
+										var data = jQuery(this).children('option:selected').data('conten');
+										jQuery('.invitation-template').html(data);
+										jQuery('#invitation-template').val(data);
+										jQuery('.invitation-template-input').removeClass('required-entry');
+										jQuery('.invitation-template-wrap .validation-advice').remove();
+										
+										if (jQuery('.invitation-template').html().trim().length == 0) {
+											jQuery('.invitation-template-input').addClass('required-entry');
+										}
+									});
+									jQuery('body').on('focus', '[contenteditable]', function() {
+										var $this = jQuery(this);
+										$this.data('before', $this.html());
+										$this.trigger('change');
+										if ($this.html().replace(/\s/g, '').replace(/&nbsp;/g, '').length == 0) {
+											jQuery('.invitation-template-input').addClass('required-entry');
+										}
+										return $this;
+									}).on('blur keyup paste input', '[contenteditable]', function() {
+										var $this = jQuery(this);
+										if ($this.data('before') !== $this.html()) {
+											$this.data('before', $this.html());
+											$this.trigger('change');
+											var data = $this.html();
+											jQuery('#invitation-template').val(data);
+											jQuery('.invitation-template-input').removeClass('required-entry');
+											jQuery('.invitation-template-wrap .validation-advice').remove();
+										} else if ($this.html().replace(/\s/g, '').replace(/&nbsp;/g, '').length == 0) {
+											jQuery('.invitation-template-input').addClass('required-entry');
+										}
+										return $this;
+									});
+								</script>
+							<?php endif; ?>
+						<?php endif; ?>
+					</div>
+					
+					<?php if (Mage::helper('core')->isModuleEnabled('Blugento_TextOptions')) : ?>
+						<?php echo $this->getLayout()->createBlock('blugento_textoptions/textoptions')->toHtml();?>
+					<?php endif; ?>
+					
+					<?php if (Mage::helper('core')->isModuleEnabled('Milople_Personalized') && Mage::helper('personalized/personalized')->isEnabled() && Mage::helper('personalized/personalized')->allowPersonalization($_product)) : ?>
+						<?php echo $this->getLayout()->createBlock('personalized/product_type')->setTemplate('personalized/product/type.phtml')->toHtml(); ?>
+					<?php endif; ?>
+					
+					<?php if (!$this->hasOptions()) : ?>
+						<div class="add-to-box">
+							<?php if ($_product->isSaleable()): ?>
+								<!-- Next two lines cannot have any code between them. -->
+								<?php echo $this->getChildHtml('affiliation_sale') ?>
+								<?php echo $this->getChildHtml('addtocart') ?>
+								<?php if ($this->helper('wishlist')->isAllow() || $_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product)) : ?>
+									<span class="or"><?php echo $this->__('OR') ?></span>
+								<?php endif; ?>
+							<?php else: ?>
+								<?php echo $this->getChildHtml('product_not_saleable'); ?>
+							<?php endif; ?>
+							<?php echo $this->getChildHtml('addto') ?>
+						</div>
+						<?php echo $this->getChildHtml('extra_buttons') ?>
+					<?php elseif (!$_product->isSaleable()) : ?>
+						<?php echo $this->getChildHtml('product_not_saleable'); ?>
+						<div class="add-to-box">
+							<?php echo $this->getChildHtml('addto') ?>
+						</div>
+					<?php endif; ?>
+					
+					<?php echo $this->getChildHtml('productmessage') ?>
+					<?php echo $this->getChildHtml('other') ?>
+					
+					<?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+						<?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+					<?php endif; ?>
+					
+					<?php echo $this->getChildHtml('product_availability') ?>
+					
+					<?php if (($_productViewDeliveryTimeMode == 2) && (($_product->getData('delivery_time')) != '')):  ?>
+						<p class="delivery-time"><span class="label"><?php echo $this->__('Delivery Time') ?>:</span><span> <?php echo $_product->getData('delivery_time') ?></span></p>
+					<?php endif; ?>
+					
+					<?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+						<?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+					<?php endif; ?>
+				
+				</form>
+				
+				<?php if (Mage::helper('core')->isModuleEnabled('Blugento_Usp')) :
+					if (count($usps)) : ?>
+						<div class="product-usp-wrapper">
+							<?php foreach ($usps as $usp) :
+								echo '<div class="product-usp-item">' . $usp['content'] . '</div>';
+							endforeach; ?>
+						</div>
+					<?php endif;
+				endif; ?>
+				
+				<?php echo $this->getChildHtml('socialmedia_share') ?>
+				<?php echo $this->getChildHtml('fitfinder') ?>
+			</div>
+		</div>
+		
+		<?php echo $this->getChildHtml('product_additional_data') ?>
+		
+		<?php if (Mage::helper('core')->isModuleEnabled('Blugento_UpsellCustom') && Mage::getStoreConfig('catalog/frontend/add_productname')) :
+			echo $this->getChildHtml('upsell_products2');
+		else :
+			echo $this->getChildHtml('upsell_products');
+		endif; ?>
+		
+		<?php if (!$_relatedTab): ?>
+			<?php echo $this->getChildHtml('related_products') ?>
+		<?php endif; ?>
+		<?php if (Mage::helper('core')->isModuleEnabled('AW_Autorelated')) : ?>
+			<?php echo  $this->getChildHtml('awarp.content.instead.native'); ?>
+			<?php echo  $this->getChildHtml('awarp.content.native.block'); ?>
+			<?php echo  $this->getChildHtml('awarp.content.under.native'); ?>
+		<?php endif; ?>
+		
+		<div class="col-9 col-s-12 reviews-block-wrapper">
+			<?php if ($_productViewLayoutTabsPosition == 2): ?>
+				<div id="tab-product-collateral" class="product-collateral toggle-content tabs"
+				     data-active="<?php echo $this->getCollateralActiveTab() ?>"
+				     data-orientation="<?php echo $_getProductViewTabsOrientation; ?>"
+				     data-style="<?php echo $_getProductViewTabsStyle; ?>"
+				>
+					<?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')): ?>
+						<?php $detailedInfoGroup = $multitabsHelper->processTabs($detailedInfoGroup); ?>
+						<ul class="tabs-nav" id="tab-product-collateral-nav">
+							<?php $i = 1; ?>
+							<?php foreach ($detailedInfoGroup as $alias => $html): ?>
+								<li class="tab-<?php echo $alias ?>" <?php if (isset($_tabSort[$alias])): ?>data-order="<?php echo $_tabSort[$alias] ?>" <?php endif; ?>>
+									<a href="#pc-tab-<?php echo $alias ?>"><?php echo $this->escapeHtml($this->__($this->getChildData($alias, 'title'))) ?></a>
+								</li>
+								<?php $i++; ?>
+							<?php endforeach; ?>
+							<?php if ($_relatedTab): ?>
+								<li class="tab-related" data-order="<?php echo $_tabSort['related_products'] ?>">
+									<a href="#pc-tab-related"><?php echo $this->__('Related Products') ?></a>
+								</li>
+							<?php endif; ?>
+							<?php foreach ($_customTabs as $tab): ?>
+								<li class="tab-<?php echo $tab['identifier'] ?>" data-order="<?php echo $_tabSort[$tab['identifier']] ?>">
+									<a href="#pc-tab-<?php echo $tab['identifier'] ?>"><?php echo $tab['name'] ?></a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+						<div class="tabs-container">
+							<?php $i = 1; ?>
+							<?php foreach ($detailedInfoGroup as $alias => $html): ?>
+								<?php if (isset($_tabSort[$alias])): ?> <span data-order="<?php echo $_tabSort[$alias] ?>"> <?php endif; ?>
+									<a href="#" class="tab-nav" data-rel="#pc-tab-<?php echo $alias ?>"><?php echo $this->escapeHtml($this->__($this->getChildData($alias, 'title'))) ?></a>
+									<div class="tab <?php echo $alias ?>" id="pc-tab-<?php echo $alias ?>" <?php echo $alias == 'description' && $_toggleDescription == 1 ? "data-toggle='true' data-truncated-value='$_descriptionTruncateValue'" : '' ?>>
+										<?php echo $html ?>
+										<?php if ($alias == 'description' && $_toggleDescription == 1): ?>
+											<a class="button show-description"><?php echo $this->__('See more') ?></a>
+											<a class="button hide-description"><?php echo $this->__('See less') ?></a>
+										<?php endif; ?>
+									</div>
+								<?php if (isset($_tabSort[$alias])): ?> </span> <?php endif; ?>
+								<?php $i++; ?>
+							<?php endforeach; ?>
+							<?php if ($_relatedTab): ?>
+								<span data-order="<?php echo $_tabSort['related_products'] ?>">
+									<a href="#" class="tab-nav" data-rel="#pc-tab-related"><?php echo $this->__('Related Products') ?></a>
+									<div class="tab related" id="pc-tab-related">
+										<?php echo $this->getChildHtml('related_products') ?>
+									</div>
+								</span>
+							<?php endif; ?>
+							<?php foreach($_customTabs as $tab): ?>
+								<span data-order="<?php echo $_tabSort[$tab['identifier']] ?>">
+									<a href="#" class="tab-nav" data-rel="#pc-tab-<?php echo $tab['identifier'] ?>"><?php echo $tab['name'] ?></a>
+									<div class="tab custom" id="pc-tab-<?php echo $tab['identifier'] ?>">
+										<?php echo $tab['html']; ?>
+									</div>
+								</span>
+							<?php endforeach; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
+			<?php echo $this->_reviewsHelperBlock->getSummaryHtml($_product, 'short', true) ?>
+			<?php echo $this->getChildHtml('review_list') ?>
+			<?php if (Mage::helper('core')->isModuleEnabled('Plumrocket_AdvancedReviewAndReminder') && Mage::helper('advancedrar')->moduleEnabled()): ?>
+				<!-- Do nothing -->
+			<?php else: ?>
+				<?php echo $this->getChildHtml('review_form') ?>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+
+<script>
+	//<![CDATA[
+	var productAddToCartForm = new VarienForm('product_addtocart_form');
+	productAddToCartForm.submit = function(button, url) {
+		if (this.validator.validate()) {
+			var form = this.form;
+			var oldUrl = form.action;
+			
+			if (url) {
+				form.action = url;
+			}
+			var e = null;
+			try {
+				this.form.submit();
+			} catch (e) {
+			}
+			this.form.action = oldUrl;
+			if (e) {
+				throw e;
+			}
+			
+			if (button && button != 'undefined') {
+				button.disabled = true;
+			}
+		}
+	}.bind(productAddToCartForm);
+	
+	productAddToCartForm.submitLight = function(button, url) {
+		if (this.validator) {
+			var nv = Validation.methods;
+			delete Validation.methods['required-entry'];
+			delete Validation.methods['validate-one-required'];
+			delete Validation.methods['validate-one-required-by-name'];
+			// Remove custom datetime validators
+			for (var methodName in Validation.methods) {
+				if (methodName.match(/^validate-datetime-.*/i)) {
+					delete Validation.methods[methodName];
+				}
+			}
+			
+			if (this.validator.validate()) {
+				if (url) {
+					this.form.action = url;
+				}
+				this.form.submit();
+			}
+			Object.extend(Validation.methods, nv);
+		}
+	}.bind(productAddToCartForm);
+	//]]>
+</script>
+
+<?php $enableProfitShare = Mage::getStoreConfig('blugento_theme/profitshare/enable'); ?>
+<?php if ($enableProfitShare) : ?>
+	<?php
+	$advCode = Mage::getStoreConfig('blugento_theme/profitshare/advertisercode');
+	$productPrice = 0;
+	$includeTx = Mage::getStoreConfig('tax/calculation/price_includes_tax');
+	if ($includeTx) :
+		$store = Mage::app()->getStore();
+		$taxCalculation = Mage::getModel('tax/calculation');
+		$request = $taxCalculation->getRateRequest(null, null, null, $store);
+		$taxClassId = $_product->getTaxClassId();
+		$percent = $taxClassId ? $taxCalculation->getRate($request->setProductClassId($taxClassId)) : 0;
+		$form = 1 . '.' . $percent;
+		$productPrice = $_product->getFinalPrice() / $form;
+	else :
+		$productPrice = $_product->getFinalPrice();
+	endif; ?>
+	<script type="text/javascript">
+			var _ps_tgt = {a:"<?=$advCode?>", pc:"<?=$_product->getSku()?>", pp:"<?=number_format($productPrice, 4)?>", cc:"<?=$_product->getCategoryId()?>", bc:"<?=$_product->getManufacturer()?>"};
+			(function () {
+				var s = document.createElement("script");
+				s.type = "text/javascript";
+				s.async = "async";
+				s.src = "//profitshare.ro/tgt/js";
+				document.body.appendChild(s);
+			})();
+	</script>
+<?php endif; ?>

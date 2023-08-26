@@ -1,0 +1,37 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+
+$_headerWishlist = (int) ($this->getLayout()->getBlock('root')->getHeaderWishlist() ?: 2);
+$customerHelper = $this->helper('customer');
+$wishlist = $this->getChildHtml('wishlist');
+$action = Mage::app()->getFrontController()->getAction();
+?>
+
+<?php if($_headerWishlist == 1): ?>
+    <?php if ($customerHelper->isLoggedIn() && Mage::helper('wishlist')->isAllow()):
+        $customer = $customerHelper->getCustomer();
+        $wishlist = Mage::getModel('wishlist/wishlist')->loadByCustomer($customer);
+        $wishlistItems = $wishlist->getItemsCount();
+        ?>
+    <?php else: ?>
+        <?php $wishlistItems = 0;
+        ?>
+    <?php endif; ?>
+    <div class="block header-wishlist-count">
+        <a href="<?php echo Mage::getUrl('wishlist/index/index') ?>" title="<?php echo $this->__('Wishlist') ?>" <?php if ($customerHelper->isLoggedIn()): ?>data-dock=".block-wishlist" data-dock-position="right"<?php endif; ?>>
+            <span class="count-wish">
+                <i></i>
+                <?php if ($wishlistItems > 0) : ?><span><?php echo $wishlistItems; ?></span><?php endif; ?>
+            </span>
+            <span class="label"><?php echo $this->__('Wishlist');?></span>
+        </a>
+        <?php if ($action->getFullActionName() != "wishlist_index_index"): ?>
+            <?php echo $this->getLayout()->createBlock('wishlist/customer_sidebar')->setTemplate('wishlist/sidebar.phtml')->toHtml(); ?>
+            <?php if ($wishlistItems == 0):?>
+                <div class="block block-wishlist dock"></div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,65 @@
+<?php
+    $layoutImage = Mage::getStoreConfig('blugento_ajaxcart/general/enableImgPrice');
+    $checkoutRedirect = Mage::getStoreConfig('blugento_ajaxcart/general/checkout_redirect');
+?>
+
+<div class="ajaxcart-overlay" id="ajaxcart-overlay">
+    <div class="ajaxcart-loader" id="ajaxcart-loader"></div>
+</div>
+
+<div class="ajaxcart-modal image-box-<?php echo $layoutImage ?>" data-image="<?php echo $layoutImage ?>" id="ajaxcart-modal">
+    <input type="checkbox" hidden="hidden" class="ajaxcart-modal-open" id="ajaxcart-modal-trigger" />
+    <div class="ajaxcart-modal-wrap" aria-hidden="true" role="dialog">
+        <label class="ajaxcart-modal-overlay" for="ajaxcart-modal-trigger"></label>
+        <div class="ajaxcart-modal-dialog">
+            <div class="ajaxcart-modal-box">
+                <div class="ajaxcart-modal-header">
+                    <div class="ajaxcart-modal-close">&#215;</div>
+                </div>
+                <div class="ajaxcart-modal-body" id="ajaxcart-modal-body"></div>
+                <div class="ajaxcart-modal-footer" id="ajaxcart-modal-footer">
+                    <?php
+                    if(Mage::getStoreConfig('blugento_ajaxcart/general/enable_redirect')){
+                        $catid = Mage::registry('current_category') ? Mage::registry('current_category')->getId() : null;
+                        if ($catid > 0) {
+                            $categoryLink = Mage::getModel("catalog/category")->load($catid)->getUrl();
+                        } else {
+                            $categoryLink = Mage::getBaseUrl();
+                        }
+                    }
+                    ?>
+                    <button type="button" class="button <?php if(!isset($categoryLink)):?>ajaxcart-modal-close<?php endif; ?>" <?php if(isset($categoryLink)):?>onclick="setLocation('<?php echo $categoryLink ?>')"<?php endif;?>>
+                        <span>
+                            <span>
+                                <?php if (Mage::helper('core')->isModuleEnabled('LanguagePacks_NonDiacritics')) : ?>
+                                    <?php echo $this->__('Continue  shopping') ?>
+                                <?php else : ?>
+                                    <?php echo $this->__('Continue shopping') ?>
+                                <?php endif; ?>
+                            </span>
+                        </span>
+                    </button>
+                    <button type="button" class="button btn-checkout" onclick="setLocation('<?php echo $this->getUrl('checkout/' . $checkoutRedirect) ?>')">
+                        <span>
+                            <span>
+                                <?php if (Mage::helper('core')->isModuleEnabled('LanguagePacks_NonDiacritics')) : ?>
+                                    <?php echo $this->__('View cart  &  checkout') ?>
+                                <?php else : ?>
+                                    <?php echo $this->__('View cart & checkout') ?>
+                                <?php endif; ?>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+                <?php if ($this->getRequest()->getControllerName()=='product') : ?>
+                    <?php if (Mage::getStoreConfig('blugento_ajaxcart/general/enable_related')) : ?>
+                        <div class="modal-related"></div>
+                    <?php endif; ?>
+                    <?php if (Mage::getStoreConfig('blugento_ajaxcart/general/enable_upsell')) : ?>
+                        <div class="modal-upsell"></div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>

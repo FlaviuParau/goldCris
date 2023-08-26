@@ -1,0 +1,153 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_cms-pages.scss
+    Version:        1.0
+    Description:    CMS - General Styles
+    ------------------------------------------------------------------------- */
+
+.cms-page-view {
+    .std {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            clear: both;
+            margin: 0 0 15px;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 44px;
+        }
+
+        h2:not(.product-name) {
+            font-weight: 400;
+            color: color('e');
+        }
+
+        h3 {
+            padding: 10px 20px;
+            font-weight: 400;
+            font-size: 13px;
+            background-color: color('c');
+            text-transform: uppercase;
+        }
+
+        h4 {
+            font-size: 13px;
+            border-bottom: 10px solid color('c');
+            margin-bottom: 20px;
+            padding: 5px 20px;
+            text-transform: uppercase;
+        }
+
+        h5 {
+            font-weight: 700;
+            font-size: 13px;
+            color: color('q');
+        }
+
+        h6 {
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        address,
+        blockquote,
+        ol,
+        p,
+        table,
+        ul {
+            margin-bottom: 15px;
+        }
+
+        p {
+            min-height: 14px;
+        }
+
+        article {
+            color: color('r');
+        }
+
+        a {
+            text-decoration: underline;
+        }
+
+        .btn-primary {
+            background-color: color('q');
+        }
+
+        .btn-small {
+            padding: 5px 10px;
+            font-size: 11px;
+        }
+
+        .btn-big {
+            padding: 15px 25px;
+        }
+
+        table {
+            @extend %data-table;
+        }
+
+        em,
+        strong {
+            color: color('q');
+        }
+
+        ul {
+            list-style: square inside;
+
+            &.circle {
+                list-style-type: circle;
+            }
+        }
+
+        ol {
+            list-style: decimal inside;
+
+            &.letter {
+                list-style-type: lower-alpha;
+            }
+        }
+
+        li {
+            list-style-type: unset;
+        }
+
+        .messages {
+            ul {
+                margin-bottom: 0;
+            }
+
+            li {
+                list-style-type: none;
+            }
+        }
+    
+        #formsgenerator-gdpr {
+            display: block;
+        }
+    }
+}
+
+// Responsive iframe
+@include mobile {
+    .iframe-container {
+        overflow: hidden;
+        padding-top: 56.25%;
+        position: relative;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

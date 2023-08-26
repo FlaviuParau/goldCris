@@ -1,0 +1,83 @@
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+
+<?php
+$_checkoutCartCrosssellsPosition = (int) ($this->getLayout()->getBlock('root')->getCheckoutCartCrosssellsPosition() ?: 1);
+$_cartViewProceedToCheckout = (int) ($this->getLayout()->getBlock('root')->getCartViewProceedToCheckout() ?: 2);
+?>
+
+<div class="cart">
+    <div class="page-title title-buttons">
+        <h1><?php echo $this->__('Cart') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+    <?php echo $this->getChildHtml('form_before') ?>
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <table id="shopping-cart-table" class="data-table cart-table">
+            <colgroup>
+                <col />
+                <col />
+                <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                    <col />
+                <?php endif; ?>
+                <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                    <col />
+                <?php endif; ?>
+                <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                    <col />
+                <?php endif; ?>
+                <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                    <col />
+                <?php endif; ?>
+            </colgroup>
+            <tfoot>
+
+            </tfoot>
+            <tbody>
+            <?php foreach ($this->getItems() as $_item): ?>
+                <?php echo $this->getItemHtml($_item) ?>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </form>
+    <div class="cart-totals">
+        <?php echo $this->getChildHtml('totals'); ?>
+        <?php if (!$this->hasError()): ?>
+            <ul class="checkout-types">
+                <?php foreach ($this->getMethods('methods') as $method): ?>
+                    <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                        <li><?php echo $methodHtml; ?></li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+    </div>
+    <div class="cart-collaterals" id="cart-collaterals-section" data-cart-collaterals-fixed="<?php echo $_cartViewProceedToCheckout; ?>">
+        <?php /* Extensions placeholder */ ?>
+        <?php echo $this->getChildHtml('checkout.cart.extra') ?>
+        <?php echo $this->getChildHtml('coupon') ?>
+        <?php if (!$this->getIsVirtual()): echo $this->getChildHtml('shipping'); endif; ?>
+    </div>
+    <?php if ($_checkoutCartCrosssellsPosition == 1): ?>
+        <?php echo $this->getChildHtml('crosssell') ?>
+    <?php endif; ?>
+</div>
+
+<?php if (Mage::helper('core')->isModuleEnabled('Retargeting_Tracker')): ?>
+    <script>
+        var _ra = _ra || {};
+        _ra.setCartUrlInfo = {
+            "url": "<?php echo Mage::getBaseUrl() . 'checkout/cart'; ?>"
+        };
+
+        if (_ra.ready !== undefined) {
+            _ra.setCartUrl(_ra.setCartUrlInfo.url);
+        }
+    </script>
+<?php endif; ?>

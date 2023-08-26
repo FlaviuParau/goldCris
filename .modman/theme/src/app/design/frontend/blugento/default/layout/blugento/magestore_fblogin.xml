@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout>
+
+    <checkout_prime_index>
+        <reference name="checkout.onepage.login.checkout_methods_after">
+            <block type="fblogin/fblogin" name="bt_fblogin" template="fblogin/bt_fblogin.phtml" />
+        </reference>
+    </checkout_prime_index>
+
+    <checkout_onepage_index>
+        <reference name="checkout.onepage.login.checkout_methods_after">
+            <block type="fblogin/fblogin" name="bt_fblogin" template="fblogin/bt_fblogin.phtml" />
+        </reference>
+    </checkout_onepage_index>
+
+</layout>

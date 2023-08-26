@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <sales_email>
+            <tab>sales</tab>
+            <groups>
+                <order>
+                    <fields>
+                        <enable_image_email translate="label">
+                            <label>Send Product Image on Confirmation Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_image_email>
+                        <resize_image_email translate="label">
+                            <label>Resize Image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable_image_email>1</enable_image_email>
+                            </depends>
+                            <comment>If you flush the image cache, the images will not be displayed any more in old order emails.</comment>
+                        </resize_image_email>
+                        <show_tax_order translate="label">
+                            <label>Hide Tax for Orders</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_tax_order>
+                        <remove_delivery_time translate="label">
+                            <label>Remove Delivery Time Attribute From Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </remove_delivery_time>
+                    </fields>
+                </order>
+            </groups>
+        </sales_email>
+    </sections>
+</config>

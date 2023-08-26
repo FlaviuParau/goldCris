@@ -1,0 +1,77 @@
+<?php
+/**
+ * One page checkout payment methods
+ *
+ * @var $this Mage_Checkout_Block_Onepage_Payment_Methods
+ */
+?>
+
+<?php
+    $methods = $this->getMethods();
+    $oneMethod = count($methods) <= 1;
+    $giftCard = false;
+
+    if (Mage::helper('core')->isModuleEnabled('Amasty_GiftCard') && Mage::helper('amgiftcard')->isModuleActive()) {
+        $cart = Mage::getModel('checkout/cart')->getQuote();
+
+        $giftCard = array_filter($cart->getAllItems(), function($item) {
+            return $item->getProduct()->getTypeId() == 'amgiftcard';
+        });
+    }
+?>
+<?php if (empty($methods)): ?>
+    <dt>
+        <?php echo $this->__('No Payment Methods') ?>
+    </dt>
+<?php else:
+    foreach ($methods as $_method):
+        $_code = $_method->getCode();
+
+        if ($giftCard && $_code == 'cashondelivery'):
+            echo ''; // Filter out cashondelivery method if giftcard product exists in cart
+        else:
+?>
+        <dt id="dt_method_<?php echo $_code ?>">
+        <?php if(!$oneMethod): ?>
+            <input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" title="<?php echo $this->escapeHtml($_method->getTitle()) ?>" onclick="payment.switchMethod('<?php echo $_code ?>')"<?php if($this->getSelectedMethodCode()==$_code): ?> checked="checked"<?php endif; ?> class="radio" />
+        <?php else: ?>
+            <span class="no-display"><input id="p_method_<?php echo $_code ?>" value="<?php echo $_code ?>" type="radio" name="payment[method]" checked="checked" class="radio" /></span>
+            <?php $oneMethod = $_code; ?>
+        <?php endif; ?>
+            <label for="p_method_<?php echo $_code ?>"><?php echo $this->escapeHtml($this->getMethodTitle($_method)) ?> <?php echo $this->getMethodLabelAfterHtml($_method) ?></label>
+        </dt>
+        <?php if ($html = $this->getPaymentMethodFormHtml($_method)): ?>
+        <dd id="dd_method_<?php echo $_code ?>">
+            <?php echo $html; ?>
+        </dd>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endforeach;
+endif;
+?>
+<?php echo $this->getChildChildHtml('additional'); ?>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php echo $this->getChildChildHtml('scripts'); ?>
+    payment.init();
+    <?php if (is_string($oneMethod)): ?>
+    payment.switchMethod('<?php echo $oneMethod ?>');
+        <?php endif; ?>
+    //]]>
+</script>
+
+<?php if (Mage::getStoreConfig('carriers/bgsamedayeasybox/active')) : ?>
+	<script type="text/javascript">
+		if (jQuery('.s_method_bgsamedayeasybox_bgsamedayeasybox input').is(':checked')) {
+			jQuery('#dt_method_cashondelivery label').append('<strong class="easy-box-payment">(<?php echo Mage::getStoreConfig('carriers/bgsamedayeasybox/payment_method_title') ?>)</strong>');
+		}
+
+	    jQuery('.s_method_bgsamedayeasybox_bgsamedayeasybox input').on('change', function () {
+			if (!jQuery(this).is(':checked')) {
+				jQuery('.easy-box-payment').remove();
+			} else {
+				jQuery('#dt_method_cashondelivery label').append('<strong class="easy-box-payment">(<?php echo Mage::getStoreConfig('carriers/bgsamedayeasybox/payment_method_title') ?>)</strong>');
+			}
+		});
+	</script>
+<?php endif; ?>

@@ -1,0 +1,30 @@
+<?php
+/**
+ * Blugento Cart Settings
+ * Blugento_Cart_Block_Product
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Cart
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+ */
+
+$product = $this->getProduct();
+
+if (!$this->displayCustomButton() && !$this->displayCustomButtonOutofstock()) {
+    return;
+}
+
+$buttonTitle = $this->getCustomButtonText();
+$enabledProduct = $product->getBlugentoCartCustom() || ($this->displayCustomButtonOutofstock() && !$product->getStockItem()->getIsInStock()) ? 1 : 0;
+
+if ($enabledProduct == 0) {
+    return;
+}
+?>
+
+<div class="add-to-cart">
+    <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="document.location='<?php echo $this->getButtonURL(); ?>'"><span><span><?php echo $buttonTitle ?></span></span></button>
+</div>

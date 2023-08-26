@@ -1,0 +1,11 @@
+<?php
+/* @var Mage_Wishlist_Model_Item $item */
+$item         = $this->getItem();
+$product      = $item->getProduct();
+$_imageHelper = $this->helper('catalog/image');
+$image        = $_imageHelper->init($product, 'small_image')->resize(275);
+$image2x      = $_imageHelper->init($product, 'small_image')->resize(550);
+?>
+<a class="product-image" href="<?php echo $this->getProductUrl($item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>">
+    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $image; ?>" data-srcset="<?php echo $image . ' 1x, ' . $image2x . ' 2x'; ?>" alt="<?php echo $this->escapeHtml($product->getName()) ?>" width="275" height="275" class="img-responsive"
+/></a>

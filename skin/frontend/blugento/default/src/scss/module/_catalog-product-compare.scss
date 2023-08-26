@@ -1,0 +1,90 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-compare.scss
+    Version:        1.0
+    Description:    Catalog - Compare Page Styles
+    ------------------------------------------------------------------------- */
+
+.catalog-product-compare-index .page-product-compare {
+    display: none;
+}
+
+.table-comp-inner {
+    overflow: auto;
+}
+
+.compare-table {
+    @include desktop {
+        table-layout: fixed;
+    }
+
+    tr {
+        th {
+            padding: 15px 20px;
+            font-weight: 400;
+            color: color('r');
+            background-color: color('c');
+        }
+
+        td {
+            padding: 15px 20px;
+            border-bottom: 0;
+        }
+    }
+
+    .product-shop-details {
+        padding: 20px;
+        text-align: center;
+        background-color: color('b');
+
+        .product-image {
+            display: block;
+            margin-bottom: 18px;
+            background-color: $product-compare__item__product-image_background-color;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            text-align: left;
+        }
+
+        .price-box {
+            text-align: left;
+
+            p {
+                display: inline-block;
+            }
+        }
+
+        .ratings {
+            display: none;
+        }
+    }
+
+    .product-actions {
+        margin-top: 20px;
+    }
+
+    .button {
+        width: 100%;
+        background-color: color('q');
+    }
+
+    .add-to-links {
+        margin-top: 10px;
+        margin-bottom: -10px;
+        text-align: center;
+        color: color('e');
+    }
+
+    .out-of-stock {
+        margin: 20px 0;
+        padding: 10px 0;
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="root">
+            <block type="blugento_socialmedia/index" name="page.socialmedia_share" template="blugento/socialmedia/smedia_share.phtml" />
+        </reference>
+        <reference name="footer">
+            <block type="blugento_socialmedia/index" name="footer.socialmedia" template="blugento/socialmedia/smedia.phtml" />
+        </reference>
+    </default>
+
+    <catalog_product_view>
+        <reference name="head">
+            <block type="core/text" name="addthis">
+                <action method="addText">
+                    <text helper="blugento_socialmedia/getAddThis"/>
+                </action>
+            </block>
+        </reference>
+        
+        <reference name="product.info">
+            <block type="blugento_socialmedia/index" name="socialmedia_share" template="blugento/socialmedia/smedia_share.phtml">
+                <action method="setExtraClass"><value>list--horizontal</value></action>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+</layout>

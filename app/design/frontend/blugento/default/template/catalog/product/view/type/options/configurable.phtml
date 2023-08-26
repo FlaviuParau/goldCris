@@ -1,0 +1,204 @@
+<?php
+$_product    = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$_jsonConfig = $this->getJsonConfig();
+$_renderers  = $this->getChild('attr_renderers')->getSortedChildren();
+
+$enabled = false;
+$index = 0;
+$confSimpleData = false;
+if (Mage::helper('core')->isModuleEnabled('Blugento_CustomOptionsImage')) {
+    /** @var Blugento_CustomOptionsImage_Helper_Data $helper */
+    $helper = Mage::helper('blugento_customoptionsimage');
+    $enabled = $helper->isEnabledConfigurable();
+    $confSimpleData = $helper->getConfigSimpleImages($_jsonConfig);
+}
+
+?>
+<?php if ($_product->isSaleable() && count($_attributes)): ?>
+    <dl>
+        <?php foreach ($_attributes as $_attribute): ?>
+            <?php
+            $_rendered = false;
+            foreach ($_renderers as $_rendererName):
+                $_renderer = $this->getChild('attr_renderers')->getChild($_rendererName);
+                if (method_exists($_renderer, 'shouldRender') && $_renderer->shouldRender($_attribute, $_jsonConfig)):
+                    $_renderer->setProduct($_product);
+                    $_renderer->setAttributeObj($_attribute);
+                    echo $_renderer->toHtml();
+                    $_rendered = true;
+                    break;
+                endif;
+            endforeach;
+            ?>
+            <?php if ( ! $_rendered): ?>
+                <?php if ($enabled && $confSimpleData): ?>
+                    <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+                    <div class="configurable-image-select">
+                        <div class="input-box">
+                            <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="no-display required-entry super-attribute-select">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-box">
+                        <span class="clear-all"><?php echo $this->__('Clear option selected') ?></span>
+                        <ul class="custom-options-wrapper conf-options" data-name="<?php echo $index++ ?>">
+                            <?php foreach ($confSimpleData as $product) { ?>
+                                <li class="custom-options-image">
+                                    <div class="custom-options-image-box">
+                                        <input type="radio" value="<?php echo $product->getOptionId() ?>" class="<?php echo $product->getOptionId() ?>" name="<?php echo $_attribute->getAttributeId() ?>" id="options_<?php echo $product->getId() ?>_<?php echo $index++ ?>">
+                                        <label class="overlay"></label>
+
+                                        <img src="<?php echo $product->getImage() ?>" alt="<?php echo $product->getImage() ?>"/>
+
+                                        <?php if ($product->getSpecialprice()): ?>
+                                            <div class="price-box-custom">
+                                            <span class="old-price">
+                                                <span class="price"><?php echo Mage::helper('core')->currency($product->getPrice()); ?></span>
+                                            </span>
+                                                <span class="special-price">
+                                                <span class="price"><?php echo Mage::helper('core')->currency($product->getSpecialprice()); ?></span>
+                                            </span>
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="price-box-custom">
+                                            <span class="regular-price">
+                                                <span class="price"><?php echo Mage::helper('core')->currency($product->getPrice()); ?></span>
+                                            </span>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <h3 class="product-name">
+                                        <?php echo $product->getName() ?>
+                                    </h3>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+
+                    <script type="text/javascript">
+                        jQuery(document).ready(function(){
+                            jQuery('.custom-options-image-box input').change(function() {
+                                jQuery(this).parents('.input-box').find('.clear-all').show();
+                            });
+                            jQuery('.clear-all').click(function() {
+                                jQuery(this).each(function() {
+                                    jQuery(this).next('ul').find('input').prop('checked', false);
+                                });
+                                var spConfig = new Product.Config(<?php echo $_jsonConfig ?>);
+                                spConfig.reloadPrice();
+                            });
+                        });
+                    </script>
+                <?php else: ?>
+                    <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+                    <dd>
+                        <div class="input-box">
+                            <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                                <option><?php echo $this->__('Choose an Option...') ?></option>
+                            </select>
+                        </div>
+                    </dd>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </dl>
+    <script>
+        var spConfig = new Product.Config(<?php echo $_jsonConfig ?>);
+        spConfig.getIdOfSelectedProduct = function () {
+            var existingProducts = new Object();
+            for (var i = spConfig.settings.length - 1; i >= 0; i--) {
+                var selected = spConfig.settings[i].options[spConfig.settings[i].selectedIndex];
+                if (selected.config) {
+                    for (var iproducts = 0; iproducts < selected.config.products.length; iproducts++) {
+                        var usedAsKey = selected.config.products[iproducts] + "";
+                        if (existingProducts[usedAsKey] == undefined) {
+                            existingProducts[usedAsKey] = 1;
+                        } else {
+                            existingProducts[usedAsKey] = existingProducts[usedAsKey] + 1;
+                        }
+                    }
+                }
+            }
+            for (var keyValue in existingProducts) {
+                for (var keyValueInner in existingProducts) {
+                    if (Number(existingProducts[keyValueInner]) < Number(existingProducts[keyValue])) {
+                        delete existingProducts[keyValueInner];
+                    }
+                }
+            }
+            var sizeOfExistingProducts = 0;
+            var currentSimpleProductId = '';
+            for (var keyValue in existingProducts) {
+                currentSimpleProductId = keyValue;
+                sizeOfExistingProducts = sizeOfExistingProducts + 1
+            }
+            currentSimpleProductId = sizeOfExistingProducts == 1 ? currentSimpleProductId : 0;
+            
+            updateStockStatus(currentSimpleProductId);
+	        <?php if ((Mage::helper('blugento_catalog')->showSimpleProductSku())) : ?>
+	            updateProductSku(currentSimpleProductId);
+	        <?php endif; ?>
+         
+	        <?php if ((Mage::helper('blugento_catalog')->updateDecimalQty())) : ?>
+	            addToCartInput(currentSimpleProductId);
+	        <?php endif; ?>
+          
+            return currentSimpleProductId;
+        };
+
+        function updateStockStatus(pid) {
+            if (jQuery('#configurable_product_availability').length) {
+                $(configurable_product_availability).update($F('attribute' + pid + '_backorder'));
+            }
+        }
+
+        function updateElements(e) {
+            var valueAttribute = '[value="' + e.target.value + '"]';
+            jQuery('.configurable-image-select option' + valueAttribute).prop('selected', true);
+        }
+        
+        <?php if ((Mage::helper('blugento_catalog')->showSimpleProductSku())) : ?>
+	        function updateProductSku(pid) {
+	            jQuery('.product-sku span:first-of-type').text((pid !== 0) ? spConfig.config['products_sku'][pid]['sku'] : spConfig.config['sku']);
+	        }
+        <?php endif; ?>
+
+        <?php if ((Mage::helper('blugento_catalog')->updateDecimalQty())) : ?>
+	        function addToCartInput(pid) {
+	            var addToCartInput = jQuery('.product-view .product-shop .add-to-cart input');
+	            (spConfig.config['products_sale'] && pid !== 0) ? addToCartInput.val(parseFloat(spConfig.config['products_sale'][pid]['qty'])) : 1;
+	            if (pid !== 0) {
+		            (parseFloat(spConfig.config['products_increment'][pid]['qty_increment']) !== 0) ? addToCartInput.attr('data-increment', parseFloat(spConfig.config['products_increment'][pid]['qty_increment'])) : addToCartInput.attr('data-increment', 1);
+		            (parseFloat(spConfig.config['products_increment'][pid]['qty_increment']) !== 0) ? addToCartInput.attr('value', parseFloat(spConfig.config['products_increment'][pid]['qty_increment'])) : addToCartInput.attr('value', 1);
+	            } else {
+	                addToCartInput.attr('data-increment', 1);
+	                addToCartInput.attr('value', 1);
+	            }
+		        spConfig.config['products_increment'] ? addToCartInput.addClass('decimals') : '';
+		        var qtyIncre = (parseFloat(addToCartInput.attr('data-increment')) !== 0) ? parseFloat(addToCartInput.attr('data-increment')) : '1';
+		        window.localStorage.setItem('qty-increment', qtyIncre);
+	        }
+        <?php endif; ?>
+
+        jQuery('input[name="<?php echo $_attribute->getAttributeId() ?>"]').change(updateElements);
+        Event.observe('attribute<?php echo $_attribute->getAttributeId() ?>', 'change', spConfig.getIdOfSelectedProduct);
+
+        jQuery('.custom-options-image-box input').each(function() {
+            var labelId = jQuery(this).attr('id');
+            var name = jQuery(this).attr('name');
+
+            jQuery('input[name="' + name + '"]').change(updateElements);
+            Event.observe('attribute' + name + '', 'change', spConfig.getIdOfSelectedProduct);
+
+            jQuery(this).next('label').attr('for',labelId);
+            jQuery(this).change(function () {
+                spConfig.reloadPrice('super_attribute[<?php echo $_attribute->getAttributeId() ?>]');
+                spConfig.reloadPrice('super_attribute[' + name + ']');
+                spConfig.getIdOfSelectedProduct();
+            });
+        });
+
+    </script>
+    <?php echo $this->getChildHtml('after') ?>
+<?php endif; ?>

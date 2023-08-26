@@ -1,0 +1,20 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_contacts.scss
+    Version:        1.0
+    Description:    Contacts - General Styles
+    ------------------------------------------------------------------------- */
+
+.contacts-index-index .main-content {
+    .page-title {
+        text-align: center;
+    }
+
+    form {
+        width: 50%;
+        margin: 0 auto;
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+}

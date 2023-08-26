@@ -1,0 +1,11 @@
+.custom-color {
+    display: inline-block;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.custom-color span {
+    padding: 0 15px;
+    display: inline-block;
+}

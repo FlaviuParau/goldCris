@@ -1,0 +1,18 @@
+<?php
+/**
+ * This page is loaded via AJAX and JS executed when the status is updated, it updates the color to match the status which is updated in another file
+ */
+?>
+
+<?php
+$helper = Mage::helper('blugento_orderstatuscolor');
+$customColor = $helper->getColorOrDefault($helper->getStatusColor($this->getOrder()->getStatus()));
+?>
+
+<script>
+    if ($('order_status')) {
+        $('order_status').setStyle({
+            backgroundColor: "<?php echo $customColor ?>"
+        });
+    }
+</script>

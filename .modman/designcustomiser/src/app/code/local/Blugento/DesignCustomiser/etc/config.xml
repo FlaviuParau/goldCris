@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_DesignCustomiser
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+
+<config>
+    <modules>
+        <Blugento_DesignCustomiser>
+            <version>1.0.3</version>
+        </Blugento_DesignCustomiser>
+    </modules>
+
+    <global>
+        <!-- sql -->
+        <resources>
+            <Blugento_DesignCustomiser_setup>
+                <setup>
+                    <module>Blugento_DesignCustomiser</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </Blugento_DesignCustomiser_setup>
+            <blugento_designcustomiser_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </blugento_designcustomiser_write>
+            <blugento_designcustomiser_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </blugento_designcustomiser_read>
+        </resources>
+
+        <blocks>
+            <blugento_designcustomiser>
+                <class>Blugento_DesignCustomiser_Block</class>
+            </blugento_designcustomiser>
+        </blocks>
+
+        <helpers>
+            <blugento_designcustomiser>
+                <class>Blugento_DesignCustomiser_Helper</class>
+            </blugento_designcustomiser>
+        </helpers>
+
+        <models>
+            <blugento_designcustomiser>
+                <class>Blugento_DesignCustomiser_Model</class>
+                <resourceModel>blugento_designcustomiser_mysql4</resourceModel>
+            </blugento_designcustomiser>
+            <blugento_designcustomiser_mysql4>
+                <class>Blugento_DesignCustomiser_Model_Mysql4</class>
+                <entities>
+                    <finalcss>
+                        <table>blugento_final_css</table>
+                    </finalcss>
+                </entities>
+            </blugento_designcustomiser_mysql4>
+        </models>
+        
+        <cache>
+            <types>
+                <blugento_designcustomiser translate="label,description" module="blugento_designcustomiser">
+                    <label><![CDATA[Blugento]]></label>
+                    <description><![CDATA[Design Customiser]]></description>
+                    <tags><![CDATA[BLUGENTO_DESIGNCUSTOMISER]]></tags>
+                </blugento_designcustomiser>
+            </types>
+        </cache>
+        
+        <scss>
+            <variable>
+                <allowed_types>
+                    <color />
+                    <font />
+                    <font_family />
+                    <font_size />
+                    <font_weight />
+                    <font_style />
+                    <font_line_height />
+                    <font_text_decoration />
+                    <font_text_transform />
+                    <padding />
+                    <padding_top />
+                    <padding_bottom />
+                    <padding_right />
+                    <padding_left />
+                    <margin />
+                    <margin_top />
+                    <margin_bottom />
+                    <margin_right />
+                    <margin_left />
+                    <size />
+                    <size_height />
+                    <size_width />
+                    <display />
+                    <text_align />
+                    <google_fonts />
+                    <border />
+                    <border_style/>
+                    <border_width />
+                    <letter_spacing />
+                </allowed_types>
+            </variable>
+            <image>
+                <allowed_types>
+                    <gif />
+                    <jpg />
+                    <jpeg />
+                    <png />
+                    <svg />
+                </allowed_types>
+            </image>
+        </scss>
+
+        <layout>
+            <variable>
+                <allowed_types>
+                    <default />
+                    <layout />
+                    <thumbnail />
+                    <onoff />
+                </allowed_types>
+            </variable>
+        </layout>
+
+        <events>
+            <admin_system_config_changed_section_advanced>
+                <observers>
+                    <blugento_designcustomiser_section_advanced>
+                        <class>blugento_designcustomiser/adminhtml_observer</class>
+                        <method>disableModules</method>
+                    </blugento_designcustomiser_section_advanced>
+                </observers>
+            </admin_system_config_changed_section_advanced>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <blugento_designcustomiser_html_before>
+                        <class>blugento_designcustomiser/adminhtml_observer</class>
+                        <method>languageOptions</method>
+                    </blugento_designcustomiser_html_before>
+                </observers>
+            </core_block_abstract_to_html_before>
+        </events>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_DesignCustomiser after="Mage_Adminhtml">Blugento_DesignCustomiser</Blugento_DesignCustomiser>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_designcustomiser>
+                    <file>blugento_designcustomiser.xml</file>
+                </blugento_designcustomiser>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_designcustomiser>
+                    <files>
+                        <default>Blugento_DesignCustomiser.csv</default>
+                        <image>Blugento_DesignCustomiser_Image.csv</image>
+                        <layout>Blugento_DesignCustomiser_Layout.csv</layout>
+                        <scss>Blugento_DesignCustomiser_Scss.csv</scss>
+                        <export>Blugento_DesignCustomiser_Export.csv</export>
+                    </files>
+                </blugento_designcustomiser>
+            </modules>
+        </translate>
+    </adminhtml>
+    
+    <default>
+        <blugento_designcustomiser>
+            <scss>
+                <definition_filename>specs</definition_filename>
+                <definition_file_extension>xml</definition_file_extension>
+                <definition_directory_theme>etc</definition_directory_theme>
+            </scss>
+            <img>
+                <definition_filename>specs_images</definition_filename>
+                <definition_file_extension>xml</definition_file_extension>
+                <definition_directory_theme>etc</definition_directory_theme>
+            </img>
+            <css>
+                <definition_filename>final</definition_filename>
+                <definition_file_extension>css</definition_file_extension>
+            </css>
+            <template>
+                <definition_directory>presets</definition_directory>
+            </template>
+            <grunt>
+                <logs_filename>grunt.log</logs_filename>
+                <logs_images_filename>grunt.imagecron.log</logs_images_filename>
+                <logs_directory>var</logs_directory>
+            </grunt>
+            <layout>
+                <definition_filename>specs-layout</definition_filename>
+                <definition_file_extension>xml</definition_file_extension>
+                <definition_directory_theme>etc</definition_directory_theme>
+            </layout>
+            <user_directory>blugento</user_directory>
+            <translations>
+                <en>
+                    <label>English (United States) / English (United States)</label>
+                    <value>en_US</value>
+                </en>
+                <de>
+                    <label>Deutsch (Deutschland) / German (Germany)</label>
+                    <value>de_DE</value>
+                </de>
+                <ro>
+                    <label>Română (România) / Romanian (Romania)</label>
+                    <value>ro_RO</value>
+                </ro>
+                <pl>
+                    <label>Polska (Poland) / Polski (Poland)</label>
+                    <value>pl_PL</value>
+                </pl>
+            </translations>
+        </blugento_designcustomiser>
+    </default>
+</config>

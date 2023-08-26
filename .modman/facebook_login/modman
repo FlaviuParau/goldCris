@@ -1,0 +1,15 @@
+src/app/code/local/Magestore/                                           app/code/local/Magestore/
+src/app/design/adminhtml/default/default/layout/fblogin.xml             app/design/adminhtml/default/default/layout/fblogin.xml
+src/app/design/adminhtml/default/default/layout/magenotification.xml    app/design/adminhtml/default/default/layout/magenotification.xml
+src/app/design/adminhtml/default/default/template/magenotification/     app/design/adminhtml/default/default/template/magenotification/
+src/app/design/frontend/base/default/layout/fblogin.xml                 app/design/frontend/base/default/layout/fblogin.xml
+src/app/design/frontend/base/default/template/fblogin/                  app/design/frontend/base/default/template/fblogin/
+src/app/etc/modules/Magestore_Fblogin.xml                               app/etc/modules/Magestore_Fblogin.xml
+src/app/etc/modules/Magestore_Magenotification.xml                      app/etc/modules/Magestore_Magenotification.xml
+src/js/tinybox/                                                         js/tinybox/
+src/lib/Facebook/                                                       lib/Facebook/
+src/skin/adminhtml/default/default/css/magestore/                       skin/adminhtml/default/default/css/magestore/
+src/skin/adminhtml/default/default/css/tinybox/                         skin/adminhtml/default/default/css/tinybox/
+src/skin/frontend/base/default/css/magestore/                           skin/frontend/base/default/css/magestore/
+src/skin/frontend/base/default/images/magestore/                        skin/frontend/base/default/images/magestore/
+src/app/locale/ro_RO/Magestore_Fblogin.csv                              app/locale/ro_RO/Magestore_Fblogin.csv

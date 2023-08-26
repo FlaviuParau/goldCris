@@ -1,0 +1,36 @@
+<!--@subject Cerere ofertă de preț@-->
+
+Produs:
+{{var data.inquiry_product}}
+
+Detalii:
+
+Nume: {{var data.name}}
+
+E-mail: {{var data.email}}
+
+Telefon: {{var data.telephone}}
+
+Adresa: {{var data.address}}
+
+Judeţ: {{var data.county}}
+
+Localitate: {{var data.locality}}
+
+{{if data.company}}
+Denumire Firma: {{var data.company}}
+{{/if}}
+
+{{if data.reg-nr}}
+Nr. Reg. Com: {{var data.reg-nr}}
+{{/if}}
+
+{{if data.vat}}
+COD TVA: {{var data.vat}}
+{{/if}}
+
+{{if data.headquarter}}
+Sediu social: {{var data.headquarter}}
+{{/if}}
+
+Mesaj: {{var data.comment}}

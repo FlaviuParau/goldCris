@@ -1,0 +1,17 @@
+src/app/code/local/Blugento/Cart                                            app/code/local/Blugento/Cart
+
+src/app/design/frontend/base/default/template/blugento/cart/                app/design/frontend/base/default/template/blugento/cart/
+src/app/design/frontend/base/default/layout/blugento_cart.xml               app/design/frontend/base/default/layout/blugento_cart.xml
+
+src/app/etc/modules/Blugento_Cart.xml                                       app/etc/modules/Blugento_Cart.xml
+
+src/app/locale/de_DE/Blugento_Cart.csv                                     app/locale/de_DE/Blugento_Cart.csv
+src/app/locale/de_DE/template/email/blugento_cart/product_inquiry.html     app/locale/de_DE/template/email/blugento_cart/product_inquiry.html
+src/app/locale/en_US/Blugento_Cart.csv                                     app/locale/en_US/Blugento_Cart.csv
+src/app/locale/en_US/template/email/blugento_cart/product_inquiry.html     app/locale/en_US/template/email/blugento_cart/product_inquiry.html
+src/app/locale/ro_RO/Blugento_Cart.csv                                     app/locale/ro_RO/Blugento_Cart.csv
+src/app/locale/ro_RO/template/email/blugento_cart/product_inquiry.html     app/locale/ro_RO/template/email/blugento_cart/product_inquiry.html
+src/app/locale/pl_PL/Blugento_Cart.csv                                     app/locale/pl_PL/Blugento_Cart.csv
+src/app/locale/pl_PL/template/email/blugento_cart/product_inquiry.html     app/locale/pl_PL/template/email/blugento_cart/product_inquiry.html
+
+src/js/blugento/cart/product.js                                            js/blugento/cart/product.js

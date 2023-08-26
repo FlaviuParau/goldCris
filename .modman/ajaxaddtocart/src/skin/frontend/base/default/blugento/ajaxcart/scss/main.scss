@@ -1,0 +1,147 @@
+@keyframes loader {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.ajaxcart-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9998;
+    background: rgba(#000, .7);
+
+    &.visible {
+        display: block;
+    }
+
+    .ajaxcart-loader {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            width: 50px;
+            height: 50px;
+            margin: 0 0 0 -25px;
+            border-radius: 50%;
+        }
+
+        // normal state
+        &:before {
+            border: 2px solid #777;
+        }
+
+        // highlight state
+        &:after {
+            animation: loader .6s linear;
+            animation-iteration-count: infinite;
+            border-color: #f68832 transparent transparent;
+            border-style: solid;
+            border-width: 2px;
+            box-shadow: 0 0 0 1px transparent;
+        }
+    }
+}
+
+// ----------------------------------------------------------------------------
+
+.ajaxcart-modal {
+    text-align: left;
+}
+
+.ajaxcart-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9998;
+    background: rgba(#000, .7);
+}
+
+.ajaxcart-modal-open:checked ~ .ajaxcart-modal-wrap .ajaxcart-modal-overlay,
+.ajaxcart-modal-open:checked ~ .ajaxcart-modal-wrap .ajaxcart-modal-dialog {
+    display: block;
+}
+
+.ajaxcart-modal-dialog {
+    display: none;
+    z-index: 9998;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 440px;
+    max-width: 600px;
+    padding: 20px;
+    border: 3px solid #e7e7e7;
+    background: #fff;
+
+    @media (max-width: 639px) {
+        min-width: 88%;
+    }
+}
+
+.ajaxcart-modal-body {
+    padding-top: 10px;
+
+    .product-options {
+        margin-top: 0;
+    }
+}
+
+.ajaxcart-modal-header {
+    .ajaxcart-modal-close {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1em;
+        height: 1em;
+        font-size: 28px;
+        line-height: 1em;
+        text-decoration: none;
+        text-align: center;
+        color: #000;
+    }
+}
+
+.ajaxcart-modal-content {
+}
+
+.ajaxcart-modal-footer {
+    text-align: center;
+
+    .button {
+        margin: 20px 10px 0;
+
+        @media (max-width: 639px) {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+}
+
+.ajaxcart-modal-messages {
+    text-align: center;
+}

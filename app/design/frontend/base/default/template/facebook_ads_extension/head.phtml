@@ -1,0 +1,70 @@
+<?php
+$analyticsCategoryId = Mage::getStoreConfig('Facebook_AdsExtension/analytics/category');
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+foreach ($categories as $category) {
+    if ($category['value'] == $analyticsCategoryId) {
+        $analyticsCategory = strtolower($category['label']);
+    }
+}
+$analyticsCategory = str_replace('analytics', 'statistics', $analyticsCategory);
+?>
+
+<!-- Facebook Ads Extension for Magento -->
+<?php if ($this->getFacebookPixelID()) { ?>
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','//connect.facebook.net/en_US/fbevents.js');
+
+(function($) {
+    $(document).ready(function() {
+        function facebookAdsFunctions() {
+            fbq('init', '<?php echo $this->getFacebookPixelID() ?>', <?php echo $this->pixelInitCode() ?>, {agent: '<?php echo $this->getFacebookAgentVersion() ?>' });
+              fbq('track', 'PageView', {
+                  source: 'magento',
+                  version: "<?php echo $this->getMagentoVersion() ?>",
+                  pluginVersion: "<?php echo $this->getPluginVersion() ?>"
+            },
+            <?php if ($eventId = $this->getEventId('pageview')): ?>
+            {
+                eventID: '<?php echo $eventId ?>'
+            }
+            <?php endif; ?>
+            );
+        }
+
+        if (!$('body').hasClass('gdpr-enabled') || '<?php echo $analyticsCategoryId ?>' == '1' || '<?php echo Mage::getSingleton('core/cookie')->get($analyticsCategory) ?>' == 'yes') {
+            facebookAdsFunctions();
+        } else {
+            // Accept only selected cookies
+            $('#accept-selected-cookies').on('click', function(e) {
+              if ($('#<?php echo $analyticsCategory ?>').is(':checked') || $('#<?php echo $analyticsCategory ?>').is('[readonly]')) {
+                  facebookAdsFunctions();
+              }
+            });
+
+            // Accept all cookies
+            $('#accept-all-cookies').on('click', function(e) {
+                facebookAdsFunctions();
+            });
+
+            if ('<?php echo $analyticsCategory ?>' == 'necessary') {
+                facebookAdsFunctions();
+            }
+        }
+    });
+})(jQuery);
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=<?php echo $this->getFacebookPixelID() ?>&ev=PageView&noscript=1&a=<?php echo $this->getFacebookAgentVersion() ?>"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<?php } else  { ?>
+<!-- NO Pixel ID is configured, please goto Admin -->
+<script>
+ console.log('No facebook pixel is configured, please log in as a admin and then visit Facebook Ads Extension -> Get Started');
+</script>
+<?php } ?>

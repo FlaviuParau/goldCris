@@ -1,0 +1,102 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       mixin/_icon.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@mixin icon-triangle($direction: up, $size: 5px, $color: color('e')) {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+
+    @if $direction == up {
+        border-right: $size solid transparent;
+        border-left: $size solid transparent;
+        border-bottom: $size solid $color;
+        border-top: 0;
+    }
+
+    @if $direction == down {
+        border-right: $size solid transparent;
+        border-left: $size solid transparent;
+        border-top: $size solid $color;
+        border-bottom: 0;
+    }
+
+    @if $direction == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        border-right: 0;
+    }
+
+    @if $direction == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        border-left: 0;
+    }
+}
+
+@mixin icon-menu() {
+    cursor: pointer;
+    position: relative;
+    width: 48px;
+    height: 30px;
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+    span {
+        position: relative;
+        display: block;
+        height: 4px;
+        background-color: color('e');
+        transition: all .3s;
+    }
+
+    .diagonal.part-1 {
+        margin-top: 2px;
+    }
+
+    .horizontal {
+        margin-top: 7px;
+    }
+
+    .diagonal.part-2 {
+        margin-top: 7px;
+    }
+
+    input[type=checkbox]:checked ~ .horizontal {
+        opacity: 0;
+    }
+
+    input[type=checkbox]:checked ~ .diagonal.part-1 {
+        transform: rotate(135deg);
+        margin-top: 13px;
+    }
+
+    input[type=checkbox]:checked ~ .diagonal.part-2 {
+        transform: rotate(-135deg);
+        margin-top: -15px;
+    }
+}
+
+@mixin icon-menu-fixed() {
+    .horizontal {
+        opacity: 0;
+    }
+
+    .diagonal.part-1 {
+        transform: rotate(135deg);
+        margin-top: 13px;
+    }
+
+    .diagonal.part-2 {
+        transform: rotate(-135deg);
+        margin-top: -15px;
+    }
+}

@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_Localizer
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <default>
+        <localizer>
+            <pages>
+                <default>
+                    <localizer_shipping>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <filename>localizer/page/shipping.html</filename>
+                        <footerlink>1</footerlink>
+                        <footerlinkcolumn>2</footerlinkcolumn>
+                        <config_option>catalog/price/cms_page_shipping</config_option>
+                    </localizer_shipping>
+                    <localizer_privacy>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <filename>localizer/page/privacy.html</filename>
+                        <footerlink>1</footerlink>
+                        <footerlinkcolumn>1</footerlinkcolumn>
+                    </localizer_privacy>
+                    <localizer_cookie_policy>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <filename>localizer/page/cookie_policy.html</filename>
+                        <footerlink>1</footerlink>
+                        <footerlinkcolumn>1</footerlinkcolumn>
+                    </localizer_cookie_policy>
+                    <localizer_404>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <filename>localizer/page/404.html</filename>
+                        <footerlink>0</footerlink>
+                        <footerlinkcolumn>0</footerlinkcolumn>
+                    </localizer_404>
+                    <localizer_contact>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <filename>localizer/page/contact.html</filename>
+                        <footerlink>0</footerlink>
+                        <footerlinkcolumn>0</footerlinkcolumn>
+                    </localizer_contact>
+                </default>
+            </pages>
+
+            <blocks>
+                <default>
+                    <business_terms>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <identifier>business_terms</identifier>
+                        <filename>localizer/block/business_terms.html</filename>
+                    </business_terms>
+                    <footerlinks>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <identifier>footer_links</identifier>
+                    </footerlinks>
+                    <contacts_info>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <identifier>contacts_info</identifier>
+                        <filename>localizer/block/contacts_info.html</filename>
+                    </contacts_info>
+                    <cookie_restriction_notice_block>
+                        <execute>1</execute>
+                        <backup>0</backup>
+                        <identifier>cookie_restriction_notice_block</identifier>
+                        <filename>localizer/block/cookie_restriction_notice_block.html</filename>
+                    </cookie_restriction_notice_block>
+                </default>
+            </blocks>
+
+            <footerlinks>
+                <default>
+                    <anpc>
+                        <execute>1</execute>
+                        <extern>1</extern>
+                        <title>ANPC</title>
+                        <path>http://www.anpc.gov.ro</path>
+                        <nofollow>1</nofollow>
+                        <footerlinkcolumn>1</footerlinkcolumn>
+                    </anpc>
+                    <title_left>
+                        <execute>1</execute>
+                        <extern>0</extern>
+                        <heading>1</heading>
+                        <title>Despre noi</title>
+                        <path></path>
+                        <footerlinkcolumn>1</footerlinkcolumn>
+                    </title_left>
+                    <title_right>
+                        <execute>1</execute>
+                        <extern>0</extern>
+                        <heading>1</heading>
+                        <title>Servicii</title>
+                        <path></path>
+                        <footerlinkcolumn>2</footerlinkcolumn>
+                    </title_right>
+                    <sal>
+                        <execute>1</execute>
+                        <extern>1</extern>
+                        <title>Soluționarea litigiilor</title>
+                        <path>https://webgate.ec.europa.eu/odr/main/index.cfm?event=main.home.chooseLanguage</path>
+                        <nofollow>1</nofollow>
+                        <footerlinkcolumn>2</footerlinkcolumn>
+                    </sal>
+                </default>
+            </footerlinks>
+        </localizer>
+    </default>
+</config>

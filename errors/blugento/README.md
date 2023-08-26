@@ -1,0 +1,1 @@
+sass scss/styles.scss:css/styles.css --style compact --sourcemap=none

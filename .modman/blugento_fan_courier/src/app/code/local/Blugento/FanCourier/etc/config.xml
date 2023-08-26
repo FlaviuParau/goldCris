@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!--
+  ~
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the Open Software License (OSL 3.0)
+  ~ that is bundled with this package in the file LICENSE.txt.
+  ~ It is also available through the world-wide-web at this URL:
+  ~ http://opensource.org/licenses/osl-3.0.php
+  ~
+  ~ DISCLAIMER
+  ~
+  ~ Do not edit or add to this file if you wish to upgrade this extension to
+  ~ newer versions in the future.
+  ~
+  ~ @category    Blugento
+  ~ @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+  ~ @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  ~
+  -->
+<config>
+    <modules>
+        <Blugento_FanCourier>
+            <version>1.0.1</version>
+        </Blugento_FanCourier>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_fancourier>
+                <class>Blugento_FanCourier_Block</class>
+            </blugento_fancourier>
+        </blocks>
+
+        <helpers>
+            <blugento_fancourier>
+                <class>Blugento_FanCourier_Helper</class>
+            </blugento_fancourier>
+        </helpers>
+
+        <models>
+            <blugento_fancourier>
+                <class>Blugento_FanCourier_Model</class>
+                <resourceModel>fancourier_resource</resourceModel>
+            </blugento_fancourier>
+
+            <fancourier_resource>
+                <class>Blugento_FanCourier_Model_Resource</class>
+                <entities>
+                    <order_client>
+                        <table>blugento_fancourier_order_client</table>
+                    </order_client>
+                </entities>
+            </fancourier_resource>
+        </models>
+
+        <resources>
+            <blugento_fancourier_setup>
+                <setup>
+                    <module>Blugento_FanCourier</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </blugento_fancourier_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_fancourier before="Mage_Adminhtml">Blugento_FanCourier_Adminhtml</blugento_fancourier>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <events>
+            <controller_action_predispatch_adminhtml_sales_order_shipment_save>
+                <observers>
+                    <blugento_fancourier_awb>
+                        <class>blugento_fancourier/observer</class>
+                        <method>generateAwb</method>
+                    </blugento_fancourier_awb>
+                </observers>
+            </controller_action_predispatch_adminhtml_sales_order_shipment_save>
+
+            <controller_action_layout_render_before_adminhtml_sales_order_view>
+                <observers>
+                    <fancourier_printawb_button>
+                        <class>blugento_fancourier/observer</class>
+                        <method>addPrintAwbButton</method>
+                    </fancourier_printawb_button>
+                </observers>
+            </controller_action_layout_render_before_adminhtml_sales_order_view>
+        </events>
+
+        <layout>
+            <updates>
+                <blugento_fancourier>
+                    <file>blugento_fancourier.xml</file>
+                </blugento_fancourier>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Blugento_FanCourier>
+                    <files>
+                        <default>Blugento_FanCourier.csv</default>
+                    </files>
+                </Blugento_FanCourier>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <carriers>
+            <bgfancourier>
+                <active>0</active>
+                <model>blugento_fancourier/carrier</model>
+                <title>Fan Courier</title>
+                <name>Cost Livrare</name>
+                <price>15</price>
+                <sort_order>100</sort_order>
+                <sallowspecific>0</sallowspecific>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <delivery_type>parcel</delivery_type>
+                <dynamic_price>0</dynamic_price>
+                <order_amount_price_calculation>0</order_amount_price_calculation>
+                <payer>sender</payer>
+                <default_weight>1</default_weight>
+            </bgfancourier>
+        </carriers>
+    </default>
+</config>

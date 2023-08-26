@@ -1,0 +1,89 @@
+<?php
+/** @var Blugento_Catalog_Block_Category_Widget_Link $this */
+
+$imgPath = '';
+$imgPathUrl = '';
+$_categoryDesc = '';
+
+$_categoryDescription = $this->getEnableCategoryDescription();
+$_categoryShortDescription = $this->getEnableCategoryShortDescription();
+$_imageResizeWidth    = $this->getCategoryImageWidth();
+$_imageResizeHeight   = $this->getCategoryImageHeight();
+$_imgLazyLoad = (int) ($this->getLayout()->getBlock('root')->getImageLazyLoad() ?: 2);
+$_baseUrl = Mage::getBaseUrl();
+$_baseMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+$_baseMediaUrl = str_replace('/media', '', $_baseMedia);
+$_bannerWebp = Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/active') &&
+Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/webp_conversion') && ($_baseUrl != $_baseMediaUrl);
+$_srcWebp = $_bannerWebp ? '.webp' : '';
+
+if ($_entityResource = $this->_entityResource) {
+    $idPath = explode('/', $this->_getData('id_path'));
+    if (isset($idPath[1])) {
+        $id = $idPath[1];
+        if ($id) {
+            $imgPath = Mage::getBaseUrl('media') . 'catalog/category/' . $_entityResource->getAttributeRawValue($id, 'image', Mage::app()->getStore());
+            $imgPath = $this->helper('blugento_theme')->getResizeCategoryImage($imgPath, $_imageResizeWidth, $_imageResizeHeight);
+            if ($_entityResource->getAttributeRawValue($id, 'image', Mage::app()->getStore())) {
+                $imgPathUrl = $imgPath;
+            } else {
+                $imgPathUrl = $this->getSkinUrl('images/catalog/product/placeholder/small_image.jpg');
+            }
+	        $_categoryDesc = $_entityResource->getAttributeRawValue($id, 'description', Mage::app()->getStore());
+	        $_categoryShortDesc = $_entityResource->getAttributeRawValue($id, 'short_description', Mage::app()->getStore());
+        }
+    }
+}
+?>
+
+<div class="category-box-image">
+    <div class="item">
+        <a <?php echo $this->getLinkAttributes() ?>>
+			<?php if ($_bannerWebp): ?>
+				<picture>
+					<source
+						media="(min-width:320px)"
+						srcset="<?php echo $imgPathUrl . $_srcWebp . ' 1x,' . $imgPathUrl . $_srcWebp . ' 2x' ?>"
+						type="image/webp"
+					/>
+					<img
+						src="<?php echo $imgPathUrl ?>"
+						srcset="<?php echo $imgPathUrl . ' 1x,' . $imgPathUrl . ' 2x' ?>"
+						alt="<?php echo $this->htmlEscape($this->getAnchorText()) ?>"
+						<?php echo $_imgLazyLoad == 1 ? 'loading="lazy"' : '' ?>
+					/>
+				</picture>
+			<?php else : ?>
+				<img
+					src="<?php echo $imgPathUrl ?>"
+					srcset="<?php echo $imgPathUrl . ' 1x,' . $imgPathUrl . ' 2x' ?>"
+					<?php echo $_imgLazyLoad == 1 ? 'loading="lazy"' : '' ?>
+					alt="<?php echo $this->htmlEscape($this->getAnchorText()) ?>"
+				/>
+			<?php endif; ?>
+        </a>
+        <div class="category-box-description">
+	        <h2 class="category-subtitle"><a <?php echo $this->getLinkAttributes() ?>><?php echo $this->__($this->getAnchorText()) ?></a></h2>
+	        <?php if ($_categoryShortDescription) : ?>
+		        <div class="short-desc desc std">
+			        <?php echo Mage::helper('core/string')->truncate($_categoryShortDesc, 100);  ?>
+		        </div>
+	        <?php endif; ?>
+	        <?php if ($_categoryDescription) : ?>
+		        <div class="desc std">
+			        <?php echo Mage::helper('core/string')->truncate($_categoryDesc, 200);  ?>
+		        </div>
+	        <?php endif; ?>
+            <a <?php echo $this->getLinkAttributes() ?> class="button category-box-link"><?php echo $this->__($this->getButtonCustomText()) ?></a>
+	        <?php if ($this->getEnableChildCategories()) :?>
+	            <div class="category-box-child-cat">
+		            <ul class="cf">
+			            <?php foreach ($this->getChildCategories() as $category) : ?>
+			                <li><a href="<?php echo $category->getUrlPath(); ?>"><?php echo $category->getName(); ?></a></li>
+			            <?php endforeach; ?>
+		            </ul>
+	            </div>
+	        <?php endif; ?>
+        </div>
+    </div>
+</div>

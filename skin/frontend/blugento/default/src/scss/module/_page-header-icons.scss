@@ -1,0 +1,353 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-header-icons.scss
+    Version:        1.0
+    Description:    Header Layout: Default
+    ------------------------------------------------------------------------- */
+
+/* Hide mini account tag */
+.mini-account {
+	i {
+		display: none;
+	}
+}
+
+/* Search icon styling width hidden input */
+@if ($layout_search_icons == 2) {
+    .mini-search:not(.show-search) {
+        .form-search {
+             input {
+                 width: 0;
+                 min-width: 0;
+                 opacity: 0;
+             }
+         }
+    }
+
+    @include mobile {
+        .page-header .desktop .mini-search {
+            margin: 0 !important;
+        }
+
+        .mini-search {
+            #search_mini_form,
+            #search_mini_form_sticky {
+                .form-search {
+                    input {
+                        width: 100%;
+                        min-width: inherit;
+                        opacity: 1;
+
+                        @include tablet {
+                            left: 0;
+                            right: 0;
+                        }
+
+                        @include mobile {
+                            left: 0;
+                            right: 0;
+                        }
+                    }
+
+                    button {
+                        background-color: transparent;
+                        left: inherit;
+                        right: 0;
+                        position: absolute;
+
+                        @include mobile {
+                            margin: 2px 7px;
+                            width: 21px;
+                            z-index: 10;
+                        }
+                    }
+                }
+            }
+        }
+
+        .block-cart {
+            > a {
+                > i {
+                    width: 34px;
+                    height: 34px;
+                }
+            }
+        }
+    }
+}
+
+/* Cart without text */
+@if ($layout_cart_icons == 2) {
+    .block-cart {
+        > a {
+            > span {
+                display: none;
+            }
+        }
+
+        .block-cart-aside {
+            .block-content {
+                &:after {
+                    right: 18px;
+                }
+            }
+        }
+    }
+}
+
+/* Cart without icon */
+@if ($layout_cart_icons == 3) {
+    .block-cart {
+        > a {
+            > i {
+                display: none;
+            }
+
+            > span {
+                padding: 10px 0 0;
+                margin: 0;
+            }
+        }
+
+        .block-cart-aside {
+            .block-content {
+                &:after {
+                    right: 13px;
+                }
+            }
+        }
+    }
+}
+
+/* Search styling width text button */
+@if ($layout_search_icons == 3) {
+    .form-search button {
+        width: inherit;
+        padding: 10px 20px;
+        background: $color--primary;
+        text-indent: inherit;
+
+        &:hover {
+            background-image: none;
+        }
+    }
+}
+
+/* Account icon styling width hidden dropdown */
+@if ($layout_account_icons == 2) {
+    .page-header {
+        .desktop,
+        .page-container-wrapper--sticky {
+            .mini-account {
+                padding: 20px 0;
+                position: relative;
+
+                i {
+                    background-image: $mini-profile__link_background-image;
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    display: block;
+                    width: 34px;
+                    height: 34px;
+                    cursor: pointer;
+                }
+
+                > ul {
+                    background-color: $mini-cart__block-content_background-color;
+                    color: $mini-cart__block-content_color;
+                    display: none;
+                    position: absolute;
+                    right: 0;
+                    top: 100%;
+                    min-width: 200px;
+                    z-index: 15;
+                    text-align: center;
+                    padding: 10px;
+
+                    @include mobile {
+                      min-width: 0;
+                    }
+
+                    &:after {
+                      @include icon-triangle(up, 10px, $mini-cart__block-content_background-color);
+                      position: absolute;
+                      right: 5px;
+                      bottom: 100%;
+                      margin-left: 12px;
+                    }
+
+                    li {
+                        display: block;
+                        float: none;
+
+                        a {
+                            display: block;
+                            padding: 3px;
+                        }
+
+                        &:before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+          }
+    }
+}
+
+.page-header {
+    .header-wishlist-count {
+        span {
+            i {
+                background-image: $mini-wishlist__link_background-image;
+                background-repeat: no-repeat;
+                background-size: 100%;
+                display: block;
+                width: 34px;
+                height: 34px;
+                cursor: pointer;
+            }
+
+            @include desktop {
+                &:hover {
+                    i {
+                        background-image: $mini-wishlist--hover__link_background-image;
+                    }
+                }
+            }
+
+            span {
+                color: $color--secondary;
+            }
+        }
+    }
+
+    .mobile {
+        .block.header-wishlist-count {
+            border-left-width: 1px;
+            margin-left: 10px;
+        }
+    }
+}
+
+@if ($layout--header_layout == 1) {
+    @if ($layout_account_icons == 2) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 0;
+
+                    > ul {
+                        top: 48px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Account styling width visible text */
+@if ($layout_account_icons == 3) {
+    .page-header {
+        .desktop,
+        .page-container-wrapper--sticky {
+            .mini-account {
+                padding: 20px 0 15px;
+
+                i {
+                    background-image: $mini-profile__link_background-image;
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    display: inline-block;
+                    width: 34px;
+                    height: 34px;
+                    cursor: pointer;
+                }
+
+                > ul {
+                    margin: 8px 0 8px 15px;
+                    display: inline-block !important;
+                }
+              }
+          }
+    }
+}
+
+/* Wishlist icon styling width text */
+@if ($layout_wishlist_icons == 1) {
+    .page-header {
+        .desktop {
+            .header-wishlist-count {
+                a {
+                    span.label {
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Wishlist icon styling width hidden text */
+@if ($layout_wishlist_icons == 2) {
+    .page-header {
+        .desktop {
+            .header-wishlist-count {
+                a {
+                    span.label {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Wishlist styling width visible text */
+@if ($layout_wishlist_icons == 3) {
+    .page-header {
+        .desktop {
+            .header-wishlist-count {
+                margin: 18px 20px 15px 10px;
+
+                a {
+                    height: inherit;
+
+                    .count-wish {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Wishlist icon styling width visible text */
+@if ($layout--header_layout == 5) {
+    @if ($layout_wishlist_icons == 3) {
+        .page-header {
+            .desktop {
+                .header-wishlist-count {
+                    margin: 28px 20px 15px 10px;
+                }
+            }
+        }
+    }
+}
+
+/* Responsive styling for icons */
+@include phone-sm {
+    .page-header {
+        .mobile {
+            .header-wishlist-count {
+                padding-left: 10px;
+                margin: 0;
+            }
+        }
+    }
+
+    .mini-cart,
+    .page-header .mobile-trigger {
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+}

@@ -1,0 +1,416 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <blugento>
+            <label>Blugento</label>
+            <sort_order>200</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_socialmedia translate="label" module="blugento_socialmedia">
+            <label>Social Media, Facebook Login and Facebook Like</label>
+            <tab>blugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>610</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <share_settings translate="label">
+                    <label>Facebook Share Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </enabled>
+                    </fields>
+                </share_settings>
+                <share_media_facebook translate="label">
+                    <label>Facebook Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <facebookurl translate="label comment">
+                            <label>Facebook URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter Facebook URL like https://www.facebook.com</comment>
+                        </facebookurl>
+                        <facebooktitle translate="label comment">
+                            <label>Facebook Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter Facebook Title</comment>
+                        </facebooktitle>
+                        <facebookproductpage translate="label comment">
+                            <label>Enable Page Share</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </facebookproductpage>
+                    </fields>
+                </share_media_facebook>
+                <share_media_whatsapp translate="label">
+                    <label>Whatsapp Button Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <phone_number translate="label">
+                            <label>Phone number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </phone_number>
+                        <custom_text translate="label comment">
+                            <label>Text</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter custom share text</comment>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </custom_text>
+                        <btn_text translate="label">
+                            <label>Text Button</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </btn_text>
+                    </fields>
+                </share_media_whatsapp>
+                <share_media_twitter translate="label">
+                    <label>Twitter Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <twitterurl translate="label comment">
+                            <label>Twitter URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter Twitter URL like https://www.twitter.com</comment>
+                        </twitterurl>
+                        <twittertitle translate="label comment">
+                            <label>Twitter Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter Twitter Title</comment>
+                        </twittertitle>
+                        <twitterproductpage translate="label comment">
+                            <label>Enable Page Share</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </twitterproductpage>
+                    </fields>
+                </share_media_twitter>
+                <share_media_linkedin translate="label">
+                    <label>LinkedIn Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <linkedinurl translate="label comment">
+                            <label>LinkedIn URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter LinkedIn URL like https://www.linkedin.com</comment>
+                        </linkedinurl>
+                        <linkedintitle translate="label comment">
+                            <label>LinkedIn Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter LinkedIn Title</comment>
+                        </linkedintitle>
+                        <linkedinproductpage translate="label">
+                            <label>Enable Page Share</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </linkedinproductpage>
+                    </fields>
+                </share_media_linkedin>
+                <share_media_youtube translate="label">
+                    <label>YouTube Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <youtubeurl translate="label comment">
+                            <label>YouTube URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter YouTube URL like https://www.youtube.com</comment>
+                        </youtubeurl>
+                        <youtubetitle translate="label comment">
+                            <label>YouTube Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter YouTube Title</comment>
+                        </youtubetitle>
+                    </fields>
+                </share_media_youtube>
+                <share_media_googleplus translate="label">
+                    <label>Google+ Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <googleplusurl translate="label comment">
+                            <label>Google+ URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter Google+ URL like https://www.plus.google.com</comment>
+                        </googleplusurl>
+                        <googleplustitle translate="label comment">
+                            <label>Google+ Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter Google+ Title</comment>
+                        </googleplustitle>
+                    </fields>
+                </share_media_googleplus>
+                <share_media_pinterest translate="label">
+                    <label>Pinterest Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>7</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <pinteresturl translate="label comment">
+                            <label>Pinterest URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter Pinterest URL like https://www.pinterest.com</comment>
+                        </pinteresturl>
+                        <pinteresttitle translate="label comment">
+                            <label>Pinterest Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>61</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter Pinterest Title</comment>
+                        </pinteresttitle>
+                        <pinterestproductpage translate="label comment">
+                            <label>Enable Page Share</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>62</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </pinterestproductpage>
+                        <hidePinterestCategoryPage translate="label comment">
+                            <label>Hide Pinterest Category Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>62</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </hidePinterestCategoryPage>
+                    </fields>
+                </share_media_pinterest>
+                <share_media_instagram translate="label">
+                    <label>Instagram Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>8</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <instagramurl translate="label comment">
+                            <label>Instagram URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter Instagram URL like https://www.instagram.com</comment>
+                        </instagramurl>
+                        <instagramtitle translate="label comment">
+                            <label>Instagram Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>71</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter Instagram Title</comment>
+                        </instagramtitle>
+                    </fields>
+                </share_media_instagram>
+                <share_media_flickr translate="label">
+                    <label>Flickr Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>9</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <flickrurl translate="label comment">
+                            <label>Flickr URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter Flickr URL like https://www.flickr.com</comment>
+                        </flickrurl>
+                        <flickrtitle translate="label comment">
+                            <label>Flickr Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>81</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter Flickr Title</comment>
+                        </flickrtitle>
+                    </fields>
+                </share_media_flickr>
+                <share_media_tiktok translate="label">
+                    <label>TikTok Media Buttons Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <tiktokurl translate="label comment">
+                            <label>TikTok URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-url</validate>
+                            <comment>Enter Tiktok URL like https://www.tiktok.com</comment>
+                        </tiktokurl>
+                        <tiktoktitle translate="label comment">
+                            <label>TikTok Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>91</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enter Tiktok Title</comment>
+                        </tiktoktitle>
+                        <!-- <tiktokproductpage translate="label comment">
+                            <label>Enable Page Share</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>92</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </tiktokproductpage> -->
+                    </fields>
+                </share_media_tiktok>
+            </groups>
+        </blugento_socialmedia>
+    </sections>
+</config>

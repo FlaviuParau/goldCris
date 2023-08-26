@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /** @var $this Amasty_StoreCredit_Block_Adminhtml_Sales_Order_Creditmemo_Controls */ ?>
+<?php if($this->hasIssetStoreCreditInOrder()):?>
+<div style="color:red;">
+	Please be aware that the credit purchased with this order will not be deducted from
+	the customer's account automatically.
+	If you would like to deduct the credit, please do so manually in the
+	<a target="_blank" href="<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/customer/edit', array('id'=>$this->getCustomerId(), 'tab'=>'customer_info_tabs_am_customer_balance'));?>">customer's account</a>.
+</div>
+	<br>
+
+<?php endif;?>

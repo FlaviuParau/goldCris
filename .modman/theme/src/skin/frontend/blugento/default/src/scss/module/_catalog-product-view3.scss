@@ -1,0 +1,49 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view3.scss
+    Version:        1.0
+    Description:    Product Details Page - Showcase Template
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view == 3) {
+    .product-usp-wrapper {
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -o-flex;
+        display: flex;
+        align-items: flex-start;
+        flex-flow: row wrap;
+        
+        .product-usp-item {
+            flex-basis: 100%;
+            padding: 8px 0;
+        }
+    }
+    
+    .product-collateral {
+        clear: left;
+    }
+
+    @include desktop {
+        .product-view {
+            .product-img-box {
+                width: 55.6%;
+            }
+
+            .product-shop {
+                width: 40%;
+            }
+
+            .box-tags {
+                clear: both;
+                float: left;
+                width: 55.6%;
+            }
+        }
+
+        .product-collateral {
+            float: left;
+            width: 55.6%;
+            margin-top: 30px;
+        }
+    }
+}

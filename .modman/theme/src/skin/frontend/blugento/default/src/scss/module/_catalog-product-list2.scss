@@ -1,0 +1,62 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-list2.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-list_item_box == 2) {
+    .products-grid,
+    %products-grid,
+    .products-list,
+    %products-list {
+        li.item {
+            margin-bottom: 20px;
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+
+        .item-inner {
+            background-color: color('b');
+
+            .product-image {
+                border-top: 2px solid color('i');
+                border-bottom: 2px solid color('i');
+            }
+
+            .price-box {
+                p,
+                .special-price,
+                .regular-price {
+                    display: block;
+                    font-size: 22px;
+                }
+
+                .old-price {
+                    font-size: 16px;
+                }
+
+                .price-label {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                .product-image {
+                    border-color: color('o');
+                }
+
+                .regular-price,
+                .special-price,
+                .product-name a {
+                    color: color('o');
+                }
+
+                .product-actions {
+                    .button {
+                        background-color: color('o');
+                    }
+                }
+            }
+        }
+    }
+}

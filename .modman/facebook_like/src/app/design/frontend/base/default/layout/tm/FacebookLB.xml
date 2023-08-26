@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+
+    <facebooklb_init_js>
+        <reference name="head">
+            <action method="addItem" ifconfig="blugento_socialmedia/like_general/enabled">
+                <type>skin_js</type>
+                <name>tm/facebooklb/js/init.js</name>
+                <params>defer</params>
+            </action>
+        </reference>
+    </facebooklb_init_js>
+
+    <catalog_product_view>
+        <update handle="facebooklb_init_js"/>
+        <reference name="head">
+            <block type="core/template" name="facebooklb_product_page_meta">
+                <action method="setTemplate" ifconfig="blugento_socialmedia/like_general/enabled">
+                    <template>tm/facebooklb/head.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+    <catalog_category_default>
+        <update handle="facebooklb_init_js"/>
+        <reference name="before_body_end">
+            <block type="core/template" name="facebooklb.category.default">
+                <action method="setTemplate" ifconfig="blugento_socialmedia/like_general/enabled">
+                    <template>tm/facebooklb/category_products_like.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_category_default>
+
+    <catalogsearch_result_index>
+        <update handle="facebooklb_init_js"/>
+        <reference name="content">
+            <block type="core/template" name="facebooklb.catalogsearch">
+                <action method="setTemplate" ifconfig="blugento_socialmedia/like_general/enabled">
+                    <template>tm/facebooklb/category_products_like.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalog_category_layered>
+        <update handle="facebooklb_init_js"/>
+        <reference name="before_body_end">
+            <block type="core/template" name="facebooklb.category.layered">
+                <action method="setTemplate" ifconfig="blugento_socialmedia/like_general/enabled">
+                    <template>tm/facebooklb/category_products_like.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </catalog_category_layered>
+
+</layout>

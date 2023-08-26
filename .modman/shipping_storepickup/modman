@@ -1,0 +1,4 @@
+src/app/code/local/Blugento/Storepickup/                                app/code/local/Blugento/Storepickup/
+src/app/etc/modules/Blugento_Storepickup.xml                            app/etc/modules/Blugento_Storepickup.xml
+src/app/locale/ro_RO/Blugento_Storepickup.csv                           app/locale/ro_RO/Blugento_Storepickup.csv
+src/app/locale/de_DE/Blugento_Storepickup.csv                           app/locale/de_DE/Blugento_Storepickup.csv

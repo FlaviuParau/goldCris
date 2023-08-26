@@ -1,0 +1,11 @@
+#formsgenerator_tabs_field_section_content #formsgenerator_form > div > table > tbody > tr:nth-child(3),
+#formsgenerator_tabs_field_section_content #formsgenerator_form > div > table > tbody > tr:nth-child(4),
+#formsgenerator_tabs_field_section_content #formsgenerator_form > div > table > tbody > tr:nth-child(5),
+#formsgenerator_tabs_field_section_content #formsgenerator_form > div > table > tbody > tr:nth-child(6),
+#formsgenerator_tabs_field_section_content #formsgenerator_form > div > table > tbody > tr:nth-child(7),
+#formsgenerator_tabs_field_section_content #formsgenerator_form > div > table > tbody > tr:nth-child(8),
+#formsgenerator_tabs_field_section_content #formsgenerator_form > div > table > tbody > tr:nth-child(9),
+#formsgenerator_tabs_field_section_content #formsgenerator_form > div > table > tbody > tr:nth-child(10)
+{
+    display: none;
+}

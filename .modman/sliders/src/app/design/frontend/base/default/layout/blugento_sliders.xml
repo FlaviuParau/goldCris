@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Blugento Sliders
+*
+* Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+* LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+*
+* @package Blugento_Sliders
+* @author Daniel Gheoltan <daniel.gheoltan@mindmagnetsoftware.com>
+* @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+* @link http://www.blugento.com
+*/
+-->
+<layout version="0.1.0">
+
+    <default>
+    </default>
+
+</layout>

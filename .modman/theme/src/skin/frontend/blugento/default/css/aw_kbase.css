@@ -1,0 +1,73 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       aw_kbase.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       function/_browser.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       _config.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_grunt.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_design.scss
+    Version:        1.0
+    Description:    Colors and Images Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_image.scss
+    Version:        1.0
+    Description:    Default Image Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_layout.scss
+    Version:        1.0
+    Description:    Default Layout Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_core.scss
+    Version:        1.0
+    Description:    Default Core Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_component.scss
+    Version:        1.0
+    Description:    Default Component Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_module.scss
+    Version:        1.0
+    Description:    Default Modules Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_custom.scss
+    Version:        1.0
+    Description:    Custom Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_design.scss
+    Version:        1.0
+    Description:    Colors and Images Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       component/_data-table.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */.data-table,.kbase table.kbase-listing{width:100%;border:1px solid #f5f5f5}.data-table td,.data-table th,.kbase table.kbase-listing td,.kbase table.kbase-listing th{padding:10px;border-bottom:1px solid #f5f5f5;vertical-align:top}.data-table thead,.kbase table.kbase-listing thead{background-color:#f5f5f5;color:inherit}.data-table tbody,.kbase table.kbase-listing tbody{background-color:inherit;color:inherit}/*! ----------------------------------------------------------------------------
+    Filename:       mixin/_font.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_grid.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_icon.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_responsive.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_util.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */.kbase-main-header.h1{font-style:normal;font-size:42px;font-weight:700;font-family:Roboto,Arial,sans-serif;text-transform:inherit;color:#000}.kbase{display:block}.kbase h2,.kbase h3,.kbase h4,.kbase h5,.kbase h6,.kbase p{line-height:2}.kbase .kbase-block{border:0;display:block;padding:20px;margin:20px 0;box-shadow:0 1px 3px 0 rgba(0,0,0,.2)}.kbase .kbase-block-main{display:block}.kbase .kbase-block-search{display:block}.kbase .kbase-main-search input{width:68%;padding:1px;height:37px;vertical-align:top;border:1px solid #ccc;background-color:#fff}.kbase .kbase-main-search button{vertical-align:top;top:0}.kbase .kbase-main-search label{display:none}.kbase .kbase-main-tag .kbase-list li{display:inline-block;margin-right:20px;position:relative}.kbase .kbase-main-tag .kbase-list li a{display:block;text-decoration:underline;color:#000}.kbase .kbase-main-tag .kbase-list li a:hover{text-decoration:none;color:#000}.kbase .kbase-main-tag .kbase-list li:not(:last-child):after{content:'';background:#000;position:absolute;right:-13px;top:50%;margin-top:-1px;width:4px;height:1px}.kbase .kbase-list .hide{display:none}.kbase .kbase-list li span{cursor:pointer;color:#999}.kbase .kbase-list li span:hover{cursor:pointer;color:#000}.kbase .show-articles .show-more{display:none}.kbase .show-articles .hide,.kbase .show-articles .show-less{display:block!important}.kbase .kbase-main-category .kbase-list{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-flow:row wrap;-ms-flex-flow:row wrap;flex-flow:row wrap;margin-left:-20px;vertical-align:top}.kbase .kbase-main-category .kbase-list>li{width:-webkit-calc(100% / 4 - 20px);width:calc(100% / 4 - 20px);margin-left:20px;box-sizing:border-box}.kbase .kbase-main-category .kbase-list h3{position:relative;vertical-align:top}.kbase .kbase-main-category .kbase-list ul{line-height:2}.kbase .kbase-main-category .kbase-list ul li{margin-left:0}.kbase .kbase-sorter{padding:5px 10px;text-align:left;margin-bottom:20px}.kbase .kbase-sorter:after{content:'';display:table;clear:both}.kbase .kbase-sorter .amount{float:left;margin:0}.kbase .kbase-sorter .sort-by{display:inline-block;padding-right:36px}.kbase .kbase-sorter .sort-by label{vertical-align:middle}.kbase .kbase-sorter .sort-by select{vertical-align:middle}.kbase .kbase-sorter .sort-by img{vertical-align:middle}.kbase .kbase-listing{border:1px solid #c4c1bc}.kbase .kbase-listing p{margin:0}.kbase .kbase-listing-tag{font-size:80%}.kbase table.kbase-listing{box-shadow:0 1px 3px 0 rgba(0,0,0,.2)}.kbase table.kbase-listing th:first-child{text-align:left}.kbase table.kbase-listing .kbase-listing{border:0;cursor:pointer}.kbase table.kbase-listing .kbase-listing td{border:0}.kbase .kbase-article .kbase-article-author,.kbase .kbase-article .kbase-article-date,.kbase .kbase-article h2,.kbase .kbase-article>p{line-height:2}.kbase .kbase-article .kbase-article-date{font-size:85%}.kbase .kbase-article .kbase-article-author{font-style:italic}.kbase .kbase-article-text ol.products-list,.kbase .kbase-article-text ul.products-grid,.kbase .kbase-article-text ul.products-grid UL{list-style:none outside none!important}.kbase .kbase-article-text ul.products-grid{width:100%!important}.kbase .kbase-article-text ol{list-style-position:inside;list-style-type:decimal}.kbase .kbase-article-text ul{list-style-position:inside;list-style-type:disc}.kbase .kbase-article-text p{margin-bottom:0;line-height:2}.kbase .kbase-article-rating:after{content:'';display:table;clear:both}.kbase .kbase-article-rating span{float:left;margin-right:10px}.kbase .kbase-article-rating .rating-box{float:left}.kbase .kbase-article-rating select{margin-right:10px}.kbase .kbase-article-rating form{float:right}.kbase .kbase-article-attachment a,.kbase .kbase-article-category a,.kbase .kbase-list ul a{text-decoration:underline;color:#000}.kbase .kbase-article-attachment a:hover,.kbase .kbase-article-category a:hover,.kbase .kbase-list ul a:hover{text-decoration:none}@media (max-width:639px){.kbase .kbase-main-category .kbase-list>li{width:-webkit-calc(100% / 2 - 20px);width:calc(100% / 2 - 20px);margin-bottom:10px}}@media (max-width:479px){.kbase .kbase-main-search input{width:60%}.kbase .kbase-main-category .kbase-list{display:block}.kbase .kbase-main-category .kbase-list>li{width:100%;margin-bottom:10px}}

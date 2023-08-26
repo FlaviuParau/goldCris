@@ -1,0 +1,512 @@
+<?php /** @var Blugento_Importer_Block_Adminhtml_System_Convert_Gui_Edit_Tab_Wizard $this */?>
+
+<script type="text/javascript">
+//<![CDATA[
+var profileImportOnly = ['profile_number_of_records', 'profile_decimal_separator'];
+function showOption(select)
+{
+    select = $(select);
+    for (var i = 0, l = select.options.length; i<l; i++) {
+        $$('.'+select.id+'_'+select.options[i].value).each(function (el) {
+            el.style.display = select.selectedIndex==i ? '' : 'none';
+        });
+    }
+
+}
+function showDefaultOptions(select)
+{
+    select = $(select);
+    var el = document.getElementById('profile_default_value_fields');
+    el.style.display = select.selectedIndex==1 ? '' : 'none';
+}
+
+function toggleSelectOption(type, source, target, sourceValue, targetValue, targetText)
+{
+    source = $(source);
+    target = $(target);
+
+    var i, ex, option, present;
+    var selectValue = source.options[source.selectedIndex].value;
+
+    if('remove'==type && selectValue==sourceValue || 'add'==type && selectValue!=sourceValue) {
+        for(i=0;i<target.options.length;i++){
+            if(target.options[i].value==targetValue){
+                target.remove(i);
+                break;
+            }
+        }
+    } else {
+        for(i=0;i<target.options.length;i++){
+            if(target.options[i].value==targetValue){
+                present = true;
+                break;
+            } else {
+                present = false;
+            }
+        }
+        if(!present){
+            option = document.createElement("OPTION");
+            option.text = targetText;
+            option.value = targetValue;
+            try {
+                target.add(option, null); // standards compliant; doesn't work in IE
+            } catch(ex) {
+                target.add(option); // IE only
+            }
+        }
+    }
+    showOption(target);
+}
+
+function exportUrlField()
+{
+    var urlFieldEl = $('profile_add_url_field').up();
+    var entityType = $('profile_entity_type').value;
+    var direction  = $('profile_direction').value;
+    var storeId    = $('profile_store_id').value;
+
+    if (entityType == 'product' && direction == 'export' && storeId > 0) {
+        urlFieldEl.show();
+    }
+    else {
+        urlFieldEl.hide();
+    }
+}
+
+/*function changeEntityType()
+{
+    changeDirection();
+}*/
+
+
+function changeDirection()
+{
+    toggleSelectOption('remove', 'profile_direction', 'profile_data_transfer', 'export', 'interactive', '<?php echo Mage::helper('core')->jsQuoteEscape($this->__('Interactive')) ?>');
+
+    profileImportOnly.each(function(id){if ($(id))$(id).up(1).show();});
+
+    exportUrlField();
+}
+
+function updateRun(select)
+{
+    if ($('file_list') != null){
+        if ($(select).value=='interactive') {
+            $('file_list').show();
+        } else {
+            $('file_list').hide();
+        }
+    }
+}
+
+Event.observe(window, 'load', function(){
+    if($('profile_data_transfer')) {
+        updateRun('profile_data_transfer');
+    }
+});
+//]]>
+</script>
+
+<div id="profile-generator" class="entry-edit profile-generator">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Profile Information") ?></h4>
+    </div>
+
+    <fieldset>
+        <legend><?php echo $this->__("Profile Information") ?></legend>
+        <span class="field-row">
+            <label for="profile_name"><?php echo $this->__("Name:") ?> <span class="required">*</span></label>
+            <input class="required-entry required-entry input-text" id="profile_name" name="name" value="<?php echo $this->getValue('name') ?>"/>
+        </span>
+
+        <span class="field-row">
+            <label for="profile_entity_type"><?php echo $this->__("Entity type:") ?></label>
+            <select id="profile_entity_type" name="entity_type" onchange="showOption(this);changeEntityType();" class="option-control">
+                <option value="product" <?php echo $this->getSelected('entity_type', 'product') ?>><?php echo $this->__("Products") ?></option>
+            </select>
+        </span>
+
+        <span class="field-row">
+            <label for="profile_entity_type"><?php echo $this->__("Behavior") ?></label>
+            <select id="profile_entity_type" name="behavior" onchange="showOption(this);changeEntityType();" class="option-control">
+                <option value="create" <?php echo $this->getSelected('behavior', 'create') ?>><?php echo $this->__("Create Only") ?></option>
+                <option value="update" <?php echo $this->getSelected('behavior', 'update') ?>><?php echo $this->__("Update Only") ?></option>
+                <option value="createupdate" <?php echo $this->getSelected('behavior', 'createupdate') ?>><?php echo $this->__("Create & Update") ?></option>
+            </select>
+        </span>
+
+        <span class="field-row">
+            <label for="processimages"><?php echo $this->__("Process Images") ?></label>
+            <select id="processimages" name="processimages" onchange="showOption(this);changeEntityType();" class="option-control">
+                <option value="0" <?php echo $this->getSelected('processimages', '0') ?>><?php echo $this->__("No") ?></option>
+                <option value="1" <?php echo $this->getSelected('processimages', '1') ?>><?php echo $this->__("Yes") ?></option>
+            </select>
+            <small class="file_type_file">
+                <?php echo $this->__('If you choose "YES" you have to set behavior to "Update Only" or "Create & Update", otherwise the images will not be processed.') ?>
+            </small>
+        </span>
+
+        <span class="field-row">
+            <label for="processcategories"><?php echo $this->__("Create Categories") ?></label>
+            <select id="processcategories" name="processcategories" onchange="showOption(this);changeEntityType();" class="option-control">
+                <option value="0" <?php echo $this->getSelected('processcategories', '0') ?>><?php echo $this->__("No") ?></option>
+                <option value="1" <?php echo $this->getSelected('processcategories', '1') ?>><?php echo $this->__("Yes") ?></option>
+            </select>
+        </span>
+
+        <span class="field-row">
+            <label for="removeproductsfromcategories"><?php echo $this->__("Remove products from old categories") ?></label>
+            <select id="removeproductsfromcategories" name="removeproductsfromcategories" onchange="showOption(this);changeEntityType();" class="option-control">
+                <option value="1" <?php echo $this->getSelected('removeproductsfromcategories', '1') ?>><?php echo $this->__("Yes") ?></option>
+                <option value="0" <?php echo $this->getSelected('removeproductsfromcategories', '0') ?>><?php echo $this->__("No") ?></option>
+            </select>
+        </span>
+
+        <span class="field-row">
+            <label for="profile_rootcategory"><?php echo $this->__("Root Category in which the categories are created:") ?></label>
+            <input class="input-text" id="profile_rootcategory" name="rootcategory" value="<?php echo $this->getValue('rootcategory') ?>"/>
+        </span>
+
+        <span class="field-row">
+            <label for="profile_email"><?php echo $this->__("Email When Finished:") ?></label>
+            <input class="input-text" id="profile_email" name="email" value="<?php echo $this->getValue('email') ?>"/>
+        </span>
+    </fieldset>
+
+    <div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("File Information") ?></h4>
+    </div>
+    <fieldset>
+        <legend><?php echo $this->__("File Information") ?></legend>
+        <span class="field-row">
+            <label for="profile_data_transfer"><?php echo $this->__("Data Source:") ?></label>
+            <select id="profile_data_transfer" name="data_source" onchange="showOption(this);updateRun(this)" class="option-control">
+                <option value="1" <?php echo $this->getSelected('data_source', '1') ?>><?php echo $this->__("Upload File") ?></option>
+                <option value="2" <?php echo $this->getSelected('data_source', '2') ?>><?php echo $this->__("Local Server") ?></option>
+                <option value="3" <?php echo $this->getSelected('data_source', '3') ?>><?php echo $this->__("Remote Server") ?></option>
+                <option value="4" <?php echo $this->getSelected('data_source', '4') ?>><?php echo $this->__("FTP") ?></option>
+                <option value="5" <?php echo $this->getSelected('data_source', '5') ?>><?php echo $this->__("SFTP/SSH") ?></option>
+            </select>
+        </span>
+
+        <span class="field-row" id="upload-file">
+            <label for="file_uploaded"><?php echo $this->__("Upload File") ?></label>
+            <input type="file" id="file_uploaded" name="file_uploaded" />
+        </span>
+
+        <span class="field-row">
+            <label for="existing_file"><?php echo $this->__("Existing File") ?></label>
+            <select id="existing_file" name="existing_file">
+                <option value="">Select a file</option>
+                <?php if ($files = $this->getImportedFiles()) :
+                    foreach ($files as $file) : ?>
+                        <option value=<?php echo $file ?>><?php echo $file ?></option>
+                    <?php endforeach;
+                endif; ?>
+            </select>
+            <br/>&nbsp;
+        </span>
+
+        <div class="profile_data_transfer_file">
+            <span class="field-row">
+                <label for="file_filename"><?php echo $this->__("File name:") ?></label>
+                <input class="input-text" id="file_filename" name="file_name" value="<?php echo $this->getValue('file_name') ?>"/>
+            </span>
+            <span class="field-row">
+                <label for="file_path"><?php echo $this->__("Path:") ?></label>
+                <span class="with-tip">
+                    <input class="input-text" id="file_path" name="file_path" value="<?php echo $this->getValue('file_path') ?>"/>
+                    <small class="file_type_file">
+                        <?php echo $this->__('(For Type Local Server need to use relative path to Magento install var/export or var/import, e.g. var/export, var/import, var/export/some/dir, var/import/some/dir)') ?>
+                    </small>
+                </span>
+            </span>
+
+            <span class="field-row">
+            <label for="new_file_structure"><?php echo $this->__("New file structure for configurable products:") ?></label>
+            <select id="new_file_structure" name="new_file_structure" onchange="showOption(this);changeEntityType();" class="option-control">
+                <option value="0" <?php echo $this->getSelected('new_file_structure', '0') ?>><?php echo $this->__("No") ?></option>
+                <option value="1" <?php echo $this->getSelected('new_file_structure', '1') ?>><?php echo $this->__("Yes") ?></option>
+            </select>
+        </span>
+            <hr /><br />
+            <strong><span><?php echo $this->__("Only for Data Source of type FTP/SFTP") ?></span></strong><br /><br />
+            <span class="field-row">
+                <label for="ftp_server"><?php echo $this->__("FTP/SFTP Server") ?></label>
+                <input class="input-text" id="ftp_server" name="ftp_server" value="<?php echo $this->getValue('ftp_server') ?>"/>
+                <small><?php echo $this->__("eg. 127.0.0.1") ?></small>
+            </span>
+            <span class="field-row">
+                <label for="ftp_username"><?php echo $this->__("FTP/SFTP Username") ?></label>
+                <input class="input-text" id="ftp_username" name="ftp_username" value="<?php echo $this->getValue('ftp_username') ?>"/>
+            </span>
+            <span class="field-row">
+                <label for="ftp_password"><?php echo $this->__("FTP/SFTP Password") ?></label>
+                <input class="input-text" id="ftp_password" name="ftp_password" value="<?php echo $this->getValue('ftp_password') ?>"/>
+            </span>
+            <span class="field-row">
+                <label for="ftp_filepath"><?php echo $this->__("FTP/SFTP Filepath") ?></label>
+                <input class="input-text" id="ftp_filepath" name="ftp_filepath" value="<?php echo $this->getValue('ftp_filepath') ?>"/>
+                <small><?php echo $this->__("File path from FTP/SFTP. eg. products/items.csv") ?></small>
+            </span>
+            <br /><hr /><br />
+            <div class="file_type_ftp">
+                <span class="field-row">
+                    <label for="file_host"><?php echo $this->__("URL") ?></label>
+                    <input class="input-text" id="remote_url" name="remote_url" value="<?php echo $this->getValue('remote_url') ?>"/>
+                </span>
+            </div>
+            <span class="field-row">
+                <label for="file_format"><?php echo $this->__("Data Format:") ?></label>
+                <select id="file_format" name="file_format" onchange="showOption(this)" class="option-control">
+                    <option value="csv" <?php echo $this->getSelected('file_format', 'csv') ?>><?php echo $this->__("CSV") ?></option>
+                    <option value="excel_xml" <?php echo $this->getSelected('file_format', 'excel_xml') ?>><?php echo $this->__("MS Excel XML") ?></option>
+                </select>
+            </span>
+            <div class="parse_type_csv">
+                <span class="field-row">
+                    <label for="parse_delimiter"><?php echo $this->__("Value Delimiter:") ?></label>
+                    <input class="input-text" style="width:3em" id="parse_delimiter" name="delimiter" value="<?php echo $this->getValue('delimiter', ',') ?>"/>
+                </span>
+                    <span class="field-row">
+                    <label for="parse_enclose"><?php echo $this->__("Enclose Values In:") ?></label>
+                    <input class="input-text" style="width:3em" id="parse_enclose" name="enclosure" value="<?php echo $this->getValue('enclosure', '', '"') ?>"/>
+                    <small><?php echo $this->__("Warning! Empty value can cause problems with CSV format.") ?></small>
+                </span>
+            </div>
+            <div class="xml_parse">
+                <span class="field-row">
+                    <label for="file_host"><?php echo $this->__("Entity XML Node Name:") ?></label>
+                    <input class="input-text" id="xml_entity_node" name="xml_entity_node" value="<?php echo $this->getValue('xml_entity_node') ?>"/>
+                    <small><?php echo $this->__("For XML files insert product node name. e.g. product, products, product_details") ?></small>
+                </span>
+            </div>
+            <div class="remove_comma">
+                <span class="field-row">
+                    <label for="remove_comma"><?php echo $this->__("Remove comma symbol from price") ?></label>
+                    <select id="remove_comma" name="remove_comma" onchange="showDefaultOptions(this);" class="option-control">
+                        <option value="0" <?php echo $this->getSelected('remove_comma', '0') ?>><?php echo $this->__("No") ?></option>
+                        <option value="1" <?php echo $this->getSelected('remove_comma', '1') ?>><?php echo $this->__("Yes") ?></option>
+                    </select>
+                </span>
+            </div>
+            <div class="is_duplicate_images">
+                <span class="field-row">
+                    <label for="is_duplicate_images"><?php echo $this->__("Duplicate Images") ?></label>
+                    <select id="is_duplicate_images" name="is_duplicate_images" class="option-control">
+                        <option value="0" <?php echo $this->getSelected('is_duplicate_images', '0') ?>><?php echo $this->__("No") ?></option>
+                        <option value="1" <?php echo $this->getSelected('is_duplicate_images', '1') ?>><?php echo $this->__("Yes") ?></option>
+                    </select>
+                    <small><?php echo $this->__("If an image is assigned to at least two products set this option to YES.") ?></small>
+                </span>
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("File Data Information") ?></h4>
+    </div>
+    <fieldset>
+        <legend><?php echo $this->__("File Data") ?></legend>
+        <span class="field-row">
+            <label for="profile_default_values"><?php echo $this->__("Use Default Values") ?></label>
+            <select id="profile_default_values" name="default_values" onchange="showDefaultOptions(this);" class="option-control">
+                <option value="0" <?php echo $this->getSelected('default_values', '0') ?>><?php echo $this->__("No") ?></option>
+                <option value="1" <?php echo $this->getSelected('default_values', '1') ?>><?php echo $this->__("Yes") ?></option>
+            </select>
+        </span>
+        <span class="field-row">
+                <label for="skip_default_values"><?php echo $this->__("Skip Default Values for Following Attributes") ?></label>
+                 <input class="input-text" style="width:30em" id="skip_default_values" name="skip_default_values" value="<?php echo $this->getValue('skip_default_values', '') ?>"/>
+            <span class="with-tip">
+                <small class="profile_direction_import profile_entity_type_product">
+                        <?php echo $this->__("Attribute codes to be skipped, separated by comma (attribute_set_id, website, store_id, type, weight, status, visibility, tax_class_id, is_in_stock)") ?>
+                </small>
+            </span>
+            </span>
+
+        <div class="profile_default_value_fields" id="profile_default_value_fields">
+
+             <span class="field-row">
+                <label for="profile_store_id"><?php echo $this->__("Default Store:") ?></label>
+                <span class="with-tip">
+                    <select id="profile_store_id" name="store_id" onchange="exportUrlField();">
+                    <option value="9999" <?php echo $this->getSelected('store_id', 9999) ?>><?php echo $this->__('-- Select --') ?></option>
+                    <option value="0" <?php echo $this->getSelected('store_id', 0) ?>><?php echo $this->__('Default (Admin) Values') ?></option>
+                        <?php foreach ($this->getWebsiteCollection() as $_website): ?>
+                            <?php $_websiteShow=false; ?>
+                            <?php foreach ($this->getGroupCollection() as $_group): ?>
+                                <?php if ($_website->getId() != $_group->getWebsiteId()) continue; ?>
+                                <?php $_groupShow=false; ?>
+                                <?php foreach ($this->getStoreCollection() as $_store): ?>
+                                    <?php if ($_group->getId() != $_store->getGroupId()) continue; ?>
+                                    <?php if (!$_websiteShow): ?>
+                                        <?php $_websiteShow=true; ?>
+                                        <optgroup label="<?php echo Mage::helper('core')->quoteEscape($_website->getName()) ?>"></optgroup>
+                                    <?php endif; ?>
+                                    <?php if (!$_groupShow): ?>
+                                        <?php $_groupShow=true; ?>
+                                        <optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_group->getName() ?>">
+                                    <?php endif; ?>
+                                    <option value="<?php echo $_store->getId() ?>" <?php echo $this->getSelected('store_id', $_store->getId()) ?>>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_store->getName() ?></option>
+                                <?php endforeach; ?>
+                                <?php if ($_groupShow): ?>
+                                    </optgroup>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </select>
+                    <small class="profile_direction_import profile_entity_type_product">
+                            <?php echo $this->__("(Products will be added/updated to this store if 'store' column is blank or missing in the import file.)") ?>
+                    </small>
+                </span>
+            </span>
+
+            <?php $websites = $this->getWebsitesDefault(); ?>
+            <span class="field-row">
+                <label for="default_website"><?php echo $this->__("Default Website") ?></label>
+                <select id="default_website" name="default_website" class="option-control">
+                    <option value="9999" <?php echo $this->getSelected('default_website', '9999') ?>><?php echo $this->__('-- Select --') ?></option>
+                    <?php foreach ($websites as $code=>$label): ?>
+                        <option value="<?php echo $code; ?>" <?php echo $this->getSelected('default_website', $code) ?>><?php echo $label; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </span>
+            <span class="field-row">
+                <?php $attributesSet = $this->getAttributesSetDefault(); ?>
+                <label for="default_attribute_set_id"><?php echo $this->__("Default Attribute Set Id") ?></label>
+                <select id="default_attribute_set_id" name="default_attribute_set_id" class="option-control">
+                    <option value="9999" <?php echo $this->getSelected('default_attribute_set_id', '9999') ?>><?php echo $this->__('-- Select --') ?></option>
+                    <?php foreach ($attributesSet as $code=>$label): ?>
+                        <option value="<?php echo $code; ?>" <?php echo $this->getSelected('default_attribute_set_id', $code) ?>><?php echo $label ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </span>
+            <span class="field-row">
+                <label for="default_product_type"><?php echo $this->__("Default Product Type") ?></label>
+                <select id="default_product_type" name="default_product_type" class="option-control">
+                    <option value="9999" <?php echo $this->getSelected('default_product_type', '9999') ?>><?php echo $this->__("-- Select --") ?></option>
+                    <option value="simple" <?php echo $this->getSelected('default_product_type', 'simple') ?>><?php echo $this->__("Simple Product") ?></option>
+                    <option value="grouped" <?php echo $this->getSelected('default_product_type', 'grouped') ?>><?php echo $this->__("Grouped Product") ?></option>
+                    <option value="configurable" <?php echo $this->getSelected('default_product_type', 'configurable') ?>><?php echo $this->__("Configurable Product") ?></option>
+                    <option value="virtual" <?php echo $this->getSelected('default_product_type', 'virtual') ?>><?php echo $this->__("Virtual Product") ?></option>
+                    <option value="bundle" <?php echo $this->getSelected('default_product_type', 'bundle') ?>><?php echo $this->__("Bundle Product") ?></option>
+                    <option value="downloadable" <?php echo $this->getSelected('default_product_type', 'downloadable') ?>><?php echo $this->__("Downloadable Product") ?></option>
+                </select>
+                </select>
+            </span>
+            <span class="field-row">
+                <label for="default_status"><?php echo $this->__("Default Status") ?></label>
+                <select id="default_status" name="default_status" class="option-control">
+                    <option value="9999" <?php echo $this->getSelected('default_status', '9999') ?>><?php echo $this->__("-- Select --") ?></option>
+                    <option value="2" <?php echo $this->getSelected('default_status', '2') ?>><?php echo $this->__("Disabled") ?></option>
+                    <option value="1" <?php echo $this->getSelected('default_status', '1') ?>><?php echo $this->__("Enabled") ?></option>
+                </select>
+            </span>
+            <span class="field-row">
+                <label for="default_visibility"><?php echo $this->__("Default Visibility") ?></label>
+                <select id="default_visibility" name="default_visibility" class="option-control">
+                    <option value="9999" <?php echo $this->getSelected('default_visibility', '9999') ?>><?php echo $this->__("-- Select --") ?></option>
+                    <option value="1" <?php echo $this->getSelected('default_visibility', '1') ?>><?php echo $this->__("Not Visible Individually") ?></option>
+                    <option value="2" <?php echo $this->getSelected('default_visibility', '2') ?>><?php echo $this->__("Catalog") ?></option>
+                    <option value="3" <?php echo $this->getSelected('default_visibility', '3') ?>><?php echo $this->__("Search") ?></option>
+                    <option value="4" <?php echo $this->getSelected('default_visibility', '4') ?>><?php echo $this->__("Catalog, Search") ?></option>
+                </select>
+            </span>
+            <span class="field-row">
+                <label for="default_is_in_stock"><?php echo $this->__("Default Is In Stock") ?></label>
+                <select id="default_is_in_stock" name="default_is_in_stock" class="option-control">
+                    <option value="9999" <?php echo $this->getSelected('default_is_in_stock', '9999') ?>><?php echo $this->__("-- Select --") ?></option>
+                    <option value="0" <?php echo $this->getSelected('default_is_in_stock', '0') ?>><?php echo $this->__("Out of Stock") ?></option>
+                    <option value="1" <?php echo $this->getSelected('default_is_in_stock', '1') ?>><?php echo $this->__("In Stock") ?></option>
+                </select>
+            </span>
+            <?php $taxClasses = $this->getTaxClassesDefault(); ?>
+            <span class="field-row">
+                <label for="default_tax_class_id"><?php echo $this->__("Default Tax Class Id") ?></label>
+                <select id="default_tax_class_id" name="default_tax_class_id" class="option-control">
+                    <option value="9999" <?php echo $this->getSelected('default_tax_class_id', 9999) ?>><?php echo $this->__("-- Select --") ?></option>
+                    <?php foreach ($taxClasses as $key=>$val): ?>
+                        <option value="<?php echo $key; ?>" <?php echo $this->getSelected('default_tax_class_id', $key) ?>><?php echo $val; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </span>
+            <span class="field-row">
+                <label for="default_weight"><?php echo $this->__("Default Weight") ?></label>
+                 <input class="input-text" style="width:3em" id="default_weight" name="default_weight" value="<?php echo $this->getValue('default_weight', '') ?>"/>
+            </span>
+        </div>
+        <span class="field-row">
+                <label for="extra_price"><?php echo $this->__("Extra Price") ?></label>
+                 <input class="input-text" style="width:3em" id="extra_price" name="extra_price" value="<?php echo $this->getValue('extra_price', '', '0') ?>"/>
+            </span>
+        <span class="field-row">
+                <label for="extra_price_percent"><?php echo $this->__("Extra Price (in percent)") ?></label>
+                 <input class="input-text" style="width:3em" id="extra_price_percent" name="extra_price_percent" value="<?php echo $this->getValue('extra_price_percent', '', '0') ?>"/>
+            </span>
+        <span class="field-row">
+            <label for="skip_zero_prices"><?php echo $this->__("Skip (do not update) prices with value 0") ?></label>
+            <select id="skip_zero_prices" name="skip_zero_prices" onchange="showOption(this);changeEntityType();" class="option-control">
+                <option value="0" <?php echo $this->getSelected('skip_zero_prices', '0') ?>><?php echo $this->__("No") ?></option>
+                <option value="1" <?php echo $this->getSelected('skip_zero_prices', '1') ?>><?php echo $this->__("Yes") ?></option>
+            </select>
+        </span>
+        <span class="field-row">
+            <label for="category_separator"><?php echo $this->__("Category Separator") ?></label>
+             <input class="input-text" style="width:3em" id="category_separator" name="category_separator" value="<?php echo $this->getValue('category_separator', '', '~') ?>"/>
+        </span>
+        <span class="field-row">
+            <label for="child_category_separator"><?php echo $this->__("Child Category Separator") ?></label>
+             <input class="input-text" style="width:3em" id="child_category_separator" name="child_category_separator" value="<?php echo $this->getValue('child_category_separator', '', '/') ?>"/>
+        </span>
+        <span class="field-row">
+            <label for="gallery_separator"><?php echo $this->__("Gallery Image Separator") ?></label>
+             <input class="input-text" style="width:3em" id="gallery_separator" name="gallery_separator" value="<?php echo $this->getValue('gallery_separator', '', '~') ?>"/>
+        </span>
+        <span class="field-row">
+            <label for="bolean_true"><?php echo $this->__("Alternative Boolean Attribute TRUE Values") ?></label>
+            <input class="input-text" id="bolean_true" name="bolean_true" value="<?php echo $this->getValue('bolean_true', '', 'yes,da,in stock') ?>"/>
+            <span class="with-tip">
+                <small class="profile_direction_import profile_entity_type_product">
+                        <?php echo $this->__("(Add multiple values separated by comma like: yes,da,in stock)") ?>
+                </small>
+            </span>
+        </span>
+
+        <span class="field-row">
+            <label for="bolean_false"><?php echo $this->__("Alternative Boolean Attribute FALSE Values") ?></label>
+            <input class="input-text" id="bolean_false" name="bolean_false" value="<?php echo $this->getValue('bolean_false', '', 'no,nu,out of stock') ?>"/>
+            <span class="with-tip">
+                <small class="profile_direction_import profile_entity_type_product">
+                        <?php echo $this->__("(Add multiple values separated by comma like: no,nu,out of stock)") ?>
+                </small>
+            </span>
+        </span>
+    </fieldset>
+
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Automatically Run Profile") ?></h4>
+    </div>
+    <fieldset>
+        <legend><?php echo $this->__("Automatically Run Profile") ?></legend>
+        <span class="field-row">
+            <label for="run_frequency"><?php echo $this->__("Run Frequency") ?></label>
+            <select id="run_frequency" name="cron_run_frequency" class="option-control">
+                <option value="0" <?php echo $this->getSelected('cron_run_frequency', '0') ?>><?php echo $this->__("0 (disabled)") ?></option>
+                <option value="1" <?php echo $this->getSelected('cron_run_frequency', '1') ?>><?php echo $this->__("1h") ?></option>
+                <option value="3" <?php echo $this->getSelected('cron_run_frequency', '3') ?>><?php echo $this->__("3h") ?></option>
+                <option value="6" <?php echo $this->getSelected('cron_run_frequency', '6') ?>><?php echo $this->__("6h") ?></option>
+                <option value="12" <?php echo $this->getSelected('cron_run_frequency', '12') ?>><?php echo $this->__("12h") ?></option>
+                <option value="24" <?php echo $this->getSelected('cron_run_frequency', '24') ?>><?php echo $this->__("24h") ?></option>
+                <option value="72" <?php echo $this->getSelected('cron_run_frequency', '72') ?>><?php echo $this->__("72h (3 days)") ?></option>
+                <option value="168" <?php echo $this->getSelected('cron_run_frequency', '168') ?>><?php echo $this->__("168h (7 days)") ?></option>
+            </select>
+        </span>
+
+        <span class="field-row">
+            <label for="last_run"><?php echo $this->__("Last Run:") ?></label>
+            <?php echo $this->getValue('last_run_time') ?>
+        </span>
+        <em><?php echo $this->__("Attention: Products informations will be updated acording to the feed. Any wrong information about the products will override the existing product data.") ?></em>
+    </fieldset>
+</div>

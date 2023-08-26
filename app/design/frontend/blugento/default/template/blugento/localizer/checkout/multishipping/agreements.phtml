@@ -1,0 +1,79 @@
+<?php
+/**
+ * This file is part of a Blugento Localizer e.V. module.
+ *
+ * @category  Blugento
+ * @package   Blugento Localizer
+ */
+?>
+<?php
+/**
+ * @var $this Mage_Checkout_Block_Agreements
+ * @var $helper Blugento_Localizer_Helper_Data
+ * @var $customerHelper Mage_Customer_Helper_Data
+ */
+$helper = $this->helper('blugento_localizer');
+$agreements = $this->getAgreements() ? $this->getAgreements() : 1;
+$gdpr_checkout = Mage::getStoreConfig('blugento_gdpruserdata/consent/enable_on_checkout');
+$_enabledGdpr = Mage::getStoreConfig('blugento_gdpruserdata/general/enabled');
+$customerHelper = $this->helper('customer');
+$newsletterPreChecked = Mage::getStoreConfig('blugento_gdpruserdata/newsletter_checkout/precheck') == 1 ? 'checked' : '';
+?>
+
+<?php if (!$agreements) return; ?>
+
+<ol class="checkout-agreements">
+    <?php foreach ($agreements as $agreement): ?>
+        <li>
+            <p class="agree">
+                <?php if ($agreement->getIsRequired()): ?>
+                    <input type="checkbox" id="agreement-<?php echo $agreement->getId()?>" name="agreement[<?php echo $agreement->getId()?>]" value="1" title="<?php echo $this->escapeHtml($agreement->getCheckboxText()) ?>" class="checkbox" />
+                <?php endif; ?>
+                <label <?php if ($agreement->getIsRequired()): ?>for="agreement-<?php echo $agreement->getId()?>"<?php endif; ?>><?php echo $agreement->getIsHtml() ? $agreement->getCheckboxText() : $this->escapeHtml($agreement->getCheckboxText()) ?></label>
+                <?php if (trim($agreement->getContent())): ?>
+                    <a href="<?php echo $helper->getAgreementUrl($agreement) ?>"><?php echo $this->__('[Show]') ?></a>
+                <?php endif; ?>
+            </p>
+        </li>
+    <?php endforeach; ?>
+</ol>
+
+<?php if ($_enabledGdpr && $gdpr_checkout  && (!$customerHelper->isLoggedIn() || $customerHelper->getCustomer()->getData('gdpr_consent') != 1)) : ?>
+    <?php echo $this->getChildHtml('gdpr.acknowledgement') ?>
+<?php endif; ?>
+
+<?php if(Mage::getStoreConfig('blugento_gdpruserdata/newsletter_checkout/enable')==1): ?>
+    <?php if(Mage::helper('blugentonewsletter')->isSubscribed()): ?>
+        <?php if(Mage::helper('blugentonewsletter')->isSubscribed()): ?>
+            <input type="checkbox" name="is_subscribed" value="1" title="<?php echo $this->__('Subscribe newsletter') ?>" id="is_subscribed" class="checkbox" <?php echo $newsletterPreChecked ?>> <label for="is_subscribed" style="float:none;"><?php echo $this->__('Subscribe newsletter') ?></label>
+            <?php if ($_enabledGdpr && $gdpr_checkout): ?>
+                <?php if (Mage::getStoreConfig('blugento_gdpruserdata/consent/read_more')): ?>
+                    <div class="content-popup-text show-less">
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-newsletter-checkbox-consent')->toHtml(); ?>
+                        <a href="#popup-conditions" class="show-more"><?php echo $this->__('[Show]') ?></a>
+                    </div>
+                    <script>
+                        (function($) {
+                            $('.content-popup-text .show-more').on('click', function() {
+                                $(this).parent().removeClass('show-less');
+                                $(this).remove();
+                            });
+                        })(jQuery);
+                    </script>
+                <?php else: ?>
+                    <div class="content-popup-text" id="popup-conditions">
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-newsletter-checkbox-consent')->toHtml(); ?>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>
+
+<script>
+    (function($) {
+        $('.checkout-agreements .agree > a').magnificPopup({
+            type: 'ajax'
+        });
+    })(jQuery);
+</script>

@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_ExtendAwBlog
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_ExtendAwBlog>
+            <version>1.0.1</version>
+        </Blugento_ExtendAwBlog>
+    </modules>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_ExtendAwBlog before="AW_Blog_Adminhtml">Blugento_ExtendAwBlog_Adminhtml</Blugento_ExtendAwBlog>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <global>
+        <helpers>
+            <blugento_extendawblog>
+                <class>Blugento_ExtendAwBlog_Helper</class>
+            </blugento_extendawblog>
+            <blog>
+                <rewrite>
+                    <post>Blugento_ExtendAwBlog_Helper_Post</post>
+                </rewrite>
+            </blog>
+        </helpers>
+        <blocks>
+            <blugento_extendawblog>
+                <class>Blugento_ExtendAwBlog_Block</class>
+            </blugento_extendawblog>
+            <blog>
+                <rewrite>
+                    <last>Blugento_ExtendAwBlog_Block_Last</last>
+                </rewrite>
+            </blog>
+            <blog>
+                <rewrite>
+                    <blog>Blugento_ExtendAwBlog_Block_Blog</blog>
+                </rewrite>
+            </blog>
+            <blog>
+                <rewrite>
+                    <rss>Blugento_ExtendAwBlog_Block_Rss</rss>
+                </rewrite>
+            </blog>
+            <blog>
+                <rewrite>
+                    <product_toolbar>Blugento_ExtendAwBlog_Block_Product_Toolbar</product_toolbar>
+                </rewrite>
+            </blog>
+        </blocks>
+        <models>
+            <blugento_extendawblog>
+                <class>Blugento_ExtendAwBlog_Model</class>
+            </blugento_extendawblog>
+            <blog_mysql4>
+                <rewrite>
+                    <blog_collection>Blugento_ExtendAwBlog_Model_Mysql4_Blog_Collection</blog_collection>
+                </rewrite>
+            </blog_mysql4>
+        </models>
+        <resources>
+            <blugento_extendawblog_setup>
+                <setup>
+                    <module>Blugento_ExtendAwBlog</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </blugento_extendawblog_setup>
+        </resources>
+        <events>
+            <adminhtml_block_html_before>
+                <observers>
+                    <blugento_extendawblog_append_field>
+                        <type>model</type>
+                        <class>blugento_extendawblog/observer</class>
+                        <method>appendMyNewCustomFiled</method>
+                    </blugento_extendawblog_append_field>
+                </observers>
+            </adminhtml_block_html_before>
+        </events>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <Blugento_ExtendAwBlog>
+                    <files>
+                        <default>Blugento_ExtendAwBlog.csv</default>
+                    </files>
+                </Blugento_ExtendAwBlog>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Blugento_ExtendAwBlog>
+                    <files>
+                        <default>Blugento_ExtendAwBlog.csv</default>
+                    </files>
+                </Blugento_ExtendAwBlog>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <blog>
+            <blog>
+                <sort_by>created_time</sort_by>
+            </blog>
+        </blog>
+    </default>
+</config>

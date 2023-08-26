@@ -1,0 +1,66 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_message.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.success {
+    font-weight: 700;
+    color: $message--success_background-color;
+}
+
+.error {
+    font-weight: 700;
+    color: $message--error__background-color;
+}
+
+.notice {
+    font-weight: 700;
+    color: $message--notice_background-color;
+}
+
+.messages {
+    max-width: $page_width;
+    margin-left: auto;
+    margin-right: auto;
+
+    > li {
+        overflow: hidden;
+        margin-bottom: 15px;
+        padding-left: (24px + 2 * 10px);
+        border: 1px solid transparent;
+        background-repeat: no-repeat;
+        background-position: 10px 50%;
+
+        > ul {
+            padding: 13px 10px;
+            background-color: $message_background-color;
+        }
+
+        li {
+            &:before {
+                margin-right: 8px;
+                line-height: 0;
+                vertical-align: top;
+            }
+        }
+    }
+
+    .error-msg {
+        border-color: $message--error__background-color;
+        background-color: $message--error__background-color;
+        background-image: $message--error__background-image;
+    }
+
+    .success-msg {
+        border-color: $message--success_background-color;
+        background-color: $message--success_background-color;
+        background-image: $message--success_background-image;
+    }
+
+    .notice-msg {
+        border-color: $message--notice_background-color;
+        background-color: $message--notice_background-color;
+        background-image: $message--notice_background-image;
+    }
+}

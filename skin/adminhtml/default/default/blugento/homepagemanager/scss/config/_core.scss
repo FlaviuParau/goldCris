@@ -1,0 +1,32 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       config/core.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+//  ----------------------------------------------------------------------------
+//  Core :: Grid system & Media queries breakpoints
+//  ----------------------------------------------------------------------------
+
+$grid-columns:                      12 !default;
+$grid-gutter-width:                 0px !default;
+
+$screen-xl:                         1470px !default;
+
+$screen-lg-max:                     #{$screen-xl - 1px} !default;   // 1469px
+$screen-lg:                         1200px !default;
+
+$screen-md-max:                     #{$screen-lg - 1px} !default;   // 1199px
+$screen-md:                         996px !default;
+
+$screen-sm-max:                     #{$screen-md - 1px} !default;   // 995px
+$screen-sm:                         768px !default;
+
+$screen-s-max:                      #{$screen-sm - 1px} !default;   // 767px
+$screen-s:                          640px !default;
+
+$screen-xs-max:                     #{$screen-s - 1px} !default;    // 639px
+$screen-xs:                         480px !default;
+
+$screen-xxs-max:                    #{$screen-xs - 1px} !default;   // 479px
+$screen-xxs:                        320px !default;

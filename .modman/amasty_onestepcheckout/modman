@@ -1,0 +1,38 @@
+src/app/code/local/Amasty/Autoshipping																								app/code/local/Amasty/Autoshipping
+src/app/code/local/Amasty/Geoip																										app/code/local/Amasty/Geoip
+src/app/code/local/Amasty/PaymentDetect																								app/code/local/Amasty/PaymentDetect
+src/app/code/local/Amasty/Scheckout																									app/code/local/Amasty/Scheckout
+
+src/app/design/adminhtml/default/default/layout/amasty/amgeoip.xml																	app/design/adminhtml/default/default/layout/amasty/amgeoip.xml
+src/app/design/adminhtml/default/default/layout/amscheckout.xml																		app/design/adminhtml/default/default/layout/amscheckout.xml
+
+src/app/design/adminhtml/default/default/template/amgeoip																			app/design/adminhtml/default/default/template/amgeoip
+src/app/design/adminhtml/default/default/template/amscheckout																		app/design/adminhtml/default/default/template/amscheckout
+
+src/app/design/frontend/base/default/layout/amasty/ampaymentdetect																	app/design/frontend/base/default/layout/amasty/ampaymentdetect
+src/app/design/frontend/base/default/layout/amasty/amscheckout																		app/design/frontend/base/default/layout/amasty/amscheckout
+
+src/app/design/frontend/base/default/template/amasty/ampaymentdetect																app/design/frontend/base/default/template/amasty/ampaymentdetect
+src/app/design/frontend/base/default/template/amasty/amscheckout																	app/design/frontend/base/default/template/amasty/amscheckout
+
+src/app/etc/modules/Amasty_Autoshipping.xml																							app/etc/modules/Amasty_Autoshipping.xml
+src/app/etc/modules/Amasty_Geoip.xml																								app/etc/modules/Amasty_Geoip.xml
+src/app/etc/modules/Amasty_PaymentDetect.xml																						app/etc/modules/Amasty_PaymentDetect.xml
+src/app/etc/modules/Amasty_Scheckout.xml																							app/etc/modules/Amasty_Scheckout.xml
+
+src/app/locale/en_US/Amasty_Scheckout.csv																							app/locale/en_US/Amasty_Scheckout.csv
+src/app/locale/ro_RO/Amasty_Scheckout.csv																							app/locale/ro_RO/Amasty_Scheckout.csv
+
+src/js/amasty/amgeoip																												js/amasty/amgeoip
+src/js/amasty/ampaymentdetect																										js/amasty/ampaymentdetect
+src/js/amasty/amscheckout																											js/amasty/amscheckout
+
+src/media/amasty/paymentdetect																										media/amasty/paymentdetect
+
+src/skin/adminhtml/default/default/amasty/amgeoip																					skin/adminhtml/default/default/amasty/amgeoip
+src/skin/adminhtml/default/default/amasty/amscheckout																				skin/adminhtml/default/default/amasty/amscheckout
+src/skin/adminhtml/default/default/images/amgeoip																					skin/adminhtml/default/default/images/amgeoip
+
+src/skin/frontend/base/default/css/amasty/ampaymentdetect																			skin/frontend/base/default/css/amasty/ampaymentdetect
+src/skin/frontend/base/default/css/amasty/amscheckout																				skin/frontend/base/default/css/amasty/amscheckout
+src/skin/frontend/base/default/images/amasty/amscheckout																			skin/frontend/base/default/images/amasty/amscheckout

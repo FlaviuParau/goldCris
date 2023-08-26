@@ -1,0 +1,39 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_tag.scss
+    Version:        1.0
+    Description:    Tag - General Styles (in Product View)
+    ------------------------------------------------------------------------- */
+
+.box-account.box-tags li.item {
+    padding: 10px 0;
+    border-top: 1px solid color('c');
+
+    span {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .details {
+        display: inline-block;
+
+        .product-name {
+            margin-bottom: 5px;
+        }
+
+        .tags ul {
+            margin-left: 3px;
+        }
+    }
+
+    ul,
+    li {
+        display: inline-block;
+    }
+}
+
+.my-tag-edit {
+    a.btn-remove {
+        padding: 10px 5px 10px 0;
+        background: $icon--remove--a1 no-repeat;
+    }
+}

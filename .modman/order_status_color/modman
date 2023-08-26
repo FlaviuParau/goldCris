@@ -1,0 +1,7 @@
+src/app/code/local/Blugento/OrderStatusColor        app/code/local/Blugento/OrderStatusColor
+src/app/etc/modules/Blugento_OrderStatusColor.xml   app/etc/modules/Blugento_OrderStatusColor.xml
+
+src/app/design/adminhtml/default/default/layout/blugento_orderstatuscolor.xml   app/design/adminhtml/default/default/layout/blugento_orderstatuscolor.xml
+src/app/design/adminhtml/default/default/template/blugento/orderstatuscolor     app/design/adminhtml/default/default/template/blugento/orderstatuscolor
+
+src/skin/adminhtml/default/default/blugento/orderstatuscolor    skin/adminhtml/default/default/blugento/orderstatuscolor

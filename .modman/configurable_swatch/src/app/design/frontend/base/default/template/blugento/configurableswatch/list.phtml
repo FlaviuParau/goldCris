@@ -1,0 +1,101 @@
+<?php
+$_product = $this->getProduct();
+$_selectedValue = Mage::getStoreConfig('blugento_configurableswatch/general/selected_option');
+$productUrl = $_product->getProductUrlC() ? $_product->getProductUrlC() : $_product->getProductUrl();
+if (
+    Mage::helper('blugento_configurableswatch')->isEnabled()
+    && $_product && $_product->getId()
+    && ($_attrValues = $_product->getListSwatchesAttrValues())
+    && count($_attrValues) > 0
+):
+    $_swatchAttribute = Mage::helper('configurableswatches/productlist')->getSwatchAttribute();
+
+    $_attrValuesX = array();
+    foreach ($_attrValues as $data) {
+
+        $_optionValue    = $data['option_id'];
+        $_optionLabel    = $data['label'];
+        $_childId        = $data['child_id'];
+        $_childQty       = $data['child_qty'];
+        $_childBackorder = $data['child_backorder'];
+        $_childStockItem = $data['stock_item'];
+
+        $_attrValuesX[$_optionValue] = array(
+                'option_label'    => $_optionLabel,
+                'child_id'        => $_childId,
+                'child_qty'       => $_childQty,
+                'child_backorder' => $_childBackorder,
+                'stock_item'      => $_childStockItem,
+        );;
+    }
+    ?>
+    <ul class="configurable-swatch-list swatch-product-<?php echo $_product->getId(); ?>  <?php echo $_selectedValue ?> clearfix">
+        <?php foreach ($_attrValuesX as $_optionValue => $details): ?>
+            <?php
+			
+            $_optionLabel    = $details['option_label'];
+            $_childId        = $details['child_id'];
+            $_childQty       = $details['child_qty'];
+	        $_childBackorder = $details['child_backorder'];
+	        $_childStockItem = $details['stock_item'];
+
+            $_optionCode = Mage::helper('configurableswatches')->getHyphenatedString($_optionLabel);
+
+            /** @var Blugento_ConfigurableSwatch_Helper_Media $mediaHelper */
+            $mediaHelper = Mage::helper('blugento_configurableswatch/media');
+
+            $swatchWidth  = $mediaHelper->getDefaultImageWidth();
+            $swatchHeight = $mediaHelper->getDefaultImageHeight();
+
+            $swatchImageUrl = $mediaHelper->getSwatchImageUrl($_optionLabel, $_product->getId());
+
+            $_hasImage = !empty($swatchImageUrl);
+
+            $_liClasses = array();
+            $_aClass = 'swatch-link swatch-link-' . $_swatchAttribute->getId();
+            if ($_hasImage) {
+                $_aClass .= ' has-image';
+            } elseif (strlen($_optionLabel) > 3) {
+                $_liClasses[] = 'wide-swatch';
+            }
+            if (Mage::helper('configurableswatches/productlist')->swatchMatchesFilter($_optionValue)) {
+                $_liClasses[] = 'filter-match';
+            }
+            $_liClass = (!empty($_liClasses)) ? ' ' . implode(' ', $_liClasses) : '';
+            ?>
+
+            <li class="option-<?php echo $_optionCode ?><?php echo $_liClass ?> <?php if (!$_childStockItem) : ?>not-available<?php endif; ?>" data-qty="<?php echo $_childQty ?>" data-backorder="<?php echo $_childBackorder ?>" data-child-id="<?php echo $_childId; ?>" data-value-index="<?php echo $_optionValue ?>" data-option-label="<?php echo $_optionLabel ?>">
+                <a href="javascript:void(0)" <?php if (!$_childStockItem) : ?>class="swatch-link"<?php endif; ?>>
+                    <span class="swatch-label">
+                        <?php if ($_hasImage): ?>
+                            <img src="<?php echo $swatchImageUrl ?>" alt="<?php echo $_optionLabel ?>" width="<?php echo $swatchWidth ?>" height="<?php echo $swatchHeight ?>" />
+                        <?php else: ?>
+                            <span><?php echo $_optionLabel ?></span>
+                        <?php endif; ?>
+                    </span>
+	                <?php if (!$_childStockItem) : ?><span class="x"></span><?php endif; ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+        <input type="hidden" id="cart-data-<?php echo $_product->getId();?>" data-id-val="<?php echo $_product->getId();?>" data-attribute-id="<?php echo $_product->getSwatchAttrId(); ?>" data-selected-value="" />
+        <div class="validation-advice"><?php echo $this->__('This is a required field.') ?></div>
+        <div class="availability-box"></div>
+    </ul>
+
+
+    <div class="add-to-cart">
+        <button type="button" class="button btn-cart">
+            <span><span><?php echo $this->__('Add to cart') ?></span></span>
+        </button>
+	    <a href="<?php echo $productUrl ?>" title="<?php echo $this->__('View Details') ?>" class="button button--block btn-swatch">
+		    <?php echo $this->__('View Details') ?>
+	    </a>
+    </div>
+    <?php
+endif;
+?>
+
+<script>
+    var getSwatchProductDataUrl = '<?php echo $this->getUrl('configurableswatch/swatch/getSwatchProductData') ?>';
+    var addToCartUrl = '<?php echo $this->getUrl('configurableswatch/swatch/addToCart') ?>';
+</script>

@@ -1,0 +1,7 @@
+src/app/code/community/Simtech/Searchanise                         app/code/community/Simtech/Searchanise
+src/app/design/adminhtml/default/default/layout/searchanise.xml    app/design/adminhtml/default/default/layout/searchanise.xml
+src/app/design/adminhtml/default/default/template/searchanise      app/design/adminhtml/default/default/template/searchanise
+src/app/design/frontend/base/default/layout/searchanise.xml        app/design/frontend/base/default/layout/searchanise.xml
+src/app/design/frontend/base/default/template/searchanise          app/design/frontend/base/default/template/searchanise
+src/app/etc/modules/Simtech_Searchanise.xml                        app/etc/modules/Simtech_Searchanise.xml
+src/app/locale/en_US/Simtech_Searchanise.csv                       app/locale/en_US/Simtech_Searchanise.csv

@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<layout>
+
+    <product_list>
+        <reference name="head">
+            <action method="addJs" ifconfig="configswatches/general/product_list_price_change">
+                <name>varien/product_options.js</name>
+            </action>
+            <action method="addItem" ifconfig="configswatches/general/product_list_price_change">
+                <type>skin_js</type>
+                <name helper="blugento_swatches/getProductSwatchPrices" />
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name helper="blugento_swatches/getProductMediaJs" />
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name helper="blugento_swatches/getSwatchesListJs" />
+            </action>
+        </reference>
+        <reference name="product_list.name.after">
+            <block type="core/template" name="product_list.swatches">
+                <action method="setTemplate">
+                    <template helper="blugento_swatches/data/getSwatchesListTemplatePath" />
+                </action>
+            </block>
+        </reference>
+        <reference name="product_list.after">
+            <block type="configurableswatches/catalog_media_js_list" name="configurableswatches.media.js.list" />
+            <block type="configurableswatches/catalog_product_list_price" name="configurableswatches.price.js.list" />
+        </reference>
+    </product_list>
+
+    <catalog_category_default>
+        <update handle="product_list" />
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <update handle="product_list" />
+    </catalog_category_layered>
+
+    <catalogsearch_result_index>
+        <update handle="product_list" />
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <update handle="product_list" />
+    </catalogsearch_advanced_result>
+
+    <PRODUCT_TYPE_configurable>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name helper="blugento_swatches/getProductMediaJs" /></action>
+            <action method="addItem"><type>skin_js</type><name helper="blugento_swatches/configurable/getSwatchesProductJs" /></action>
+        </reference>
+        <reference name="root">
+            <action method="addBodyClass" ifconfig="configswatches/general/select_first_swatch">
+                <classname>first-selected</classname>
+            </action>
+            <action method="addBodyClass" ifconfig="configswatches/general/select_last_swatch">
+                <classname>last-selected</classname>
+            </action>
+            <action method="addBodyClass" ifconfig="configswatches/general/disable_swatch_hover">
+                <classname>disable-swatches-hover</classname>
+            </action>
+        </reference>
+        <reference name="product.info.media">
+            <action method="setTemplate">
+                <template helper="blugento_swatches/data/getMediaTemplatePath" />
+            </action>
+            <action method="setGalleryFilterHelper"><helper>configurableswatches/productimg</helper></action>
+            <action method="setGalleryFilterMethod"><method>filterImageInGallery</method></action>
+        </reference>
+        <reference name="product.info.media.after">
+            <block type="configurableswatches/catalog_media_js_product" name="configurableswatches.media.js.product" />
+        </reference>
+        <reference name="product.info.options.configurable.renderers">
+            <block type="configurableswatches/catalog_product_view_type_configurable_swatches" name="configurableswatches">
+                <action method="setTemplate">
+                    <template helper="blugento_swatches/data/getSwatchesViewTemplatePath" />
+                </action>
+            </block>
+        </reference>
+        <reference name="product.info.options.configurable.after">
+            <block type="core/template" template="configurableswatches/catalog/product/view/type/configurable/swatch-js.phtml" />
+        </reference>
+    </PRODUCT_TYPE_configurable>
+
+</layout>

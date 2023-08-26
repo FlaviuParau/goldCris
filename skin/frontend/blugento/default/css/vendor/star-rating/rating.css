@@ -1,0 +1,37 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       _config.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_grunt.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_design.scss
+    Version:        1.0
+    Description:    Colors and Images Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_image.scss
+    Version:        1.0
+    Description:    Default Image Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_layout.scss
+    Version:        1.0
+    Description:    Default Layout Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_core.scss
+    Version:        1.0
+    Description:    Default Core Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_component.scss
+    Version:        1.0
+    Description:    Default Component Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_module.scss
+    Version:        1.0
+    Description:    Default Modules Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_custom.scss
+    Version:        1.0
+    Description:    Custom Variables
+    ------------------------------------------------------------------------- */.star{cursor:pointer;display:block;float:left;width:25px;height:25px;line-height:25px;background-repeat:no-repeat}.star,.tmp_es{background-image:url(../../../images/icon--star--a1.svg)}.fullStar,.tmp_fs{background-image:url(../../../images/icon--star--a2.svg)}.stars{overflow:hidden}

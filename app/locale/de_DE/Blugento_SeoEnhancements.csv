@@ -1,0 +1,3 @@
+"Remove Parent Category Path for Category URLs","Entferne Pfad der übergeordneten Kategorie für Kategorie URLs"
+"If enabled removes all parent categories from the URL path, so that /clothing/shoes becomes /shoes.","Entfernt, falls aktiviert, alle Pfade der übergeordneten Kategorien von den Kategorie URLs, sodass /textilien/schuhe zu /schuhe wird."
+"Add nofollow to filters link","Füge nofollow zum Filterlink hinzu"

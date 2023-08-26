@@ -1,0 +1,36 @@
+src/app/code/local/Amasty/Shopby                                        app/code/local/Amasty/Shopby
+
+src/app/design/adminhtml/default/default/layout/amasty/amshopby.xml     app/design/adminhtml/default/default/layout/amasty/amshopby.xml
+
+src/app/design/adminhtml/default/default/template/amasty/amshopby       app/design/adminhtml/default/default/template/amasty/amshopby
+
+src/app/design/frontend/base/default/layout/amasty/amshopby.xml         app/design/frontend/base/default/layout/amasty/amshopby.xml
+src/app/design/frontend/base/default/template/amasty/amshopby           app/design/frontend/base/default/template/amasty/amshopby
+
+src/app/design/frontend/rwd/default/layout/amasty/amshopby.xml          app/design/frontend/rwd/default/layout/amasty/amshopby.xml
+
+src/app/etc/modules/Amasty_Shopby.xml                                   app/etc/modules/Amasty_Shopby.xml
+
+src/app/locale/en_US/Amasty_Shopby.csv                                  app/locale/en_US/Amasty_Shopby.csv
+
+src/js/amasty/amshopby                                                  js/amasty/amshopby
+
+src/skin/adminhtml/default/default/css/amasty/amshopby                  skin/adminhtml/default/default/css/amasty/amshopby
+src/skin/adminhtml/default/default/amasty/amshopby                      skin/adminhtml/default/default/amasty/amshopby
+
+src/skin/frontend/base/default/css/amshopby.css                         skin/frontend/base/default/css/amshopby.css
+src/skin/frontend/base/default/images/am_btn_remove.gif                 skin/frontend/base/default/images/am_btn_remove.gif
+src/skin/frontend/base/default/images/amshopby-cb1.gif                  skin/frontend/base/default/images/amshopby-cb1.gif
+src/skin/frontend/base/default/images/amshopby-cb2.gif                  skin/frontend/base/default/images/amshopby-cb2.gif
+src/skin/frontend/base/default/images/amshopby-collapsed.gif            skin/frontend/base/default/images/amshopby-collapsed.gif
+src/skin/frontend/base/default/images/amshopby-expanded.gif             skin/frontend/base/default/images/amshopby-expanded.gif
+src/skin/frontend/base/default/images/amshopby-hadle.png                skin/frontend/base/default/images/amshopby-hadle.png
+src/skin/frontend/base/default/images/amshopby-minus.gif                skin/frontend/base/default/images/amshopby-minus.gif
+src/skin/frontend/base/default/images/amshopby-overlay.gif              skin/frontend/base/default/images/amshopby-overlay.gif
+src/skin/frontend/base/default/images/amshopby-plus.gif                 skin/frontend/base/default/images/amshopby-plus.gif
+src/skin/frontend/base/default/images/amshopby-slider-bg.gif            skin/frontend/base/default/images/amshopby-slider-bg.gif
+src/skin/frontend/base/default/images/amshopby-tooltip.png              skin/frontend/base/default/images/amshopby-tooltip.png
+src/skin/frontend/base/default/images/spacer.gif                        skin/frontend/base/default/images/spacer.gif
+src/skin/frontend/base/default/images/amshopby-rb1.gif			skin/frontend/base/default/images/amshopby-rb1.gif
+src/skin/frontend/base/default/images/amshopby-rb2.gif			skin/frontend/base/default/images/amshopby-rb2.gif
+

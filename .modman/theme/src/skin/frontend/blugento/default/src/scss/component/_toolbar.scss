@@ -1,0 +1,312 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_toolbar.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.toolbar {
+    @include cf;
+
+    margin-bottom: 10px;
+
+    @include mobile {
+        margin-bottom: 20px;
+    }
+
+    select {
+        height: 35px;
+    }
+
+    .sorter {
+        @include cf;
+
+        float: left;
+
+        @include phone-s {
+            float: none;
+        }
+    }
+
+    .pager {
+        float: right;
+
+        @include phone-s {
+            float: none;
+        }
+
+        + .sorter {
+            @include phone-s {
+                margin-top: 20px;
+            }
+        }
+
+        @include mobile {
+            .pages {
+                text-align: center;
+            }
+        }
+    }
+
+    .view-mode {
+        float: left;
+        margin-right: 10px;
+        padding: 0 10px;
+        background-color: $toolbar__view-mode_background-color;
+
+        label {
+            display: none;
+        }
+
+        a,
+        strong {
+            float: left;
+            width: 36px;
+            height: 35px;
+            text-indent: -9999em;
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+        }
+
+        a.grid {
+            background-image: $toolbar__view-mode__grid_background-image;
+        }
+
+        a.grid:hover,
+        strong.grid {
+            background-image: $toolbar__view-mode__grid--hover_background-image;
+        }
+
+        a.list {
+            background-image: $toolbar__view-mode__list_background-image;
+        }
+
+        a.list:hover,
+        strong.list {
+            background-image: $toolbar__view-mode__list--hover_background-image;
+        }
+    }
+
+    .sort-by {
+        float: left;
+
+        @include phone-s {
+            float: none;
+            overflow: hidden;
+        }
+
+        label {
+            display: none;
+        }
+
+        select {
+            min-width: 185px;
+
+            @include phone-s {
+                width: 80%;
+                min-width: unset;
+            }
+        }
+
+        a {
+            font-size: 0;
+            padding: 16px;
+            @include phone-s {
+                padding: 14px;
+            }
+
+            &.sort-by-switcher--desc {
+                background: $icon--arrow-down--d1 no-repeat 50% 20%;
+            }
+
+            &.sort-by-switcher--asc {
+                background: $icon--arrow-up--d1 no-repeat 50% 20%;
+            }
+
+        }
+    }
+
+    .count-container {
+        float: left;
+        padding: 8px 20px;
+
+        .results {
+            text-transform: lowercase;
+        }
+
+        @include mobile {
+          float: none;
+          text-align: center;
+        }
+    }
+}
+
+.toolbar-bottom {
+    .count-container {
+        padding: 10px 20px 10px 0;
+    }
+}
+
+@if ($product_list_order_toolbar == 2) {
+    .toolbar {
+        .pager {
+            float: left;
+
+            .pages {
+                float: left;
+            }
+        }
+
+        .sorter {
+            float: right;
+        }
+
+        .count-container {
+            float: right;
+            padding-right: 0;
+
+
+            @include mobile {
+                float: none;
+                text-align: center;
+
+                @include mobile {
+                    padding: 10px 0;
+                }
+            }
+        }
+    }
+
+    @include mobile {
+        .toolbar {
+            .pager {
+                float: none;
+
+                .pages {
+                    float: none;
+                }
+            }
+
+            .sorter {
+                float: none;
+            }
+
+            .sort-by {
+                float: right;
+                min-width: 170px;
+            }
+
+            .view-mode {
+                float: left;
+            }
+
+        }
+    }
+}
+
+@if ($product_list_order_toolbar == 3) {
+    .toolbar {
+        .pager {
+            float: left;
+
+            .pages {
+                float: left;
+            }
+        }
+
+        .sorter {
+            float: right;
+        }
+    }
+
+    @include mobile {
+        .toolbar {
+            .pager {
+                float: none;
+
+                .pages {
+                    float: none;
+                }
+            }
+
+            .sorter {
+                float: none;
+            }
+
+            .sort-by {
+                float: left;
+                min-width: 170px;
+            }
+
+            .view-mode {
+                float: right;
+            }
+
+        }
+    }
+}
+
+@if ($product_list_order_toolbar == 4) {
+    .toolbar {
+        .pager {
+            float: left;
+
+            .pages {
+                float: left;
+            }
+        }
+
+
+        .sorter {
+            float: right;
+        }
+
+        .sorter.sorter-left {
+            float: left;
+        }
+
+        .count-container {
+            padding-left: 0;
+
+            @include mobile {
+                padding: 10px 0;
+            }
+        }
+    }
+
+    @include mobile {
+        .toolbar {
+            .pager {
+                margin: 10px 0 0;
+
+                .pages {
+                    float: none;
+                }
+            }
+
+            .sorter {
+                margin: 10px 0 0 !important;
+            }
+
+            .sorter.sorter-left {
+                float: none;
+            }
+        }
+    }
+}
+
+
+.toolbar-bottom {
+    @include phone-s {
+        margin-top: 10px;
+    }
+
+    .toolbar {
+        margin-bottom: 0;
+    }
+
+    .sorter {
+        display: none;
+    }
+}

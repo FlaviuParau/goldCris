@@ -1,0 +1,308 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       blugento-grouped.css
+    Version:        1.0
+    Description:    Blugento Grouped Styling
+------------------------------------------------------------------------- */
+
+.blugento-grouped .product-view .product-shop {
+    float: none;
+    width: auto;
+}
+
+.blugento-grouped .product-view .product-shop .breadcrumbs {
+    height: 40px;
+}
+
+.blugento-grouped .page-title {
+    margin-bottom: 8px;
+    height: 58px;
+}
+
+.blugento-grouped .product-view .product-img-box {
+    margin-right: 2%;
+}
+
+.page-main button.button.btn-variations {
+    background: #FFFFFF;
+    border: 2px solid #C4C4C4;
+    border-radius: 24px;
+    color: #1976D2;
+    text-transform: none;
+    margin-bottom: 200px;
+}
+
+.blugento-label-grouped {
+    background: #F2F2F2;
+    border-radius: 8px 8px 0px 0px;
+    padding: 16px;
+    color: #414141;
+    margin-bottom: 16px;
+}
+
+.blugento-grouped-items ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-right: -16px;
+}
+
+.blugento-grouped-items ul li {
+    border: 1px solid #E1E1E1;
+    border-radius: 8px;
+    display: flex;
+    padding: 16px 16px 12px;
+    margin: 0 16px 16px 0;
+    position: relative;
+}
+
+.blugento-grouped-items ul li.selected {
+    background: #EDF4FC;
+    border: 2px solid #1976D2;
+}
+
+.blugento-grouped-items ul li:hover {
+    box-shadow: 0px 2px 4px #0000001F;
+}
+
+.blugento-grouped-items ul li.out-of-stock:after {
+    content: '';
+    background: #fff;
+    opacity: 0.7;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.blugento-grouped-items .image {
+    width: 96px;
+    margin-right: 16px;
+}
+
+.product-view .product-shop .blugento-grouped-items .price-box {
+    margin: 0;
+}
+
+.product-view .product-shop .blugento-grouped-items .product-sku {
+    margin: 4px 0;
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: lowercase;
+}
+
+.product-view .product-shop .blugento-grouped-items .price-box .price,
+.blugento-grouped-items h4 {
+    font-size: 13px;
+    line-height: 16px;
+}
+
+.product-view .product-shop .blugento-grouped-items .top-reviews {
+    margin-bottom: 0;
+}
+
+.product-view .product-shop .blugento-grouped-items .price-box p {
+    display: inline;
+}
+
+.add-to-box-fixed .invitation-box {
+    display: block;
+    height: 82px;
+    margin: 0;
+}
+
+.add-to-box-fixed.blugento-grouped .product-view .product-shop .add-to-box {
+    position: fixed;
+    overflow: hidden;
+    bottom: 0;
+    z-index: 100;
+}
+
+.blugento-grouped.catalog-product-view .product-essential .add-to-links li {
+    margin: 0;
+}
+
+.blugento-grouped .product-view .product-shop .add-to-cart button:disabled {
+    opacity: 0.5;
+}
+
+.blugento-grouped #product-addtocart-button-fixed.btn-cart-fixed,
+.blugento-grouped .btn-cart-fixed,
+.blugento-grouped .btn-cart-fixed-safari {
+    display: none !important;
+    height: 0;
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+}
+
+.blugento-grouped-items .qty {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: center;
+}
+
+.blugento-grouped-items .qty input {
+    border: none;
+    margin-right: 0;
+    height: 36px;
+    width: 120px;
+    padding: 0px;
+    background-color: transparent;
+    border-radius: 24px;
+    text-align: center;
+}
+
+.blugento-grouped-items .button-counter-qty {
+    background-color: transparent;
+    margin: 0;
+}
+
+.blugento-grouped-items .button-counter-qty span.plus,
+.blugento-grouped-items .button-counter-qty span.minus {
+    background-image: url(../images/i-qty_plus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    border: none;
+    right: 0;
+    top: 50%;
+    height: 36px;
+    width: 36px;
+    border: 1px solid #E1E1E1;
+    border-radius: 36px;
+    background-color: #Fff;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.blugento-grouped-items .button-counter-qty span.minus {
+    background-image: url(../images/i-qty_minus.svg);
+    left: 0;
+}
+
+.grouped-details {
+    min-width: 47%;
+}
+
+.product-view .product-shop .blugento-grouped-items .availability.out-of-stock {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: none;
+}
+
+.blugento-grouped .product-view .product-shop .add-to-box {
+    background: #EDF4FC;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    margin: 0;
+}
+
+.blugento-grouped .product-view .product-shop .availability.in-stock {
+    margin-top: 20px;
+}
+
+.variation-selections {
+    color: #1976D2;
+    font-size: 15px;
+    line-height: 20px;
+    margin-right: 16px;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.count-variations {
+    margin-right: 3px;
+}
+
+.blugento-grouped .product-pricing,
+.invitation-box {
+    display: none;
+}
+
+.blugento-grouped-items {
+    position: relative;
+}
+
+.blugento-grouped-items:after {
+    content: '';
+    background: transparent linear-gradient(180deg, #FFFFFF00 0%, #fff 100%) 0% 0% no-repeat padding-box;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 32px;
+    opacity: 0.7;
+}
+
+@media (max-width: 1025px) {
+    .page-main button.button.btn-variations {
+        margin-bottom: 100px;
+    }
+
+    .grouped-details {
+        width: 40%;
+        max-width: 65px;
+    }
+
+    .blugento-grouped-items .qty {
+        width: 35%;
+    }
+}
+
+@media (max-width: 995px) {
+    .blugento-grouped .product-view .product-shop .breadcrumbs,
+    .blugento-grouped .page-title {
+        height: auto;
+    }
+
+    .page-main button.button.btn-variations {
+        margin-bottom: 30px;
+    }
+
+    .blugento-grouped-items ul {
+        grid-template-columns: repeat(2, 1fr);
+        margin-right: -16px;
+    }
+}
+
+@media (max-width: 767px) {
+    .page-main button.button.btn-variations {
+        margin-bottom: 16px;
+    }
+
+    .blugento-grouped-items ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .blugento-grouped-items ul {
+        grid-template-columns: repeat(1, 1fr);
+        margin-right: 0;
+    }
+
+    .blugento-grouped-items ul li {
+        margin-right: 0;
+    }
+
+    .grouped-details {
+        width: 52%;
+        padding-bottom: 55px;
+    }
+
+    .blugento-grouped-items .qty {
+        position: absolute;
+        left: 130px;
+        bottom: 16px;
+    }
+}

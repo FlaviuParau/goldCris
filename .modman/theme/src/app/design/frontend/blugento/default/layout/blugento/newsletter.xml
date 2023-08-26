@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="left">
+            <remove name="left.newsletter" />
+        </reference>
+        <reference name="footer">
+            <block type="newsletter/subscribe" name="footer.newsletter" template="newsletter/subscribe-footer.phtml" />
+        </reference>
+    </default>
+
+    <customer_logged_in>
+        <reference name="customer_account_navigation.mobile">
+            <action method="addLink" translate="label" module="newsletter">
+                <name>newsletter</name>
+                <path>newsletter/manage/</path>
+                <label>Newsletter Subscriptions</label>
+            </action>
+        </reference>
+    </customer_logged_in>
+
+</layout>

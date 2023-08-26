@@ -1,0 +1,26 @@
+<?php
+?>
+<script type="text/javascript">
+    //<![CDATA[
+    function testModule() {
+        new Ajax.Request('<?php echo $this->getAjaxCheckUrl() ?>', {
+            parameters: {isAjax: 1},
+            method: 'get',
+            onCreate: function () {
+                $('test_result').hide();
+            },
+            onSuccess: function (transport) {
+                if (transport.responseText) {
+                    $('test_result').update(transport.responseText);
+                } else {
+                    $('test_result').update('Unkown error, please check logs');
+                }
+                $('test_result').show();
+            }
+        });
+    }
+
+    //]]>
+</script>
+<?php echo $this->getButtonHtml() ?><a name="selftest"></a>
+<?php echo $this->getFlatcheck() ?>

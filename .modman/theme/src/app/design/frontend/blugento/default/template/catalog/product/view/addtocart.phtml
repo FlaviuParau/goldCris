@@ -1,0 +1,307 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php
+$_productViewAddToCartQuantityButtons = (int) ($this->getLayout()->getBlock('root')->getProductViewAddToCartQuantityButtons() ?: 2);
+$_productViewAddToCartMobile = (int) ($this->getLayout()->getBlock('root')->getProductViewAddToCartMobile() ?: 1);
+$_productViewBuyNowButton = (int) ($this->getLayout()->getBlock('root')->getProductViewBuyNowButton() ?: 2);
+
+if (Mage::helper('core')->isModuleEnabled('Milople_Personalized') && Mage::helper('personalized/personalized')->isEnabled() && Mage::helper('personalized/personalized')->allowPersonalization($_product)) {
+	$is_side     = Mage::helper('personalized/data')->getSideCount($_product);
+	$modelAreas  = Mage::getModel('personalized/area')->getCollection()->addFieldToFilter('product_id', $_product->getId())->getData();
+	$counterLoop = 0;
+	$width       = Mage::helper('personalized/data')->getConfig('upload_image/canvas_width');
+	$height      = Mage::helper('personalized/data')->getConfig('upload_image/canvas_height');
+}
+?>
+<?php if ($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if (!$_product->isGrouped()): ?>
+            <?php
+            $defValue = $this->getMinimalQty($_product) == null ? 1 : $this->getProductDefaultQty() * 1;
+            $defIncrement = 1;
+            if ($_product->getStockItem()->getData('enable_qty_increments')) {
+                if ($_product->getStockItem()->getIsQtyDecimal() == 1) {
+                    $defValue = number_format($_product->getStockItem()->getData('min_sale_qty'), 2);
+                    $defIncrement = number_format($_product->getStockItem()->getData('qty_increments'), 2);
+                } else {
+                    $defValue = number_format($_product->getStockItem()->getData('min_sale_qty'), 0);
+                    $defIncrement = number_format($_product->getStockItem()->getData('qty_increments'), 0);
+                }
+            } elseif (Mage::helper('core')->isModuleEnabled('Blugento_Qtyincrements') && Mage::helper('qtyincrements')->isEnabled()) {
+	        	if ($_product->getData('custom_qty_increments')) {
+			        $defValue = number_format($_product->getData('custom_min_sale_qty'), 0);
+			        $defIncrement = number_format($_product->getData('custom_qty_increments'), 0);
+		        } else {
+			        $defValue = number_format($_product->getStockItem()->getData('min_sale_qty'), 0);
+			        $defIncrement = number_format($_product->getStockItem()->getData('qty_increments'), 0);
+		        }
+	        }
+            ?>
+            <label for="qty"><?php echo $this->__('Qty:') ?></label>
+            <?php if (!Mage::helper('core')->isModuleEnabled('Blugento_ProductQuantityDropdown') || !Mage::getStoreConfig("blugento_cart/product_qty_dropdown/enabled")) : ?>
+                <input class="<?php if ($_product->getStockItem()->getIsQtyDecimal() == 1): ?>decimals<?php endif; ?>"
+                       type="text" name="qty" id="qty" maxlength="12" data-minimum="<?php echo $defValue; ?>" data-increment="<?php echo $defIncrement; ?>"
+                       value="<?php echo str_replace(',', '', $defValue); ?>" title="<?php echo $this->__('Qty') ?>"/>
+            <?php endif; ?>
+            <?php if (Mage::helper('core')->isModuleEnabled('Blugento_InvitationTemplate')
+                && Mage::helper('blugento_invitationtemplate')->validToDisplay($_product)): ?>
+                <input type="hidden" name="invitation-template" id="invitation-template"/>
+            <?php endif; ?>
+            <?php if (!Mage::helper('core')->isModuleEnabled('Blugento_ProductQuantityDropdown') || !Mage::getStoreConfig("blugento_cart/product_qty_dropdown/enabled")) : ?>
+                <?php if ($_productViewAddToCartQuantityButtons == 1): ?>
+                    <div class="button-counter">
+                        <span class="plus"></span>
+                        <span class="minus"></span>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endif; ?>
+        <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart"
+                onclick="<?php if (Mage::helper('core')->isModuleEnabled('Milople_Personalized') && Mage::helper('personalized/personalized')->isEnabled() && Mage::helper('personalized/personalized')->allowPersonalization($_product)) : ?>createImage(this)<?php else : ?>productAddToCartForm.submit(this)<?php endif; ?>">
+	        <span><span><?php echo $buttonTitle ?></span></span>
+        </button>
+        <?php if ($_productViewAddToCartMobile == 1): ?>
+            <span type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button-fixed" class="button btn-cart no-display"><span><span><?php echo $buttonTitle ?></span></span></span>
+        <?php endif; ?>
+	    <?php if ($_productViewBuyNowButton == 1 && !Mage::getStoreConfig('blugento_ajaxcart/general/enable')) : ?>
+	        <?php echo $this->getLayout()->createBlock('blugento_theme/catalog_product_design')->setProduct($_product)->setTemplate('catalog/product/buy_now.phtml')->toHtml(); ?>
+	    <?php endif; ?>
+	    <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<?php endif; ?>
+
+<?php if (Mage::helper('core')->isModuleEnabled('Milople_Personalized') && Mage::helper('personalized/personalized')->isEnabled() && Mage::helper('personalized/personalized')->allowPersonalization($_product)) : ?>
+	<script>
+	  createImage = function() {
+	      jQuery('#product-addtocart-button').attr('disabled', true);
+	      jQuery('#image-loader').css('display', 'block');
+	      var sideCount = <?php echo $is_side; ?>;
+		  var textObjects = '{"texts":[';
+		  var textObjectCount = 0;
+		  var multiplier = 1;
+		  var ajax_calls = 0;
+		  var all_ajax_success = 1;
+		  
+		  <?php if($is_side >= 1) { ?>
+	          var imgUrl = {};
+		  
+		  <?php
+		  $numItems = count($_product->getMediaGalleryImages());
+		  $lastItem = $numItems - 1;
+		  foreach ($_product->getMediaGalleryImages() as $image) {
+		  	$area = $modelAreas[$counterLoop];
+		    if($area['x1'] > 0 || $area['y1'] > 0 || $area['x2'] > 0 || $area['y2'] > 0 || $area['width'] > 0 || $area['height'] > 0) {
+		        $id = $area['area_id'];
+		    ?>
+			    if (canvasObjects[<?php echo $id; ?>].getObjects().length || all_ajax_success) {
+				    if (sideCount == 1) {
+					    imgUrl[<?php echo $id; ?>] = jQuery("#imageDiv").attr("data-preview-image-src");
+				    } else {
+					    imgUrl[<?php echo $id; ?>] = jQuery("#image-" + <?php echo $id; ?>).attr("data-preview-image-src");
+				    }
+				
+				    canvasObjects[<?php echo $id; ?>].deactivateAll();
+				    canvasObjects[<?php echo $id; ?>].renderAll();
+				
+				    canvasObjects[<?php echo $id; ?>].forEachObject(function (obj) {
+					    var props = {};
+					    props = obj.toObject();
+					    delete props['type'];
+					    props['originX'] = obj.getOriginX();
+					    props['originY'] = obj.getOriginY();
+					    props['top'] = obj.getTop();
+					    props['left'] = obj.getLeft();
+					    props['objectType'] = obj.objectType;
+				        props['left'] = parseInt((parseInt(document.getElementById('drawingArea-' + [<?php echo $id; ?>]).style.left) + props['left']) * preview_image_aspect_ratio);
+					    props['top'] = parseInt((parseInt(document.getElementById('drawingArea-' + [<?php echo $id; ?>]).style.top) + props['top']) * preview_image_aspect_ratio);
+					
+					    if (obj.type == 'curvedText' || obj.type == 'text') {
+						    props['textAlign'] = obj.getTextAlign();
+						    props['fontFamily'] = obj.getFontFamily();
+						    props['fill'] = obj.getFill();
+						    props['backgroundColor'] = obj.getBackgroundColor();
+						    props['fontSize'] = parseInt(props['fontSize'] * preview_image_aspect_ratio);
+						    if (obj.type == 'text') {
+							    var convertedText = new fabric.Text(obj.getText(), props);
+						    } else {
+							    props['effect'] = obj.getEffect();
+							    props['radius'] = obj.getRadius();
+							    props['spacing'] = obj.getSpacing();
+							    props['reverse'] = obj.getReverse();
+							    var convertedText = new fabric.CurvedText(obj.getText(), props);
+						    }
+						    setTimeout(function () {
+							    zoomCanvas[<?php echo $id; ?>].add(convertedText);
+							    zoomCanvas[<?php echo $id; ?>].renderAll();
+							    printCanvas[<?php echo $id; ?>].add(convertedText);
+							    printCanvas[<?php echo $id; ?>].renderAll();
+							    textObjectCount++;
+							    if (textObjectCount != 1) {
+								    textObjects += ',';
+							    }
+							    textObjects += '{"text":"' + convertedText.text + '", "font_family":"' + convertedText.fontFamily + '", "font_size":"' + convertedText.fontSize + '"}';
+						    }, 500);
+					    } else {
+						    props['src'] = obj.getSrc();
+						    props['scaleX'] = parseInt(props['scaleX'] * preview_image_aspect_ratio);
+						    props['scaleY'] = parseInt(props['scaleY'] * preview_image_aspect_ratio);
+						    setTimeout(function () {
+							    fabric.Image.fromURL(obj.getSrc(), function (img) {
+								    img.set(props);
+								    zoomCanvas[<?php echo $id; ?>].add(img);
+								    printCanvas[<?php echo $id; ?>].add(img);
+								    img.setCoords();
+								    zoomCanvas[<?php echo $id; ?>].renderAll();
+							        printCanvas[<?php echo $id; ?>].renderAll();
+							    }, {crossOrigin: 'anonymous'});
+						    }, 250);
+					    }
+				    });
+				
+				    setTimeout(function () {
+					    zoomCanvas[<?php echo $id; ?>].renderAll();
+					    zoomCanvas[<?php echo $id; ?>].calcOffset();
+					    printCanvas[<?php echo $id; ?>].renderAll();
+					    printCanvas[<?php echo $id; ?>].calcOffset();
+					
+					    setTimeout(function () {
+						    var images = [];
+						    images.push(zoomCanvas[<?php echo $id; ?>].toDataURL({
+							    format: 'png',
+							    quality: 1.0,
+							    multiplier: multiplier
+						    }));
+						    images.push(printCanvas[<?php echo $id; ?>].toDataURL({
+							    format: 'png',
+							    quality: 1.0,
+							    multiplier: multiplier
+						    }));
+						    ajax_calls++;
+						    new Ajax.Request('<?php echo Mage::getBaseUrl();?>personalized/index/image/', {
+							    method: 'post',
+							    parameters: {'images[]': images},
+							    onSuccess: function (response) {
+								    var imageElement = sideCount == 1 ? document.getElementById("image") : document.getElementById("image-" + [<?php echo $id; ?>]);
+								    imageElement.value = response.responseText;
+								    ajax_calls--;
+								    if (ajax_calls == 0) {
+									    textObjects += ']}';
+									    jQuery('#personalized_text_objects').val(textObjects);
+									    productAddToCartForm.submit(this);
+									    jQuery('#addToCart').attr('disabled', false);
+									    jQuery('#image-loader').css('display', 'none');
+								    }
+							    },
+							    onFailure: function () {
+								    ajax_calls--;
+								    all_ajax_success = 0;
+								    alert('There is an error occurred while generating personalized image. So please try again.');
+								    jQuery('#addToCart').attr('disabled', false);
+								    jQuery('#image-loader').css('display', 'none');
+							    }
+						    });
+					    }, 250);
+				    }, 250);
+			    }
+		    <?php
+		    }
+		    $counterLoop++;
+		  }
+		  ?>
+		  <?php } else { ?>
+			  if (canvas.getObjects().length) {
+				  var imgUrl = jQuery("#imageDiv").attr("data-preview-image-src");
+				  canvas.deactivateAll();
+				  canvas.renderAll();
+				  canvas.forEachObject(function (obj) {
+					  var props = {};
+					  props = obj.toObject();
+					  delete props['type'];
+					  props['originX'] = obj.getOriginX();
+					  props['originY'] = obj.getOriginY();
+					  props['top'] = obj.getTop();
+					  props['left'] = obj.getLeft();
+					  props['objectType'] = obj.objectType;
+					  props['left'] = parseInt(props['left'] * preview_image_aspect_ratio);
+					  props['top'] = parseInt(props['top'] * preview_image_aspect_ratio);
+					
+					  if (obj.type == 'curvedText' || obj.type == 'text') {
+						  props['textAlign'] = obj.getTextAlign();
+						  props['fontFamily'] = obj.getFontFamily();
+						  props['fill'] = obj.getFill();
+						  props['backgroundColor'] = obj.getBackgroundColor();
+						  props['fontSize'] = parseInt(props['fontSize'] * preview_image_aspect_ratio);
+						  if (obj.type == 'text') {
+							  var convertedText = new fabric.Text(obj.getText(), props);
+						  } else {
+							  props['effect'] = obj.getEffect();
+							  props['radius'] = obj.getRadius();
+							  props['spacing'] = obj.getSpacing();
+							  props['reverse'] = obj.getReverse();
+							  var convertedText = new fabric.CurvedText(obj.getText(), props);
+						  }
+						  setTimeout(function () {
+							  zoomCanvas.add(convertedText);
+							  zoomCanvas.renderAll();
+							
+							  printCanvas.add(convertedText);
+							  printCanvas.renderAll();
+							
+							  textObjectCount++;
+							  if (textObjectCount != 1) {
+								  textObjects += ',';
+							  }
+							  textObjects += '{"text":"' + convertedText.text + '", "font_family":"' + convertedText.fontFamily + '", "font_size":"' + convertedText.fontSize + '"}';
+						  }, 500);
+					  } else {
+						  props['src'] = obj.getSrc();
+						  props['scaleX'] = parseInt(props['scaleX'] * preview_image_aspect_ratio);
+						  props['scaleY'] = parseInt(props['scaleY'] * preview_image_aspect_ratio);
+						  setTimeout(function () {
+							  fabric.Image.fromURL(obj.getSrc(), function (img) {
+								  img.set(props);
+								  zoomCanvas.add(img);
+								  printCanvas.add(img);
+								  img.setCoords();
+								  zoomCanvas.renderAll();
+								  printCanvas.renderAll();
+							  }, {crossOrigin: 'anonymous'});
+						  }, 250);
+					  }
+				  });
+
+				  setTimeout(function () {
+					  zoomCanvas.renderAll();
+					  zoomCanvas.calcOffset();
+					  printCanvas.renderAll();
+					  printCanvas.calcOffset();
+					
+					  setTimeout(function () {
+						  var images = [];
+						  images.push(zoomCanvas.toDataURL({format: 'png', quality: 1.0, multiplier: multiplier}));
+						  images.push(printCanvas.toDataURL({format: 'png', quality: 1.0, multiplier: multiplier}));
+					   
+						  new Ajax.Request('<?php echo Mage::getBaseUrl();?>personalized/index/image/', {
+							  method: 'post',
+							  parameters: {'images[]': images},
+							  onSuccess: function (response) {
+								  document.getElementById('image').value = response.responseText;
+								  textObjects += ']}';
+								  jQuery('#personalized_text_objects').val(textObjects);
+								  productAddToCartForm.submit(this);
+								  jQuery('#addToCart').attr('disabled', false);
+								  jQuery('#image-loader').css('display', 'none');
+							  },
+							  onFailure: function () {
+								  alert('There is an error occurred while generating personalized image. So please try again.');
+								  jQuery('#addToCart').attr('disabled', false);
+								  jQuery('#image-loader').css('display', 'none');
+							  }
+						  });
+					  }, 250);
+				  }, 250);
+			  }
+		  <?php } ?>
+		  }
+	</script>
+<?php endif; ?>

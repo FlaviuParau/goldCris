@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Blugento Sliders
+*
+* Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+* LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+*
+* @package Blugento_Sliders
+* @author Daniel Gheoltan <daniel.gheoltan@mindmagnetsoftware.com>
+* @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+* @link http://www.blugento.com
+*/
+-->
+<widgets>
+    <blugento_sliders_widget type="blugento_sliders/widget_slider" translate="name description" module="blugento_sliders">
+        <name>Blugento Sliders</name>
+        <description>Allows to add a slider widget</description>
+        <parameters>
+            <banner_code>
+                <label>Select Group</label>
+                <visible>1</visible>
+                <required>1</required>
+                <type>select</type>
+                <source_model>blugento_sliders/options</source_model>
+            </banner_code>
+        </parameters>
+    </blugento_sliders_widget>
+</widgets>

@@ -1,0 +1,46 @@
+<?php
+$analyticsCategoryId = Mage::getStoreConfig('Facebook_AdsExtension/analytics/category');
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+foreach ($categories as $category) {
+    if ($category['value'] == $analyticsCategoryId) {
+        $analyticsCategory = strtolower($category['label']);
+    }
+}
+$analyticsCategory = str_replace('analytics', 'statistics', $analyticsCategory);
+?>
+<?php if ($this->getFacebookPixelID()) { ?>
+ <script>
+ (function($) {
+      $(document).ready(function() {
+          function facebookSearch() {
+              fbq('track', 'Search', {
+                  source: 'magento',
+                  version: "<?php echo $this->getMagentoVersion() ?>",
+                  pluginVersion: "<?php echo $this->getPluginVersion() ?>",
+                  query: "<?php echo $this->getSearchQuery() ?>"
+              });
+          }
+
+          if (!$('body').hasClass('gdpr-enabled') || '<?php echo $analyticsCategoryId ?>' == '1' || '<?php echo Mage::getSingleton('core/cookie')->get($analyticsCategory) ?>' == 'yes') {
+              facebookSearch();
+          } else {
+              // Accept only selected cookies
+              $('#accept-selected-cookies').on('click', function(e) {
+                if ($('#<?php echo $analyticsCategory ?>').is(':checked') || $('#<?php echo $analyticsCategory ?>').is('[readonly]')) {
+                    facebookSearch();
+                }
+              });
+
+              // Accept all cookies
+              $('#accept-all-cookies').on('click', function(e) {
+                  facebookSearch();
+              });
+
+              if ('<?php echo $analyticsCategory ?>' == 'necessary') {
+                  facebookSearch();
+              }
+          }
+      });
+  })(jQuery);
+ </script>
+<?php } ?>

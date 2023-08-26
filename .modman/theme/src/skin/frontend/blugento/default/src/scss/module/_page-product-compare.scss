@@ -1,0 +1,21 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-product-compare.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.page-product-compare {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: $page_width / 2;
+
+    @if ($isFullLayoutMode) {
+        left: auto;
+        right: 0;
+    }
+
+    .reveal-trigger {
+        background-image: $icon--compare--a1;
+    }
+}

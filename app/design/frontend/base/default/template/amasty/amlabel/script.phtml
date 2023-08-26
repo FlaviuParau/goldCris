@@ -1,0 +1,17 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2020 Amasty (https://www.amasty.com)
+ * @package Amasty_Label
+ */
+?>
+<?php if (Mage::getStoreConfig('amlabel/options/use_js')) : ?>
+    <?php
+        $labelScript = Mage::registry('amlabel_scripts');
+        $labelScript = $labelScript ? Zend_Json::encode($labelScript) : '{}';
+    ?>
+    <script type="text/javascript">
+        var amlabel_selector = '<?php echo Mage::getStoreConfig('amlabel/options/selector')?>';
+        amlabel_product_ids = <?php echo $labelScript;?>;
+    </script>
+<?php endif; ?>

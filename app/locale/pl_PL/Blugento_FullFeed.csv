@@ -1,0 +1,38 @@
+Enable Log,W??cz dziennik
+Display HTML Tags In Feed,Wy?wietl etykiety HTML w kanale
+Cache Time,Czas pami?ci podr?cznej
+Set the lifetime of the feed before it expire and it's auto-generated (in hours).,"Ustaw czas ?ycia kana?u, zanim wyga?nie i zostanie wygenerowany automatycznie (w godzinach)."
+Last Run Time,Czas ostatniego uruchomienia
+The time when the generate feed has run last time.,Czas ostatniego generowania pliku danych.
+Only Visible Products,Tylko widoczne produkty
+Add to feed only in stock and enabled products.,Dodaj do kana?ów magazynu i w??czonych produktów
+"To check this you need to add to the feed the following attributes: status, qty, is_in_stock","Aby to sprawdzi?, musisz doda? do kana?u nast?puj?ce atrybuty: status, ilo??, is_in_stock"
+Show Out Of Stock Products,Poka? produkty bez asortymentu
+Add to feed out of stock products.,Dodaj do kana?u produktów bez asortymentu
+Product Attributes,Cechy produktu
+Select product attributes that will be added to feed. If you generate XML feed you cannot have space character on Feed Attribute Code column.,"Wybierz atrybuty produktu, które zostan? dodane do kana?u. Je?li generujesz kana? XML, nie mo?esz mie? spacji w kolumnie Kod atrybutu kana?u."
+Show Currency in Price/Special Price Attributes,Poka? walut? w atrybutach ceny / specjalnej cenie
+Show currency to price or special price.,Poka? walut? wed?ug ceny lub specjalnej ceny.
+Categories Display Type,Typy wy?wietlanoia kategorii
+"On 'Individual columns' an suffix will be added after the category name like _1, _2, _3, ..","W „Indywidualnych kolumnach” sufiks zostanie dodany po nazwie kategorii, takiej jak _1, _2, _3, .."
+Categories Separator,Separator kategorii
+In case of CSV Feed File Type be aware that this need to be different from the CSV Delimiter or Enclosure,"W przypadku CSV Typ pliku danych nale?y pami?ta?, ?e musi on by? inny ni? separator lub za??cznik CSV"
+Child Categories Separator,Separator kategorii potomnych
+Recommended to be used symbol: /,Rekomendowany do u?ycia symbol: /
+Exclude Default Category,Wyklucz domy?ln? kategori?
+Generate Full Url,Wygeneruj ca?y Url
+Full url example:<br><b>http://www.domain.com/product_url.html</b><br>Simple url example:<br><b>product_url.html</b>,Ca?y przyk?ad url:<br><b>http://www.domain.com/product_url.html</b><br>Prosty przyk?ad url:<br><b>product_url.html</b>
+Calculate Simple Product Price Used in Configurable,Oblicz prost? cen? produktu u?ywan? w konfiguracji
+<b>APBP:</b> Associated Product Base Price<br><b>CPP:</b> Configurable Product Price<br><b>APPD:</b> Associated Product Price Difference,<b> APBP: </b> cena bazowa produktu powi?zanego <br> <b> CPP: </b> konfigurowalna cena produktu <br> <b> APPD: </b> ró?nica ceny produktu powi?zanego
+"If a simple product is associated to more than one configurable products, <b>[CPP + APPD]</b> option doesn't work correctly","Je?li prosty produkt jest powi?zany z wi?cej ni? jednym konfigurowalnym produktem, opcja <b> [CPP + APPD] </b> nie dzia?a poprawnie"
+Feed File Type,Typ pliku danych
+Add CSV header,Dodaj nag?ówek CSV
+CSV Field Delimiter,CSV Ogranicznik pola
+Recommended to be used symbol: ~,Rekomendowane u?ycie symbolu: ~
+Feed File Name,Nazwa pliku danych
+"Add the file name without the file extension, example: feed_one","Dodaj nazw? pliku bez rozszerzenia, na przyk?ad: feed_one"
+"Manual Generate Feed (Select the store, save the configuration and push the 'Generate Feed' button)","R?czne generowanie kana?u (wybierz sklep, zapisz konfiguracj? i naci?nij przycisk „Generuj kana?”)"
+Store,Sklep
+If you have only one store view or you need a general feed for all stores select the 'Main' store,"Je?li masz tylko jeden widok sklepu lub potrzebujesz ogólnego pliku danych dla wszystkich sklepów, wybierz sklep „G?ówny”"
+File Path,?cie?ka pliku
+"File not found, generate the feed first.","Nie znaleziono pliku, najpierw wygeneruj kana? "

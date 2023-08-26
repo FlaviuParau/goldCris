@@ -1,0 +1,147 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_wishlist.scss
+    Version:        1.0
+    Description:    Wishlist - General Styles
+    ------------------------------------------------------------------------- */
+
+.my-wishlist {
+    .page-title {
+        display: none;
+    }
+
+    .buttons-set {
+        border-top: 0;
+
+        button {
+            height: 46px;
+            font-size: 15px;
+        }
+
+        .btn-add {
+            float: right;
+            margin-right: 0;
+            background-color: color('q');
+        }
+
+        .btn-update {
+            background-color: color('j');
+        }
+
+        .btn-share,
+        .btn-update,
+        .btn-add {
+            @include phone {
+                width: 100%;
+                float: none;
+                margin: 5px 0;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        background-color: color('c');
+
+        h3 {
+            font-weight: 700;
+            font-size: 17px;
+            line-height: (21 / 17);
+            text-transform: uppercase;
+        }
+
+        tr {
+            border-bottom: 10px solid color('b');
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            td {
+                padding: 30px 30px 30px 0;
+                vertical-align: top;
+
+                @include desktop {
+                    &.customer-wishlist-item-image {
+                        width: 275px;
+                    }
+                }
+
+                @include phone-sm {
+                    float: left;
+                    display: block;
+                    width: 100%;
+                    padding: 0 20px 20px;
+
+                    &:first-child {
+                        padding-top: 20px;
+                        padding-left: 0;
+                    }
+
+                    &.customer-wishlist-item-image {
+                        text-align: center;
+                    }
+
+                    &.customer-wishlist-item-image,
+                    &.customer-wishlist-item-info {
+                        width: 100%;
+                    }
+
+                    &.customer-wishlist-item-edit,
+                    &.customer-wishlist-item-remove {
+                        width: 50%;
+                        text-align: center;
+                    }
+                }
+
+                &:first-child {
+                    padding-left: 20px;
+                }
+
+                .product-image {
+                    display: block;
+
+                    @include phone-sm {
+                        max-width: 200px;
+                        margin: 0 auto;
+                    }
+                }
+            }
+        }
+
+        .add-to-cart-alt {
+            input {
+                width: 45px;
+                border-right: 0;
+                text-align: center;
+            }
+
+            button {
+                height: 36px;
+                background-color: color('q');
+            }
+        }
+
+        .price-box {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 30px;
+            padding: 10px;
+            color: color('r');
+        }
+
+        .description {
+            margin-bottom: 30px;
+        }
+
+        .label {
+            display: inline-block;
+            margin-bottom: 5px;
+            color: color('r');
+        }
+    }
+}

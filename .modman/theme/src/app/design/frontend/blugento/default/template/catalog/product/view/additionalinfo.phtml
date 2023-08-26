@@ -1,0 +1,24 @@
+<?php
+$_product = $this->getProduct();
+$attribute = $_product->getResource()->getAttribute('additional_info');
+?>
+<?php if (is_object($attribute)): ?>
+    <?php
+    $identifier = $_product->getData('additional_info');
+    $_block = Mage::app()->getLayout()->createBlock('cms/block')->setBlockId($identifier);
+    $_blockHtml = trim($_block->toHtml());
+    ?>
+    <?php if (empty($_blockHtml)): ?>
+        <script>
+            var additionalTab = jQuery('.tab-additionalinfo'),
+                additionalTabHref = additionalTab.find('a').attr('href');
+            jQuery(additionalTab).remove();
+            jQuery(additionalTabHref).remove();
+            jQuery('a[data-rel="' + additionalTabHref + '"]').remove();
+        </script>
+    <?php else: ?>
+        <div class="std">
+            <?php echo $_blockHtml ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

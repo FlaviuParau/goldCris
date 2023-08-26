@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blugento Form
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Form
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+ */
+-->
+
+<config>
+    <modules>
+        <Blugento_Form>
+            <version>1.0.0</version>
+        </Blugento_Form>
+    </modules>
+
+    <global>
+        <blocks>
+            <Blugento_Form>
+                <class>Blugento_Form_Block</class>
+            </Blugento_Form>
+        </blocks>
+
+        <helpers>
+            <Blugento_Form>
+                <class>Blugento_Form_Helper</class>
+            </Blugento_Form>
+        </helpers>
+
+        <models>
+            <Blugento_Form>
+                <class>Blugento_Form_Model</class>
+            </Blugento_Form>
+        </models>
+
+        <resources>
+            <blugento_form_setup>
+                <setup>
+                    <module>Blugento_Form</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </blugento_form_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <routers>
+            <Form>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_Form</module>
+                    <frontName>blugento-form</frontName>
+                </args>
+            </Form>
+        </routers>
+
+        <translate>
+            <modules>
+                <Blugento_Form>
+                    <files>
+                        <default>Blugento_Form.csv</default>
+                    </files>
+                </Blugento_Form>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_Form after="Mage_Adminhtml">Blugento_Form</Blugento_Form>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <Blugento_Form>
+                    <file>blugento_form.xml</file>
+                </Blugento_Form>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Blugento_Form>
+                    <files>
+                        <default>Blugento_Form.csv</default>
+                    </files>
+                </Blugento_Form>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <Blugento_Form>
+            <logs>
+                <logs_enabled>1</logs_enabled>
+                <logs_filename>forms.log</logs_filename>
+            </logs>
+        </Blugento_Form>
+    </default>
+
+</config>

@@ -1,0 +1,57 @@
+GDPR User Data,Dane użytkownika RODO
+Recaptcha Key,Recaptcha Klucz
+GDPR Log,RODO dziennik
+Request ID,żądanie ID
+Customer Email,Email klienta
+Created Date,Data utworzenia
+Deletion Confirm,Usunięcie Potwierdź
+Type,Typ
+Export My Data,Eksportuj moje dane
+Submit Request,Zatwierd? ??danie
+Delete My Data,Usu? moje dane
+This is a required field.,To pole jest wymagane
+Please Fill Recaptcha To Continue,Prosze wype?ni? Recaptcha by kontynuowa?
+Required Fields,Wymagane pola
+"If data exists, an email will be sent as soon as possible with more details!","Je?li dane istniej?, e-mail zostanie wys?any tak szybko, jak to mo?liwe, z dalszymi szczeg�?ami!"
+You already sent a request in the last 24 hours!,Wys?a?e? ju? pro?b? w ci?gu ostatnich 24 godzin!
+If you reject the deletion you must wrote a message to the customer!,"Je?li odrzucisz usuni?cie, musisz napisa? wiadomo?? do klienta!"
+You have to approve/reject the deletion request!,Musisz zatwierdzi? / odrzuci? pro?b? o usuni?cie!
+You cannot modify a request with status: ,Nie mo?na zmodyfikowa? ??dania o statusie:
+This link is expired! Please make another request!,Ten plik wygas?. Z?�? kolejn? pro?b?
+The request was already sent and is being processed!,??danie zosta?o ju? wys?ane i jest przetwarzane!
+The request was successfuly updated!,??danie zosta?o pomy?lnie zaktualizowane!
+Pending,Oczekuj?ce
+Approved,Zatwierdzone
+Rejected,Odrzucone
+Processed,Przetworozno
+No data available,Brak dost?pnych danych
+Account exists rejection,Odrzucenie istniej?cego konta
+Completed,Uko?czono
+Deleted,Skasowano
+Export,Wyeksportowano
+Delete,Usuni?to
+The email cannot be sent for export request with id ,Nie mo?na wys?a? wiadomo?ci e-mail z pro?b? o eksport dla ID
+The email cannot be sent for delete request with id ,Nie mo?na wys?a? wiadomo?ci e-mail z pro?b? o usuni?cie dla ID
+This message will be sent to the customer email if you do not approve the deletion request.,"Ta wiadomo?? zostanie wys?ana na adres e-mail klienta, je?li nie zatwierdzisz pro?by o usuni?cie."
+Rejection Message,Wiadomo?? o odrzuceniu
+Request Details,Popro?ba o szczeg�?y
+Save,Zapisz
+Request ID: ,żądanie ID:
+GDPR Request,??danie RODO
+The request was updated and an email will be sent to customer!,??danie zosta?o zaktualizowane i e-mail zostanie wys?any do klienta!
+The request was successfuly updated!,??danie zosta?o pomy?lnie zaktualizowane!
+You have to approve/not approve the deletion request!,Musisz zatwierdzi? / nie zatwierdzi? pro?by o usuni?cie!
+The email for reject deletion for request with id ,Wiadomo?? email dla odrzucenia ??dania skasowania dla ID 
+ cannot be sent!, nie mo?na wys?a?!
+The request was already sent and is being processed!,??danie zosta?o ju? wys?ane i jest przetwarzane!
+After the request is made and if there is data to export,Po z?o?eniu wniosku i je?li istniej? dane do wyeksportowania
+After the request is made and if there is data to delete,Po z?o?eniu wniosku i je?li istniej? dane do skasowania
+After the email with download link is sent,Po wys?aniu wiadomo?ci e-mail z linkiem do pobrania
+After the store owner accept/reject the delete request,Po zaakceptowaniu / odrzuceniu ??dania usuni?cia przez w?a?ciciela sklepu
+After the request is made and if there is no data to export,Po z?o?eniu wniosku i je?li nie ma danych do wyeksportowania
+After the request is made and if there is no data to delete,Po z?o?eniu wniosku i je?li nie ma danych do wykasowania
+After a delete request is made but there is an account created with this email,"Po wys?aniu pro?by o usuni?cie, ale istnieje konto utworzone za pomoc? tego e-maila"
+After the download link is accessed and the data is downloaded,Po uzyskaniu dost?pu do linku pobierania i je?li dane s? pobrane
+After the data is deleted and a confirmation email was send to the customer,Po usuni?ciu danych i wys?aniu wiadomo?ci e-mail z potwierdzeniem do klienta
+"The export requests with status ""processed"" older than 24 hours",??dania eksportu o statusie �przetworzone� starsze ni? 24 godziny
+"The delete requests with status ""processed"" older than 24 hours",??dania usuni?cia o statusie �przetworzone� starsze ni? 24 godziny

@@ -1,0 +1,293 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_nav8.scss
+    Version:        1.0
+    Description:    Top Single Button - Mega Menu
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+@if ($layout--nav_layout == 8) {
+
+    // Variables for nav 8
+    $nav--primary_border-top-style:                 none !default;
+    $nav--primary_border-top-width:                 3px !default;
+    $nav--primary_border-top-color:                 color('b') !default;
+    $nav--primary_border-bottom-style:              none !default;
+    $nav--primary_border-bottom-width:              3px !default;
+    $nav--primary_border-bottom-color:              color('b') !default;
+    $nav--primary_border-right-style:               none !default;
+    $nav--primary_border-right-width:               3px !default;
+    $nav--primary_border-right-color:               color('b') !default;
+    $nav--primary_border-left-style:                none !default;
+    $nav--primary_border-left-width:                3px !default;
+    $nav--primary_border-left-color:                color('b') !default;
+
+    $nav--primary__level0-list_padding-global:      40px !default;
+
+    $nav--primary__level0-link_padding-top:         0 !default;
+    $nav--primary__level0-link_padding-right:       0 !default;
+    $nav--primary__level0-link_font-style:          inherit !default;
+    $nav--primary__level0-link_font-weight:         900 !default;
+    $nav--primary__level0-link_font-size:           14px !default;
+    $nav--primary__level0-link_line-height:         (16 / 14) !default;
+    $nav--primary__level0-link_font-family:         $font-family-base !default;
+    $nav--primary__level0-link_text-transform:      uppercase !default;
+    $nav--primary__level0-link_color:               false !default;
+    $nav--primary__level0-link--hover_color:        false !default;
+
+    $nav--primary__level1-link_padding-top:         5px !default;
+    $nav--primary__level1-link_padding-right:       0 !default;
+    $nav--primary__level1-link_font-weight:         false !default;
+    $nav--primary__level1-link_font-size:           12px !default;
+    $nav--primary__level1-link_line-height:         (16 / 12) !default;
+    $nav--primary__level1-link_font-family:         $font-family-base !default;
+    $nav--primary__level1-link_text-transform:      false !default;
+    $nav--primary__level1-link_color:               false !default;
+    $nav--primary__level1-link--hover_color:        false !default;
+
+    $nav--primary__level2_background-color:         false !default;
+    $nav--primary__level2-link_padding-top:         false !default;
+    $nav--primary__level2-link_padding-right:       false !default;
+    $nav--primary__level2-link_font-weight:         false !default;
+    $nav--primary__level2-link_font-size:           false !default;
+    $nav--primary__level2-link_line-height:         false !default;
+    $nav--primary__level2-link_font-family:         $font-family-base !default;
+    $nav--primary__level2-link_text-transform:      false !default;
+    $nav--primary__level2-link_color:               false !default;
+    $nav--primary__level2-link--hover_color:        false !default;
+
+    $nav__button_background-color:                  color('m') !default;
+    $nav__button_color:                             color('b') !default;
+    $nav__button--hover_color:                      false !default;
+
+    .nav-wrapper {
+        display: inline-block;
+    }
+
+    .nav--primary-button,
+    %nav--primary-button {
+        float: left;
+        cursor: pointer;
+        padding: $nav__button_padding-top $nav__button_padding-right;
+        font-weight: $nav__button_font-weight;
+        font-size: $nav__button_font-size;
+        line-height: $nav__button_line-height;
+        text-transform: $nav__button_text-transform;
+        background-color: $nav__button_background-color;
+        color: $nav__button_color;
+
+        &:hover {
+            text-decoration: none;
+            color: $nav__button--hover_color;
+        }
+    }
+
+    .nav-container {
+        @include cf;
+
+        position: relative;
+        padding: 0 20px;
+        background-color: $nav--primary_background-color;
+        font-size: 0;
+        border-top: $nav--primary_border-top-width $nav--primary_border-top-style $nav--primary_border-top-color;
+        border-bottom: $nav--primary_border-bottom-width $nav--primary_border-bottom-style $nav--primary_border-bottom-color;
+        border-right: $nav--primary_border-right-width $nav--primary_border-right-style $nav--primary_border-right-color;
+        border-left: $nav--primary_border-left-width $nav--primary_border-left-style $nav--primary_border-left-color;
+
+        @if ($isFullLayoutMode) {
+            padding: 0;
+        }
+
+        @if ($layout--layered-nav_position == 3) {
+            text-align: right;
+        } @else if ($layout--layered-nav_position == 2) {
+            text-align: center;
+        } @else {
+            text-align: left;
+        }
+
+        > ul {
+            font-size: $font-size;
+        }
+    }
+
+    .links-before,
+    .links-after {
+        display: inline-block;
+
+        li {
+            float: left;
+
+            > a {
+                @extend %nav--primary-button !optional;
+            }
+        }
+    }
+
+    .nav--primary {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        top: 100%;
+        left: 0;
+        table-layout: fixed;
+        width: 100%;
+        background-color: $nav--primary__submenu_background-color;
+        color: $nav--primary__submenu_color;
+        text-align: left;
+
+        &:hover {
+            display: block;
+        }
+
+        .level0.actions,
+        .level0-left {
+            display: none;
+        }
+
+        a {
+            display: inline-block;
+
+            span {
+                display: block;
+            }
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        li.level0 {
+            float: left;
+            padding: $nav--primary__level0-list_padding-global;
+            color: $nav--primary__submenu_color;
+        }
+
+        a.level0 {
+            margin-bottom: 10px;
+
+            @if ($nav--primary__level0-link_padding-top) {
+                padding-top: $nav--primary__level0-link_padding-top;
+                padding-bottom: $nav--primary__level0-link_padding-top;
+            }
+
+            @if ($nav--primary__level0-link_padding-right) {
+                padding-right: $nav--primary__level0-link_padding-right;
+                padding-left: $nav--primary__level0-link_padding-right;
+            }
+
+            @if ($nav--primary__level0-link_font-style) {
+                font-style: $nav--primary__level0-link_font-style;
+            }
+
+            @if ($nav--primary__level0-link_font-weight) {
+                font-weight: $nav--primary__level0-link_font-weight;
+            }
+
+            @if ($nav--primary__level0-link_font-size) {
+                font-size: $nav--primary__level0-link_font-size;
+            }
+
+            @if ($nav--primary__level0-link_line-height) {
+                line-height: $nav--primary__level0-link_line-height;
+            }
+    
+            @if ($nav--primary__level0-link_font-family) {
+                font-family: $nav--primary__level0-link_font-family;
+            }
+
+            @if ($nav--primary__level0-link_text-transform) {
+                text-transform: $nav--primary__level0-link_text-transform;
+            }
+
+            @if ($nav--primary__level0-link_color) {
+                color: $nav--primary__level0-link_color;
+            }
+
+            &:hover {
+                text-decoration: underline;
+
+                @if ($nav--primary__level0-link--hover_color) {
+                    color: $nav--primary__level0-link--hover_color;
+                }
+            }
+        }
+
+        a.level1 {
+            @if ($nav--primary__level1-link_padding-top) {
+                padding-top: $nav--primary__level1-link_padding-top;
+                padding-bottom: $nav--primary__level1-link_padding-top;
+            }
+
+            @if ($nav--primary__level1-link_padding-right) {
+                padding-right: $nav--primary__level1-link_padding-right;
+                padding-left: $nav--primary__level1-link_padding-right;
+            }
+
+            @if ($nav--primary__level1-link_font-weight) {
+                font-weight: $nav--primary__level1-link_font-weight;
+            }
+
+            @if ($nav--primary__level1-link_font-size) {
+                font-size: $nav--primary__level1-link_font-size;
+            }
+
+            @if ($nav--primary__level1-link_line-height) {
+                line-height: $nav--primary__level1-link_line-height;
+            }
+    
+            @if ($nav--primary__level1-link_font-family) {
+                font-family: $nav--primary__level1-link_font-family;
+            }
+
+            @if ($nav--primary__level1-link_text-transform) {
+                text-transform: $nav--primary__level1-link_text-transform;
+            }
+
+            @if ($nav--primary__level1-link_color) {
+                color: $nav--primary__level1-link_color;
+            }
+
+            &:hover {
+                text-decoration: underline;
+
+                @if ($nav--primary__level1-link--hover_color) {
+                    color: $nav--primary__level1-link--hover_color;
+                }
+            }
+        }
+
+        ul.level1 {
+            display: none;
+        }
+    }
+
+    .hover {
+        .nav--primary {
+            display: block;
+        }
+    }
+
+    // ----------------------------------------------------------------------------
+
+    .page-container-wrapper--sticky {
+        .nav-wrapper {
+            display: block;
+        }
+
+        .nav--primary {
+            float: left;
+            margin-top: -7px;
+            border-top: 7px solid color('b');
+        }
+
+        .nav--primary-button,
+        .nav--primary a.level0 {
+            padding: 15px;
+            font-weight: 900;
+            font-size: 14px;
+            line-height: (16 / 14);
+            text-transform: uppercase;
+        }
+    }
+}

@@ -1,0 +1,101 @@
+<?php
+/**
+ * @category    design
+ * @package     rwd_default
+ */
+?>
+<?php $_shipment=$this->getShipment() ?>
+<?php $_order=$this->getOrder() ?>
+
+<?php
+$dpdShipment = null;
+if (Mage::helper('core')->isModuleEnabled('DpdRo_Shipping') && strpos($_order->getShippingMethod(), 'dpdro_shipping_dpd') !== false) {
+    $dpdShipment = Mage::getModel('dpdro_shipping/shipment')->getShipment($_order);
+}
+?>
+
+<?php if ($_shipment && $_order && ($_shipment->getAllTracks() || $dpdShipment)): ?>
+<table cellspacing="0" cellpadding="0" border="0" width="650" class="track-table" style="background:#fafafa;">
+    <thead>
+        <tr>
+            <th align="left" bgcolor="#fafafa" style="font-size:13px; padding: 10px 30px 5px; width: 50%;"><?php echo $this->__('Shipped By') ?></th>
+            <th align="left" bgcolor="#fafafa" style="font-size:13px; padding: 10px 30px 5px; width: 50%;"><?php echo $this->__('Tracking Number') ?></th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php $tracks = count($_shipment->getAllTracks()) > 0 ? $_shipment->getAllTracks() : [$dpdShipment] ?>
+    <?php $i=0; foreach ($tracks as $_item): $i++ ?>
+    <tr>
+        <td class="shipment-title" align="left" valign="top" style="padding: 0 30px 10px; width: 50%;"><strong style="font-weight: 600;"><?php echo $this->escapeHtml($_item->getTitle()) ?></strong></td>
+        <?php if (Mage::helper('core')->isModuleEnabled('FANCourier_Ship') && $_order->getShippingMethod() == 'FANCourier_Standard') : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <a class="button" href="https://www.fancourier.ro/en/awb-tracking/?xawb=<?php echo $this->escapeHtml($_item->getNumber()); ?>" target="_blank"><strong style="font-weight: 600;"><?php echo $this->escapeHtml($_item->getNumber()); ?></strong></a>
+            </td>
+        <?php elseif (Mage::helper('core')->isModuleEnabled('Blugento_FanCourier') && $_item->getCarrierCode() == 'bgfancourier') : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <a class="button" href="https://www.fancourier.ro/en/awb-tracking/?xawb=<?php echo $this->escapeHtml($_item->getNumber()); ?>"  target="_blank"><strong
+                            style="font-weight: 600;"><?php echo $this->escapeHtml($_item->getNumber()); ?></strong></a>
+            </td>
+        <?php elseif (Mage::helper('core')->isModuleEnabled('Urgent_Cargus') && $_order->getShippingMethod() == 'urgent_cargus_urgent_cargus') : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <p><?php echo $this->__('Tracking Number: ') . $this->escapeHtml($_item->getNumber()); ?></p>
+                <a class="button" href="https://app.urgentcargus.ro/Private/Tracking.aspx" target="_blank"><strong style="font-weight: 600;"><?php echo $this->__('Tracking link'); ?></strong></a>
+            </td>
+        <?php elseif (Mage::helper('core')->isModuleEnabled('Blugento_UrgentCargus') && $_item->getCarrierCode() == 'bgurgentcargus') : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <a class="button" href="https://app.urgentcargus.ro/Private/Tracking.aspx?CodBara=<?php echo $this->escapeHtml($_item->getNumber()); ?>" target="_blank"><strong style="font-weight: 600;"><?php echo $this->escapeHtml($_item->getNumber()); ?></strong></a>
+            </td>
+        <?php elseif (Mage::helper('core')->isModuleEnabled('Blugento_SamedayCourier') && in_array($_item->getCarrierCode(),['bgsamedaycourier', 'bgsamedayeasybox'])) : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <a class="button" href="https://sameday.ro/#awb=<?php echo $this->escapeHtml($_item->getNumber()); ?>" target="_blank"><strong style="font-weight: 600;"><?php echo $this->escapeHtml($_item->getNumber()); ?></strong></a>
+            </td>
+        <?php elseif (Mage::helper('core')->isModuleEnabled('Nextus_Gls') && $_order->getShippingMethod() == 'nextus_gls_nextus_gls') : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <p><?php echo $this->__('Tracking Number: ') . $this->escapeHtml($_item->getNumber()); ?></p>
+                <a class="button" href="https://gls-group.eu/RO/ro/urmarire-colet" target="_blank"><strong style="font-weight: 600;"><?php echo $this->__('Tracking link'); ?></strong></a>
+            </td>
+        <?php elseif (Mage::helper('core')->isModuleEnabled('Smartmage_Paczkomaty') && $_order->getShippingMethod() == 'smpaczkomaty_smpaczkomaty') : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <p><?php echo $this->__('ŚLEDZENIE PACZKI: '); ?></p>
+                <a class="button" href="https://inpost.pl/sledzenie-przesylek?number=<?php echo $this->escapeHtml($_item->getNumber()); ?>" target="_blank"><strong style="font-weight: 600;"><?php echo $this->escapeHtml($_item->getNumber()); ?></strong></a>
+            </td>
+        <?php elseif (Mage::helper('core')->isModuleEnabled('DpdRo_Shipping') && strpos($_order->getShippingMethod(), 'dpdro_shipping_dpd') !== false) : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <a class="button" href="https://tracking.dpd.ro/?shipmentNumber=<?php echo $this->escapeHtml($_item->getShipmentId()); ?>" target="_blank"><strong style="font-weight: 600;"><?php echo $this->escapeHtml($_item->getShipmentId()); ?></strong></a>
+            </td>
+        <?php else : ?>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <p><?php echo $this->__('Tracking Number: ') . $this->escapeHtml($_item->getNumber()); ?></p>
+                <p><strong style="font-weight: 600;"><?php echo $this->escapeHtml($_item->getNumber()); ?></strong></p>
+            </td>
+        <?php endif; ?>
+    </tr>
+    <?php endforeach ?>
+    </tbody>
+</table>
+<?php endif; ?>
+
+<?php if ($_shipment && Mage::helper('core')->isModuleEnabled('Blugento_Nemoexpress') && strpos($_order->getShippingMethod(), 'nemoexpress') !== false && $_order->getNemoAwbNumber()) : ?>
+    <table cellspacing="0" cellpadding="0" border="0" width="650" class="track-table" style="background:#fafafa;">
+        <thead>
+        <tr>
+            <th align="left" bgcolor="#fafafa"
+                style="font-size:13px; padding: 10px 30px 5px; width: 50%;"><?php echo $this->__('Shipped By') ?></th>
+            <th align="left" bgcolor="#fafafa"
+                style="font-size:13px; padding: 10px 30px 5px; width: 50%;"><?php echo $this->__('Tracking Number: ') . $_order->getNemoAwbNumber(); ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="shipment-title" align="left" valign="top" style="padding: 0 30px 10px; width: 50%;"><strong
+                        style="font-weight: 600;"><?php echo $this->escapeHtml($_order->getShippingDescription()) ?></strong>
+            </td>
+            <td align="left" valign="top" style="padding: 0 30px 10px; width: 50%;">
+                <a class="button" href="https://www.nemoexpress.ro/urmareste/" target="_blank"><strong
+                            style="font-weight: 600;"><?php echo $this->__('Tracking link'); ?></strong></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+<?php endif; ?>
+

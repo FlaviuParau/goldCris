@@ -1,0 +1,91 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-tabs.scss
+    Version:        1.0
+    Description:    Product Details Page - Collateral Tabs
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+@import 'catalog-product-view-tabs3';
+@import 'catalog-product-view-tabs2';
+@import 'catalog-product-view-tabs1';
+
+@include desktop {
+    .data-table {
+        th,
+        td {
+            .multiselect-attributes {
+                li {
+                    width: 50%;
+                    float: left;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+}
+
+@if ($layout--product-view_group_attributes_status == 1) {
+    .product-collateral .additional {
+        h3 {
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: color('c');
+            color: color('e');
+            font-style: inherit;
+            font-weight: 700;
+            font-size: 16px;
+            font-family: inherit;
+            text-transform: uppercase;
+        }
+
+        .data-table {
+            margin-bottom: 20px;
+
+            .label {
+                background-color: color('c');
+            }
+        }
+    }
+}
+
+#carpet-collateral-tabs {
+
+    .tab-content {
+        padding: 30px 35px;
+
+        @include mobile {
+            padding: 20px 0;
+        }
+
+        .inneri, .inputi {
+            @include cf;
+        }
+
+        .inneri {
+            margin-top: 10px !important;
+
+            p:first-child {
+                margin-top: 0;
+            }
+
+            .inputi-f {
+                margin-bottom: 5px;
+            }
+
+            .meters,
+            .carpet_width,
+            #calc_metres {
+                color: $color--fourth;
+            }
+
+            .inputi-f input {
+                padding: 3px 9px;
+                text-align: center;
+            }
+        }
+    }
+
+    #tab-conversion {
+        display: none;
+    }
+}

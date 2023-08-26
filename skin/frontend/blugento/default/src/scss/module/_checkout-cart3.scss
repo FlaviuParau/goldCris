@@ -1,0 +1,44 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_checkout-cart3.scss
+    Version:        1.0
+    Description:    Cart Layout: 2 Columns with Small Right Sidebar
+    ------------------------------------------------------------------------- */
+
+@if ($layout--checkout_cart_layout == 3) {
+    .cart-left {
+        float: left;
+        width: 75%;
+        padding-right: 20px;
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    .cart-right {
+        float: right;
+        width: 25%;
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    .cart {
+        .shipping {
+            width: auto;
+
+            .shipping-form {
+                .field {
+                    width: 100%;
+                }
+            }
+        }
+
+        .discount {
+            float: none;
+            width: auto;
+            padding-right: 0;
+        }
+    }
+}

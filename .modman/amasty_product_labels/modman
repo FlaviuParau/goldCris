@@ -1,0 +1,30 @@
+
+src/app/code/local/Amasty/Label										app/code/local/Amasty/Label
+
+src/app/design/frontend/base/default/layout/amasty/amlabel			app/design/frontend/base/default/layout/amasty/amlabel
+src/app/design/frontend/base/default/template/amasty/amlabel		app/design/frontend/base/default/template/amasty/amlabel
+
+
+src/app/etc/modules/Amasty_Label.xml								app/etc/modules/Amasty_Label.xml
+
+src/app/locale/en_US/Amasty_Label.csv								app/locale/en_US/Amasty_Label.csv
+
+src/js/amasty/amlabel												js/amasty/amlabel
+
+src/media/amlabel/banner.svg                                        media/amlabel/banner.svg
+src/media/amlabel/circle.svg                                        media/amlabel/circle.svg
+src/media/amlabel/flag.svg                                          media/amlabel/flag.svg
+src/media/amlabel/label-red.png                                     media/amlabel/label-red.png
+src/media/amlabel/lbquarter.svg                                     media/amlabel/lbquarter.svg
+src/media/amlabel/list.svg                                          media/amlabel/list.svg
+src/media/amlabel/lquarter.svg                                      media/amlabel/lquarter.svg
+src/media/amlabel/new-arrival.png                                   media/amlabel/new-arrival.png
+src/media/amlabel/new-green.png                                     media/amlabel/new-green.png
+src/media/amlabel/note.svg                                          media/amlabel/note.svg
+src/media/amlabel/rbquarter.svg                                     media/amlabel/rbquarter.svg
+src/media/amlabel/rquarter.svg                                      media/amlabel/rquarter.svg
+src/media/amlabel/sale-red.png                                      media/amlabel/sale-red.png
+src/media/amlabel/tag.svg                                           media/amlabel/tag.svg
+
+src/skin/adminhtml/default/default/amasty/amlabel					skin/adminhtml/default/default/amasty/amlabel
+src/skin/frontend/base/default/css/amasty/amlabel					skin/frontend/base/default/css/amasty/amlabel

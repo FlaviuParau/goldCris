@@ -1,0 +1,90 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_configurableswatches.scss
+    Version:        1.0
+    Description:    Catalog - Configurable Swatches Styles
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.catalog-category-view,
+.catalogsearch-result-index {
+    .add-to-cart {
+        .button {
+            margin-top: 10px;
+        }
+
+        .qty-price-alignment {
+
+            input {
+                width: 50px;
+                height: 50px;
+                text-align: center;
+            }
+            
+            span#qty {
+                float: right;
+                width: 50px;
+                height: 50px;
+                padding: 15px 20px;
+                border: 1px solid #ccc;
+                background-color: #fff;
+            }
+
+            .button-counter {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.qty-wrapper {
+    @include cf;
+
+    .price-qty-list {
+        display: inline-block;
+        float: right;
+        margin-bottom: 5px;
+        text-align: right;
+
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    .qty-price-alignment {
+        display: inline-block;
+        float: left;
+
+        .button-counter {
+            margin-right: 5px;
+        }
+
+        input {
+            max-width: 50px;
+            text-align: center;
+            height: 50px;
+        }
+    
+        span#qty {
+            float: right;
+            width: 50px;
+            height: 50px;
+            padding: 15px 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+    }
+}
+
+.products-grid {
+    .qty-wrapper {
+        .price-qty-list {
+            max-width: 60%;
+
+            p {
+                margin-right: 0;
+            }
+        }
+    }
+}

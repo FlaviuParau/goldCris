@@ -1,0 +1,116 @@
+<?php
+/**
+ * MindMagnet
+ *
+ * @category    MindMagnet
+ * @package     MindMagnet_Ideabook
+ * @author      mihai.rastasan@mindmagnetsoftware.com
+ * @date        11.05.2015
+ * @copyright   Copyright (c) 2015 Mind Magnet Software (http://www.mindmagnetsoftware.com)
+ *
+ */
+
+/* @var MindMagnet_Ideabook_Block_View $this */
+$mediaPath = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+
+$ideabook = $this->getItem();
+
+$_imgSrc = $mediaPath . 'ideabook/item/' . $ideabook->getImagePath();
+
+$associatedProducts = $this->getAssociatedProducts($ideabook);
+?>
+
+<div class="ideabook-content">
+
+    <div class="content details">
+        <h1><?php echo $ideabook->getTitle(); ?></h1>
+        <div class="desc"><?php echo $ideabook->getDescription(); ?></div>
+    </div>
+
+    <div class="ideabook-image">
+        <img src="<?php echo $_imgSrc; ?>" alt="" />
+        <?php $i = 1; ?>
+        <?php foreach ($associatedProducts as $associateItem): ?>
+            <?php
+            if (!isset($associateItem['id'])) {
+                continue;
+            }
+            $product    = $this->getProduct($associateItem->getSku());
+            $productUrl = $product->getUrlInStore();
+
+            $productImageUrl = (string)Mage::helper('catalog/image')->init($product, 'image')->resize(150);
+            ?>
+            <div class="ideabook-product" style="top: <?php echo $associateItem->getCoordY(); ?>%; left: <?php echo $associateItem->getCoordX(); ?>%;">
+                <div class="ideabook-product-wrapper">
+                    <div class="ideabook-badge moving" id="ideabook-badge-id-<?php echo $associateItem->getId(); ?>">
+                        <span><?php echo $i; ?></span>
+                    </div>
+                    <div class="wrapper-modal">
+                        <div class="ideabook-modal" id="ideabook-id-<?php echo $associateItem->getId(); ?>">
+                            <div class="left-content">
+                                <h3><a href="<?php echo $productUrl; ?>"><?php echo '' . $product->getName(); ?></a></h3>
+                                <h5><?php echo $this->__('Code: ') . $product->getSku(); ?></h5>
+                                <!--   <div class="id"><?php echo 'Id : ' . $product->getId(); ?></div> -->
+
+                                <div class="price-box">
+                                    <?php if ($product->getPrice() != $product->getFinalPrice()): ?>
+                                        <p class="old-price">
+                                            <span class="price-label"><?php $this->__('Regular Price:'); ?></span>
+                                            <span id="old-price-<?php echo $product->getId(); ?>" class="price"><?php echo Mage::helper('core')->currency($product->getPrice()); ?></span>
+                                        </p>
+                                        <p class="special-price">
+                                            <span class="price-label"><?php $this->__('Special Price'); ?></span>
+                                            <span id="product-price-<?php echo $product->getId(); ?>" class="price"><?php echo Mage::helper('core')->currency($product->getFinalPrice()); ?></span>
+                                        </p>
+                                    <?php else: ?>
+                                        <span>
+                                            <?php $_product = $product; $_price = $this->helper('tax')->getPrice($_product, $_product->getMsrp()) ?>
+                                            <?php if ($_product->getMsrp()): ?>
+                                                <?php $_msrpPrice = $this->helper('core')->currency($_product->getMsrp(),true,true) ?>
+                                                <p class="special-price">
+                                                    <span class="price-label"><?php echo $this->__('Manufacturer\'s Suggested Retail Price'); ?></span>
+                                                    <span class="old-price" id="product-price-<?php echo $_product->getId() ?><?php echo $this->getIdSuffix() ?>"><?php echo $_msrpPrice ?></span>
+                                                </p>
+                                            <?php endif; ?>
+                                        </span>
+                                        <span id="product-price-<?php echo $product->getId(); ?>" class="regular-price">
+                                            <span class="price-label"><?php $this->__('Price'); ?></span>
+                                            <span
+                                            class="price"><?php echo Mage::helper('core')->currency($product->getFinalPrice()); ?></span>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="actions">
+                                    <?php if ($product->isSaleable()): ?>
+                                        <form action="<?php echo Mage::helper('checkout/cart')->getAddUrl($product); ?>" method="get">
+                                            <input type="hidden" name="product" value="<?php echo $product->getId() ?>" />
+                                            <input type="hidden" name="ideabook" value="1" />
+                                            <?php if ($product->getTypeId() != 'simple'): ?>
+                                                <a class='button' href="<?php echo $productUrl; ?>">
+                                                    <span><span><?php echo $this->__('View More') ?></span></span>
+                                                </a>
+                                            <?php else: ?>
+                                                <button type="submit" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart">
+                                                    <span><span><?php echo $this->__('Add to Cart') ?></span></span>
+                                                </button>
+                                            <?php endif; ?>
+                                        </form>
+                                    <?php else: ?>
+                                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="right-content">
+                                <div class="image"><a href="<?php echo $productUrl; ?>"><img src="<?php echo $productImageUrl; ?>" /></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php $i++; ?>
+        <?php endforeach; ?>
+    </div>
+    
+</div>
+
+<?php echo $this->getChildHtml('ideabook_view_list'); ?>

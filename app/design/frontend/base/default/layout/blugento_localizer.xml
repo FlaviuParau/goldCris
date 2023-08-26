@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="footer">
+            <block type="blugento_localizer/legals" name="footer.legals" as="legals" />
+        </reference>
+    </default>
+
+    <PRODUCT_TYPE_simple>
+        <reference name="product.info.simple">
+            <block type="blugento_localizer/catalog_product_price" name="product.info.simple.tax" as="product_type_data_tax" />
+        </reference>
+    </PRODUCT_TYPE_simple>
+
+    <PRODUCT_TYPE_configurable>
+        <reference name="product.info.configurable">
+            <block type="blugento_localizer/catalog_product_price" name="product.info.configurable.tax" as="product_type_data_tax" />
+        </reference>
+    </PRODUCT_TYPE_configurable>
+
+    <PRODUCT_TYPE_grouped>
+        <reference name="product.info.grouped">
+            <block type="blugento_localizer/catalog_product_price" name="product.info.grouped.tax" as="product_type_data_tax" />
+        </reference>
+    </PRODUCT_TYPE_grouped>
+
+    <PRODUCT_TYPE_virtual>
+        <reference name="product.info.virtual">
+            <block type="blugento_localizer/catalog_product_price" name="product.info.virtual.tax" as="product_type_data_tax" />
+        </reference>
+    </PRODUCT_TYPE_virtual>
+
+    <PRODUCT_TYPE_downloadable>
+        <reference name="product.info.downloadable">
+            <block type="blugento_localizer/catalog_product_price" name="product.info.downloadable.tax" as="product_type_data_tax" />
+        </reference>
+    </PRODUCT_TYPE_downloadable>
+
+    <blugento_localizer_frontend_agreements>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/popup.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/text" name="agreement" />
+        </reference>
+    </blugento_localizer_frontend_agreements>
+
+    <checkout_onepage_review>
+        <reference name="checkout.onepage.agreements">
+            <action method="setTemplate">
+                <template>blugento/localizer/checkout/onepage/agreements.phtml</template>
+            </action>
+        </reference>
+    </checkout_onepage_review>
+
+    <checkout_multishipping_overview>
+        <reference name="checkout.multishipping.agreements">
+            <action method="setTemplate">
+                <template>blugento/localizer/checkout/multishipping/agreements.phtml</template>
+            </action>
+        </reference>
+    </checkout_multishipping_overview>
+
+</layout>

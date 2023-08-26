@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Blugento Sliders
+*
+* Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+* LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+*
+* @package Blugento_Sliders
+* @author Daniel Gheoltan <daniel.gheoltan@mindmagnetsoftware.com>
+* @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+* @link http://www.blugento.com
+*/
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <blugento_sliders translate="title" module="blugento_sliders">
+                                        <title>Blugento Sliders</title>
+                                        <sort_order>20</sort_order>
+                                    </blugento_sliders>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,19 @@
+<div id="device-info" class="device-info debug">
+    <span class="type"></span><span class="mode"></span><span class="size"></span>
+</div>
+
+<div id="palette" class="palette debug">
+    <input type="checkbox" name="palette-toggle" id="palette-toggle" />
+    <dl>
+        <?php
+        $colors = range('a', 't');
+        foreach ($colors as $color) {
+            ?>
+            <dt class="color--<?php echo $color ?>"></dt>
+            <dd><?php echo $color ?>:</dd>
+            <?php
+        }
+        ?>
+    </dl>
+    <label for="palette-toggle"></label>
+</div>

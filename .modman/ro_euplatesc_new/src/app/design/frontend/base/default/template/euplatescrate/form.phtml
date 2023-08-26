@@ -1,0 +1,72 @@
+<?php if($this->haveRate()){ ?>
+<script>
+
+	<?php echo $this->getRateDisponibile(); ?>
+
+	function epr_switch(status){
+		if(document.getElementById("rateinfo")!=null)document.getElementById("rateinfo").onchange();
+		var container=document.getElementById("epr_rate");
+		if(status)
+			container.style.display="block";
+		else
+			container.style.display="none";
+	}
+	window.epr_switch=epr_switch;
+	
+	function epr_changerate(obj){
+		var container=document.getElementById("rateinfo2");
+		var html="";
+		for(var i=0;i<epr_table[obj.value].length;i++){
+			html+="<option value="+epr_table[obj.value][i]+">"+epr_table[obj.value][i]+"</option>";
+		}
+		
+		container.innerHTML=html;
+	}
+	window.epr_changerate=epr_changerate;
+		
+</script>
+
+<fieldset class="form-list">
+    <?php $_code=$this->getMethodCode(); ?>
+	<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/fabric/tool/controller_tool.js') ?>"></script>
+    <ul id="payment_form_<?php echo $_code; ?>" style="display:none">
+	
+		<table style="width: 100%; margin-top:10px;margin-bottom:15px;">
+			<tr>
+				<td style="">
+                    <input type="radio" id="plata-integrala" checked="checked" value="integral" name="epr_ptype" onchange="epr_switch(0)">
+                    <label for="plata-integrala"> Plata Integrala</label>
+				</td>
+				<td>
+                    <input type="radio" id="plata-in-rate" value="rate" name="epr_ptype" onchange="epr_switch(1)">
+                    <label for="plata-in-rate"> Plata in rate</label>
+				</td>
+			</tr>
+		</table>
+
+		<table id="epr_rate" style="margin-bottom:15px;display:none">
+			<?php if($this->getDisplayTypeRate()){ ?>
+			<tr>
+				<td>Alege banca:</td>
+				<td>
+					<select name="epr_bank" id="rateinfo" style="width:180px;" onchange="epr_changerate(this)">
+                        <?php echo $this->getBanksRate();?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Alege numarul de rate:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+				<td>
+					<select id="rateinfo2" name="epr_nrrate" style="width:60px;"></select>
+				</td>
+			</tr>
+			<?php }else{ 
+				echo $this->getDisplayRate2();
+			} ?>
+			
+			
+		</table>
+	
+    </ul>
+</fieldset>
+<?php } ?>

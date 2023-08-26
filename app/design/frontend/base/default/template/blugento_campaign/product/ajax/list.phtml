@@ -1,0 +1,113 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+/* @var $this Mage_Catalog_Block_Product_List */
+?>
+<div class="row">
+    <?php $campaign = $this->_getCampaign(); ?>
+    <div class="main-aside">
+        <div class="back-button">
+            <a href="<?php echo Mage::getBaseUrl() ?>" class="back-button button"><?php echo Mage::getStoreConfig('blugento_campaign/general/back_to_homepage') ?></a>
+        </div>
+        <?php if ($categories = $this->_getCategoriesNames($campaign->getAssociatedCategory())): ?>
+            <div class="campaign-main-menu">
+                <ul class="main-menu">
+                    <li class="parent-menu">
+                        <a class="active" href="#category-id-<?php echo $categories['entity_id'] ?>" id="<?php echo $categories['entity_id'] ?>" data-stock="<?php echo $campaign->getShowOutOfStock() ?>"><?php echo $categories['name'] ?></a>
+                    </li>
+                    <?php if (isset($categories['children'])) : ?>
+                        <?php foreach ($categories['children'] as $child): ?>
+                            <li><a href="#category-id-<?php echo $child['entity_id'] ?>" id="<?php echo $child['entity_id'] ?>" data-stock="<?php echo $campaign->getShowOutOfStock() ?>"><?php echo $child['name'] ?></a></li>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+        <?php echo $this->getChildHtml('left') ?>
+    </div>
+    <?php if ($this->_isValidToDisplay($campaign->getCmsPage())): ?>
+        <div class="main-content">
+            <div class="category-products-campaign">
+                <?php $_productCollection = $this->getParentCategoryProducts($campaign->getAssociatedCategory(), $campaign->getShowOutOfStock()); ?>
+                <?php if (!$_productCollection->getSize()): ?>
+                    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+                <?php else: ?>
+                    <div class="category-products">
+                        <?php //echo $this->getToolbarHtml(); ?>
+                        <?php //echo $this->getChildHtml('catalog.topfilter');?>
+                        <ul class="products-grid">  <!--  Grid mode -->
+                            <?php foreach ($_productCollection as $_product): ?>
+                                <?php
+                                // Provides extra blocks on which to hang some features for products in the list
+                                // Features providing UI elements targeting this block will display directly below the product name
+                                $_productNameAfter = false;
+                                if ($this->getChild('name.after')) {
+                                    foreach ($this->getChild('name.after')->getSortedChildren() as $_nameAfterChildName) {
+                                        $_productNameAfter .= $this->getChild('name.after')->getChild($_nameAfterChildName)->setProduct($_product)->toHtml();
+                                    }
+                                }
+                                ?>
+                                <?php $_product->setNameAfter($_productNameAfter); ?>
+                                <li class="item">
+                                    <?php
+                                    echo $this->getLayout()
+                                        ->createBlock('blugento_theme/catalog_product_design')
+                                        ->setProduct($_product)
+                                        ->setTemplate('catalog/product/list-grid-item.phtml')
+                                        ->toHtml();
+                                    ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+
+                <?php
+                // Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+                if ($this->getChild('after')) {
+                    $_afterChildren = $this->getChild('after')->getSortedChildren();
+
+                    foreach ($_afterChildren as $_afterChildName) {
+                        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+                        // Set product collection on after blocks
+                        $_afterChild->setProductCollection($_productCollection);
+                        echo $_afterChild->toHtml();
+                    }
+                }
+                ?>
+                <div class="ajax-overlay" id="ajax-overlay-campaign">
+                    <div class="ajax-loader" id="ajax-loader"></div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>

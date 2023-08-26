@@ -1,0 +1,9 @@
+<?php  if ($url = $this->getURL()): ?>
+    <button class="button" onClick="window.open('<?php echo $url?>')">
+        <span class="icon"><?php echo Mage::helper('blugento_erpprocess')->__('List Invoice'); ?></span>
+    </button>
+<?php endif;?>
+
+<?php if ($awb = $this->getAwb()): ?>
+    <p class="myaccount-awb"><?php echo $this->getAwbLabel() ?> <?php echo $awb ?></p>
+<?php endif;?>

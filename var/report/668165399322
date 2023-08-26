@@ -1,0 +1,11 @@
+a:5:{i:0;s:28:"Invalid header line detected";i:1;s:1286:"#0 /home/hegltule/public_html/lib/Zend/Http/Response.php(696): Zend_Http_Response::extractHeaders('HTTP/2 200 \r\nda...')
+#1 /home/hegltule/public_html/lib/Zend/Http/Client.php(1110): Zend_Http_Response::fromString('HTTP/2 200 \r\nda...')
+#2 /home/hegltule/public_html/lib/Varien/Http/Client.php(61): Zend_Http_Client->request('GET')
+#3 /home/hegltule/public_html/app/code/core/Mage/Adminhtml/controllers/DashboardController.php(100): Varien_Http_Client->request('GET')
+#4 /home/hegltule/public_html/.modman/magento_corefixes/src/app/code/local/Mage/Core/Controller/Varien/Action.php(418): Mage_Adminhtml_DashboardController->tunnelAction()
+#5 /home/hegltule/public_html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('tunnel')
+#6 /home/hegltule/public_html/.modman/magento_corefixes/src/app/code/local/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#7 /home/hegltule/public_html/app/code/core/Mage/Core/Model/App.php(381): Mage_Core_Controller_Varien_Front->dispatch()
+#8 /home/hegltule/public_html/app/Mage.php(687): Mage_Core_Model_App->run(Array)
+#9 /home/hegltule/public_html/index.php(83): Mage::run('', 'store')
+#10 {main}";s:3:"url";s:587:"/index.php/admin_gold/dashboard/tunnel/key/fcb881d526508eca6f3c0289d7ef1858/?ga=eyJjaHQiOiJsYyIsImNoZiI6ImJnLHMsZjRmNGY0fGMsbGcsOTAsZmZmZmZmLDAuMSxlZGVkZWQsMCIsImNobSI6IkIsZjRkNGIyLDAsMCwwIiwiY2hjbyI6ImRiNDgxNCIsImNoeHMiOiIwLDAsMTF8MSwwLDExIiwiY2htYSI6IjE1LDE1LDE1LDE1IiwiY2hkIjoiYTowLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDAsMCwwLDEsMCwwLDAsMCwwLDAsMCIsImNoeHQiOiJ4LHkiLCJjaHhsIjoiMDp8fHwwMzowMHx8fDA2OjAwfHx8MDk6MDB8fHwxMjowMHx8fDE1OjAwfHx8MTg6MDB8fHwyMTowMHx8fDAwOjAwfDE6fDB8MXwyIiwiY2hzIjoiNTg3eDMwMCIsImNoZyI6IjQuMzQ3ODI2MDg2OTU2NSw1MCwxLDAifQ%253D%253D&h=9b92ea05039fa2a3b9e9b48f61176462";s:11:"script_name";s:10:"/index.php";s:4:"skin";s:5:"admin";}

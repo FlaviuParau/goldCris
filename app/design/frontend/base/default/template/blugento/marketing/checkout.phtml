@@ -1,0 +1,13 @@
+<?php
+$storeId = Mage::app()->getStore()->getStoreId();
+?>
+<?php if (!Mage::getStoreConfig('gdpr_cookies/general/enabled') || Mage::getSingleton('core/cookie')->get('marketing') == 'yes') : ?>
+    <?php echo $this->getScriptCode('checkout', $storeId); ?>
+<?php endif; ?>
+
+<?php echo $this->getScriptCode('checkout_necessary', $storeId); ?>
+
+<?php if (!Mage::getStoreConfig('gdpr_cookies/general/enabled') || Mage::getSingleton('core/cookie')->get('statistics') == 'yes') : ?>
+    <?php echo $this->getScriptCode('checkout_analytics', $storeId); ?>
+<?php endif; ?>
+

@@ -1,0 +1,16 @@
+/**
+ * @category  Me
+ * @package   Me_Lff
+ * @author    Attila Sági <sagi.attila@magevolve.com>
+ * @copyright 2015 Magevolve Ltd. (http://magevolve.com)
+ * @license   http://magevolve.com/terms-and-conditions Magevolve Ltd. License
+ * @link      http://magevolve.com
+ */
+
+/* Left for Free Shipping================================================================= */
+.cart .me-lff-notification {background-color: #d9e5ee; border: 1px solid #bebcb7; padding: 10px;}
+.cart .me-lff-notification .block-content {margin: 0; background-color: #d9e5ee;}
+.cart .me-lff-notification p {margin: 0;}
+.sidebar .me-lff-notification .block-content {padding: 5px 10px;}
+.sidebar .me-lff-notification p {margin: 0; font-size: 11px;}
+/* ======================================================================================= */

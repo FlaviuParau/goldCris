@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<jstranslator>
+    <enable_cart_confirm translate="message" module="blugento_ajaxcart">
+        <message>Are you sure you would like to remove this item from the shopping cart?</message>
+    </enable_cart_confirm>
+    <product_added translate="message" module="blugento_ajaxcart">
+       <message>Added</message>
+   </product_added>
+    <product_added_message translate="message" module="blugento_ajaxcart">
+       <message>The product has been added to your shopping cart</message>
+   </product_added_message>
+</jstranslator>

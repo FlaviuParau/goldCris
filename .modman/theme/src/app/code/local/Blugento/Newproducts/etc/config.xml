@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_Newproducts>
+            <version>1.0.0</version>
+        </Blugento_Newproducts>
+    </modules>
+    <global>
+        <helpers>
+            <blugento_newproducts>
+                <class>Blugento_Newproducts_Helper</class>
+            </blugento_newproducts>
+        </helpers>
+        <blocks>
+            <blugento_newproducts>
+                <class>Blugento_Newproducts_Block</class>
+            </blugento_newproducts>
+            <catalog>
+                <rewrite>
+                    <product_widget_new>Blugento_Newproducts_Block_Product_Widget_New</product_widget_new>
+                </rewrite>
+            </catalog>
+        </blocks>
+    </global>
+</config>

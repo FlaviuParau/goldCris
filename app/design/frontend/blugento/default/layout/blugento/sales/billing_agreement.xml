@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <customer_logged_in>
+        <reference name="customer_account_navigation.mobile">
+            <action method="addLink" translate="label"><name>billing_agreements</name><path>sales/billing_agreement/</path><label>Billing Agreements</label></action>
+        </reference>
+    </customer_logged_in>
+
+</layout>

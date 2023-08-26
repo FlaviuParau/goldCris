@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Feeds
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Feeds
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <modules>
+        <Blugento_Feeds>
+            <version>1.0.0</version>
+        </Blugento_Feeds>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_feeds>
+                <class>Blugento_Feeds_Block</class>
+            </blugento_feeds>
+        </blocks>
+
+        <helpers>
+            <blugento_feeds>
+                <class>Blugento_Feeds_Helper</class>
+            </blugento_feeds>
+        </helpers>
+
+        <models>
+            <blugento_feeds>
+                <class>Blugento_Feeds_Model</class>
+            </blugento_feeds>
+        </models>
+
+        <events>
+            <admin_system_config_changed_section_blugento_feeds>
+                <observers>
+                    <Blugento_Feeds_Adminhtml_Observer>
+                        <type>singleton</type>
+                        <class>Blugento_Feeds_Model_Adminhtml_Observer</class>
+                        <method>saveSection</method>
+                    </Blugento_Feeds_Adminhtml_Observer>
+                </observers>
+            </admin_system_config_changed_section_blugento_feeds>
+            <model_config_data_save_before>
+                <observers>
+                    <Blugento_Feeds_Adminhtml_Observer>
+                        <type>singleton</type>
+                        <class>Blugento_Feeds_Model_Adminhtml_Observer</class>
+                        <method>beforeSaveSection</method>
+                    </Blugento_Feeds_Adminhtml_Observer>
+                </observers>
+            </model_config_data_save_before>
+        </events>
+    </global>
+
+    <crontab>
+        <jobs>
+            <blugento_feeds_checkcron>
+                <schedule><cron_expr>*/15 * * * *</cron_expr></schedule>
+                <run><model>blugento_feeds/observer::checkcron</model></run>
+            </blugento_feeds_checkcron>
+        </jobs>
+    </crontab>
+
+    <frontend>
+        <routers>
+            <blugento_feeds>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_Feeds</module>
+                    <frontName>pricefeeds</frontName>
+                </args>
+            </blugento_feeds>
+        </routers>
+        <layout>
+            <updates>
+                <blugento_feeds>
+                    <file>blugento_feeds.xml</file>
+                </blugento_feeds>
+            </updates>
+        </layout>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_Feeds after="Mage_Adminhtml">Blugento_Feeds</Blugento_Feeds>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_feeds>
+                    <file>blugento_feeds.xml</file>
+                </blugento_feeds>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_feeds>
+                    <files>
+                        <default>Blugento_Feeds.csv</default>
+                    </files>
+                </blugento_feeds>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_feeds>
+            <feeds>
+                <shopmania/>
+                <pricero/>
+                <compariro/>
+                <okaziiro/>
+                <paralero/>
+                <mabor/>
+                <ga/>
+                <gacustom/>
+                <googleshopping/>
+                <bringo/>
+                <profitshare/>
+                <glami/>
+                <favi/>
+                <fashionup/>
+            </feeds>
+            <feeds_directory>media</feeds_directory>
+            <shopmania>
+                <show_stores>0</show_stores>
+                <taxes>1</taxes>
+                <add_vat>0</add_vat>
+                <vat_value>24</vat_value>
+                <shipping>0</shipping>
+                <availability>1</availability>
+                <gtin>1</gtin>
+                <add_tagging>1</add_tagging>
+                <tagging_params><![CDATA[tagging_params=utm_source=shopmania&utm_medium=cpc&utm_campaign=direct_link]]></tagging_params>
+                <description>1</description>
+                <image>1</image>
+                <specialprice>1</specialprice>
+                <on_stock>0</on_stock>
+                <storeview>0</storeview>
+                <show_products>1</show_products>
+                <show_simple_products>1</show_simple_products>
+                <show_grouped_products>1</show_grouped_products>
+                <show_conf_products>1</show_conf_products>
+                <show_bundle_products>1</show_bundle_products>
+                <show_associated_products>1</show_associated_products>
+                <bundle_products_price>default</bundle_products_price>
+                <gender>0</gender>
+                <final_price>0</final_price>
+                <show_cat>1</show_cat>
+                <attribute>0</attribute>
+                <url_path>0</url_path>
+            </shopmania>
+            <pricero>
+                <show_description>0</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+            </pricero>
+            <compariro>
+                <category>all</category>
+                <show_description>0</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <storeview>0</storeview>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+            </compariro>
+            <okaziiro>
+                <show_description>0</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+            </okaziiro>
+            <paralero>
+                <show_description>0</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+                <url_extension>0</url_extension>
+            </paralero>
+            <ga>
+                <show_description>0</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+            </ga>
+            <gacustom>
+                <show_description>1</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+            </gacustom>
+            <googleshopping>
+                <show_description>1</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+            </googleshopping>
+            <bringo>
+                <show_description>0</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+            </bringo>
+            <profitshare>
+                <show_description>0</show_description>
+                <show_image>1</show_image>
+                <add_vat>0</add_vat>
+                <in_stock>In stoc</in_stock>
+                <out_of_stock>Indisponibil</out_of_stock>
+                <currency>RON cu TVA</currency>
+            </profitshare>
+            <favi>
+                <include_only_favicategory>0</include_only_favicategory>
+            </favi>
+        </blugento_feeds>
+    </default>
+</config>

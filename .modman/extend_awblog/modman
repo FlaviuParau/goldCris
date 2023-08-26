@@ -1,0 +1,4 @@
+src/app/code/local/Blugento/ExtendAwBlog                                     app/code/local/Blugento/ExtendAwBlog
+src/app/etc/modules/Blugento_ExtendAwBlog.xml                                app/etc/modules/Blugento_ExtendAwBlog.xml
+src/app/locale/en_US/Blugento_ExtendAwBlog.csv                               app/locale/en_US/Blugento_ExtendAwBlog.csv
+src/app/locale/ro_RO/Blugento_ExtendAwBlog.csv                               app/locale/ro_RO/Blugento_ExtendAwBlog.csv

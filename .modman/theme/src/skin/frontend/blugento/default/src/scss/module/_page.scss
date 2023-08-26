@@ -1,0 +1,168 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page.scss
+    Version:        1.0
+    Description:    Page - General Styles
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+body {
+    @if ($isPageBackgroundColor) {
+        background-color: $page_background-color;
+    }
+
+    @if ($isPageBackgroundImage) {
+        background-image: $page_background-image;
+        background-repeat: $layout--page_background-repeat;
+        background-position: 50% 0;
+        background-attachment: fixed;
+    }
+
+    @if ($isPageColor) {
+        color: $page_color;
+    }
+}
+
+.page-container-wrapper {
+    background-color: $page-container_background-color;
+    color: $page-container_color;
+
+    @if (not $isFullLayoutMode) {
+        max-width: $page_width;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.page-container {
+    @include cf;
+
+    clear: both;
+    max-width: $page_width;
+    margin-left: auto;
+    margin-right: auto;
+    padding: $pageContainerPadding;
+
+    @include mobile {
+        padding-left: 2 * $grid-gutter-width;
+        padding-right: 2 * $grid-gutter-width;
+    }
+
+    + .page-container {
+        padding-top: 0 !important;
+    }
+}
+
+.row-wrapper {
+    @include cf;
+
+    clear: both;
+
+    & + & {
+        margin-top: (2 * $grid-gutter-width);
+    }
+}
+
+@if ($isFullLayoutMode) {
+    .row-wrapper {
+        max-width: $page_width;
+        margin: 0 auto;
+        padding: $pageContainerPadding;
+        padding-top: 0;
+
+        @include mobile {
+            padding-left: 2 * $grid-gutter-width;
+            padding-right: 2 * $grid-gutter-width;
+        }
+
+        + .row-wrapper {
+            margin-top: 2 * $grid-gutter-width;
+        }
+    }
+
+    .row-wrapper-wide,
+    .row-bn-wide {
+        max-width: 100%;
+    }
+}
+
+.page-overlay {
+    z-index: z('page-overlay');
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $page-overlay_background-color;
+
+    @include mobile {
+        .search-open &,
+        .dock-open & {
+            display: block;
+        }
+    }
+}
+
+// -----------------------------------------------------------------------------
+
+.main-aside + .main-content,
+.main-content + .main-aside {
+    @include mobile {
+        margin-top: 2 * $grid-gutter-width;
+    }
+}
+
+// -----------------------------------------------------------------------------
+
+.layout-1column {
+    .main-content {
+        @extend %col-12;
+    }
+}
+
+.layout-2columns-left,
+.layout-2columns-right {
+    .main-aside {
+        @extend %col-3, %col-sm-12;
+    }
+
+    .main-content {
+        @extend %col-9, %col-sm-12;
+    }
+}
+
+.layout-3columns {
+    .main-aside {
+        @extend %col-3, %col-sm-12;
+    }
+
+    .main-content {
+        @extend %col-6, %col-sm-12;
+    }
+}
+
+.col2-set {
+    @extend %row;
+
+    > h2 {
+        width: 100%;
+    }
+
+    .col-1,
+    .col-2 {
+        @extend %col-6, %col-s-12;
+    }
+}
+
+.input-verification,
+.no-spam {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    z-index: -1;
+
+    & + .validation-advice {
+        display: none;
+    }
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   SMS
+ * @package    SMSLink_SMSGateway
+ * @author     SMSLink
+ */
+ -->
+<config>
+  <modules>
+    <SMSLink_SMSGateway>
+      <version>1.0.1</version>
+    </SMSLink_SMSGateway>
+  </modules>
+  <admin>
+        <routers>
+			<smsgateway>
+				<use>admin</use>
+				<args>
+					<module>SMSLink_SMSGateway</module>
+					<frontName>smsgateway</frontName>
+				</args>
+			</smsgateway>
+        </routers>
+  </admin>  
+  <global>
+    <models>
+      <smsgateway>
+        <class>SMSLink_SMSGateway_Model</class>
+      </smsgateway>
+    </models>
+    <helpers>
+      <smsgateway>
+        <class>SMSLink_SMSGateway_Helper</class>
+      </smsgateway>
+    </helpers>
+    <events>
+      <checkout_onepage_controller_success_action>
+        <observers>
+          <SMSLink_SMSGateway_Created>
+            <type>singleton</type>
+            <class>SMSLink_SMSGateway_Model_Observer</class>
+            <method>sendSmsOnOrderCreated</method>
+          </SMSLink_SMSGateway_Created>
+        </observers>
+      </checkout_onepage_controller_success_action>
+      <sales_order_save_after>
+        <observers>
+          <SMSLink_SMSGateway_Order_Change>
+            <type>singleton</type>
+            <class>SMSLink_SMSGateway_Model_Observer</class>
+            <method>sendSmsOnOrderStatusChange</method>
+          </SMSLink_SMSGateway_Order_Change>          
+        </observers>
+      </sales_order_save_after>
+      <sales_order_shipment_save_after>
+        <observers>
+          <SMSLink_SMSGateway_Shipment_Created>
+            <type>singleton</type>
+            <class>SMSLink_SMSGateway_Model_Observer</class>
+            <method>sendSmsOnShipmentCreated</method>
+          </SMSLink_SMSGateway_Shipment_Created>
+        </observers>
+      </sales_order_shipment_save_after>
+    </events>
+  </global>
+  <default>
+   <smsgateway>
+	  <general>		
+		<api_key></api_key>
+        <api_secret></api_secret>
+      </general>
+      <admin>
+        <enabled>0</enabled>
+        <admin_mobile>07xyzzzzzz</admin_mobile>
+        <message>Comanda noua cu numarul {{order_id}} in valoare de {{amount}} lei, inregistrata pe {{sitename}}.</message>
+      </admin>
+      <orders>
+        <enabled>0</enabled>
+        <message>Ne-am pus in miscare! Iti livram comanda {{order_id}}, in valoare de {{amount}} lei plasata pe {{sitename}}. Imediat ce o predam curierului vei primi un SMS.</message>        
+      </orders>
+      <order_hold>
+        <enabled>0</enabled>
+        <message>Salut! Comanda {{order_id}}, in valoare de {{amount}} lei, plasata pe {{sitename}} a fost setata in asteptare. Vom reveni cu SMS imediat ce va fi actualizata.</message>
+      </order_hold>
+      <order_unhold>
+        <enabled>0</enabled>
+        <message>Salut! Comanda {{order_id}}, in valoare de {{amount}} lei, plasata pe {{sitename}} a fost scoasa din asteptare.</message>
+      </order_unhold>
+      <order_canceled>
+        <enabled>0</enabled>
+        <message>Salut! Ne pare rau, dar comanda {{order_id}}, in valoare de {{amount}} lei, plasata pe {{sitename}} a fost anulata.</message>
+      </order_canceled>
+      <shipments>
+        <enabled>0</enabled>
+        <message>Salut! Comanda {{order_id}}, in valoare de {{amount}} lei, plasata pe {{sitename}} a fost predata curierului si va fi livrata in 24-48 ore. Detalii AWB: {{tracking_info}}</message>
+      </shipments>
+    </smsgateway>
+  </default>
+</config>

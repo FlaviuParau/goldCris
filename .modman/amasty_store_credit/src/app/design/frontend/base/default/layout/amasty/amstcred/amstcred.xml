@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+-->
+
+<layout version="0.1.0">
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action ifconfig="amstcred/general/active" method="addLink" translate="label" module="amstcred" >
+                <name>amstcred</name>
+                <path>amstcred/customer</path>
+                <label>Store Credit</label>
+            </action>
+        </reference>
+    </customer_account>
+
+
+
+    <amstcred_customer_index>
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="core/template" name="amstcred.customer.index" template="amasty/amstcred/customer/index.phtml">
+                <block type="amstcred/customer_balance" name="amstcred.customer.balance" template="amasty/amstcred/customer/balance.phtml"/>
+                <block type="amstcred/customer_send" name="amstcred.customer.send" template="amasty/amstcred/customer/send.phtml"/>
+                <block type="amstcred/customer_history" name="amstcred.customer.history" template="amasty/amstcred/customer/history.phtml"/>
+            </block>
+        </reference>
+    </amstcred_customer_index>
+
+
+
+    <PRODUCT_TYPE_amstcred translate="label" module="amstcred">
+        <label>Catalog Product View (Amasty Store Credit)</label>
+        <reference name="product.info.options.wrapper">
+
+            <block type="amstcred/catalog_product_view_type_storeCredit" name="product.info.amstcred" as="product_type_data" before="-" template="amasty/amstcred/catalog/product/view/type/amstcred.phtml">
+                <action method="addPriceBlockType">
+                    <type>amstcred</type>
+                    <block>amstcred/catalog_product_price</block>
+                    <template>amasty/amstcred/catalog/product/price.phtml</template>
+                </action>
+                <block type="cataloginventory/stockqty_default" name="product.info.amstcred.extra" as="product_type_data_extra" template="cataloginventory/stockqty/default.phtml"/>
+            </block>
+        </reference>
+
+        <reference name="product.clone_prices">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </PRODUCT_TYPE_amstcred>
+
+
+
+
+    <catalog_category_default>
+        <reference name="product_list">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_view>
+        <reference name="product_list">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_view>
+
+    <catalog_category_layered>
+        <reference name="product_list">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </catalog_category_layered>
+
+
+
+
+
+
+    <catalog_product_compare_index>
+        <reference name="catalog.compare.list">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </catalog_product_compare_index>
+
+    <catalogsearch_result_index>
+        <reference name="search_result_list">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="search_result_list">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <tag_product_list>
+        <reference name="search_result_list">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </tag_product_list>
+
+    <default>
+        <reference name="wishlist_sidebar">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+        <reference name="catalog_product_price_template">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </default>
+
+    <catalog_product_view>
+        <reference name="catalog.product.related">
+            <action method="addPriceBlockType">
+                <type>amstcred</type>
+                <block>amstcred/catalog_product_price</block>
+                <template>amasty/amstcred/catalog/product/price.phtml</template>
+            </action>
+        </reference>
+    </catalog_product_view>
+
+
+
+
+    <checkout_onepage_index>
+        <reference name="head">
+            <action ifconfig="amstcred/general/active"  method="addCss"><stylesheet>css/amasty/amstcred/cart.css</stylesheet></action>
+        </reference>
+        <reference name="checkout.payment.methods">
+            <action method="setTemplate">
+                <template>amasty/amstcred/onepage/payment/info.phtml</template>
+            </action>
+            <block type="core/template" name="checkout.onepage.payment.methods_additional" as="methods_additional">
+                <block type="amstcred/checkout_onepage_payment_additional"
+                       template="amasty/amstcred/onepage/payment/additional.phtml" name="amstcred_balance"/>
+            </block>
+        </reference>
+    </checkout_onepage_index>
+
+    <amscheckout_handle>
+        <reference name="checkout.onepage.payment">
+            <block type="core/template" name="checkout.onepage.payment.methods_additional" as="methods_additional" >
+                <block type="amstcred/checkout_onepage_payment_additional" template="amasty/amstcred/onepage/payment/additional.phtml" name="amstcred_balance" />
+            </block>
+        </reference>
+    </amscheckout_handle>
+
+
+
+
+
+    <checkout_multishipping_billing>
+        <reference name="payment_methods_before">
+            <block type="amstcred/checkout_onepage_payment_additional" template="amasty/amstcred/multishipping/payment.phtml" name="amstcred_balance" />
+        </reference>
+    </checkout_multishipping_billing>
+
+
+    <checkout_onepage_paymentmethod>
+        <reference name="checkout.onepage.payment.methods.scripts">
+            <block type="amstcred/checkout_onepage_payment_additional" template="amasty/amstcred/onepage/payment/scripts.phtml" name="amstcred_scripts" />
+        </reference>
+    </checkout_onepage_paymentmethod>
+
+
+
+
+
+
+
+    <sales_order_view>
+        <reference name="order_totals">
+            <block type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_order_view>
+
+    <sales_order_print>
+        <reference name="order_totals">
+            <block  type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_order_print>
+    <sales_email_order_items>
+        <reference name="order_totals">
+            <block type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_email_order_items>
+
+    <sales_order_invoice>
+        <reference name="invoice_totals">
+            <block type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_order_invoice>
+    <sales_order_printinvoice>
+        <reference name="invoice_totals">
+            <block type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_order_printinvoice>
+    <sales_email_order_invoice_items>
+        <reference name="invoice_totals">
+            <block type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_email_order_invoice_items>
+
+    <sales_order_creditmemo>
+        <reference name="creditmemo_totals">
+            <block type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_order_creditmemo>
+    <sales_order_printcreditmemo>
+        <reference name="creditmemo_totals">
+            <block type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_order_printcreditmemo>
+    <sales_email_order_creditmemo_items>
+        <reference name="creditmemo_totals">
+            <block type="amstcred/sales_order_storeCredit" name="amstcred" template="amasty/amstcred/order/store_credit.phtml" />
+        </reference>
+    </sales_email_order_creditmemo_items>
+
+    <checkout_cart_index>
+        <reference name="head">
+            <action ifconfig="amstcred/general/active"  method="addCss"><stylesheet>css/amasty/amstcred/cart.css</stylesheet></action>
+        </reference>
+    </checkout_cart_index>
+</layout>

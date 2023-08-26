@@ -1,0 +1,23 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /* @var $this Amasty_StoreCredit_Block_Adminhtml_Sales_Order_Creditmemo_Controls */?>
+
+<?php if ($this->hasRefundToStoreCredit()): ?>
+	<p>
+		<label for="creditmemo_refund_amstcred_enable"><?php echo Mage::helper('amstcred')->__('Refund to Store Credit') ?></label>
+		<input type="hidden" name="creditmemo[refund_amstcred_enable]" value="0">
+		<input type="checkbox" name="creditmemo[refund_amstcred_enable]" value="1" id="creditmemo_refund_amstcred_enable">
+		<input
+			type="text"
+			name="creditmemo[refund_amstcred_amount]"
+			value="<?php echo $this->getReturnValue(); ?>"
+			id="creditmemo_refund_amstcred_amount"
+			class="input-text not-negative-amount" style="width: 60px; text-align: right;">
+
+	</p>
+<?php endif; ?>

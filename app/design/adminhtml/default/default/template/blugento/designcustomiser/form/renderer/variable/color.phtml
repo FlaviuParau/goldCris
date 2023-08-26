@@ -1,0 +1,105 @@
+<?php
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_DesignCustomiser
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+
+<?php
+/**
+ * @see Blugento_DesignCustomiser_Block_Adminhtml_Form_Renderer_Variable_Color
+ */
+?>
+
+<?php
+$_element           = $this->getElement();
+$_trId              = $_element->getHtmlContainerId();
+$_class             = $_element->getFieldsetHtmlClass();
+$_variable          = $_element->getVariable();
+$_translationPrefix = $_variable->getTranslationPrefix();
+$_help              = $this->__($_translationPrefix . '/help/' . $_variable->getId());
+$_descriptionKey    = $_translationPrefix . '/description/' . $_variable->getId();
+$_description       = $this->__($_descriptionKey) != $_descriptionKey ? $this->__($_descriptionKey) : '';
+
+$autoValue          = Mage::helper('blugento_designcustomiser')->getVariableAutoValue();
+
+/**
+ * @var $_collection Blugento_DesignCustomiser_Model_Scss_Variable_Collection
+ */
+$_collection = $this->getVariableCollection();
+?>
+
+<?php if (!$_element->getNoDisplay()): ?>
+    <tr <?php if ($_trId): ?> id="<?php echo $_trId ?>"<?php endif; ?> class="designcustomiser-box designcustomiser-box--scss">
+        <?php if ($_element->getType() == 'hidden'): ?>
+            <td colspan="2" class="hidden">
+                <?php echo trim($_element->getElementHtml()) ?>
+            </td>
+        <?php else: ?>
+            <td class="label<?php echo $_class ? " {$_class}-label" : '' ?>">
+                <?php if ($_help): ?>
+                    <div class="input-help">
+                        <a href="<?php echo $_help ?>" rel="noopener" target="_blank" class="help" title="<?php echo $this->__('Read details') ?>"></a>
+                    </div>
+                <?php endif; ?>
+                <?php echo trim($_element->getLabelHtml()) ?>
+            </td>
+            <td class="<?php echo $_element->hasValueClass() ? $_element->getValueClass() : 'value' ?><?php echo $_class ? " {$_class}-value" : '' ?>">
+
+                <div class="input-inherit">
+                    <select name="set-inherit-<?php echo $_element->getId() ?>" id="set-inherit-<?php echo $_element->getId() ?>" onchange="setInherit('<?php echo $_element->getId() ?>')">
+                        <?php if ($_variable->getAllowInherit()): ?>
+                            <option value="yes" <?php if ($_variable->isInherited()): ?> selected="selected" <?php endif; ?>><?php echo $this->__('Inherit from') ?></option>
+                        <?php endif; ?>
+                        <option value="auto" <?php if ($_variable->getDefaultValue() == $autoValue): ?> selected="selected" <?php endif; ?>><?php echo $this->__('Auto') ?></option>
+                        <option value="no" <?php if (!$_variable->isInherited() && $_variable->getDefaultValue() != $autoValue): ?> selected="selected" <?php endif; ?>><?php echo $this->__('Enter value') ?></option>
+                    </select>
+                </div>
+
+                <?php // Inherit from... ?>
+                <?php if ($_variable->getAllowInherit()): ?>
+                    <div class="input-box input-box--color" id="container-inherit-<?php echo $_element->getId() ?>" <?php if ($_variable->getDefaultValue() == $autoValue || !$_variable->isInherited()): ?> style="display: none;" <?php endif; ?>>
+                        <div class="input-box__inner">
+                            <select name="<?php echo $_variable->getId() ?>-inherit" id="<?php echo $_variable->getId() ?>-inherit">
+                                <?php foreach ($_collection->getInheritedItems($_variable->getType()) as $variable): ?>
+                                    <option value="$<?php echo $variable->getId() ?>" <?php if ($_variable->getDefaultValue() == '$' . $variable->getId()): ?> selected="selected" <?php endif; ?>><?php echo $this->__($variable->getTranslationPrefix() . '/' . $_collection->getVariableInheritName($variable)) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
+                <?php // Enter value... ?>
+                <div class="input-box input-box--color" id="container-custom-<?php echo $_element->getId() ?>" <?php if ($_variable->getDefaultValue() == $autoValue || ($_variable->getAllowInherit() && $_variable->isInherited())): ?> style="display: none;" <?php endif; ?>>
+                    <div class="input-box__inner">
+                        <?php echo trim($_element->getElementHtml()) ?>
+                        <div class="wrap-color" class="container-custom-<?php echo $_element->getId() ?>">
+                            <input class="input-text color {valueElement: '<?php echo $_element->getHtmlId() ?>', hash: true}" style="cursor: pointer; border-top-width: 0;" />
+                        </div>
+                    </div>
+                </div>
+
+                <?php if ($_description): ?>
+                    <div class="description">
+                        <p class="note"><span><?php echo $_description ?></span></p>
+                    </div>
+                <?php endif; ?>
+
+            </td>
+        <?php endif; ?>
+    </tr>
+<?php endif; ?>
+

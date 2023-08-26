@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+	 <europaymentrate_euplatescrate>
+		<version>0.1.0</version>
+	 </europaymentrate_euplatescrate>
+  </modules>
+
+  <global>
+	<!-- declare model group for new module -->
+	  <models>
+		<!-- model group alias to be used in Mage::getModel('newmodule/...') -->
+		  <euplatescrate>
+			  <class>europaymentrate_euplatescrate_Model</class>
+		  </euplatescrate>
+	  </models>
+
+	<!-- declare resource setup for new module -->
+	  <resources>
+		  <euplatescrate_setup>
+			  <setup>
+				  <module>europaymentrate_euplatescrate</module>
+			  </setup>
+			  <connection>
+				<!-- do not create new connection, use predefined core setup connection -->
+				  <use>core_setup</use>
+			  </connection>
+		  </euplatescrate_setup>
+		  <euplatescrate_write>
+			  <connection>
+				<use>core_write</use>
+			  </connection>
+		  </euplatescrate_write>
+		  <euplatescrate_read>
+			 <connection>
+			  <use>core_read</use>
+			</connection>
+		  </euplatescrate_read>
+	  </resources>
+        <blocks>
+            <euplatescrate><class>europaymentrate_euplatescrate_Block</class></euplatescrate>
+        </blocks>
+        <helpers>
+            <euplatescrate><class>europaymentrate_euplatescrate_Helper</class></euplatescrate>
+        </helpers>
+	<sales>
+  		<order>
+                <statuses>
+                    <pending translate="label"><label>Pending</label></pending>
+                    <pending_paypal translate="label"><label>Pending PayPal</label></pending_paypal>
+                    <pending_euplatescrate translate="label"><label>Pending euplatescrate</label></pending_euplatescrate>
+                    <processing translate="label"><label>Processing</label></processing>
+                    <holded translate="label"><label>On Hold</label></holded>
+                    <complete translate="label"><label>Complete</label></complete>
+                    <closed translate="label"><label>Closed</label></closed>
+                    <canceled translate="label"><label>Canceled</label></canceled>
+                </statuses>
+                <states>
+                    <new translate="label">
+                        <label>New</label>
+                        <statuses>
+                            <pending/>
+                        </statuses>
+                        <visible_on_front/>
+                    </new>
+                    <pending_payment translate="label">
+                        <label>Pending Payment</label>
+                        <statuses>
+                        	<pending_paypal/>
+					<pending_euplatescrate/>
+                        </statuses>
+				<visible_on_front/> 
+                    </pending_payment>
+                    <processing translate="label">
+                        <label>Processing</label>
+                        <statuses>
+                            <processing/>
+                        </statuses>
+                        <visible_on_front/>
+                    </processing>
+                    <complete translate="label">
+                        <label>Complete</label>
+                        <statuses>
+                            <complete/>
+                        </statuses>
+                        <visible_on_front/>
+                    </complete>
+                    <closed translate="label">
+                        <label>Closed</label>
+                        <statuses>
+                            <closed/>
+                        </statuses>
+                        <visible_on_front/>
+                    </closed>
+                    <canceled translate="label">
+                        <label>Canceled</label>
+                        <statuses>
+                            <canceled/>
+                        </statuses>
+                        <visible_on_front/>
+                    </canceled>
+                    <holded translate="label">
+                        <label>On Hold</label>
+                        <statuses>
+                            <holded/>
+                        </statuses>
+                        <visible_on_front/>
+                    </holded>
+                </states>
+            </order>
+	</sales>
+  </global>
+
+    <frontend>
+        <secure_url>
+            <euplatescrate>/EuPlatesc/index</euplatescrate>
+        </secure_url>
+        <routers>
+            <euplatescrate>
+                <use>standard</use>
+                <args>
+                    <module>europaymentrate_euplatescrate</module>
+                    <frontName>EuPlatesc</frontName>
+                </args>
+            </euplatescrate>
+        </routers>
+        <translate>
+            <modules>
+                <europaymentrate_euplatescrate>
+                    <files>
+                        <default>europaymentrate_euplatescrate.csv</default>
+                    </files>
+                </europaymentrate_euplatescrate>
+            </modules>
+        </translate>
+    </frontend>
+    <adminhtml>
+	
+		<layout>
+            <updates>
+                <europaymentrate_euplatescrate>
+                    <file>euplatescrate.xml</file>
+                </europaymentrate_euplatescrate>
+            </updates>
+        </layout>
+		
+        <translate>
+            <modules>
+                <europaymentrate_euplatescrate>
+                    <files>
+                        <default>europaymentrate_euplatescrate.csv</default>
+                    </files>
+                </europaymentrate_euplatescrate>
+            </modules>
+        </translate>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <euplatescrate>
+                                            <title>euplatescrate Section</title>
+                                        </euplatescrate>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+<!-- declare default configuration values for this module -->
+  <default>
+	<euplatescrate>
+            <wpp>
+                <api_password backend_model="adminhtml/system_config_backend_encrypted"/>
+                <api_signature backend_model="adminhtml/system_config_backend_encrypted"/>
+                <api_username backend_model="adminhtml/system_config_backend_encrypted"/>
+            </wpp>
+            <wps>
+                <business_account backend_model="adminhtml/system_config_backend_encrypted"/>
+            </wps>
+	</euplatescrate>
+	<payment>
+		<euplatescrate>
+			<active>0</active>
+            	<!-- <debug>0</debug> -->
+      	      <test>0</test>
+			<model>euplatescrate/standard</model>
+			<order_status>pending_euplatescrate</order_status>
+			<title>euplatescrate</title>
+	            <cgi_url>https://secure.euplatesc.ro/tdsprocess/tranzactd.php</cgi_url>
+      	      <!-- <email_customer>0</email_customer> -->
+	            <login backend_model="adminhtml/system_config_backend_encrypted"/>
+            	<!-- <merchant_email></merchant_email> -->
+	            <trans_key backend_model="adminhtml/system_config_backend_encrypted"/>
+
+			<payment_action>authorize</payment_action>
+			<allowspecific>0</allowspecific>    -->
+		  </euplatescrate>
+	</payment>
+  </default>
+</config>

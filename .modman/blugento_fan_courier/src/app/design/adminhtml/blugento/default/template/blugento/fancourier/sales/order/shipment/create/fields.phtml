@@ -1,0 +1,132 @@
+<?php
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *
+ */
+
+/**
+ * @var Blugento_FanCourier_Block_Adminhtml_Sales_Order_Shipment_Create_Fields $this
+ */
+?>
+<?php
+    $_order = $this->getShipment()->getOrder();
+    $services = $this->getServices();
+    $servicesError = isset($services['error']) ? $services['error'] : null;
+?>
+<br />
+<div>
+    <table cellspacing="0" class="form-list" width="100%">
+        <tr>
+            <td class="label">
+                <h4><?php echo $this->__('Fan Courier Settings') ?></h4>
+            </td>
+        </tr>
+        <?php if ($this->isMultipleClientEnable()): ?>
+            <tr>
+                <td class="label">
+                    <label><?php echo $this->__('Client ID') ?></label>
+                </td>
+                <td class="value">
+                    <select name="shipment[fancourier][client]" class="select">
+                        <?php foreach ($this->getClientIds() as $id): ?>
+                            <option value="<?php echo $id ?>" <?php echo $this->getSelectedValue('client_id', $id) ?>><?php echo $id ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+        <?php endif; ?>
+        <tr>
+            <td class="label">
+                <label><?php echo $this->__('Service') ?></label>
+            </td>
+            <td class="value">
+                <?php if ($servicesError): ?>
+                    <span style="color:red"><?php echo $this->__('Error: ') . $servicesError ?></span>
+                <?php else: ?>
+                    <select name="shipment[fancourier][service]" class="select">
+                        <?php foreach ($services as $service): ?>
+                            <option value="<?php echo $service ?>" <?php echo $this->getSelectedService($service) ?>><?php echo $service ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label><?php echo $this->__('Delivery Type') ?></label>
+            </td>
+            <td class="value">
+                <select name="shipment[fancourier][delivery_type]" class="select">
+                    <option value="parcel" <?php echo $this->getSelectedValue('delivery_type', 'parcel') ?>><?php echo $this->__('Parcel') ?></option>
+                    <option value="envelope" <?php echo $this->getSelectedValue('delivery_type', 'envelope') ?>><?php echo $this->__('Envelope') ?></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label><?php echo $this->__('Number of Parcels/Envelopes') ?></label>
+            </td>
+            <td class="value">
+                <input class="input-text" type="text" value="1" name="shipment[fancourier][number_of_parcels]" /><br />
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label><?php echo $this->__('Total Packages Weight') ?></label>
+            </td>
+            <td class="value">
+                <input class="input-text" type="text" value="<?php echo $this->getPackageWeight($_order->getWeight()) ?>" name="shipment[fancourier][weight]" /><br />
+            </td>
+        </tr>
+        <tr>
+            <td class="label">
+                <label><?php echo $this->__('Observations') ?></label>
+            </td>
+            <td class="value">
+                <textarea class="textarea" name="shipment[fancourier][observations]"></textarea>
+            </td>
+        </tr>
+        <tr style="display: none;" id="fancourier-order-value">
+            <td class="label">
+                <label><?php echo $this->__('Order Value') ?></label>
+            </td>
+            <td class="value">
+                <input class="input-text" type="text" value="<?php echo number_format($_order->getGrandTotal(), 2, '.', '')  ?>" name="shipment[fancourier][order_amount]" /><br />
+                <strong><span style="color:red"><?php echo $this->__('Please change order amount if you change items quantity.') ?></span></strong><br />
+                <strong><span style="color:red"><?php echo $this->__('This value will be ignored if you don\'t change items quantity.') ?></span></strong>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+    var qtyInput = document.getElementsByClassName('qty-item');
+    var fCourier = document.getElementById("fancourier-order-value");
+
+    function fanCourierHandler() {
+        fCourier.style.display = "table-row";
+    }
+
+    setTimeout(function() {
+        for (var i = 0 ; i < qtyInput.length; i++) {
+            qtyInput[i].addEventListener('input', function (evt) {
+                fanCourierHandler(evt);
+            }, false);
+        }
+    }, 300);
+</script>

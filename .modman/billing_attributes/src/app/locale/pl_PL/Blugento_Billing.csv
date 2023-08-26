@@ -1,0 +1,48 @@
+Personal Purchase,Zakup osobisty
+Company Purchase,Zakup firmowy
+Company Registration Number,Nr. Reg. Firmy
+IBAN,IBAN
+Bank Name,Bank
+CNP,PESEL
+Mage_Checkout::VAT Number,NIP
+Billing Attributes,Szczeg�?y Rozliczenia
+Display CNP Field,Wy?wietl pole PESEL
+Require CNP Field,Wymagaj wype?nienia pola PESEL
+Individual Title,Tytu?
+Legal Entity Title,Tytu? prawny
+Require ORC Field,Wymagaj pola ORC
+Region Before City,Wojew�dztwo przed Miastem
+Display Region before City,Wy?wietlaj wojew�dztwo przed miastem
+Fields Display Settings,Ustawienia wy?wietlania p�l
+Company,Firma
+Nr Reg Com,Nr. Reg. Firmy
+VAT Number,NIP
+Headquarter,Siedziba
+Phone,Telefon
+Fax,Fax
+Country,Pa?stwo
+Postal Code,Kod pocztowy
+The country field will not be displayed only if in System->Configuration->General->Countries Options->Allow Countries will be selected only one country.,"Pole kraju nie b?dzie wy?wietlane tylko wtedy, gdy w System-> Konfiguracja-> Og�lne-> Opcje kraj�w-> W??czone kraje zostanie wybrany tylko jeden kraj."
+Postal Code will not be displayed only if all the allowed countries are selected for optional postal code. To set this option go to System->Configuration->General->Countries Options.,"Kod pocztowy nie b?dzie wy?wietlany tylko wtedy, gdy wszystkie dozwolone kraje zostan? wybrane dla opcjonalnego kodu pocztowego. Aby ustawi? t? opcj?, przejd? do System-> Konfiguracja-> Og�lne-> Opcje kraj�w."
+Firstname,Imie
+Lastname,Nazwisko
+Personal Purchase Form,Formularz zakupu prywatnego
+Legal Entity Purchase Form,Formularz zakupu osoby prawnej
+If both forms are disabled this form will be enable by default.,"Je?li oba formularze s? wy??czone, formularz ten zostanie w??czony jako domy?lny."
+If both forms are disabled Personal Purchase Form will be enable by default.,"Je?li oba formularze s? wy??czone, formularz zakupu osoby prywatnej zostanie w??czony jako domy?lny."
+Continue,Kontynuuj
+Please enter a valid phone number. For example +40741234567,Prosze wprowadzi? numer telefonu. Np.: +48741234567
+"*Ex: Number, Street, Apt./Suite/Room","*Np: Numer, Ulica, numer budynku/ mieszkania"
+Phone Min Length,Mainimalna liczba znak�w dla numeru telefonu
+Phone Max Length,Maksymalna liczba znak�w dla numeru telefonu
+Select a value,Wybierz wartos?
+City / County / Zip/Postal Code,Pa?stwo / Miasto / Kod / Kod pocztowy
+7 digits,7 cyfr
+10 digits,10 cyfr
+12 digits,12 cyfr
+14 digits,14 cyfr
+16 digits,16 cyfr
+"Validate First and Last Name","Potwierdź imię i nazwisko"
+"Uses only letters (a-z or A-Z), numbers (0-9) or spaces in fields.","Używa tylko liter (a-z lub A-Z), cyfr (0-9) lub spacji w polach."
+(0-9) lub spacji w polach."
+"Street Max Length","Maksymalna długość ulicy"

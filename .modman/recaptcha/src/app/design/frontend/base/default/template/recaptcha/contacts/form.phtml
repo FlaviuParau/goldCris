@@ -1,0 +1,163 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+?>
+<body>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
+</div>
+<form action="<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?><?php else: ?><?php echo $this->getFormAction(); ?><?php endif; ?>" id="contactForm" method="post">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                <div class="input-box">
+                    <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text required-entry validate-digits" type="tel" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3" style="width:100%;"></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?>
+        <div class="no-display">
+            <input type="text" name="noSpam" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('No Spam')) ?>" id="no-spam" class="input-text no-display required-entry" />
+        </div>
+    <?php endif; ?>
+    <div class="buttons-set">
+        <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <input type="hidden" id="captcha" name="captcha" value="">
+        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit')) ?>" name="send" id="g-recaptcha-contact" data-callback="onHuman" class="g-recaptcha-contact button disabled" data-badge="bottomleft" data-size="invisible"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+    </div>
+
+</form>
+
+<script type="text/javascript">
+    var contactForm = new VarienForm('contactForm', true);
+</script>
+
+<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?>
+    <script>
+         function onHuman(response) {
+            document.getElementById('captcha').value = response;
+        }
+
+        // Prevent form to submit if hidden input has value
+        jQuery('#contactForm').submit(function(e) {
+            if (jQuery('#no-spam').val() !== '') {
+                e.preventDefault();
+
+                window.history.back();
+            }
+        });
+
+        function onSubmitContact(token) {
+            setTimeout(function(){
+				jQuery('.g-recaptcha-contact').attr('data-token', token);
+
+                if (jQuery('#no-spam').val() === '' || jQuery('#no-spam').val() === undefined) {
+                    return new Promise(function (resolve, reject) {
+                        var dataForm = new VarienForm('contactForm');
+						var tokenHash = jQuery('.g-recaptcha-contact').attr('data-token');
+
+						if (tokenHash && tokenHash.length > 100) {
+                            jQuery('#no-spam').removeClass('required-entry');
+
+                            if (dataForm.validator && dataForm.validator.validate()){
+                                jQuery('#contactForm').attr('action', '<?php echo $this->getFormAction() ?>');
+
+                                document.getElementById("contactForm").submit();
+                            }
+                        }
+                    });
+                } else {
+                    window.history.back();
+                }
+            }, 500);
+        }
+
+        // Check if captcha container have loaded class, if not than captcha will be loaded
+        function loadCaptchaContact() {
+            // Fix for google recaptcha from 18 June
+            if ("NodeList" in window) {
+                if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+                    NodeList.prototype.each = NodeList.prototype.forEach;
+                }
+            }
+
+            if (!jQuery('.captcha_container_contact').length) {
+                jQuery('#g-recaptcha-contact').addClass('captcha_container_contact');
+                var captchaContainer = null;
+                var loadCaptchaContactFunction = function() {
+                    captchaContainer = grecaptcha.render('g-recaptcha-contact', {
+                        'sitekey': '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+                        'callback': onSubmitContact
+                    });
+                };
+
+                loadCaptchaContactFunction();
+            }
+        };
+
+        // Once user insert a value, loadCaptchaContent will be called
+        jQuery('#contactForm input, #contactForm textarea').each(function(e) {
+            jQuery(this).on('change keyup blur input', function(e) {
+                loadCaptchaContact();
+            });
+        });
+
+
+        jQuery('.g-recaptcha-contact').on('click', function(e) {
+            onSubmitContact();
+        });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptchaContactFunction&render=explicit" async defer></script>
+<?php endif; ?>
+
+</body>
+
+

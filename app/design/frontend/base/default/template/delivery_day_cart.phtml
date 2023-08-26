@@ -1,0 +1,17 @@
+<?php $storeId = Mage::app()->getStore()->getStoreId(); ?>
+<?php if (Mage::helper('delivery_day')->isEnabled($storeId)) : ?>
+    <?php $difference = $this->getDifference($storeId); ?>
+    <?php if ($this->getCartDeliveryDay($storeId) && $difference == 0) : ?>
+        <div class="delivery-day" style="color:red">
+            <span class="additional-text-cart"><?php echo Mage::getStoreConfig('delivery_day/general/additional_text_cart', $storeId) . ' ' ?></span>
+            <span class="delivery-min" style="color:red"><?php echo $this->getCartDeliveryDay($storeId); ?></span>
+        </div>
+    <?php else : ?>
+        <div class="delivery-day" style="color:red">
+            <span class="additional-text-cart"><?php echo Mage::getStoreConfig('delivery_day/general/additional_text_cart', $storeId) . ' ' ?></span>
+            <span class="delivery-min"> <?php echo $this->getCartDeliveryDay($storeId); ?></span>
+            <span class="delivery-separator"> - </span>
+            <span class="delivery-max"><?php echo $this->getCartDeliveryDay($storeId, $difference); ?></span>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

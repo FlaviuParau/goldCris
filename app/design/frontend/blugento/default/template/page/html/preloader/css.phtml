@@ -1,0 +1,22 @@
+<?php
+$_preloaderStatus = Mage::helper('blugento_theme')->getVariable('preloader_status', 'layout', 2);
+
+if ($_preloaderStatus == 2) {
+    return;
+}
+?>
+
+<?php
+$skinBaseUrl = Mage::getBaseUrl('skin', Mage::app()->getStore()->isCurrentlySecure());
+$preloaderUrl = $this->getSkinUrl('css/preloader.css');
+$preloaderPath = Mage::getBaseDir('skin') . DS . str_replace($skinBaseUrl, '', $preloaderUrl);
+
+if (is_file($preloaderPath) && function_exists('file_get_contents')):
+    $preloaderCss = file_get_contents($preloaderUrl);
+    if ($preloaderCss):
+        ?>
+        <style><?php echo $preloaderCss ?></style>
+        <?php
+    endif;
+endif;
+?>

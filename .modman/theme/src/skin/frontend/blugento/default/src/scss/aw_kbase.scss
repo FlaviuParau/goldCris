@@ -1,0 +1,360 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       aw_kbase.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import 'grunt';
+
+@import '../../blugento/scss/variable';
+@import '../../blugento/scss/variable-image';
+@import '../../blugento/scss/variable-layout';
+
+@import 'function/browser';
+
+@import 'config';
+@import 'config/design';
+
+@import 'component/data-table';
+@import 'mixin/font';
+@import 'mixin/grid';
+@import 'mixin/icon';
+@import 'mixin/responsive';
+@import 'mixin/util';
+
+//  ----------------------------------------------------------------------------
+.kbase-main-header.h1 {
+    font-style: $product-category__title_font-style;
+    font-size: $product-category__title_font-size;
+    font-weight: $product-category__title_font-weight;
+    font-family: $product-category__title_font-family;
+    text-transform: $product-category__title_text-transform;
+    color: $product-category__title_color;
+}
+
+.kbase {
+    display: block;
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p  {
+        line-height: 2;
+    }
+
+    .kbase-block {
+        border: 0;
+        display: block;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 1px 3px 0 $page-header--sticky_box-shadow-color;
+    }
+
+    .kbase-block-main {
+        display: block;
+    }
+
+    .kbase-block-search {
+        display: block;
+    }
+
+    .kbase-main-search input {
+        width: 68%;
+        padding: 1px;
+        height: 37px;
+        vertical-align: top;
+
+        @if (($layout--input-text_layout == 7) or ($layout--input-text_layout == 6)) {
+            border: $input-text_border-width solid $input-text_border-color;
+            border-right: 0;
+            border-left: 0;
+            border-top: 0;
+            background-color: transparent;
+        } @else if ($layout--input-text_layout == 5) {
+            @include box-shadow(4px, 4px, 0, $input-text_box-shadow);
+            border: $input-text_border-width solid $input-text_border-color;
+            background-color: $input-text_background-color;
+        } @else if ($layout--input-text_layout == 4) {
+            border: $input-text_border-width solid lighten($input-text_border-color, 9.8%);
+            border-radius: 6px;
+            background-color: lighten($input-text_border-color, 9.8%);
+        } @else if ($layout--input-text_layout == 3) {
+            border: $input-text_border-width solid $input-text_border-color;
+            border-radius: 6px;
+            background-color: $input-text_background-color;
+        } @else if ($layout--input-text_layout == 2) {
+            border: $input-text_border-width solid $input-text_border-color;
+            background-color: $input-text_background-color;
+        } @else {
+            border: $input-text_border-width solid $input-text_border-color;
+            border-right-color: lighten($input-text_border-color, 9.8%);
+            border-bottom-color: lighten($input-text_border-color, 9.8%);
+            background-color: $input-text_background-color;
+        }
+    }
+
+    .kbase-main-search button {
+        vertical-align: top;
+        top: 0;
+    }
+
+    .kbase-main-search label {
+        display: none;
+    }
+
+    .kbase-main-tag .kbase-list li {
+        display: inline-block;
+        margin-right: 20px;
+        position: relative;
+
+        a {
+            display: block;
+            text-decoration: underline;
+            color: color('q');
+
+            &:hover {
+                text-decoration: none;
+                color: color('q');
+            }
+        }
+
+        &:not(:last-child):after {
+            content: '';
+            background: $color--primary;
+            position: absolute;
+            right: -13px;
+            top: 50%;
+            margin-top: -1px;
+            width: 4px;
+            height: 1px;
+        }
+    }
+
+    .kbase-list {
+        .hide {
+            display: none;
+        }
+
+        li {
+            span {
+                cursor: pointer;
+                color: color('a');
+
+                &:hover {
+                    cursor: pointer;
+                    color: color('q');
+                }
+            }
+        }
+    }
+
+    .show-articles {
+        .show-more {
+            display: none;
+        }
+
+        .show-less, .hide {
+            display: block !important;
+        }
+    }
+
+    .kbase-main-category {
+        .kbase-list {
+            display: flex;
+            flex-flow: row wrap;
+            margin-left: -20px;
+            vertical-align: top;
+
+            > li {
+                width: calc(100% / 4 - 20px);
+                margin-left: 20px;
+                box-sizing: border-box;
+            }
+
+            h3 {
+                position: relative;
+                vertical-align: top;
+            }
+
+            ul {
+                line-height: 2;
+
+                li {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .kbase-sorter {
+         @include cf;
+
+         padding: 5px 10px;
+         text-align: left;
+         margin-bottom: 20px;
+
+         .amount {
+             float: left;
+             margin: 0;
+         }
+
+         .sort-by {
+             display: inline-block;
+             padding-right: 36px;
+
+             label {
+                 vertical-align: middle;
+             }
+
+             select {
+                 vertical-align: middle;
+             }
+
+             img {
+                 vertical-align: middle;
+             }
+         }
+     }
+
+    .kbase-listing {
+        border: 1px solid #C4C1BC;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    .kbase-listing-tag {
+        font-size: 80%;
+    }
+
+    table.kbase-listing {
+        @extend %data-table;
+        box-shadow: 0 1px 3px 0 $page-header--sticky_box-shadow-color;
+
+        th:first-child {
+            text-align: left;
+        }
+
+        .kbase-listing {
+            border: 0;
+            cursor: pointer;
+
+            td {
+                border: 0;
+            }
+        }
+    }
+
+    .kbase-article {
+        h2,
+        .kbase-article-date,
+        .kbase-article-author,
+        > p {
+            line-height: 2;
+        }
+
+        .kbase-article-date {
+            font-size: 85%;
+        }
+
+        .kbase-article-author {
+            font-style: italic;
+        }
+    }
+
+    .kbase-article-text {
+        ul.products-grid,
+        ul.products-grid UL,
+        ol.products-list {
+            list-style: none outside none !important;
+        }
+
+        ul.products-grid {
+            width: 100% !important;
+        }
+
+        ol {
+            list-style-position: inside;
+            list-style-type: decimal;
+        }
+
+        ul {
+            list-style-position: inside;
+            list-style-type: disc;
+        }
+
+        p {
+            margin-bottom: 0;
+            line-height: 2;
+        }
+    }
+
+    .kbase-article-rating {
+        @include cf;
+
+        span {
+            float: left;
+            margin-right: 10px;
+        }
+
+        .rating-box {
+            float: left;
+        }
+
+        select {
+            margin-right: 10px;
+        }
+
+        form {
+            float: right;
+        }
+    }
+
+    .kbase-article-attachment,
+    .kbase-list ul,
+    .kbase-article-category {
+        a {
+            text-decoration: underline;
+            color: color('q');
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+/* Mobile styling */
+@media (max-width: $screen-xs-max) {
+    .kbase {
+        .kbase-main-category {
+            .kbase-list {
+                > li {
+                    width: calc(100% / 2 - 20px);
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: $screen-xxs-max) {
+    .kbase {
+        .kbase-main-search input {
+            width: 60%;
+        }
+
+        .kbase-main-category {
+            .kbase-list {
+                display: block;
+                > li {
+                    width: 100%;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}

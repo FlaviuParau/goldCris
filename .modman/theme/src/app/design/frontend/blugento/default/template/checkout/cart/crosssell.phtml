@@ -1,0 +1,44 @@
+<?php
+$_productCollection = $this->getItems();
+
+$_productNameAfter = false;
+if ($this->getChild('name.after')) {
+    foreach ($this->getChild('name.after')->getSortedChildren() as $_nameAfterChildName) {
+        $_productNameAfter .= $this->getChild('name.after')->getChild($_nameAfterChildName)->setProduct($_product)->toHtml();
+    }
+}
+
+$_isSlider = (count($_productCollection) > 4) && ($this->getCheckoutCartCrosssellSliderStatus() == 1);
+?>
+<?php if ($_productCollection && count($_productCollection)): ?>
+    <div class="block block-crossale" id="block-crosssale">
+        <h2 class="subtitle"><?php echo $this->__('Based on your selection, you may be interested in the following items:') ?></h2>
+        <div class="block-content">
+            <ul
+                class="products-grid grid-6"
+                <?php if ($_isSlider): ?>
+                    data-slider="true"
+                <?php endif; ?>
+                >
+                <?php foreach ($_productCollection as $_product): ?>
+                    <li class="item">
+                        <?php echo $this->getLayout()->createBlock('blugento_theme/catalog_product_design')->setProduct($_product)->setTemplate('catalog/product/list-grid-item.phtml')->toHtml(); ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        // Set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>

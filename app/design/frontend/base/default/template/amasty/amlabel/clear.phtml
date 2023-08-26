@@ -1,0 +1,11 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2020 Amasty (https://www.amasty.com)
+ * @package Amasty_Label
+ */
+?>
+<?php
+    if (Mage::getStoreConfig('amlabel/options/use_js')) {
+        Mage::register('amlabel_start_observing', true, true);
+    }

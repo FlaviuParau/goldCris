@@ -1,0 +1,26 @@
+<?php $currentUrl = Mage::helper('core/url')->getCurrentUrl(); ?>
+
+<?php if ($crumbs && is_array($crumbs)): ?>
+    <div class="breadcrumbs">
+        <ul>
+            <?php $i = 0; ?>
+            <?php foreach ($crumbs as $_crumbName => $_crumbInfo): ?>
+                <li class="breadcrumbs__<?php echo $_crumbName ?> level<?php echo $i ?>" typeof=”v:Breadcrumb”>
+                    <?php if ($_crumbInfo['link']): ?>
+                        <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['label']) ?>" rel=”v:url” property=”v:title”>
+                            <span><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span>
+                        </a>
+                    <?php elseif ($_crumbInfo['last']): ?>
+                        <a href="<?php echo $currentUrl ?>" title="<?php echo $this->escapeHtml($_crumbInfo['label']) ?>" rel=”v:url” property=”v:title” class="no-display"></a>
+                        <strong><?php echo $this->escapeHtml($_crumbInfo['label']) ?></strong>
+                    <?php else: ?>
+                        <span><span><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span></span>
+                    <?php endif; ?>
+                    <?php if (!$_crumbInfo['last']): ?>
+                        <span>/ </span>
+                    <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

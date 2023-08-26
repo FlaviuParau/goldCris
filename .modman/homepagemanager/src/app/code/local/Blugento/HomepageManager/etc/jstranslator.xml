@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<jstranslator>
+    <row-delete-confirm translate="message" module="blugento_homepagemanager">
+        <message>Are you sure you want to delete this row?</message>
+    </row-delete-confirm>
+</jstranslator>

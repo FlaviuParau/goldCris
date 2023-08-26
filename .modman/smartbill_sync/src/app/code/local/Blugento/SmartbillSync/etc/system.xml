@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>20</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_smartbillsync translate="label" module="adminhtml">
+            <label>Smartbill Inventory Sync</label>
+            <tab>blugento</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment">
+                    <label>General</label>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment></comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable automatically sync.</comment>
+                        </enabled>
+                        <token translate="label comment">
+                            <label>Token</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </token>
+                        <cif translate="label comment">
+                            <label>Cif</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cif>
+                        <api_url translate="label comment">
+                            <label>Api url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_url>
+                        <user translate="label comment">
+                            <label>Smartbill User</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </user>
+                        <gestiune translate="label">
+                            <label>Gestiune</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_WarehouseSelectionOptions</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Select the Warehouse</comment>
+                        </gestiune>
+                        <disable_missing translate="label">
+                            <label>Disable Missing Warehouse Items</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the item Out Of Stock if do not exist in selected Warehouse (configurable items skip).</comment>
+                        </disable_missing>
+                        <sync_frequency translate="label">
+                            <label>Automatically Sync Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_smartbillsync/system_config_source_hours</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the update inventory frequency.</comment>
+                        </sync_frequency>
+                        <time translate="label">
+                            <label>Sync Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>72</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><sync_frequency>24</sync_frequency></depends>
+                        </time>
+                        <days translate="label">
+                            <label>Week Days</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>adminhtml/system_config_source_locale_weekdays</source_model>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </days>
+                        <last_run_time translate="label">
+                            <label>Last Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The time when the inventory sync has run last time.</comment>
+                        </last_run_time>
+                        <enable_log translate="label">
+                            <label>Enable Log</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_log>
+                    </fields>
+                </general>
+            </groups>
+        </blugento_smartbillsync>
+    </sections>
+</config>

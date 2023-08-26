@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_Fixerio>
+            <version>1.0.0</version>
+        </Blugento_Fixerio>
+    </modules>
+    <global>
+        <currency>
+            <import>
+                <services>
+                    <fixerio>
+                        <name>Fixer.io</name>
+                        <model>fixerio/import</model>
+                    </fixerio>
+                </services>
+            </import>
+        </currency>
+        <models>
+            <fixerio>
+                <class>Blugento_Fixerio_Model</class>
+            </fixerio>
+        </models>
+        <helpers>
+            <fixerio>
+                <class>Blugento_Fixerio_Helper</class>
+            </fixerio>
+        </helpers>
+    </global>
+    <default>
+        <currency>
+            <fixerio>
+                <timeout>60</timeout>
+            </fixerio>
+        </currency>
+    </default>
+</config>

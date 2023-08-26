@@ -1,0 +1,105 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-block-compare.scss
+    Version:        1.0
+    Description:    Block Compare - In right side after content on Desktop and in the bottom of the page on Mobile
+    ------------------------------------------------------------------------- */
+
+.block-compare {
+    position: relative;
+
+    .block-content {
+        padding: 20px;
+        background-color: color('c');
+        color: color('e');
+    }
+
+    ol {
+        display: inline-block;
+    }
+
+    li {
+        margin-top: 12px;
+        display: block;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &.placeholder {
+            width: 40px;
+            height: 40px;
+            background: $block-compare__placeholder_background-image no-repeat 50% 50%;
+        }
+
+        .product-image-compare {
+            position: relative;
+
+            img {
+                display: block;
+                opacity: 1;
+                max-width: none;
+            }
+
+            .btn-remove {
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-position: 50% 50%;
+                background-size: auto;
+            }
+        }
+
+        .overlay-close {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .product-image-compare {
+            &:hover,
+            &.hover {
+                img {
+                    opacity: .3;
+                }
+
+                > .overlay-close {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .actions {
+        margin-top: 20px;
+        text-align: center;
+        text-decoration: underline;
+
+    }
+}
+
+.page-main-overflow {
+    .block-compare  {
+        .block-content {
+            padding: 0;
+            background: none;
+            color: inherit;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .actions {
+            display: inline-block;
+            float: right;
+            margin: 0;
+            line-height: 40px;
+        }
+
+    }
+}

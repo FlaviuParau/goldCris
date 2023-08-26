@@ -1,0 +1,26 @@
+<?php
+$hideAll = Mage::getStoreConfig('blugento_cart/global_config/hide_all');
+if ($hideAll) {
+    return;
+}
+$_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Add to Cart'); ?>
+<?php
+$_productViewAddToCartQuantityButtons = (int) ($this->getLayout()->getBlock('root')->getProductViewAddToCartQuantityButtons() ?: 2);
+?>
+<?php if ($_product->isSaleable()): ?>
+    <div class="add-to-cart">
+        <?php if (!$_product->isGrouped()): ?>
+        <label for="qty"><?php echo $this->__('Qty:') ?></label>
+        <input type="text" name="qty" id="qty" maxlength="12" value="<?php echo ($this->getMinimalQty($_product) == null) ? 1 : $this->getProductDefaultQty() * 1 ?>" title="<?php echo $this->__('Qty') ?>" />
+            <?php if ($_productViewAddToCartQuantityButtons == 1): ?>
+                <div class="button-counter">
+                    <span class="plus"></span >
+                    <span class="minus"></span>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+        <button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        <?php echo $this->getChildHtml('', true, true) ?>
+    </div>
+<?php endif; ?>

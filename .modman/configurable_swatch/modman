@@ -1,0 +1,8 @@
+src/app/code/local/Blugento/ConfigurableSwatch                                     app/code/local/Blugento/ConfigurableSwatch
+src/app/etc/modules/Blugento_ConfigurableSwatch.xml                                app/etc/modules/Blugento_ConfigurableSwatch.xml
+src/app/design/frontend/base/default/layout/blugento_configurableswatch.xml        app/design/frontend/base/default/layout/blugento_configurableswatch.xml
+src/app/design/frontend/base/default/template/blugento/configurableswatch          app/design/frontend/base/default/template/blugento/configurableswatch
+src/skin/frontend/base/default/blugento/configurableswatch                         skin/frontend/base/default/blugento/configurableswatch
+src/app/locale/de_DE/*                                                             app/locale/de_DE/
+src/app/locale/en_US/*                                                             app/locale/en_US/
+src/app/locale/ro_RO/*                                                             app/locale/ro_RO/

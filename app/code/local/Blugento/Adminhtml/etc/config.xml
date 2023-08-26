@@ -1,0 +1,13 @@
+<config>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_Adminhtml before="Mage_Adminhtml">Blugento_Adminhtml</Blugento_Adminhtml>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

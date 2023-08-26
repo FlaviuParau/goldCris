@@ -1,0 +1,112 @@
+<?xml version="1.0" ?>
+<widgets>
+    <multiproducts type="multiproducts/catalog_product_widget_multiproducts" translate="name description" module="multiproducts">
+        <name>Blugento Multi Products</name>
+        <description>List of Products from a Category or a List of IDs</description>
+        <parameters>
+            <title translate="label">
+                <visible>1</visible>
+                <label>Title</label>
+                <type>text</type>
+            </title>
+            <mode translate="label">
+                <visible>1</visible>
+                <label>Display Products from</label>
+                <type>select</type>
+                <source_model>multiproducts/source_select_mode</source_model>
+            </mode>
+            <ids translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>List of Product IDs</label>
+                <type>text</type>
+                <depends>
+                    <mode>1</mode>
+                </depends>
+            </ids>
+            <categories translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Category</label>
+                <type>select</type>
+                <source_model>multiproducts/source_select_category</source_model>
+                <depends>
+                    <mode>2</mode>
+                </depends>
+            </categories>
+            <filter_products translate="label">
+                <visible>1</visible>
+                <label>Filter Products</label>
+                <type>select</type>
+                <source_model>multiproducts/source_select_filter</source_model>
+            </filter_products>
+            <product_slider translate="label">
+                <visible>1</visible>
+                <label>Slider</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </product_slider>
+            <slider_animation translate="label">
+                <visible>1</visible>
+                <label>Slider Animation Speed</label>
+                <type>select</type>
+                <source_model>multiproducts/source_select_slider_animation</source_model>
+                <depends>
+                    <product_slider>1</product_slider>
+                </depends>
+            </slider_animation>
+            <slider_item_row translate="label">
+                <visible>1</visible>
+                <label>Slides to Show</label>
+                <type>select</type>
+                <source_model>multiproducts/source_select_slider_item_row</source_model>
+                <depends>
+                    <product_slider>1</product_slider>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_row>
+            <slider_item_scroll translate="label">
+                <visible>1</visible>
+                <label>Slides to Scroll</label>
+                <type>select</type>
+                <source_model>multiproducts/source_select_slider_item_scroll</source_model>
+                <depends>
+                    <product_slider>1</product_slider>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_scroll>
+            <template translate="label">
+                <visible>1</visible>
+                <label>Template</label>
+                <type>select</type>
+                <value>catalog/product/widget/multiproducts/content/multiproducts_grid.phtml</value>
+                <source_model>multiproducts/source_select_template</source_model>
+            </template>
+            <type_of_template translate="label">
+                <visible>1</visible>
+                <label>Grid Template</label>
+                <type>select</type>
+                <value>grid-4 slider-enabled</value>
+                <source_model>multiproducts/source_select_template_type</source_model>
+            </type_of_template>
+            <setup translate="label">
+                <visible>0</visible>
+                <label>Setup</label>
+                <type>text</type>
+                <helper_block>
+                    <type>multiproducts/adminhtml_widget_setup</type>
+                </helper_block>
+            </setup>
+        </parameters>
+    </multiproducts>
+</widgets>

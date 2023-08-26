@@ -1,0 +1,54 @@
+<!--@subject Confirmare abonare newsletter @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$customer.name":"Customer Name",
+"var subscriber.getConfirmationLink()":"Subscriber Confirmation Url"}
+@-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h1>Vă mulțumim pentru abonarea la newsletter.</h1>
+            <p><b>Pentru ca ne-ai dat consințământul tău pentru a te informa în continuare în scop de marketing direct
+                cu privire la ofertele noastre, vrem să iți spunem încă o dată care sunt drepturile tale asigurate de
+                Regulamentul 679/2016 în vederea garantării protecției datelor dvs. cu caracter personal:</b></p>
+            <ul>
+                <li>dreptul de a avea acces la datele dvs</li>
+                <li>dreptul de a solicita rectificarea datelor</li>
+                <li>dreptul de a solicita restricționarea prelucrării datelor</li>
+                <li>dreptul de a solicita ștergerea datelor</li>
+                <li>dreptul de a solicita transferul datelor (la portabilitatea datelor)</li>
+                <li>dreptul de a va opune prelucrării</li>
+                <li><b>dreptul de a vă opune să faceți obiectul unor decizii automate bazate exclusiv pe prelucrarea automată, inclusiv profilare.</b></li>
+            </ul>
+            <p>Mai multe detalii puteți găsi pe pagina de <a href="{{store direct_url='politica-de-confidentialitate'}}"><u>Politică și Confidențialitate</u></a></p>
+            <p>Poți în orice moment să îți retragi consimțământul prin accesarea link-ului de <b>dezabonare</b> prezent în
+                finalul fiecărui mail și va avea drept consecință oprirea procesării datelor tale în scop de marketing direct.</p>
+
+            <p>Datele tale sunt păstrate în condiții corespunzătoare de securitate și nu vor fi folosite în alte scopuri
+                decât cele prezentate. Datele tale vor fi transmise furnizorilor noștri contractuali de comunicări și
+                transmiteri corespondență pe e-mail și nu vor fi transmise către nicio țară terță și sau organizație internațională.</p>
+
+            <p>Toate aceste drepturi pot sa fi exercitate prin accesarea link-urilor disponibile în pagina de
+                <a href="{{store direct_url='politica-de-confidentialitate'}}"><u>Politică de Confidențialitate</u></a>
+                sau printr-o simplă cerere adresată prin email la {{config path="trans_email/ident_general/email"}}</p>
+            <p>Pentru a primi ofertele și promoțiile noastre, vă rugăm să confirmați abonarea prin accesarea următorului link:</p>
+            <table cellspacing="0" cellpadding="0" class="action-button" >
+                <tr>
+                    <td>
+                        <a href="{{var subscriber.getConfirmationLink()}}"><span>Confirmare abonare newsletter</span></a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

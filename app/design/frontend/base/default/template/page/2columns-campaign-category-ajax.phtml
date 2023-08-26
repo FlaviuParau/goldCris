@@ -1,0 +1,29 @@
+<?php
+$_htmlLang = $this->getLang();
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>  <html class="no-touch ie ie6 lt-ie9 lt-ie8 lt-ie7" lang="<?php echo $_htmlLang ?>">  <![endif]-->
+<!--[if IE 7 ]>     <html class="no-touch ie ie7 lt-ie9 lt-ie8" lang="<?php echo $_htmlLang ?>">         <![endif]-->
+<!--[if IE 8 ]>     <html class="no-touch ie ie8 lt-ie9" lang="<?php echo $_htmlLang ?>">                <![endif]-->
+<!--[if IE 9 ]>     <html class="no-touch ie ie9" lang="<?php echo $_htmlLang ?>">                       <![endif]-->
+<!--[if gt IE 9]>   <html class="no-touch ie" lang="<?php echo $_htmlLang ?>">                           <![endif]-->
+<!--!(IE)]><!-->    <html class="no-touch" lang="<?php echo $_htmlLang ?>">                              <!--<![endif]-->
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body class="layout-2columns-left campaign columns-2-campaign-category-ajax <?php echo trim($this->getBodyClass()) ?>" data-cookie-lifetime="<?php echo Mage::getStoreConfig('blugento_campaign/general/cookie_lifetime') ?>">
+    <?php echo $this->getChildHtml('after_body_start') ?>
+    <a id="top"></a>
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <main class="page-main">
+        <div class="page-container-wrapper">
+            <div class="page-container">
+                <?php echo $this->getChildHtml('global_messages') ?>
+                <?php echo $this->getChildHtml('content') ?>
+            </div>
+        </div>
+    </main>
+    <?php echo $this->getChildHtml('end') ?>
+    <?php echo $this->getChildHtml('before_body_end') ?>
+</body>
+</html>

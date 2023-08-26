@@ -1,0 +1,93 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Scheckout
+ */
+$_enableGdpr = Mage::getStoreConfig('blugento_gdpruserdata/general/enabled');
+$_checkoutGdpr = Mage::getStoreConfig('blugento_gdpruserdata/consent/enable_on_checkout');
+$customerHelper = $this->helper('customer');
+?>
+<?php echo $this->getParentBlock()->getChildHtml("review_before") ?>
+<div class="order-review" id="checkout-review-load"><div class="amloading" id="amloading-checkout-review-load"><span class="amscheckout-processing-small">&nbsp;</span></div><div style="display: none;">:AM_REPLACE</div></div>
+<?php if (Mage::helper("amscheckout")->showNewsletter() && !$this->isCustomerLoggedIn()) {?>
+<div class="order-review-newsletter">
+    <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed" class="checkbox">
+    <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
+    <?php if ($_enableGdpr && $_checkoutGdpr): ?>
+        <?php if (Mage::getStoreConfig('blugento_gdpruserdata/consent/read_more')): ?>
+            <div class="content-popup-text show-less">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-newsletter-checkbox-consent')->toHtml(); ?>
+                <a href="#popup-conditions" class="show-more"><?php echo $this->__('[Show]') ?></a>
+            </div>
+            <script>
+                (function($) {
+                    $('.content-popup-text .show-more').on('click', function() {
+                        $(this).parent().removeClass('show-less');
+                        $(this).remove();
+                    });
+                })(jQuery);
+            </script>
+        <?php else: ?>
+            <div class="content-popup-text" id="popup-conditions">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-newsletter-checkbox-consent')->toHtml(); ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>
+<?php }?>
+<?php if(Mage::helper('core')->isModuleEnabled('Blugento_GdprInformConsent')): ?>
+    <?php if ($_enableGdpr && $_checkoutGdpr && !$this->isCustomerLoggedIn() && $customerHelper->getCustomer()->getData('gdpr_consent') != 1) : ?>
+        <div class="gdpr-conditions">
+            <div class="gdpr-conditions-wrap">
+                <input id="gdpr-conditions-amasty" type="checkbox" value="1" class="checkbox required-entry">
+                <label for="gdpr-conditions-amasty" style="float:none;">
+                    <?php echo $this->__('I agree with the processing of personal data under the ') ?>
+                    <a class="privacy-policy-show-popup" href="#"><?php echo $this->__('Privacy Policy') ?></a>
+                    <div id="privacy-policy-popup" class="modal privacy-policy-popup">
+                        <div class="sub-container">
+                            <div class="content">
+                                <div class="privacy-policy-popup-content">
+                                    <div><?php echo Mage::helper('blugento_gdprinformconsent')->getPrivacyPolicyContent(); ?></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <?php if (Mage::getStoreConfig('blugento_gdpruserdata/consent/read_more')): ?>
+                <div class="content-popup-text show-less">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-checkout-gdpr-acknowledgement')->toHtml(); ?>
+                    <a href="#popup-conditions" class="show-more"><?php echo $this->__('[Show]') ?></a>
+                </div>
+                <script>
+                    (function($) {
+                        $('.content-popup-text .show-more').on('click', function() {
+                            $(this).parent().removeClass('show-less');
+                            $(this).remove();
+                        });
+
+                        $('.privacy-policy-show-popup').on('click', function() {
+                            $.magnificPopup.open({
+                                items: {
+                                    src: '#privacy-policy-popup'
+                                },
+                                type: 'inline'
+                            },0);
+                        });
+                    })(jQuery);
+                </script>
+            <?php else: ?>
+                <div class="content-popup-text">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-checkout-gdpr-acknowledgement')->toHtml(); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+<div class="order-review-button">
+    <button id="amscheckout-submit" type="button" title="<?php echo $this->__('Place Order') ?>" class="amscheckout-submit" onclick="completeCheckout();">
+        <span><span><?php echo $this->__('Place Order') ?></span></span>
+    </button>
+</div>
+

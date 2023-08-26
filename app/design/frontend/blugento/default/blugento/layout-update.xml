@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+                        <default>
+                            <reference name="root">
+                                <remove name="preloader_css" />
+                            </reference>
+                            <reference name="after_body_start">
+                                <remove name="preloader_html" />
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="before_body_end">
+                                <block type="core/template" name="to-top" template="page/html/to-top.phtml" />
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="before_body_end">
+                                <action method="unsetChild"><name>global_cookie_notice</name></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setImageLazyLoad"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setStickyHeader"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setStickyHeaderAll"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setStickyHeaderLogo"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setStickyHeaderLogoMobile"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setStickyHeaderLinks"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setNavMobileNewOption"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="unsetChild"><name>page.socialmedia_share</name></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setInputTextLayout"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setBanner_arrows"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="header">
+                                <action method="setTemplate"><value>page/html/header-v7.phtml</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="header">
+                                <action method="setLayoutHeaderSearchIcons"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="header">
+                                <action method="setLayoutHeaderAccountIcons"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="header">
+                                <action method="setLayoutHeaderCartIcons"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setHeaderWishlist"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="header">
+                                <action method="setLayoutHeaderWishlistIcons"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setLayoutHeaderOrderIcons"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setNavLayout"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setMiniCartLayout"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setMinicartImage"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setBlogLink"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setNewsletterSubscribe"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setNewsletterMenuAccordion"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="footer">
+                                <action method="unsetChild"><name>legals</name></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setAnpcLinks"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <product_list_page_layout>
+                            <reference name="root">
+                                <action method="setTemplate"><template>page/1column.phtml</template></action>
+                            </reference>
+                        </product_list_page_layout>
+                        <catalog_category_default>
+                            <update handle="product_list_page_layout" />
+                        </catalog_category_default>
+                        <catalog_category_layered>
+                            <update handle="product_list_page_layout" />
+                        </catalog_category_layered>
+                        <catalogsearch_result_index>
+                            <update handle="product_list_page_layout" />
+                        </catalogsearch_result_index>
+                        <catalogsearch_advanced_index>
+                            <update handle="product_list_page_layout" />
+                        </catalogsearch_advanced_index>
+                        <catalogsearch_advanced_result>
+                            <update handle="product_list_page_layout" />
+                        </catalogsearch_advanced_result>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListItems"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <catalog_category_layered>
+                            <reference name="left">
+                                <remove name="catalog.leftnav" />
+                            </reference>
+                            <reference name="product_list">
+                                <block type="catalog/layer_view" name="catalog.topfilter" template="catalog/layer/view2.phtml" before="-">
+                                    <block type="core/text_list" name="catalog.topfilter.state.renderers" as="state_renderers" />
+                                </block>
+                            </reference>
+                        </catalog_category_layered>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListOrderToolbar"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListSortBy"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListImageResizeWidth"><value>300</value></action>
+                                <action method="setProductListImageResizeHeight"><value>300</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListHover"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListAddToLinksStatus"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListBreadcrumbsTitleDisplay"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListShortDescriptionStatus"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListTaxMode"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListDiscountPercentageMode"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListDiscountMode"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductAddToCartStatus"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCatalogProductListQty"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                       <default>
+                           <reference name="root">
+                               <action method="setProductListBuyNowButton"><value>2</value></action>
+                           </reference>
+                       </default>
+                   
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListTaxShippingMode"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListDescriptionHtml"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListOrderSort"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListPaginationPager"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListShowProductsCount"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListStatus"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListFiltersHeight"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductListEmptyReviews"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductImageResizeWidth"><value>1000</value></action>
+                                <action method="setProductImageResizeHeight"><value>1000</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewLayoutPricePosition"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewLayoutTabsPosition"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewTabsOrientation"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewTabsStyle"><value>3</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductPageGalleryOrientation"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductPageMobileGalleryOrientation"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductPageGalleryImagesCount"><value>5</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductPageGalleryImagesCountMobile"><value>3</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductImageAction"><value>9</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductPageGalleryImagesPopupMobile"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductSpecificationOrder"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewGroupAttributesStatus"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewManufacturerPriceMode"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewDeliveryTimeMode"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewSubtitleMode"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewShortDescriptionMode"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewReviewsMode"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewDiscountPercentageMode"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewDiscountMode"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                       <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsStatus"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                       <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsStatus"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsSliderStatus"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsSliderSlidesToShow"><value>4</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsSliderSlidesToScroll"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsSliderAnimation"><value>300</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsSliderLoop"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsSliderCenter"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsSliderDots"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewRelatedProductsSliderMobile"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsSliderStatus"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsSliderSlidesToShow"><value>4</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsSliderSlidesToScroll"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsSliderAnimation"><value>300</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsSliderLoop"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsSliderCenter"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsSliderDots"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewUpsellProductsSliderMobile"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewAddToCartQuantityButtons"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewReviewForm"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewAddToCartMobile"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                       <default>
+                           <reference name="root">
+                               <action method="setProductViewPromotionCountdown"><value>1</value></action>
+                           </reference>
+                       </default>
+                   
+                       <default>
+                           <reference name="root">
+                               <action method="setProductViewCatalogPromotionCountdown"><value>2</value></action>
+                           </reference>
+                       </default>
+                   
+                       <default>
+                           <reference name="root">
+                               <action method="setDisplayBundleOldPrice"><value>2</value></action>
+                           </reference>
+                       </default>
+                   
+                       <default>
+                           <reference name="root">
+                               <action method="setProductViewBuyNowButton"><value>2</value></action>
+                           </reference>
+                       </default>
+                   
+                       <default>
+                           <reference name="root">
+                               <action method="setPreselectSingleSwatches"><value>2</value></action>
+                           </reference>
+                       </default>
+                   
+                       <default>
+                           <reference name="root">
+                               <action method="setSelectProductSimpleImage"><value>1</value></action>
+                           </reference>
+                       </default>
+                   
+                       <default>
+                           <reference name="root">
+                               <action method="setProductViewReviewsToggle"><value>2</value></action>
+                           </reference>
+                       </default>
+                   
+                       <default>
+                           <reference name="root">
+                               <action method="setProductViewDescriptionToggle"><value>2</value></action>
+                           </reference>
+                       </default>
+                   
+                        <default>
+                            <reference name="root">
+                                <action method="setProductViewDescriptionToggleValue"><value>10000</value></action>
+                            </reference>
+                        </default>
+                    
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutCartProductThumbnail"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutCartProductUnitPrice"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <checkout_cart_index>
+                            <reference name="checkout.cart">
+                                <action method="setCartTemplate"><value>checkout/cart.phtml</value></action>
+                                <action method="chooseTemplate" />
+                            </reference>
+                        </checkout_cart_index>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutCartCrosssellsPosition"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutCartCrosssellsSliderStatus"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutCartAddToCartQuantityButtons"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutCartModal"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCartViewProceedToCheckoutMobile"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutCartTotalHideTax"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCartViewProceedToCheckout"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutCartLabelsWat"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setMyAccountRegisterNewLayout"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setMyAccountLoginNewLayout"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setMyAccountCustomerNewLayout"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutViewNewLayout"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutViewPageOrientation"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutBillingAddressLayout"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutShippingAddressLayout"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutUseBillingShippingAddressAboveForm"><value>1</value></action>
+                            </reference>
+                        </default>
+                    
+                        <checkout_onepage_review>
+                            <reference name="root">
+                                <action method="setCheckoutAgreementsPosition"><value>1</value></action>
+                            </reference>
+                        </checkout_onepage_review>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setLoggedInCustomerAddress"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+                        <default>
+                            <reference name="root">
+                                <action method="setCheckoutAsideItems"><value>2</value></action>
+                            </reference>
+                        </default>
+                    
+</layout>

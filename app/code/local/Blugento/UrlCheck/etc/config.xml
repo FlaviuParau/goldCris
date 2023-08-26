@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_UrlCheck
+ * @author      Mihai Rastasan <mihai.rastasan@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_UrlCheck>
+            <version>1.0.0</version>
+        </Blugento_UrlCheck>
+    </modules>
+
+    <global>
+        <models>
+            <blugento_urlcheck>
+                <class>Blugento_UrlCheck_Model</class>
+            </blugento_urlcheck>
+            <catalog>
+                <rewrite>
+                    <product_attribute_backend_urlkey>Blugento_UrlCheck_Model_Product_Attribute_Backend_Urlkey</product_attribute_backend_urlkey>
+                </rewrite>
+            </catalog>
+        </models>
+        <resources>
+            <blugento_urlcheck_setup>
+                <setup>
+                    <module>Blugento_UrlCheck</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </blugento_urlcheck_setup>
+        </resources>
+        <helpers>
+            <blugento_urlcheck>
+                <class>Blugento_UrlCheck_Helper</class>
+            </blugento_urlcheck>
+        </helpers>
+        <events>
+            <catalog_category_save_before>
+                <observers>
+                    <urlcheck_category_save_before>
+                        <type>singleton</type>
+                        <class>blugento_urlcheck/observer</class>
+                        <method>categorySaveBefore</method>
+                    </urlcheck_category_save_before>
+                </observers>
+            </catalog_category_save_before>
+            <catalog_model_product_duplicate>
+                <observers>
+                   <urlcheck_product_duplicate>
+                       <type>singleton</type>
+                       <class>blugento_urlcheck/observer</class>
+                       <method>changeUrlKeyProductDuplicate</method>
+                   </urlcheck_product_duplicate>
+                </observers>
+            </catalog_model_product_duplicate>
+        </events>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <Blugento_ErpIntegration>
+                    <files>
+                        <default>Blugento_UrlCheck.csv</default>
+                    </files>
+                </Blugento_ErpIntegration>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Blugento_ErpIntegration>
+                    <files>
+                        <default>Blugento_UrlCheck.csv</default>
+                    </files>
+                </Blugento_ErpIntegration>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_urlcheck>
+            <general>
+                <enabled>1</enabled>
+                <only_new>1</only_new>
+            </general>
+        </blugento_urlcheck>
+    </default>
+</config>

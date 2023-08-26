@@ -1,0 +1,26 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-shop3.scss
+    Version:        1.0
+    Description:    Product Details Page - Shop - 3
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view_shop_layout == 3) {
+    @include desktop {
+        .product-view .product-shop {
+            .price-box,
+            .price-box-suggested {
+                margin-bottom: 0;
+            }
+        }
+
+        .product-shop-section1,
+        .product-shop-section2 {
+            float: left;
+            width: 50%;
+        }
+
+        .product-shop-section1 {
+            padding-right: 50px;
+        }
+    }
+}

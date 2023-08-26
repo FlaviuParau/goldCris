@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Blugento_Catalog>
+			<version>1.0.0</version>
+		</Blugento_Catalog>
+	</modules>
+	<global>
+		<blocks>
+			<blugento_catalog>
+				<class>Blugento_Catalog_Block</class>
+			</blugento_catalog>
+			<catalog>
+				<rewrite>
+					<product_view_attributes>Blugento_Catalog_Block_Product_View_Attributes</product_view_attributes>
+					<product_view_type_configurable>Blugento_Catalog_Block_Product_View_Type_Configurable</product_view_type_configurable>
+					<category_widget_link>Blugento_Catalog_Block_Category_Widget_Link</category_widget_link>
+				</rewrite>
+			</catalog>
+		</blocks>
+		<helpers>
+			<blugento_catalog>
+				<class>Blugento_Catalog_Helper</class>
+			</blugento_catalog>
+			<catalog>
+				<rewrite>
+					<output>Blugento_Catalog_Helper_Output</output>
+				</rewrite>
+			</catalog>
+		</helpers>
+		<models>
+			<blugento_catalog>
+				<class>Blugento_Catalog_Model</class>
+			</blugento_catalog>
+		</models>
+	</global>
+</config>

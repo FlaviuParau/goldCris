@@ -1,0 +1,36 @@
+<!--@subject Product Inquiry@-->
+
+Product:
+{{var data.inquiry_product}}
+
+Details:
+
+Name: {{var data.name}}
+
+E-mail: {{var data.email}}
+
+Phone: {{var data.telephone}}
+
+Address: {{var data.address}}
+
+County: {{var data.county}}
+
+Locality: {{var data.locality}}
+
+{{if data.company}}
+Company Name: {{var data.company}}
+{{/if}}
+
+{{if data.reg-nr}}
+Company Registration Number: {{var data.reg-nr}}
+{{/if}}
+
+{{if data.vat}}
+VAT Number: {{var data.vat}}
+{{/if}}
+
+{{if data.headquarter}}
+Headquarter: {{var data.headquarter}}
+{{/if}}
+
+Message: {{var data.comment}}

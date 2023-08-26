@@ -1,0 +1,70 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-boxes.scss
+    Version:        1.0
+    Description:    Product Details Page - Boxes
+    ------------------------------------------------------------------------- */
+
+.product-view {
+    .box-tags {
+        float: right;
+        clear: right;
+        width: 50%;
+        padding: 30px 35px;
+        border-top: 1px solid color('h');
+
+        @include mobile {
+            padding: 20px 0;
+        }
+
+        @include phone {
+            width: 100%;
+        }
+    }
+
+    .box-collateral {
+        h2 {
+            display: none;
+        }
+
+        h3 {
+        }
+
+        .input-box input {
+            width: 100%;
+        }
+
+        button {
+            float: right;
+            margin-top: 10px;
+
+            @include phone {
+                margin-top: 10px;
+            }
+        }
+
+        label {
+            display: none;
+        }
+
+        .note {
+            float: left;
+            clear: left;
+            margin-top: 5px;
+            color: color('r');
+
+            &:before {
+                content: '\002a\00a0';
+            }
+        }
+
+        .product-tags li {
+            display: inline-block;
+            padding: 10px 10px 10px 0;
+            color: $product-view__product-tags__list_color;
+
+            a {
+                color: $product-view__product-tags__list__link_color;
+            }
+        }
+    }
+}

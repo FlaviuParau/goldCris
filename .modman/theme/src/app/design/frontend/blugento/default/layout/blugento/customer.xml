@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="header">
+            <block type="core/template" name="top.account" as="topAccount" template="customer/mini.phtml" />
+        </reference>
+    </default>
+
+    <customer_logged_in_eventually>
+        <!--<reference name="root">-->
+            <!--<action method="addBodyClass"><classname>customer-logged-in</classname></action>-->
+        <!--</reference>-->
+        <reference name="customer_account_navigation.mobile">
+            <action method="addLink" translate="label" module="customer">
+                <name>account</name>
+                <path>customer/account/</path>
+                <label>Account Dashboard</label>
+                <prepare />
+                <urlParams />
+            </action>
+            <action method="addLink" translate="label" module="customer">
+                <name>account_edit</name>
+                <path>customer/account/edit/</path>
+                <label>Account Information</label>
+                <prepare />
+                <urlParams />
+            </action>
+            <action method="addLink" translate="label" module="customer">
+                <name>address_book</name>
+                <path>customer/address/</path>
+                <label>Address Book</label>
+                <prepare />
+                <urlParams />
+            </action>
+            <action method="addLink" translate="label" module="customer">
+                <name>logout</name>
+                <path>customer/account/logout/</path>
+                <label>Log out</label>
+                <prepare />
+                <urlParams />
+            </action>
+        </reference>
+    </customer_logged_in_eventually>
+
+    <!--<customer_logged_out>-->
+        <!--<reference name="root">-->
+            <!--<action method="addBodyClass"><classname>customer-logged-out</classname></action>-->
+        <!--</reference>-->
+    <!--</customer_logged_out>-->
+
+    <customer_account>
+        <remove name="catalog.compare.sidebar" />
+        <remove name="sale.reorder.sidebar" />
+        <reference name="root">
+            <action method="addBodyClass"><classname>customer-account</classname></action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><name>cart_sidebar</name></action>
+            <action method="unsetChild"><name>catalog.compare.sidebar</name></action>
+        </reference>
+        <reference name="right">
+            <action method="unsetChild"><name>cart_sidebar</name></action>
+        </reference>
+    </customer_account>
+
+</layout>

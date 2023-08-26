@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<tabs>
+        <magecomp translate="label">
+            <label><![CDATA[<img src="https://www.magecomp.com/media/images/magecomp--extension.png" alt="MAGECOMP" height="25" style="vertical-align:middle;"/>]]></label>
+            <sort_order>20</sort_order>
+        </magecomp>
+    </tabs>
+	<sections>
+     	<magecomp translate="label">
+            <label>Google Recaptcha</label>
+            <tab>magecomp</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+			<groups>
+            	<recaptcha_config translate="label">
+                    <label>Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+						 <magecomp_select translate="label">
+                            <label>Google Recaptcha </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+							<source_model>adminhtml/system_config_source_enabledisable</source_model>
+						 </magecomp_select>
+                         <magecomp_recaptcha_validatesite translate="label">
+                            <label>Site Key</label>
+                            <frontend_type>text</frontend_type>
+							<validate>required-entry</validate>
+							<depends><magecomp_select>1</magecomp_select></depends>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                          </magecomp_recaptcha_validatesite>
+	                    <magecomp_recaptcha_validate translate="label">
+		                    <label>Secret Key</label>
+		                    <frontend_type>text</frontend_type>
+		                    <validate>required-entry</validate>
+		                    <depends><magecomp_select>1</magecomp_select></depends>
+		                    <sort_order>90</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>
+		                    <comment><![CDATA[You can generate site key <a href="https://www.google.com/recaptcha/admin" target="_blank">here</a>]]></comment>
+	                    </magecomp_recaptcha_validate>
+						<recaptcha_category translate="label">
+							<label>Enable On Pages</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>recaptcha/source_pagessource</source_model>
+							<depends><magecomp_select>1</magecomp_select></depends>
+							<sort_order>120</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</recaptcha_category> 	  
+                    </fields>
+            	</recaptcha_config>
+			</groups>
+		</magecomp>
+		<customer>
+			<groups>
+				<address>
+					<fields>
+						<regno_show translate="label">
+							<label>Show Registration Number</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_nooptreq</source_model>
+							<backend_model>adminhtml/system_config_backend_customer_show_customer</backend_model>
+							<sort_order>81</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</regno_show>
+						<regno_validation>
+							<label>Add Registration Number validation</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>82</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<regno_show>req</regno_show>
+							</depends>
+						</regno_validation>
+						<show_address_fields>
+							<label>Show Address Fields</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>83</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</show_address_fields>
+						<company_show translate="label">
+							<label>Show Company</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_nooptreq</source_model>
+							<backend_model>adminhtml/system_config_backend_customer_show_customer</backend_model>
+							<sort_order>83</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<show_address_fields>1</show_address_fields>
+							</depends>
+						</company_show>
+						<street_show translate="label">
+							<label>Show Street</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_nooptreq</source_model>
+							<backend_model>adminhtml/system_config_backend_customer_show_customer</backend_model>
+							<sort_order>84</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<show_address_fields>1</show_address_fields>
+							</depends>
+						</street_show>
+						<city_show translate="label">
+							<label>Show City</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_nooptreq</source_model>
+							<backend_model>adminhtml/system_config_backend_customer_show_customer</backend_model>
+							<sort_order>84</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<show_address_fields>1</show_address_fields>
+							</depends>
+						</city_show>
+						<phone_show translate="label">
+							<label>Show Phone</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_nooptreq</source_model>
+							<backend_model>adminhtml/system_config_backend_customer_show_customer</backend_model>
+							<sort_order>84</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<depends>
+								<show_address_fields>1</show_address_fields>
+							</depends>
+						</phone_show>
+					</fields>
+				</address>
+			</groups>
+		</customer>
+	</sections>
+</config>

@@ -1,0 +1,122 @@
+<?php /** @var Blugento_Importer_Block_Adminhtml_System_Convert_Profile_Edit_Tab_Map $this */?>
+
+<?php
+$fieldMappingInFile = $this->getFileAttributes();
+?>
+<?php if (!is_array($fieldMappingInFile)): ?>
+    <h4 style="color:red;padding:20px;"><?php echo $this->__("Error: %s > Datafeed can not be processed", $fieldMappingInFile) ?></h4>
+<?php endif; ?>
+
+<div id="__fieldmapping">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Field Mapping (not mapped attributes will be ignored)") ?></h4>
+    </div>
+
+    <fieldset>
+        <legend><?php echo $this->__("Field Mapping") ?></legend>
+        <?php $_i = 0; ?>
+        <?php foreach (array('product') as $_entityType): ?>
+            <div class="profile_entity_type_<?php echo $_entityType ?>">
+                <div id="map_template_<?php echo $_entityType ?>" style="display:none">
+                    <span class="field-row">
+
+                        <?php echo $this->__("In File:"); ?>
+                        <select name="map[<?php echo $_entityType ?>][file][]" onchange="setMapFileField(this)">
+                            <?php
+
+                            asort($fieldMappingInFile);
+                            foreach ($fieldMappingInFile as $_value=>$_label): ?>
+                                <option value="<?php echo $_value ?>"><?php echo $_label ?></option>
+                            <?php endforeach ?>
+                        </select>
+
+                        <?php echo $this->__("In Database:"); ?>
+                        <select name="map[<?php echo $_entityType ?>][db][]" onchange="setMapFileField(this)">
+                            <?php
+                            $fieldMappingInDatabase = $this->getDbAttributes($_entityType);
+                            asort($fieldMappingInDatabase);
+                            foreach ($fieldMappingInDatabase as $_value=>$_label): ?>
+                                <option value="<?php echo $_value ?>"><?php echo $_label ?></option>
+                            <?php endforeach ?>
+                        </select>
+
+                        <?php echo $this->__("Transformation:") ?>
+                        <select name="map[<?php echo $_entityType ?>][transform][]">
+                            <?php
+                            $transformation = $this->getCustomTransformation();
+                            foreach ($transformation as $_value=>$_label): ?>
+                                <option value="<?php echo $_value ?>"><?php echo $_label ?></option>
+                            <?php endforeach ?>
+                        </select>
+
+                        <?php echo $this->__("Multiplier:"); ?>
+                        <input type="number" style="width: 4em;" placeholder="0.00"  name="map[<?php echo $_entityType ?>][multiplier][]" min="0" step="0.01" title="Multiplier"
+                               pattern="^\d+(?:\.\d{1,2})?$" value="<?php echo $this->getValue('map_attributes_data/'.$_entityType.'/multiplier/'.$_i, '') ?>">
+
+<!--                        --><?php //echo $this->__("PHP Function:") ?>
+<!--                        <textarea rows="9" cols="40" name="map[--><?php //echo $_entityType ?><!--][function][]"></textarea>-->
+
+                        <?php echo $this->getRemoveMapButtonHtml(); ?>
+                    </span>
+                </div>
+                <div id="map_container_<?php echo $_entityType; ?>">
+
+                    <?php foreach ($this->getMappings($_entityType) as $_i=>$_dbField): ?>
+                        <span class="field-row">
+                            <?php echo $this->__("In File:"); ?>
+                            <select name="map[<?php echo $_entityType ?>][file][]">
+                                <?php foreach ($this->getFileAttributes($_entityType) as $_value=>$_label): ?>
+                                    <option value="<?php echo $_value ?>" <?php echo $this->getSelected('map_attributes_data/'.$_entityType.'/file/'.$_i, $_value) ?>><?php echo $_label ?></option>
+                                <?php endforeach ?>
+                            </select>
+
+                            <?php echo $this->__("In Database:"); ?>
+                            <select name="map[<?php echo $_entityType ?>][db][]">
+                                <?php foreach ($this->getDbAttributes($_entityType) as $_value=>$_label): ?>
+                                    <option value="<?php echo $_value ?>" <?php echo $this->getSelected('map_attributes_data/'.$_entityType.'/db/'.$_i, $_value) ?>><?php echo $_label ?></option>
+                                <?php endforeach ?>
+                            </select>
+
+                            <?php echo $this->__("Transformation:"); ?>
+                            <select name="map[<?php echo $_entityType ?>][transform][]">
+                                <?php foreach ($this->getCustomTransformation($_entityType) as $_value=>$_label): ?>
+                                    <option value="<?php echo $_value ?>" <?php echo $this->getSelected('map_attributes_data/'.$_entityType.'/transform/'.$_i, $_value) ?>><?php echo $_label ?></option>
+                                <?php endforeach ?>
+                            </select>
+
+                            <?php echo $this->__("Multiplier:"); ?>
+                            <input type="number" style="width: 4em;" placeholder="0.00"  name="map[<?php echo $_entityType ?>][multiplier][]" min="0" step="0.01" title="Multiplier"
+                                   pattern="^\d+(?:\.\d{1,2})?$" value="<?php echo $this->getValue('map_attributes_data/'.$_entityType.'/multiplier/'.$_i, '') ?>">
+
+<!--                            --><?php //echo $this->__("PHP Function:"); ?>
+<!--                            <textarea rows="9" cols="40" name="map[--><?php //echo $_entityType ?><!--][function][]">--><?php //echo $this->getValue('map_attributes_data/'.$_entityType.'/function/'.$_i, '') ?><!--</textarea>-->
+
+                            <?php echo $this->getRemoveMapButtonHtml() ?>
+                        </span>
+                    <?php endforeach ?>
+                </div>
+            </div>
+            <?php $_i++; ?>
+        <?php endforeach; ?>
+        <?php echo $this->getAddMapButtonHtml() ?>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+    function addFieldMapping()
+    {
+        var entityType = $('profile_entity_type').value;
+        Element.insert($('map_container_'+entityType), {bottom: $('map_template_'+entityType).innerHTML});
+    }
+
+    function removeFieldMapping(button)
+    {
+        Element.remove(button.parentNode);
+    }
+
+    function setMapFileField(select)
+    {
+        select.parentNode.getElementsByTagName('input')[0].value = select.value;
+    }
+
+</script>

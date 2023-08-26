@@ -1,0 +1,40 @@
+<?php
+/**
+ * @see Mage_Checkout_Block_Agreements
+ */
+$agreements = $this->getAgreements();
+?>
+
+<form action="" id="checkout-agreements" onsubmit="return false;">
+    <?php echo $this->getChildHtml('order_comment') ?>
+
+    <?php if (count($agreements)): ?>
+        <ol class="checkout-agreements">
+            <?php foreach ($agreements as $_a): ?>
+                <li>
+                    <div class="modal agreement-content" id="agreement-content" <?php echo ($_a->getContentHeight() ? ' style="height:' . $_a->getContentHeight() . '"' : '')?>>
+                        <?php if ($_a->getIsHtml()): ?>
+                            <?php echo $_a->getContent() ?>
+                        <?php else: ?>
+                            <?php echo nl2br($this->escapeHtml($_a->getContent())) ?>
+                        <?php endif; ?>
+                    </div>
+                    <p class="agree">
+                        <input type="checkbox" id="agreement-<?php echo $_a->getId()?>" name="agreement[<?php echo $_a->getId()?>]" value="1" title="<?php echo $this->escapeHtml($_a->getCheckboxText()) ?>" class="checkbox" /><label for="agreement-<?php echo $_a->getId()?>"><?php echo $_a->getIsHtml() ? $_a->getCheckboxText() : $this->escapeHtml($_a->getCheckboxText()) ?></label>
+                        <a href="#" ><?php echo $this->__('[Show]') ?></a>
+                    </p>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    <?php endif; ?>
+</form>
+<script>
+    (function($) {
+        $('.checkout-agreements .agree > a').magnificPopup({
+            items: {
+                src: '#agreement-content',
+                type: 'inline'
+            }
+        });
+    })(jQuery);
+</script>

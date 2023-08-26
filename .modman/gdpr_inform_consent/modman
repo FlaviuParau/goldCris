@@ -1,0 +1,13 @@
+src/app/code/local/Blugento/GdprInformConsent													app/code/local/Blugento/GdprInformConsent
+
+src/app/etc/modules/Blugento_GdprInformConsent.xml												app/etc/modules/Blugento_GdprInformConsent.xml
+
+src/app/design/frontend/blugento/default/template/gdprinformconsent                             app/design/frontend/blugento/default/template/gdprinformconsent
+src/app/design/frontend/blugento/default/layout/gdprinformconsent.xml                           app/design/frontend/blugento/default/layout/gdprinformconsent.xml
+
+src/app/locale/ro_RO/Blugento_GdprInformConsent.csv                                             app/locale/ro_RO/Blugento_GdprInformConsent.csv
+src/app/locale/de_DE/Blugento_GdprInformConsent.csv                                             app/locale/de_DE/Blugento_GdprInformConsent.csv
+src/app/locale/es_ES/Blugento_GdprInformConsent.csv                                             app/locale/es_ES/Blugento_GdprInformConsent.csv
+src/app/locale/fr_FR/Blugento_GdprInformConsent.csv                                             app/locale/fr_FR/Blugento_GdprInformConsent.csv
+src/app/locale/hu_HU/Blugento_GdprInformConsent.csv                                             app/locale/hu_HU/Blugento_GdprInformConsent.csv
+src/app/locale/pl_PL/Blugento_GdprInformConsent.csv                                             app/locale/pl_PL/Blugento_GdprInformConsent.csv

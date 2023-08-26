@@ -1,0 +1,38 @@
+Cart Settings,Ustawienia koszyka
+Blugento Cart Settings,Zento ustawienia koszyka
+Enable Cart Settings,W??cz ustawienia koszyka 
+Hide Add to cart button for all products,Ukry przycisk dodaj do koszyka dla wszystkich produkt�w
+Display custom Add to cart button for out of stock products,Wy?wietl niestandardowy przycisk dodaj do koszyka dla produkt�w z brakiem asortymentu
+Custom button text,Tekst dla niestandardowego przycisku
+Custom inquiry page,Niestandardowa strona zapytania
+Send Emails to,Wy?lij email do
+Enable Logs,W??cz dzienniki
+Display custom Add to Cart button,Wyświetl niestandardowy przycisk Dodaj do koszyka
+Date for reservations,Data rezerwacji
+Number of people,Liczba os�b
+Number of hours,Liczba godzin
+County,Kraj
+Address,Adres
+City,Miasto
+Locality,WojewÛdztwo
+Purchase Type,Typ zakupu
+Personal Purchase,Zakup prywatny 
+Company Purchase,Zakup firmowy
+Company Name,Nazwa firmy
+Company Registration Number,REGON
+VAT Number,NIP
+Headquarter,Siedziba
+Custom inquiry success page,Niestandardowa strona powodzenia zapytania
+Affiliation code for GA Script,Kod afiliacyjny dla skryptu GA
+Used only if GA Ecommerce Tracking is enabled,"U?ywany tylko wtedy, gdy w??czone jest ?ledzenie e-commerce GA"
+"Will be displayed on thank you page. Use placeholders for variables: {{productSKU}}, {{productName}}, {{productPrice}}, {{name}}, {{email}}, {{telephone}}, {{address}}, {{county}}, {{locality}}, {{company}}, {{regNr}}, {{vat}}, {{headquarter}}","Zostanie wy?wietlone na stronie podzi?kowania. U?yj nawiasÛw dla zmiennych: {{productSKU}}, {{productName}}, {{productPrice}}, {{name}}, {{email}}, {{telephone}}, {{address}}, {{county}}, {{locality}}, {{company}}, {{regNr}}, {{vat}}, {{headquarter}}"
+This option allow to display shipping price in cart.,Ta opcja zezwala na wy?wietlanieceny wysy?ki w koszyku
+Shipping Method,Metoda wysy?ki
+Choose the shipping method for which will display the price in cart.,"Wybierz metod? wysy?ki, dla ktÛrej wy?wietli si? cena w koszyku."
+Shipping Price on Cart Page,Cena wysy?ki na stronie koszyka
+Hide price if custom Add to Cart Module Enabled,"Ukryj cenę, jeśli widoczny jest niestandardowy moduł Dodaj do koszyka"
+Redirect to product page,Przekieruj na stron? produktu
+Custom button text for category/widget,Tekst przycisku niestandardowego dla kategorii / wid?etu
+Available Attributes,Dost?pne atrybuty
+"Display custom text for out of stock products","Wyświetlaj niestandardowy tekst dla produktów niedostępnych w magazynie"
+"Display custom Add to cart button","Wyświetl niestandardowy przycisk Dodaj do koszyka"

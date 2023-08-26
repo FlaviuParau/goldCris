@@ -1,0 +1,12 @@
+src/app/code/local/Blugento/Googleshopping                                    app/code/local/Blugento/Googleshopping
+
+src/app/design/adminhtml/default/default/layout/blugento_googleshopping.xml       app/design/adminhtml/default/default/layout/blugento_googleshopping.xml
+src/app/design/adminhtml/default/default/template/blugento/googleshopping         app/design/adminhtml/default/default/template/blugento/googleshopping
+
+src/app/etc/modules/Blugento_Googleshopping.xml                                   app/etc/modules/Blugento_Googleshopping.xml
+
+src/app/locale/en_US/Blugento_Googleshopping.csv                                  app/locale/en_US/Blugento_Googleshopping.csv
+
+src/shell/googleshopping.php                                                        shell/googleshopping.php
+
+src/skin/adminhtml/default/default/blugento/googleshopping                        skin/adminhtml/default/default/blugento/googleshopping

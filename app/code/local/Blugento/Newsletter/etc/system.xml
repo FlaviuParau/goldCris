@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <newsletter translate="label" module="newsletter">
+            <label>Newsletter</label>
+            <tab>customer</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>110</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <subscription translate="label">
+                    <label>Subscription Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <add_checkbox translate="label">
+                            <label>Add consent checkbox</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_checkbox>
+                        <checkbox_label translate="label">
+                            <label>Insert checkbox label</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><add_checkbox>1</add_checkbox></depends>
+                            <validate>required-entry</validate>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checkbox_label>
+                        <checkbox_validation translate="label">
+                            <label>Insert checkbox validation</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><add_checkbox>1</add_checkbox></depends>
+                            <validate>required-entry</validate>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </checkbox_validation>
+                        <add_second_checkbox translate="label">
+                            <label>Add second consent checkbox</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_second_checkbox>
+                        <second_checkbox_label translate="label">
+                            <label>Insert checkbox label</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><add_second_checkbox>1</add_second_checkbox></depends>
+                            <validate>required-entry</validate>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </second_checkbox_label>
+                        <second_checkbox_validation translate="label">
+                            <label>Insert checkbox validation</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><add_second_checkbox>1</add_second_checkbox></depends>
+                            <validate>required-entry</validate>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </second_checkbox_validation>
+                    </fields>
+                </subscription>
+            </groups>
+        </newsletter>
+    </sections>
+</config>

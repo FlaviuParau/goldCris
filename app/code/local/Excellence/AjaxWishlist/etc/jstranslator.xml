@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<jstranslator>
+    <product_added translate="message" module="Excellence_AjaxWishlist">
+       <message>Added</message>
+   </product_added>
+    <products_maximum translate="message">
+       <message>Unfortunately you are not allowed to add more than 4 products on the comparison list.</message>
+   </products_maximum>
+</jstranslator>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Blugento_Newsletterprotection>
+            <version>1.0.0</version>
+        </Blugento_Newsletterprotection>
+    </modules>
+    <global>
+        <models>
+            <newsletterprotection>
+                <class>Blugento_Newsletterprotection_Model</class>
+            </newsletterprotection>
+        </models>
+        <helpers>
+            <generic>
+                <class>Blugento_Newsletterprotection_Helper</class>
+            </generic>
+        </helpers>
+    </global>
+    <frontend>
+
+
+        <routers>
+            <newsletter_submit>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_Newsletterprotection</module>
+                    <frontName>new</frontName>
+                </args>
+            </newsletter_submit>
+            <newsletter>
+                <args>
+                    <modules>
+                        <Blugento_NewsletterCaptcha before="Mage_Newsletter_SubscriberController">Blugento_Newsletterprotection</Blugento_NewsletterCaptcha>
+                    </modules>
+                </args>
+            </newsletter>
+        </routers>
+
+
+    </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <Blugento_Newsletterprotection module="Blugento_Newsletterprotection">
+
+                    <file>blugento_captcha.xml</file>
+                </Blugento_Newsletterprotection>
+            </updates>
+        </layout>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <newsletterprotection>
+                                            <title>Newsletter captcha</title>
+                                        </newsletterprotection>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <crontab>
+        <jobs>
+            <newsletter_send_all>
+                <schedule><cron_expr></cron_expr></schedule>
+            </newsletter_send_all>
+        </jobs>
+    </crontab>
+</config>

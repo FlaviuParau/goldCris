@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<adminhtml>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <blugento_categoryseconddescription>
+                                        <title>Category Second Description</title>
+                                    </blugento_categoryseconddescription>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</adminhtml>

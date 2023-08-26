@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <remove name="paypal.partner.cart_sidebar.shortcut" />
+        <remove name="paypal.partner.top_cart.shortcut" />
+    </default>
+
+    <catalog_product_view>
+        <remove name="paypal.partner.right.logo" />
+        <remove name="product.info.addtocart.paypal.wrapper" />
+    </catalog_product_view>
+
+    <catalog_category_default>
+        <remove name="paypal.partner.right.logo" />
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <remove name="paypal.partner.right.logo" />
+    </catalog_category_layered>
+
+    <checkout_cart_index>
+        <remove name="checkout.cart.methods.paypal_express.top" />
+        <remove name="checkout.cart.methods.paypal_express.bottom" />
+    </checkout_cart_index>
+
+    <cms_index_index>
+        <remove name="paypal.partner.right.logo" />
+    </cms_index_index>
+
+</layout>

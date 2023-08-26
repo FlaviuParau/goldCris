@@ -1,0 +1,65 @@
+//  ----------------------------------------------------------------------------
+//  Filename:       mixin/responsive.scss
+//  Version:        1.0
+//  Description:    -
+//  ----------------------------------------------------------------------------
+
+@mixin landscape {
+    @media (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin phone-s {
+    @media (max-width: $screen-xxs-max) {
+        @content;
+    }
+}
+
+@mixin phone-m {
+    @media (min-width: $screen-xs) and (max-width: $screen-xs-max) {
+        @content;
+    }
+}
+
+@mixin phone-sm {
+    @media (max-width: $screen-xs-max) {
+        @content;
+    }
+}
+
+@mixin phone-l {
+    @media (min-width: $screen-s) and (max-width: $screen-s-max) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media (max-width: $screen-s-max) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $screen-sm) and (max-width: $screen-sm-max) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $screen-sm-max) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $screen-md) {
+        @content;
+    }
+}
+
+@mixin desktop-s {
+    @media (max-width: $screen-lg-max) {
+        @content;
+    }
+}

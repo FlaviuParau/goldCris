@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <AW_Giftwrap>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <AW_Lib />
+            </depends>
+        </AW_Giftwrap>
+    </modules>
+</config>

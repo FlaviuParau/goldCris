@@ -1,0 +1,241 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_list.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.list {
+    @include cf;
+}
+
+.list--horizontal {
+    .list__item {
+        float: left;
+        display: inline;
+
+        &:first-child {
+            margin-left: 0 !important;
+        }
+    }
+}
+
+.list--social {
+    clear: both;
+    margin-top: -5px;
+    margin-right: -5px;
+
+    @include mobile {
+        display: inline-block;
+        text-align: center;
+    }
+
+    .list__item {
+        margin-top: 5px;
+        margin-right: 5px;
+
+        @include phone-s {
+            float: none;
+            display: inline-block;
+        }
+    }
+
+    a {
+        display: block;
+        width: 32px;
+        height: 32px;
+        overflow: hidden;
+        text-indent: 100%;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    .list__item--facebook a {
+        background-image: $list--social__item--facebook__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--facebook__link--hover_background-image;
+        }
+    }
+
+    .list__item--flickr a {
+        background-image: $list--social__item--flickr__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--flickr__link--hover_background-image;
+        }
+    }
+
+    .list__item--google a {
+        background-image: $list--social__item--google__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--google__link--hover_background-image;
+        }
+    }
+
+    .list__item--instagram a {
+        background-image: $list--social__item--instagram__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--instagram__link--hover_background-image;
+        }
+    }
+
+    .list__item--linkedin a {
+        background-image: $list--social__item--linkedin__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--linkedin__link--hover_background-image;
+        }
+    }
+
+    .list__item--pinterest a {
+        background-image: $list--social__item--pinterest__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--pinterest__link--hover_background-image;
+        }
+    }
+
+    .list__item--twitter a {
+        background-image: $list--social__item--twitter__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--twitter__link--hover_background-image;
+        }
+    }
+
+    .list__item--tiktok a {
+        background-image: $list--social__item--tiktok__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--tiktok__link--hover_background-image;
+        }
+    }
+
+    .list__item--youtube a {
+        background-image: $list--social__item--youtube__link_background-image;
+
+        &:hover {
+            background-image: $list--social__item--youtube__link--hover_background-image;
+        }
+    }
+}
+
+.list--links {
+    a {
+        display: inline-block;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+}
+
+.list--dividers {
+    .list__item {
+        &:before {
+            content: '/';
+            float: left;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        &:first-child:before {
+            display: none;
+        }
+    }
+}
+
+.list--address {
+    @include cf;
+
+    margin: -1% 0 0 -2%;
+
+    > li {
+        cursor: pointer;
+        float: left;
+        width: 31.33333%;
+        margin: 2% 0 0 2%;
+        padding: 30px;
+        border: 3px solid color('c');
+
+        @include mobile {
+            width: 48%;
+            padding: 10px;
+        }
+
+        &.active {
+            border-color: color('e');
+        }
+
+        &.new-address-btn {
+            position: relative;
+            padding: 20px;
+            box-sizing: border-box;
+
+            > span {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin: -20px 0 0 -20px;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+
+                &:after {
+                    content: '+';
+                    font-size: 45px;
+                    line-height: 40px;
+                    text-align: center;
+                    width: 30px;
+                }
+            }
+        }
+    }
+}
+
+.whatsapp-share-wrapper {
+    .whatsapp-share-btn {
+        position: relative;
+        display: inline-block;
+        height: 50px;
+        background-color: $product-view__whatsapp_background_color;
+        border: 1px solid $product-view__whatsapp_background_color;
+        padding: 8px 16px 8px 34px;
+        cursor: pointer;
+
+        &::before {
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 6px;
+            transform: translate(0, -50%);
+            width: 24px;
+            height: 24px;
+            background: $image--whatsapp_social_share center center no-repeat;
+            background-size: 24px 24px;
+        }
+
+        .whatsapp-share-text {
+            display: block;
+            font-family: $product-view__whatsapp_button_font-family;
+            font-weight: $product-view__whatsapp_button_font-weight;
+            font-size: $product-view__whatsapp_button_font-size;
+            line-height: $product-view__whatsapp_button_line-height;
+            font-style: $product-view__whatsapp_button_font-style;
+            text-transform: $product-view__whatsapp_button_text-transform;
+            color: $product-view__whatsapp_text_color;
+        }
+
+        &:hover {
+            background: $product-view__whatsapp_hover_background_color;
+            border-color: $product-view__whatsapp_hover_background_color;
+            text-decoration: none;
+
+            .whatsapp-share-text {
+                color: $product-view__whatsapp_hover_text_color;
+            }
+        }
+    }
+}

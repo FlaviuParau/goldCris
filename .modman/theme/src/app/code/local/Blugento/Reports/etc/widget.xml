@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<widgets>
+	<recently_viewed type="blugento_reports/product_widget_viewed" translate="name description" module="blugento_reports">
+		<name>Recently Viewed Products</name>
+		<description>List of Products Recently Viewed by Visitor</description>
+		<parameters>
+			<page_size translate="label">
+				<required>1</required>
+				<visible>1</visible>
+				<value>5</value>
+				<label>Number of Products to display</label>
+				<type>text</type>
+			</page_size>
+			<show_price translate="label">
+				<visible>1</visible>
+				<label>Show Products Price</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_price>
+			<show_add_to_cart translate="label">
+				<visible>1</visible>
+				<label>Show Add to Cart</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_cart>
+			<show_add_to_wishlist translate="label">
+				<visible>1</visible>
+				<label>Show Add to Wishlist</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_wishlist>
+			<show_add_to_compare translate="label">
+				<visible>1</visible>
+				<label>Show Add to Compare</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_compare>
+			<show_short_description translate="label">
+				<visible>1</visible>
+				<label>Show Short Description</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_description</source_model>
+				<required>0</required>
+			</show_short_description>
+			<display_type translate="label">
+				<visible>1</visible>
+				<label>Slider</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>blugento_reports/system_config_source_display</source_model>
+				<required>0</required>
+			</display_type>
+			<slider_animation translate="label">
+				<visible>1</visible>
+				<label>Slider Animation Speed</label>
+				<type>select</type>
+				<source_model>blugento_reports/system_config_source_slider_animation</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+				<value>500</value>
+			</slider_animation>
+			<slider_item_row translate="label">
+				<visible>1</visible>
+				<label>Slides to Show</label>
+				<type>select</type>
+				<source_model>blugento_reports/system_config_source_slider_item_row</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+			</slider_item_row>
+			<mobile_max_items translate="label comment">
+				<visible>1</visible>
+				<label>Number of Products to Display on mobile</label>
+				<type>select</type>
+				<source_model>blugento_reports/system_config_source_slider_mobile_item_row</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+			</mobile_max_items>
+			<slider_item_scroll translate="label">
+				<visible>1</visible>
+				<label>Slides to Scroll</label>
+				<type>select</type>
+				<source_model>blugento_reports/system_config_source_slider_item_scroll</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+			</slider_item_scroll>
+			<slider_item_loop translate="label">
+				<visible>1</visible>
+				<label>Loop Option</label>
+				<type>select</type>
+				<source_model>blugento_reports/system_config_source_slider_item_loop</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+			</slider_item_loop>
+			<slider_item_autoplay translate="label">
+				<visible>1</visible>
+				<label>Slider Autoplay</label>
+				<type>select</type>
+				<source_model>blugento_reports/system_config_source_slider_item_autoplay</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+			</slider_item_autoplay>
+			<slider_item_cssease translate="label">
+				<visible>1</visible>
+				<label>Slider CssEase</label>
+				<type>select</type>
+				<source_model>blugento_reports/system_config_source_slider_item_cssease</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<slider_item_autoplay>1</slider_item_autoplay>
+				</depends>
+			</slider_item_cssease>
+			<template>
+				<required>1</required>
+				<visible>1</visible>
+				<label>Template</label>
+				<type>select</type>
+				<value>reports/product/widget/viewed_grid.phtml</value>
+				<values>
+					<default translate="label">
+						<value>reports/widget/viewed/content/viewed_grid.phtml</value>
+						<label>Viewed Products Grid Template</label>
+					</default>
+					<list translate="label">
+						<value>reports/widget/viewed/content/viewed_list.phtml</value>
+						<label>Viewed Products List Template</label>
+					</list>
+				</values>
+			</template>
+		</parameters>
+	</recently_viewed>
+</widgets>

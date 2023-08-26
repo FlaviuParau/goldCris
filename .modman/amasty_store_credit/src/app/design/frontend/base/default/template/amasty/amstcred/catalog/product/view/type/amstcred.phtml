@@ -1,0 +1,170 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /* @var $this Amasty_StoreCredit_Block_Catalog_Product_View_Type_StoreCredit */?>
+<?php /* @var $_helper Amasty_StoreCredit_Helper_Data */?>
+<?php /* @var $_helperCore Mage_Core_Helper_Data */?>
+<?php $_helper = Mage::helper('amstcred');?>
+<?php $_helperCore = Mage::helper('core');?>
+<?php $_currencyShortName = Mage::app()->getLocale()->currency(Mage::app()->getStore()->getCurrentCurrencyCode())->getShortName();?>
+<?php $_product = $this->getProduct(); ?>
+
+<script>
+	Element.prototype.triggerEvent = function(eventName)
+	{
+		if (document.createEvent)
+		{
+			var evt = document.createEvent('HTMLEvents');
+			evt.initEvent(eventName, true, true);
+
+			return this.dispatchEvent(evt);
+		}
+
+		if (this.fireEvent)
+			return this.fireEvent('on' + eventName);
+	}
+</script>
+<div class="am-storecredit-form">
+
+	<?php if ($this->displayProductStockStatus()): ?>
+		<?php if ($_product->isAvailable()): ?>
+			<p class="availability in-stock"><?php echo $this->helper('catalog')->__('Availability:') ?> <span><?php echo $this->helper('catalog')->__('In stock') ?></span></p>
+		<?php else: ?>
+			<p class="availability out-of-stock"><?php echo $this->helper('catalog')->__('Availability:') ?> <span><?php echo $this->helper('catalog')->__('Out of stock') ?></span></p>
+		<?php endif; ?>
+	<?php endif; ?>
+
+	<?php echo $this->getChildHtml('product_type_data_extra') ?>
+
+
+	<?php if ($_product->isSaleable() && $this->isConfigured($_product)): ?>
+		<?php if($this->isMultiAmount()): ?>
+			<script>
+				function changeAmount(event)
+				{
+					var value = event.element().value;
+					if(value == "custom" || value == "") {
+						return;
+					}
+					var productPriceElem = $('min-product-price-<?php echo $_product->getId(); ?>');
+					var productPriceElemClone = $('min-product-price-<?php echo $_product->getId(); ?>_clone');
+					var percentPrice = <?php echo $this->getPricePercent();?>;
+					var value = parseFloat(parseAmount(value)) * percentPrice / 100;
+					if(productPriceElem) {
+						productPriceElem.innerHTML = optionsPrice.formatPrice(value);
+					}
+
+					if(productPriceElemClone) {
+						productPriceElemClone.innerHTML = optionsPrice.formatPrice(value);
+					}
+
+
+				}
+
+				function parseAmount(value) {
+					value = value.replace('\'', '').replace(' ', '').replace(/,/g, '.');
+					countDots = (value.split('.').length - 1);
+					for(var i= 1; i<countDots; i++) {
+						value.replace('.', '');
+					}
+
+					return parseFloat(value);
+				}
+			</script>
+
+			<div class="fieldset">
+				<ul class="form-list">
+					<li>
+						<label class="required" for="amstcred_amount"><?php echo $_helper->__('Store Credit Value in %s', $_currencyShortName); ?></label>
+
+						<?php if($this->isPredefinedAmount()): ?>
+							<div class="input-box">
+								<select id="amstcred_amount" name="amstcred_amount" class="required-entry">
+									<option value=""><?php echo $_helper->__('Choose an Amount...'); ?></option>
+									<?php foreach($this->getListAmounts() as $_amount):?>
+										<option value="<?php echo $_amount;?>"<?php if($this->getDefaultValue('amstcred_amount') == $_amount) echo " selected";?>><?php echo $_helperCore->currency($_amount, true, false);?></option>
+									<?php endforeach; ?>
+									<?php if($_product->getAmstcredAllowOpenAmount()): ?>
+										<option value="custom"><?php echo $_helper->__('Custom Amount'); ?></option>
+									<?php endif; ?>
+								</select>
+							</div>
+							<script>
+								$('amstcred_amount').observe('change', changeAmount);
+								document.observe("dom:loaded", function(){
+									$('amstcred_amount').triggerEvent('change');
+								});
+							</script>
+
+						<?php if($_product->getAmstcredAllowOpenAmount()): ?>
+							<script>
+								$('amstcred_amount').observe('change', function(event){
+									var elem = event.element();
+									if(elem.value == "custom") {
+										$('amstcred_amount_custom_block').show();
+									} else {
+										$('amstcred_amount_custom_block').hide();
+									}
+								});
+							</script>
+						<?php endif; ?>
+						<?php endif; ?>
+
+						<?php if($_product->getAmstcredAllowOpenAmount()): ?>
+							<div class="input-box" id="amstcred_amount_custom_block" style="display: <?php if($this->isPredefinedAmount()): ?>none<?php endif;?>">
+								<span class="v-fix">
+									<input id="amstcred_amount_custom" name="amstcred_amount_custom" class="validate-number required-entry input-text amstcred-min-amount amstcred-max-amount" value="<?php echo $this->getDefaultValue('amstcred_amount_custom');?>" type="text">
+								</span>
+								<?php if($_product->getAmstcredOpenAmountMin() || $_product->getAmstcredOpenAmountMax()): ?>
+									<p class="notice">
+										<?php $_min = $_helperCore->currency($_product->getAmstcredOpenAmountMin(), true, false); ?>
+										<?php $_max = $_helperCore->currency($_product->getAmstcredOpenAmountMax(), true, false); ?>
+										<?php if($_product->getAmstcredOpenAmountMin()): ?>
+											<span><?php echo $_helper->__('Minimum: %s', $_min); ?></span>
+										<?php endif; ?>
+
+										<?php if($_product->getAmstcredOpenAmountMax()): ?>
+											<span><?php echo $_helper->__('Maximum: %s', $_max); ?></span>
+										<?php endif; ?>
+									</p>
+
+									<script type="text/javascript">
+										minAllowedAmount = <?php echo $_helperCore->currency($_product->getAmstcredOpenAmountMin(), false, false) ?>;
+										maxAllowedAmount = <?php echo $_helperCore->currency($_product->getAmstcredOpenAmountMax(), false, false) ?>;
+										Validation.add(
+											'amstcred-min-amount',
+											'<?php echo $_helper->__('Entered amount is too low'); ?>',
+											function(v) {
+												return (parseAmount(v) >= minAllowedAmount);
+											}
+										);
+										Validation.add(
+											'amstcred-max-amount',
+											'<?php echo $_helper->__('Entered amount is too high'); ?>',
+											function(v) {
+												if (maxAllowedAmount == 0) {
+													return true;
+												}
+												return (parseAmount(v) <= maxAllowedAmount);
+											}
+										);
+
+										$('amstcred_amount_custom').observe('change', changeAmount);
+										$('amstcred_amount_custom').triggerEvent('change');
+									</script>
+								<?php endif; ?>
+							</div>
+						<?php endif; ?>
+					</li>
+				</ul>
+			</div>
+
+
+		<?php endif; ?>
+
+	<?php endif;?>
+</div>

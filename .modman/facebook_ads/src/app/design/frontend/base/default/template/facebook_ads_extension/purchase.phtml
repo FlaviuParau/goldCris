@@ -1,0 +1,59 @@
+<?php
+$analyticsCategoryId = Mage::getStoreConfig('Facebook_AdsExtension/analytics/category');
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+foreach ($categories as $category) {
+    if ($category['value'] == $analyticsCategoryId) {
+        $analyticsCategory = strtolower($category['label']);
+    }
+}
+$analyticsCategory = str_replace('analytics', 'statistics', $analyticsCategory);
+?>
+<?php if ($this->getFacebookPixelID()) { ?>
+ <script>
+ (function($) {
+      $(document).ready(function() {
+          function facebookPurchase() {
+              fbq('track', 'Purchase', {
+                  source: 'magento',
+                  version: "<?php echo $this->getMagentoVersion() ?>",
+                  pluginVersion: "<?php echo $this->getPluginVersion() ?>",
+                  content_type: "<?php echo $this->getContentType() ?>",
+                  content_ids: [<?php echo $this->getContentIDs() ?>]
+                  <?php if ($this->getValue() && $this->getCurrency()) { ?>
+                    , value: "<?php echo $this->getValue() ?>"
+                  <?php } ?>
+                  <?php if ($this->getValue() && $this->getCurrency()) { ?>
+                    , currency: "<?php echo $this->getCurrency() ?>"
+                  <?php } ?>
+              },
+              <?php if ($eventId = $this->getEventId('purchase')): ?>
+              {
+                  eventID: '<?php echo $eventId ?>'
+              }
+              <?php endif; ?>
+              );
+          }
+
+          if (!$('body').hasClass('gdpr-enabled') || '<?php echo $analyticsCategoryId ?>' == '1' || '<?php echo Mage::getSingleton('core/cookie')->get($analyticsCategory) ?>' == 'yes') {
+              facebookPurchase();
+          } else {
+              // Accept only selected cookies
+              $('#accept-selected-cookies').on('click', function(e) {
+                if ($('#<?php echo $analyticsCategory ?>').is(':checked') || $('#<?php echo $analyticsCategory ?>').is('[readonly]')) {
+                    facebookPurchase();
+                }
+              });
+
+              // Accept all cookies
+              $('#accept-all-cookies').on('click', function(e) {
+                  facebookPurchase();
+              });
+
+              if ('<?php echo $analyticsCategory ?>' == 'necessary') {
+                  facebookPurchase();
+              }
+          }
+      });
+  })(jQuery);
+ </script>
+<?php } ?>

@@ -1,0 +1,27 @@
+@import '../../grunt';
+@import '../../../../blugento/scss/variable';
+@import '../../config';
+
+.star {
+    cursor: pointer;
+    display: block;
+    float: left;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    background-repeat: no-repeat;
+}
+
+.tmp_es,
+.star {
+    background-image: url("../../../images/icon--star--a1.svg");
+}
+
+.tmp_fs,
+.fullStar {
+    background-image: url("../../../images/icon--star--a2.svg");
+}
+
+.stars {
+    overflow: hidden;
+}

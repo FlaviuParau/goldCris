@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   SMS
+ * @package    SMSLink_SMSGateway
+ */
+ -->
+<config>
+  <modules>
+    <SMSLink_SMSGateway>
+      <active>true</active>
+      <codePool>local</codePool>
+    </SMSLink_SMSGateway>
+  </modules>
+</config>

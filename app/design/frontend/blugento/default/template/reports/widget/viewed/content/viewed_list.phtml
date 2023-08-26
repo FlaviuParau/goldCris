@@ -1,0 +1,118 @@
+<?php
+/**
+ *  Recently Viewed Products List View
+ */
+?>
+
+<?php
+$_productListAddToLinksStatus = (int) ($this->getLayout()->getBlock('root')->getProductListAddToLinksStatus() ?: 1);
+$_productListImageWidth = $this->getLayout()->getBlock('root')->getProductListImageWidth() ?: 180;
+$_imgLazyLoad = (int) ($this->getLayout()->getBlock('root')->getImageLazyLoad() ?: 2);
+?>
+
+<?php
+$_productCollection = $this->getRecentlyViewedProducts();
+$_outputHelper = $this->helper('catalog/output');
+$_imageHelper = $this->helper('catalog/image');
+
+$rightNow = time();
+$_products = array();
+
+foreach ($_productCollection as $_product) {
+    $_products[$_product->getId()] = array(
+        'id'                => $_product->getId(),
+        'sku'               => $_product->getSku(),
+        'url'               => $_product->getProductUrl(),
+        'image'             => (string) (($_productListImageWidth == 180) ? $_imageHelper->init($_product, 'small_image')->keepFrame(true)->resize(180) : $_imageHelper->init($_product, 'small_image')->keepFrame(true)->resize(560)),
+        'image@2x'          => (string) (($_productListImageWidth == 180) ? $_imageHelper->init($_product, 'small_image')->keepFrame(true)->resize(360) : $_imageHelper->init($_product, 'small_image')->keepFrame(true)->resize(1120)),
+        'image_alt'         => $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true),
+        'name'              => $_outputHelper->productAttribute($_product, $_product->getName() , 'name'),
+        'name_after'        => '',
+        'name_stripped'     => $this->stripTags($_product->getName(), null, true),
+        'manufacturer'      => $_product->getAttributeText('manufacturer'),
+        'short_description' => $_outputHelper->productAttribute($_product, $_product->getShortDescription(), 'short_description'),
+        'price'             => trim($this->getPriceHtml($_product, true, '-widget-viewed-list')),
+        'is_saleable'       => $_product->isSaleable(),
+        'add_to_cart'       => $this->getAddToCartUrl($_product),
+        'whishlist_url'     => ($this->helper('wishlist')->isAllow()) ? $this->helper('wishlist')->getAddUrl($_product) : '',
+        'compare_url'       => $this->getAddToCompareUrl($_product),
+        'has_add_to_links'  => ($_productListAddToLinksStatus == 1),
+        'reviews'           => ($_product->getRatingSummary()) ? $this->getReviewsSummaryHtml($_product, 'short') : '',
+        'is_new'            => ($_product->getNewsFromDate() || $_product->getNewsToDate()) &&
+            (
+                $rightNow >= strtotime($_product->getNewsFromDate()) && $rightNow <= strtotime($_product->getNewsToDate()) ||
+                $rightNow >= strtotime($_product->getNewsFromDate()) && is_null($_product->getNewsToDate()) ||
+                $rightNow <= strtotime($_product->getNewsToDate()) && is_null($_product->getNewsFromDate())
+            ),
+        'is_sale'           => $_product->getSpecialPrice() &&
+            (
+                $rightNow >= strtotime($_product->getSpecialFromDate()) && $rightNow <= strtotime($_product->getSpecialToDate()) ||
+                $rightNow >= strtotime($_product->getSpecialFromDate()) && is_null($_product->getSpecialToDate()) ||
+                $rightNow <= strtotime($_product->getSpecialToDate()) && is_null($_product->getSpecialFromDate())
+            )
+    );
+    $_products[$_product->getId()]['has_labels'] = $_products[$_product->getId()]['is_new'] || $_products[$_product->getId()]['is_sale'];
+}
+?>
+<?php if ($_productCollection->count()): ?>
+    <div class="widget-new">
+        <h2 class="subtitle"><?php echo $this->__('Recently Viewed Products') ?></h2>
+        <ul class="products-list">
+            <?php foreach ($_products as $_p): ?>
+                <li class="item">
+                    <div class="item-inner">
+                        <a href="<?php echo $_p['url'] ?>" title="<?php echo $_p['image_alt'] ?>" class="product-image">
+                            <img
+                                src="<?php echo $_p['image'] ?>"
+                                srcset="<?php echo $_p['image'] . ' 1x, ' . $_p['image@2x'] . ' 2x'; ?>"
+                                alt="<?php echo $_p['image_alt'] ?>"
+                                <?php if ($_productListImageWidth == 180): ?> width="180" height="180" <?php endif; ?>
+                                id="product-collection-image-<?php echo $_p['id'] ?>"
+                                <?php echo $_imgLazyLoad == 1 ? 'loading="lazy"' : '' ?>
+                            />
+                        </a>
+                        <div class="product-box">
+                            <div class="product-headings">
+                                <?php if ($_p['manufacturer']): ?>
+                                    <h3 class="product-manufacturer"><?php echo $_p['manufacturer'] ?></h3>
+                                <?php endif; ?>
+                                <h2 class="product-name">
+                                    <a href="<?php echo $_p['url'] ?>" title="<?php echo $_p['name_stripped'] ?>"><?php echo $_p['name'] ?></a>
+                                </h2>
+                            </div>
+                            <div class="product-price">
+                                <?php echo $_p['price'] ?>
+                            </div>
+                            <div class="desc std">
+                                <?php echo $_p['short_description'] ?>
+                            </div>
+                            <div class="product-actions">
+                                <a href="<?php echo $_p['url'] ?>" title="<?php echo $this->__('View Details') ?>" class="button"><?php echo $this->__('View Details') ?></a>
+                                <?php if ($_p['has_add_to_links']): ?>
+                                    <ul class="add-to-links">
+                                        <?php if ($_p['whishlist_url']): ?>
+                                            <li><a href="<?php echo $_p['whishlist_url'] ?>" class="link-wishlist"><?php echo $this->__('Wishlist') ?></a></li>
+                                        <?php endif; ?>
+                                        <?php if ($_p['compare_url']): ?>
+                                            <li><a href="<?php echo $_p['compare_url'] ?>" class="link-compare"><?php echo $this->__('Compare') ?></a></li>
+                                        <?php endif; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php if ($_p['has_labels']): ?>
+                            <div class="product-badges">
+                                <?php if ($_p['is_new']): ?>
+                                    <div class="badge badge--new"><?php echo $this->__('New!') ?></div>
+                                <?php endif; ?>
+                                <?php if ($_p['is_sale']): ?>
+                                    <div class="badge badge--sale"><?php echo $this->__('Sale!') ?></div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

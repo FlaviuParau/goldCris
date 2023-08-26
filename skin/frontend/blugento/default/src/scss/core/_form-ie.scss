@@ -1,0 +1,15 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       core/_form-ie.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@if (support(ie, 6) or support(ie, 7)) {
+    .lt-ie8 {
+        input,
+        textarea,
+        select {
+            behavior: url('/boxsizing.htc');
+        }
+    }
+}

@@ -1,0 +1,39 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /** @var $this Amasty_StoreCredit_Block_Customer_Balance */ ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $balance = $this->getCustomerBalance();?>
+<h2><?php echo $this->__('Balance'); ?></h2>
+
+<div>
+	<?php echo $this->__('Your current balance is: %s', '<strong>' . Mage::helper('core')->currency($balance->getAmount()) . '</strong>');?>
+</div>
+<div>
+	<form id="amstcred-subscribe-form" action="<?php echo $this->getUrl('amstcred/customer/subscribe') ?>" method="post">
+		<input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>">
+
+		<div class="fieldset">
+
+			<ul class="form-list2">
+				<li>
+					<input type="checkbox" name="amstcred_subscribe" id="amstcred_subscribe" value="1" <?php if($balance->getSubscribeUpdates()) echo 'checked';?>> <label for="amstcred_subscribe"><?php echo $this->__('Subscribe to balance updates');?></label>
+					<button class="button" onclick="AmStoreCreditSubscribeForm.submit()" type="button" value="<?php echo $this->__('Save') ?>"><span><span><?php echo $this->__('Save') ?></span></span></button>
+				</li>
+			</ul>
+
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		//<![CDATA[
+		var AmStoreCreditSubscribeForm= new VarienForm('amstcred-subscribe-form');
+		//]]>
+	</script>
+</div>
+<br>
+

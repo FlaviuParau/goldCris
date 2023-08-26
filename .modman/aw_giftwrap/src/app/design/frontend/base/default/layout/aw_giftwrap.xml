@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<layout>
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="alert.urls">
+            <block type="aw_giftwrap/catalog_product_label" name="awgiftwrap.product.info.label"
+                    template="aw_giftwrap/catalog/product/label.phtml"/>
+        </reference>
+    </catalog_product_view>
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/checkout_onepage_shippingmethod_form" name="awgiftwrap.onepagecheckout.shippingmethod.form"
+                   template="aw_giftwrap/checkout/onepage/shipping_method/form.phtml" after="-"/>
+        </reference>
+    </checkout_onepage_index>
+    <aw_onestepcheckout_index_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="aw_onestepcheckout.onestep.form.shippingmethod.extra">
+            <block type="aw_giftwrap/checkout_onepage_shippingmethod_form" name="awgiftwrap.onestepcheckout.shippingmethod.form"
+                   template="aw_giftwrap/checkout/onestep/shipping_method/form.phtml" after="-"/>
+        </reference>
+    </aw_onestepcheckout_index_index>
+
+    <!-- Customer account updates START -->
+    <sales_order_view>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" before="sales.order.view" template="aw_giftwrap/sales/order/info/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="order_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_order_view>
+    <sales_order_print>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/print/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="order_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_order_print>
+    <sales_guest_view>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" before="sales.order.view" template="aw_giftwrap/sales/order/info/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="order_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_guest_view>
+    <sales_guest_print>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/print/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="order_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_guest_print>
+    <sales_email_order_items>
+        <reference name="order_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_email_order_items>
+    <sales_order_invoice>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" before="sales.order.invoice" template="aw_giftwrap/sales/order/info/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" template="aw_giftwrap/sales/order/totals/giftwrap.phtml"/>
+        </reference>
+    </sales_order_invoice>
+    <sales_order_printinvoice>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/print/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_order_printinvoice>
+    <sales_guest_invoice>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" before="sales.order.invoice" template="aw_giftwrap/sales/order/info/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_guest_invoice>
+    <sales_guest_printinvoice>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/print/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_guest_printinvoice>
+    <sales_email_order_invoice_items>
+        <reference name="invoice_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_email_order_invoice_items>
+    <sales_order_shipment>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" before="sales.order.shipment" template="aw_giftwrap/sales/order/info/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+    </sales_order_shipment>
+    <sales_order_printshipment>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/print/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+    </sales_order_printshipment>
+    <sales_guest_shipment>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" before="sales.order.shipment" template="aw_giftwrap/sales/order/info/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+    </sales_guest_shipment>
+    <sales_guest_printshipment>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/print/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+    </sales_guest_printshipment>
+    <sales_order_creditmemo>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" before="sales.order.creditmemo" template="aw_giftwrap/sales/order/info/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_order_creditmemo>
+    <sales_order_printcreditmemo>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/print/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_order_printcreditmemo>
+    <sales_guest_creditmemo>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" before="sales.order.creditmemo" template="aw_giftwrap/sales/order/info/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_guest_creditmemo>
+    <sales_guest_printcreditmemo>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/print/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_guest_printcreditmemo>
+    <sales_email_order_creditmemo_items>
+        <reference name="creditmemo_totals">
+            <block type="aw_giftwrap/sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" />
+        </reference>
+    </sales_email_order_creditmemo_items>
+    <aw_giftwrap_section_sales_email_items>
+        <reference name="content">
+            <block type="aw_giftwrap/sales_order_info_details" name="aw.gw.sales.order.info.details" template="aw_giftwrap/sales/order/email/details.phtml">
+                <block type="aw_giftwrap/sales_order_info_details_giftwrap" name="aw.gw.order.review.details.giftwrap" template="aw_giftwrap/sales/order/info/details/giftwrap.phtml" />
+            </block>
+        </reference>
+    </aw_giftwrap_section_sales_email_items>
+    <!-- Customer account updates END -->
+</layout>

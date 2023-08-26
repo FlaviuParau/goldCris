@@ -1,0 +1,81 @@
+src/app/code/local/Magento/Corefixes                                                app/code/local/Magento/Corefixes
+src/app/etc/modules/Magento_Corefixes.xml                                           app/etc/modules/Magento_Corefixes.xml
+
+src/app/code/local/Mage/Core/Controller/Varien/Action.php                           app/code/local/Mage/Core/Controller/Varien/Action.php
+src/app/code/local/Mage/Core/Model/File/Validator/Image.php                         app/code/local/Mage/Core/Model/File/Validator/Image.php
+src/app/code/local/Mage/Core/Model/Url/Rewrite/Request.php                          app/code/local/Mage/Core/Model/Url/Rewrite/Request.php
+src/app/code/local/Mage/Core/Model/Email/Template/Abstract.php                      app/code/local/Mage/Core/Model/Email/Template/Abstract.php
+src/app/code/local/Mage/Core/Model/Session/Abstract/Varien.php                      app/code/local/Mage/Core/Model/Session/Abstract/Varien.php
+
+src/app/code/local/Mage/Reports                                                     app/code/local/Mage/Reports
+
+src/app/code/local/Varien/Image/Adapter/Gd2.php                                     app/code/local/Varien/Image/Adapter/Gd2.php
+
+src/app/code/local/Blugento/Fixdiacritics                                           app/code/local/Blugento/Fixdiacritics
+src/app/etc/modules/Blugento_Fixdiacritics.xml                                      app/etc/modules/Blugento_Fixdiacritics.xml
+src/app/locale/ro_RO/Blugento_Fixdiacritics.csv                                     app/locale/ro_RO/Blugento_Fixdiacritics.csv
+
+src/app/code/local/Blugento/ConfigurableSwatches                                    app/code/local/Blugento/ConfigurableSwatches
+src/app/etc/modules/Blugento_ConfigurableSwatches.xml                               app/etc/modules/Blugento_ConfigurableSwatches.xml
+
+src/app/code/local/Blugento/ExtendAdminhtml                                         app/code/local/Blugento/ExtendAdminhtml
+src/app/etc/modules/Blugento_ExtendAdminhtml.xml                                    app/etc/modules/Blugento_ExtendAdminhtml.xml
+
+src/app/code/local/Blugento/CookieNotice                                            app/code/local/Blugento/CookieNotice
+src/app/etc/modules/Blugento_CookieNotice.xml                                       app/etc/modules/Blugento_CookieNotice.xml
+
+src/app/code/local/Blugento/RewriteCaptcha                                          app/code/local/Blugento/RewriteCaptcha
+src/app/etc/modules/Blugento_RewriteCaptcha.xml                                     app/etc/modules/Blugento_RewriteCaptcha.xml
+
+src/app/code/local/Mage/Sales/Model/Quote/Address/Total/Subtotal.php                app/code/local/Mage/Sales/Model/Quote/Address/Total/Subtotal.php
+src/app/code/local/Mage/Sales/Model/Quote/Address.php				    app/code/local/Mage/Sales/Model/Quote/Address.php
+
+src/app/code/local/Mage/Checkout                                                    app/code/local/Mage/Checkout
+
+src/app/code/local/Blugento/Fixerio                                                 app/code/local/Blugento/Fixerio
+src/app/etc/modules/Blugento_Fixerio.xml                                            app/etc/modules/Blugento_Fixerio.xml
+
+src/app/code/local/Mage/ConfigurableSwatches                                        app/code/local/Mage/ConfigurableSwatches
+
+src/app/code/local/Mage/Sales/Model/Resource/Order.php                              app/code/local/Mage/Sales/Model/Resource/Order.php
+
+src/app/code/local/Blugento/Customer                                                app/code/local/Blugento/Customer
+src/app/etc/modules/Blugento_Customer.xml                                           app/etc/modules/Blugento_Customer.xml
+
+src/app/code/local/Blugento/Adminhtml                                               app/code/local/Blugento/Adminhtml
+src/app/etc/modules/Blugento_Adminhtml.xml                                          app/etc/modules/Blugento_Adminhtml.xml
+
+src/app/code/local/Mage/Adminhtml/Block/Customer/Group/Edit.php                     app/code/local/Mage/Adminhtml/Block/Customer/Group/Edit.php
+src/app/code/local/Mage/Adminhtml/Model/Config/Data.php				    app/code/local/Mage/Adminhtml/Model/Config/Data.php
+
+src/app/code/local/Mage/Catalog/Model/Product/Type/Configurable.php                 app/code/local/Mage/Catalog/Model/Product/Type/Configurable.php
+src/app/code/local/Mage/Sales/Model/Recurring/Profile.php	                        app/code/local/Mage/Sales/Model/Recurring/Profile.php
+
+src/app/code/local/Mage/Log/Model/Visitor.php                                       app/code/local/Mage/Log/Model/Visitor.php
+
+src/app/code/local/Mage/CatalogRule/Model/Rule.php                                  app/code/local/Mage/CatalogRule/Model/Rule.php
+src/app/code/local/Mage/CatalogRule/Model/Action/Index/Refresh.php                  app/code/local/Mage/CatalogRule/Model/Action/Index/Refresh.php
+
+src/app/code/local/Blugento/Wishlist                                                app/code/local/Blugento/Wishlist
+src/app/etc/modules/Blugento_Wishlist.xml                                           app/etc/modules/Blugento_Wishlist.xml
+
+src/app/code/local/Mage/Core/Helper/UnserializeArray.php                            app/code/local/Mage/Core/Helper/UnserializeArray.php
+
+src/app/code/local/Mage/Core/Model/Design/Package.php                               app/code/local/Mage/Core/Model/Design/Package.php
+
+src/app/etc/modules/Blugento_CatalogFix.xml					    app/etc/modules/Blugento_CatalogFix.xml
+src/app/code/local/Blugento/CatalogFix						    app/code/local/Blugento/CatalogFix
+
+src/app/code/local/Mage/Downloadable/Block/Adminhtml/Catalog/Product/Edit/Tab/Downloadable/Links.php            app/code/local/Mage/Downloadable/Block/Adminhtml/Catalog/Product/Edit/Tab/Downloadable/Links.php
+src/app/code/local/Mage/Downloadable/Block/Adminhtml/Catalog/Product/Edit/Tab/Downloadable/Samples.php          app/code/local/Mage/Downloadable/Block/Adminhtml/Catalog/Product/Edit/Tab/Downloadable/Samples.php
+
+src/app/code/local/Mage/Shipping/Model/Carrier/Freeshipping.php				app/code/local/Mage/Shipping/Model/Carrier/Freeshipping.php
+
+src/app/code/local/Mage/Page                                        app/code/local/Mage/Page
+
+src/app/code/local/Mage/Core/Model/Cookie.php			app/code/local/Mage/Core/Model/Cookie.php
+
+src/app/code/local/Mage/Customer/Helper/Data.php                         app/code/local/Mage/Customer/Helper/Data.php
+
+src/app/code/local/Mage/Core/Controller/Varien/Front.php                app/code/local/Mage/Core/Controller/Varien/Front.php
+

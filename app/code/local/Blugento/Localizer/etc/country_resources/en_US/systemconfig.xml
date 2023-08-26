@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Blugento
+ * @package     Blugento_Localizer
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <default>
+        <localizer>
+            <system_config>
+                <default>
+                    <customer__create_account__confirm>0</customer__create_account__confirm>
+                    <newsletter__subscription__confirm>1</newsletter__subscription__confirm>
+                    <catalog__price__display_block_below_price>0</catalog__price__display_block_below_price>
+                    <catalog__price__cms_page_shipping><![CDATA[shipping]]></catalog__price__cms_page_shipping>
+                    <catalog__price__including_shipping_costs>0</catalog__price__including_shipping_costs>
+                    <!--<general__region__state_required>CA,US</general__region__state_required>-->
+                    <sales__reorder__allow>0</sales__reorder__allow>
+                    <design__footer__copyright><![CDATA[&copy; {{year}} {{shop_name}}.]]></design__footer__copyright>
+
+                    <!-- First Day -->
+                    <general__locale__firstday>1</general__locale__firstday>
+
+                    <!-- Checkout agreements -->
+                    <checkout__options__enable_agreements>1</checkout__options__enable_agreements>
+
+                    <!-- Hide middlename -->
+                    <customer__address__middlename_show>0</customer__address__middlename_show>
+
+                    <!-- Carriers -->
+                    <carriers__ups__active>0</carriers__ups__active>
+                    <carriers__usps__active>0</carriers__usps__active>
+                    <carriers__fedex__active>0</carriers__fedex__active>
+                    <carriers__dhl__active>0</carriers__dhl__active>
+                    <carriers__dhlint__active>0</carriers__dhlint__active>
+
+                    <!-- Contact page -->
+                    <contacts__content__cms_page>contact</contacts__content__cms_page>
+                    <contacts__content__template>blugento</contacts__content__template>
+
+                    <!-- Payment methods -->
+                    <payment__free__active>0</payment__free__active>
+
+                    <!-- Catalog SEO -->
+                    <catalog_seo__product__use_categories>0</catalog_seo__product__use_categories>
+
+                    <!-- Catalog Search -->
+                    <catalog__search__search_type>3</catalog__search__search_type>
+                </default>
+            </system_config>
+        </localizer>
+    </default>
+</config>

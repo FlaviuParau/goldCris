@@ -1,0 +1,92 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_checkout-cart.scss
+    Version:        1.0
+    Description:    Cart Layout: General styles
+    ------------------------------------------------------------------------- */
+
+@import 'checkout-cart3';
+@import 'checkout-cart2';
+@import 'checkout-cart1';
+
+.block-crossale {
+    clear: both;
+}
+
+#shopping-cart-table .invitation-box {
+    margin: 0;
+
+    .invitation-template {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 300px;
+        height: 200px;
+        padding: 10px;
+        border: 1px solid $color--primary;
+        background-color: $color--secondary;
+    }
+
+    &:hover {
+        .invitation-template {
+            display: block;
+        }
+
+        @include mobile {
+            .invitation-template {
+                display: none;
+                left: -40px;
+            }
+        }
+    }
+}
+
+.cart-empty {
+    text-align: center;
+    
+    @include desktop {
+        margin-bottom: 60px;
+    }
+    
+    .page-title {
+        h1 {
+            color: $empty_cart-title-color;
+            font-style: $empty_cart-title-font-style;
+            font-weight: $empty_cart-title-font-weight;
+            font-size: $empty_cart-title-font-size;
+            line-height: $empty_cart-title-font-size * 1.4;
+            font-family: $empty_cart-title-font-family;
+            text-transform: $empty_cart-title_text-transform;
+            margin-bottom: 20px;
+        }
+    }
+    
+    a.empty-cart-button {
+        display: inline-block;
+        cursor: pointer;
+        padding: 10px 35px;
+        border: none;
+        font-weight: $empty_cart-button-font-weight;
+        font-size: $empty_cart-button-font-size;
+        line-height: $empty_cart-button-font-size * 1.2;
+        font-family: $empty_cart-button-font-family;
+        text-transform: $empty_cart-button_text-transform;
+        font-style: $empty_cart-button-font-style;
+        background-color: $empty_cart-button-background-color;
+        color: $empty_cart-button-color;
+        
+        &:hover {
+            background-color: $empty_cart-button-hover-background-color;
+            color: $empty_cart-button-hover-color;
+            text-decoration: none;
+        }
+    }
+}
+
+@if ($layout--cart_view_proceed_to_checkout_mobile == 1) {
+    @include mobile {
+        body.checkout-cart-index {
+            padding-bottom: 50px;
+        }
+    }
+}

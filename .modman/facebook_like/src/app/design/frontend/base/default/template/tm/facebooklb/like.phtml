@@ -1,0 +1,9 @@
+<?php
+    $product = Mage::registry('current_product');
+    $buttonHtml = Mage::helper('facebooklb')
+        ->renderLikeButton($product->getProductUrl(), 'productlike');
+?>
+<?php if ($buttonHtml) : ?>
+    <div id="fb-root" data-locale="<?php echo Mage::getStoreConfig('blugento_socialmedia/like_general/lang')?>"></div>
+    <?php echo $buttonHtml;?>
+<?php endif; ?>

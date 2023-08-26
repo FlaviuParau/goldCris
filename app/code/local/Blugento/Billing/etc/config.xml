@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Billing Attributes
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Billing
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <modules>
+        <Blugento_Billing>
+            <version>1.0.5</version>
+        </Blugento_Billing>
+    </modules>
+
+    <global>
+        <!-- sql -->
+        <resources>
+            <blugento_billing_setup>
+                <setup>
+                    <module>Blugento_Billing</module>
+                    <class>Mage_Customer_Model_Resource_Setup</class>
+                </setup>
+            </blugento_billing_setup>
+        </resources>
+
+        <blocks>
+            <blugento_billing>
+                <class>Blugento_Billing_Block</class>
+            </blugento_billing>
+            <checkout>
+                <rewrite>
+                    <onepage_billing>Blugento_Billing_Block_Onepage_Billing</onepage_billing>
+                </rewrite>
+            </checkout>
+        </blocks>
+
+        <helpers>
+            <blugento_billing>
+                <class>Blugento_Billing_Helper</class>
+            </blugento_billing>
+        </helpers>
+
+        <models>
+            <blugento_billing>
+                <class>Blugento_Billing_Model</class>
+            </blugento_billing>
+
+            <adminhtml>
+                <rewrite>
+                    <sales_order_create>Blugento_Billing_Model_Adminhtml_Sales_Order_Create</sales_order_create>
+                </rewrite>
+            </adminhtml>
+        </models>
+
+        <fieldsets>
+            <sales_convert_quote_address>
+                <blugento_purchase_type>
+                    <to_order_address>*</to_order_address>
+                    <to_customer_address>*</to_customer_address>
+                </blugento_purchase_type>
+                <blugento_customer_cnp>
+                    <to_order_address>*</to_order_address>
+                    <to_customer_address>*</to_customer_address>
+                </blugento_customer_cnp>
+                <blugento_customer_reg_no>
+                    <to_order_address>*</to_order_address>
+                    <to_customer_address>*</to_customer_address>
+                </blugento_customer_reg_no>
+                <blugento_customer_iban>
+                    <to_order_address>*</to_order_address>
+                    <to_customer_address>*</to_customer_address>
+                </blugento_customer_iban>
+                <blugento_customer_bank>
+                    <to_order_address>*</to_order_address>
+                    <to_customer_address>*</to_customer_address>
+                </blugento_customer_bank>
+            </sales_convert_quote_address>
+            <customer_address>
+                <blugento_purchase_type>
+                    <to_quote_address>*</to_quote_address>
+                </blugento_purchase_type>
+                <blugento_customer_cnp>
+                    <to_quote_address>*</to_quote_address>
+                </blugento_customer_cnp>
+                <blugento_customer_reg_no>
+                    <to_quote_address>*</to_quote_address>
+                </blugento_customer_reg_no>
+                <blugento_customer_iban>
+                    <to_quote_address>*</to_quote_address>
+                </blugento_customer_iban>
+                <blugento_customer_bank>
+                    <to_quote_address>*</to_quote_address>
+                </blugento_customer_bank>
+            </customer_address>
+        </fieldsets>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_Billing after="Mage_Adminhtml">Blugento_Billing</Blugento_Billing>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_billing>
+                    <file>blugento_billing.xml</file>
+                </blugento_billing>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_billing>
+                    <files>
+                        <default>Blugento_Billing.csv</default>
+                    </files>
+                </blugento_billing>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_billing>
+                    <file>blugento_billing.xml</file>
+                </blugento_billing>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_billing>
+                    <files>
+                        <default>Blugento_Billing.csv</default>
+                    </files>
+                </blugento_billing>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_billing>
+            <global_config>
+                <individual_form>1</individual_form>
+                <legal_entity_form>1</legal_entity_form>
+            </global_config>
+            <fields_config>
+                <firstname>2</firstname>
+                <postal_code>1</postal_code>
+                <country>1</country>
+                <phone>2</phone>
+                <fax>0</fax>
+                <company>1</company>
+                <blugento_customer_reg_no>2</blugento_customer_reg_no>
+                <vat_id>2</vat_id>
+                <blugento_customer_iban>1</blugento_customer_iban>
+                <blugento_customer_headquarter>1</blugento_customer_headquarter>
+                <blugento_customer_bank>1</blugento_customer_bank>
+                <blugento_customer_cnp>0</blugento_customer_cnp>
+                <street_address>2</street_address>
+                <phone_max_length>14</phone_max_length>
+                <validate_name>0</validate_name>
+            </fields_config>
+        </blugento_billing>
+    </default>
+</config>

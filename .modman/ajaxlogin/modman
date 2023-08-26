@@ -1,0 +1,9 @@
+src/app/code/community/AjaxLogin                                           app/code/community/AjaxLogin
+src/app/design/frontend/base/default/layout/ajaxlogin.xml                  app/design/frontend/base/default/layout/ajaxlogin.xml
+src/app/design/frontend/base/default/template/ajaxlogin                    app/design/frontend/base/default/template/ajaxlogin
+src/app/etc/modules/blugentologin.xml                                      app/etc/modules/blugentologin.xml
+src/app/locale/en_US/blugentologin.csv                                     app/locale/en_US/blugentologin.csv
+src/app/locale/ro_RO/blugentologin.csv                                     app/locale/ro_RO/blugentologin.csv
+src/skin/frontend/base/default/css/ajaxlogin                               skin/frontend/base/default/css/ajaxlogin
+src/skin/frontend/base/default/images/ajaxlogin                            skin/frontend/base/default/images/ajaxlogin
+src/skin/frontend/base/default/js/ajaxlogin                                skin/frontend/base/default/js/ajaxlogin

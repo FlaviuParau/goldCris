@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_Compare>
+            <version>1.0.0</version>
+        </Blugento_Compare>
+    </modules>
+
+    <global>
+        <blocks>
+            <catalog>
+                <rewrite>
+                    <product_compare_list>Blugento_Compare_Block_Product_Compare_List</product_compare_list>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <helpers>
+            <blugento_compare>
+                <class>Blugento_Compare_Helper</class>
+            </blugento_compare>
+            <catalog>
+                <rewrite>
+                    <product_compare>Blugento_Compare_Helper_Product_Compare</product_compare>
+                </rewrite>
+            </catalog>
+        </helpers>
+        <models>
+            <blugento_compare>
+                <class>Blugento_Compare_Model</class>
+            </blugento_compare>
+        </models>
+    </global>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <blugento_compare>
+                    <files>
+                        <default>Blugento_Compare.csv</default>
+                    </files>
+                </blugento_compare>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <frontend>
+        <routers>
+            <catalog>
+                <args>
+                    <modules>
+                        <compare before="Mage_Catalog">Blugento_Compare</compare>
+                    </modules>
+                </args>
+            </catalog>
+        </routers>
+        <events>
+            <catalog_product_compare_add_product>
+                <observers>
+                    <blugento_compare>
+                        <type>singleton</type>
+                        <class>Blugento_Compare_Model_Observer</class>
+                        <method>limitProductCompare</method>
+                    </blugento_compare>
+                </observers>
+            </catalog_product_compare_add_product>
+        </events>
+    </frontend>
+
+    <default>
+        <blugento_compare>
+            <settings>
+                <enabled>1</enabled>
+                <max_number>4</max_number>
+                <message>Unfortunately you are not allowed to add more than {{max_number}} products on the comparison list.</message>
+            </settings>
+        </blugento_compare>
+    </default>
+</config>

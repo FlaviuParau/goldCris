@@ -1,0 +1,52 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       primecheckout.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import 'grunt';
+
+@import '../../blugento/scss/variable';
+@import '../../blugento/scss/variable-image';
+@import '../../blugento/scss/variable-layout';
+
+@import 'function/browser';
+
+@import 'config';
+
+@import 'mixin/font';
+@import 'mixin/grid';
+@import 'mixin/icon';
+@import 'mixin/responsive';
+@import 'mixin/util';
+
+//  ----------------------------------------------------------------------------
+
+.checkout-prime-index .opc {
+    .form-list {
+        margin-top: 0;
+    }
+
+    h3,
+    h4 {
+        margin-bottom: 20px;
+    }
+
+    .discount-form {
+        h5 {
+            font-size: 13px;
+            color: color('r');
+        }
+    }
+
+    .order-discount-coupon,
+    .order-comment {
+        margin-top: 25px;
+    }
+
+    .order-comment {
+        li {
+            margin-bottom: 0;
+        }
+    }
+}

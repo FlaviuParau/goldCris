@@ -1,0 +1,5 @@
+<?php if ($this->getReviewsCount()): ?>
+    <a href="<?php echo $this->getReviewsUrl() ?>#review-form" class="button"><?php echo $this->__('Add Your Review') ?></a>
+<?php elseif ($this->getDisplayIfEmpty()): ?>
+    <p class="no-rating"><a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Write a Review') ?></a></p>
+<?php endif; ?>

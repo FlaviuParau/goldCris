@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<jstranslator>
+	<validate-telephone-number translate="message" module="blugento_billing">
+		<message>Please enter a valid phone number. For example +40741234567</message>
+	</validate-telephone-number>
+	<validate-vat translate="message" module="blugento_billing">
+		<message>Please enter a valid VAT.</message>
+	</validate-vat>
+</jstranslator>

@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<widgets>
+    <blugento_new_products type="blugento_newproducts/product_widget_new" translate="name description" module="catalog">
+        <name>Blugento New Products</name>
+        <description>List of Products that are set as New</description>
+        <is_email_compatible>1</is_email_compatible>
+        <parameters>
+            <display_type translate="label description">
+                <required>1</required>
+                <visible>1</visible>
+                <label>Display Type</label>
+                <type>select</type>
+                <value>all_products</value>
+                <values>
+                    <default translate="label">
+                        <value>all_products</value>
+                        <label>All products</label>
+                    </default>
+                    <item translate="label">
+                        <value>new_products</value>
+                        <label>New products</label>
+                    </item>
+                </values>
+                <description>All products - recently added products, New products - products marked as new</description>
+            </display_type>
+            <products_count translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <value>10</value>
+                <label>Number of Products to Display</label>
+                <type>text</type>
+            </products_count>
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+                <type>select</type>
+                <value>catalog/product/widget/new/content/new_grid.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>catalog/product/widget/new/content/new_grid.phtml</value>
+                        <label>New Products Grid Template</label>
+                    </default>
+                    <list translate="label">
+                        <value>catalog/product/widget/new/content/new_list.phtml</value>
+                        <label>New Products List Template</label>
+                    </list>
+                </values>
+            </template>
+            <product_slider translate="label">
+                <visible>1</visible>
+                <label>Slider</label>
+                <type>select</type>
+                <values>
+                    <o1 translate="label">
+                        <value>0</value>
+                        <label>No</label>
+                    </o1>
+                    <o2 translate="label">
+                        <value>1</value>
+                        <label>Yes</label>
+                    </o2>
+                </values>
+            </product_slider>
+            <slider_animation translate="label">
+                <visible>1</visible>
+                <label>Slider Animation Speed</label>
+                <type>select</type>
+                <values>
+                    <o1 translate="label">
+                        <value>500</value>
+                        <label>500 ms</label>
+                    </o1>
+                    <o2 translate="label">
+                        <value>400</value>
+                        <label>400 ms</label>
+                    </o2>
+                    <o3 translate="label">
+                        <sort_order>1</sort_order>
+                        <value>300</value>
+                        <label>300 ms</label>
+                    </o3>
+                    <o4 translate="label">
+                        <value>200</value>
+                        <label>200 ms</label>
+                    </o4>
+                    <o5 translate="label">
+                        <value>100</value>
+                        <label>100 ms</label>
+                    </o5>
+                </values>
+                <depends>
+                    <product_slider>1</product_slider>
+                </depends>
+            </slider_animation>
+            <slider_item_row translate="label">
+                <visible>1</visible>
+                <label>Slides to Show</label>
+                <type>select</type>
+                <values>
+                    <o1 translate="label">
+                        <value>6</value>
+                        <label>6 Items</label>
+                    </o1>
+                    <o2 translate="label">
+                        <value>5</value>
+                        <label>5 Items</label>
+                    </o2>
+                    <o3 translate="label">
+                        <value>4</value>
+                        <label>4 Items</label>
+                    </o3>
+                    <o4 translate="label">
+                        <value>3</value>
+                        <label>3 Items</label>
+                    </o4>
+                    <o5 translate="label">
+                        <value>2</value>
+                        <label>2 Items</label>
+                    </o5>
+                    <o6 translate="label">
+                        <value>1</value>
+                        <label>1 Item</label>
+                    </o6>
+                </values>
+                <depends>
+                    <product_slider>1</product_slider>
+                </depends>
+            </slider_item_row>
+            <slider_item_scroll translate="label">
+                <visible>1</visible>
+                <label>Slides to Scroll</label>
+                <type>select</type>
+                <values>
+                    <o1 translate="label">
+                        <value>1</value>
+                        <label>1 Item</label>
+                    </o1>
+                    <o2 translate="label">
+                        <value>2</value>
+                        <label>2 Items</label>
+                    </o2>
+                    <o3 translate="label">
+                        <value>3</value>
+                        <label>3 Items</label>
+                    </o3>
+                </values>
+                <depends>
+                    <product_slider>1</product_slider>
+                </depends>
+            </slider_item_scroll>
+            <cache_lifetime translate="label description">
+                <label>Cache Lifetime (Seconds)</label>
+                <description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+                <visible>1</visible>
+                <type>text</type>
+            </cache_lifetime>
+        </parameters>
+    </blugento_new_products>
+</widgets>

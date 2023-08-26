@@ -1,0 +1,91 @@
+<?php
+$analyticsCategoryId = Mage::getStoreConfig('cadence_fbpixel/analytics/category');
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+foreach ($categories as $category) {
+    if ($category['value'] == $analyticsCategoryId) {
+        $analyticsCategory = strtolower($category['label']);
+    }
+}
+$analyticsCategory = str_replace('analytics', 'statistics', $analyticsCategory);
+?>
+<?php
+/** @var Cadence_Fbpixel_Helper_Data $helper */
+$helper = Mage::helper("cadence_fbpixel");
+if (!$helper->isConversionPixelEnabled()) {
+    return;
+}
+$id = $helper->getVisitorPixelId();
+?>
+<?php
+$order_id = Mage::getSingleton('checkout/session')->getLastOrderId();
+if (!$order_id || intval($order_id) < 1) {
+    //Failsafe for bad order id
+    return;
+}
+/** @var Mage_Sales_Model_Order $order */
+$order = Mage::getModel('sales/order')->load($order_id);
+$grand_total = round($order->getGrandTotal(), 2);
+$currency_code = Mage::app()->getStore()->getCurrentCurrencyCode();
+$orderIds = $helper->getOrderIDs();
+$numItems = $helper->getOrderItemsCount();
+$userExternalId = Mage::getSingleton('core/session')->getFbExternalId();
+?>
+<!-- Facebook Conversion Code for Conversions -->
+<script>
+    (function($) {
+        $(document).ready(function() {
+            function facebookPixelPurchase() {
+                fbq('track', 'Purchase', {
+                    value: <?php echo $grand_total ?>,
+                    currency: '<?php echo $currency_code ?>',
+                    content_ids: <?php echo $orderIds ?>,
+                    content_type: 'product',
+                    num_items: <?php echo $numItems; ?>,
+                    external_id: '<?php echo $userExternalId; ?>',
+                }
+                <?php if ($eventId = $helper->getEventId('Purchase')): ?>
+                ,{
+                    'eventID': '<?php echo $eventId ?>'
+                }
+                <?php endif; ?>
+                );
+            };
+
+            <?php if (Mage::getStoreConfig('cadence_fbpixel/visitor/debug')): ?>
+                <?php
+                $data = [
+                    'name' => 'Purchase',
+                    'value' => $grand_total,
+                    'currency' => $currency_code,
+                    'content_ids' => $orderIds,
+                    'content_type' => 'product',
+                    'num_items' => $numItems,
+                    'event_id' => $eventId,
+                    'external_id' => $userExternalId,
+                ];
+                ?>
+                <?php Mage::log($data, null, 'fb_pixel_debug.log') ?>
+            <?php endif; ?>
+
+            if (!$('body').hasClass('gdpr-enabled') || '<?php echo $analyticsCategoryId ?>' == '1' || '<?php echo Mage::getSingleton('core/cookie')->get($analyticsCategory) ?>' == 'yes') {
+                facebookPixelPurchase();
+            } else {
+                // Accept only selected cookies
+                $('#accept-selected-cookies').on('click', function(e) {
+                    if ($('#<?php echo $analyticsCategory ?>').is(':checked') || $('#<?php echo $analyticsCategory ?>').is('[readonly]')) {
+                        facebookPixelPurchase();
+                    }
+                });
+
+                // Accept all cookies
+                $('#accept-all-cookies').on('click', function(e) {
+                    facebookPixelPurchase();
+                });
+
+                if ('<?php echo $analyticsCategory ?>' == 'necessary') {
+                    facebookPixelPurchase();
+                }
+            }
+        });
+    })(jQuery);
+</script>

@@ -1,0 +1,20 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       function/_browser.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@function support($browser, $min-version) {
+    // Check against declared minimums.
+    $min-required-version: map-get($browsers-min-versions, $browser);
+
+    // Ensure $min-version and $min-required-version are strings (or null).
+    @if not (type-of($min-required-version) == 'null' or type-of($min-required-version) == 'number') {
+        @warn "map-get($browsers-min-versions, #{$browser}) must be set to a number (or null); #{$min-required-version} is a #{type-of($min-required-version)}.";
+    }
+    @if not (type-of($min-version) == 'number') {
+        @warn "The $min-version parameter of support() must be a number; #{$min-version} is a #{type-of($min-version)}.";
+    }
+
+    @return ($min-required-version and ($min-version >= $min-required-version));
+}

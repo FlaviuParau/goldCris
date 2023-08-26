@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Blugento_CatalogInventory>
+			<version>1.0.0</version>
+		</Blugento_CatalogInventory>
+	</modules>
+	<global>
+		<models>
+			<blugento_cataloginventory>
+				<class>Blugento_CatalogInventory_Model</class>
+			</blugento_cataloginventory>
+		</models>
+		<events>
+			<sales_order_creditmemo_save_after>
+				<observers>
+					<blugento_inventory>
+						<class>blugento_cataloginventory/observer</class>
+						<method>refundOrderInventory</method>
+					</blugento_inventory>
+				</observers>
+			</sales_order_creditmemo_save_after>
+		</events>
+	</global>
+</config>

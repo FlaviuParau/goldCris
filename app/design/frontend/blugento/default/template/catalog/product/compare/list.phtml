@@ -1,0 +1,192 @@
+<?php
+/* @var $this Mage_Catalog_Block_Product_Compare_List */
+$helperTheme = $this->helper('blugento_theme');
+
+$_productImageBackgroundColor = $helperTheme->getVariable('product-compare__item__product-image_background-color', 'scss', '#fff');
+if (!preg_match('/^#[a-f0-9]{6}$/i', $_productImageBackgroundColor)) {
+    $_productImageBackgroundColor = '#fff';
+}
+$_productImageBackgroundColorToHex = $helperTheme->hex2rgb($_productImageBackgroundColor);
+
+$max_cols = 4;
+$items    = $this->getItems();
+$_total   = $items->count();
+
+$_imageHelper = $this->helper('catalog/image');
+?>
+<div class="page-title title-buttons">
+    <h1><?php echo $this->__('Compare Products') ?></h1>
+    <a href="#" onclick="window.print(); return false;" class="link-print"><?php echo $this->__('Print This Page') ?></a>
+</div>
+<div class="table-comp-inner">
+    <?php if ($_total): ?>
+        <table class="compare-table" id="product_comparison">
+            <?php
+            $_i = 0;
+            foreach ($items as $_item):
+                if ($_i++ >= $max_cols) {
+                    break;
+                }
+            endforeach;
+            ?>
+            <colgroup>
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+                <col style="width: 25%;" />
+            </colgroup>
+            <tbody>
+            <tr class="product-shop-row top">
+                <?php $_i = 0;
+                foreach ($items as $_item) : ?>
+                    <?php if ($_i++ >= $max_cols) {
+                        break;
+                    }
+                    $manufacturer = $_item->getAttributeText('manufacturer');
+                    $product_name = $this->stripTags($_item->getName(), null, true);
+                    $product_url  = $this->getProductUrl($_item);
+                    $image        = $_imageHelper->init($_item, 'small_image')->backgroundColor($_productImageBackgroundColorToHex)->resize(230);
+                    $image2x      = $_imageHelper->init($_item, 'small_image')->backgroundColor($_productImageBackgroundColorToHex)->resize(460);
+                    ?>
+                    <td>
+                        <div class="product-shop-details">
+                            <a class="product-image" href="<?php echo $product_url ?>" title="<?php echo $product_name ?>">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $image ?>" data-srcset="<?php echo $image . ' 1x, ' . $image2x . ' 2x'; ?>" alt="<?php echo $product_name ?>" width="230" height="230" class="img-responsive"
+                            /></a>
+                            <div class="product-info">
+                                <h3 class="product-manufacturer"><?php echo $manufacturer ?></h3>
+                                <h2 class="product-name"><a href="<?php echo $product_url ?>" title="<?php echo $product_name ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a></h2>
+                                <?php echo $this->getReviewsSummaryHtml($_item, 'short') ?>
+                                <?php echo $this->getPriceHtml($_item, true, '-compare-list-top') ?>
+                            </div>
+                            <div class="product-actions">
+                                <?php if ($_item->isSaleable()): ?>
+                                    <p><button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->helper('catalog/product_compare')->getAddToCartUrl($_item) ?>', true)"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                                <?php else: ?>
+                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                <?php endif; ?>
+                                <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                    <ul class="add-to-links">
+                                        <li class="wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Wishlist') ?></a></li>
+                                    </ul>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+
+            <?php
+            foreach ($this->getAttributes() as $_attribute) :
+                $_i = 0;
+                $found = false;
+                foreach ($items as $_item) {
+                    if ($_i++ >= $max_cols) {
+                        break;
+                    }
+                    switch ($_attribute->getAttributeCode()) {
+                        case "price":
+                            $value = $this->getPriceHtml($_item, true, '-compare-list-' . $_attribute->getCode());
+                            if (!empty($value) && $value != 'N/A' && $value != 'No') $found = true;
+                            break;
+                        case "small_image":
+                            $found = true;
+                            break;
+                        case "date":
+                            $value = substr($this->getProductAttributeValue($_item, $_attribute), 0, 10);
+                            if (!empty($value) && $value != 'N/A' && $value != 'No') $found = true;
+                            break;
+                        case "manufacturer":
+                            $value = $_item->getAttributeText('manufacturer');
+                            if (!empty($value) && $value != 'N/A' && $value != 'No') $found = true;
+                            break;
+                        default:
+                            $value = $this->helper('catalog/output')->productAttribute($_item, $this->getProductAttributeValue($_item, $_attribute), $_attribute->getAttributeCode());
+                            if (!empty($value) && $value != 'N/A' && $value != 'No') $found = true;
+                            break;
+                    }
+                }
+                if (!$found) {
+                    continue;
+                }
+                ?>
+                <tr>
+                    <?php $_i = 0;
+                    foreach ($items as $_item) : ?>
+                        <?php if ($_i++ >= $max_cols) {
+                            break;
+                        } ?>
+                        <th>
+                            <?php echo $_attribute->getStoreLabel() ?>
+                        </th>
+                    <?php endforeach; ?>
+                </tr>
+                <tr>
+                    <?php $_i = 0;
+                    foreach ($items as $_item): ?>
+                        <?php
+                        if ($_i++ >= $max_cols) {
+                            break;
+                        }
+                        $attributeImage   = $_imageHelper->init($_item, 'small_image')->resize(125);
+                        $attributeImage2x = $_imageHelper->init($_item, 'small_image')->resize(250);
+                        ?>
+                        <td>
+                            <?php switch ($_attribute->getAttributeCode()) {
+                                case "price":
+                                    echo $this->getPriceHtml($_item, true, '-compare-list-' . $_attribute->getCode());
+                                    break;
+                                case "small_image": ?>
+                                    <img data-src="<?php echo $attributeImage ?>" data-srcset="<?php echo $attributeImage . ' 1x, ' . $attributeImage2x . ' 2x'; ?>" alt="<?php echo $product_name ?>" title="<?php echo $product_name ?>" width="125" height="125" />
+                                    <?php break;
+                                case "date":
+                                    echo substr($this->getProductAttributeValue($_item, $_attribute), 0, 10);
+                                    break;
+                                case "manufacturer":
+                                    $manufacturer = $_item->getAttributeText('manufacturer') ?>
+                                    <div class="std">
+                                        <?php echo $manufacturer ? $manufacturer : 'N/A' ?>
+                                    </div>
+                                    <?php break;
+                                default: ?>
+                                    <div class="std">
+	                                    <?php
+		                                   $value = $this->helper('catalog/output')->productAttribute($_item, $this->getProductAttributeValue($_item, $_attribute), $_attribute->getAttributeCode());
+		                                   echo is_array($value) ? implode(', ', $value) : $value;
+	                                    ?>
+                                    </div>
+                                    <?php break;
+                            } ?>
+                        </td>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
+
+            <tr class="add-to-row">
+                <?php $_i = 0;
+                foreach ($items as $_item): ?>
+                    <?php if ($_i++ >= $max_cols) {
+                        break;
+                    } ?>
+                    <td>
+                        <?php if ($_item->isSaleable()) : ?>
+                            <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->helper('catalog/product_compare')->getAddToCartUrl($_item) ?>', true)"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <ul class="add-to-links">
+                                <li class="wishlist"><a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Wishlist') ?></a></li>
+                            </ul>
+                        <?php else : ?>
+                            <ul class="add-to-links-empty"></ul>
+                        <?php endif; ?>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<?php else: ?>
+    <p class="note"><?php echo $this->__('You have no items to compare.') ?></p>
+<?php endif; ?>

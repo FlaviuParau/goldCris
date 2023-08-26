@@ -1,0 +1,23 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-specification4.scss
+    Version:        1.0
+    Description:    Catalog product specification: Version 4
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view_specification-order == 4) {
+    #product-attribute-specs-list  {
+        display: flex;
+
+        li {
+            list-style: disc inside;
+            padding: 5px 0;
+            flex-grow: 1;
+            width: 50%;
+
+            span.label {
+                font-weight: 700;
+                margin-right: 10px;
+            }
+        }
+    }
+}

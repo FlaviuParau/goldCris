@@ -1,0 +1,159 @@
+<?php
+/**
+ * Blugento
+ * Contacts form template - used as default template.
+ * If Blugento Contacts template is set in Localizer, @see corresponding template from blugento theme package
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Contacts
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+ */
+$_checkoutGdpr = Mage::getStoreConfig('blugento_gdpruserdata/general/enabled');
+?>
+
+<?php /* Extensions placeholder */ ?>
+<?php echo $this->getChildHtml('contactForm.extra'); ?>
+
+<form action="<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?><?php else: ?><?php echo $this->getFormAction(); ?><?php endif; ?>" id="contactForm" method="post">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('blugento_contacts')->__('Send your inquiry') ?></h2>
+        <ul class="form-list form-list--inline">
+            <li class="fields">
+                <div class="field">
+                    <label for="name" class="required"><?php echo Mage::helper('blugento_contacts')->__('Name') ?><em>*</em></label>
+                    <input name="name" id="name" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_contacts')->__('Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><?php echo Mage::helper('blugento_contacts')->__('Email address') ?><em>*</em></label>
+                    <input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_contacts')->__('Email address')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+                </div>
+            </li>
+            <li>
+                <label for="telephone" class="required"><?php echo Mage::helper('blugento_contacts')->__('Phone number') ?><em>*</em></label>
+                <input name="telephone" id="telephone" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_contacts')->__('Phone number')) ?>" value="" class="input-text required-entry validate-digits" type="tel" />
+            </li>
+            <li class="wide">
+                <label for="comment" class="required"><?php echo Mage::helper('blugento_contacts')->__('Your inquiry') ?><em>*</em></label>
+                <textarea name="comment" id="comment" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_contacts')->__('Your inquiry')) ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+            </li>
+            <?php if(Mage::helper('core')->isModuleEnabled('Blugento_GdprInformConsent')): ?>
+                <?php if ($_checkoutGdpr == 1): ?>
+                    <div class="gdpr-conditions">
+                        <?php if (Mage::getStoreConfig('blugento_gdpruserdata/consent/read_more')): ?>
+                            <div class="content-popup-text show-less">
+                                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-contact-gdpr-acknowledgement-ro')->toHtml(); ?>
+                                <a href="#popup-conditions" class="show-more"><?php echo $this->__('[Show]') ?></a>
+                            </div>
+                            <script>
+                                (function($) {
+                                    $('.content-popup-text .show-more').on('click', function() {
+                                        $(this).parent().removeClass('show-less');
+                                        $(this).remove();
+                                    });
+                                })(jQuery);
+                            </script>
+                        <?php else: ?>
+                            <div class="content-popup-text">
+                                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-contact-gdpr-acknowledgement-ro')->toHtml(); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+	        <?php echo Mage::app()->getLayout()->getBlock('form.additional.info') ? Mage::app()->getLayout()->getBlock('form.additional.info')->toHtml() : ''; ?>
+        </ul>
+    </div>
+    <?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?>
+        <div class="no-display">
+            <input type="text" name="noSpam" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('No Spam')) ?>" id="no-spam" class="input-text no-display required-entry" />
+        </div>
+    <?php endif; ?>
+    <div class="buttons-set">
+        <p class="required"><?php echo Mage::helper('blugento_contacts')->__('* Required Fields') ?></p>
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('blugento_cart')->__('Send Inquiry') ?>" name="send" id="g-recaptcha-contact" class="g-recaptcha-contact button disabled" data-badge="bottomleft" data-size="invisible"><span><span><?php echo Mage::helper('blugento_cart')->__('Send Inquiry') ?></span></span></button>
+    </div>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', false);
+//]]>
+</script>
+
+<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?>
+    <script>
+        // Prevent form to submit if hidden input has value
+        jQuery('#contactForm').submit(function(e) {
+            if (jQuery('#no-spam').val() !== '') {
+                e.preventDefault();
+
+                window.history.back();
+            }
+        });
+
+        function onSubmitContact(token) {
+            setTimeout(function(){
+				jQuery('.g-recaptcha-contact').attr('data-token', token);
+
+                if (jQuery('#no-spam').val() === '' || jQuery('#no-spam').val() === undefined) {
+                    return new Promise(function (resolve, reject) {
+                        var dataForm = new VarienForm('contactForm');
+						var tokenHash = jQuery('.g-recaptcha-contact').attr('data-token');
+
+						if (tokenHash && tokenHash.length > 100) {
+                            jQuery('#no-spam').removeClass('required-entry');
+
+                            if (dataForm.validator && dataForm.validator.validate()){
+                                jQuery('#contactForm').attr('action', '<?php echo $this->getFormAction() ?>');
+
+                                document.getElementById("contactForm").submit();
+                            }
+                        }
+                    });
+                } else {
+                    window.history.back();
+                }
+            }, 500);
+        }
+
+        // Check if captcha container have loaded class, if not than captcha will be loaded
+        function loadCaptchaContact() {
+            // Fix for google recaptcha from 18 June
+            if ("NodeList" in window) {
+                if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+                    NodeList.prototype.each = NodeList.prototype.forEach;
+                }
+            }
+
+            if (!jQuery('.captcha_container_contact').length) {
+                jQuery('#g-recaptcha-contact').addClass('captcha_container_contact');
+                var captchaContainer = null;
+                var loadCaptchaContactFunction = function() {
+                    captchaContainer = grecaptcha.render('g-recaptcha-contact', {
+                        'sitekey': '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+                        'callback': onSubmitContact
+                    });
+                };
+
+                loadCaptchaContactFunction();
+            }
+        };
+
+        // Once user insert a value, loadCaptchaContent will be called
+        jQuery('#contactForm input, #contactForm textarea').each(function(e) {
+            jQuery(this).on('change keyup blur input', function(e) {
+                loadCaptchaContact();
+            });
+        });
+
+
+        jQuery('.g-recaptcha-contact').on('click', function(e) {
+            onSubmitContact();
+        });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptchaContactFunction&render=explicit" async defer></script>
+<?php endif; ?>

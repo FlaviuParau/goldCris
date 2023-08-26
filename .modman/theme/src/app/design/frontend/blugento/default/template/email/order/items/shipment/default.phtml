@@ -1,0 +1,83 @@
+<?php
+/**
+ * @category    design
+ * @package     rwd_default
+ */
+?>
+<?php 
+    $_item = $this->getItem();
+    $_order = $this->getItem()->getOrder();
+    $_productItem = $_item->getOrderItem()->getProduct();
+    $_productThumbnail = '';
+
+    if ($_productItem->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE) 
+    {
+        $product = Mage::getModel('catalog/product');
+        $product->load($product->getIdBySku($_item->getSku()));
+
+        if ($product->getId()) {
+            $_productThumbnail = $product->getThumbnail();
+        }
+    }
+
+    if ($_productThumbnail == '' || $_productThumbnail == 'no_selection')
+    {
+        $_productThumbnail = $_productItem->getThumbnail();
+    }
+?>
+<tbody>
+    <tr>
+        <td class="cell-content product-info">
+            <table class="table-product-details">
+                <tr>
+                    <?php if(Mage::helper('blugento_sales')->imageOnEmailEnabled()): ?>
+                        <td>
+                            <div class="image-product">
+	                            <a href="<?php echo $_productItem->getProductUrl(); ?>">
+                                    <img src="<?php echo Mage::getModel('catalog/product_media_config')->getMediaUrl($_productThumbnail ); ?>"  width="80" height="auto" alt="<?php echo $_item->getName() ?>" />
+	                            </a>
+                            </div>
+                        </td>
+                    <?php endif; ?>
+                    <td>
+                        <div class="product-details">
+                            <p class="product-name">
+	                            <a href="<?php echo $_productItem->getProductUrl(); ?>">
+	                                <?php echo $this->escapeHtml($_item->getName()) ?>
+	                            </a>
+                            </p>
+                            <p class="sku"><span class="sku-name"><?php echo $this->__('SKU'); ?>:</span> <?php echo $this->escapeHtml($this->getSku($_item)) ?></p>
+                            <?php if ($this->getItemOptions()): ?>
+                            <dl style="margin:0; padding:0;">
+                                <?php foreach ($this->getItemOptions() as $option): ?>
+                                    <dt><strong><em><?php echo $option['label'] ?></em></strong></dt>
+                                    <dd style="margin:0; padding:0 0 0 9px;">
+                                        <?php echo nl2br($option['value']) ?>
+                                    </dd>
+                                <?php endforeach; ?>
+                            </dl>
+                            <?php endif; ?>
+                            <?php $addInfoBlock = $this->getProductAdditionalInformationBlock(); ?>
+                            <?php if ($addInfoBlock) :?>
+                                <?php echo $addInfoBlock->setItem($_item)->toHtml(); ?>
+                            <?php endif; ?>
+                            
+                            <?php echo $this->escapeHtml($_item->getDescription()) ?>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td class="cell-content align-center"><?php echo $_item->getQty()*1 ?></td>
+    </tr>
+    <?php if ($_item->getGiftMessageId() && $_giftMessage = $this->helper('giftmessage/message')->getGiftMessage($_item->getGiftMessageId())): ?>
+        <tr>
+            <td colspan="4" style=" border-bottom:2px solid #CCCCCC; padding:3px 9px;">
+                <strong style="color:#444444; font-size:11px;"><?php echo $this->__('Gift Message') ?></strong>
+                    <?php echo $this->__('From:'); ?> <?php echo $this->escapeHtml($_giftMessage->getSender()) ?><br />
+                    <?php echo $this->__('To:'); ?> <?php echo $this->escapeHtml($_giftMessage->getRecipient()) ?><br />
+                <strong><?php echo $this->__('Message:'); ?></strong><br /><?php echo $this->escapeHtml($_giftMessage->getMessage()) ?>
+            </td>
+        </tr>
+    <?php endif; ?>
+</tbody>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Cart Settings
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Cart
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <modules>
+        <Blugento_Cart>
+            <version>1.0.6</version>
+        </Blugento_Cart>
+    </modules>
+
+    <global>
+        <!-- sql -->
+        <resources>
+            <blugento_cart_setup>
+                <setup>
+                    <module>Blugento_Cart</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </blugento_cart_setup>
+        </resources>
+
+        <blocks>
+            <blugento_cart>
+                <class>Blugento_Cart_Block</class>
+            </blugento_cart>
+        </blocks>
+
+        <helpers>
+            <blugento_cart>
+                <class>Blugento_Cart_Helper</class>
+            </blugento_cart>
+        </helpers>
+
+        <models>
+            <blugento_cart>
+                <class>Blugento_Cart_Model</class>
+            </blugento_cart>
+        </models>
+
+        <events>
+            <catalog_product_is_salable_after>
+                <observers>
+                    <blugento_cart_modify_saleable>
+                        <model>blugento_cart/observer</model>
+                        <method>modifySaleable</method>
+                        <type>model</type>
+                    </blugento_cart_modify_saleable>
+                </observers>
+            </catalog_product_is_salable_after>
+            <payment_method_is_active>
+                <observers>
+                    <cashondelivery_virtual_payment_method_is_active>
+                        <type>singleton</type>
+                        <class>blugento_cart/observer</class>
+                        <method>filterPaymentMethod</method>
+                    </cashondelivery_virtual_payment_method_is_active>
+                </observers>
+            </payment_method_is_active>
+        </events>
+
+        <template>
+            <email>
+                <blugento_cart_email_email_template translate="label" module="blugento_cart">
+                    <label>Product Inquiry</label>
+                    <file>blugento_cart/product_inquiry.html</file>
+                    <type>text</type>
+                </blugento_cart_email_email_template>
+            </email>
+        </template>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_Cart after="Mage_Adminhtml">Blugento_Cart</Blugento_Cart>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+        <events>
+            <block_catalog_product_get_price_html>
+                <observers>
+                    <basepricepro>
+                        <type>singleton</type>
+                        <class>basepricepro/observer</class>
+                        <method>blockCatalogProductGetPriceHtml</method>
+                    </basepricepro>
+                </observers>
+            </block_catalog_product_get_price_html>
+
+            <checkout_cart_save_before>
+                <observers>
+                    <blugento_cart_shipping_price>
+                        <type>singleton</type>
+                        <class>blugento_cart/observer</class>
+                        <method>addShippingPrice</method>
+                    </blugento_cart_shipping_price>
+                </observers>
+            </checkout_cart_save_before>
+        </events>
+
+        <layout>
+            <updates>
+                <blugento_cart>
+                    <file>blugento_cart.xml</file>
+                </blugento_cart>
+            </updates>
+        </layout>
+
+        <routers>
+            <blugento_cart>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_Cart</module>
+                    <frontName>product-inquiry</frontName>
+                </args>
+            </blugento_cart>
+        </routers>
+
+        <translate>
+            <modules>
+                <blugento_cart>
+                    <files>
+                        <default>Blugento_Cart.csv</default>
+                    </files>
+                </blugento_cart>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_cart>
+                    <file>blugento_cart.xml</file>
+                </blugento_cart>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_cart>
+                    <files>
+                        <default>Blugento_Cart.csv</default>
+                    </files>
+                </blugento_cart>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_cart>
+            <global_config>
+                <enable>1</enable>
+                <cms_page>cerere-produs</cms_page>
+                <cms_success_page>cerere-produs-success</cms_success_page>
+                <custom_btn_text>Request Product</custom_btn_text>
+            </global_config>
+            <email>
+                <sender_email_identity>general</sender_email_identity>
+                <email_template>blugento_cart_email_email_template</email_template>
+                <logs>1</logs>
+                <logs_file>custom_cart.log</logs_file>
+            </email>
+            <shipping_price>
+                <shipping_methods>9999</shipping_methods>
+            </shipping_price>
+        </blugento_cart>
+    </default>
+
+</config>

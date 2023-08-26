@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <block type="core/template" name="blugento_seoenhancements.link-pagination" template="blugento/seoenhancements/page/html/head/link-pagination.phtml" />
+            <block type="blugento_seoenhancements/page_html_head_cms_canonical" name="cms_canonical" as="cms_canonical" template="blugento/seoenhancements/page/html/head/cms-canonical.phtml" />
+        </reference>
+    </default>
+
+    <cms_index_index>
+        <reference name="head">
+            <block type="core/template" name="blugento_seoenhancements.meta-canonical" template="blugento/seoenhancements/page/html/head/meta-canonical.phtml" />
+        </reference>
+    </cms_index_index>
+
+    <catalog_category_view>
+        <reference name="head">
+            <block type="blugento_seoenhancements/page_html_head_category_canonical" name="head_url" as="head_url" template="blugento/seoenhancements/page/html/head/category-canonical.phtml" />
+            <block type="blugento_seoenhancements/page_html_head" name="head_title" as="head_title" template="blugento/seoenhancements/page/html/head/head_title.phtml" />
+        </reference>
+    </catalog_category_view>
+</layout>

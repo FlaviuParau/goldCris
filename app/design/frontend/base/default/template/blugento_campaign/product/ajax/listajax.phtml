@@ -1,0 +1,48 @@
+<?php
+$_productCollection = $this->getProductsCollection();
+?>
+<?php if (!$_productCollection->getSize()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <?php //echo $this->getToolbarHtml(); ?>
+    <?php //echo $this->getChildHtml('catalog.topfilter');?>
+    <ul class="products-grid">  <!--  Grid mode -->
+        <?php foreach ($_productCollection as $_product): ?>
+            <?php
+            // Provides extra blocks on which to hang some features for products in the list
+            // Features providing UI elements targeting this block will display directly below the product name
+            $_productNameAfter = false;
+            if ($this->getChild('name.after')) {
+                foreach ($this->getChild('name.after')->getSortedChildren() as $_nameAfterChildName) {
+                    $_productNameAfter .= $this->getChild('name.after')->getChild($_nameAfterChildName)->setProduct($_product)->toHtml();
+                }
+            }
+            ?>
+            <?php $_product->setNameAfter($_productNameAfter); ?>
+            <li class="item">
+                <?php
+                echo $this->getLayout()
+                    ->createBlock('blugento_theme/catalog_product_design')
+                    ->setProduct($_product)
+                    ->setTemplate('catalog/product/list-grid-item.phtml')
+                    ->toHtml();
+                ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        // Set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>
+</div>

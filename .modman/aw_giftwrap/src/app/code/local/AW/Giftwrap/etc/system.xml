@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <aw_giftwrap translate="label" module="aw_giftwrap">
+            <label>Gift Wrap</label>
+            <tab>awall</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>110</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <is_enabled translate="label">
+                            <label>Enable Gift Wrap</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </is_enabled>
+                        <is_wrap_products_separately translate="label">
+                            <label>Allow wrapping products separately</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </is_wrap_products_separately>
+                        <is_gift_message_enabled translate="label">
+                            <label>Enable Gift Message</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </is_gift_message_enabled>
+                        <media_folder_status>
+                            <label></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>aw_giftwrap/adminhtml_system_config_form_fieldset_media_status</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </media_folder_status>
+                    </fields>
+                </general>
+                <exclude_products translate="label">
+                    <label>Exclude Products</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>aw_giftwrap/adminhtml_system_config_form_fieldset_exclude_products_rule</frontend_model>
+                    <template>aw_giftwrap/rule.phtml</template>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </exclude_products>
+                <wrap_types translate="label">
+                    <label>Wrap Types</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>aw_giftwrap/adminhtml_system_config_form_fieldset_type</frontend_model>
+                    <template>aw_giftwrap/types.phtml</template>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </wrap_types>
+            </groups>
+        </aw_giftwrap>
+    </sections>
+</config>

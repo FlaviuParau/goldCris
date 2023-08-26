@@ -1,0 +1,18 @@
+src/app/code/local/Blugento/ProductLabels															app/code/local/Blugento/ProductLabels
+
+src/app/etc/modules/Blugento_ProductLabels.xml														app/etc/modules/Blugento_ProductLabels.xml
+
+src/app/locale/ro_RO/Blugento_ProductLabels.csv                                                     app/locale/ro_RO/Blugento_ProductLabels.csv
+
+src/app/design/adminhtml/default/default/layout/blugento_productlabels.xml                          app/design/adminhtml/default/default/layout/blugento_productlabels.xml
+src/app/design/frontend/blugento/default/layout/blugento_productlabels.xml                          app/design/frontend/blugento/default/layout/blugento_productlabels.xml
+src/app/design/frontend/blugento/default/template/blugento_productlabels                            app/design/frontend/blugento/default/template/blugento_productlabels
+
+src/skin/adminhtml/default/default/blugento/productlabels/css                                       skin/adminhtml/default/default/blugento/productlabels/css
+src/skin/adminhtml/default/default/blugento/productlabels/images                                    skin/adminhtml/default/default/blugento/productlabels/images
+src/skin/adminhtml/default/default/blugento/productlabels/js                                        skin/adminhtml/default/default/blugento/productlabels/js
+src/skin/frontend/base/default/css/blugento_productlabels                                           skin/frontend/base/default/css/blugento_productlabels
+src/skin/frontend/base/default/images/blugento_productlabels                                        skin/frontend/base/default/images/blugento_productlabels
+src/skin/frontend/base/default/js/blugento_productlabels                                            skin/frontend/base/default/js/blugento_productlabels
+
+src/app/locale/pl_PL/Blugento_ProductLabels.csv                                                     app/locale/pl_PL/Blugento_ProductLabels.csv

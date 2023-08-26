@@ -1,0 +1,11 @@
+<config>
+	<modules>
+		<europaymentrate_euplatescrate>
+			<active>true</active>
+                  <codePool>local</codePool>
+                  <depends>
+                    <!--  <europaymentrate_euplatescrate /> -->
+                  </depends>
+		</europaymentrate_euplatescrate>
+	</modules>
+</config>

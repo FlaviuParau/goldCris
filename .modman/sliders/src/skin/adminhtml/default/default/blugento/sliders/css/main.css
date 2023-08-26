@@ -1,0 +1,7 @@
+input.input-text.color {
+    cursor: pointer;
+    width: 60px !important;
+    padding: 5px;
+    font: 400 12px/14px Consolas, 'Courier New', monospace;
+    text-align: center;
+}

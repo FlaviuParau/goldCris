@@ -1,0 +1,172 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-header-oder-icons1.scss
+    Version:        1.0
+    Description:    Header Layout: Default
+    ------------------------------------------------------------------------- */
+
+/* Icons order for layout menu version 1 */
+@if ($layout--header_layout == 1) {
+    .mini-cart {
+        padding-left: 10px;
+    }
+
+    @if ($layout--order_icons == 1) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                  padding: 0;
+                }
+
+                @if ($layout_account_icons == 2) {
+                  .mini-account {
+                    padding: 0;
+
+                    > ul {
+                      top: 48px;
+
+                      &:after {
+                        right: 4px;
+                      }
+                    }
+                  }
+                }
+
+                .header-wishlist-count {
+                  padding: 7px 0;
+                  margin: 0;
+                }
+            }
+        }
+    }
+    @if ($layout--order_icons == 2) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 7px 0;
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                        padding: 8px 0;
+
+                        > ul {
+                            top: 56px;
+
+                            &:after {
+                                right: 4px;
+                            }
+                        }
+                    }
+                }
+
+                .header-wishlist-count {
+                    padding: 7px 20px 7px 0;
+                    margin: 0;
+                }
+              }
+        }
+    }
+
+    @if ($layout--order_icons == 2) {
+        @if ($layout_account_icons == 1) {
+            .page-header {
+                .desktop {
+                    .mini-account {
+                        padding: 15px 0;
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 3) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 15px 0;
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                        padding: 8px 20px 8px 0;
+
+                        > ul {
+                            top: 56px;
+
+                          &:after {
+                              right: 25px;
+                          }
+                        }
+                    }
+                }
+
+                @if ($layout_account_icons == 3) {
+                  .mini-account {
+                      padding: 4px 20px 4px 0;
+                  }
+                }
+
+                .header-wishlist-count {
+                    padding: 7px 20px 7px 0;
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 4) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 15px 0;
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                        padding: 8px 20px;
+
+                        > ul {
+                              top: 56px;
+
+                          &:after {
+                              right: 25px;
+                          }
+                        }
+                    }
+                }
+
+                @if ($layout_account_icons == 3) {
+                    .mini-account {
+                        padding: 4px 20px;
+                    }
+                }
+
+                @if ($layout_account_icons == 1) {
+                    .mini-account {
+                        padding: 15px 20px;
+                    }
+                }
+
+                .header-wishlist-count {
+                    padding: 7px 20px 7px 0;
+                    margin: 0;
+
+                    .block-wishlist {
+                        .block-content {
+                            &:after {
+                                right: 25px;
+                            }
+                        }
+                    }
+                }
+
+                .mini-wrapper-2 {
+                    >div + div {
+                        margin-right: 0;
+                        padding-left: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

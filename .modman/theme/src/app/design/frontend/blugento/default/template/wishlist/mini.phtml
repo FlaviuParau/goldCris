@@ -1,0 +1,12 @@
+<?php
+/* @var $this Mage_Wishlist_Block_Customer_Sidebar */
+?>
+<?php if ($this->helper('wishlist')->isAllow()): ?>
+<div class="mini-wishlist">
+    <a href="<?php echo $this->helper('wishlist')->getListUrl() ?>" title="<?php echo $this->__('Wishlist') ?>">
+        <i>
+            <em><?php echo $this->getItemCount() ?></em>
+        </i>
+    </a>
+</div>
+<?php endif; ?>

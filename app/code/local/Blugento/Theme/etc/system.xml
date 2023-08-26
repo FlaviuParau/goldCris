@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>10</sort_order>
+        </blugento>
+        <general translate="label" module="core">
+            <label>General</label>
+            <sort_order>100</sort_order>
+        </general>
+    </tabs>
+    <sections>
+        <blugento_theme translate="label" module="blugento_theme">
+            <label>Display</label>
+            <comment></comment>
+            <tab>blugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general_nl2br translate="label">
+                    <label>General Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>0</sort_order>
+                    <fields>
+                        <enable translate="label">
+                            <label>Nl2Br</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>blugento_theme/adminhtml_system_config_source_nldbr</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+						<enable_msrp_list translate="label">
+                            <label>Enable MSRP on list</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Display Manufacturer's Suggested Retail Price on product list page</comment>
+                        </enable_msrp_list>
+						<show_sku_on_list translate="label">
+                            <label>Display SKU</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Display the product SKU on product list page</comment>
+                        </show_sku_on_list>
+						<ratings_on_list translate="label">
+                            <label>Ratings On List</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Display Ratings on product list page</comment>
+                        </ratings_on_list>
+						<manufacturer_display_view translate="label">
+                            <label>Manufacturer Display</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>5</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Show Manufacturer values on product view page</comment>
+                        </manufacturer_display_view>
+                    </fields>
+                </general_nl2br>
+                <general_tag translate="label">
+                    <label>Tag on categories pages (H2)</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <meta translate="label">
+                            <label>Choose tag (H2) by default</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </meta>
+                    </fields>
+                </general_tag>
+                <profitshare translate="label">
+                    <label>Profitshare settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <advertisercode translate="label">
+                            <label>advertiser_code</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </advertisercode>
+                        <secretkey translate="label">
+                            <label>secret key</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secretkey>
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <algorithm translate="label">
+                            <label>algorithm</label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </algorithm>
+                    </fields>
+                </profitshare>
+                <two_performant_track>
+                    <label>2Performant track</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <campaign_unique>
+                            <label>Campaign Unique</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </campaign_unique>
+                        <confirm>
+                            <label>Confirm</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </confirm>
+                        <price_incl_tax translate="label">
+                            <label>Price Including Tax</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>7</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </price_incl_tax>
+                        <with_tax_amount translate="label">
+                            <label>Substract product tax amount</label>
+                            <comment><![CDATA[The tax price for each product will be deducted after discount was applied]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>8</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                                <price_incl_tax>1</price_incl_tax>
+                            </depends>
+                        </with_tax_amount>
+                    </fields>
+                </two_performant_track>
+                <two_performant_big_bear>
+                    <label>2Performant Big Bear</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>10</sort_order>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                        <identifier>
+                            <label>ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                        </identifier>
+                    </fields>
+                </two_performant_big_bear>
+                <miscellaneous translate="label">
+                    <label>Miscellaneous settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <fbtrack translate="label">
+                            <label>Enable Facebook Track on Success page</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </fbtrack>
+                    </fields>
+                </miscellaneous>
+                <blugento_footer translate="label">
+                    <label>Blugento Footer Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <footer_copyright translate="label">
+                            <label>Enable no-follow rel for copyright link</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </footer_copyright>
+                    </fields>
+                </blugento_footer>
+                <blugento_admin_sales translate="label">
+                    <label>Blugento Admin Sales</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <product_link translate="label">
+                            <label>Enable link for products ordered</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_link>
+                    </fields>
+                </blugento_admin_sales>
+            </groups>
+        </blugento_theme>
+        <web translate="label" module="core">
+            <label>Web</label>
+            <tab>general</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>20</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <cookie translate="label">
+                    <label>Session Cookie Management</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <cookie_tracking_analytics>
+                            <label>Analytics Tracking After Cookies Accepted</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>60</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If set YES, tracking analytics will start after cookie notice is closed.</comment>
+                        </cookie_tracking_analytics>
+                    </fields>
+                </cookie>
+            </groups>
+        </web>
+    </sections>
+</config>

@@ -1,0 +1,46 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       baseprice.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import 'grunt';
+
+@import '../../blugento/scss/variable';
+@import '../../blugento/scss/variable-image';
+@import '../../blugento/scss/variable-layout';
+
+@import 'function/browser';
+
+@import 'config';
+
+@import 'mixin/font';
+@import 'mixin/grid';
+@import 'mixin/icon';
+@import 'mixin/responsive';
+@import 'mixin/util';
+
+//  ----------------------------------------------------------------------------
+
+.baseprice-box {
+    clear: both;
+}
+
+.baseprice {
+    display: block;
+    margin: 5px 0;
+}
+
+.products-grid,
+.products-list {
+    .baseprice {
+        color: $products-grid__item__baseprice_color;
+    }
+}
+
+.product-view .product-shop {
+    .product-baseprice {
+        float: right;
+        margin-bottom: 20px;
+    }
+}

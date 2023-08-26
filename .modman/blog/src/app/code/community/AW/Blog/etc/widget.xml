@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<widgets>
+    <blog_list type="blog/last" translate="name description" module="blog">
+        <name>Blog: Latest Posts</name>
+        <description>Adds a list of latest post from Blog</description>
+        <parameters>
+            <display_title translate="label">
+                <visible>1</visible>
+                <label>Display Title</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>1</value>
+                <required>0</required>
+            </display_title>
+            <title translate="label">
+                <visible>1</visible>
+                <label>Title</label>
+                <type>text</type>
+                <depends>
+                    <display_title><value>1</value></display_title>
+                </depends>
+                <required>1</required>
+            </title>
+            <title_link translate="label">
+                <visible>1</visible>
+                <label>Add link to Title</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <value>0</value>
+                <depends>
+                    <display_title><value>1</value></display_title>
+                </depends>
+            </title_link>
+            <blocks_count>
+                <label>How many blocks to show</label>
+                <type>text</type>
+                <visible>1</visible>
+                <required>1</required>
+            </blocks_count>
+            <categories>
+                <label>Categories to show</label>
+                <type>multiselect</type>
+                <source_model>blog/system_config_source_categories</source_model>
+                <visible>1</visible>
+                <required>1</required>
+            </categories>
+            <show_short_description translate="label">
+                <label>Show Short Description</label>
+                <type>select</type>
+                <source_model>blog/system_config_source_description</source_model>
+                <visible>1</visible>
+                <required>0</required>
+            </show_short_description>
+            <show_post_details translate="label">
+                <label>Show Post Details</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <visible>1</visible>
+                <required>0</required>
+            </show_post_details>
+            <show_post_user translate="label">
+                <label>Show Post User</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <visible>1</visible>
+                <required>0</required>
+            </show_post_user>
+            <layout_styling_list translate="label">
+                <label>List Layout Styling</label>
+                <type>select</type>
+                <source_model>blog/system_config_source_layoutsStylingList</source_model>
+                <visible>1</visible>
+                <required>1</required>
+            </layout_styling_list>
+            <mobile_slider>
+                <label>Display as slider on mobile</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <visible>1</visible>
+                <required>0</required>
+            </mobile_slider>
+            <display_type translate="label">
+                <visible>1</visible>
+                <label>Slider</label>
+                <type>select</type>
+                <source_model>blog/system_config_source_display</source_model>
+                <required>0</required>
+            </display_type>
+            <slider_animation translate="label">
+                <visible>1</visible>
+                <label>Slider Animation Speed</label>
+                <type>select</type>
+                <values>
+                    <o1 translate="label">
+                        <value>500</value>
+                        <label>500 ms</label>
+                    </o1>
+                    <o2 translate="label">
+                        <value>400</value>
+                        <label>400 ms</label>
+                    </o2>
+                    <o3 translate="label">
+                        <sort_order>1</sort_order>
+                        <value>300</value>
+                        <label>300 ms</label>
+                    </o3>
+                    <o4 translate="label">
+                        <value>200</value>
+                        <label>200 ms</label>
+                    </o4>
+                    <o5 translate="label">
+                        <value>100</value>
+                        <label>100 ms</label>
+                    </o5>
+                </values>
+                <depends>
+                    <display_type>2</display_type>
+                </depends>
+            </slider_animation>
+            <slider_item_row translate="label">
+                <visible>1</visible>
+                <label>Slides to Show</label>
+                <type>select</type>
+                <values>
+                    <o1 translate="label">
+                        <value>6</value>
+                        <label>6 Items</label>
+                    </o1>
+                    <o2 translate="label">
+                        <value>5</value>
+                        <label>5 Items</label>
+                    </o2>
+                    <o3 translate="label">
+                        <value>4</value>
+                        <label>4 Items</label>
+                    </o3>
+                    <o4 translate="label">
+                        <value>3</value>
+                        <label>3 Items</label>
+                    </o4>
+                    <o5 translate="label">
+                        <value>2</value>
+                        <label>2 Items</label>
+                    </o5>
+                </values>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_row>
+            <slider_item_scroll translate="label">
+                <visible>1</visible>
+                <label>Slides to Scroll</label>
+                <type>select</type>
+                <values>
+                    <o1 translate="label">
+                        <value>1</value>
+                        <label>1 Item</label>
+                    </o1>
+                    <o2 translate="label">
+                        <value>2</value>
+                        <label>2 Items</label>
+                    </o2>
+                    <o3 translate="label">
+                        <value>3</value>
+                        <label>3 Items</label>
+                    </o3>
+                </values>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_scroll>
+            <slider_item_loop translate="label">
+                <visible>1</visible>
+                <label>Loop Option</label>
+                <type>select</type>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_loop>
+            <type_of_template translate="label">
+                <visible>1</visible>
+                <label>Grid Template</label>
+                <type>select</type>
+                <value>grid-4 slider-enabled</value>
+                <source_model>blog/system_config_source_template_type</source_model>
+            </type_of_template>
+            <setup translate="label">
+                <visible>0</visible>
+                <label>Setup</label>
+                <type>text</type>
+                <helper_block>
+                    <type>blog/adminhtml_widget_setup</type>
+                </helper_block>
+            </setup>
+        </parameters>
+    </blog_list>
+</widgets>

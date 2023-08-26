@@ -1,0 +1,279 @@
+//  ----------------------------------------------------------------------------
+//  Filename:       core/util.scss
+//  Version:        1.0
+//  Description:    -
+//  ----------------------------------------------------------------------------
+
+//  ----------------------------------------------------------------------------
+//  1. Box model
+//  ----------------------------------------------------------------------------
+
+.no-border,
+%no-border {
+    border: 0 !important;
+}
+
+.no-padding,
+%no-padding {
+    padding: 0 !important;
+}
+
+.no-margin,
+%no-margin {
+    margin: 0 !important;
+}
+
+.center,
+%center {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.wide,
+%wide {
+    width: auto !important;
+}
+
+.d-block,
+%d-block {
+    display: block !important;
+}
+
+.d-inline,
+%d-inline {
+    display: inline !important;
+}
+
+.d-inline-block,
+%d-inline-block {
+    @include inline-block();
+}
+
+.no-display,
+%no-display,
+.none,
+%none {
+    display: none !important;
+}
+
+.hidden,
+%hidden {
+    overflow: hidden !important;
+    display: block !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+}
+
+.visible,
+%visible {
+    visibility: visible !important;
+}
+
+.f-fix,
+%f-fix {
+    float: left;
+    width: 100%;
+}
+
+.f-none,
+%f-none {
+    float: none !important;
+}
+
+.left,
+%left {
+    float: left !important;
+    @if support(ie, 6) {
+        display: inline;
+    }
+}
+
+.right,
+%right {
+    float: right !important;
+    @if support(ie, 6) {
+        display: inline;
+    }
+}
+
+.clear,
+%clear,
+.clear-left,
+%clear-left,
+.clear-right,
+%clear-right {
+    display: table;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    background: transparent;
+}
+
+.clear,
+%clear {
+    clear: both !important;
+}
+
+.clear-left,
+%clear-left {
+    clear: left !important;
+}
+
+.clear-right,
+%clear-right {
+    clear: right !important;
+}
+
+.valign-top,
+%valign-top {
+    vertical-align: top !important;
+}
+
+.v-middle,
+.valign-middle,
+%valign-middle {
+    vertical-align: middle !important;
+}
+
+.valign-bottom,
+%valign-bottom {
+    vertical-align: bottom !important;
+}
+
+.relative,
+%relative {
+    position: relative !important;
+}
+
+.absolute,
+%absolute {
+    position: absolute !important;
+}
+
+.cf,
+%cf {
+    @include cf();
+}
+
+//  ----------------------------------------------------------------------------
+//  2. Typography
+//  ----------------------------------------------------------------------------
+
+.a-center,
+.align-center,
+%align-center {
+    text-align: center !important;
+}
+
+.a-justify,
+.align-justify,
+%align-justify {
+    text-align: justify !important;
+}
+
+.a-left,
+.align-left,
+%align-left {
+    text-align: left !important;
+}
+
+.a-right,
+.align-right,
+%align-right {
+    text-align: right !important;
+}
+
+.bold,
+%bold {
+    font-weight: 700 !important;
+}
+
+.italic,
+%italic {
+    font-style: italic !important;
+}
+
+.underline,
+%underline {
+    text-decoration: underline !important;
+}
+
+.strike,
+%strike {
+    text-decoration: line-through !important;
+}
+
+.capitalize,
+%capitalize {
+    text-transform: capitalize !important;
+}
+
+.lowercase,
+%lowercase {
+    text-transform: lowercase !important;
+}
+
+.uppercase,
+%uppercase {
+    text-transform: uppercase !important;
+}
+
+.nobr,
+%nobr,
+.nowrap,
+%nowrap {
+    white-space: nowrap !important;
+}
+
+.wrap {
+    white-space: normal !important;
+}
+
+//  ----------------------------------------------------------------------------
+//  3. Forms
+//  ----------------------------------------------------------------------------
+
+.input-button,
+%input-button {
+    cursor: pointer;
+    overflow: visible;
+    text-align: center;
+}
+
+.input-radio,
+%input-radio {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+//  ----------------------------------------------------------------------------
+//  4. Images
+//  ----------------------------------------------------------------------------
+
+.img-responsive,
+%img-responsive {
+    @include img-responsive();
+}
+
+//  ----------------------------------------------------------------------------
+//  5. Device
+//  ----------------------------------------------------------------------------
+
+@include mobile {
+    .on-desktop {
+        display: none !important;
+    }
+}
+
+@include desktop {
+    .on-mobile {
+        display: none !important;
+    }
+}

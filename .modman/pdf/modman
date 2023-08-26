@@ -1,0 +1,9 @@
+src/app/code/local/Blugento/Pdf/            app/code/local/Blugento/Pdf/
+src/app/etc/modules/Blugento_Pdf.xml        app/etc/modules/Blugento_Pdf.xml
+src/app/locale/de_DE/Blugento_Pdf.csv       app/locale/de_DE/Blugento_Pdf.csv
+src/app/locale/de_AT/Blugento_Pdf.csv       app/locale/de_AT/Blugento_Pdf.csv
+src/app/locale/de_CH/Blugento_Pdf.csv       app/locale/de_CH/Blugento_Pdf.csv
+src/app/locale/nl_NL/Blugento_Pdf.csv       app/locale/nl_NL/Blugento_Pdf.csv
+src/app/locale/fr_FR/Blugento_Pdf.csv       app/locale/fr_FR/Blugento_Pdf.csv
+src/app/locale/ro_RO/Blugento_Pdf.csv       app/locale/ro_RO/Blugento_Pdf.csv
+src/app/locale/it_IT/Blugento_Pdf.csv       app/locale/it_IT/Blugento_Pdf.csv

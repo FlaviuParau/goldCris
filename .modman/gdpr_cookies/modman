@@ -1,0 +1,14 @@
+src/app/code/local/Blugento/GdprCookies                                 app/code/local/Blugento/GdprCookies
+
+src/app/etc/modules/Blugento_GdprCookies.xml                            app/etc/modules/Blugento_GdprCookies.xml
+
+src/app/design/frontend/blugento/default/layout/gdprcookies.xml         app/design/frontend/base/default/layout/gdprcookies.xml
+src/app/design/frontend/blugento/default/template/gdprcookies.phtml     app/design/frontend/base/default/template/gdprcookies.phtml
+src/app/design/adminhtml/default/default/template/gdprcookies           app/design/adminhtml/default/default/template/gdprcookies
+
+src/app/locale/de_DE/*                                               app/locale/de_DE/
+src/app/locale/en_US/*                                               app/locale/en_US/
+src/app/locale/ro_RO/*                                               app/locale/ro_RO/
+src/app/locale/pl_PL/*                                               app/locale/pl_PL/
+
+src/app/design/frontend/blugento/default/template/extendgoogleanalytics     app/design/frontend/base/default/template/extendgoogleanalytics

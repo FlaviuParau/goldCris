@@ -1,0 +1,45 @@
+<?php
+/**
+ * MindMagnet
+ *
+ * @category    MindMagnet
+ * @package     MindMagnet_PrimeCheckout
+ * @author      Daniel Gheoltan <daniel.gheoltan@mindmagnetsoftware.com>
+ * @copyright   Copyright (c) 2011 Mind Magnet Software (http://www.mindmagnetsoftware.com)
+ *
+ */
+?>
+<?php if (Mage::getStoreConfig('primecheckout/general/discount_coupon_flag') && $this->helper('primecheckout')->isEnabled()): ?>
+    <?php $displayMode = '1-button'; // '1-button', '2-buttons' ?>
+    <div class="order-discount-coupon" id="checkout-discount-coupon-box">
+        <form id="co-discount-coupon-form" action="<?php echo $this->getUrl('checkout/prime/saveCoupon') ?>" method="post">
+            <div class="discount">
+                <div class="discount-form">
+                    <input type="hidden" name="remove" id="remove-coupone" value="0" />
+                    <ul class="form-list">
+                        <li>
+                            <label for="coupon_code"><?php echo $this->__('Enter your coupon code if you have one.') ?></label>
+                            <div class="input-box">
+                                <input class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>" />
+                            </div>
+                            <div class="buttons-set">
+                                <button type="button" title="<?php echo $this->__('Apply Coupon') ?>" class="button" id="btn-apply-coupon" onclick="discountCoupon.apply()" value="<?php echo $this->__('Apply Coupon') ?>"<?php if (strlen($this->getCouponCode()) > 0 && isset($displayMode) && $displayMode == '1-button'): ?> style="display: none;"<?php endif; ?>><span><span><?php echo $this->__('Apply Coupon') ?></span></span></button>
+                                <button type="button" title="<?php echo $this->__('Cancel Coupon') ?>" class="button" id="btn-cancel-coupon" onclick="discountCoupon.cancel()" value="<?php echo $this->__('Cancel Coupon') ?>"<?php if (strlen($this->getCouponCode()) == 0): ?> style="display: none;"<?php endif; ?>><span><span><?php echo $this->__('Cancel Coupon') ?></span></span></button>
+                                <span class="please-wait" id="discount-coupon-please-wait" style="display: none;">
+                                    <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+        <script>
+        //<![CDATA[
+            discountCoupon = new DiscountCoupon('co-discount-coupon-form', '<?php echo $this->getUrl('checkout/prime/saveCoupon') ?>', '<?php echo $this->getCouponCode() ?>', '<?php echo $displayMode ?>');
+            //var discountForm = new VarienForm('co-discount-coupon-form');
+            //discountCouponCode = '<?php echo $this->getCouponCode() ?>';
+        //]]>
+        </script>
+    </div>
+<?php endif; ?>

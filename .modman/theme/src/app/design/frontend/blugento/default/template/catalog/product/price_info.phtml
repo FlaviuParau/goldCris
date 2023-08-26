@@ -1,0 +1,15 @@
+<?php
+/**
+ * @see Mage_Catalog_Block_Product_Abstract
+ * @var $this Mage_Catalog_Block_Product_Price
+ */
+
+/* @var $_taxHelper Mage_Tax_Helper_Data */
+$_taxHelper = $this->helper('tax');
+?>
+
+<?php if ($_taxHelper->displayPriceExcludingTax()): ?>
+    <span class="tax-details"><?php echo $this->__('Excluding tax') ?></span>
+<?php elseif ($_taxHelper->displayPriceIncludingTax()): ?>
+    <span class="tax-details"><?php echo $this->__('Including tax') ?></span>
+<?php endif; ?>

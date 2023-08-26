@@ -1,0 +1,9 @@
+<?php if ($this->isOptionEnabled()) : ?>
+    <?php if (!$this->noCanonicalOnPagination() && Mage::getStoreConfig('blugento_seoenhancements/enhancements_group/dir_order_canonical')) : ?>
+        <link rel="canonical" href="<?php echo $this->categoryCanonical() ?>"/>
+    <?php elseif ($this->getRequest()->getParam('dir') && $this->getRequest()->getParam('order') && !Mage::getStoreConfig('blugento_seoenhancements/enhancements_group/dir_order_canonical')) : ?>
+        <?php //nothing ?>
+    <?php else : ?>
+        <link rel="canonical" href="<?php echo $this->categoryCanonical() ?>"/>
+    <?php endif; ?>
+<?php endif; ?>

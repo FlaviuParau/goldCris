@@ -1,0 +1,71 @@
+<?php
+$helper = Mage::helper('blugento_socialmedia');
+?>
+
+<?php if ($helper->getModuleStatus() != 0): ?>
+    <?php
+        $isFacebook          = $helper->getFacebookProductPage();
+        $isTwitter           = $helper->getTwitterProductPage();
+        $isLinkedin          = $helper->getLinkedinProductPage();
+        $isPinterest         = $helper->getPinterestProductPage();
+        // $isTikTok            = $helper->getTikTokProductPage();
+    ?>
+    <?php if ($isFacebook || $isTwitter || $isLinkedin || $isPinterest): ?>
+        <div class="share-icons">
+            <div class="addthis_custom_sharing">
+                <ul class="list list--social <?php echo $this->getExtraClass() ?>">
+                    <?php if ($isFacebook): ?>
+                        <li class="list__item list__item--facebook">
+                            <a href="javascript: void(0);" class="addthis_button_facebook" title="<?php echo $this->__($helper->getFacebookTitle()); ?>">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($isTwitter):  ?>
+                        <li class="list__item list__item--twitter">
+                            <a href="javascript: void(0);" class="addthis_button_twitter" title="<?php echo $this->__($helper->getTwitterTitle()); ?>">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($isPinterest): ?>
+                        <li class="list__item list__item--pinterest">
+                            <a href="javascript: void(0);" class="addthis_button_pinterest_share" title="<?php echo $this->__($helper->getPinterestTitle()); ?>">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php if ($isLinkedin): ?>
+                        <li class="list__item list__item--linkedin">
+                            <a href="javascript: void(0);" class="addthis_button_linkedin" title="<?php echo $this->__($helper->getLinkedinTitle()); ?>">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                    <?php // if ($isTikTok): ?>
+                        <!-- <li class="list__item list__item--tiktok">
+                            <a href="javascript: void(0);" class="addthis_button_tiktok" title="<?php // echo $this->__($helper->getTikTokTitle()) ?>">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+                            </a>
+                        </li> -->
+                    <?php // endif; ?>
+                </ul>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php if ($helper->isWhatsappShareEnabled()): ?>
+    <?php require_once 'MobileDetect/Mobile_Detect.php'; ?>
+    <?php $detect = new Mobile_Detect; ?>
+    <?php $product = Mage::registry('product'); ?>
+    <?php if ($product && $product->getStockItem()->getIsInStock()): ?>
+        <div class="whatsapp-share-wrapper">
+            <a href="<?php echo ($detect->isMobile() || $detect->isTablet()) ? 'https://api.whatsapp.com/send?phone=' . $helper->getWhatsappSharePhoneNumber() : 'https://web.whatsapp.com/send?phone=' . $helper->getWhatsappSharePhoneNumber() ?>&amp;text=<?php echo $helper->getWhatsappShareText() ?>%20<?php echo $product->getName() ?>%20-%20cod:%20<?php echo $product->getSku() ?>%20-%20<?php echo $product->getProductUrl() ?>" class="whatsapp-share-btn" target="<?php echo (!$detect->isMobile() || !$detect->isTablet()) ? '_blank' : '' ?>">
+                <span class="whatsapp-share-text"><?php echo $this->__($helper->getWhatsappShareBtnText()) ?></span>
+            </a>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php echo $this->getChildHtml(); ?>

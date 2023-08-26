@@ -1,0 +1,233 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Giftwrap
+ * @version    1.1.1
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php $_htmlId = $this->getElement()->getHtmlId(); ?>
+<tr>
+    <td class="grid">
+        <table id="" cellspacing="0" class="data" >
+            <col width="200" />
+            <col width="80" />
+            <col  />
+            <col width="70" />
+            <col width="150" />
+            <col width="70" />
+            <col width="50" />
+            <thead>
+                <tr class="headings">
+                    <th><?php echo $this->__('Name'); ?> <span class="required">*</span></th>
+                    <th><?php echo $this->__('Visible on'); ?></th>
+                    <th><?php echo $this->__('Description'); ?></th>
+                    <th><?php echo $this->__('Price'); ?></th>
+                    <th><?php echo $this->__('Image'); ?></th>
+                    <th><?php echo $this->__('Sort Order'); ?></th>
+                    <th class="last"><?php echo $this->__('Action') ?></th>
+                </tr>
+            </thead>
+            <tbody id="<?php echo $_htmlId ?>_container"></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="8" class="a-right"><?php echo $this->getAddButtonHtml(); ?></td>
+                </tr>
+            </tfoot>
+        </table>
+        <script type="text/javascript">
+            //<![CDATA[
+            var awGiftwrapTypeRowTemplate =
+                '<tr>' +
+                    '<td><input type="text" class="required-entry input-text" id="type_{{id}}_name" name="type[{{id}}][name]" value="{{name}}" style="width:98%;"></td>' +
+                    '<td><?php echo $this->getStoreSelector(); ?> </td>' +
+                    '<td><textarea class="textarea" id="type_{{id}}_description" name="type[{{id}}][description]" style="width:99%;">{{description}}</textarea></td>' +
+                    '<td><input type="text" class="input-text validate-zero-or-greater product-option-price" id="type_{{id}}_price" name="type[{{id}}][price]" value="{{price}}"></td>' +
+                    // image
+                    '<td>{{imageCellHtml}}</td>' +
+                    '<td>' +
+                        '<div class="aw-gw-sort-order-el">' +
+                            '<input type="hidden" id="type_{{id}}_sort_order" name="type[{{id}}][sort_order]" value="{{sort_order}}">' +
+                        '</div>' +
+                    '</td>' +
+                    '<td class="last">' +
+                        '<input type="hidden" class="delete" id="type_{{id}}_delete" name="type[{{id}}][delete]" value="">' +
+                        '<button title="<?php echo $this->__('Delete Wrap Type'); ?>" type="button" id="type_{{id}}_delete_button" onclick="return awGiftwrapTypeControl.deleteItem(event);" class="scalable delete icon-btn delete-product-option">' +
+                            '<span><?php echo $this->__('Delete'); ?></span>' +
+                        '</button>' +
+                    '</td>' +
+                '</tr>';
+
+            var awGiftwrapimageCellTemplate = {
+                'image'  : '<a href="{{original_image}}" onclick="awGiftwrapTypeControl.imagePreview(\'preview_image_{{id}}\');return false;" id="preview_image_{{id}}">' +
+                               '<img src="{{resized_image}}" title="{{image}}" alt="{{image}}" height="22" width="22" class="small-image-preview v-middle">' +
+                           '</a>',
+                'input'  : '<input type="file" class="input-file" id="type_{{id}}_image" name="type_{{id}}_image" value="{{image}}">',
+                'delete' : '<span class="delete-image">' +
+                               '<input type="checkbox" value="1" class="checkbox" id="type_{{id}}_image_delete" name="type[{{id}}][image][delete]">' +
+                               '<label for="type_{{id}}_image_delete"><?php echo $this->__('Delete Image'); ?></label>' +
+                           '</span>'
+            };
+
+            var awGiftwrapTypeControl = {
+                template: new Template(awGiftwrapTypeRowTemplate, new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', '')),
+                imageCellTemplate : {
+                    'image'  : new Template(awGiftwrapimageCellTemplate['image'], new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', '')),
+                    'input'  : new Template(awGiftwrapimageCellTemplate['input'], new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', '')),
+                    'delete' : new Template(awGiftwrapimageCellTemplate['delete'], new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', ''))
+                },
+                itemsCount: 0,
+                addItem : function (typeData) {
+                    if (arguments.length == 0) {
+                        var awTypeUniqueId = new Date().getTime();
+
+                        var maxSortOrder = 0;
+                        $$('#aw_giftwrap_wrap_types_container input[id$=sort_order]').each(function(item) {
+                            if (parseInt(item.getValue()) > maxSortOrder) {
+                                maxSortOrder = parseInt(item.getValue())
+                            }
+                        });
+
+                        typeData = {
+                            'id'         : 'new_type_' + awTypeUniqueId,
+                            'sort_order' : maxSortOrder + 1,
+                            'default'    : ''
+                        };
+                    }
+
+                    typeData.imageCellHtml = this.evaluateImageCellTemplate(typeData);
+
+                    Element.insert($('<?php echo $_htmlId; ?>_container'), {
+                        bottom : this.template.evaluate(typeData)
+                    });
+
+                    $$('#<?php echo $_htmlId; ?>_container tr').last().select("select").each(function(el){
+                        var pattern = new RegExp("type_" + typeData.id + "_(.*)");
+                        var match = el.id.match(pattern);
+                        if (!match[1] || !typeData[match[1]]) {
+                            return;
+                        }
+                        var value = typeData[match[1]];
+                        el.setValue(value);
+                    });
+
+                    $('<?php echo $_htmlId; ?>_container').select('input', 'select').each(function(element) {
+                        Event.observe(element, 'change', element.setHasChanges.bind(element));
+                    });
+                },
+                evaluateImageCellTemplate: function(typeData) {
+                    var imageCellHtmlResult = '';
+                    if (typeData.image) {
+                        imageCellHtmlResult += this.imageCellTemplate['image'].evaluate(typeData);
+                    }
+                    imageCellHtmlResult += this.imageCellTemplate['input'].evaluate(typeData);
+                    if (typeData.image) {
+                        imageCellHtmlResult += this.imageCellTemplate['delete'].evaluate(typeData);
+                    }
+                    return imageCellHtmlResult;
+                },
+                deleteItem: function(event) {
+                    var tr = Event.findElement(event, 'tr');
+                    if (tr) {
+                        Element.select(tr, '.delete').each(function(element) {
+                            element.value='1';
+                        });
+                        Element.select(tr, ['input', 'select']).each(function(element) {
+                            element.hide();
+                        });
+                        Element.hide(tr);
+                        Element.addClassName(tr, 'no-display template');
+                    }
+                    return false;
+                },
+                imagePreview: function(elementSelector) {
+                    if ($(elementSelector)) {
+                        var win = window.open('', 'preview', 'width=400,height=400,resizable=1,scrollbars=1');
+                        win.document.open();
+                        win.document.write('<body style="padding:0;margin:0"><img src="'+$(elementSelector).href+'" id="image_preview"/></body>');
+                        win.document.close();
+                        Event.observe(win, 'load', function(){
+                            var img = win.document.getElementById('image_preview');
+                            win.resizeTo(img.width+40, img.height+80)
+                        });
+                    }
+                }
+            };
+
+            <?php foreach ($this->getTypeCollection() as $type) : ?>
+                var awGiftwrapTypeData = {
+                    'id'             : <?php echo (int)$type->getId(); ?>,
+                    'name'           : '<?php echo $type->getName(); ?>',
+                    'store_ids'     : [<?php echo $type->getStoreIds(); ?>],
+                    'description'    : <?php echo Zend_Json::encode($type->getDescription()); ?>,
+                    'price'          : '<?php echo sprintf('%.2f', $type->getPrice()); ?>',
+                    'image'          : '<?php echo $type->getImage(); ?>',
+                    <?php if (!is_null($type->getImage())) : ?>
+                    'original_image' : '<?php echo $type->getOriginalImageUrl(); ?>',
+                    'resized_image'  : '<?php echo $type->getImageUrl(20, 20); ?>',
+                    <?php endif; ?>
+                    'sort_order'     : <?php echo intval($type->getSortOrder()) ? intval($type->getSortOrder()) : 0; ?>
+                };
+                awGiftwrapTypeControl.addItem(awGiftwrapTypeData);
+            <?php endforeach; ?>
+
+            var awGwSortableTrInitFn = function() {
+                var container = $('<?php echo $_htmlId ?>_container');
+                if (!container) {
+                    return;
+                }
+                Sortable.create(container, {
+                        tag:"tr",
+                        dropOnEmpty:false,
+                        overlap:'vertical',
+                        constraint:'vertical',
+                        containment: [container],
+                        handle: 'aw-gw-sort-order-el',
+                        onChange: function(item) {
+                            var values = [];
+                            var inputSelector = ".aw-gw-sort-order-el input[type=hidden]";
+                            var value = 1;
+                            container.select(inputSelector).each(function(input){
+                                input.setValue(value);
+                                value++;
+                            });
+                        },
+                        starteffect: function(element){
+                            element.addClassName('aw-gw-tr-ondrag');
+                            element.up('table').addClassName('aw-gw-table-ondrag');
+                        },
+                        endeffect: function(element){
+                            element.removeClassName('aw-gw-tr-ondrag');
+                            element.up('table').removeClassName('aw-gw-table-ondrag');
+                        }
+                    }
+                );
+            };
+            awGwSortableTrInitFn();
+            if ($('aw_giftwrap_type_add_new_row')) {
+                $('aw_giftwrap_type_add_new_row').observe('click', function(event){
+                    awGiftwrapTypeControl.addItem();
+                    awGwSortableTrInitFn();
+                });
+            }
+            //]]>
+        </script>
+    </td>
+</tr>

@@ -1,0 +1,53 @@
+<?php /** @var Blugento_Importer_Block_Adminhtml_System_Convert_Profile_Test $this */ ?>
+
+<style type="text/css" >
+    ul { list-style-type:none; padding:0; margin:0; }
+    li { margin-left:0; border:1px solid #ccc; margin:2px; padding:2px 2px 2px 2px; font:normal 12px sans-serif; }
+    img { margin-right:5px; }
+</style>
+
+<ul>
+    <?php if ($this->getProfile()->getId()):?>
+        <li>
+            <img src="<?php echo $this->getSkinUrl('images/note_msg_icon.gif')?>" class="v-middle" style="margin-right:5px"/>
+            <?php echo $this->__("Starting profile execution, please wait...");?>
+        </li>
+    <?php else:?>
+        <li style="background-color:#FFD;">
+            <img src="<?php echo $this->getSkinUrl('images/error_msg_icon.gif');?>" class="v-middle" style="margin-right:5px"/>
+            <?php echo $this->__("No profile loaded...");?>
+        </li>
+    <?php endif;?>
+</ul>
+
+<?php if ($this->getProfile()->getId()):?>
+
+    <?php $testResult = $this->getTestResult();?>
+
+    <?php $testResultErrors = $testResult->getTestResultErrors();?>
+    <?php $sampleData = $testResult->getSampleData();?>
+
+    <ul id="profileRows">
+
+        <?php foreach ($testResultErrors as $errorInfo):?>
+            <li style="<?php echo $errorInfo['style'];?>">
+                <img src="<?php echo $errorInfo['src'];?>" class="v-middle"/>
+                <?php echo $errorInfo['message'];?>
+                <?php if ($errorInfo['position']):?>
+                    <small>(<?php echo $errorInfo['position'];?>)</small>
+                <?php endif;?>
+            </li>
+        <?php endforeach;?>
+
+        <li>
+            <?php echo $this->__("Sample result based on configuration and source data:");?>
+        </li>
+
+        <?php foreach ($sampleData as $sample):?>
+            <table style="border-collapse: collapse;width: 100%;">
+                <?php echo $sample['message'];?>
+            </table>
+        <?php endforeach;?>
+    </ul>
+
+<?php endif;?>

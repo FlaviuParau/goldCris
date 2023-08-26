@@ -1,0 +1,63 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       main.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.multiproducts-type {
+    a {
+        display: block;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #d6d6d6;
+        background-color: whitesmoke;
+
+        &.active {
+            border: 1px solid #000;
+            background-color: wheat;
+        }
+
+        h6 {
+            margin-bottom: 10px;
+        }
+
+        div {
+            font-size: 0;
+            line-height: 0;
+        }
+    }
+
+    .option span {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        margin-right: 5px;
+        border: 1px solid #000;
+        background-color: #fff;
+    }
+
+    .option-2 span,
+    .option-3 span,
+    .option-4 span,
+    .option-5 span {
+        width: 23px;
+        height: 23px;
+    }
+
+    .option-0 span,
+    .option-2 span {
+        border-bottom-width: 10px;
+    }
+
+    .option-4 span {
+        border-right: 40px solid #000;
+    }
+
+    .option-5 span {
+        border-left: 40px solid #000;
+    }
+}
+
+select[name="parameters[type_of_template]"] {
+    display: none;
+}

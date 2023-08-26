@@ -1,0 +1,42 @@
+<?php
+/**
+ * @var $this Mage_Tax_Block_Checkout_Shipping
+ * @see Mage_Tax_Block_Checkout_Shipping
+ */
+?>
+<?php if ($this->displayBoth()):?>
+<tr>
+    <th style="<?php echo $this->getStyle() ?>"  colspan="<?php echo $this->getColspan() ?>">
+        <?php echo $this->getExcludeTaxLabel() ?>
+    </th>
+    <td style="<?php echo $this->getStyle() ?>">
+        <?php echo $this->helper('checkout')->formatPrice($this->getShippingExcludeTax()) ?>
+    </td>
+</tr>
+<tr>
+    <th style="<?php echo $this->getStyle() ?>" colspan="<?php echo $this->getColspan() ?>">
+        <?php echo $this->getIncludeTaxLabel() ?>
+    </th>
+    <td style="<?php echo $this->getStyle() ?>">
+        <?php echo $this->helper('checkout')->formatPrice($this->getShippingIncludeTax()) ?>
+    </td>
+</tr>
+<?php elseif ($this->displayIncludeTax()): ?>
+<tr>
+    <th style="<?php echo $this->getStyle() ?>" colspan="<?php echo $this->getColspan() ?>">
+        <?php echo $this->getTotal()->getTitle() ?>
+    </th>
+    <td style="<?php echo $this->getStyle() ?>">
+        <?php echo $this->helper('checkout')->formatPrice($this->getShippingIncludeTax()) ?>
+    </td>
+</tr>
+<?php else: ?>
+<tr>
+    <th style="<?php echo $this->getStyle() ?>" colspan="<?php echo $this->getColspan() ?>">
+        <?php echo $this->escapeHtml($this->getTotal()->getTitle()) ?>
+    </th>
+    <td style="<?php echo $this->getStyle() ?>">
+        <?php echo $this->helper('checkout')->formatPrice($this->getShippingExcludeTax()) ?>
+    </td>
+</tr>
+<?php endif; ?>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Blugento_FreeshippingOnly>
+      <version>0.1.0</version>
+    </Blugento_FreeshippingOnly>
+  </modules>
+  <global>
+    <helpers>
+      <freeshippingonly>
+        <class>Blugento_FreeshippingOnly_Helper</class>
+      </freeshippingonly>
+    </helpers>
+  </global>
+  <frontend>
+    <layout>
+      <updates>
+        <blugento_freeshippingonly>
+          <file>blugento_freeshippingonly.xml</file>
+        </blugento_freeshippingonly>
+      </updates>
+    </layout>
+  </frontend>
+</config> 

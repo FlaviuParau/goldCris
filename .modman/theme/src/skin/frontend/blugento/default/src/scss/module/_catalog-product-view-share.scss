@@ -1,0 +1,43 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-share.scss
+    Version:        1.0
+    Description:    Product Details Page - Share
+    ------------------------------------------------------------------------- */
+
+.product-view {
+    .share-icons {
+        clear: both;
+        float: left;
+        margin-top: 22px;
+
+        a {
+            display: inline-block;
+
+            &:hover {
+                text-decoration: none;
+
+                .share-hover {
+                    display: inline-block;
+                }
+
+                .share-on {
+                    display: none;
+                }
+            }
+
+            .share-hover {
+                display: none;
+            }
+        }
+
+        p {
+            margin-bottom: 10px;
+            font-size: $product-view__product-options__required_font-size;
+            font-weight: $product-view__product-options__required_font-weight;
+            font-style: $product-view__product-options__required_font-style;
+            font-family: $product-view__product-options__required_font-family;
+            text-transform: $product-view__product-options__required_text-transform;
+            color: $product-view__product-options__required_color;
+        }
+    }
+}

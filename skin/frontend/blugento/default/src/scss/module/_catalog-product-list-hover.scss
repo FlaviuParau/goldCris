@@ -1,0 +1,26 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-list-hover.scss
+    Version:        1.0
+    Description:    Filters Position: Right Column on Top
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.products-grid,
+.products-list {
+    .product-image-hover-1 {
+        .product-img-hover {
+            display: none;
+        }
+
+        &:hover {
+            .product-img {
+                display: none;
+            }
+
+            .product-img-hover {
+                display: block;
+            }
+        }
+    }
+}

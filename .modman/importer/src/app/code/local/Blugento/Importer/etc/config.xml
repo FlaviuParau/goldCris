@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<!--/**
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to
+* newer versions in the future.
+*
+* @category    Blugento
+* @package     Blugento_Importer
+* @author      Mihai Rastasan <mihai.rastasan@blugento.ro>
+* @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/-->
+<config>
+    <modules>
+        <Blugento_Importer>
+            <version>1.1.9</version>
+        </Blugento_Importer>
+    </modules>
+    <global>
+        <models>
+            <blugento_importer>
+                <class>Blugento_Importer_Model</class>
+                <resourceModel>blugento_importer_mysql4</resourceModel>
+            </blugento_importer>
+            <blugento_importer_mysql4>
+                <class>Blugento_Importer_Model_Mysql4</class>
+                <entities>
+                    <importer>
+                        <table>blugento_importer_profile</table>
+                    </importer>
+                    <history>
+                        <table>blugento_importer_history</table>
+                    </history>
+                    <images>
+                        <table>blugento_importer_images</table>
+                    </images>
+                </entities>
+            </blugento_importer_mysql4>
+        </models>
+        <blocks>
+            <blugento_importer>
+                <class>Blugento_Importer_Block</class>
+            </blugento_importer>
+        </blocks>
+        <helpers>
+            <blugento_importer>
+                <class>Blugento_Importer_Helper</class>
+            </blugento_importer>
+        </helpers>
+        <resources>
+            <blugento_importer_setup>
+                <setup>
+                    <module>Blugento_Importer</module>
+                    <class>Blugento_Importer_Model_Resource_Setup</class>
+                </setup>
+            </blugento_importer_setup>
+        </resources>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_importer before="Mage_Adminhtml">Blugento_Importer_Adminhtml</blugento_importer>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_importer>
+                    <file>blugento_importer.xml</file>
+                </blugento_importer>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <blugento_importer>
+                    <files>
+                        <default>Blugento_Importer.csv</default>
+                    </files>
+                </blugento_importer>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <importer>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_Importer</module>
+                    <frontName>importer</frontName>
+                </args>
+            </importer>
+        </routers>
+        <translate>
+            <modules>
+                <blugento_importer>
+                    <files>
+                        <default>Blugento_Importer.csv</default>
+                    </files>
+                </blugento_importer>
+            </modules>
+        </translate>
+    </frontend>
+    <crontab>
+        <jobs>
+            <blugento_importer>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>blugento_importer/importer::cronRunProfile</model>
+                </run>
+            </blugento_importer>
+            <blugento_importer_on_click>
+                <run>
+                    <model>blugento_importer/importer::cronRunOnClickProfile</model>
+                </run>
+            </blugento_importer_on_click>
+        </jobs>
+    </crontab>
+</config>

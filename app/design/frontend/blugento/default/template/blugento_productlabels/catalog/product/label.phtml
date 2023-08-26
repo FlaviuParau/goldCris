@@ -1,0 +1,9 @@
+<?php if (Mage::helper('blugento_productlabels')->isEnabled()) : ?>
+    <?php foreach ($this->getProductLabels() as $label): ?>
+        <img class="label-image product-label-<?php echo $this->getClassByPosition($label['position_on_product']) ?>" src="<?php echo $this->getFrontLabelPath($label) ?>" />
+    <?php endforeach; ?>
+<?php endif; ?>
+
+<script>
+    jQuery('.label-image').appendTo('#product-image');
+</script>

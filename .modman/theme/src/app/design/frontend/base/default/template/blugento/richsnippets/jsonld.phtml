@@ -1,0 +1,7 @@
+<?php /** @var Blugento_Richsnippets_Block_Abstract $this */ ?>
+<?php $structuredData = $this->getStructuredData(); ?>
+<?php if ($structuredData) : ?>
+	<script type="application/ld+json">
+		<?php echo $this->jsonEncodePretty($structuredData); ?>
+	</script>
+<?php endif; ?>

@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+		<smslink_extensions translate="label" module="smsgateway">
+            <label>SMSLink</label>
+            <sort_order>9000</sort_order>
+		</smslink_extensions>
+    </tabs>
+	<sections>
+		<smsgateway translate="label" module="smsgateway">
+		
+			<label>Configure SMS Notifications</label>
+            <comment>Configure SMSLink SMS Notifications.</comment>
+			<tab>smslink_extensions</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>200</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<general translate="label">
+					<label>SMSLink Settings</label>
+					<frontend_type>text</frontend_type>
+					<comment><![CDATA[<a href="http://www.smslink.ro/inregistrare/" target="_blank">Create a SMSLink account</a> or <a href="http://www.smslink.ro/autentificare/" target="_blank">Login to your SMSLink account</a> and <a href="http://www.smslink.ro/sms/gateway/setup.php" target="_blank">obtain your SMS Gateway</a> Connection ID and Password, required below in order to complete the setup of the integration between your eCommerce platform and SMSLink.]]></comment>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<api_key translate="label">
+							<label>SMSLink - SMS Gateway - Connection ID</label>
+							<comment></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</api_key>
+						<api_secret translate="label">
+							<label>SMSLink - SMS Gateway - Password</label>
+							<comment></comment>
+							<frontend_type>password</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</api_secret>
+						<httpsenabled translate="label comment">
+							<label>HTTPS Connection</label>
+							<comment>Send SMS using HTTPS connection with SMSLink.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</httpsenabled>
+						<logenabled translate="label comment">
+							<label>Enable Logging</label>
+							<comment>Log SMS sent in var/log/smslink.log. If you choose to permanently enable logging, you should consider log rotation.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</logenabled>
+						<debugenabled translate="label comment">
+							<label>Enable Debug Logging</label>
+							<comment>Log observer events in var/log/smslink.debug.log. If you choose to permanently enable debug logging, you should consider log rotation.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</debugenabled>
+					</fields>
+				</general>
+				
+				<admin translate="label">
+					<label>SMS Notifications for Administrator about New Orders</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label comment">
+							<label>Enabled</label>
+							<comment>Enable or disable this notification.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</enabled>
+						<admin_mobile translate="label">
+							<label>Administrator phone number</label>
+							<comment>Administrator's mobile phone number (ie. 07xyzzzzzz)</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</admin_mobile>
+						<message translate="label comment">
+							<label>Message Template</label>
+							<comment>Message template may include variabiles.</comment>
+							<tooltip><![CDATA[{{sitename}} = Site Name<br />{{order_id}} = Order ID<br />{{amount}} = Order Total]]></tooltip>
+							<validate>required-entry</validate>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</message>
+					</fields>
+				</admin>
+					
+				<orders translate="label">
+					<label>SMS Notifications to Customers about New Orders</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label comment">
+							<label>Enabled</label>
+							<comment>Enable or disable this notification.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</enabled>
+						<message translate="label comment">
+							<label>Message Template</label>
+							<comment>Message template may include variabiles.</comment>							
+							<tooltip><![CDATA[{{firstname}} = First Name<br />{{lastname}} = Last Name<br />{{sitename}} = Site Name<br />{{order_id}} = Order ID<br />{{amount}} = Order Total]]></tooltip>
+							<validate>required-entry</validate>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</message>
+					</fields>
+				</orders>
+												
+				<shipments translate="label">
+					<label>SMS Notifications to Customers about Shipped Orders</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>4</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label comment">
+							<label>Enabled</label>
+							<comment>Enable or disable this notification.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</enabled>
+						<message translate="label comment">
+							<label>Message Template</label>
+							<comment>Message template may include variabiles.</comment>
+							<tooltip><![CDATA[{{firstname}} = First Name<br />{{lastname}} = Last Name<br />{{sitename}} = Site Name<br />{{order_id}} = Order ID<br />{{amount}} = Order Total<br />{{tracking_info}} = Tracking Title + Number<br />{{awb_number}} = AWB Number]]></tooltip>
+							<validate>required-entry</validate>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</message>
+					</fields>
+				</shipments>
+				
+				<order_canceled translate="label">
+					<label>SMS Notifications to Customers about Canceled Orders</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>5</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label comment">
+							<label>Enabled</label>
+							<comment>Enable or disable this notification.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</enabled>
+						<message translate="label comment">
+							<label>Message Template</label>
+							<comment>Message template may include variabiles.</comment>
+							<tooltip><![CDATA[{{firstname}} = First Name<br />{{lastname}} = Last Name<br />{{sitename}} = Site Name<br />{{order_id}} = Order ID<br />{{amount}} = Order Total]]></tooltip>
+							<validate>required-entry</validate>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</message>
+					</fields>
+				</order_canceled>	
+				
+				<order_hold translate="label">
+					<label>SMS Notifications to Customers about Hold Orders</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>6</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label comment">
+							<label>Enabled</label>
+							<comment>Enable or disable this notification.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</enabled>
+						<message translate="label comment">
+							<label>Message Template</label>
+							<comment>Message template may include variabiles.</comment>
+							<tooltip><![CDATA[{{firstname}} = First Name<br />{{lastname}} = Last Name<br />{{sitename}} = Site Name<br />{{order_id}} = Order ID<br />{{amount}} = Order Total]]></tooltip>
+							<validate>required-entry</validate>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</message>
+					</fields>
+				</order_hold>
+				
+				<order_unhold translate="label">
+					<label>SMS Notifications to Customers about Unhold Orders</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>7</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label comment">
+							<label>Enabled</label>
+							<comment>Enable or disable this notification.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</enabled>
+						<message translate="label comment">
+							<label>Message Template</label>
+							<comment>Message template may include variabiles.</comment>
+							<tooltip><![CDATA[{{firstname}} = First Name<br />{{lastname}} = Last Name<br />{{sitename}} = Site Name<br />{{order_id}} = Order ID<br />{{amount}} = Order Total]]></tooltip>
+							<validate>required-entry</validate>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>15</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</message>
+					</fields>
+				</order_unhold>											
+				
+			</groups>
+		</smsgateway>
+    </sections>
+</config>

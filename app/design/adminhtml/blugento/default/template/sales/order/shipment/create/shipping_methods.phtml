@@ -1,0 +1,123 @@
+<?php
+/**
+ * @var Blugento_GenericShipping_Block_Adminhtml_Sales_Order_Shipment_Create_ShippingMethods $this
+ */
+?>
+<?php
+    $_order = $this->getShipment()->getOrder();
+    $carriers = $this->getAvailableCarriers();
+?>
+<div class="box-right">
+    <!--Shipping Address-->
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-shipping-method"><?php echo Mage::helper('sales')->__('Shipping Information') ?></h4>
+        </div>
+        <fieldset>
+            <?php foreach ($carriers as $code => $carrier): ?>
+                <p><strong><?php echo $carrier['title'] ?></strong></p>
+                <p>
+                    <input type="radio" name="shipment[shipping_method]" id="<?php echo $code ?>" value="<?php echo $code ?>" <?php echo $this->isSelected($_order, $code) ?>>
+                    <?php echo $carrier['name'] ?> - <strong><?php echo $this->getShippingPrice($_order) ?></strong>
+                </p>
+            <?php endforeach; ?>
+            <div id="blugento-tracking" ><br /><hr /><?php echo $this->getChildHtml('shipment_tracking') ?></div>
+            <div id="blugento-urgentcargus-section" ><br /><hr /><?php echo $this->getChildHtml('blugento_urgentcargus') ?></div>
+            <div id="blugento-fancourier-section" ><br /><hr /><?php echo $this->getBlockHtml('blugento_fancourier') ?></div>
+            <div id="blugento-samedaycourier-section" ><br /><hr /><?php echo $this->getBlockHtml('blugento_samedaycourier') ?></div>
+            <div id="blugento-nemoexpress-section" ><br /><hr /><?php echo $this->getBlockHtml('blugento_nemoexpress') ?></div>
+        </fieldset>
+    </div>
+</div>
+
+<script>
+    var radios = document.querySelectorAll('input[type=radio][name="shipment[shipping_method]"]');
+
+    var inputRadioManual = document.getElementById('manual');
+    var tracking = document.getElementById("blugento-tracking");
+
+    var inputRadioUrgentCargus = document.getElementById('bgurgentcargus');
+    var urgentCargus = document.getElementById("blugento-urgentcargus-section");
+
+    var inputRadioFanCourier = document.getElementById('bgfancourier');
+    var fanCourier = document.getElementById("blugento-fancourier-section");
+
+    var inputRadioSameday = document.getElementById('bgsamedaycourier');
+    var inputRadioSamedayEasybox = document.getElementById('bgsamedayeasybox');
+    var sameday = document.getElementById("blugento-samedaycourier-section");
+
+    var inputRadioNemoExpress = document.getElementById('nemoexpress');
+    var nemoExpress = document.getElementById("blugento-nemoexpress-section");
+
+    if (inputRadioManual.checked) {
+        tracking.style.display = 'block';
+    } else {
+        tracking.style.display = 'none';
+    }
+
+    if (inputRadioUrgentCargus && inputRadioUrgentCargus.checked) {
+        urgentCargus.style.display = 'block';
+    } else {
+        urgentCargus.style.display = 'none';
+    }
+
+    if (inputRadioFanCourier && inputRadioFanCourier.checked) {
+        fanCourier.style.display = 'block';
+    } else {
+        fanCourier.style.display = 'none';
+    }
+
+    if ((inputRadioSameday && inputRadioSameday.checked) || (inputRadioSamedayEasybox && inputRadioSamedayEasybox.checked)) {
+        sameday.style.display = 'block';
+    } else {
+        sameday.style.display = 'none';
+    }
+
+    if (inputRadioNemoExpress && inputRadioNemoExpress.checked) {
+        nemoExpress.style.display = 'block';
+    } else {
+        nemoExpress.style.display = 'none';
+    }
+
+    radios.forEach(radio => radio.addEventListener('change', () => {
+        if (radio.value === 'manual') {
+            tracking.style.display = 'block';
+            urgentCargus.style.display = 'none';
+            fanCourier.style.display = 'none';
+            sameday.style.display = 'none';
+            nemoExpress.style.display = 'none';
+        }
+
+        if (radio.value === 'bgurgentcargus') {
+            urgentCargus.style.display = 'block';
+            tracking.style.display = 'none';
+            fanCourier.style.display = 'none';
+            sameday.style.display = 'none';
+            nemoExpress.style.display = 'none';
+        }
+
+        if (radio.value === 'bgfancourier') {
+            fanCourier.style.display = 'block';
+            urgentCargus.style.display = 'none';
+            tracking.style.display = 'none';
+            sameday.style.display = 'none';
+            nemoExpress.style.display = 'none';
+        }
+
+        if (radio.value === 'bgsamedaycourier' || radio.value === 'bgsamedayeasybox') {
+            sameday.style.display = 'block';
+            fanCourier.style.display = 'none';
+            urgentCargus.style.display = 'none';
+            tracking.style.display = 'none';
+            nemoExpress.style.display = 'none';
+        }
+
+        if (radio.value === 'nemoexpress') {
+            nemoExpress.style.display = 'block';
+            fanCourier.style.display = 'none';
+            urgentCargus.style.display = 'none';
+            tracking.style.display = 'none';
+            sameday.style.display = 'none';
+        }
+    }));
+</script>

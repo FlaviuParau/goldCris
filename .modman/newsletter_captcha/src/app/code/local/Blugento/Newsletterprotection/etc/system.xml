@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+        <newsletterprotection>
+            <label>Newsletter add Captcha</label>
+            <tab>blugento</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+                <newsletterprotection_group>
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <newsletterprotection_active>
+                            <label>Activate Captcha Newsletter</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                        </newsletterprotection_active>
+                        <newsletterprotection_sitekey>
+                            <label>SiteKey</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><newsletterprotection_active>1</newsletterprotection_active></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can generate site key <a href="https://www.google.com/recaptcha/admin" target="_blank">here</a>. Choose Invisible reCAPTCHA]]></comment>
+                        </newsletterprotection_sitekey>
+                        <newsletterprotection_secretkey>
+                            <label>Secret Key</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><newsletterprotection_active>1</newsletterprotection_active></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[You can generate secret key <a href="https://www.google.com/recaptcha/admin" target="_blank">here</a>. Choose Invisible reCAPTCHA]]></comment>
+                        </newsletterprotection_secretkey>
+
+                    </fields>
+                </newsletterprotection_group>
+            </groups>
+        </newsletterprotection>
+    </sections>
+</config>

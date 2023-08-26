@@ -1,0 +1,75 @@
+//  ----------------------------------------------------------------------------
+//  Filename:       config/core.scss
+//  Version:        1.0
+//  Description:    -
+//  ----------------------------------------------------------------------------
+
+//  ----------------------------------------------------------------------------
+//  Core :: Browsers support
+//  ----------------------------------------------------------------------------
+
+$browsers-min-versions: (
+    'chrome':  null,
+    'firefox': null,
+    'ie':      9,
+    'safari':  null,
+    'opera':   null
+) !default;
+
+//  ----------------------------------------------------------------------------
+//  Core :: Grid system & Media queries breakpoints
+//  ----------------------------------------------------------------------------
+
+$grid-columns:                      12 !default;
+$grid-gutter-width:                 10px !default;
+
+$screen-xl:                         1470px !default;
+
+$screen-lg-max:                     #{$screen-xl - 1px} !default;   // 1469px
+$screen-lg:                         1200px !default;
+
+$screen-md-max:                     #{$screen-lg - 1px} !default;   // 1199px
+$screen-md:                         996px !default;
+
+$screen-sm-max:                     #{$screen-md - 1px} !default;   // 995px
+$screen-sm:                         768px !default;
+
+$screen-s-max:                      #{$screen-sm - 1px} !default;   // 767px
+$screen-s:                          640px !default;
+
+$screen-xs-max:                     #{$screen-s - 1px} !default;    // 639px
+$screen-xs:                         480px !default;
+
+$screen-xxs-max:                    #{$screen-xs - 1px} !default;   // 479px
+$screen-xxs:                        320px !default;
+
+//  ----------------------------------------------------------------------------
+//  Core :: Form
+//  ----------------------------------------------------------------------------
+
+$select_background-color:           #fff;
+
+//  ----------------------------------------------------------------------------
+//  Core :: Reset
+//  ----------------------------------------------------------------------------
+
+$reset-body_background-color:       #fff;
+$reset-body_color:                  #000;
+
+//  ----------------------------------------------------------------------------
+//  Core :: Typography
+//  ----------------------------------------------------------------------------
+
+$font-family-sans-serif:            'Roboto', Arial, sans-serif !default;
+$font-family-serif:                 Georgia, 'Times New Roman', Times, serif !default;
+$font-family-monospace:             Consolas, 'Courier New', monospace !default;
+$font-family-base:                  $font-family-sans-serif !default;
+$font-style:                        normal !default;
+$font-size:                         13px !default;
+$line-height:                       17px !default;
+
+//  ----------------------------------------------------------------------------
+//  Core :: Util
+//  ----------------------------------------------------------------------------
+
+$phi:                               1.618;

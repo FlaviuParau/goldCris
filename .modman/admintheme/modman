@@ -1,0 +1,20 @@
+src/app/code/local/Blugento/AdminTheme                                      app/code/local/Blugento/AdminTheme
+src/app/etc/modules/Blugento_AdminTheme.xml                                 app/etc/modules/Blugento_AdminTheme.xml
+
+src/app/design/adminhtml/blugento/default/etc/theme.xml         	        app/design/adminhtml/blugento/default/etc/theme.xml
+src/app/design/adminhtml/blugento/default/template/catalog        	        app/design/adminhtml/blugento/default/template/catalog
+src/app/design/adminhtml/blugento/default/template/page        	            app/design/adminhtml/blugento/default/template/page
+src/app/design/adminhtml/blugento/default/template/sales        	        app/design/adminhtml/blugento/default/template/sales
+src/app/design/adminhtml/blugento/default/template/widget        	        app/design/adminhtml/blugento/default/template/widget
+src/app/design/adminhtml/blugento/default/template/forgotpassword.phtml     app/design/adminhtml/blugento/default/template/forgotpassword.phtml
+src/app/design/adminhtml/blugento/default/template/login.phtml        	    app/design/adminhtml/blugento/default/template/login.phtml
+src/app/design/adminhtml/blugento/default/template/cms			app/design/adminhtml/blugento/default/template/cms
+
+src/skin/adminhtml/blugento/default         				                skin/adminhtml/blugento/default
+
+src/app/design/adminhtml/blugento/default/layout/blugento_admintheme.xml    app/design/adminhtml/blugento/default/layout/blugento_admintheme.xml
+
+src/app/code/local/Blugento/GenericShipping				    		app/code/local/Blugento/GenericShipping
+
+src/app/design/adminhtml/blugento/default/layout/blugento_genericshipping.xml		app/design/adminhtml/blugento/default/layout/blugento_genericshipping.xml
+src/app/etc/modules/Blugento_GenericShipping.xml					app/etc/modules/Blugento_GenericShipping.xml

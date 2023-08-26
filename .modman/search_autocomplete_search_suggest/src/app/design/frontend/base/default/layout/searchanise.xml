@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!-- 
+/***************************************************************************
+*                                                                          *
+*   (c) 2004 Vladimir V. Kalynyak, Alexey V. Vinokurov, Ilya M. Shalnev    *
+*                                                                          *
+* This  is  commercial  software,  only  users  who have purchased a valid *
+* license  and  accept  to the terms of the  License Agreement can install *
+* and use this program.                                                    *
+*                                                                          *
+****************************************************************************
+* PLEASE READ THE FULL TEXT  OF THE SOFTWARE  LICENSE   AGREEMENT  IN  THE *
+* "copyright.txt" FILE PROVIDED WITH THIS DISTRIBUTION PACKAGE.            *
+****************************************************************************/-->
+
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <block type="Simtech_Searchanise_Block_Jsinit" name="searchanise_jsinit" />
+        </reference>
+<!--        <reference name="before_body_end">-->
+<!--            <block type="Simtech_Searchanise_Block_Async" name="searchanise_async" />-->
+<!--        </reference>-->
+    </default>
+
+    <cms_index_index>
+        <reference name="content">
+            <block type="Simtech_Searchanise_Block_Recommendation" name="searchanise_home_page" />
+        </reference>
+    </cms_index_index>
+
+    <catalog_product_view>
+        <reference name="content">
+            <block type="Simtech_Searchanise_Block_Recommendation" name="searchanise_product" />
+        </reference>
+    </catalog_product_view>
+
+    <catalog_category_layered>
+        <reference name="content">
+            <block type="Simtech_Searchanise_Block_Recommendation" name="searchanise_categories" />
+        </reference>
+    </catalog_category_layered>
+
+    <catalogsearch_result_index>
+        <reference name="content">
+            <block type="Simtech_Searchanise_Block_Recommendation" name="searchanise_search_results" />
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="content">
+            <block type="Simtech_Searchanise_Block_Recommendation" name="searchanise_advanced_search_results" />
+        </reference>
+    </catalogsearch_advanced_result>
+
+    <checkout_cart_index>
+        <reference name="content">
+            <block type="Simtech_Searchanise_Block_Recommendation" name="searchanise_cart" />
+        </reference>
+    </checkout_cart_index>
+
+    <searchanise_result_index>
+        <label>Searchanise result</label>
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <reference name="head">
+            <action method="setTitle" translate="title"><title>Search results</title></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="searchanise/resultwidget" name="searchanise_resultwidget" template="searchanise/resultwidget.phtml"></block>
+            <block type="Simtech_Searchanise_Block_Recommendation" name="searchanise_search_results" />
+        </reference>
+    </searchanise_result_index>
+
+</layout>

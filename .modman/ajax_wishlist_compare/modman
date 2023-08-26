@@ -1,0 +1,23 @@
+src/app/code/local/Excellence/AjaxWishlist		                                    app/code/local/Excellence/AjaxWishlist
+
+src/app/design/frontend/default/default/layout/ajaxwishlist.xml                     app/design/frontend/blugento/default/layout/ajaxwishlist.xml
+
+src/app/design/frontend/default/default/template/ajaxwishlist                       app/design/frontend/blugento/default/template/ajaxwishlist
+
+src/app/etc/modules/Excellence_AjaxWishlist.xml                                     app/etc/modules/Excellence_AjaxWishlist.xml
+
+src/skin/frontend/default/default/js/ajaxwishlist                                   skin/frontend/base/default/js/ajaxwishlist
+
+src/app/locale/de_DE/*                                                              app/locale/de_DE/
+src/app/locale/en_US/*                                                              app/locale/en_US/
+src/app/locale/pl_PL/*                                                              app/locale/pl_PL/
+src/app/locale/ro_RO/*                                                              app/locale/ro_RO/
+
+
+
+
+
+
+
+
+

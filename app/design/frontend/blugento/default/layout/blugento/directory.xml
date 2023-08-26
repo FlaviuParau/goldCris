@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="header">
+            <block type="directory/currency" name="header_currency" as="currency" template="directory/currency.phtml">
+                <action method="setClass"><name>on-desktop</name></action>
+            </block>
+        </reference>
+        <reference name="catalog.topnav">
+            <block type="directory/currency" name="catalog_topnav" as="currency.mobile" template="directory/currency.phtml">
+            </block>
+        </reference>
+    </default>
+
+    <catalog_category_default>
+        <reference name="left">
+            <remove name="currency" />
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="left">
+            <remove name="currency" />
+        </reference>
+    </catalog_category_layered>
+
+    <catalogsearch_advanced_index>
+        <reference name="left">
+            <remove name="currency" />
+        </reference>
+    </catalogsearch_advanced_index>
+
+    <catalogsearch_result_index>
+        <reference name="left">
+            <remove name="currency" />
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="right">
+            <remove name="currency" />
+        </reference>
+    </catalogsearch_advanced_result>
+
+</layout>

@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+
+$helper = $this->helper('customer');
+?>
+
+<div class="ajaxcart-modal ajaxcart-modal-wishlist">
+    <div class="ajaxcart-modal-wrap" aria-hidden="true" role="dialog">
+        <label class="ajaxcart-modal-overlay"></label>
+        <div class="ajaxcart-modal-dialog">
+            <div class="ajaxcart-modal-header">
+                <div class="ajaxcart-modal-close" onclick='hideModalWishlist()'>×</div>
+            </div>
+            <div class="ajaxcart-modal-body">
+                <h4><?php echo $this->__('In order to add products to the wish list, please log in.');?></h4>
+                <?php if (!$helper->isLoggedIn()): ?>
+                    <div class="actions buttons-set">
+                        <a class="button login-btn" href="<?php echo $helper->getLoginUrl(); ?>" rel="nofollow" <?php if (!$helper->isLoggedIn()): ?> data-dock=".ajax-login-modal" data-dock-position="right"<?php endif; ?>><?php echo $this->__('Login');?></a>
+                        <a class="button" id="noaccount-ajax" href="<?php echo $helper->getRegisterUrl(); ?>" rel="nofollow" <?php if (!$helper->isLoggedIn()): ?> data-dock=".ajax-login-modal" data-dock-position="right"<?php endif; ?>><?php echo $this->__('Create an Account');?></a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+

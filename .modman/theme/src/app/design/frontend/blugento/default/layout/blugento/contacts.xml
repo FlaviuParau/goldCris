@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+
+    <contacts_index_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </contacts_index_index>
+
+</layout>

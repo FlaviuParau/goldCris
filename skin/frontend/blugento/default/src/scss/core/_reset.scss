@@ -1,0 +1,351 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       core/_reset.scss
+    Version:        1.0
+    Description:    Reduce browser inconsistencies
+    ------------------------------------------------------------------------- */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    a {
+        -webkit-tap-highlight-color: $color--transparent;
+    }
+}
+
+//  ----------------------------------------------------------------------------
+//  Remove margin, padding, border and outline from several tags.
+//  Reset box-sizing.
+//  ----------------------------------------------------------------------------
+
+a,
+address,
+blockquote,
+body,
+button,
+dd,
+div,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+hr,
+input,
+label,
+legend,
+li,
+noscript,
+ol,
+p,
+pre,
+span,
+table,
+select,
+textarea,
+td,
+th,
+ul,
+article,
+aside,
+audio,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+video {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+//  ----------------------------------------------------------------------------
+//  Render HTML5 elements properly.
+//  ----------------------------------------------------------------------------
+
+article,
+aside,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section {
+    display: block;
+}
+
+object,
+embed {
+    outline: 0;
+}
+
+html,
+abbr,
+acronym,
+fieldset,
+img,
+iframe {
+    border: 0;
+}
+
+//  ----------------------------------------------------------------------------
+//  Prevent dotted border on focused elements.
+//  ----------------------------------------------------------------------------
+
+:focus {
+    outline: none;
+}
+
+//  ----------------------------------------------------------------------------
+//  Remove border around linked images.
+//  ----------------------------------------------------------------------------
+
+a img,
+:link img,
+:visited img {
+    border: 0;
+}
+
+//  ----------------------------------------------------------------------------
+//  Improve usability by changing the cursor.
+//  ----------------------------------------------------------------------------
+
+a,
+button,
+[type='button'],
+[type='submit'],
+[type='reset'] {
+    cursor: pointer;
+}
+
+abbr,
+acronym {
+    cursor: help;
+}
+
+label {
+    cursor: default;
+}
+
+//  ----------------------------------------------------------------------------
+//  Remove possible quote marks from <q>, <blockquote>.
+//  ----------------------------------------------------------------------------
+
+blockquote,
+q {
+    quotes: none;
+}
+
+//  ----------------------------------------------------------------------------
+//  Adjust the default font size and line spacing.
+//  Avoid IE inheritance problems when using relative measurements to specify font size.
+//  Compensate rounding errors in some ancient versions of Opera and Safari.
+//  ----------------------------------------------------------------------------
+
+html {
+    font-size: 100.01%;
+    line-height: 1;
+}
+
+//  ----------------------------------------------------------------------------
+//  Set the default background and foreground colors.
+//  ----------------------------------------------------------------------------
+
+body {
+    background-color: $reset-body_background-color;
+    color: $reset-body_color;
+}
+
+//  ----------------------------------------------------------------------------
+//  Tables still need 'cellspacing="0"' in the markup.
+//  ----------------------------------------------------------------------------
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+}
+
+//  ----------------------------------------------------------------------------
+//  Disable default scrollbar for textareas in IE.
+//  ----------------------------------------------------------------------------
+
+textarea {
+    overflow: auto;
+}
+
+//  ----------------------------------------------------------------------------
+//  Remove default list-markers, since lists are used more often for semantics.
+//  ----------------------------------------------------------------------------
+
+li {
+    // list-style-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7);
+}
+
+ul li {
+    list-style-type: none;
+}
+
+//  ----------------------------------------------------------------------------
+//  Specify the font style and thickness for several tags.
+//  ----------------------------------------------------------------------------
+
+address,
+caption,
+cite,
+code,
+dfn,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+var {
+    font-style: normal;
+    font-weight: 400;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+b,
+strong {
+    font-weight: 600;
+}
+
+//  ----------------------------------------------------------------------------
+//  Achieve consistent font usage in form elements.
+//  ----------------------------------------------------------------------------
+
+button,
+input,
+optgroup,
+option,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+//  ----------------------------------------------------------------------------
+//  Improve readability of pre-formatted text.
+//  ----------------------------------------------------------------------------
+
+pre,
+code,
+kbd,
+samp,
+tt {
+    font-family: monospace;
+    font-size: 108%;
+    line-height: 100%;
+}
+
+//  ----------------------------------------------------------------------------
+//  Improve appearance and consistency of form elements.
+//  ----------------------------------------------------------------------------
+
+button,
+input,
+label,
+select {
+    vertical-align: middle;
+}
+
+button,
+input:not([type]),
+[type='email'],
+[type='search'],
+[type='number'],
+[type='password'],
+[type='tel'],
+[type='text'],
+[type='button'],
+[type='submit'],
+[type='reset'],
+textarea {
+    appearance: none;
+    border-radius: 0;
+}
+
+button {
+    -webkit-border-fit: lines;
+    overflow: visible;
+    width: auto;
+
+    &::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+}
+
+select {
+    overflow: hidden;
+    border-radius: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: inherit;
+}
+
+// Hide the spin-button.
+
+[type='number'] {
+    -moz-appearance: textfield;
+
+    &:-webkit-outer-spin-button,
+    &:-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+//  ----------------------------------------------------------------------------
+//  Miscellaneous conveniences.
+//  ----------------------------------------------------------------------------
+
+del {
+    text-decoration: line-through;
+}
+
+ins {
+    text-decoration: none;
+}
+
+img,
+embed,
+object,
+video {
+    max-width: 100%;
+    height: auto;
+}

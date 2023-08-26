@@ -1,0 +1,18 @@
+<!--@subject Eksport danych użytkownika @-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h4>Dzień dobry,</h4>
+            <h4>Twoja prośba o eksport danych została pomyślnie zarejestrowana.</h4>
+            <h4>Aby pobrać dane, proszę uzyskać dostęp do następującego linku: <a href="{{var export_url}}">Exportuj</a></h4>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

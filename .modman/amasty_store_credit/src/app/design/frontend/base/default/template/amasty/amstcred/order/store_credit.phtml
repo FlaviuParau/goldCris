@@ -1,0 +1,25 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php
+/* @var $this Amasty_StoreCredit_Block_Sales_Order_StoreCredit */
+?>
+<?php
+$_order  = $this->getOrder();
+$_source = $this->getSource();
+?>
+<?php if ($_source->getAmstcredAmount()>0): ?>
+	<tr class="amstcred">
+		<?php if(Mage::helper('blugento_sales')->imageOnEmailEnabled()): ?>
+			<td class="totals-empty">&nbsp;</td>
+		<?php endif; ?>
+		<td align="left" class="amstcred-info align-left">
+			<?php echo Mage::helper('amstcred')->__('Store Credit'); ?>
+		</td>
+		<td align="right" class="amstcred-info" align="right">-<?php echo $_order->formatPrice($_source->getAmstcredAmount()) ?></td>
+	</tr>
+<?php endif?>

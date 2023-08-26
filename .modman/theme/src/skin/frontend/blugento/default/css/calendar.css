@@ -1,0 +1,65 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       calendar.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       function/_browser.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       _config.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_grunt.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_design.scss
+    Version:        1.0
+    Description:    Colors and Images Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_image.scss
+    Version:        1.0
+    Description:    Default Image Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_layout.scss
+    Version:        1.0
+    Description:    Default Layout Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_core.scss
+    Version:        1.0
+    Description:    Default Core Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_component.scss
+    Version:        1.0
+    Description:    Default Component Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_module.scss
+    Version:        1.0
+    Description:    Default Modules Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_custom.scss
+    Version:        1.0
+    Description:    Custom Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_font.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_grid.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_icon.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_responsive.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_util.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */.calendar{z-index:100}@media (max-width:479px){.calendar{right:0;padding:0 20px}}.calendar table{cursor:default;border-collapse:separate;background:#fff;color:#a6a6a6}.calendar table .wn{background-color:#fff}@media (max-width:479px){.calendar table .wn.name{font-size:0}}.calendar td{padding:5px;border-width:1px 0 0 1px;border-style:solid;border-color:#ccc;line-height:1;text-align:center}@media (max-width:479px){.calendar td{padding-top:10px;padding-bottom:10px}}.calendar td:last-child{border-right-width:1px}.calendar .active,.calendar .hilite,.calendar .selected{border-color:#ffe6e6!important;background-color:#ffe6e6!important;color:#fff!important}.calendar thead .title{font-weight:700;text-align:center;border-color:#000;background-color:#000;color:#fff}.calendar thead .day{font-style:italic;background-color:#f5f5f5}.calendar thead .weekend{color:#000}.calendar tbody .day{width:2em;text-align:right}.calendar tbody .day.othermonth{font-size:80%}.calendar tbody .emptycell+.emptycell{border-left-width:0}.calendar tbody .emptyrow{display:none}.calendar tbody .rowhilite td:not(.hilite):not(.selected):not(.wn){background-color:#f5f5f5}.calendar tfoot .ttip{padding:5px;border-color:#000;background-color:#000;color:#fff}.calendar .combo{display:none;z-index:100;position:absolute;top:0;left:0;cursor:default;width:4em;padding:1px;font-size:90%}.calendar .combo .label{padding:1px}.calendar td.time{padding:0;vertical-align:middle}.calendar td.time .ampm,.calendar td.time .colon,.calendar td.time .hour,.calendar td.time .minute{display:inline-block;padding:5px;font-weight:700}.calendar td.time .ampm,.calendar td.time .hour,.calendar td.time .minute{background-color:#fff}

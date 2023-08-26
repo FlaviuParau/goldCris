@@ -1,0 +1,121 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_price-box.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.price-box {
+    .price-notice {
+    }
+
+    .price-label {
+        white-space: nowrap;
+    }
+
+    .price {
+    }
+
+    p {
+    }
+
+    .minimal-price-link {
+        .label {
+        }
+    }
+
+    .price-from {
+    }
+
+    .price-to {
+    }
+}
+
+//  ----------------------------------------------------------------------------
+//  Special Prices
+//  ----------------------------------------------------------------------------
+
+.old-price,
+.special-price {
+    .price-label {
+    }
+
+    .price {
+    }
+}
+
+.old-price {
+    color: color('r');
+
+    .price {
+        text-decoration: line-through;
+    }
+}
+
+.special-price {
+    .price-label {
+    }
+}
+
+//  ----------------------------------------------------------------------------
+//  Taxes
+//  ----------------------------------------------------------------------------
+
+.price-box {
+    .price-excluding-tax,
+    .price-including-tax {
+        display: block;
+    }
+}
+
+span.weee {
+    display: block;
+}
+
+.price-excluding-tax,
+.price-including-tax {
+    display: block;
+}
+
+span.weee {
+    display: block;
+}
+
+//  ----------------------------------------------------------------------------
+//  Tier Prices
+//  ----------------------------------------------------------------------------
+
+.product-pricing,
+.tier-prices,
+.tier-prices-grouped {
+    display: inline-block;
+
+    li {
+        display: flex;
+        position: relative;
+        align-content: center;
+        line-height: 22px;
+        margin-bottom: 5px;
+
+        input[type='radio'] {
+            + label,
+            + span.label > label {
+                background-image: $icon--checkbox--d1;
+                line-height: 22px;
+            }
+
+            & + label:hover {
+                background-image: $icon--checkbox--d1--hover;
+            }
+
+            &:checked + label,
+            &:checked + label:hover {
+                background-image: $icon--checkbox--d1--checked;
+            }
+        }
+    }
+
+    .benefit {
+        font-style: italic;
+    }
+}
+

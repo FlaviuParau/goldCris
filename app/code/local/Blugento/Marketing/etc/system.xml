@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Blugento Marketing
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Marketing
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>10</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_marketing translate="label" module="blugento_marketing">
+            <label>Marketing</label>
+            <tab>blugento</tab>
+            <sort_order>1301</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <conversion translate="label comment">
+                            <label>Marketing Scripts for thank you page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on thank you page. Use placeholders for variables: {{value}}, {{currency}}, {{order_id}}, {{order_items}}, {{value_excl_tax}}, {{firstname}}, {{lastname}}, {{email}}, {{phone_number}}, {{street}}, {{city}}, {{region}}, {{postal_code}}, {{country}}, {{amount}}, {{shipping_cost}}, {{order_items_new}}]]></comment>
+                        </conversion>
+                        <conversion_necessary translate="label comment">
+                            <label>Necessary Scripts for thank you page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on thank you page. Use placeholders for variables: {{value}}, {{currency}}, {{order_id}}, {{order_items}}, {{value_excl_tax}}, {{firstname}}, {{lastname}}, {{email}}, {{phone_number}}, {{street}}, {{city}}, {{region}}, {{postal_code}}, {{country}}, {{amount}}, {{shipping_cost}}, {{order_items_new}}]]></comment>
+                        </conversion_necessary>
+                        <conversion_analytics translate="label comment">
+                            <label>Analytics Scripts for thank you page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on thank you page. Use placeholders for variables: {{value}}, {{currency}}, {{order_id}}, {{order_items}}, {{value_excl_tax}}, {{firstname}}, {{lastname}}, {{email}}, {{phone_number}}, {{street}}, {{city}}, {{region}}, {{postal_code}}, {{country}}, {{amount}}, {{shipping_cost}}, {{order_items_new}}]]></comment>
+                        </conversion_analytics>
+                        <remarketing_before translate="label comment">
+                            <label><![CDATA[Scripts for all pages before <&#47;body> tag.]]></label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on all pages.]]></comment>
+                        </remarketing_before>
+                        <remarketing_after translate="label comment">
+                            <label><![CDATA[Scripts for all pages after &lt;body&gt; tag.]]></label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on all pages.]]></comment>
+                        </remarketing_after>
+                        <dynamic translate="label comment">
+                            <label>Marketing Scripts for product page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on product page. Use placeholders for variables: {{product_id}}, {{product_type}}, {{price}}]]></comment>
+                        </dynamic>
+                        <dynamic_necessary translate="label comment">
+                            <label>Necessary Scripts for product page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on product page. Use placeholders for variables: {{product_id}}, {{product_type}}, {{price}}]]></comment>
+                        </dynamic_necessary>
+                        <dynamic_analytics translate="label comment">
+                            <label>Analytics Scripts for product page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>52</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on product page. Use placeholders for variables: {{product_id}}, {{product_type}}, {{price}}]]></comment>
+                        </dynamic_analytics>
+                        <cart translate="label comment">
+                            <label>Marketing Scripts for cart page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>53</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on cart page. Use placeholders for variables: {{value}}, {{currency}}, {{products}}]]></comment>
+                        </cart>
+                        <cart_necessary translate="label comment">
+                            <label>Necessary Scripts for cart page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>54</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on cart page. Use placeholders for variables: {{value}}, {{currency}}, {{products}}]]></comment>
+                        </cart_necessary>
+                        <cart_analytics translate="label comment">
+                            <label>Analytics Scripts for cart page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on cart page. Use placeholders for variables: {{value}}, {{currency}}, {{products}}]]></comment>
+                        </cart_analytics>
+                        <checkout translate="label comment">
+                            <label>Marketing Scripts for checkout page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>56</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on checkout page. Use placeholders for variables: {{value}}, {{currency}}, {{products}}]]></comment>
+                        </checkout>
+                        <checkout_necessary translate="label comment">
+                            <label>Necessary Scripts for checkout page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>57</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on checkout page. Use placeholders for variables: {{value}}, {{currency}}, {{products}}]]></comment>
+                        </checkout_necessary>
+                        <checkout_analytics translate="label comment">
+                            <label>Analytics Scripts for checkout page</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>58</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Will be displayed on checkout page. Use placeholders for variables: {{value}}, {{currency}}, {{products}}]]></comment>
+                        </checkout_analytics>
+                        <ga_enabled translate="label">
+                            <label>Enable GA Ecommerce Tracking</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </ga_enabled>
+                        <ga_affiliation translate="label comment">
+                            <label>Affiliation code for GA Script</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[Used only if GA Ecommerce Tracking is enabled]]></comment>
+                        </ga_affiliation>
+                    </fields>
+                </settings>
+            </groups>
+        </blugento_marketing>
+    </sections>
+</config>

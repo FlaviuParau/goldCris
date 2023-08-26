@@ -1,0 +1,8 @@
+src/app/code/local/MindMagnet/Configurable                                 app/code/local/MindMagnet/Configurable
+
+src/app/design/frontend/base/default/layout/mindmagnet_configurable.xml    app/design/frontend/base/default/layout/mindmagnet_configurable.xml
+src/app/design/frontend/base/default/template/mindmagnet_configurable      app/design/frontend/base/default/template/mindmagnet_configurable
+
+src/app/etc/modules/MindMagnet_Configurable.xml                            app/etc/modules/MindMagnet_Configurable.xml
+
+src/skin/frontend/base/default/js/mindmagnet_configurable                  skin/frontend/base/default/js/mindmagnet_configurable

@@ -1,0 +1,37 @@
+src/app/locale/ro_RO/template/email/*.html           app/locale/ro_RO/template/email/
+src/app/locale/ro_RO/template/email/html/*.html      app/locale/ro_RO/template/email/html/
+src/app/locale/ro_RO/template/email/sales/*.html     app/locale/ro_RO/template/email/sales/
+src/app/locale/ro_RO/*.csv                           app/locale/ro_RO/
+
+src/app/locale/de_DE/template/email/*.html           app/locale/de_DE/template/email/
+src/app/locale/de_DE/template/email/html/*.html      app/locale/de_DE/template/email/html/
+src/app/locale/de_DE/template/email/sales/*.html     app/locale/de_DE/template/email/sales/
+src/app/locale/de_DE/*.csv                           app/locale/de_DE/
+
+
+src/app/locale/it_IT/template/email/*.html           app/locale/it_IT/template/email/
+src/app/locale/it_IT/template/email/html/*.html      app/locale/it_IT/template/email/html/
+src/app/locale/it_IT/template/email/sales/*.html     app/locale/it_IT/template/email/sales/
+src/app/locale/it_IT/*.csv                           app/locale/it_IT/
+
+
+src/app/locale/fr_FR/template/email/*.html           app/locale/fr_FR/template/email/
+src/app/locale/fr_FR/template/email/html/*.html      app/locale/fr_FR/template/email/html/
+src/app/locale/fr_FR/template/email/sales/*.html     app/locale/fr_FR/template/email/sales/
+src/app/locale/fr_FR/*.csv                           app/locale/fr_FR/
+
+src/app/locale/hu_HU/template/email/html/*.html      app/locale/hu_HU/template/email/html/
+src/app/locale/hu_HU/template/email/sales/*.html     app/locale/hu_HU/template/email/sales/
+src/app/locale/hu_HU/*.csv                           app/locale/hu_HU/
+
+src/app/locale/pl_PL/template/email/sales/*.html     app/locale/pl_PL/template/email/sales/
+src/app/locale/pl_PL/template/email/html/*.html      app/locale/pl_PL/template/email/html/
+src/app/locale/pl_PL/*.csv                           app/locale/pl_PL/
+
+src/app/locale/es_ES/template/email/sales/*.html     app/locale/es_ES/template/email/sales/
+src/app/locale/es_ES/template/email/html/*.html      app/locale/es_ES/template/email/html/
+src/app/locale/es_ES/*.csv                           app/locale/es_ES/
+
+src/app/locale/en_US/template/email/sales/*.html     app/locale/en_US/template/email/sales/
+src/app/locale/en_US/template/email/html/*.html      app/locale/en_US/template/email/html/
+src/app/locale/en_US/template/email/newsletter_subscr_confirm.html                  app/locale/en_US/template/email/newsletter_subscr_confirm.html

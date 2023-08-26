@@ -1,0 +1,66 @@
+<?php /** @var Facebook_AdsExtension_Block_AddToCart $this */ ?>
+<?php
+$analyticsCategoryId = Mage::getStoreConfig('Facebook_AdsExtension/analytics/category');
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+foreach ($categories as $category) {
+    if ($category['value'] == $analyticsCategoryId) {
+        $analyticsCategory = strtolower($category['label']);
+    }
+}
+$analyticsCategory = str_replace('analytics', 'statistics', $analyticsCategory);
+?>
+<?php if ($this->getFacebookPixelID() && $this->shouldFireAddToCart()) { ?>
+  <script>
+    (function($) {
+      $(document).ready(function() {
+          function facebookAddToCart() {
+              fbq('track', 'AddToCart', {
+                  source: 'magento',
+                  version: "<?php echo $this->getMagentoVersion() ?>",
+                  pluginVersion: "<?php echo $this->getPluginVersion() ?>",
+                  content_type: "<?php echo $this->getContentType() ?>",
+                  content_ids: [<?php echo $this->getContentIDs() ?>]
+                  <?php if ($this->getContentName()) { ?>
+                    , content_name: "<?php echo $this->getContentName() ?>"
+                  <?php } ?>
+                  <?php if ($this->getContentCategory()) { ?>
+                    , content_category: "<?php echo $this->getContentCategory() ?>"
+                  <?php } ?>
+                  <?php if ($this->getValue() && $this->getCurrency()) { ?>
+                    , value: "<?php echo $this->getValue() ?>"
+                  <?php } ?>
+                  <?php if ($this->getValue() && $this->getCurrency()) { ?>
+                    , currency: "<?php echo $this->getCurrency() ?>"
+                  <?php } ?>
+              },
+              <?php if ($eventId = $this->getEventId('addtocart')): ?>
+              {
+                  eventID: '<?php echo $eventId ?>'
+              }
+              <?php endif; ?>
+              );
+          }
+
+          if (!$('body').hasClass('gdpr-enabled') || '<?php echo $analyticsCategoryId ?>' == '1' || '<?php echo Mage::getSingleton('core/cookie')->get($analyticsCategory) ?>' == 'yes') {
+              facebookAddToCart();
+          } else {
+              // Accept only selected cookies
+              $('#accept-selected-cookies').on('click', function(e) {
+                if ($('#<?php echo $analyticsCategory ?>').is(':checked') || $('#<?php echo $analyticsCategory ?>').is('[readonly]')) {
+                    facebookAddToCart();
+                }
+              });
+
+              // Accept all cookies
+              $('#accept-all-cookies').on('click', function(e) {
+                  facebookAddToCart();
+              });
+
+              if ('<?php echo $analyticsCategory ?>' == 'necessary') {
+                  facebookAddToCart();
+              }
+          }
+      });
+  })(jQuery);
+  </script>
+<?php } ?>

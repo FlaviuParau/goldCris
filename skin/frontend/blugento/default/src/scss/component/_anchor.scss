@@ -1,0 +1,44 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_anchor.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+%btn {
+    display: inline-block;
+    font-size: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.btn-remove,
+.btn-remove2,
+%btn-remove {
+    @extend %btn;
+    width: 14px;
+    height: 14px;
+    background-image: $icon--remove--a1;
+}
+
+.btn-edit,
+%btn-edit,
+.link-edit,
+%link-edit {
+    @extend %btn;
+    width: 14px;
+    height: 14px;
+    background-image: $icon--edit--a1;
+}
+
+.back-link,
+%back-link {
+    text-decoration: underline;
+}
+
+.btn-wishlist,
+%btn-wishlist {
+    @extend %btn;
+    width: 15px;
+    height: 15px;
+    background-image: $icon--heart--b1;
+}

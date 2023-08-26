@@ -1,0 +1,155 @@
+<?php
+$_blugentoThemeHelper = $this->helper('blugento_theme');
+$_blugentoCategoryHelper = $this->helper('blugento_category');
+
+$_routeName     = Mage::app()->getFrontController()->getRequest()->getRouteName();
+$_identifier    = Mage::getSingleton('cms/page')->getIdentifier();
+$_category      = Mage::registry('current_category');
+$_product       = Mage::registry('current_product');
+$_homepage      = ($_routeName == 'cms') && ($_identifier == 'home');
+$_ogDescription = strip_tags($this->getDescription());
+
+if ($newOgLogo = $this->getNewOgLogo()) {
+	$_ogImage = $newOgLogo;
+} else {
+	$_ogImage = $this->getSkinUrl('images/' . $_blugentoThemeHelper->getVariable('og-image', 'image', 'var_og-image.jpg'));
+}
+
+if (Mage::helper('core')->isModuleEnabled('AW_Blog') && Mage::helper('core')->isModuleEnabled('Blugento_ExtendAwBlog')) {
+    if (Mage::registry('blog-post')) {
+        $imageHelper = Mage::helper('blog/image');
+        $_ogImage = $imageHelper->getImageUrl(Mage::registry('blog-post')->getFeaturedImage());
+        Mage::unregister('blog-post');
+    }
+}
+
+$_ogSiteName    = Mage::app()->getStore()->getName();
+$_ogTitle       = $this->getTitle();
+$_ogType        = '';
+$_ogUrl         = $this->helper('core/url')->getCurrentUrl();
+
+if ($_product) {
+    $_ogDescription = strip_tags($_product->getShortDescription());
+    $_ogImage = Mage::helper('catalog/image')->init($_product, 'image');
+	$_ogImages = array();
+    $productImageGallery = Mage::getModel('catalog/product')->load($_product->getId())->getMediaGalleryImages();
+    if (count($productImageGallery->getItems()) > 1) {
+	    foreach ($productImageGallery as $image) {
+	    	$_ogImages[] = $image->getUrl();
+	    }
+    } else {
+	    $_ogImage = Mage::helper('catalog/image')->init($_product, 'image');
+    }
+    $_ogTitle = $_product->getMetaTitle();
+    if (!$_ogTitle || $_ogTitle == '') {
+        $_ogTitle = $_product->getName();
+    }
+    $_ogType = 'product';
+} elseif ($_category) {
+	if ($_category->getImageUrl()) {
+		$_ogImage = $_category->getImageUrl();
+	}
+    $_ogType = 'product.group';
+	if (Mage::helper('blugento_seoenhancements')->isChangePageAndMetaTitleOptionEnabled()) {
+		$_ogTitle = $this->getLayout()->getBlockSingleton('blugento_seoenhancements/page_html_head')->changeCategoryFilterTitle() ?: $this->getTitle();
+	}
+} elseif ($_homepage) {
+    $_ogType = 'website';
+} else {
+    $_ogType = 'article';
+}
+
+if ($newFavicon = $this->getNewFavicon()) {
+	$faviconImage = $newFavicon;
+} else {
+	$faviconImage = $this->getSkinUrl('images/' . $_blugentoThemeHelper->getVariable('page_favicon', 'image', 'var_page_favicon.png'));
+}
+
+$googleFonts = explode('**', $_blugentoThemeHelper->getVariable('google_fonts'));
+foreach ($googleFonts as $k => $v) {
+    if ($v && $v != 'auto') {
+        $googleFonts[$k] = '\'' . $googleFonts[$k] . ':100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic:latin,latin-ext' . '\'';
+    } else {
+        unset($googleFonts[$k]);
+    }
+}
+?>
+
+<?php
+$controller = Mage::app()->getFrontController()->getRequest()->getControllerName();
+if (Mage::getStoreConfig('blugento_seoenhancements/enhancements_group/new_page_title') && $controller == 'category') : ?>
+    <?php echo $this->getChildHtml('head_title'); ?>
+<?php elseif (Mage::helper('blugento_seoenhancements')->isChangePageAndMetaTitleOptionEnabled() && $controller == 'category'): ?>
+	<title><?php echo $this->getLayout()->getBlockSingleton('blugento_seoenhancements/page_html_head')->changeCategoryFilterTitle() ?: $this->getTitle(); ?></title>
+<?php else : ?>
+    <title><?php echo $this->getTitle() ?></title>
+<?php endif; ?>
+
+<!-- Meta -->
+<meta charset="utf-8" />
+<meta name="description" content="<?php echo htmlspecialchars(strip_tags($this->getDescription())) ?>" />
+<meta name="keywords" content="<?php echo htmlspecialchars($this->getKeywords()) ?>" />
+<meta name="robots" content="<?php echo htmlspecialchars(strip_tags($this->getRobots())) ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=<?php echo $this->getViewportMaximumScale() ?>, user-scalable=<?php echo $this->getViewportUserScalable() ? 'yes' : 'no' ?>" />
+
+<meta property="og:description" content="<?php echo $_ogDescription ?>" />
+<?php if (isset($_ogImages)): ?>
+    <?php if (!is_array($_ogImages)) : ?>
+        <meta property="og:image" content="<?php echo $_ogImage ?>" />
+    <?php else : ?>
+        <?php if(count($_ogImages) > 1) : ?>
+            <?php foreach ($_ogImages as $ogImage) : ?>
+                <meta property="og:image" content="<?php echo $ogImage ?>" />
+            <?php endforeach; ?>
+        <?php else : ?>
+            <meta property="og:image" content="<?php echo $_ogImage ?>" />
+        <?php endif; ?>
+    <?php endif; ?>
+<?php else : ?>
+	<meta property="og:image" content="<?php echo $_ogImage ?>" />
+<?php endif; ?>
+<meta property="og:site_name" content="<?php echo $_ogSiteName ?>" />
+<meta property="og:title" content="<?php echo $_ogTitle ?>" />
+<meta property="og:type" content="<?php echo $_ogType ?>" />
+<meta property="og:url" content="<?php echo $_ogUrl ?>" />
+
+<?php echo $this->getBlockHtml('preloader_css') ?>
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="<?php echo $faviconImage ?>" />
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo $faviconImage ?>" />
+<link rel="apple-touch-icon" href="<?php echo $faviconImage ?>" >
+
+<!-- Fonts -->
+<?php if (count($googleFonts)): ?>
+<script>
+    WebFontConfig = {
+        classes: false,
+        events: false,
+        google: {
+            families: [
+<?php echo implode(",\n", $googleFonts); ?>
+            ]
+        }
+    };
+    (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+    })();
+</script>
+<?php endif; ?>
+
+<!-- CSS & JS -->
+<script>
+    //<![CDATA[
+    var BASE_URL = '<?php echo Mage::getBaseUrl() ?>';
+    //]]>
+</script>
+<?php echo $this->getCssJsHtml() ?>
+<?php echo $this->getChildHtml() ?>
+<?php echo $this->helper('core/js')->getTranslatorScript() ?>
+<?php echo $this->getIncludes() ?>

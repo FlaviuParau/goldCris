@@ -1,0 +1,12 @@
+<?php
+    /* @var $this Mage_ConfigurableSwatches_Block_Catalog_Media_Js_Abstract */
+?>
+<script>
+    $j(document).on('product-media-loaded', function() {
+        ConfigurableMediaImages.init('<?php echo $this->getImageType(); ?>');
+        <?php foreach ($this->getProductImageFallbacks(true) as $imageFallback): ?>
+        ConfigurableMediaImages.setImageFallback(<?php echo $imageFallback['product']->getId(); ?>, $j.parseJSON('<?php echo $imageFallback['image_fallback']; ?>'));
+        <?php endforeach; ?>
+        $j(document).trigger('configurable-media-images-init', ConfigurableMediaImages);
+    });
+</script>

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/checkout.js</name>
+                <param>data-module="checkout"</param>
+            </action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><name>cart_sidebar</name></action>
+        </reference>
+        <reference name="right">
+            <action method="unsetChild"><name>cart_sidebar</name></action>
+        </reference>
+        <reference name="header">
+            <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
+                <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/cart/sidebar/default.phtml</template></action>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>
+        </reference>
+    </default>
+
+    <checkout_cart_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title">
+                <crumbName>home</crumbName>
+                <crumbInfo>
+                    <label>Homepage</label>
+                    <title>Homepage</title>
+                    <link>/</link>
+                </crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title">
+                <crumbName>cart</crumbName>
+                <crumbInfo>
+                    <label>Cart</label>
+                    <title>Cart</title>
+                    <link></link>
+                </crumbInfo>
+            </action>
+        </reference>
+        <reference name="checkout.cart.crosssell">
+            <action method="setLimit"><limit>20</limit></action>
+        </reference>
+    </checkout_cart_index>
+
+    <checkout_onepage_index>
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title">
+                <crumbName>home</crumbName>
+                <crumbInfo>
+                    <label>Homepage</label>
+                    <title>Homepage</title>
+                    <link>/</link>
+                </crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title">
+                <crumbName>cart</crumbName>
+                <crumbInfo>
+                    <label>Checkout</label>
+                    <title>Checkout</title>
+                    <link></link>
+                </crumbInfo>
+            </action>
+        </reference>
+        <reference name="checkout.onepage.login">        
+            <block type="core/text_list" name="checkout.onepage.login.checkout_methods_after" as="checkout_methods_after" />
+        </reference>
+        <reference name="right">
+            <block
+                type="checkout/onepage_review_info"
+                template="checkout/onepage/review/info.phtml"
+                before="checkout-progress-wrapper"
+            >
+                <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>checkout/onepage/review/item.phtml</template></action>
+                <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>checkout/onepage/review/item.phtml</template></action>
+                <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>checkout/onepage/review/item.phtml</template></action>
+            </block>
+        </reference>
+    </checkout_onepage_index>
+
+    <checkout_onepage_success>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </checkout_onepage_success>
+
+    <checkout_onepage_failure>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </checkout_onepage_failure>
+
+</layout>

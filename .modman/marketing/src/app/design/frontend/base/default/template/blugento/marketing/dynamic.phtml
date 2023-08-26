@@ -1,0 +1,16 @@
+<?php
+$storeId = Mage::app()->getStore()->getStoreId()
+?>
+
+<?php if (!Mage::getStoreConfig('gdpr_cookies/general/enabled') || Mage::getSingleton('core/cookie')->get('marketing') == 'yes') : ?>
+    <?php echo $this->getDynamicCode($storeId); ?>
+<?php endif; ?>
+
+<?php echo $this->getDynamicNecessaryCode($storeId); ?>
+
+<?php if (!Mage::getStoreConfig('gdpr_cookies/general/enabled') || Mage::getSingleton('core/cookie')->get('statistics') == 'yes') : ?>
+    <?php echo $this->getDynamicAnalyticsCode($storeId); ?>
+<?php endif; ?>
+
+
+

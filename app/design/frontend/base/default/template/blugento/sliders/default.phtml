@@ -1,0 +1,267 @@
+<?php if ($this->hasValidGroup()): ?>
+	
+	<?php require_once 'MobileDetect/Mobile_Detect.php'; ?>
+	<?php
+		$detect = new Mobile_Detect;
+		$group = $this->getGroup();
+		$groupId = uniqid($this->getWrapperId() . '-');
+		$banners = $this->getBanners();
+		$helper = $this->helper('blugento_sliders');
+		$_banner_arrows = (int) ($this->getLayout()->getBlock('root')->getBanner_arrows() ?: 2);
+		$_baseUrl = Mage::getBaseUrl();
+		$_baseMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+		$_baseMediaUrl = str_replace('/media', '', $_baseMedia);
+		$_bannerWebp = Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/active') &&
+			Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/webp_conversion') && ($_baseUrl != $_baseMediaUrl);
+		$_srcWebp = $_bannerWebp ? '.webp' : '';
+	?>
+	<div id="<?php echo $groupId; ?>" class="showcase">
+		<div class="showcase-inner">
+			<ul id="<?php echo $groupId ?>-showcase" class="bn-list <?php echo $group->getControlsPosition() ?>">
+				<?php foreach ($banners as $banner): ?>
+					<?php
+					$bannerImage = '';
+					$bannerUrl = '';
+					
+					if ($banner->hasUrl()) {
+						$bannerUrl .= $banner->getUrl();
+					}
+					
+					if ($banner->getImageUrl()) {
+						if ($_bannerWebp) {
+							$srcWebp = implode(',', array(
+								$helper->getResizeBannerImage($banner->getImageUrl(), 1920),
+							));
+							$srcsetWebp = implode(',', array(
+								$helper->getResizeBannerImage($banner->getImageUrl(), 1920) . $_srcWebp . ' 1x',
+								$helper->getResizeBannerImage($banner->getImageUrl(), 2880) . $_srcWebp . ' 2x',
+							));
+							
+							if ($detect->isMobile() && !$detect->isTablet()) {
+								$srcWebp = implode(',', array(
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 640, $banner->getMobileImageHeight() ?: null)
+								));
+								$srcsetWebp = implode(',', array(
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 640, $banner->getMobileImageHeight() ?: null) . $_srcWebp . ' 1x',
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ? $banner->getMobileImageWidth() * 2 : 640, $banner->getMobileImageHeight() ? $banner->getMobileImageHeight() * 2 : null) . $_srcWebp . ' 2x',
+								));
+							}
+							
+							if ($detect->isTablet()) {
+								$srcWebp = implode(',', array(
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 1024, $banner->getTabletImageHeight() ?: null)
+								));
+								$srcsetWebp = implode(',', array(
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 1024, $banner->getTabletImageHeight() ?: null) . $_srcWebp . ' 1x',
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ? $banner->getTabletImageWidth() * 2 : 1024, $banner->getTabletImageHeight() ? $banner->getTabletImageHeight() * 2 : null) . $_srcWebp . ' 2x'
+								));
+							}
+							
+							if ($detect->isiOS()) {
+								$srcWebp = implode(',', array(
+									$helper->getResizeBannerImage($banner->getImageUrl(), 1920)
+								));
+								$srcsetWebp = implode(',', array(
+									$helper->getResizeBannerImage($banner->getImageUrl(), 1920) . ' 1x',
+									$helper->getResizeBannerImage($banner->getImageUrl(), 2880) . ' 2x',
+								));
+								
+								if ($detect->isMobile() && !$detect->isTablet()) {
+									$srcWebp = implode(',', array(
+										$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 1280, $banner->getMobileImageHeight() ?: null)
+									));
+									$srcsetWebp = implode(',', array(
+										$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 1280, $banner->getMobileImageHeight() ?: null) . $_srcWebp . ' 1x',
+										$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ? $banner->getMobileImageWidth() * 2 : 1280, $banner->getMobileImageHeight() ? $banner->getMobileImageHeight() * 2 : null) . $_srcWebp . ' 2x',
+									));
+								}
+								
+								if ($detect->isTablet()) {
+									$srcWebp = implode(',', array(
+										$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 2048, $banner->getTabletImageHeight() ?: null)
+									));
+									$srcsetWebp = implode(',', array(
+										$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 2048, $banner->getTabletImageHeight() ?: null) . $_srcWebp . ' 1x',
+										$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ? $banner->getTabletImageWidth() * 2 : 2048, $banner->getTabletImageHeight() ? $banner->getTabletImageHeight() * 2 : null) . $_srcWebp . ' 2x'
+									));
+								}
+							}
+							
+							if ($detect->isAndroidOS()) {
+								$srcWebp = implode(',', array(
+									$helper->getResizeBannerImage($banner->getImageUrl(), 1920),
+								));
+								$srcsetWebp = implode(',', array(
+									$helper->getResizeBannerImage($banner->getImageUrl(), 1920) . ' 1x',
+									$helper->getResizeBannerImage($banner->getImageUrl(), 2880) . ' 2x',
+								));
+								
+								if ($detect->isMobile() && !$detect->isTablet()) {
+									$srcWebp = implode(',', array(
+										$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 640, $banner->getMobileImageHeight() ?: null)
+									));
+									$srcsetWebp = implode(',', array(
+										$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 640, $banner->getMobileImageHeight() ?: null) . $_srcWebp . ' 1x',
+										$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ? $banner->getMobileImageWidth() * 2 : 640, $banner->getMobileImageHeight() ? $banner->getMobileImageHeight() * 2 : null) . $_srcWebp . ' 2x',
+									));
+								}
+								
+								if ($detect->isTablet()) {
+									$srcWebp = implode(',', array(
+										$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 1024, $banner->getTabletImageHeight() ?: null)
+									));
+									$srcsetWebp = implode(',', array(
+										$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 1024, $banner->getTabletImageHeight() ?: null) . $_srcWebp . ' 1x',
+										$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ? $banner->getTabletImageWidth() * 2 : 1024, $banner->getTabletImageHeight() ? $banner->getTabletImageHeight() * 2 : null) . $_srcWebp . ' 2x'
+									));
+								}
+							}
+						}
+
+						$src = implode(',', array(
+							$helper->getResizeBannerImage($banner->getImageUrl(), 1920),
+						));
+						$srcset = implode(',', array(
+							$helper->getResizeBannerImage($banner->getImageUrl(), 1920) . ' 1x',
+							$helper->getResizeBannerImage($banner->getImageUrl(), 2880) . ' 2x',
+						));
+						
+						if ($detect->isMobile() && !$detect->isTablet()) {
+							$src = implode(',', array(
+								$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 640, $banner->getMobileImageHeight() ?: null)
+							));
+							$srcset = implode(',', array(
+								$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 640, $banner->getMobileImageHeight() ?: null) . ' 1x',
+								$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ? $banner->getMobileImageWidth() * 2 : 640, $banner->getMobileImageHeight() ? $banner->getMobileImageHeight() * 2 : null) . ' 2x',
+							));
+						}
+						
+						if ($detect->isTablet()) {
+							$src = implode(',', array(
+								$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 1024, $banner->getTabletImageHeight() ?: null)
+							));
+							$srcset = implode(',', array(
+								$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 1024, $banner->getTabletImageHeight() ?: null) . ' 1x',
+								$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ? $banner->getTabletImageWidth() * 2 : 1024, $banner->getTabletImageHeight() ? $banner->getTabletImageHeight() * 2 : null) . ' 2x'
+							));
+						}
+						
+						if ($detect->isiOS()) {
+							$src = implode(',', array(
+								$helper->getResizeBannerImage($banner->getImageUrl(), 1920)
+							));
+							$srcset = implode(',', array(
+								$helper->getResizeBannerImage($banner->getImageUrl(), 1920) . ' 1x',
+								$helper->getResizeBannerImage($banner->getImageUrl(), 2880) . ' 2x',
+							));
+							
+							if ($detect->isMobile() && !$detect->isTablet()) {
+								$src = implode(',', array(
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 1280, $banner->getMobileImageHeight() ?: null)
+								));
+								$srcset = implode(',', array(
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 1280, $banner->getMobileImageHeight() ?: null) . ' 1x',
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ? $banner->getMobileImageWidth() * 2 : 1280, $banner->getMobileImageHeight() ? $banner->getMobileImageHeight() * 2 : null) . ' 2x',
+								));
+							}
+							
+							if ($detect->isTablet()) {
+								$src = implode(',', array(
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 2048, $banner->getTabletImageHeight() ?: null)
+								));
+								$srcset = implode(',', array(
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 2048, $banner->getTabletImageHeight() ?: null) . $_srcWebp . ' 1x',
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ? $banner->getTabletImageWidth() * 2 : 2048, $banner->getTabletImageHeight() ? $banner->getTabletImageHeight() * 2 : null) . ' 2x'
+								));
+							}
+						}
+						
+						if ($detect->isAndroidOS()) {
+							$src = implode(',', array(
+								$helper->getResizeBannerImage($banner->getImageUrl(), 1920),
+							));
+							$srcset = implode(',', array(
+								$helper->getResizeBannerImage($banner->getImageUrl(), 1920) . ' 1x',
+								$helper->getResizeBannerImage($banner->getImageUrl(), 2880) . ' 2x',
+							));
+
+							if ($detect->isMobile() && !$detect->isTablet()) {
+								$src = implode(',', array(
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 640, $banner->getMobileImageHeight() ?: null)
+								));
+								$srcset = implode(',', array(
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ?: 640, $banner->getMobileImageHeight() ?: null) . ' 1x',
+									$helper->getResizeBannerImage($banner->getMobileImageUrl() ?: $banner->getImageUrl(), $banner->getMobileImageWidth() ? $banner->getMobileImageWidth() * 2 : 640, $banner->getMobileImageHeight() ? $banner->getMobileImageHeight() * 2 : null) . ' 2x',
+								));
+							}
+							
+							if ($detect->isTablet()) {
+								$src = implode(',', array(
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 1024, $banner->getTabletImageHeight() ?: null)
+								));
+								$srcset = implode(',', array(
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ?: 1024, $banner->getTabletImageHeight() ?: null) . ' 1x',
+									$helper->getResizeBannerImage($banner->getTabletImageUrl() ?: $banner->getImageUrl(), $banner->getTabletImageWidth() ? $banner->getTabletImageWidth() * 2 : 1024, $banner->getTabletImageHeight() ? $banner->getTabletImageHeight() * 2 : null) . ' 2x'
+								));
+							}
+						}
+						
+						if ($banner->hasUrl()) {
+							$bannerImage .= '<a href="' . $bannerUrl . '" title="' . $this->escapeHtml($banner->getTitle()) . '"' . ($banner->getUrlTarget() ? ' target="' . $banner->getUrlTarget() . '"' : '') . '>';
+						}
+
+						if ($_bannerWebp) {
+							$bannerImage .= '<picture><source media="(min-width:320px)" srcset="' . $srcsetWebp . '" type="image/webp" /> <img src="' . $src . '" srcset="' . $srcset . '" alt="' . $this->escapeHtml($banner->getAltText()) . '" class="img-responsive" /></picture>';
+						} else {
+							$bannerImage .= '<img src="' . $src . '" srcset="' . $srcset . '" alt="' . $this->escapeHtml($banner->getAltText()) . '" class="img-responsive" />';
+						}
+
+						if ($banner->hasUrl()) {
+							$bannerImage .= '</a>';
+						}
+					}
+					?>
+					<li style="background-color: <?php echo $banner->getBackgroundColor() ?>;">
+						<div class="bn-wrapper">
+							<?php if ($banner->getHtml()): ?>
+								<?php $bannerHtml = str_replace('{{banner_image}}', $bannerImage, $banner->getHtml()); ?>
+								<?php $bannerHtml = str_replace('{{banner_url}}', $bannerUrl, $bannerHtml); ?>
+								<div class="html"><?php echo $bannerHtml ?></div>
+							<?php else: ?>
+								<?php if ($banner->getImageUrl()): ?>
+									<?php echo $bannerImage ?>
+								<?php endif; ?>
+							<?php endif; ?>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+	
+	<?php if (count($banners) > 1): ?>
+		<script>
+		/* <![CDATA[ */
+		jQuery(document).ready(function($) {
+			$('#<?php echo $groupId ?>-showcase').slick({
+				<?php if ($_banner_arrows != 2): ?>
+					arrows: true,
+				<?php else: ?>
+					arrows: false,
+				<?php endif; ?>
+				dots: <?php echo ($group->getControlsPosition()) ? 'true' : 'false' ?>,
+				infinite: true,
+				slidesToScroll: 1,
+				autoplay: <?php echo ($group->getCarouselAuto()) ? 'true' : 'false' ?>,
+				autoplaySpeed: <?php echo (int) ($group->getCarouselAutospeed() ?: 3000) ?>,
+				<?php if (!$group->isAnimationEnabled()): ?>
+			        cssEase: 'none',
+				<?php endif; ?>
+				speed: <?php echo max($group->getCarouselDuration(), 400) ?>,
+				fade: <?php echo ($group->getCarouselEffect() == 'fade') ? 'true' : 'false' ?>
+			});
+		});
+		/* ]]> */
+		</script>
+	<?php endif; ?>
+<?php endif; ?>

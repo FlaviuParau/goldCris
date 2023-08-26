@@ -1,0 +1,10 @@
+@import "lg-variables";
+
+.lg-fullscreen {
+    background-image: url("#{$lg-path-images}/zoom-full.svg");
+    background-size: 17px 17px;
+
+    .lg-fullscreen-on & {
+        background-image: url("#{$lg-path-images}/zoom-full.svg");
+    }
+}

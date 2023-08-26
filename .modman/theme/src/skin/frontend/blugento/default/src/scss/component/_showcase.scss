@@ -1,0 +1,119 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_showcase.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.showcase {
+    .bn-list > li {
+        display: none;
+
+        &:first-child {
+            display: block;
+        }
+    }
+
+    .slick-slider {
+        position: relative;
+
+        img {
+            margin: 0 auto;
+        }
+    }
+
+    .controls-left .slick-dots {
+        left: 20px;
+    }
+
+    .controls-middle .slick-dots {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .controls-right .slick-dots {
+        right: 20px;
+    }
+
+    .slick-prev,
+    .slick-next {
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 54px;
+        border: 0;
+        font-size: 0;
+    }
+
+    .slick-prev {
+        left: 0;
+        background: $products-grid__navigation_background-color $icon--arrow-left--b1 no-repeat 50% 50%;
+    }
+
+    .slick-next {
+        right: 0;
+        background: $products-grid__navigation_background-color $icon--arrow-right--b1 no-repeat 50% 50%;
+    }
+}
+
+@if ($isFullLayoutMode) {
+    .row-bn-wide .showcase,
+    .row-wrapper-wide .showcase {
+        margin-left: -(2 * $grid-gutter-width);
+        margin-right: -(2 * $grid-gutter-width);
+    }
+}
+
+@if ($isContainerPaddingTop and $isFullLayoutMode) {
+    .row-wrapper:first-child .showcase {
+        // margin-top: -20px;
+    }
+}
+
+
+/* Slick dots */
+.slick-dots {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    font-size: 0;
+    line-height: 0;
+
+    @include phone {
+        position: static;
+        transform: translateX(0) !important;
+    }
+
+    li {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    button {
+        opacity: .8;
+        width: 16px;
+        height: 16px;
+        border: 2px solid $showcase__button_border-color;
+        border-radius: 50%;
+        background-color: $showcase__button_background-color;
+        box-shadow: 2px 2px 0 $showcase__button_box-shadow-color;
+    }
+
+    .slick-active button {
+        background-color: color('b');
+    }
+}
+
+.products-widget,
+.block-related,
+.block-upsell {
+
+    .products-grid[data-dots="1"] {
+        margin-bottom: 30px;
+    }
+
+    .slick-dots {
+        right: 0;
+        bottom: -20px;
+    }
+}

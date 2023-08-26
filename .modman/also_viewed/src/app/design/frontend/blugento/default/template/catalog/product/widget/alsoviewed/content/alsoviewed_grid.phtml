@@ -1,0 +1,137 @@
+<?php
+/* @var Blugento_AlsoViewed_Block_Catalog_Product_Widget_Alsoviewed $this */
+$_isSlider = $this->getProductSlider();
+$_productCollection = $this->getProductCollection();
+?>
+<?php $_imageResizeWidth  = Mage::app()->getLayout()->getBlock('root')->getProductListImageResizeWidth(); ?>
+<?php $_imageResizeHeight = Mage::app()->getLayout()->getBlock('root')->getProductListImageResizeHeight(); ?>
+<?php if (count($_productCollection)) : ?>
+	<div class="widget-multiproducts">
+		<h2 class="subtitle"><?php echo $this->getTitle(); ?></h2>
+		<ul class="products-grid <?php echo $this->getTypeOfTemplate() ?>"
+			<?php if ($_isSlider) : ?>
+				data-slider="<?php echo $this->getProductSlider() ?>"
+				data-slider-animation="<?php echo $this->getSliderAnimation() ?>"
+				data-slider-item-row="<?php echo $this->getSliderItemRow() ?>"
+				data-slider-item-scroll="<?php echo $this->getSliderItemScroll() ?>"
+				data-slider-item-loop="<?php echo $this->getSliderItemLoop() ?>"
+			<?php endif; ?>
+		>
+			<?php foreach ($_productCollection as $_product) : ?>
+				<li class="item">
+					<div class="item-inner">
+						<a href="<?php echo $_product['url'] ?>" title="<?php echo $_product['name'] ?>"
+						   class="product-image product-image-hover-<?php echo Mage::app()->getLayout()->getBlock('root')->getProductListHover() ?>">
+							<img class="product-img"
+							     src="<?php echo Mage::helper('blugento_alsoviewed')->getResizeImage($_product['images'][0], $_imageResizeWidth, $_imageResizeHeight) ?>"
+							     alt="<?php echo $_product['name'] ?>"
+							     width="<?php echo $_imageResizeWidth; ?>"
+							     height="<?php echo $_imageResizeHeight; ?>"
+							     id="product-collection-image-<?php echo $_product['id'] ?>"/>
+							<?php if (Mage::app()->getLayout()->getBlock('root')->getProductListHover() == 1): ?>
+								<img class="product-img-hover"
+								     src="<?php echo  Mage::helper('blugento_alsoviewed')->getResizeImage($_product['images'][2] ?: $_product['images'][0], $_imageResizeWidth, $_imageResizeHeight) ?>"
+								     alt="<?php echo $$_product['name'] ?>"
+								     width="<?php echo $_imageResizeWidth; ?>"
+								     height="<?php echo $_imageResizeHeight; ?>"
+								     id="product-collection-image-hover-<?php echo $_product['id'] ?>"/>
+							<?php endif; ?>
+						</a>
+						<div class="product-box">
+							<div class="short-info">
+								<?php if ($_product['manufacturer']) : ?>
+									<h3 class="product-manufacturer"><?php echo $_product['manufacturer'] ?></h3>
+								<?php endif; ?>
+								<?php if (Mage::getStoreConfig('blugento_theme/general_tag/meta') != ''): ?>
+									<?php $tag = strip_tags(Mage::getStoreConfig('blugento_theme/general_tag/meta')); ?>
+									<?php echo '<' . $tag . ' class="product-name">'; ?>
+									<a href="<?php echo $_product['url'] ?>"
+									   title="<?php echo $_product['name'] ?>"><?php echo $_product['name'] ?></a>
+									<?php echo '</' . $tag . '>'; ?>
+								<?php else: ?>
+									<h2 class="product-name">
+										<a href="<?php echo $_product['url'] ?>"
+										   title="<?php echo $_product['name'] ?>"><?php echo $_product['name'] ?></a>
+									</h2>
+								<?php endif; ?>
+								<?php if (Mage::helper('core')->isModuleEnabled('Yotpo_Yotpo') && ($_YotpoAppKey != '')): ?>
+									<?php $this->helper('yotpo')->showBottomline($this, $_product) ?>
+								<?php endif; ?>
+								<?php if (Mage::app()->getLayout()->getBlock('root')->getProductListShortDescriptionStatus() == 1 && Mage::app()->getLayout()->getBlock('root')->getProductListShortDescriptionBottomMode() == 1) : ?>
+									<?php if (Mage::app()->getLayout()->getBlock('root')->getProductListDescriptionHtml() == 1): ?>
+										<div class="desc 1 std"><?php echo $_product['short_description'] ?></div>
+									<?php else: ?>
+										<div class="desc 2 std"><?php echo Mage::helper('core/string')->truncate(strip_tags($_product['short_description']), 200) ?></div>
+									<?php endif; ?>
+								<?php endif; ?>
+								<?php if (Mage::getStoreConfig('blugento_theme/general_nl2br/show_sku_on_list')) : ?>
+									<p class="product-code"><?php echo $this->__('Code: ') . $_product['sku'] ?></p>
+								<?php endif; ?>
+							</div>
+							<div class="product-info">
+								<?php if (Mage::app()->getLayout()->getBlock('root')->getProductAddToCartStatus() == 2 || Mage::app()->getLayout()->getBlock('root')->getCatalogProductListQty() == 2 || Mage::getStoreConfig('blugento_ajaxcart/general/enable')) : ?>
+									<?php if (($_product['type_id'] == 'bundle')): ?>
+										<?php echo $this->getPriceHtml($_product, true) ?>
+									<?php else : ?>
+										<div class="price-box">
+											<?php if ($_product['special_price']) : ?>
+												<p class="old-price">
+													<span class="price" id="old-price-<?php echo $_product['id'] ?>">
+														<?php echo $_product['price'] . ' ' . $_product['currency']?>
+													</span>
+												</p>
+												<p class="special-price">
+													<span class="price" id="product-price-?php echo $_product['id'] ?>">
+														<?php echo $_product['special_price'] . ' '. $_product['currency']?>
+													</span>
+												</p>
+											<?php else : ?>
+												<p class="regular-price">
+													<span class="price" id="product-price-?php echo $_product['id'] ?>">
+														<?php echo $_product['price'] . ' ' . $_product['currency']?>
+													</span>
+												</p>
+											<?php endif; ?>
+										</div>
+									<?php endif; ?>
+									<?php if ($_product['price_discount'] && Mage::app()->getLayout()->getBlock('root')->getProductListDiscountMode()): ?>
+										<div class="discount">
+											<span><?php echo $_product['price_discount'] ?></span>
+										</div>
+									<?php endif; ?>
+								<?php endif; ?>
+							</div>
+							<div class="product-actions">
+								<?php if (($_product['type_id'] == 'simple' || $_product['type_id'] == 'virtual') && (Mage::app()->getLayout()->getBlock('root')->getProductAddToCartStatus() == 1)) : ?>
+									<button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $_product['add_to_cart'] ?>')">
+										<span><span><?php echo $this->__('Add to Cart') ?></span></span>
+									</button>
+								<?php else : ?>
+									<a href="<?php echo $_product['url'] ?>" title="<?php echo $this->__('View Details') ?>" class="button button--block">
+										<?php echo $this->__('View Details') ?>
+									</a>
+								<?php endif; ?>
+								<ul class="add-to-links <?php if ($this->helper('customer')->isLoggedIn()): ?>customer-logged-in<?php endif; ?>">
+									<?php if ($_product['wishlist_url']) : ?>
+										<li>
+											<a href="<?php echo $_product['wishlist_url'] ?>" class="link-wishlist" title="<?php echo $this->__('Wishlist') ?>">
+												<span><?php echo $this->__('Wishlist') ?></span>
+											</a>
+										</li>
+									<?php endif; ?>
+									<?php if ($_product['compare_url']) : ?>
+										<li>
+											<a href="<?php echo $_product['compare_url'] ?>" class="link-compare" title="<?php echo $this->__('Compare') ?>">
+												<span><?php echo $this->__('Compare') ?></span>
+											</a>
+										</li>
+									<?php endif; ?>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+<?php endif; ?>

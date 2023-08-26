@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <IntelligentIT_SmartBill>
+            <active>true</active>
+            <codePool>community</codePool>
+        </IntelligentIT_SmartBill>
+    </modules>
+</config>

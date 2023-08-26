@@ -1,0 +1,9 @@
+src/app/code/local/Innobyte/Plationline                                                  app/code/local/Innobyte/Plationline
+src/app/design/adminhtml/default/default/template/plationline                            app/design/adminhtml/blugento/default/template/plationline
+src/app/design/frontend/default/default/layout/plationline.xml                           app/design/frontend/blugento/default/layout/plationline.xml
+src/app/design/frontend/default/default/template/plationline                             app/design/frontend/blugento/default/template/plationline
+src/app/etc/modules/Innobyte_Plationline.xml                                             app/etc/modules/Innobyte_Plationline.xml
+src/lib/PlatiOnline                                                                      lib/PlatiOnline
+
+
+src/media/plationline/PO_VS_MC_wide.png                                                  media/plationline/PO_VS_MC_wide.png

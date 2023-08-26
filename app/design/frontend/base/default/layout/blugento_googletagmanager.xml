@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_GoogleTagManager
+ * @author      Stîncel-Toader Octavian-Cristian <tavi@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<layout version="0.1.0">
+	<default>
+		<reference name="head">
+			<block type="blugento_googletagmanager/gtmCode" name="blugento_googletagmanager_gtm_head_code" as="blugento_googletagmanager_gtm_head_code" template="blugento/googletagmanager/gtmheadcode.phtml" />
+			<block type="blugento_googletagmanager/tm" name="blugento_googletagmanager_tm" as="blugento_googletagmanager_tm" template="blugento/googletagmanager/datalayer.phtml" />
+		</reference>
+		<reference name="after_body_start">
+			<block type="blugento_googletagmanager/gtmCode" name="blugento_googletagmanager_gtm_code" as="blugento_googletagmanager_gtm_code" template="blugento/googletagmanager/gtmcode.phtml" />
+		</reference>
+	</default>
+</layout>

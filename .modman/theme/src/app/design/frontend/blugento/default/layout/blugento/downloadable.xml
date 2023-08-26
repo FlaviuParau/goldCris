@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout>
+
+    <customer_logged_in>
+        <reference name="customer_account_navigation.mobile">
+            <action method="addLink" translate="label" module="downloadable">
+                <name>downloadable_products</name>
+                <path>downloadable/customer/products</path>
+                <label>My Downloadable Products</label>
+            </action>
+        </reference>
+    </customer_logged_in>
+
+</layout>

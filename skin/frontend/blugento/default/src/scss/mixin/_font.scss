@@ -1,0 +1,19 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       mixin/_font.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@mixin font-face($family, $path, $style: normal, $weight: normal) {
+    $path: '../fonts/' + $path;
+    @font-face {
+        font-style: #{$style};
+        font-weight: #{$weight};
+        font-family: '#{$family}';
+        src: url($path + '.eot');  // IE9
+        src: url($path + '.eot?#iefix') format('embedded-opentype'), // IE8-
+             url($path + '.woff') format('woff'), // Standards
+             url($path + '.ttf') format('truetype'), // Safari, Android, iOS
+             url($path + '.svg#' + $family) format('svg'); // legacy iOS
+    }
+}

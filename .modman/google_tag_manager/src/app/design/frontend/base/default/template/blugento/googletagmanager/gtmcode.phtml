@@ -1,0 +1,23 @@
+<?php /** @var $this Blugento_GoogleTagManager_Block_GtmCode */
+if (!($isEnabled = $this->isEnabled())) {
+	return;
+}
+
+$accountId 	= $this->getAccountId();
+$categoryId = $this->getCategory();
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+
+foreach ($categories as $category) {
+    if ($category['value'] == $categoryId) {
+        $scriptCategory = strtolower($category['label']);
+    }
+}
+
+$scriptCategory = str_replace('analytics', 'statistics', $scriptCategory);
+$cookie 		= Mage::getSingleton('core/cookie')->get($scriptCategory);
+?>
+<?php if ($isEnabled && $accountId) : ?>
+	<noscript>
+		<iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $accountId ?>" height="0" width="0" style="display:none; visibility:hidden"></iframe>
+	</noscript>
+<?php endif; ?>

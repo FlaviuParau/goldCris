@@ -1,0 +1,513 @@
+<xml>
+    <template>
+        <name>Template title</name>
+        <about>http://blugento.com/templates/example1</about>
+        <demo>http://demo.blugento.com/templates/example1</demo>
+    </template>
+    <img>
+        <image name="page_favicon">
+            <id>page_favicon</id>
+            <scss><![CDATA[$image--page_favicon: [value]]]></scss>
+            <title><![CDATA[Favicon]]></title>
+            <description><![CDATA[Recommended size: 256px x 256px]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_page_favicon.png</default>
+            <fieldset><![CDATA[fieldset/general]]></fieldset>
+        </image>
+        <image name="og-image">
+            <id>og-image</id>
+            <scss><![CDATA[$image--og-image: [value]]]></scss>
+            <title><![CDATA[Social Sharing OG]]></title>
+            <description><![CDATA[Default image for Social Sharing excepting Category page]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_og-image.jpg</default>
+            <fieldset><![CDATA[fieldset/general]]></fieldset>
+        </image>
+        <image name="page_brand_logo">
+            <id>page_brand_logo</id>
+            <scss><![CDATA[$image--page_brand_logo: [value]]]></scss>
+            <title><![CDATA[Brand Logo]]></title>
+            <description><![CDATA[Displayed in header (all devices).]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_page_brand_logo.png</default>
+            <fieldset><![CDATA[fieldset/logo]]></fieldset>
+        </image>
+        <image name="page_brand_logo_email">
+            <id>page_brand_logo_email</id>
+            <scss><![CDATA[$image--page_brand_logo_email: [value]]]></scss>
+            <title><![CDATA[Brand Logo Email]]></title>
+            <description><![CDATA[Displayed in e-mails. Only GIF format is supported.]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>gif</type>
+            <help></help>
+            <default>logo_email.gif</default>
+            <fieldset><![CDATA[fieldset/logo]]></fieldset>
+        </image>
+        <image name="page_background-image">
+            <id>page_background-image</id>
+            <scss><![CDATA[$image--page_background-image: [value]]]></scss>
+            <title><![CDATA[Page Background]]></title>
+            <description><![CDATA[Displayed as background on the entire website (desktop devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_page_background-image.jpg</default>
+            <fieldset><![CDATA[fieldset/background]]></fieldset>
+        </image>
+        <image name="page-footer__marketing-box--shipping__before">
+            <id>page-footer__marketing-box--shipping__before</id>
+            <scss><![CDATA[$image--page-footer__marketing-box--shipping__before: [value]]]></scss>
+            <title><![CDATA[Footer Marketing Box Left]]></title>
+            <description><![CDATA[Displayed at the bottom of the page in Marketing Box left section (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_page-footer__marketing-box--shipping__before.svg</default>
+            <fieldset><![CDATA[fieldset/footer]]></fieldset>
+        </image>
+        <image name="page-footer__marketing-box--support__before">
+            <id>page-footer__marketing-box--support__before</id>
+            <scss><![CDATA[$image--page-footer__marketing-box--support__before: [value]]]></scss>
+            <title><![CDATA[Footer Marketing Box Middle]]></title>
+            <description><![CDATA[Displayed at the bottom of the page in Marketing Box middle section (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_page-footer__marketing-box--support__before.svg</default>
+            <fieldset><![CDATA[fieldset/footer]]></fieldset>
+        </image>
+        <image name="page-footer__marketing-box--newsletter__before">
+            <id>page-footer__marketing-box--newsletter__before</id>
+            <scss><![CDATA[$image--page-footer__marketing-box--newsletter__before: [value]]]></scss>
+            <title><![CDATA[Footer Marketing Box Newsletter]]></title>
+            <description><![CDATA[Displayed at the bottom of the page in Marketing Box Newsletter section (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_page-footer__marketing-box--newsletter__before.svg</default>
+            <fieldset><![CDATA[fieldset/footer]]></fieldset>
+        </image>
+        <image name="add-to-links__wishlist_background-image">
+            <id>add-to-links__wishlist_background-image</id>
+            <scss><![CDATA[$image--add-to-links__wishlist_background-image: [value]]]></scss>
+            <title><![CDATA[Wishlist Icon]]></title>
+            <description><![CDATA[Displayed on Product List and Product Details pages (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_add-to-links__wishlist_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/add_to_links]]></fieldset>
+        </image>
+        <image name="add-to-links-hover__wishlist_background-image">
+            <id>add-to-links-hover__wishlist_background-image</id>
+            <scss><![CDATA[$image--add-to-links-hover__wishlist_background-image: [value]]]></scss>
+            <title><![CDATA[Wishlist Icon]]></title>
+            <description><![CDATA[Displayed on Product List and Product Details pages (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_add-to-links-hover__wishlist_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/add_to_links]]></fieldset>
+        </image>
+        <image name="add-to-links__compare_background-image">
+            <id>add-to-links__compare_background-image</id>
+            <scss><![CDATA[$image--add-to-links__compare_background-image: [value]]]></scss>
+            <title><![CDATA[Compare Icon]]></title>
+            <description><![CDATA[Displayed on Product List and Product Details pages (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_add-to-links__compare_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/add_to_links]]></fieldset>
+        </image>
+        <image name="add-to-links-hover__compare_background-image">
+            <id>add-to-links-hover__compare_background-image</id>
+            <scss><![CDATA[$image--add-to-links-hover__compare_background-image: [value]]]></scss>
+            <title><![CDATA[Compare Icon]]></title>
+            <description><![CDATA[Displayed on Product List and Product Details pages (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_add-to-links-hover__compare_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/add_to_links]]></fieldset>
+        </image>
+        <image name="mini-cart__link__after">
+            <id>mini-cart__link__after</id>
+            <scss><![CDATA[$image--mini-cart__link__after: [value]]]></scss>
+            <title><![CDATA[Mini-Cart Icon]]></title>
+            <description><![CDATA[Displayed in header (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_mini-cart__link__after.svg</default>
+            <fieldset><![CDATA[fieldset/header]]></fieldset>
+        </image>
+        <image name="mini-cart__link--hover__after">
+            <id>mini-cart__link--hover__after</id>
+            <scss><![CDATA[$image--mini-cart__link--hover__after: [value]]]></scss>
+            <title><![CDATA[Mini-Cart Icon on Hover]]></title>
+            <description><![CDATA[Displayed in header (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_mini-cart__link--hover__after.svg</default>
+            <fieldset><![CDATA[fieldset/header]]></fieldset>
+        </image>
+        <image name="mini-search__button_background-image">
+            <id>mini-search__button_background-image</id>
+            <scss><![CDATA[$image--mini-search__button_background-image: [value]]]></scss>
+            <title><![CDATA[Mini-Search Icon]]></title>
+            <description><![CDATA[Displayed in header (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_mini-search__button_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/header]]></fieldset>
+        </image>
+        <image name="mini-search__button--hover_background-image">
+            <id>mini-search__button--hover_background-image</id>
+            <scss><![CDATA[$image--mini-search__button--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Mini-Search Icon on Hover]]></title>
+            <description><![CDATA[Displayed in header (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_mini-search__button--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/header]]></fieldset>
+        </image>
+        <image name="mini-profile__link_background-image">
+            <id>mini-profile__link_background-image</id>
+            <scss><![CDATA[$image--mini-profile__link_background-image: [value]]]></scss>
+            <title><![CDATA[Mini-Profile Icon]]></title>
+            <description><![CDATA[Displayed in header (mobile devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_mini-profile__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/header]]></fieldset>
+        </image>
+        <image name="mini-wishlist__button_background-image">
+            <id>mini-wishlist__button_background-image</id>
+            <scss><![CDATA[$image--mini-wishlist__button_background-image: [value]]]></scss>
+            <title><![CDATA[Mini-Wishlist Icon]]></title>
+            <description><![CDATA[Displayed in header (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_mini-wishlist__button_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/header]]></fieldset>
+        </image>
+        <image name="mini-wishlist__button--hover_background-image">
+            <id>mini-wishlist__button--hover_background-image</id>
+            <scss><![CDATA[$image--mini-wishlist__button--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Mini-wishlist Icon on Hover]]></title>
+            <description><![CDATA[Displayed in header (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_mini-wishlist__button--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/header]]></fieldset>
+        </image>
+        <image name="toolbar__view-mode__grid_background-image">
+            <id>toolbar__view-mode__grid_background-image</id>
+            <scss><![CDATA[$image--toolbar__view-mode__grid_background-image: [value]]]></scss>
+            <title><![CDATA[Toolbar Grid View Icon]]></title>
+            <description><![CDATA[Displayed on Product List and Search Results pages (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_toolbar__view-mode__grid_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/product_list]]></fieldset>
+        </image>
+        <image name="toolbar__view-mode__grid--hover_background-image">
+            <id>toolbar__view-mode__grid--hover_background-image</id>
+            <scss><![CDATA[$image--toolbar__view-mode__grid--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Toolbar Grid View Active Icon]]></title>
+            <description><![CDATA[Displayed on Product List and Search Results pages (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_toolbar__view-mode__grid--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/product_list]]></fieldset>
+        </image>
+        <image name="toolbar__view-mode__list_background-image">
+            <id>toolbar__view-mode__list_background-image</id>
+            <scss><![CDATA[$image--toolbar__view-mode__list_background-image: [value]]]></scss>
+            <title><![CDATA[Toolbar List View Icon]]></title>
+            <description><![CDATA[Displayed on Product List and Search Results pages (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_toolbar__view-mode__list_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/product_list]]></fieldset>
+        </image>
+        <image name="toolbar__view-mode__list--hover_background-image">
+            <id>toolbar__view-mode__list--hover_background-image</id>
+            <scss><![CDATA[$image--toolbar__view-mode__list--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Toolbar List View Active Icon]]></title>
+            <description><![CDATA[Displayed on Product List and Search Results pages (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_toolbar__view-mode__list--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/product_list]]></fieldset>
+        </image>
+        <image name="block-compare__placeholder_background-image">
+            <id>block-compare__placeholder_background-image</id>
+            <scss><![CDATA[$image--block-compare__placeholder_background-image: [value]]]></scss>
+            <title><![CDATA[Mini-Compare Placeholder Icon]]></title>
+            <description><![CDATA[Displayed in Product Compare section (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_block-compare__placeholder_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/add_to_links]]></fieldset>
+        </image>
+        <image name="list--social__item--facebook__link_background-image">
+            <id>list--social__item--facebook__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--facebook__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Facebook Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--facebook__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--facebook__link--hover_background-image">
+            <id>list--social__item--facebook__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--facebook__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Facebook Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--facebook__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--twitter__link_background-image">
+            <id>list--social__item--twitter__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--twitter__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Twitter Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--twitter__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--twitter__link--hover_background-image">
+            <id>list--social__item--twitter__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--twitter__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Twitter Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--twitter__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--google__link_background-image">
+            <id>list--social__item--google__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--google__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Google+ Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--google__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--google__link--hover_background-image">
+            <id>list--social__item--google__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--google__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Google+ Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--google__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--instagram__link_background-image">
+            <id>list--social__item--instagram__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--instagram__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Instagram Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--instagram__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--instagram__link--hover_background-image">
+            <id>list--social__item--instagram__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--instagram__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Instagram Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--instagram__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--linkedin__link_background-image">
+            <id>list--social__item--linkedin__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--linkedin__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Linkedin Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--linkedin__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--linkedin__link--hover_background-image">
+            <id>list--social__item--linkedin__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--linkedin__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Linkedin Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--linkedin__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--pinterest__link_background-image">
+            <id>list--social__item--pinterest__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--pinterest__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Pinterest Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--pinterest__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--pinterest__link--hover_background-image">
+            <id>list--social__item--pinterest__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--pinterest__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Pinterest Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--pinterest__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--tiktok__link_background-image">
+            <id>list--social__item--tiktok__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--tiktok__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - TikTok Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--tiktok__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--tiktok__link--hover_background-image">
+            <id>list--social__item--tiktok__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--tiktok__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - TikTok Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--tiktok__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--youtube__link_background-image">
+            <id>list--social__item--youtube__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--youtube__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Youtube Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--youtube__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--youtube__link--hover_background-image">
+            <id>list--social__item--youtube__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--youtube__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Youtube Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--youtube__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--flickr__link_background-image">
+            <id>list--social__item--flickr__link_background-image</id>
+            <scss><![CDATA[$image--list--social__item--flickr__link_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Flickr Icon]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--flickr__link_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+        <image name="list--social__item--flickr__link--hover_background-image">
+            <id>list--social__item--flickr__link--hover_background-image</id>
+            <scss><![CDATA[$image--list--social__item--flickr__link--hover_background-image: [value]]]></scss>
+            <title><![CDATA[Social List - Flickr Icon on Hover]]></title>
+            <description><![CDATA[Displayed in footer (all devices)]]></description>
+            <size></size>
+            <retina>false</retina>
+            <type>png|gif|svg|jpg</type>
+            <help></help>
+            <default>var_list--social__item--flickr__link--hover_background-image.svg</default>
+            <fieldset><![CDATA[fieldset/social_links]]></fieldset>
+        </image>
+    </img>
+</xml>

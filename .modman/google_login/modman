@@ -1,0 +1,12 @@
+src/app/code/community/Inchoo/GoogleConnect                                 app/code/community/Inchoo/GoogleConnect
+
+src/app/design/frontend/base/default/layout/inchoo_googleconnect.xml        app/design/frontend/base/default/layout/inchoo_googleconnect.xml
+src/app/design/frontend/base/default/template/inchoo/googleconnect          app/design/frontend/base/default/template/inchoo/googleconnect
+
+src/app/etc/modules/Inchoo_GoogleConnect.xml                                app/etc/modules/Inchoo_GoogleConnect.xml
+
+src/lib/GoogleApiPhpClient                                                  lib/GoogleApiPhpClient
+
+src/skin/frontend/base/default/inchoo_googleconnect                         skin/frontend/base/default/inchoo_googleconnect
+
+src/app/locale/ro_RO/Google_Login.csv                                       app/locale/ro_RO/Google_Login.csv

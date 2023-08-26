@@ -1,0 +1,68 @@
+<?php
+    $helper = Mage::helper('blugento_socialmedia');
+    $fullActionName = Mage::app()->getFrontController()->getAction()->getFullActionName();
+    $hidePinterestButton = Mage::getStoreConfig('blugento_socialmedia/share_media_pinterest/hidePinterestCategoryPage');
+?>
+
+<?php if ($helper->getModuleStatus() != 0): ?>
+    <ul class="list list--horizontal list--social">
+        <?php if ($helper->getFacebookUrl() != ''): ?>
+            <li class="list__item list__item--facebook">
+                <a href="<?php echo $helper->getFacebookUrl() ?>" title="<?php echo $this->__($helper->getFacebookTitle()) ?>" rel="noopener" target="_blank"></a>
+                <meta content="1">
+            </li>
+        <?php endif; ?>
+        <?php if ($helper->getTwitterUrl() != ''): ?>
+            <li class="list__item list__item--twitter">
+                <a href="<?php echo $helper->getTwitterUrl() ?>" title="<?php echo $this->__($helper->getTwitterTitle()) ?>" rel="noopener" target="_blank"></a>
+                <meta content="2">
+            </li>
+        <?php endif; ?>
+        <?php if ($helper->getGoogleUrl() != ''): ?>
+            <li class="list__item list__item--google">
+                <a href="<?php echo $helper->getGoogleUrl() ?>" title="<?php echo $this->__($helper->getGoogleTitle()) ?>" rel="noopener" target="_blank"></a>
+                <meta  content="3">
+            </li>
+        <?php endif; ?>
+        <?php if ($helper->getPinterestUrl() != ''): ?>
+            <?php if ($fullActionName == 'catalog_category_view' && $hidePinterestButton): ?>
+                <!-- Placeholder -->
+            <?php else: ?>
+                <li class="list__item list__item--pinterest">
+                    <a href="<?php echo $helper->getPinterestUrl() ?>" title="<?php echo $this->__($helper->getPinterestTitle()) ?>" rel="noopener" target="_blank"></a>
+                    <meta content="4">
+                </li>
+            <?php endif; ?>
+        <?php endif; ?>
+        <?php if ($helper->getInstagramUrl() != ''): ?>
+            <li class="list__item list__item--instagram">
+                <a href="<?php echo $helper->getInstagramUrl() ?>" title="<?php echo $this->__($helper->getInstagramTitle()) ?>" rel="noopener" target="_blank"></a>
+                <meta content="5">
+            </li>
+        <?php endif; ?>
+        <?php if ($helper->getYoutubeUrl() != ''): ?>
+            <li class="list__item list__item--youtube">
+                <a href="<?php echo $helper->getYoutubeUrl() ?>" title="<?php echo $this->__($helper->getYoutubeTitle()) ?>" rel="noopener" target="_blank"></a>
+                <meta content="6">
+            </li>
+        <?php endif; ?>
+        <?php if ($helper->getFlickrUrl() != ''): ?>
+            <li class="list__item list__item--flickr">
+                <a href="<?php echo $helper->getFlickrUrl() ?>" title="<?php echo $this->__($helper->getFlickrTitle()) ?>" rel="noopener" target="_blank"></a>
+                <meta content="7">
+            </li>
+        <?php endif; ?>
+        <?php if ($helper->getLinkedinUrl() != ''): ?>
+            <li class="list__item list__item--linkedin">
+                <a href="<?php echo $helper->getLinkedinUrl() ?>" title="<?php echo $this->__($helper->getLinkedinTitle()) ?>" rel="noopener" target="_blank"></a>
+                <meta content="8">
+            </li>
+        <?php endif; ?>
+        <?php if ($helper->getTikTokUrl() != ''): ?>
+            <li class="list__item list__item--tiktok">
+                <a href="<?php echo $helper->getTikTokUrl() ?>" title="<?php echo $this->__($helper->getTikTokTitle()) ?>" rel="noopener" target="_blank"></a>
+                <meta content="9">
+            </li>
+        <?php endif; ?>
+    </ul>
+<?php endif; ?>

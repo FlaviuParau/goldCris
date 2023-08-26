@@ -1,0 +1,13 @@
+src/app/code/community/Facebook/AdsExtension                                                    app/code/community/Facebook/AdsExtension
+
+src/app/design/adminhtml/default/default/layout/facebook_ads_extension.xml                      app/design/adminhtml/default/default/layout/facebook_ads_extension.xml
+src/app/design/adminhtml/default/default/template/facebook_ads_extension                        app/design/adminhtml/default/default/template/facebook_ads_extension
+
+src/app/design/frontend/base/default/layout/facebook_ads_extension.xml                          app/design/frontend/base/default/layout/facebook_ads_extension.xml
+src/app/design/frontend/base/default/template/facebook_ads_extension                            app/design/frontend/base/default/template/facebook_ads_extension
+
+src/app/etc/modules/Facebook_AdsExtension.xml                                                   app/etc/modules/Facebook_AdsExtension.xml
+
+src/js/Facebook/AdsExtension/Adminhtml                                                          js/Facebook/AdsExtension/Adminhtml
+
+src/skin/adminhtml/base/default/Facebook/AdsExtension                                           skin/adminhtml/base/default/Facebook/AdsExtension

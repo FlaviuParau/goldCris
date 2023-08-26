@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<widgets>
+    <blugentonewsletter type="blugentonewsletter/widget_newsletter">
+        <name>Blugento Newsletter</name>
+        <description type="desc">Blugento Newsletter Widget</description>
+        <parameters>
+			<add_checkbox translate="label">
+				<visible>1</visible>
+				<label>Add consent Checkbox</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<required>0</required>
+			</add_checkbox>
+			<checkbox_label translate="label">
+				<visible>1</visible>
+				<label>Insert checkbox label</label>
+				<type>text</type>
+				<depends>
+					<add_checkbox><value>1</value></add_checkbox>
+				</depends>
+				<required>1</required>
+			</checkbox_label>
+	        <checkbox_validation translate="label">
+		        <visible>1</visible>
+		        <label>Insert checkbox validation</label>
+		        <type>text</type>
+		        <depends>
+			        <add_checkbox><value>1</value></add_checkbox>
+		        </depends>
+		        <required>1</required>
+	        </checkbox_validation>
+			<add_second_checkbox translate="label">
+				<visible>1</visible>
+				<label>Add second consent Checkbox</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<required>0</required>
+			</add_second_checkbox>
+			<second_checkbox_label translate="label">
+				<visible>1</visible>
+				<label>Insert checkbox label</label>
+				<type>text</type>
+				<depends>
+					<add_second_checkbox><value>1</value></add_second_checkbox>
+				</depends>
+				<required>1</required>
+			</second_checkbox_label>
+			<second_checkbox_validation translate="label">
+				<visible>1</visible>
+				<label>Insert checkbox validation</label>
+				<type>text</type>
+				<depends>
+					<add_second_checkbox><value>1</value></add_second_checkbox>
+				</depends>
+				<required>1</required>
+			</second_checkbox_validation>
+        </parameters>
+    </blugentonewsletter>
+</widgets>

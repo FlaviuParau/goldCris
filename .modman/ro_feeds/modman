@@ -1,0 +1,6 @@
+src/app/code/local/Blugento/Feeds/                                   app/code/local/Blugento/Feeds/
+src/app/design/frontend/base/default/layout/blugento_feeds.xml       app/design/frontend/base/default/layout/blugento_feeds.xml
+src/app/design/frontend/base/default/template/blugento/feeds/        app/design/frontend/base/default/template/blugento/feeds/
+
+src/app/etc/modules/Blugento_Feeds.xml                               app/etc/modules/Blugento_Feeds.xml
+src/app/locale/ro_RO/Blugento_Feeds.csv                              app/locale/ro_RO/Blugento_Feeds.csv

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Title -->
+    <title><?php echo $this->pageTitle ?></title>
+    <base href="<?php echo $this->getSkinUrl() ?>" />
+
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="*" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="<?php echo $this->getBaseUrl() ?>skin/frontend/blugento/default/images/var_page_favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->getBaseUrl() ?>skin/frontend/blugento/default/images/var_page_favicon.png" />
+    <link rel="apple-touch-icon" href="<?php echo $this->getBaseUrl() ?>skin/frontend/blugento/default/images/var_page_favicon.png" >
+
+    <!-- Font Family -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="<?php echo $this->getBaseUrl() ?>errors/blugento/css/styles.css" type="text/css" />
+</head>
+<body class="page-<?php echo http_response_code() ?>">
+    <div class="wrapper">
+        <div class="page">
+            <header class="header">
+                <div class="logo" id="logo">
+                    <a href="<?php echo $this->getBaseUrl() ?>" title="<?php echo $this->pageTitle ?>">
+                        <img src="<?php echo $this->getBaseUrl() ?>skin/frontend/blugento/default/images/var_page_brand_logo.png" alt="<?php echo $this->pageTitle ?>">
+                    </a>
+                </div>
+            </header>
+            <div class="main-container">
+                <div class="main col1-layout">
+                    <?php require_once $contentTemplate; ?>
+                </div>
+            </div>
+            <div class="footer-container">
+                <div class="footer">
+                    <address class="copyright"><span>Copyright</span> <img src="<?php echo $this->getBaseUrl() ?>skin/frontend/blugento/default/images/var_page_brand_logo.png" alt="<?php echo $this->pageTitle ?>"> <span>&copy; <?php echo date("Y"); ?></span></address>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2 @@
+src/app/code/local/SMSLink/SMSGateway			app/code/local/SMSLink/SMSGateway
+src/app/etc/modules/SMSLink_SMSGateway.xml		app/etc/modules/SMSLink_SMSGateway.xml

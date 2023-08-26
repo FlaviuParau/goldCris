@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>30</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_categoryseconddescription translate="label" module="blugento_categoryseconddescription">
+            <label>Category Second Description</label>
+            <comment></comment>
+            <tab>blugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>220</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                    </fields>
+                </general>
+            </groups>
+        </blugento_categoryseconddescription>
+    </sections>
+</config>

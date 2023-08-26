@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_Category>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Blugento_Category>
+    </modules>
+</config>

@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<theme>
+    <layout>
+        <updates>
+
+            <blugento_page module="Mage_Page">
+                <file>blugento/page.xml</file>
+            </blugento_page>
+
+            <blugento_checkout module="Mage_Checkout">
+                <file>blugento/checkout.xml</file>
+            </blugento_checkout>
+
+            <blugento_catalog module="Mage_Catalog">
+                <file>blugento/catalog.xml</file>
+            </blugento_catalog>
+
+            <blugento_catalogsearch module="Mage_CatalogSearch">
+                <file>blugento/catalogsearch.xml</file>
+            </blugento_catalogsearch>
+
+            <blugento_configurableswatches module="Mage_ConfigurableSwatches">
+                <file>blugento/configurableswatches.xml</file>
+            </blugento_configurableswatches>
+
+            <blugento_contacts module="Mage_Contacts">
+                <file>blugento/contacts.xml</file>
+            </blugento_contacts>
+
+            <blugento_cms module="Mage_Cms">
+                <file>blugento/cms.xml</file>
+            </blugento_cms>
+
+            <blugento_customer module="Mage_Customer">
+                <file>blugento/customer.xml</file>
+            </blugento_customer>
+
+            <blugento_directory module="Mage_Directory">
+                <file>blugento/directory.xml</file>
+            </blugento_directory>
+
+            <blugento_downloadable module="Mage_Downloadable">
+                <file>blugento/downloadable.xml</file>
+            </blugento_downloadable>
+
+            <blugento_newsletter module="Mage_Newsletter">
+                <file>blugento/newsletter.xml</file>
+            </blugento_newsletter>
+
+            <blugento_paypal module="Mage_Paypal">
+                <file>blugento/paypal.xml</file>
+            </blugento_paypal>
+
+            <blugento_reports module="Mage_Reports">
+                <file>blugento/reports.xml</file>
+            </blugento_reports>
+
+            <blugento_review module="Mage_Review">
+                <file>blugento/review.xml</file>
+            </blugento_review>
+
+            <blugento_sales module="Mage_Sales">
+                <file>blugento/sales.xml</file>
+            </blugento_sales>
+
+            <blugento_sales_billing_agreement module="Mage_Sales">
+                <file>blugento/sales/billing_agreement.xml</file>
+            </blugento_sales_billing_agreement>
+
+            <blugento_sales_recurring_profile module="Mage_Sales">
+                <file>blugento/sales/recurring_profile.xml</file>
+            </blugento_sales_recurring_profile>
+
+            <blugento_tag module="Mage_Tag">
+                <file>blugento/tag.xml</file>
+            </blugento_tag>
+
+            <blugento_wishlist module="Mage_Wishlist">
+                <file>blugento/wishlist.xml</file>
+            </blugento_wishlist>
+
+            <blugento_designcustomiser>
+                <file>../blugento/layout-update.xml</file>
+            </blugento_designcustomiser>
+
+            <blugento_localizer module="Blugento_Localizer">
+                <file>blugento/blugento_localizer.xml</file>
+            </blugento_localizer>
+
+            <aw_blog module="AW_Blog">
+                <file>blugento/aw_blog.xml</file>
+            </aw_blog>
+
+            <kbase module="AW_Kbase">
+                <file>blugento/kbase.xml</file>
+            </kbase>
+
+            <dermodpro_baseprice module="DerModPro_BasePrice">
+                <file>blugento/dermodpro_baseprice.xml</file>
+            </dermodpro_baseprice>
+
+            <magestore_fblogin module="Magestore_Fblogin">
+                <file>blugento/magestore_fblogin.xml</file>
+            </magestore_fblogin>
+
+            <mindmagnet_primecheckout module="MindMagnet_PrimeCheckout">
+                <file>blugento/mindmagnet_primecheckout.xml</file>
+            </mindmagnet_primecheckout>
+
+            <pektsekye_partfinder module="Pektsekye_PartFinder">
+                <file>blugento/pektsekye_partfinder.xml</file>
+            </pektsekye_partfinder>
+
+        </updates>
+    </layout>
+</theme>

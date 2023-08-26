@@ -1,0 +1,170 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-list4.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-list_item_box == 4) {
+    .toolbar {
+        position: relative;
+        z-index: 2;
+    }
+
+    .products-grid,
+    %products-grid {
+        .product-image {
+            padding: 18px 20px;
+        }
+
+        li.item {
+            border: 4px solid $products-grid__item-inner_background-color;
+            margin-bottom: -4px;
+            margin-right: -4px;
+
+            &:before {
+                content: '';
+                z-index: 1;
+                position: absolute;
+                top: -18px;
+                left: -22px;
+                width: 40px;
+                height: 30px;
+                background-color: color('b');
+            }
+
+            &:after {
+                content: '';
+                z-index: 1;
+                position: absolute;
+                top: -18px;
+                right: -22px;
+                width: 40px;
+                height: 30px;
+                background-color: color('b');
+            }
+        }
+
+        .item-inner {
+            background-color: color('b');
+
+            &:before {
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 30px;
+                bottom: -16px;
+                left: -22px;
+                background-color: color('b');
+                z-index: 1;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                width: 40px;
+                height: 30px;
+                bottom: -16px;
+                right: -22px;
+                background-color: color('b');
+                z-index: 1;
+            }
+
+            .desc {
+                overflow: hidden;
+                height: ($products-list__item__description_line-height * 2);
+                line-height: $products-list__item__description_line-height;
+            }
+
+            .price-box {
+                p,
+                .special-price,
+                .regular-price {
+                    display: block;
+                    font-size: 22px;
+                }
+
+                .old-price {
+                    font-size: 16px;
+                }
+
+                .price-label {
+                    display: none;
+                }
+            }
+
+            &:hover {
+
+                .regular-price,
+                .special-price,
+                .product-name a {
+                    color: color('o');
+                }
+
+                .product-actions {
+                    .button {
+                        background-color: color('o');
+                    }
+                }
+            }
+        }
+    }
+
+    .products-list,
+    %products-list {
+        li.item {
+            border: 4px solid $products-grid__item-inner_background-color;
+        }
+
+        .item-inner {
+            background-color: color('b');
+
+            .desc {
+                overflow: hidden;
+                height: ($products-list__item__description_line-height * 2);
+                line-height: $products-list__item__description_line-height;
+            }
+
+            .product-actions {
+                .button {
+                    max-width: 190px;
+                }
+            }
+
+            .price-box {
+                p,
+                .special-price,
+                .regular-price {
+                    display: block;
+                    font-size: 22px;
+                }
+
+                .old-price {
+                    font-size: 16px;
+                }
+
+                .price-label {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                .regular-price,
+                .special-price,
+                .product-name a {
+                    color: color('o');
+                }
+
+                .product-actions {
+                    .button {
+                        background-color: color('o');
+                    }
+                }
+            }
+        }
+    }
+
+    .page-footer {
+        position: relative;
+        z-index: 10;
+    }
+}

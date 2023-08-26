@@ -1,0 +1,6 @@
+src/app/code/local/Eadesigndev/Romcity                                    app/code/local/Eadesigndev/Romcity
+src/app/design/adminhtml/default/default/layout/romcity/romcity.xml       app/design/adminhtml/default/default/layout/romcity/romcity.xml
+src/app/design/adminhtml/default/default/template/romcity                 app/design/adminhtml/default/default/template/romcity
+src/app/design/frontend/base/default/layout/romcity                       app/design/frontend/base/default/layout/romcity
+src/app/etc/modules/Eadesigndev_Romcity.xml                               app/etc/modules/Eadesigndev_Romcity.xml
+src/js/eadesign/romcity                                                   js/eadesign/romcity

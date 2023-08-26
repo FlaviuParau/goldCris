@@ -1,0 +1,24 @@
+<?php /** @var AW_Blog_Block_Search $this */
+$layoutStyling = Mage::getStoreConfig('blog/blog/layout_styling_list');
+?>
+
+<?php if (Mage::getStoreConfig('blog/blog/enable_search')) : ?>
+    <div class="blog-wrap blog-<?php echo $layoutStyling ?>">
+        <div class="blog-search-box">
+            <form role="search">
+                <div class="search-box">
+                    <input type="search" id="blog_search" name="search" placeholder="<?php echo $this->__('Search through posts...'); ?>">
+                    <button type="submit" class="button" title="<?php echo $this->__('Search'); ?>"><?php echo $this->__('Search'); ?></button>
+                </div>
+            </form>
+
+            <?php if ($this->getSearchTerm()): ?>
+                <?php $blogUrl = $this->getBlogUrl(); ?>
+                <div id="result-box">
+                    <?php echo $this->__('Search result for "') . $this->getSearchTerm() .'"'; ?>
+                    <span onclick="window.location.href='<?php echo $blogUrl; ?>'"class="button-clear"><?php echo $this->__('Clear Search'); ?></span>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>

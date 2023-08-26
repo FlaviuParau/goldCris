@@ -1,0 +1,18 @@
+<!--@subject Export Date Utilizator @-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h4>Bună ziua,</h4>
+            <h4>Solicitarea dumneavoastră pentru exportul datelor a fost înregistrată cu succes.</h4>
+            <h4>Pentru a descărca datele vă rugăm accesați link-ul următor: <a href="{{var export_url}}">Export Date</a></h4>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

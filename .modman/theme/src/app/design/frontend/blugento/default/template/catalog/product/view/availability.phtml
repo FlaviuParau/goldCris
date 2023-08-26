@@ -1,0 +1,214 @@
+<?php
+/**
+ * Template for displaying product availability in product view page
+ *
+ * @var $this Mage_Catalog_Block_Product_View_Abstract
+ */
+?>
+
+<?php
+$_product = $this->getProduct();
+$inventory = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product);
+$backorderStatus = $inventory->getBackorders();
+
+$inStock = array();
+$allBackorders = array();
+$backorderLabel = $this->__('Backorder');
+$inStockLabel = $this->__('In stock');
+
+$enabled = false;
+if (Mage::helper('core')->isModuleEnabled('Blugento_SupplierStock')) {
+    /** @var Blugento_SupplierStock_Helper_Data $helper */
+    $helper = Mage::helper('blugento_supplierstock');
+    $enabled = $helper->isEnabled();
+    $manageStock = $_product->getStockItem()->getManageStock();
+}
+?>
+
+<?php if ($enabled): ?>
+    <?php if ($manageStock != 0): ?>
+        <?php if ($this->displayProductStockStatus()): ?>
+            <?php if ($_product->isAvailable()): ?>
+                <?php if ($_product->getTypeId() == 'configurable'): ?>
+                    <?php
+                    $sub_products = $_product->getTypeInstance()->getUsedProducts(null, $_product);
+                    
+                    foreach ($sub_products as $sub_product):
+                        $inventory = Mage::getModel('cataloginventory/stock_item')->loadByProduct($sub_product);
+                        $backorderStatus = $inventory->getBackorders();
+	                    $stockStatus = $inventory->getQty();
+                        $allBackorders[] = ($backorderStatus != 0) ? 1 : 0;
+                        $inStock[] = ($stockStatus <= 0) ? 0 : 1;
+                        $backorder = ($backorderStatus != 0) && ((int)$stockStatus <= 0);
+                        $backorder = $backorder ? $backorderLabel : $inStockLabel;
+                        ?>
+                        <input type="hidden" id="attribute<?php echo $sub_product->getId(); ?>_backorder" name="attribute<?php echo $sub_product->getId(); ?>_backorder" value="<?php echo $backorder; ?>" />
+                    <?php endforeach; ?>
+
+                    <?php if (in_array(1, $inStock)): ?>
+                        <p class="availability in-stock">
+                            <span class="status" id="configurable_product_availability"><?php echo $inStockLabel; ?></span>
+                            <input type="hidden" id="attribute0_backorder" name="attribute0_backorder" value="<?php echo $inStockLabel; ?>" />
+                        </p>
+                    <?php else: ?>
+                        <?php if (in_array(1, $allBackorders)): ?>
+                            <p class="availability backorder">
+                                <span class="status" id="configurable_product_availability"><?php echo $backorderLabel; ?></span>
+                                <input type="hidden" id="attribute0_backorder" name="attribute0_backorder" value="<?php echo $backorderLabel; ?>" />
+                            </p>
+                        <?php else: ?>
+                            <p class="availability out-of-stock">
+                                <span class="status"><?php echo $this->__('Out of stock') ?></span>
+                            </p>
+                        <?php endif; ?>
+                    <?php endif; ?>
+				<?php elseif ($_product->getTypeId() == 'grouped'): ?>
+					<?php
+					$subProducts = $_product->getTypeInstance(true)->getAssociatedProducts($_product);
+					
+					foreach ($subProducts as $subProduct) {
+						if ($subProduct->isSaleable()) {
+							$inventory = Mage::getModel('cataloginventory/stock_item')->loadByProduct($subProduct);
+							$backorderStatus = $inventory->getBackorders();
+							$stockStatus = $inventory->getQty();
+							$allBackorders[] = ($backorderStatus != 0) ? 1 : 0;
+							$inStock[] = ((int)$stockStatus <= 0) ? 0 : 1;
+						}
+					}
+					?>
+					
+					<?php if (in_array(1, $inStock)): ?>
+						<p class="availability in-stock">
+							<span class="status"><?php echo $inStockLabel; ?></span>
+						</p>
+					<?php else: ?>
+						<?php if (in_array(1, $allBackorders)): ?>
+							<p class="availability backorder">
+								<span class="status"><?php echo $backorderLabel; ?></span>
+							</p>
+						<?php else: ?>
+							<p class="availability out-of-stock">
+								<span class="status"><?php echo $this->__('Out of stock') ?></span>
+							</p>
+						<?php endif; ?>
+					<?php endif; ?>
+                <?php else: ?>
+                    <p class="availability in-stock">
+                    <span class="status">
+                        <?php if ($backorderStatus != 0 && (int)$inventory->getQty() <= 0): ?>
+                            <?php echo $this->__('Backorder') ?>
+                        <?php else: ?>
+                            <?php echo $this->__('In stock') ?>
+                        <?php endif; ?>
+                    </span>
+                    </p>
+                <?php endif; ?>
+            <?php else: ?>
+                <p class="availability out-of-stock">
+                    <span class="status"><?php echo $this->__('Out of stock') ?></span>
+                </p>
+            <?php endif; ?>
+        <?php endif; ?>
+    <?php else: ?>
+        <p class="availability in-stock">
+            <span class="status"><?php echo $this->__('Supplier stock') ?></span>
+        </p>
+    <?php endif; ?>
+<?php else: ?>
+    <?php if ($this->displayProductStockStatus()): ?>
+        <?php if ($_product->isAvailable()): ?>
+            <?php if ($_product->getTypeId() == 'configurable'): ?>
+                <?php
+                $sub_products = $_product->getTypeInstance()->getUsedProducts(null, $_product);
+
+                foreach ($sub_products as $sub_product):
+                    $inventory = Mage::getModel('cataloginventory/stock_item')->loadByProduct($sub_product);
+                    $backorderStatus = $inventory->getBackorders();
+	                $stockStatus = $inventory->getQty();
+                    $allBackorders[] = ($backorderStatus != 0) ? 1 : 0;
+                    $inStock[] = ($stockStatus <= 0) ? 0 : 1;
+                    $backorder = ($backorderStatus != 0) && ((int)$stockStatus <= 0);
+                    $backorder = $backorder ? $backorderLabel : $inStockLabel;
+                    ?>
+                    <input type="hidden" id="attribute<?php echo $sub_product->getId(); ?>_backorder" name="attribute<?php echo $sub_product->getId(); ?>_backorder" value="<?php echo $backorder; ?>" />
+                <?php endforeach; ?>
+
+                <?php if (in_array(1, $inStock)): ?>
+                    <p class="availability in-stock">
+                        <span class="status" id="configurable_product_availability"><?php echo $inStockLabel; ?></span>
+                        <input type="hidden" id="attribute0_backorder" name="attribute0_backorder" value="<?php echo $inStockLabel; ?>" />
+                    </p>
+                <?php else: ?>
+                    <?php if (in_array(1, $allBackorders)): ?>
+                        <p class="availability backorder">
+                            <span class="status" id="configurable_product_availability"><?php echo $backorderLabel; ?></span>
+                            <input type="hidden" id="attribute0_backorder" name="attribute0_backorder" value="<?php echo $backorderLabel; ?>" />
+                        </p>
+                    <?php else: ?>
+                        <p class="availability out-of-stock">
+                            <span class="status"><?php echo $this->__('Out of stock') ?></span>
+                        </p>
+                    <?php endif; ?>
+                <?php endif; ?>
+			<?php elseif ($_product->getTypeId() == 'grouped'): ?>
+				<?php
+				$subProducts = $_product->getTypeInstance(true)->getAssociatedProducts($_product);
+				
+				foreach ($subProducts as $subProduct) {
+					if ($subProduct->isSaleable()) {
+						$inventory = Mage::getModel('cataloginventory/stock_item')->loadByProduct($subProduct);
+						$backorderStatus = $inventory->getBackorders();
+						$stockStatus = $inventory->getQty();
+						$allBackorders[] = ($backorderStatus != 0) ? 1 : 0;
+						$inStock[] = ((int)$stockStatus <= 0) ? 0 : 1;
+					}
+				}
+				?>
+				
+				<?php if (in_array(1, $inStock)): ?>
+					<p class="availability in-stock">
+						<span class="status"><?php echo $inStockLabel; ?></span>
+					</p>
+				<?php else: ?>
+					<?php if (in_array(1, $allBackorders)): ?>
+						<p class="availability backorder">
+							<span class="status"><?php echo $backorderLabel; ?></span>
+						</p>
+					<?php else: ?>
+						<p class="availability out-of-stock">
+							<span class="status"><?php echo $this->__('Out of stock') ?></span>
+						</p>
+					<?php endif; ?>
+				<?php endif; ?>
+            <?php else: ?>
+                <?php if ($backorderStatus != 0 && (int)$inventory->getQty() <= 0): ?>
+                    <p class="availability backorder">
+                        <span class="status">
+                            <?php echo $this->__('Backorder') ?>
+                        </span>
+                    </p>
+                <?php else: ?>
+                    <p class="availability in-stock">
+                        <span class="status">
+                            <?php echo $this->__('In stock') ?>
+                        </span>
+                    </p>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php else: ?>
+            <p class="availability out-of-stock">
+                <span class="status"><?php echo $this->__('Out of stock') ?></span>
+            </p>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>
+
+<?php
+$customConfigEnabled = Mage::helper('blugento_cart')->isCustomConfigEnabled();
+if ($customConfigEnabled) { ?>
+    <script type="text/javascript">
+        <?php if ($_product->getTypeId() != 'configurable' && $_product->getTypeId() != 'grouped' && $backorderStatus && (int)$backorderStatus != 0 && (int)$inventory->getQty() <= 0) { ?>
+            Blugento.Catalog.setProductAvailability(<?php echo $backorderStatus; ?>);
+        <?php } ?>
+    </script>
+<?php } ?>

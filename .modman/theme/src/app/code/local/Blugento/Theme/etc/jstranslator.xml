@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<jstranslator>
+	<string translate="message" module="blugento_theme">
+		<message>Backorder</message>
+	</string>
+	<validate-alphanum-with-spaces translate="message" module="blugento_theme">
+		<message>Please use only letters (a-z or A-Z), numbers (0-9) or spaces only in this field.</message>
+	</validate-alphanum-with-spaces>
+	<minimum-quantity-allowed translate="message" module="blugento_theme">
+		<message>Minimum quantity allowed is</message>
+	</minimum-quantity-allowed>
+	<qty-multiple-allowed translate="message" module="blugento_theme">
+		<message>Input quantity is not a multiple of </message>
+	</qty-multiple-allowed>
+	<countdown_day translate="message" module="blugento_theme">
+        <message>Day</message>
+    </countdown_day>
+    <countdown_days translate="message" module="blugento_theme">
+        <message>Days</message>
+    </countdown_days>
+    <countdown_hours translate="message" module="blugento_theme">
+        <message>Hours</message>
+    </countdown_hours>
+    <countdown_minutes translate="message" module="blugento_theme">
+        <message>Minutes</message>
+    </countdown_minutes>
+    <countdown_seconds translate="message" module="blugento_theme">
+        <message>Seconds</message>
+    </countdown_seconds>
+    <not-available translate="message" module="blugento_theme">
+		<message>This product is no longer available</message>
+	</not-available>
+</jstranslator>

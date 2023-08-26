@@ -1,0 +1,182 @@
+$text-color:            #333;
+$facebook-color:        #2d4473;
+$twitter-color:         #0087bb;
+$google-color:          #c00;
+$table-border-dashed:   #c3ced4;
+
+
+@import url('//fonts.googleapis.com/css?family=Roboto:400,900');
+
+/* Font Styles */
+/* Media Queries */
+/* Setting the Web Font inside a media query so that Outlook doesn't try to render the web font */
+@media screen {
+    .email-heading h1,
+    .store-info h4,
+    th.cell-name,
+    a.product-name,
+    p.product-name,
+    .address-details h6,
+    .method-info h6,
+    h5.closing-text {
+        font-family: $font-family-sans-serif !important;
+        font-weight: normal;
+    }
+
+    .action-button {
+        font-family: $font-family-sans-serif !important;
+        font-weight: normal;
+
+        a,
+        span {
+            font-family: $font-family-sans-serif !important;
+            font-weight: normal;
+        }
+    }
+
+    .action-content h1 {
+        font-family: $font-family-sans-serif !important;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        width: 94% !important;
+        padding: 0 3% !important;
+        display: block !important;
+    }
+
+    .container-table {
+        width: 100% !important;
+        max-width: 600px;
+        min-width: 300px;
+    }
+
+    td.store-info {
+        h4 {
+            margin-top: 8px !important;
+            margin-bottom: 0 !important;
+        }
+
+        p {
+            margin: 5px 0 !important;
+        }
+    }
+
+    .wrapper {
+        width: 100% !important;
+        display: block;
+        padding: 5px 0 !important;
+    }
+
+    .cell-name,
+    .cell-content {
+        padding: 8px !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .email-heading,
+    .store-info {
+        float: left;
+        width: 98% !important;
+        display: block;
+        text-align: center;
+        padding: 10px 1% !important;
+        border-right: 0 !important;
+    }
+
+    .address-details,
+    .method-info {
+        width: 50%;
+    }
+
+    .store-info {
+        border-top: 1px dashed $table-border-dashed;
+    }
+
+    .method-info {
+        margin-bottom: 15px !important;
+    }
+}
+
+/* Remove link color on iOS */
+
+.no-link a {
+    color: $text-color !important;
+    cursor: default !important;
+    text-decoration: none !important;
+}
+
+.method-info h6,
+.address-details h6,
+.closing-text {
+    color: $text-color !important;
+}
+
+td {
+    &.order-details h3,
+    &.store-info h4 {
+        color: $text-color !important;
+    }
+}
+
+.method-info {
+    p,
+    dl {
+        margin: 5px 0 !important;
+        font-size: 12px !important;
+    }
+}
+
+td {
+    &.align-center {
+        text-align: center !important;
+    }
+
+    &.align-right {
+        text-align: right !important;
+    }
+
+    &.expander {
+        padding: 0 !important;
+    }
+}
+
+/* Newsletter styles */
+
+table {
+    &.button td,
+    &.social-button td {
+        width: 92% !important;
+    }
+
+    &.facebook:hover td {
+        background: $facebook-color !important;
+    }
+
+    &.twitter:hover td {
+        background: $twitter-color !important;
+    }
+
+    &.google-plus:hover td {
+        background: $google-color !important;
+    }
+}
+
+/* ============================================ *
+ * Product Grid
+ * ============================================ */
+@media screen and (max-width: 600px) {
+    .products-grid tr td {
+        width: 50% !important;
+        display: block !important;
+        float: left !important;
+    }
+}
+
+.product-name a:hover {
+    color: $color--third !important;
+    text-decoration: none !important;
+}

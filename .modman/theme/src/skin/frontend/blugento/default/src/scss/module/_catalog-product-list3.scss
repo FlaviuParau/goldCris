@@ -1,0 +1,82 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-list3.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-list_item_box == 3) {
+    .products-grid,
+    %products-grid,
+    .products-list,
+    %products-list {
+        li.item {
+            margin-bottom: 20px;
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+
+        .item-inner {
+            background-color: color('b');
+
+            .product-image {
+                border: 2px solid $products-grid__item-inner_background-color;
+            }
+
+            .product-box {
+                padding: 0 0 18px;
+            }
+
+            .product-info,
+            .product-actions {
+                padding: 0 20px;
+            }
+
+            .short-info {
+                padding: 20px;
+                background-color: $products-grid__item-inner_background-color;
+
+                @if ($layout--product-list_item_title_description_display == 2) {
+                    padding: 0;
+                }
+
+                .desc {
+                    overflow: hidden;
+                    height: ($products-list__item__description_line-height * 2);
+                    line-height: $products-list__item__description_line-height;
+                }
+            }
+
+            .price-box {
+                p,
+                .special-price,
+                .regular-price {
+                    display: block;
+                    font-size: 22px;
+                }
+
+                .old-price {
+                    font-size: 16px;
+                }
+
+                .price-label {
+                    display: none;
+                }
+            }
+
+            &:hover {
+                .product-image {
+                    border-color: color('m');
+                }
+
+                .short-info {
+                    background-color: color('m');
+
+                    .desc,
+                    .product-name a {
+                        color: color('b');
+                    }
+                }
+            }
+        }
+    }
+}

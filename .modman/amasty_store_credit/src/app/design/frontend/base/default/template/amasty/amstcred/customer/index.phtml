@@ -1,0 +1,17 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /** @var $this Mage_Core_Block_Template */ ?>
+<div class="page-title">
+	<h1><?php echo $this->__('Store Credit'); ?></h1>
+</div>
+
+<?php
+foreach($this->getChild() as $_child){
+	echo $_child->toHtml();
+}
+?>

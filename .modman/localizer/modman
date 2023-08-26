@@ -1,0 +1,28 @@
+src/app/code/local/Blugento/Localizer                               app/code/local/Blugento/Localizer
+src/app/design/frontend/base/default/template/blugento/localizer    app/design/frontend/base/default/template/blugento/localizer
+src/app/design/frontend/base/default/layout/blugento_localizer.xml  app/design/frontend/base/default/layout/blugento_localizer.xml
+src/app/etc/modules/Blugento_Localizer.xml                          app/etc/modules/Blugento_Localizer.xml
+
+src/app/locale/ro_RO/template/localizer/*                           app/locale/ro_RO/template/localizer/
+src/app/locale/ro_RO/Blugento_Localizer.csv                         app/locale/ro_RO/Blugento_Localizer.csv
+
+src/app/locale/de_DE/template/localizer/*                           app/locale/de_DE/template/localizer/
+src/app/locale/de_DE/Blugento_Localizer.csv                         app/locale/de_DE/Blugento_Localizer.csv
+
+src/app/locale/en_US/template/localizer/*                           app/locale/en_US/template/localizer/
+src/app/locale/en_US/Blugento_Localizer.csv                         app/locale/en_US/Blugento_Localizer.csv
+
+src/app/code/local/Blugento/Contacts                                app/code/local/Blugento/Contacts
+src/app/design/frontend/base/default/template/blugento/contacts     app/design/frontend/base/default/template/blugento/contacts
+src/app/design/frontend/base/default/layout/blugento_contacts.xml   app/design/frontend/base/default/layout/blugento_contacts.xml
+src/app/etc/modules/Blugento_Contacts.xml                           app/etc/modules/Blugento_Contacts.xml
+
+src/app/locale/ro_RO/Blugento_Contacts.csv                          app/locale/ro_RO/Blugento_Contacts.csv
+src/app/locale/de_DE/Blugento_Contacts.csv                          app/locale/de_DE/Blugento_Contacts.csv
+src/app/locale/en_US/Blugento_Contacts.csv                          app/locale/en_US/Blugento_Contacts.csv
+
+src/app/locale/fr_FR/template/localizer/*                           app/locale/fr_FR/template/localizer/
+
+src/skin/frontend/base/default/localizer/images                     skin/frontend/base/default/localizer/images
+
+src/app/locale/hu_HU/Blugento_Localizer.csv                         app/locale/hu_HU/Blugento_Localizer.csv

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <blugento translate="label" />
+    </tabs>
+    <sections>
+        <blugento_ajax_wishlist translate="label" module="ajaxwishlist">
+            <label>Ajax Wishlist Compare</label>
+            <comment></comment>
+            <tab>blugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>9</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <enable translate="label">
+                            <label>Enable Ajax Wishlist Compare</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable>
+                    </fields>
+                </general>
+            </groups>
+        </blugento_ajax_wishlist>
+    </sections>
+</config>

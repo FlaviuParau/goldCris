@@ -1,0 +1,1 @@
+This extension rewrites shipping methods available file from theme, so only the **Free Shipping Method** to be visibile if conditions are true

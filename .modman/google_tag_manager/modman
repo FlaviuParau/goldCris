@@ -1,0 +1,8 @@
+src/app/code/local/Blugento/GoogleTagManager                                            app/code/local/Blugento/GoogleTagManager
+
+src/app/design/frontend/base/default/layout/blugento_googletagmanager.xml               app/design/frontend/base/default/layout/blugento_googletagmanager.xml
+src/app/design/frontend/base/default/template/blugento/googletagmanager                 app/design/frontend/base/default/template/blugento/googletagmanager
+
+src/app/etc/modules/Blugento_GoogleTagManager.xml                                       app/etc/modules/Blugento_GoogleTagManager.xml
+
+src/app/locale/ro_RO/Blugento_GoogleTagManager.csv                                      app/locale/ro_RO/Blugento_GoogleTagManager.csv

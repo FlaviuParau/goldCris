@@ -1,0 +1,44 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view2.scss
+    Version:        1.0
+    Description:    Product Details Page - Default Template - Mirror
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view == 2) {
+    .product-usp-wrapper {
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -o-flex;
+        display: flex;
+        align-items: flex-start;
+        flex-flow: row wrap;
+        
+        .product-usp-item {
+            flex-basis: 100%;
+            padding: 8px 0;
+        }
+    }
+    
+    .product-collateral {
+        clear: left;
+    }
+
+    @include desktop {
+        .product-view {
+            .product-img-box {
+                float: right;
+            }
+
+            .product-shop {
+                float: left;
+            }
+        }
+
+        .product-collateral {
+            float: left;
+            width: 50%;
+            margin-top: 30px;
+        }
+    }
+}
+

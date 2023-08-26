@@ -1,0 +1,18 @@
+Legal Name,Legalna nazwa
+"Allowed file types: <strong>jpg, jpeg, png</strong>.","Dozwolone typy plików: <strong>jpg, jpeg, png</strong>."
+Founding Date,Data za?o?enia
+Use only <strong>DIGITS</strong>!,U?yj tylko<strong>CYFR</strong>!
+Founders,Za?o?yciele
+List founders name separated by <strong>COMMAS</strong>!,Lista za?o?ycieli rozdzielona <strong>PRZECINKAMI</strong>!
+Map Address,Mapuj Adres
+Map ContactPoint,Mapuj ContactPoint
+Product Data,Dane produktu
+"<strong>*NOTE:</strong> If you are <strong>NOT using reviews</strong> in your project, please <strong>DISABLE</strong> this option for <strong>better performance</strong>.",<strong>*UWAGA:</strong> Je?eli <strong>NIE u?ywasz recenzji</strong> w Twoim projekcie <strong>WY??CZ</strong> t? opcj? dla <strong>lepszej wydajno?ci</strong>.
+Split Configurable Products,Podziel konfigurowalne produkty
+"<strong>It's recommended using this</strong> function and split the simple products in the configurable ones <strong>to generate UNIQUE DATA for each simple product</strong>! <br /> <strong>*NOTE:</strong> Attributes used for creating configurable products <strong>MUST HAVE ""Used in Product Listing"" option enabled!</strong>","<strong>Jest zalecanym u?ycie tej</strong>funkcji i rozdzielenie konfigurowalnych produktów do prostych <strong>by wygenerowa? UNIKATOWE DANE dla ka?dego prostego produktu</strong>! <br /> <strong>*UWAGA:</strong> Cechy u?yte do utworzenia konfigurowalnych produktów <strong>MUSZ? MIE? w??czona opcj? ""U?yj na Stronach produktów""!</strong>"
+Map Attributes,Mapuj cechy
+Attribute,Cechy
+Add new attribute,dodaj now? cech?
+"Map <strong>additional attributes</strong> that will be used. <br /> <strong>*NOTE:</strong> Attributes must have enabled <strong>""Use in Layered Navigation""</strong>! <br /> <strong>*NOTE:</strong> Name used for mapping must be written in <strong>ENGLISH</strong>!","Mapuj <strong>dodatkowe cechy</strong> które b?d? u?ywane. <br /> <strong>*UWAGA:</strong>Cechy musz? mie? w??czone <strong>""U?yj w nawigacji warstwowej""</strong>! <br /> <strong>*UWAGA:</strong> Nazwa u?yta do mapowania musi by? napisana<strong>PO ANGIELSKU</strong>!"
+Enable Breadcrumbs,W??cz okruszki
+Enable Website,W??cz Stron?

@@ -1,0 +1,38 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       function/_util.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+/**
+ * Remove the unit of a length
+ *
+ * @param {String} $value Value to remove unit from
+ * @return {Number}
+ */
+@function strip-unit($value) {
+    @if type-of($value) == 'number' and not unitless($value) {
+        @return $value / ($value * 0 + 1);
+    }
+
+    @return $value;
+}
+
+
+@function z($key) {
+    $z-layers: (
+            'preloader':    2147483647,
+            'wrap-dock':    9999,
+            'dock':         9998,
+            'sub-dock':     9997,
+            'device-info':  9001,
+            'page-overlay': 9000,
+            'to-top':       1000
+    );
+
+    @if map-has-key($z-layers, $key) {
+        @return map-get($z-layers, $key);
+    }
+
+    @return 10000;
+}

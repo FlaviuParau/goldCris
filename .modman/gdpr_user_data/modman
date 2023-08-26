@@ -1,0 +1,27 @@
+src/app/etc/modules/Blugento_GdprUserData.xml													app/etc/modules/Blugento_GdprUserData.xml
+
+src/app/code/local/Blugento/GdprUserData														app/code/local/Blugento/GdprUserData
+
+src/app/design/frontend/base/default/layout/blugento_gdpruserdata.xml					        app/design/frontend/base/default/layout/blugento_gdpruserdata.xml
+src/app/design/frontend/base/default/template/blugento/gdpruserdata						        app/design/frontend/base/default/template/blugento/gdpruserdata
+
+src/app/design/adminhtml/base/default/layout/blugento_gdpruserdata.xml                          app/design/adminhtml/base/default/layout/blugento_gdpruserdata.xml
+
+src/skin/adminhtml/default/default/blugento/gdpruserdata                                        skin/adminhtml/default/default/blugento/gdpruserdata
+
+src/app/locale/ro_RO/Blugento_GdprUserData.csv                                                  app/locale/ro_RO/Blugento_GdprUserData.csv
+src/app/locale/ro_RO/template/email/gdpruserdata_delete.html                                    app/locale/ro_RO/template/email/gdpruserdata_delete.html
+src/app/locale/ro_RO/template/email/gdpruserdata_export.html                                    app/locale/ro_RO/template/email/gdpruserdata_export.html
+src/app/locale/ro_RO/template/email/gdpruserdata_reject_exist_account.html                      app/locale/ro_RO/template/email/gdpruserdata_reject_exist_account.html
+src/app/locale/ro_RO/template/email/gdpruserdata_reject_store_owner.html                        app/locale/ro_RO/template/email/gdpruserdata_reject_store_owner.html
+
+src/app/locale/en_US/template/email/gdpruserdata_delete.html                                    app/locale/en_US/template/email/gdpruserdata_delete.html
+src/app/locale/en_US/template/email/gdpruserdata_export.html                                    app/locale/en_US/template/email/gdpruserdata_export.html
+src/app/locale/en_US/template/email/gdpruserdata_reject_exist_account.html                      app/locale/en_US/template/email/gdpruserdata_reject_exist_account.html
+src/app/locale/en_US/template/email/gdpruserdata_reject_store_owner.html                        app/locale/en_US/template/email/gdpruserdata_reject_store_owner.html
+
+src/app/locale/pl_PL/Blugento_GdprUserData.csv                                                  app/locale/pl_PL/Blugento_GdprUserData.csv
+src/app/locale/pl_PL/template/email/gdpruserdata_delete.html                                    app/locale/pl_PL/template/email/gdpruserdata_delete.html
+src/app/locale/pl_PL/template/email/gdpruserdata_export.html                                    app/locale/pl_PL/template/email/gdpruserdata_export.html
+src/app/locale/pl_PL/template/email/gdpruserdata_reject_exist_account.html                      app/locale/pl_PL/template/email/gdpruserdata_reject_exist_account.html
+src/app/locale/pl_PL/template/email/gdpruserdata_reject_store_owner.html                        app/locale/pl_PL/template/email/gdpruserdata_reject_store_owner.html

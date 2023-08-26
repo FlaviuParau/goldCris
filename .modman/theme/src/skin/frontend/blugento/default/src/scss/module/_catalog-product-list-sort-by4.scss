@@ -1,0 +1,40 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_product-list-sort-by4.scss
+    Version:        1.0
+    Description:    Product Details Page - General Styles
+    ------------------------------------------------------------------------- */
+
+@if ($product_list_sort_by == 4) {
+    .toolbar {
+        .sort-by {
+            margin-bottom: 20px;
+
+            ul {
+                margin-left: -10px;
+
+                li {
+                    float: left;
+                    width: 20%;
+                    margin-bottom: 10px;
+
+                    @include mobile {
+                        width: 33.333%;
+                    }
+                }
+
+                a {
+                    border: 1px solid $color--fourth;
+                    display: block;
+                    font-size: 14px;
+                    line-height: 20px;
+                    padding: 7px 10px;
+                    margin-left: 10px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

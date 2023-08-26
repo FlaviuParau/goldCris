@@ -1,0 +1,369 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-header-oder-icons6.scss
+    Version:        1.0
+    Description:    Header Layout: Default
+    ------------------------------------------------------------------------- */
+
+/* Icons order for layout menu version 7 */
+@if ($layout--header_layout == 8) {
+
+    @if ($layout-wishlist_icons == 1) {
+        .page-header {
+            .desktop {
+                .header-wishlist-count {
+                    a {
+                        span.label {
+                            vertical-align: text-bottom;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($layout-wishlist_icons == 3) {
+        .page-header {
+            .desktop {
+                .header-wishlist-count {
+                    margin-top: 21px;
+                }
+            }
+        }
+
+    }
+
+
+  @if ($layout--order_icons == 1) {
+      .order-icons-1 {
+          .mini-search {
+              float: left;
+
+              .form-search {
+                  input {
+                      padding-left: 0;
+                      position: absolute;
+                      right: 40px;
+
+                      @include tablet {
+                          right: 0;
+                          padding: 0 20px;
+                      }
+
+                      top: 0;
+                      z-index: 10;
+                  }
+
+                  button {
+                      position: static;
+                      float: left;
+                      height: 32px;
+
+                      @include tablet {
+                          position: absolute;
+                          z-index: 10;
+                      }
+                  }
+              }
+          }
+      }
+
+      .page-container-wrapper--sticky {
+          .mini-search-wrapper--sticky {
+              .mini-search {
+                  float: right;
+              }
+          }
+    
+          @if ($layout--header_layout != 8) {
+              #mini-cart {
+                  margin-left: 20px;
+              }
+          }
+      }
+
+      .page-header {
+          .desktop {
+              #mini-cart {
+                  margin-right: 20px;
+                  float: left;
+
+                  i {
+                      margin: 0;
+                  }
+
+                  .block-cart {
+                      padding-right: 0;
+
+                      .block-cart-aside {
+                          left: 0;
+
+                          .block-content {
+                              min-width: 360px;
+                          }
+
+                          .block-content:after {
+                              left: -5px;
+                          }
+                      }
+                  }
+              }
+
+              .mini-account {
+                  margin-right: 20px;
+                  margin-left: 0;
+                  float: left;
+
+                  i {
+                      margin: 0;
+                  }
+
+                  > ul {
+                      top: 100%;
+                      left: 0;
+
+                      &:after {
+                          left: -7px;
+                      }
+                  }
+              }
+          }
+      }
+
+      .page-header {
+          .desktop {
+              .header-wishlist-count {
+                  margin-left: 0;
+                  float: left;
+
+                  .block-wishlist {
+                      left: 0;
+
+                      .block-content {
+                          &:after {
+                              left: -4px;
+                          }
+                      }
+                  }
+              }
+          }
+      }
+
+      @if ($layout_search_icons == 1 and $layout_search_icons == 2) {
+          .mini-search {
+              float: left;
+
+              .form-search {
+                  input {
+                      min-width: 220px;
+                  }
+              }
+          }
+      }
+  }
+
+    @if ($layout--order_icons == 2) {
+        .page-header {
+            .desktop {
+                &.order-icons-2 {
+                    display: none;
+                }
+
+                .page-container-inner {
+                    text-align: center;
+                }
+
+                .logo {
+                    display: inline-block;
+                    position: inherit;
+                    left: 0;
+                    top: 0;
+                    transform: none;
+                }
+
+                .block-cart {
+                    padding-left: 20px;
+
+                    > a {
+                        color: $color--secondary;
+                    }
+                }
+
+                .mini-account {
+                    float: left;
+
+                    > ul {
+                          top: 100%;
+                          left: 0;
+
+                        &:after {
+                            left: -7px;
+                        }
+                    }
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                        padding: 22px 0;
+
+                          > ul {
+                            top: 100%;
+                            left: inherit;
+
+                            &:after {
+                                right: 4px;
+                                left: inherit;
+                            }
+                        }
+                    }
+                }
+
+                .header-wishlist-count {
+                    margin-right: 0;
+
+                    a {
+                          i {
+                              top: 8px;
+                          }
+                    }
+
+                    .block-wishlist {
+                        padding-top: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 3) {
+        .page-header {
+            .desktop {
+                .order-icons {
+                    padding: 0;
+                }
+
+                .order-icons-3 {
+                    text-align: center;
+
+                    @include mobile {
+                        display: none;
+                    }
+
+                    @include tablet {
+                        display: none;
+                    }
+
+                    .header-block-1 {
+                        text-align: left;
+                        width: 33.333%;
+                    }
+
+                    .header-block-2 {
+                        text-align: right;
+                        width: 33.333%;
+                    }
+
+                    .logo {
+                        display: inline-block;
+                        width: 33.333%;
+                        position: static;
+                        transform: none;
+                        -webkit-transform: none;
+                        -ms-transform: none;
+                        text-align: center;
+
+                        a {
+                            display: inline-block;
+                            margin: 0 auto;
+
+                            img {
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+
+                .mini-cart {
+                    float: right;
+                    margin-left: 20px;
+                }
+
+                .block-cart {
+                    .block-cart-aside {
+                        left: inherit;
+
+                        .block-content {
+                            &:after {
+                                left: inherit;
+                            }
+                        }
+                    }
+                }
+
+                .mini-search {
+                    float: left;
+
+                    .form-search {
+                        input {
+                            padding-left: 0;
+                            position: absolute;
+                            left: 40px;
+                            top: 0;
+                            z-index: 10;
+                        }
+
+                        button {
+                            position: static;
+                            float: left;
+                            height: 32px;
+                        }
+                    }
+                }
+
+                .header-wishlist-count {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 4) {
+        .page-header {
+            .desktop {
+                .header-block.header-block-2 {
+                    float: left;
+                    margin-top: 25px;
+                }
+
+                .header-block.header-block-1 {
+                    margin-left:0;
+                    margin-top: 25px;
+                }
+
+                .mini-account {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                    float: right;
+                }
+
+                .block-cart {
+                    padding: 20px 0 20px 0;
+                }
+
+                .mini-cart {
+                    margin-right: 0;
+                    margin-left: 0;
+                    float: right;
+                }
+
+                .header-wishlist-count {
+                    margin-right: 0;
+                    float: right;
+                }
+
+                .mini-search {
+                    float: right;
+                }
+            }
+        }
+    }
+}

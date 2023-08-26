@@ -1,0 +1,88 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       core/_reset-ie.scss
+    Version:        1.0
+    Description:    Reduce browser inconsistencies
+    ------------------------------------------------------------------------- */
+
+//  ----------------------------------------------------------------------------
+//  Render HTML5 elements properly.
+//  Triggers hasLayout in Internet Explorer.
+//  ----------------------------------------------------------------------------
+
+address,
+blockquote,
+dd,
+div,
+dl,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+noscript,
+ol,
+p,
+pre,
+ul,
+article,
+aside,
+audio,
+canvas,
+figcaption,
+figure,
+footer,
+header,
+main,
+output,
+section,
+video {
+    display: inline-block;
+    background: transparent;
+}
+
+address,
+blockquote,
+dd,
+div,
+dl,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+noscript,
+ol,
+p,
+pre,
+ul,
+article,
+aside,
+audio,
+canvas,
+figcaption,
+figure,
+footer,
+header,
+main,
+output,
+section,
+video {
+    display: block;
+}
+
+//  ----------------------------------------------------------------------------
+//  Prevent 300ms delay in IE on touch devices.
+//  ----------------------------------------------------------------------------
+
+a,
+button {
+    touch-action: manipulation;
+}

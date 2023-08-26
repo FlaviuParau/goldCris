@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_GdprInformConsent
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_GdprInformConsent>
+            <version>1.0.7</version>
+        </Blugento_GdprInformConsent>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_gdprinformconsent>
+                <class>Blugento_GdprInformConsent_Block</class>
+            </blugento_gdprinformconsent>
+        </blocks>
+
+        <helpers>
+            <blugento_gdprinformconsent>
+                <class>Blugento_GdprInformConsent_Helper</class>
+            </blugento_gdprinformconsent>
+        </helpers>
+
+        <resources>
+            <blugento_gdprinformconsent_setup>
+                <setup>
+                    <module>Blugento_GdprInformConsent</module>
+                    <class>Mage_Customer_Model_Resource_Setup</class>
+                </setup>
+            </blugento_gdprinformconsent_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_gdprinformconsent>
+                    <file>gdprinformconsent.xml</file>
+                </blugento_gdprinformconsent>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Blugento_GdprInformConsent>
+                    <files>
+                        <default>Blugento_GdprInformConsent.csv</default>
+                    </files>
+                </Blugento_GdprInformConsent>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Blugento_GdprInformConsent>
+                    <files>
+                        <default>Blugento_GdprInformConsent.csv</default>
+                    </files>
+                </Blugento_GdprInformConsent>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_gdpruserdata>
+            <consent>
+                <enable_on_checkout>1</enable_on_checkout>
+                <read_more>1</read_more>
+            </consent>
+            <newsletter_checkout>
+                <enable>1</enable>
+            </newsletter_checkout>
+        </blugento_gdpruserdata>
+    </default>
+</config>

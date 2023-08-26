@@ -1,0 +1,320 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_checkout-mini-cart.scss
+    Version:        1.0
+    Description:    Mini-Cart Styles (in Header)
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.mini-cart {
+    position: relative;
+    float: right;
+
+    @include mobile {
+        margin-left: 15px;
+        padding-left: 15px;
+        border-left: 1px solid color('l');
+    }
+}
+
+.block-cart {
+    display: table;
+    height: 100%;
+    vertical-align: middle;
+
+    > a {
+        display: table-cell;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: $mini-cart__link_color;
+
+        > i {
+            vertical-align: middle;
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            background: $mini-cart__link__after no-repeat;
+            background-size: 100% 100%;
+
+            em {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                width: 20px;
+                height: 20px;
+                border: 3px solid $mini-cart__link__qty_border-color;
+                border-radius: 50%;
+                font-style: normal;
+                font-weight: 800;
+                font-size: 11px;
+                line-height: (20 / 11);
+                text-align: center;
+                background-color: $mini-cart__link__qty_background-color;
+                color: $mini-cart__link__qty_color;
+            }
+        }
+
+        > span,
+        > strong {
+            display: inline-block;
+            margin-left: 10px;
+            line-height: 1;
+            vertical-align: middle;
+
+            @include mobile {
+                display: none;
+            }
+        }
+
+        > span {
+            font-weight: 900;
+            font-size: 16px;
+            text-transform: uppercase;
+
+            > span {
+                display: block;
+            }
+        }
+
+        > strong {
+            padding: 10px;
+            font-size: 12px;
+            background-color: color('e');
+            color: color('b');
+        }
+    }
+
+    #cart-sidebar {
+        @include cf;
+    }
+
+    .mini-products-list {
+        @include cf;
+
+        li {
+            @include cf;
+
+            padding: 0 30px;
+            border-top: 1px solid $mini-cart__item_border-color;
+
+            &:last-child {
+                border-bottom: 1px solid $mini-cart__item_border-color;
+            }
+
+            @include mobile {
+                padding: 0 10px;
+            }
+        }
+
+        .product-details {
+            display: flex;
+            flex-flow: row wrap;
+            overflow: hidden;
+            padding: 20px 20px 20px 0;
+            border-right: 1px solid $mini-cart__item_border-color;
+
+            @include mobile {
+                padding: 10px 10px 10px 0;
+            }
+
+            @include mobile {
+                .dock-open & {
+                    padding-right: 0;
+                    border-right: 0;
+                }
+            }
+        }
+
+        .price-qty {
+            float: right;
+
+            @include mobile {
+                .dock-open & {
+                    float: none;
+                }
+            }
+        }
+
+        .product-name-first + .price-qty {
+            float: none;
+        }
+
+        .product-name {
+            overflow: hidden;
+        }
+
+        .product-cart + .product-cart-details {
+            width: calc(100% - 71px);
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+        .truncated {
+            @include mobile {
+                .dock-open & {
+                    display: none;
+                }
+            }
+        }
+
+        .edit-remove {
+            float: right;
+            padding: 20px 0 20px 20px;
+            text-align: right;
+
+            @include mobile {
+                .dock-open & {
+                    display: none;
+                }
+            }
+        }
+
+        .btn-edit,
+        .btn-remove {
+            vertical-align: top;
+        }
+
+        .btn-edit {
+            margin-right: 10px;
+        }
+    }
+
+    .block-cart-aside,
+    .block-cart-aside-quote {
+        z-index: 100;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        display: none;
+        padding-top: 20px;
+
+        .dock-open & {
+            @include mobile {
+                padding-top: 0;
+            }
+        }
+
+        .block-content,
+        .miniquote-wrapper {
+            position: relative;
+            min-width: 300px;
+            padding: 30px 0 29px;
+            background-color: $mini-cart__block-content_background-color;
+            color: $mini-cart__block-content_color;
+
+            @include mobile {
+                min-width: 0;
+                padding: 10px 0;
+            }
+
+            .dock-open & {
+                @include mobile {
+                    min-width: 0;
+                    min-height: 100%;
+                }
+            }
+
+            &:after {
+                @include icon-triangle(up, 10px, $mini-cart__block-content_background-color);
+                position: absolute;
+                right: 32px;
+                bottom: 100%;
+                margin-left: 12px;
+            }
+        }
+
+        .summary {
+            padding: 0 30px 20px;
+            line-height: (17 / 13);
+            color: $mini-cart__block-content-summary_color;
+
+            @include mobile {
+                padding: 0 10px 10px;
+            }
+        }
+
+        .sidebar-bottom {
+            @include cf;
+
+            padding: 20px 30px 0;
+        }
+
+        .subtotal {
+            font-size: 14px;
+            font-weight: 700;
+            text-align: right;
+            text-transform: uppercase;
+            color: color('m');
+
+            .label {
+                padding: 0 25px;
+            }
+        }
+
+        .actions {
+            white-space: nowrap;
+            margin-top: 30px;
+
+            a {
+                .dock-open & {
+                    @include mobile {
+                        float: none;
+                        display: block;
+                        text-align: center;
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+                }
+
+                + a {
+                    margin-left: 30px;
+
+                    @include mobile {
+                        margin: 20px 0 0;
+                    }
+                }
+                
+                font-weight: $mini-cart-button_font-weight;
+                font-size: $mini-cart-button_font-size;
+                font-family: $mini-cart-button_font-family;
+                text-transform: $mini-cart-button_text-transform;
+                
+                &.view-cart {
+                    color: $mini-cart-button-view-color;
+                    background-color: $mini-cart-button-view_background-color;
+                    
+                }
+    
+                &.proceed-checkout {
+                    background-color: $mini-cart-button-proceed_background-color;
+                    color: $mini-cart-button-proceed-color;
+                }
+            }
+        }
+
+        .empty {
+            padding: 0 30px;
+            text-align: center;
+        }
+    }
+
+    &:hover {
+        > a {
+            @include desktop {
+                text-decoration: none;
+                color: $mini-cart__link--hover_color;
+
+                > i {
+                    background-image: $mini-cart__link--hover__after;
+                }
+            }
+        }
+
+        .block-cart-aside {
+            @include desktop {
+                display: block;
+            }
+        }
+    }
+}

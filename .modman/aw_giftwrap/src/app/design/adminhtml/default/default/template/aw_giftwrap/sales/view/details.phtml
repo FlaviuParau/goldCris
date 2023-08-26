@@ -1,0 +1,65 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Giftwrap
+ * @version    1.1.1
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php $linkedGiftWrap = $this->getLinkedGiftWrap(); ?>
+
+<?php if (!is_null($linkedGiftWrap)) : ?>
+    <div class="entry-edit" id="order-aw-giftwrap-box" style="display:none;">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-aw-giftwrap"><?php echo $this->__('Order Gift Wrap Options') ?></h4>
+        </div>
+        <fieldset>
+            <table cellspacing="0" class="form-list">
+                <tbody>
+                    <tr>
+                        <td class="label"><label><?php echo $this->__('Wrapping products separately?'); ?></label></td>
+                        <td class="value"><strong><?php echo $this->getIsWrappingProductsSeparatelyLabel(); ?></strong></td>
+                    </tr>
+                    <?php if ($this->canShowGiftMessage()): ?>
+                        <tr>
+                            <td class="label"><label><?php echo $this->__('Gift Message'); ?></label></td>
+                            <td class="value"><strong><?php echo $this->getGiftMessage(); ?></strong></td>
+                        </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td class="label"><label><?php echo $this->__('Gift Wrap'); ?></label></td>
+                        <td class="value"><?php echo $this->getGiftWrapHtml(); ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </div>
+    <script type="text/javascript">
+        (function() {
+            var awGiftwrapOrderBox = $('order-aw-giftwrap-box');
+            if (awGiftwrapOrderBox) {
+                $$('.head-products').first().up().up().insert({
+                    before: awGiftwrapOrderBox
+                });
+                awGiftwrapOrderBox.show();
+            }
+        })();
+    </script>
+<?php endif; ?>

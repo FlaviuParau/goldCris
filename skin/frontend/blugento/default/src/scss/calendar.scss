@@ -1,0 +1,176 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       calendar.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import 'grunt';
+
+@import '../../blugento/scss/variable';
+@import '../../blugento/scss/variable-image';
+@import '../../blugento/scss/variable-layout';
+
+@import 'function/browser';
+
+@import 'config';
+
+@import 'mixin/font';
+@import 'mixin/grid';
+@import 'mixin/icon';
+@import 'mixin/responsive';
+@import 'mixin/util';
+
+//  ----------------------------------------------------------------------------
+
+.calendar {
+    z-index: 100;
+
+    @include phone-s {
+        right: 0;
+        padding: 0 20px;
+    }
+
+    table {
+        cursor: default;
+        border-collapse: separate;
+        background: color('b');
+        color: color('j');
+
+        .wn {
+            background-color: color('g');
+
+            &.name {
+
+                @include phone-s {
+                    font-size: 0;
+                }
+            }
+        }
+    }
+
+    td {
+        padding: 5px;
+        border-width: 1px 0 0 1px;
+        border-style: solid;
+        border-color: color('d');
+        line-height: 1;
+        text-align: center;
+
+        @include phone-s {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        &:last-child {
+            border-right-width: 1px;
+        }
+    }
+
+    .hilite,
+    .active,
+    .selected { /* How do the buttons in header appear when hover */
+        border-color: color('k') !important;
+        background-color: color('k') !important;
+        color: color('b') !important;
+    }
+
+    .button { /* "<<", "<", ">", ">>" buttons have this class */
+    }
+
+    .nav {
+    }
+
+    thead {
+        .title { /* This holds the current "month, year" */
+            font-weight: 700;
+            text-align: center;
+            border-color: color('q');
+            background-color: color('q');
+            color: color('b');
+        }
+
+        .day { /* Cells <TD> containing the day names */
+            font-style: italic;
+            background-color: color('c');
+        }
+
+        .weekend { /* How a weekend day name shows in header */
+            color: color('q');
+        }
+    }
+
+    tbody {
+        .day { /* Cells <TD> containing month days dates */
+            width: 2em;
+            text-align: right;
+
+            &.othermonth {
+                font-size: 80%;
+            }
+
+            &.day.othermonth.oweekend {
+            }
+        }
+
+        .emptycell + .emptycell { /* Empty cells (the best is to hide them) */
+            border-left-width: 0;
+        }
+
+        .emptyrow { /* Empty row (some months need less than 6 rows) */
+            display: none;
+        }
+
+        .rowhilite td:not(.hilite):not(.selected):not(.wn) {
+            background-color: color('c');
+        }
+    }
+
+    tfoot {
+        .ttip { /* Tooltip (status bar) cell <TD> */
+            padding: 5px;
+            border-color: color('q');
+            background-color: color('q');
+            color: color('b');
+        }
+
+        .hilite { /* Hover style for buttons in footer */
+        }
+    }
+
+    .combo {
+        display: none;
+        z-index: 100;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: default;
+        width: 4em;
+        padding: 1px;
+        font-size: 90%;
+
+        .label {
+            padding: 1px;
+        }
+    }
+
+    td.time {
+        padding: 0;
+        vertical-align: middle;
+
+        .ampm,
+        .hour,
+        .minute,
+        .colon {
+            display: inline-block;
+            padding: 5px;
+            font-weight: 700;
+
+        }
+
+        .ampm,
+        .hour,
+        .minute {
+            background-color: color('b');
+        }
+    }
+}

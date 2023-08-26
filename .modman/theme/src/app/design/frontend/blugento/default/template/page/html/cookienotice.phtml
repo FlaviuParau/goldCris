@@ -1,0 +1,40 @@
+<?php
+/**
+ * @see Mage_Page_Block_Html_CookieNotice
+ */
+?>
+<?php $helper = Mage::helper('blugento_theme'); ?>
+<?php if (Mage::helper('core/cookie')->isUserNotAllowSaveCookie()): ?>
+<div class="global-site-notice notice-cookie" id="notice-cookie-block">
+    <div class="notice-inner">
+        <div class="notice-text"><?php echo $this->getCookieRestrictionBlockContent(); ?></div>
+        <div class="actions">
+	        <button class="button <?php echo !$helper->trackingAfterCookiesAccepted() ? 'close-cookie' : ''; ?>" <?php if ($helper->trackingAfterCookiesAccepted()): ?> onclick="allowSaveCookie()" <?php else: ?> onclick="closeCookie()" <?php endif; ?>>
+		        <span>
+			        <span><?php echo $helper->trackingAfterCookiesAccepted() ? $this->__('Allow Cookies') : ''; ?></span>
+		        </span>
+	        </button>
+        </div>
+    </div>
+</div>
+<script>
+    function allowSaveCookie() {
+        Mage.Cookies.set('<?php echo Mage_Core_Helper_Cookie::IS_USER_ALLOWED_SAVE_COOKIE; ?>', '<?php echo Mage::helper('core/cookie')->getAcceptedSaveCookiesWebsiteIds()?>', new Date(new Date().getTime() + <?php echo Mage::helper('core/cookie')->getCookieRestrictionLifetime() ?> * 1000));
+        if (Mage.Cookies.get('<?php echo Mage_Core_Helper_Cookie::IS_USER_ALLOWED_SAVE_COOKIE; ?>')) {
+            $('notice-cookie-block').hide();
+        } else {
+            //window.location.href = '<?php echo Mage::getUrl('cms/index/noCookies')?>';
+        }
+    }
+    function closeCookie() {
+	    $('notice-cookie-block').hide();
+    }
+    <?php if (!$helper->trackingAfterCookiesAccepted()): ?>
+        allowSaveCookie();
+    <?php endif; ?>
+    $('notice-cookie-block').show();
+</script>
+<?php endif; ?>
+
+
+

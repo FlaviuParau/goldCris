@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_SeoEnhancements>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Blugento_SeoEnhancements>
+    </modules>
+</config>

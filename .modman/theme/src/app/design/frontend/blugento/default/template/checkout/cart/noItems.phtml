@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="col-6 col-sm-12 center">
+		<div class="cart-empty">
+			<div class="page-title">
+				<img src="<?php echo $this->getSkinUrl('images/empty_cart_placeholder.png') ?>" alt="<?php echo $this->__('Empty Cart') ?>" title="<?php echo $this->__('Empty Cart') ?>" />
+				<h1><?php echo $this->__('Shopping Cart is Empty') ?></h1>
+			</div>
+			<?php echo $this->getMessagesBlock()->toHtml() ?>
+			<?php echo $this->getChildHtml('checkout_cart_empty_widget'); ?>
+			<?php echo $this->__('<a class="empty-cart-button" href="%s">Back to main store</a>', Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl())); ?>
+			<?php echo $this->getChildHtml('shopping.cart.table.after'); ?>
+		</div>
+	</div>
+</div>

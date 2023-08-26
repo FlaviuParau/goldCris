@@ -1,0 +1,5 @@
+src/app/code/local/Blugento/Compare/                                      app/code/local/Blugento/Compare/
+src/app/etc/modules/Blugento_Compare.xml                                  app/etc/modules/Blugento_Compare.xml
+src/app/locale/de_DE/Blugento_Compare.csv                                 app/locale/de_DE/Blugento_Compare.csv
+src/app/locale/en_US/Blugento_Compare.csv                                 app/locale/en_US/Blugento_Compare.csv
+src/app/locale/ro_RO/Blugento_Compare.csv                                 app/locale/ro_RO/Blugento_Compare.csv

@@ -1,0 +1,1674 @@
+<block name="formkey" type="core/template" template="core/formkey.phtml"/>
+<label>All Pages</label>
+<block type="page/html" name="root" output="toHtml" template="page/3columns.phtml">
+   <block type="page/html_head" name="head" as="head">
+      <action method="addJs">
+         <script>prototype/prototype.js</script>
+      </action>
+      <action method="addJs">
+         <script>lib/ccard.js</script>
+      </action>
+      <action method="addJs">
+         <script>prototype/validation.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/builder.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/effects.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/dragdrop.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/controls.js</script>
+      </action>
+      <action method="addJs">
+         <script>scriptaculous/slider.js</script>
+      </action>
+      <action method="addJs">
+         <script>varien/js.js</script>
+      </action>
+      <action method="addJs">
+         <script>varien/form.js</script>
+      </action>
+      <action method="addJs">
+         <script>varien/menu.js</script>
+      </action>
+      <action method="addJs">
+         <script>mage/translate.js</script>
+      </action>
+      <action method="addJs">
+         <script>mage/cookies.js</script>
+      </action>
+      <block type="page/js_cookie" name="js_cookies" template="page/js/cookie.phtml"/>
+      <action method="addCss">
+         <stylesheet>css/styles.css</stylesheet>
+      </action>
+      <action method="addItem">
+         <type>skin_css</type>
+         <name>css/styles-ie.css</name>
+         <params/>
+         <if>lt IE 8</if>
+      </action>
+      <action method="addCss">
+         <stylesheet>css/widgets.css</stylesheet>
+      </action>
+      <action method="addCss">
+         <stylesheet>css/print.css</stylesheet>
+         <params>media=&quot;print&quot;</params>
+      </action>
+      <action method="addItem">
+         <type>js</type>
+         <name>lib/ds-sleight.js</name>
+         <params/>
+         <if>lt IE 7</if>
+      </action>
+      <action method="addItem">
+         <type>skin_js</type>
+         <name>js/ie6.js</name>
+         <params/>
+         <if>lt IE 7</if>
+      </action>
+   </block>
+   <block type="core/text_list" name="after_body_start" as="after_body_start" translate="label">
+      <label>Page Top</label>
+   </block>
+   <block type="page/html_notices" name="global_notices" as="global_notices" template="page/html/notices.phtml"/>
+   <block type="page/html_header" name="header" as="header">
+      <block type="page/template_links" name="top.links" as="topLinks"/>
+      <block type="page/switch" name="store_language" as="store_language" template="page/switch/languages.phtml"/>
+      <block type="core/text_list" name="top.menu" as="topMenu" translate="label">
+         <label>Navigation Bar</label>
+         <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml"/>
+      </block>
+      <block type="page/html_wrapper" name="top.container" as="topContainer" translate="label">
+         <label>Page Header</label>
+         <action method="setElementClass">
+            <value>top-container</value>
+         </action>
+      </block>
+      <block type="page/html_welcome" name="welcome" as="welcome"/>
+   </block>
+   <block type="page/html_breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+   <block type="core/text_list" name="left" as="left" translate="label">
+      <label>Left Column</label>
+   </block>
+   <block type="core/messages" name="global_messages" as="global_messages"/>
+   <block type="core/messages" name="messages" as="messages"/>
+   <block type="core/text_list" name="content" as="content" translate="label">
+      <label>Main Content Area</label>
+   </block>
+   <block type="core/text_list" name="right" as="right" translate="label">
+      <label>Right Column</label>
+   </block>
+   <block type="page/html_footer" name="footer" as="footer" template="page/html/footer.phtml">
+      <block type="page/html_wrapper" name="bottom.container" as="bottomContainer" translate="label">
+         <label>Page Footer</label>
+         <action method="setElementClass">
+            <value>bottom-container</value>
+         </action>
+      </block>
+      <block type="page/switch" name="store_switcher" as="store_switcher" template="page/switch/stores.phtml"/>
+      <block type="page/template_links" name="footer_links" as="footer_links" template="page/template/links.phtml"/>
+   </block>
+   <block type="core/text_list" name="before_body_end" as="before_body_end" translate="label">
+      <label>Page Bottom</label>
+      <block type="page/html_cookieNotice" name="global_cookie_notice" as="global_cookie_notice" template="page/html/cookienotice.phtml" before="-"/>
+   </block>
+</block>
+<block type="core/profiler" output="toHtml" name="core_profiler"/>
+<reference name="head">
+   <block type="core/template" name="optional_zip_countries" as="optional_zip_countries" template="directory/js/optional_zip_countries.phtml"/>
+</reference>
+<reference name="top.links">
+   <action method="addLink" translate="label title" module="customer">
+      <label>My Account</label>
+      <url helper="customer/getAccountUrl"/>
+      <title>My Account</title>
+      <prepare/>
+      <urlParams/>
+      <position>10</position>
+   </action>
+</reference>
+<reference name="footer">
+   <block type="cms/block" name="cms_footer_links" before="footer_links">
+      <action method="setBlockId">
+         <block_id>footer_links</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="left">
+   <block type="core/template" name="left.permanent.callout" template="callouts/left_col.phtml">
+      <action method="setImgSrc">
+         <src>images/media/col_left_callout.jpg</src>
+      </action>
+      <action method="setImgAlt" translate="alt" module="catalog">
+         <alt>Our customer service is available 24/7. Call us at (555) 555-0123.</alt>
+      </action>
+      <action method="setLinkUrl">
+         <url>checkout/cart</url>
+      </action>
+   </block>
+</reference>
+<reference name="right">
+   <block type="catalog/product_compare_sidebar" before="cart_sidebar" name="catalog.compare.sidebar" template="catalog/product/compare/sidebar.phtml"/>
+   <block type="core/template" name="right.permanent.callout" template="callouts/right_col.phtml">
+      <action method="setImgSrc">
+         <src>images/media/col_right_callout.jpg</src>
+      </action>
+      <action method="setImgAlt" translate="alt" module="catalog">
+         <alt>Keep your eyes open for our special Back to School items and save A LOT!</alt>
+      </action>
+   </block>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="catalog" ifconfig="catalog/seo/site_map">
+      <label>Site Map</label>
+      <url helper="catalog/map/getCategoryUrl"/>
+      <title>Site Map</title>
+   </action>
+</reference>
+<block type="catalog/product_price_template" name="catalog_product_price_template"/>
+<reference name="catalog_product_price_template">
+   <action method="addPriceBlockType">
+      <type>msrp</type>
+      <block>catalog/product_price</block>
+      <template>catalog/product/price_msrp.phtml</template>
+   </action>
+   <action method="addPriceBlockType">
+      <type>msrp_item</type>
+      <block>catalog/product_price</block>
+      <template>catalog/product/price_msrp_item.phtml</template>
+   </action>
+   <action method="addPriceBlockType">
+      <type>msrp_noform</type>
+      <block>catalog/product_price</block>
+      <template>catalog/product/price_msrp_noform.phtml</template>
+   </action>
+</reference>
+<reference name="header">
+   <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="catalogsearch" ifconfig="catalog/seo/search_terms">
+      <label>Search Terms</label>
+      <url helper="catalogsearch/getSearchTermUrl"/>
+      <title>Search Terms</title>
+   </action>
+   <action method="addLink" translate="label title" module="catalogsearch">
+      <label>Advanced Search</label>
+      <url helper="catalogsearch/getAdvancedSearchUrl"/>
+      <title>Advanced Search</title>
+   </action>
+</reference>
+<reference name="footer_links">
+   <block type="sales/guest_links" name="return_link"/>
+   <action method="addLinkBlock">
+      <blockName>return_link</blockName>
+   </action>
+</reference>
+<reference name="top.links">
+   <block type="checkout/links" name="checkout_cart_link">
+      <action method="addCartLink"/>
+      <action method="addCheckoutLink"/>
+   </block>
+</reference>
+<reference name="right">
+   <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
+      <action method="addItemRender">
+         <type>simple</type>
+         <block>checkout/cart_item_renderer</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>grouped</type>
+         <block>checkout/cart_item_renderer_grouped</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>configurable</type>
+         <block>checkout/cart_item_renderer_configurable</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+         <label>Shopping Cart Sidebar Extra Actions</label>
+      </block>
+   </block>
+</reference>
+<reference name="topCart.extra_actions">
+   <block type="paypal/express_shortcut" name="paypal.partner.top_cart.shortcut" template="paypal/express/shortcut.phtml"/>
+</reference>
+<reference name="cart_sidebar.extra_actions">
+   <block type="paypal/express_shortcut" name="paypal.partner.cart_sidebar.shortcut" template="paypal/express/shortcut.phtml"/>
+</reference>
+<reference name="right">
+   <block type="poll/activePoll" name="right.poll">
+      <action method="setPollTemplate">
+         <template>poll/active.phtml</template>
+         <type>poll</type>
+      </action>
+      <action method="setPollTemplate">
+         <template>poll/result.phtml</template>
+         <type>results</type>
+      </action>
+   </block>
+</reference>
+<reference name="right">
+   <block type="reports/product_viewed" before="right.permanent.callout" name="right.reports.product.viewed" template="reports/product_viewed.phtml"/>
+   <block type="reports/product_compared" before="right.permanent.callout" name="right.reports.product.compared" template="reports/product_compared.phtml"/>
+</reference>
+<reference name="head" before="-">
+   <block type="googleanalytics/ga" name="google_analytics" as="google_analytics" template="googleanalytics/ga.phtml"/>
+</reference>
+<reference name="top.links">
+   <block type="wishlist/links" name="wishlist_link"/>
+   <action method="addLinkBlock">
+      <blockName>wishlist_link</blockName>
+   </action>
+</reference>
+<reference name="right">
+   <block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" after="cart_sidebar" template="wishlist/sidebar.phtml"/>
+</reference>
+<reference name="topCart.extra_actions">
+   <block type="paypaluk/express_shortcut" name="paypaluk.partner.top_cart.shortcut" template="paypal/express/shortcut.phtml"/>
+</reference>
+<reference name="cart_sidebar.extra_actions">
+   <block type="paypaluk/express_shortcut" name="paypaluk.partner.cart_sidebar.shortcut" template="paypal/express/shortcut.phtml"/>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="contacts" ifconfig="contacts/contacts/enabled">
+      <label>Contact Us</label>
+      <url>contacts</url>
+      <title>Contact Us</title>
+      <prepare>true</prepare>
+   </action>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="rss" ifconfig="rss/config/active">
+      <label>RSS</label>
+      <url>rss</url>
+      <title>RSS</title>
+      <prepare>true</prepare>
+      <urlParams/>
+      <position/>
+      <li/>
+      <a>class=&quot;link-rss&quot;</a>
+   </action>
+</reference>
+<block type="rss/list" name="head_rss" ifconfig="rss/config/active"/>
+<reference name="cart_sidebar">
+   <action method="addItemRender">
+      <type>bundle</type>
+      <block>bundle/checkout_cart_item_renderer</block>
+      <template>checkout/cart/sidebar/default.phtml</template>
+   </action>
+</reference>
+<reference name="wishlist_sidebar">
+   <action method="addPriceBlockType">
+      <type>bundle</type>
+      <block>bundle/catalog_product_price</block>
+      <template>bundle/catalog/product/price.phtml</template>
+   </action>
+</reference>
+<reference name="catalog_product_price_template">
+   <action method="addPriceBlockType">
+      <type>bundle</type>
+      <block>bundle/catalog_product_price</block>
+      <template>bundle/catalog/product/price.phtml</template>
+   </action>
+</reference>
+<reference name="left">
+   <block type="newsletter/subscribe" name="left.newsletter" template="newsletter/subscribe.phtml"/>
+</reference>
+<reference name="footer_links">
+   <block type="blog/blog" name="add.blog.footer">
+      <action method="addBlogLink" ifconfig="blog/menu/footer">
+         <param>footer</param>
+      </action>
+   </block>
+</reference>
+<reference name="right">
+   <block type="blog/menu_sidebar" name="right.blog.menu" before="-">
+      <action method="setTemplate" ifconfig="blog/menu/right" ifvalue="1">
+         <template>aw_blog/menu.phtml</template>
+      </action>
+      <block type="blog/tags" name="blog_tags"/>
+   </block>
+</reference>
+<reference name="left">
+   <block type="blog/menu_sidebar" name="left.blog.menu" before="-">
+      <action method="setTemplate" ifconfig="blog/menu/left">
+         <template>aw_blog/menu.phtml</template>
+      </action>
+      <block type="blog/tags" name="blog_tags"/>
+   </block>
+</reference>
+<reference name="top.links">
+   <block type="blog/blog" name="add.blog.link">
+      <action method="addBlogLink" ifconfig="blog/menu/top">
+         <param>top</param>
+      </action>
+   </block>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>aw_blog/css/style.css</name>
+   </action>
+   <block type="blog/blog" name="canonical" as="canonical" template="aw_blog/canonical.phtml"/>
+</reference>
+<reference name="content">
+   <block type="core/template" name="amacart.jsscript" xas="review_before" xbefore="-">
+      <action method="setTemplate">
+         <template>amacart/jsscript.phtml</template>
+      </action>
+   </block>
+</reference>
+<reference name="content">
+   <block type="core/template" name="amlabel_clear_registry" before="-" template="amasty/amlabel/clear.phtml"/>
+</reference>
+<reference name="before_body_end">
+   <block type="core/template" name="amlabel_script" after="-" template="amasty/amlabel/script.phtml"/>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/amasty/amlabel/amlabel.css</name>
+   </action>
+   <action method="addItem" ifconfig="amlabel/options/use_js">
+      <type>js</type>
+      <name>amasty/amlabel/amlabel_observer.js</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>js</type>
+      <name>amasty/amlabel/amlabel_height.js</name>
+      <params/>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addItem" ifconfig="blugento_ajaxcart/general/enable">
+      <type>skin_css</type>
+      <name>blugento/ajaxcart/css/main.css</name>
+   </action>
+   <action method="addItem" ifconfig="blugento_ajaxcart/general/enable">
+      <type>skin_js</type>
+      <name>blugento/ajaxcart/js/main.js</name>
+   </action>
+</reference>
+<reference name="before_body_end">
+   <block type="core/template" name="blugento_ajaxcart.modal">
+      <action method="setTemplate" ifconfig="blugento_ajaxcart/general/enable">
+         <template>blugento/ajaxcart/modal.phtml</template>
+      </action>
+   </block>
+</reference>
+<reference name="head">
+   <action method="addItem" ifconfig="blugento_configurableswatch/general/enabled">
+      <type>skin_css</type>
+      <name>blugento/configurableswatch/css/main.css</name>
+   </action>
+   <action method="addItem" ifconfig="blugento_configurableswatch/general/enabled">
+      <type>skin_js</type>
+      <name>blugento/configurableswatch/js/configurable-blugento.js</name>
+   </action>
+</reference>
+<reference name="footer">
+   <block type="blugento_feeds/feeds" name="blugento_datafeeds" as="blugento_datafeeds"/>
+</reference>
+<reference name="root">
+   <action method="addBodyClass" ifconfig="gdpr_cookies/general/enabled">
+      <classname>gdpr-enabled</classname>
+   </action>
+</reference>
+<reference name="before_body_end">
+   <block type="core/template" name="gdprcookies" template="gdprcookies.phtml"/>
+</reference>
+<reference name="google_analytics">
+   <action method="setTemplate">
+      <template>extendgoogleanalytics/googleanalytics/ga.phtml</template>
+   </action>
+</reference>
+<reference name="footer">
+   <block type="blugento_gdpruserdata/page_html_links" name="gdpr.links" template="blugento/gdpruserdata/page/html/links.phtml"/>
+</reference>
+<reference name="head">
+   <block type="blugento_googletagmanager/gtmCode" name="blugento_googletagmanager_gtm_head_code" as="blugento_googletagmanager_gtm_head_code" template="blugento/googletagmanager/gtmheadcode.phtml"/>
+   <block type="blugento_googletagmanager/tm" name="blugento_googletagmanager_tm" as="blugento_googletagmanager_tm" template="blugento/googletagmanager/datalayer.phtml"/>
+</reference>
+<reference name="after_body_start">
+   <block type="blugento_googletagmanager/gtmCode" name="blugento_googletagmanager_gtm_code" as="blugento_googletagmanager_gtm_code" template="blugento/googletagmanager/gtmcode.phtml"/>
+</reference>
+<reference name="footer">
+   <block type="blugento_localizer/legals" name="footer.legals" as="legals"/>
+</reference>
+<reference name="before_body_end">
+   <block type="blugento_marketing/marketing" name="marketing_remarketing_before" template="blugento/marketing/remarketing_before.phtml"/>
+</reference>
+<reference name="after_body_start">
+   <block type="blugento_marketing/marketing" name="marketing_remarketing_after" template="blugento/marketing/remarketing_after.phtml"/>
+</reference>
+<reference name="content">
+   <block type="blugento_popup/cms_popup" name="blugento.cms.popup" as="blugento.popup" template="blugento/popup/cms/popup.phtml"/>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/blugento_productlabels/label.css</name>
+   </action>
+   <action method="addItem" ifconfig="blugento_productlabels/general/enabled">
+      <type>skin_js</type>
+      <name>js/blugento_productlabels/product-labels.js</name>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addItem" ifconfig="blugento_productswidget/general/enabled">
+      <type>skin_css</type>
+      <name>css/productswidget/productswidget.css</name>
+      <params/>
+   </action>
+   <action method="addJs" ifconfig="blugento_productswidget/general/add_jquery">
+      <script>blugento/productswidget/jquery-1.11.3.min.js</script>
+   </action>
+   <action method="addJs" ifconfig="blugento_productswidget/general/add_jquery">
+      <script>blugento/productswidget/noconflict.js</script>
+   </action>
+   <action method="addItem" ifconfig="blugento_productswidget/general/add_slick">
+      <type>skin_css</type>
+      <name>css/productswidget/slick-theme.css</name>
+      <params/>
+   </action>
+   <action method="addJs" ifconfig="blugento_productswidget/general/add_slick">
+      <script>blugento/productswidget/slick.min.js</script>
+   </action>
+</reference>
+<reference name="head">
+   <block type="blugento_richsnippets/breadcrumbs_jsonld" name="breadcrumbs_richsnippets" after="-" template="blugento/richsnippets/jsonld.phtml"/>
+   <block type="blugento_richsnippets/website_jsonld" name="website_richsnippets" after="-" template="blugento/richsnippets/jsonld.phtml"/>
+</reference>
+<reference name="head">
+   <action method="addJs">
+      <script>eadesign/romcity/field.js</script>
+   </action>
+</reference>
+<reference name="head">
+   <block type="core/template" name="blugento_seoenhancements.link-pagination" template="blugento/seoenhancements/page/html/head/link-pagination.phtml"/>
+   <block type="blugento_seoenhancements/page_html_head_cms_canonical" name="cms_canonical" as="cms_canonical" template="blugento/seoenhancements/page/html/head/cms-canonical.phtml"/>
+</reference>
+<reference name="root">
+   <block type="blugento_socialmedia/index" name="page.socialmedia_share" template="blugento/socialmedia/smedia_share.phtml"/>
+</reference>
+<reference name="footer">
+   <block type="blugento_socialmedia/index" name="footer.socialmedia" template="blugento/socialmedia/smedia.phtml"/>
+</reference>
+<reference name="head">
+   <block type="core/template" template="cadence/fbpixel/visitor.phtml" name="cadence_fbpixel_visitor"/>
+   <block type="core/template" template="cadence/fbpixel/events.phtml" name="cadence_fbpixel_events"/>
+</reference>
+<reference name="head">
+   <action method="addJs" ifconfig="mailchimp/ecommerce/active">
+      <script>ebizmarts/mailchimp/campaignCatcher.js</script>
+      <params>async</params>
+   </action>
+   <action method="addJs" ifconfig="mailchimp/emailcatcher/popup_general">
+      <script>prototype/window.js</script>
+   </action>
+   <action method="addJs" ifconfig="mailchimp/emailcatcher/popup_general">
+      <script>scriptaculous/scriptaculous.js</script>
+   </action>
+   <action method="addItem" ifconfig="mailchimp/emailcatcher/popup_general">
+      <type>js_css</type>
+      <script>prototype/windows/themes/default.css</script>
+   </action>
+   <action method="addItem" ifconfig="mailchimp/emailcatcher/popup_general">
+      <type>js_css</type>
+      <script>ebizmarts/mailchimp/popup.css</script>
+   </action>
+   <block type="core/text" name="addMCJs">
+      <action method="setText">
+         <text helper="mailchimp/getMCJs"/>
+      </action>
+   </block>
+</reference>
+<reference name="content">
+   <block type="mailchimp/popup_emailcatcher" name="emailcatcher" template="ebizmarts/mailchimp/popup/emailcatcher.phtml"/>
+</reference>
+<reference name="head">
+   <action method="addItem" ifconfig="blugento_ajax_wishlist/general/enable">
+      <type>skin_js</type>
+      <name>js/ajaxwishlist/ajaxwishlist.js</name>
+   </action>
+</reference>
+<reference name="before_body_end">
+   <block type="core/template" ifconfig="blugento_ajax_wishlist/general/enable" template="ajaxwishlist/catalog/product/ajaxtemplate.phtml" name="ajaxtemplate"/>
+</reference>
+<reference name="head">
+   <block type="Facebook_AdsExtension/head" name="facebook_ads_extension.head" template="facebook_ads_extension/head.phtml"/>
+   <block type="Facebook_AdsExtension/addToCart" name="facebook_ads_extension.addtocart" template="facebook_ads_extension/addtocart.phtml"/>
+</reference>
+<reference name="head">
+   <action method="addItem" ifconfig="blugento_socialmedia/inchoo_googleconnect/enabled">
+      <type>skin_css</type>
+      <name>inchoo_googleconnect/css/button.css</name>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addCss">
+      <stylesheet>css/magestore/fblogin.css</stylesheet>
+   </action>
+</reference>
+<reference name="head">
+   <block type="Simtech_Searchanise_Block_Jsinit" name="searchanise_jsinit"/>
+</reference>
+<reference name="root">
+   <action method="addBodyClass" ifconfig="ajaxlogin/options/enable">
+      <classname>ajaxlogin-enabled</classname>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/ajaxlogin/styles.css</name>
+      <params/>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/ajaxlogin/script.js</name>
+   </action>
+   <action method="addItem" ifconfig="ajaxlogin/options/enable_first_login">
+      <type>skin_js</type>
+      <name helper="ajaxlogin/getFirstLoginScriptPath"/>
+   </action>
+</reference>
+<reference name="before_body_end">
+   <block type="core/template" name="ajaxlogin">
+      <action method="setTemplate" ifconfig="ajaxlogin/options/enable">
+         <template>ajaxlogin/index.phtml</template>
+      </action>
+      <block type="ajaxlogin/customer_form_register" name="customer_form_register_ajax" template="ajaxlogin/register.phtml">
+         <block type="page/html_wrapper" name="customer.form.register.fields.before" as="form_fields_before" translate="label">
+            <label>Form Fields Before</label>
+         </block>
+      </block>
+      <block type="persistent/form_remember" name="persistent.remember.me" template="persistent/remember_me.phtml"/>
+      <block type="core/template" name="persistent.remember.me.tooltip" template="persistent/remember_me_tooltip.phtml"/>
+   </block>
+</reference>
+<reference name="root">
+   <block type="core/template" name="end" template="page/html/end.phtml"/>
+   <block type="core/template" name="preloader_css" template="page/html/preloader/css.phtml"/>
+</reference>
+<reference name="head">
+   <action method="removeItem">
+      <type>js</type>
+      <name>scriptaculous/builder.js</name>
+   </action>
+   <action method="removeItem">
+      <type>js</type>
+      <name>scriptaculous/controls.js</name>
+   </action>
+   <action method="removeItem">
+      <type>js</type>
+      <name>scriptaculous/dragdrop.js</name>
+   </action>
+   <action method="removeItem">
+      <type>js</type>
+      <name>scriptaculous/slider.js</name>
+   </action>
+   <action method="removeItem">
+      <type>js</type>
+      <name>varien/menu.js</name>
+   </action>
+   <action method="removeItem">
+      <type>skin_css</type>
+      <name>css/styles.css</name>
+   </action>
+   <action method="removeItem">
+      <type>skin_css</type>
+      <name>css/styles-ie.css</name>
+   </action>
+   <action method="removeItem">
+      <type>js</type>
+      <name>lib/ds-sleight.js</name>
+   </action>
+   <action method="removeItem">
+      <type>skin_js</type>
+      <name>js/ie6.js</name>
+   </action>
+   <block type="core/text" name="html5shiv">
+      <action method="setText">
+         <text>&lt;!--[if lt IE 9]&gt;&lt;script src=&quot;//html5shiv.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;&lt;![endif]--&gt;</text>
+      </action>
+   </block>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/screen.css</name>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/screen-ie.css</name>
+      <params/>
+      <if>IE</if>
+   </action>
+   <block type="page/html_head" name="final_assets" as="final_assets" template="page/html/final_assets.phtml">
+      <action method="addCss">
+         <stylesheet>blugento/css/final.css</stylesheet>
+      </action>
+   </block>
+   <block type="core/template" name="performant_big_bear" as="performant_big_bear" template="performant/big_bear/head.phtml"/>
+   <action method="addJs">
+      <script>blugento/theme/vendor/jquery/jquery-1.11.3.min.js</script>
+   </action>
+   <action method="addJs">
+      <script>blugento/theme/vendor/jquery/noconflict.js</script>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/cookie/jquery.cookie.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/yetii/yetii-min.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/vendor/slick-carousel/slick.css</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/slick-carousel/slick.min.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/vendor/star-rating/rating.css</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/star-rating/rating.min.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/mobile-detect/mobile-detect.min.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/lazyloadxt/jquery.lazyloadxt.min.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/lazyloadxt/jquery.lazyloadxt.srcset.min.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/elevatezoom/elevatezoom.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/imagesloaded/imagesloaded.pkgd.min.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/vendor/magnific-popup/magnific-popup.css</name>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/vendor/magnific-popup/magnific-popup-gallery.css</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/magnific-popup/magnific-popup.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/scroll-to-fixed/scrolltofixed.min.js</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/main.js</name>
+   </action>
+</reference>
+<reference name="header">
+   <block type="wishlist/customer_sidebar" name="wishlist_sidebar" as="wishlist" template="wishlist/sidebar.phtml"/>
+</reference>
+<reference name="footer">
+   <action method="unsetData">
+      <key>cache_lifetime</key>
+   </action>
+   <action method="unsetData">
+      <key>cache_tags</key>
+   </action>
+</reference>
+<reference name="catalog.topnav">
+   <block type="blugento_category/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>
+   <block type="page/switch" name="store_language.mobile" as="store_language.mobile" template="page/switch/languages-mobile.phtml"/>
+</reference>
+<reference name="after_body_start">
+   <block type="core/template" name="preloader_html" template="page/html/preloader/html.phtml"/>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/checkout.js</name>
+      <param>data-module=&quot;checkout&quot;</param>
+   </action>
+</reference>
+<reference name="left">
+   <action method="unsetChild">
+      <name>cart_sidebar</name>
+   </action>
+</reference>
+<reference name="right">
+   <action method="unsetChild">
+      <name>cart_sidebar</name>
+   </action>
+</reference>
+<reference name="header">
+   <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml" before="-">
+      <action method="addItemRender">
+         <type>simple</type>
+         <block>checkout/cart_item_renderer</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>grouped</type>
+         <block>checkout/cart_item_renderer_grouped</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <action method="addItemRender">
+         <type>configurable</type>
+         <block>checkout/cart_item_renderer_configurable</block>
+         <template>checkout/cart/sidebar/default.phtml</template>
+      </action>
+      <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label" module="checkout">
+         <label>Shopping Cart Sidebar Extra Actions</label>
+      </block>
+   </block>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/lightgallery-all.min.js</name>
+      <param>data-module=&quot;catalog&quot;</param>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/catalog.js</name>
+      <param>data-module=&quot;catalog&quot;</param>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/countdown.js</name>
+      <param>data-module=&quot;catalog&quot;</param>
+   </action>
+</reference>
+<reference name="left">
+   <action method="unsetChild">
+      <name>left.permanent.callout</name>
+   </action>
+</reference>
+<reference name="right">
+   <action method="unsetChild">
+      <name>catalog.compare.sidebar</name>
+   </action>
+   <action method="unsetChild">
+      <name>right.permanent.callout</name>
+   </action>
+</reference>
+<reference name="root">
+   <block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" as="page.product_compare" template="catalog/product/compare/sidebar.phtml" before="-"/>
+</reference>
+<reference name="header">
+   <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+   <block type="core/template" name="top.search.sticky" as="topSearchSticky" template="catalogsearch/form.mini.sticky.phtml"/>
+</reference>
+<reference name="footer_links">
+   <action method="addLink" translate="label title" module="catalogsearch" ifconfig="catalog/seo/search_terms">
+      <label>Search Terms</label>
+      <url helper="catalogsearch/getSearchTermUrl"/>
+      <title>Search Terms</title>
+   </action>
+   <action method="addLink" translate="label title" module="catalogsearch">
+      <label>Advanced Search</label>
+      <url helper="catalogsearch/getAdvancedSearchUrl"/>
+      <title>Advanced Search</title>
+   </action>
+</reference>
+<reference name="header">
+   <block type="cms/block" name="cms_blugento_header_block_1">
+      <action method="setBlockId">
+         <block_id>blugento-header-block-1</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="cms_blugento_header_block_2">
+      <action method="setBlockId">
+         <block_id>blugento-header-block-2</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="catalog.topnav">
+   <block type="cms/block" name="cms_blugento_navigation_before_links" as="before_links">
+      <action method="setBlockId">
+         <block_id>blugento-navigation-before-links</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="cms_blugento_navigation_after_links" as="after_links">
+      <action method="setBlockId">
+         <block_id>blugento-navigation-after-links</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="footer">
+   <remove name="cms_footer_links"/>
+   <block type="cms/block" name="cms_blugento_footer_marketing">
+      <action method="setBlockId">
+         <block_id>blugento-footer-marketing</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="cms_blugento_footer_links">
+      <action method="setBlockId">
+         <block_id>footer_links</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="cms_blugento_footer_block-1">
+      <action method="setBlockId">
+         <block_id>blugento-footer-block-1</block_id>
+      </action>
+   </block>
+   <block type="cms/block" name="cms_blugento_footer_block-2">
+      <action method="setBlockId">
+         <block_id>blugento-footer-block-2</block_id>
+      </action>
+   </block>
+</reference>
+<reference name="header">
+   <block type="core/template" name="top.account" as="topAccount" template="customer/mini.phtml"/>
+</reference>
+<reference name="header">
+   <block type="directory/currency" name="header_currency" as="currency" template="directory/currency.phtml">
+      <action method="setClass">
+         <name>on-desktop</name>
+      </action>
+   </block>
+</reference>
+<reference name="catalog.topnav">
+   <block type="directory/currency" name="catalog_topnav" as="currency.mobile" template="directory/currency.phtml">
+            </block>
+</reference>
+<reference name="left">
+   <remove name="left.newsletter"/>
+</reference>
+<reference name="footer">
+   <block type="newsletter/subscribe" name="footer.newsletter" template="newsletter/subscribe-footer.phtml"/>
+</reference>
+<remove name="paypal.partner.cart_sidebar.shortcut"/>
+<remove name="paypal.partner.top_cart.shortcut"/>
+<reference name="right">
+   <remove name="right.reports.product.viewed"/>
+   <remove name="right.reports.product.compared"/>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/review.js</name>
+      <param>data-module=&quot;review&quot;</param>
+   </action>
+</reference>
+<reference name="right">
+   <block type="reports/product_viewed" name="right.reports.product.viewed" template="reports/product_viewed.phtml" before="right.permanent.callout"/>
+   <block type="reports/product_compared" name="right.reports.product.compared" template="reports/product_compared.phtml" before="right.permanent.callout"/>
+</reference>
+<reference name="root">
+   <remove name="preloader_css"/>
+</reference>
+<reference name="after_body_start">
+   <remove name="preloader_html"/>
+</reference>
+<reference name="before_body_end">
+   <block type="core/template" name="to-top" template="page/html/to-top.phtml"/>
+</reference>
+<reference name="before_body_end">
+   <action method="unsetChild">
+      <name>global_cookie_notice</name>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setImageLazyLoad">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setStickyHeader">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setStickyHeaderAll">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setStickyHeaderLogo">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setStickyHeaderLogoMobile">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setStickyHeaderLinks">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setNavMobileNewOption">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="unsetChild">
+      <name>page.socialmedia_share</name>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setInputTextLayout">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setBanner_arrows">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="header">
+   <action method="setTemplate">
+      <value>page/html/header-v7.phtml</value>
+   </action>
+</reference>
+<reference name="header">
+   <action method="setLayoutHeaderSearchIcons">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="header">
+   <action method="setLayoutHeaderAccountIcons">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="header">
+   <action method="setLayoutHeaderCartIcons">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setHeaderWishlist">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="header">
+   <action method="setLayoutHeaderWishlistIcons">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setLayoutHeaderOrderIcons">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setNavLayout">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setMiniCartLayout">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setMinicartImage">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setBlogLink">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setNewsletterSubscribe">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setNewsletterMenuAccordion">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="footer">
+   <action method="unsetChild">
+      <name>legals</name>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setAnpcLinks">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListItems">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListOrderToolbar">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListSortBy">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListImageResizeWidth">
+      <value>300</value>
+   </action>
+   <action method="setProductListImageResizeHeight">
+      <value>300</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListHover">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListAddToLinksStatus">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListBreadcrumbsTitleDisplay">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListShortDescriptionStatus">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListTaxMode">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListDiscountPercentageMode">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListDiscountMode">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductAddToCartStatus">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCatalogProductListQty">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListBuyNowButton">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListTaxShippingMode">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListDescriptionHtml">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListOrderSort">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListPaginationPager">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListShowProductsCount">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListStatus">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListFiltersHeight">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductListEmptyReviews">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductImageResizeWidth">
+      <value>1000</value>
+   </action>
+   <action method="setProductImageResizeHeight">
+      <value>1000</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewLayoutPricePosition">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewLayoutTabsPosition">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewTabsOrientation">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewTabsStyle">
+      <value>3</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductPageGalleryOrientation">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductPageMobileGalleryOrientation">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductPageGalleryImagesCount">
+      <value>5</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductPageGalleryImagesCountMobile">
+      <value>3</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductImageAction">
+      <value>9</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductPageGalleryImagesPopupMobile">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductSpecificationOrder">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewGroupAttributesStatus">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewManufacturerPriceMode">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewDeliveryTimeMode">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewSubtitleMode">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewShortDescriptionMode">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewReviewsMode">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewDiscountPercentageMode">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewDiscountMode">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsStatus">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsStatus">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsSliderStatus">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsSliderSlidesToShow">
+      <value>4</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsSliderSlidesToScroll">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsSliderAnimation">
+      <value>300</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsSliderLoop">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsSliderCenter">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsSliderDots">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewRelatedProductsSliderMobile">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsSliderStatus">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsSliderSlidesToShow">
+      <value>4</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsSliderSlidesToScroll">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsSliderAnimation">
+      <value>300</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsSliderLoop">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsSliderCenter">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsSliderDots">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewUpsellProductsSliderMobile">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewAddToCartQuantityButtons">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewReviewForm">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewAddToCartMobile">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewPromotionCountdown">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewCatalogPromotionCountdown">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setDisplayBundleOldPrice">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewBuyNowButton">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setPreselectSingleSwatches">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setSelectProductSimpleImage">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewReviewsToggle">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewDescriptionToggle">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setProductViewDescriptionToggleValue">
+      <value>10000</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutCartProductThumbnail">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutCartProductUnitPrice">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutCartCrosssellsPosition">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutCartCrosssellsSliderStatus">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutCartAddToCartQuantityButtons">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutCartModal">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCartViewProceedToCheckoutMobile">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutCartTotalHideTax">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCartViewProceedToCheckout">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutCartLabelsWat">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setMyAccountRegisterNewLayout">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setMyAccountLoginNewLayout">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setMyAccountCustomerNewLayout">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutViewNewLayout">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutViewPageOrientation">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutBillingAddressLayout">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutShippingAddressLayout">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutUseBillingShippingAddressAboveForm">
+      <value>1</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setLoggedInCustomerAddress">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="root">
+   <action method="setCheckoutAsideItems">
+      <value>2</value>
+   </action>
+</reference>
+<reference name="head">
+   <action method="removeItem">
+      <type>skin_css</type>
+      <name>aw_blog/css/style.css</name>
+   </action>
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/aw_blog.css</name>
+   </action>
+</reference>
+<reference name="head">
+   <action method="addItem">
+      <type>skin_css</type>
+      <name>css/diff-widget.css</name>
+   </action>
+   <action method="addItem">
+      <type>skin_js</type>
+      <name>js/vendor/diff-widget/diff-widget.js</name>
+   </action>
+</reference>
+<reference name="after_body_start">
+   <block type="cms/widget_block" name="5d622056a8246db98bade8c996d415a9" template="cms/widget/static_block/default.phtml">
+      <action method="setData">
+         <name>block_id</name>
+         <value>19</value>
+      </action>
+   </block>
+</reference>
+<label>CMS Pages (All)</label>
+<reference name="content">
+   <block type="core/template" name="page_content_heading" template="cms/content_heading.phtml"/>
+   <block type="page/html_wrapper" name="cms.wrapper" translate="label">
+      <label>CMS Content Wrapper</label>
+      <action method="setElementClass">
+         <value>std</value>
+      </action>
+      <block type="cms/page" name="cms_page"/>
+   </block>
+</reference>
+<block type="core/text_list" name="form.additional.info">
+   <block type="captcha/captcha" name="captcha1">
+      <reference name="head">
+         <action method="addJs">
+            <file>mage/captcha.js</file>
+         </action>
+      </reference>
+      <action method="setFormId">
+         <formId>contact_page_captcha</formId>
+      </action>
+      <action method="setImgWidth">
+         <width>230</width>
+      </action>
+      <action method="setImgHeight">
+         <width>50</width>
+      </action>
+   </block>
+</block>
+<label>CMS Home Page</label>
+<reference name="right">
+   <block type="paypal/logo" name="paypal.partner.right.logo" template="paypal/partner/logo.phtml"/>
+</reference>
+<reference name="top.container">
+   <block type="paypal/bml_banners" name="bml.center.logo" template="paypal/bml.phtml">
+      <action method="setSection">
+         <section>homepage</section>
+      </action>
+      <action method="setPosition">
+         <position>0</position>
+      </action>
+   </block>
+</reference>
+<reference name="right">
+   <block type="paypal/bml_banners" name="bml.right.logo" template="paypal/bml.phtml">
+      <action method="setSection">
+         <section>homepage</section>
+      </action>
+      <action method="setPosition">
+         <position>1</position>
+      </action>
+   </block>
+</reference>
+<reference name="head">
+   <block type="blugento_richsnippets/organization_jsonld" name="organization_richsnippets" after="-" template="blugento/richsnippets/jsonld.phtml"/>
+</reference>
+<reference name="head">
+   <block type="core/template" name="blugento_seoenhancements.meta-canonical" template="blugento/seoenhancements/page/html/head/meta-canonical.phtml"/>
+</reference>
+<reference name="after_body_start">
+   <block type="Facebook_AdsExtension/messengerChat" name="facebook_ads_extension.messengerchat" template="facebook_ads_extension/messengerchat.phtml"/>
+</reference>
+<reference name="content">
+   <block type="Simtech_Searchanise_Block_Recommendation" name="searchanise_home_page"/>
+</reference>
+<remove name="paypal.partner.right.logo"/>
+<label>All One-Column Layout Pages</label>
+<reference name="root">
+   <action method="setTemplate">
+      <template>page/1column.phtml</template>
+   </action>
+   <action method="setIsHandle">
+      <applied>1</applied>
+   </action>
+</reference>
+<reference name="top.links">
+   <action method="addLink" translate="label title" module="customer">
+      <label>Log In</label>
+      <url helper="customer/getLoginUrl"/>
+      <title>Log In</title>
+      <prepare/>
+      <urlParams/>
+      <position>100</position>
+   </action>
+</reference>
+<remove name="reorder"/>
+<reference name="right">
+   <block type="sales/reorder_sidebar" name="sale.reorder.sidebar" as="reorder" template="sales/reorder/sidebar.phtml"/>
+</reference>
+<reference name="top.links">
+   <action method="removeLinkByUrl" ifconfig="ajaxlogin/options/enable">
+      <url helper="customer/getLoginUrl"/>
+   </action>
+   <action method="addLink" translate="label title" module="customer" ifconfig="ajaxlogin/options/enable">
+      <label>Log In</label>
+      <url helper="customer/getLoginUrl"/>
+      <title>Log In</title>
+      <prepare/>
+      <urlParams/>
+      <position>100</position>
+      <liParams/>
+      <aParams>
+         <class>login-btn</class>
+      </aParams>
+   </action>
+   <action method="removeLinkByUrl" ifconfig="ajaxlogin/options/enable">
+      <url helper="customer/getAccountUrl"/>
+   </action>
+   <action method="addLink" translate="label title" module="customer" ifconfig="ajaxlogin/options/enable">
+      <label>My Account</label>
+      <url helper="customer/getAccountUrl"/>
+      <title>My Account</title>
+      <prepare/>
+      <urlParams/>
+      <position>10</position>
+      <liParams/>
+      <aParams>
+         <class>login-btn</class>
+      </aParams>
+   </action>
+</reference>

@@ -1,0 +1,60 @@
+<?php /** @var $this Blugento_GoogleTagManager_Block_TM */
+if (!($isEnabled = $this->_gtmHelper->isEnabled())) {
+	return;
+}
+
+$accountId 	= $this->_gtmHelper->getAccountId();
+$categoryId = $this->_gtmHelper->getCategory();
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+
+foreach ($categories as $category) {
+    if ($category['value'] == $categoryId) {
+        $scriptCategory = strtolower($category['label']);
+    }
+}
+
+$scriptCategory = str_replace('analytics', 'statistics', $scriptCategory);
+$cookie 		= Mage::getSingleton('core/cookie')->get($scriptCategory);
+?>
+<?php if ($isEnabled && $accountId) : ?>
+	<script>
+	(function($) {
+		$(document).ready(function() {
+			function gtmEvents() {
+				window.dataLayer = window.dataLayer || [];
+				<?php $this->getCustomerGtmTrackingCode(); ?>
+				<?php $this->getProductGtmTrackingCode(); ?>
+				<?php $this->getProductImpressionGtmTrackingCode(); ?>
+				<?php $this->getProductClickGtmTrackingCode(); ?>
+				<?php $this->getCategoryGtmTrackingCode(); ?>
+				<?php $this->getAddQuoteItemGtmTrackingCode(); ?>
+				<?php $this->getRemoveQuoteItemGtmTrackingCode(); ?>
+				<?php $this->getSuccessPageGtmTrackingCode(); ?>
+				<?php $this->getInitiateCheckoutTrackingCode(); ?>
+				<?php $this->getCategoryFilterGtmTrackingCode(); ?>
+				<?php $this->getCategorySortGtmTrackingCode(); ?>
+			}
+
+			if (!$('body').hasClass('gdpr-enabled') || '<?php echo $categoryId ?>' == '1' || '<?php echo $cookie ?>' == 'yes') {
+				gtmEvents();
+			} else {
+				// Accept only selected cookies
+				$('#accept-selected-cookies').on('click', function(e) {
+					if ($('#<?php echo $scriptCategory ?>').is(':checked') || $('#<?php echo $scriptCategory ?>').is('[readonly]')) {
+						gtmEvents();
+					}
+				});
+
+				// Accept all cookies
+				$('#accept-all-cookies').on('click', function(e) {
+					gtmEvents();
+				});
+
+				if ('<?php echo $scriptCategory ?>' == 'necessary') {
+					gtmEvents();
+				}
+			}
+		});
+	})(jQuery);
+	</script>
+<?php endif; ?>

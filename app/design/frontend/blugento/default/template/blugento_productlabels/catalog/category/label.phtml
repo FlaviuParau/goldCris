@@ -1,0 +1,8 @@
+<?php if (Mage::helper('blugento_productlabels')->isEnabled()) : ?>
+    <?php foreach ($this->getProductLabels() as $label): ?>
+        <div class="label-image category-label-<?php echo $this->getClassByPosition($label['position_on_category']); ?>" >
+            <img src="<?php echo $this->getFrontLabelPath($label) ?>" />
+        </div>
+    <?php endforeach; ?>
+<?php endif; ?>
+

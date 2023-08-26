@@ -1,0 +1,32 @@
+<?php
+$_product = $this->getProduct();
+
+$_wishlistAllowed = $this->helper('wishlist')->isAllow();
+$_wishlistUrl = $this->helper('wishlist')->getAddUrl($_product);
+
+$_compareAllowed = true;
+$_compareUrl = $this->helper('catalog/product_compare')->getAddUrl($_product);
+?>
+
+<ul class="add-to-links">
+    <?php if ($_wishlistAllowed && $_wishlistUrl): ?>
+        <?php $inWishlist = false; ?>
+        <?php foreach (Mage::helper('wishlist')->getWishlistItemCollection() as $_wishlist_item): ?>
+            <?php if($_product->getId() == $_wishlist_item->getProduct()->getId()): ?>
+                <?php $inWishlist = true; break; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <li><a href="<?php echo $_wishlistUrl ?>" onclick="productAddToCartForm.submitLight(this, this.href); return false;" class="link-wishlist<?php if ($inWishlist): ?> active-wishlist<?php endif; ?>"><?php echo $this->__('Wishlist') ?></a></li>
+    <?php endif; ?>
+    <?php if ($_compareAllowed && $_compareUrl): ?>
+        <?php $alreadyCompared = false;
+        $collection = $this->helper('catalog/product_compare')->getItemCollection();
+        foreach($collection as $comparingProduct) {
+            if ($comparingProduct->getId() === $_product->getId()) {
+                $alreadyCompared = true;
+            }
+        }
+        ?>
+        <li><a href="<?php echo $_compareUrl ?>" class="link-compare<?php if ($alreadyCompared): ?> active-compare<?php endif; ?>"><?php echo $this->__('Compare') ?></a></li>
+    <?php endif; ?>
+</ul>

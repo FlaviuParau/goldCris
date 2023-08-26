@@ -1,0 +1,194 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Blog
+ * @version    1.3.16
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?>
+<?php
+$layoutStyling = Mage::getStoreConfig('blog/blog/layout_styling_list');
+$blogTitle = Mage::getStoreConfig('blog/blog/title');
+$posts = $this->getPosts();
+$imagePath = Mage::getBaseDir('media') . DS . 'blogpic' . DS;
+$categories = $this->getBlogCategoriesData();
+?>
+<div class="blog-wrap blog-<?php echo $layoutStyling ?>">
+	<div id="messages_product_view">
+		<?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?>
+		<?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?>
+	</div>
+	<?php if (!(empty($blogTitle))): ?>
+		<div class="page-title">
+			<h1><?php echo $blogTitle ?></h1>
+		</div>
+	<?php endif; ?>
+	<?php if ($layoutStyling == 'layout-4'): ?>
+		<div class="blog-top-navigation">
+			<ul class="blog-nav cf">
+				<li>
+					<a href="<?php echo Mage::getModel('blog/cat')->getDefaultBlogRoute() ?>"
+						<?php echo Mage::helper('core/url')->getCurrentUrl() == Mage::getModel('blog/cat')->getDefaultBlogRoute() ? 'class="current-blog-nav"' : ''; ?>
+					>
+						<?php echo $this->__('All'); ?>
+					</a>
+				</li>
+				<?php foreach ($categories as $category): ?>
+					<li class="blog-nav-item">
+						<a href="<?php echo $category['url']; ?>"
+							<?php echo Mage::helper('core/url')->getCurrentUrl() == $category['url'] ? 'class="current-blog-nav"' : ''; ?>
+						>
+							<?php echo $category['title']; ?>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	<?php endif; ?>
+	
+	<?php if ($layoutStyling == 'layout-4'): ?><div class="postWrapperSection cf"><?php endif; ?>
+	<?php foreach ($posts as $post): ?>
+		<div class="postWrapper">
+			<?php if ($post->getFeaturedImage() && file_exists($imagePath . $post->getFeaturedImage()) && $layoutStyling == 'layout-4'): ?>
+				<div class="image-box">
+					<a href="<?php echo $post->getAddress(); ?>" title="<?php echo $post->getTitle(); ?>">
+						<?php $postImage = $this->getListImage($post->getFeaturedImage()); ?>
+						<img src="<?php echo $postImage; ?>" alt="<?php echo $post->getTitle(); ?>" />
+					</a>
+				</div>
+			<?php endif; ?>
+			<?php if ($layoutStyling == 'layout-4'): ?><div class="postWrapperContent"><?php endif; ?>
+			<div class="postTitle">
+				<?php if ($post->getFeaturedImage() && file_exists($imagePath . $post->getFeaturedImage()) && $layoutStyling != 'layout-4'): ?>
+					<div class="image-box">
+						<?php if ($layoutStyling == 'layout-3'): ?>
+							<a class="overlay" href="<?php echo $post->getAddress(); ?>" title="<?php echo $post->getTitle(); ?>">
+								<?php $postImage = $this->getListImage($post->getFeaturedImage()); ?>
+								<img src="<?php echo $postImage; ?>" alt="<?php echo $post->getTitle(); ?>" />
+							</a>
+						<?php else: ?>
+							<a href="<?php echo $post->getAddress(); ?>" title="<?php echo $post->getTitle(); ?>">
+								<?php $postImage = $this->getListImage($post->getFeaturedImage()); ?>
+								<img src="<?php echo $postImage; ?>" alt="<?php echo $post->getTitle(); ?>" />
+							</a>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
+				<?php if ($layoutStyling == 'layout-3'): ?>
+					<div class="title-date">
+						<h3><a href="<?php echo $post->getAddress(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getCreatedTime(); ?></a></h3>
+						<h2><a href="<?php echo $post->getAddress(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle(); ?></a></h2>
+						<?php $postCats = $post->getCats(); ?>
+						<?php if (!empty($postCats)): ?>
+							<h3>
+								<?php echo Mage::helper('blog')->__('Posted in'); ?>
+								<?php foreach ($postCats as $data): ?>
+									<a href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+								<?php endforeach; ?>
+							</h3>
+						<?php endif; ?>
+					</div>
+				<?php else: ?>
+					<?php if ($layoutStyling == 'layout-4'): ?>
+						<div class="postDetails">
+							<?php $postCats = $post->getCats(); ?>
+							<?php if (!empty($postCats)): ?>
+								<strong>
+									<?php foreach ($postCats as $data): ?>
+										<a href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+									<?php endforeach; ?>
+								</strong>
+							<?php else: ?>
+								<strong>
+									<?php echo Mage::helper('blog')->__('Posted'); ?>
+								</strong>
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+					<h2><a href="<?php echo $post->getAddress(); ?>" title="<?php echo $post->getTitle(); ?>"><?php echo $post->getTitle(); ?></a></h2>
+					<?php if ($layoutStyling != 'layout-4'): ?>
+						<div><?php echo $post->getCreatedTime(); ?></div>
+					<?php endif; ?>
+				<?php endif; ?>
+			</div>
+			<?php if ($layoutStyling != 'layout-3'): ?>
+				<div class="postContent std">
+					<?php echo Mage::helper('core/string')->truncate($post->getPostContent(), 300) ?>
+					<?php echo $this->getReadMoreLink($post) ?>
+				</div>
+				<?php if ($layoutStyling == 'layout-4'): ?>
+					<div class="post-created-time"><?php echo $post->getCreatedTime(); ?></div>
+				<?php endif; ?>
+				<?php if ($layoutStyling == 'layout-2') : ?>
+					<div class="postDetails">
+						<?php $postCats = $post->getCats(); ?>
+						<?php if (!empty($postCats)): ?>
+							<strong>
+								<?php echo Mage::helper('blog')->__('Posted in'); ?>
+								<?php foreach ($postCats as $data): ?>
+									<a href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+								<?php endforeach; ?>
+							</strong>
+						<?php endif; ?>
+					</div>
+				<?php endif; ?>
+				<?php if ($layoutStyling != 'layout-2' && $layoutStyling != 'layout-4'): ?>
+					<div class="content-bottom-blog">
+						<?php echo $this->getBookmarkHtml($post); ?>
+						<div class="content-right-blog">
+							<?php if ($layoutStyling != 'layout-4'): ?>
+								<div class="tags"><?php echo $this->getTagsHtml($post); ?></div>
+								<div class="postDetails">
+									<?php $postCats = $post->getCats(); ?>
+									<?php if (!empty($postCats)): ?>
+										<strong>
+											<?php echo Mage::helper('blog')->__('Posted in'); ?>
+											<?php foreach ($postCats as $data): ?>
+												<a href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+											<?php endforeach; ?>
+										</strong>
+									<?php else: ?>
+										<strong>
+											<?php echo Mage::helper('blog')->__('Posted'); ?>
+										</strong>
+									<?php endif; ?>
+									<strong>
+										<?php echo $this->__("By:"); ?>
+									</strong>
+									<?php echo $post->getUser(); ?>
+								</div>
+							<?php endif; ?>
+							<?php if ($this->getCommentsEnabled()): ?>
+								<div class="comments-link">
+									<span><?php echo $post->getCommentCount(); ?></span><a href="<?php echo $post->getAddress(); ?>#commentBox" > <?php echo Mage::helper('blog')->__('Comments'); ?></a>
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
+			<?php if ($layoutStyling == 'layout-4'): ?></div><?php endif; ?>
+		</div>
+	<?php endforeach; ?>
+	<?php if ($layoutStyling == 'layout-4'): ?></div><?php endif; ?>
+	
+	<?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+</div>

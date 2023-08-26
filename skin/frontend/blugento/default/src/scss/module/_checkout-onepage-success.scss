@@ -1,0 +1,20 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_checkout-onepage-success.scss
+    Version:        1.0
+    Description:    Checkout - Success Page Styles
+    ------------------------------------------------------------------------- */
+
+.checkout-onepage-success {
+    .main-content {
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    .buttons-set button {
+        float: none;
+        text-align: center;
+    }
+}

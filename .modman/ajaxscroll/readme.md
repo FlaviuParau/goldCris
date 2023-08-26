@@ -1,0 +1,1 @@
+Readme is available at https://marketplace.magento.com/strategery-strategery-infinitescroll2.html

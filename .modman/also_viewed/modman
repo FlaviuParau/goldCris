@@ -1,0 +1,5 @@
+src/app/code/local/Blugento/AlsoViewed                                                     app/code/local/Blugento/AlsoViewed
+src/app/design/frontend/blugento/default/template/catalog/product/widget/alsoviewed        app/design/frontend/base/default/template/catalog/product/widget/alsoviewed
+src/app/etc/modules/Blugento_AlsoViewed.xml                                                app/etc/modules/Blugento_AlsoViewed.xml
+src/app/locale/en_US/Blugento_AlsoViewed.csv                                               app/locale/en_US/Blugento_AlsoViewed.csv
+src/app/locale/ro_RO/Blugento_AlsoViewed.csv                                               app/locale/ro_RO/Blugento_AlsoViewed.csv

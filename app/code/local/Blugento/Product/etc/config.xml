@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Blugento_Product>
+			<version>1.0.0</version>
+		</Blugento_Product>
+	</modules>
+	<global>
+		<resources>
+			<blugento_product_setup>
+				<setup>
+					<module>Blugento_Product</module>
+					<class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+				</setup>
+			</blugento_product_setup>
+		</resources>
+	</global>
+</config>

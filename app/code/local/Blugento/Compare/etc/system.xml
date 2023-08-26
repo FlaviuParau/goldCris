@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>10</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_compare translate="label" module="blugento_compare">
+            <label>Product Compare</label>
+            <tab>blugento</tab>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Settings</label>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label" module="core">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <max_number translate="label">
+                            <label>Max Compare Products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_compare/system_config_source_compare</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </max_number>
+                        <message translate="label,comment">
+                            <label>Reach Limit Message</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Use {{max_number}} to be replaced with max number in message.<br />i.e. '... more than {{max_number}} products']]></comment>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </message>
+                    </fields>
+                </settings>
+            </groups>
+        </blugento_compare>
+    </sections>
+</config>

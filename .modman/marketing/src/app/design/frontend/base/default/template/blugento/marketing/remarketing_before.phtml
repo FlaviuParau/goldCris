@@ -1,0 +1,4 @@
+<?php if (!Mage::getStoreConfig('gdpr_cookies/general/enabled') || Mage::getSingleton('core/cookie')->get('marketing') == 'yes') : ?>
+    <?php echo $this->getBeforeRemarketingCode(Mage::app()->getStore()->getStoreId()); ?>
+<?php endif; ?>
+

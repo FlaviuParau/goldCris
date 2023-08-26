@@ -1,0 +1,42 @@
+<div class="box-collateral box-tags">
+    <h2><?php echo $this->__('Product Tags') ?></h2>
+    <?php echo $this->getChildHtml('list_before')?>
+    <?php if( $this->getCount() ): ?>
+    <h3><?php echo $this->__('Other people marked this product with these tags:') ?></h3>
+    <ul id="<?php echo $this->getUniqueHtmlId('product-tags_'); ?>" class="product-tags">
+        <?php foreach ($this->getTags() as $_tag): ?>
+            <?php
+            $_size = 13 + 2 * max(floor(($_tag->getProducts() - 1) / 2), 0);
+            if ($_size > 30) {
+                $_size = 30;
+            }
+            ?>
+            <li data-products="<?php echo $_tag->getProducts() ?>" style="font-size: <?php echo $_size ?>px;"><a href="<?php echo $_tag->getTaggedProductsUrl() ?>"><?php echo $this->escapeHtml($_tag->getName()) ?></a>&nbsp;<span>(<?php echo $_tag->getProducts() ?>)</span></li>
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+    <form id="addTagForm" action="<?php echo $this->getFormAction(); ?>" method="get">
+        <div class="form-add">
+            <label for="productTagName"><?php echo $this->__('Add Your Tags:') ?></label>
+            <div class="input-box">
+                <input type="text" class="input-text required-entry" name="productTagName" id="productTagName" />
+            </div>
+            <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add Tags')) ?>" class="button" onclick="submitTagForm()">
+                <span>
+                    <span><?php echo $this->__('Add Tags') ?></span>
+                </span>
+            </button>
+        </div>
+    </form>
+    <p class="note"><?php echo $this->__("Use spaces to separate tags. Use single quotes (') for phrases.") ?></p>
+    <script>
+    //<![CDATA[
+        var addTagFormJs = new VarienForm('addTagForm');
+        function submitTagForm(){
+            if(addTagFormJs.validator.validate()) {
+                addTagFormJs.form.submit();
+            }
+        }
+    //]]>
+    </script>
+</div>

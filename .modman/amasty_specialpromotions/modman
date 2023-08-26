@@ -1,0 +1,52 @@
+src/app/code/local/Amasty/PromoBannersLite                                  app/code/local/Amasty/PromoBannersLite
+src/app/code/local/Amasty/Promocopy                                         app/code/local/Amasty/Promocopy
+src/app/code/local/Amasty/Rules                                             app/code/local/Amasty/Rules
+src/app/code/local/Amasty/RulesPro                                          app/code/local/Amasty/RulesPro
+src/app/code/local/Amasty/RuleTimeConditions                                app/code/local/Amasty/RuleTimeConditions
+
+src/app/code/local/Mage/Rule/Model/Condition/Product                        app/code/local/Mage/Rule/Model/Condition/Product
+
+src/app/design/adminhtml/default/default/layout/amasty/ambannerslite        app/design/adminhtml/default/default/layout/amasty/ambannerslite
+src/app/design/adminhtml/default/default/layout/amasty/amrules              app/design/adminhtml/default/default/layout/amasty/amrules
+
+src/app/design/adminhtml/default/default/template/amasty/ambannerslite      app/design/adminhtml/default/default/template/amasty/ambannerslite
+src/app/design/adminhtml/default/default/template/amasty/amrules            app/design/adminhtml/default/default/template/amasty/amrules
+
+src/app/design/frontend/base/default/layout/amasty/ambannerslite            app/design/frontend/base/default/layout/amasty/ambannerslite
+src/app/design/frontend/base/default/layout/amasty/amrules                  app/design/frontend/base/default/layout/amasty/amrules
+
+src/app/design/frontend/base/default/template/amasty/ambannerslite          app/design/frontend/base/default/template/amasty/ambannerslite
+src/app/design/frontend/base/default/template/amrules                       app/design/frontend/base/default/template/amrules
+
+src/app/etc/modules/Amasty_PromoBannersLite.xml                             app/etc/modules/Amasty_PromoBannersLite.xml
+src/app/etc/modules/Amasty_Promocopy.xml                                    app/etc/modules/Amasty_Promocopy.xml
+src/app/etc/modules/Amasty_Rules.xml                                        app/etc/modules/Amasty_Rules.xml
+src/app/etc/modules/Amasty_RulesPro.xml                                     app/etc/modules/Amasty_RulesPro.xml
+src/app/etc/modules/Amasty_RuleTimeConditions.xml                           app/etc/modules/Amasty_RuleTimeConditions.xml
+
+src/app/locale/en_US/Amasty_PromoBannersLite.csv                            app/locale/en_US/Amasty_PromoBannersLite.csv
+src/app/locale/en_US/Amasty_Promocopy.csv                                   app/locale/en_US/Amasty_Promocopy.csv
+src/app/locale/en_US/Amasty_Rules.csv                                       app/locale/en_US/Amasty_Rules.csv
+src/app/locale/en_US/Amasty_RulesPro.csv                                    app/locale/en_US/Amasty_RulesPro.csv
+
+src/js/amasty/amrules                                                       js/amasty/amrules
+
+src/skin/adminhtml/default/default/css/amasty/ambannerslite                 skin/adminhtml/default/default/css/amasty/ambannerslite
+src/skin/adminhtml/default/default/css/amasty/amrules                       skin/adminhtml/default/default/css/amasty/amrules
+
+src/skin/frontend/base/default/css/amasty/ambannerslite                     skin/frontend/base/default/css/amasty/ambannerslite
+src/skin/frontend/base/default/css/amasty/amrules                           skin/frontend/base/default/css/amasty/amrules
+
+
+
+
+
+
+
+
+
+
+
+
+
+

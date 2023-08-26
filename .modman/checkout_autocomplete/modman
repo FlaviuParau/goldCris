@@ -1,0 +1,13 @@
+src/app/etc/modules/Blugento_CheckoutAutocomplete.xml			            app/etc/modules/Blugento_CheckoutAutocomplete.xml
+
+src/app/code/local/Blugento/CheckoutAutocomplete			                app/code/local/Blugento/CheckoutAutocomplete
+
+src/app/design/frontend/base/default/layout/blugento_autocomplete.xml		app/design/frontend/base/default/layout/blugento_autocomplete.xml
+
+src/app/locale/en_US/Blugento_Autocomplete.csv		                        app/locale/en_US/Blugento_Autocomplete.csv
+src/app/locale/pl_PL/Blugento_Autocomplete.csv		                        app/locale/pl_PL/Blugento_Autocomplete.csv
+src/app/locale/ro_RO/Blugento_Autocomplete.csv		                        app/locale/ro_RO/Blugento_Autocomplete.csv
+
+src/skin/frontend/base/default/blugento-autocomplete					    skin/frontend/base/default/blugento-autocomplete
+
+src/lib/checkout_autocomplete							lib/checkout_autocomplete

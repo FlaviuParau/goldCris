@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_ProductLabels
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <menu>
+        <blugento_adminmenu translate="title" module="blugento_adminmenu">
+            <title>Blugento</title>
+            <sort_order>10</sort_order>
+            <children>
+                <blugento_productlabels translate="title" module="blugento_productlabels">
+                    <sort_order>100</sort_order>
+                    <title>Product Labels</title>
+                    <action>adminhtml/label/index</action>
+                </blugento_productlabels>
+            </children>
+        </blugento_adminmenu>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <blugento_adminmenu>
+                        <children>
+                            <blugento_productlabels translate="title" module="blugento_productlabels">
+                                <sort_order>100</sort_order>
+                                <title>Product Labels</title>
+                                <action>adminhtml/label/index</action>
+                            </blugento_productlabels>
+                        </children>
+                    </blugento_adminmenu>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <blugento_productlabels>
+                                        <title>Product Labels</title>
+                                    </blugento_productlabels>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

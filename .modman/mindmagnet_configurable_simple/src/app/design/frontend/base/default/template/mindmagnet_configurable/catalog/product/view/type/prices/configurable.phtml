@@ -1,0 +1,54 @@
+<?php
+$_product    = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+?>
+<?php if ($_product->isSaleable() && count($_attributes)): ?>
+    <?php
+    function getSimpleProductPrices($productId) {
+        $_helper = Mage::helper('core');
+        $_simpleProduct = Mage::getModel('catalog/product')->load($productId);
+        $_price = $_simpleProduct->getFinalPrice() ?: $_simpleProduct->getPrice();
+        $_oldPrice = $_simpleProduct->getPrice();
+
+        return [
+            'price'    => $_helper->currency($_price, false, false),
+            'oldPrice' => $_helper->currency($_oldPrice, false, false)
+        ];
+    }
+    ?>
+
+    <script>
+        Translator.add('Special Price:', '<?php echo Mage::helper('catalog')->__('Special Price:') ?>');
+        Translator.add('Regular Price:', '<?php echo Mage::helper('catalog')->__('Regular Price:') ?>');
+    </script>
+
+    <?php
+    $json = Mage::helper('core')->jsonDecode($this->getJsonConfig());
+
+    $products = [];
+    
+	foreach ($json['attributes'] as $attributeKey => $attribute) {
+		$attributeId = $attribute['id'];
+		$attributeCode = $attribute['code'];
+		
+		foreach ($attribute['options'] as $key => $value) {
+			$products = array_merge($products, $json['attributes'][$attributeKey]['options'][$key]['products']);
+		}
+	}
+
+    $products = array_unique($products);
+
+    $priceOptions = [];
+    
+    foreach ($products as $index => $id) {
+        $simpleProductPrices = getSimpleProductPrices($id);
+        $priceOptions[$id]['price'] = $simpleProductPrices['price'];
+        $priceOptions[$id]['oldPrice'] = $simpleProductPrices['oldPrice'];
+    }
+
+    $priceOptions = Mage::helper('core')->jsonEncode($priceOptions);
+    ?>
+    <script>
+        var priceOptions = <?php echo $priceOptions ?>;
+    </script>
+<?php endif; ?>

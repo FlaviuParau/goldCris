@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Blugento
+ * @package     Blugento_Contacts
+ * @copyright   Copyright (c) 2015 Blugento
+ */
+ -->
+<config>
+    <modules>
+        <Blugento_Contacts>
+            <version>1.0.0</version>
+        </Blugento_Contacts>
+    </modules>
+
+    <global>
+        <helpers>
+            <blugento_contacts>
+                <class>Blugento_Contacts_Helper</class>
+            </blugento_contacts>
+        </helpers>
+        <models>
+            <blugento_contacts>
+                <class>Blugento_Contacts_Model</class>
+            </blugento_contacts>
+        </models>
+        <blocks>
+            <blugento_contacts>
+                <class>Blugento_Contacts_Block</class>
+            </blugento_contacts>
+        </blocks>
+        <resources>
+            <blugento_contacts_setup>
+                <setup>
+                    <module>Blugento_Contacts</module>
+                </setup>
+            </blugento_contacts_setup>
+        </resources>
+        <events>
+            <controller_action_predispatch_contacts_index_post>
+                <observers>
+                    <captcha>
+                        <type>model</type>
+                        <class>blugento_contacts/observer</class>
+                        <method>checkContactPage</method>
+                    </captcha>
+                </observers>
+            </controller_action_predispatch_contacts_index_post>
+        </events>
+    </global>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <blugento_contacts>
+                    <files>
+                        <default>Blugento_Contacts.csv</default>
+                    </files>
+                </blugento_contacts>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_contacts>
+                    <file>blugento_contacts.xml</file>
+                </blugento_contacts>
+            </updates>
+        </layout>
+        <routers>
+            <contacts>
+                <args>
+                    <modules>
+                        <blugento_contacts before="Mage_Contacts">Blugento_Contacts</blugento_contacts>
+                    </modules>
+                </args>
+            </contacts>
+        </routers>
+        <translate>
+            <modules>
+                <blugento_contacts>
+                    <files>
+                        <default>Blugento_Contacts.csv</default>
+                    </files>
+                </blugento_contacts>
+            </modules>
+        </translate>
+    </frontend>
+
+    <default>
+        <contacts>
+            <content>
+                <cms_block>contacts_info</cms_block>
+            </content>
+        </contacts>
+	    <captcha>
+		    <frontend>
+			    <areas>
+				    <contact_page_captcha>
+					    <label>Contact Page</label>
+				    </contact_page_captcha>
+			    </areas>
+		    </frontend>
+	    </captcha>
+	    <admin>
+		    <captcha>
+			    <forms>contact_page_captcha</forms>
+			    <mode>always</mode>
+                <failed_attempts_login>0</failed_attempts_login>
+                <failed_attempts_ip>0</failed_attempts_ip>
+		    </captcha>
+	    </admin>
+        <customer>
+            <captcha>
+	            <forms>contact_page_captcha</forms>
+                <mode>always</mode>
+                <failed_attempts_login>0</failed_attempts_login>
+                <failed_attempts_ip>0</failed_attempts_ip>
+            </captcha>
+        </customer>
+    </default>
+</config>

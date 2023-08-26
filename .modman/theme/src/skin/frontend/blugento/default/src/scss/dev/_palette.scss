@@ -1,0 +1,87 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       dev/_palette.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@if ($layout--debug_mode == 1) {
+    .palette,
+    %palette {
+        z-index: z('device-info');
+        cursor: default;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: auto;
+        max-height: 100%;
+        background-color: $palette_background-color;
+        color: $palette_color;
+
+        @include desktop-m {
+            display: none;
+        }
+
+        label {
+            cursor: pointer;
+            display: block;
+            padding: 4px;
+            text-align: center;
+
+            &:after {
+                content: '\25c0';
+            }
+        }
+
+        input:checked + dl + label:after {
+            content: '\25b6';
+        }
+
+        dl {
+            white-space: nowrap;
+            list-style-position: inside;
+            list-style-type: lower-alpha;
+            // scss-lint:disable all
+            font: 700 12px/16px $font-family-monospace;
+            // scss-lint:enable all
+        }
+
+        input:checked + dl {
+            dt {
+                float: none;
+            }
+
+            dd {
+                display: none;
+            }
+        }
+
+        dt {
+            float: right;
+            width: 20px;
+            margin-top: -1px;
+            padding: 5px;
+            border: 1px solid $palette__item__after_outline-color;
+
+            &:before {
+                content: '\00a0';
+            }
+        }
+
+        dd {
+            padding: 5px 35px 5px 10px;
+            border-bottom: 1px solid $palette__item_border-bottom-color;
+            text-transform: lowercase;
+        }
+
+        @each $key, $value in $palette {
+            dt.color--#{$key} {
+                background: $value;
+            }
+
+            dt.color--#{$key} + dd:after {
+                content: '#{$value}';
+                margin-left: 10px;
+            }
+        }
+    }
+}

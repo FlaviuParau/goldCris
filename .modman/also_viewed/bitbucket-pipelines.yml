@@ -1,0 +1,12 @@
+# Blugento Automated Deploy Process
+image: php:7.0
+
+pipelines:
+  branches:
+    master:
+      - step:
+          image: python:3.5.1
+          script:
+            - pip install awscli
+            - tar -zcf ./module.tar.gz ./src ./modman
+            - aws s3 mv ./module.tar.gz s3://blugento-modules/$BITBUCKET_REPO_SLUG.tar.gz

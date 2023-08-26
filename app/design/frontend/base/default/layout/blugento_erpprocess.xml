@@ -1,0 +1,9 @@
+<layout version="0.1.0">
+    <sales_order_view>
+        <reference name="sales.order.info">
+            <block type="blugento_erpprocess/customer_link"  name="invoce_link" template="blugento/erpprocess/page/html/links.phtml" />
+        </reference>
+    </sales_order_view>
+</layout>
+
+

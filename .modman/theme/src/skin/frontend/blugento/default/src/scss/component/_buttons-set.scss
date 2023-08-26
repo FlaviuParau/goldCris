@@ -1,0 +1,40 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_buttons-set.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.buttons-set {
+    @include cf;
+
+    clear: both;
+    margin: $box_spacing 0 0;
+    padding-top: $box_spacing;
+
+    p.required {
+        float: right;
+        padding: 10px;
+        font-style: italic;
+    }
+
+    .back-link {
+        display: none;
+    }
+
+    a:not(.button) {
+        display: inline-block;
+        padding: 10px;
+
+        @include phone {
+            padding-left: 0;
+        }
+    }
+
+    button.button {
+        float: left;
+        min-width: 140px;
+        margin-right: $box_spacing;
+    }
+}

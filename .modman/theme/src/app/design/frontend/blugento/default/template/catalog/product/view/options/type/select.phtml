@@ -1,0 +1,95 @@
+<?php /* @var $this Mage_Catalog_Block_Product_View_Options_Type_Select */ ?>
+<?php
+
+$_option = $this->getOption();
+
+$enabled = false;
+$valid   = false;
+if (Mage::helper('core')->isModuleEnabled('Blugento_CustomOptionsImage')) {
+    /** @var Blugento_CustomOptionsImage_Helper_Data $helper */
+    $helper = Mage::helper('blugento_customoptionsimage');
+    $enabled = $helper->isEnabled();
+    $showPrice = $helper->showCustomOptionPrice();
+    $dataCustOptImage = $helper->getCustomOptionsImageDetails($_option->getId());
+
+    foreach ($dataCustOptImage as $product) {
+        if ($product->getSku()) {
+            $valid = true;
+        }
+    }
+}
+?>
+
+<?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_DROP_DOWN && $enabled && $valid): ?>
+    <dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label></dt>
+    <dd>
+        <div class="input-box">
+            <span class="clear-all"><?php echo $this->__('Clear option selected') ?></span>
+            <ul class="custom-options-wrapper">
+                <?php foreach ($dataCustOptImage as $product) { ?>
+                    <?php if (!$product->getSku()) {continue;} ?>
+                    <li class="custom-options-image">
+                        <div class="custom-options-image-box">
+                            <input type="radio" class="radio <?php if ($_option->getIsRequire()) echo 'validate-one-required-by-name'; ?> product-custom-option" onclick="opConfig.reloadPrice()" name="options[<?php echo $product->getOptionId() ?>]" id="options_<?php echo $product->getOptionId() ?>_<?php echo $product->getOptionTypeId() ?>" value="<?php echo $product->getOptionTypeId() ?>">
+                            <label for="options_<?php echo $product->getOptionId() ?>_<?php echo $product->getOptionTypeId() ?>" class="overlay"></label>
+                            <img src="<?php echo $product->getImage() ?>" alt="<?php echo $product->getImage() ?>"/>
+                        </div>
+                        <h3 class="product-name-sku">
+                            <?php echo $product->getSku() ?>
+                        </h3>
+	                    <?php if ($showPrice) : ?>
+		                    <?php if ($product->getSpecialprice()): ?>
+			                    <div class="price-box-custom">
+                                    <span class="old-price">
+                                        <span class="price"><?php echo Mage::helper('core')->currency($product->getPrice()); ?></span>
+                                    </span>
+				                    <span class="special-price">
+                                        <span class="price"><?php echo Mage::helper('core')->currency($product->getSpecialprice()); ?></span>
+                                    </span>
+			                    </div>
+		                    <?php else: ?>
+			                    <div class="price-box-custom">
+                                    <span class="regular-price">
+                                        <span class="price"><?php echo Mage::helper('core')->currency($product->getPrice()); ?></span>
+                                    </span>
+			                    </div>
+		                    <?php endif; ?>
+	                    <?php endif; ?>
+                    </li>
+                <?php } ?>
+            </ul>
+	        <a class="button custom-options-see-more"><?php echo $this->__('See more') ?></a>
+	        <a class="button custom-options-see-less"><?php echo $this->__('See less') ?></a>
+            <?php if (($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_RADIO && !$enabled )
+                || $_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_CHECKBOX): ?>
+                <span id="options-<?php echo $_option->getId() ?>-container"></span>
+            <?php endif; ?>
+        </div>
+    </dd>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('.custom-options-image-box input').change(function() {
+                jQuery(this).parents('.input-box').find('.clear-all').show();
+            });
+            jQuery('.clear-all').click(function() {
+                jQuery(this).each(function() {
+                    jQuery(this).next('ul').find('input').prop('checked', false);
+                });
+                jQuery('.conf-options').each(function() {
+                    jQuery(this).find('input:checked').trigger('change');
+                });
+                opConfig.reloadPrice();
+            });
+        });
+    </script>
+<?php else: ?>
+    <dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label></dt>
+    <dd>
+        <div class="input-box">
+            <?php echo $this->getValuesHtml() ?>
+                <?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_RADIO || $_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_CHECKBOX): ?>
+                    <span id="options-<?php echo $_option->getId() ?>-container"></span>
+                <?php endif; ?>
+        </div>
+    </dd>
+<?php endif; ?>

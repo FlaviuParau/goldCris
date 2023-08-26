@@ -1,0 +1,624 @@
+"layout/title/blog_link","Link do bloga"
+"layout/title/catalog_mini_search","Mini Wyszukiwarka"
+"layout/title/checkout_agreements_position","Pozycja umów"
+"layout/title/checkout_view_page_orientation","Orientacja strony"
+"layout/title/checkout_view_page_layout","Układ strony"
+"layout/title/checkout_billing_address_layout","Układ Adresu rozliczeniowego"
+"layout/title/checkout_cart_add_to_cart_quantity_buttons_status","Dodaj do koszyka przycisk ilosci"
+"layout/title/checkout_cart_clear_button","Opróznij koszyk"
+"layout/title/checkout_cart_crosssells_position","Pozycja sprzedaży krzyżowych"
+"layout/title/checkout_cart_crosssells_slider_status","Suwak dla sprzedaży krzyżowych "
+"layout/title/checkout_cart_layout","Układ koszyka"
+"layout/title/checkout_cart_product_thumbnail","Miniaturowy obraz produktu w koszyku"
+"layout/title/checkout_cart_product_unit_price","Cena za sztukę produktu w koszyku"
+"layout/title/checkout_cart_shipping_section","Sekcja wysyłki koszyka"
+"layout/title/checkout_shipping_address_layout","Adres wysyłki – rozmieszczenie"
+"layout/title/checkout_use_billing_shipping_address_above_form","„Użyj adresu rozliczeniowego / wysyłkowego” powyżej formularza"
+"layout/title/cookie_notice","Powiadomienie o plikach Cookie"
+"layout/title/debug_mode","Tryb Debug"
+"layout/title/disable_compare","Porównaj"
+"layout/title/disable_poll","Ankieta"
+"layout/title/disable_reviews","Recenzja"
+"layout/title/disable_tags","Etykiety"
+"layout/title/disable_wishlist","Lista życzeń"
+"layout/title/footer_legals","Warunki"
+"layout/title/footer_marketing_mode","Stopka Marketing"
+"layout/title/full_layout_mode","Układ pełnej szerokości"
+"layout/title/header_layout","Układ nagłówka"
+"layout/title/homepage_banner_layout","Układ baneru na stronei głównej"
+"layout/title/input_text_layout","Układ wprowadzania tekstu"
+"layout/title/layered_nav_filters_size","Licznik limitu filtrów "
+"layout/title/layered_nav_layout","Pozycja filtrów"
+"layout/title/layered_navigation_position","Pozycja nawigacji"
+"layout/title/mini_cart_image_layout","Włacz obraz mini-koszyka"
+"layout/title/mini_cart_layout","Układ mini-koszyka"
+"layout/title/nav_layout","Układ nawigacji"
+"layout/title/page_background_image","Obraz tła strony"
+"layout/title/page_background_repeat","Tło strony powtórzone"
+"layout/title/preloader_status","Status modułu wstępnego ładowania"
+"layout/title/product_list_add_to_cart_status","Przycisk Dodaj do koszyka"
+"layout/title/product_list_add_to_links_status","Dodaj do linków na liście produktów"
+"layout/title/product_list_breadcrumbs_title","Okruszki i wyświetlenie produktu"
+"layout/title/product_list_discount_mode","Wyświetl obniżkę ceny wartościowo pod ceną "
+"layout/title/product_list_discount_percentage_mode","Wyświetl obniżkę ceny procentowo w etykiecie promocyjnej "
+"layout/title/product_list_image_width","Szerokość obrazu produktu w trybie listy"
+"layout/title/product_list_item_box","Design okna produktu"
+"layout/title/product_list_item_title_description_display","Wyświetlanie tytułu i opisu"
+"layout/title/product_list_page_layout","Układ strony"
+"layout/title/product_list_shortdescription_mode_status","Krótki opis"
+"layout/title/product_list_tax_mode","Informacja o podatku"
+"layout/title/product_list_tax_shipping_mode","Informacja wysyłkowa"
+"layout/title/product_view_add_to_cart_quantity_buttons_status","Dodaj do koszyka przycisk ilosci"
+"layout/title/checkout_cart_modal","Wyświetl modalny koszyk"
+"layout/title/product_view_delivery_time_mode","Czas dostawy"
+"layout/title/product_view_discount_mode","Wyświetl obniżkę ceny wartościowo obok ceny"
+"layout/title/product_view_discount_percentage_mode","Wyświetl obniżkę ceny procentowo powyżej dużego obrazu"
+"layout/title/product_view_gallery_images_count","Liczba obrazów wyświetlonych w galerii"
+"layout/title/product_view_gallery_images_count_mobile","Liczba obrazów wyświetlonych w galerii (urządzenia mobilne) "
+"layout/title/product_view_gallery_orientation","Orientacja galerii"
+"layout/title/product_view_mobile_gallery_orientation","Układ galerii w urządzeniu mobilnym"
+"layout/title/product_view_group_attributes_status","Dodaj nazwę grupy cech"
+"layout/title/product_view_layout","Układ produktu"
+"layout/title/product_view_main_image_action","Przybliżenie obrazu"
+"layout/title/product_view_manufacturer_price_mode","Cena producenta "
+"layout/title/product_view_page_layout","Układ strony"
+"layout/title/product_view_related_products_slider_status","Suwak dla powiazanych produktów"
+"layout/title/product_view_related_products_status","Status powiązanych produktów"
+"layout/title/product_view_related_products_slider_slides_to_show","Liczba przsunięć pokazanych dla powiazanych produktów"
+"layout/title/product_view_related_products_slider_slides_to_scroll","Liczba przsunięć dla powiazanych produktów"
+"layout/title/product_view_related_products_slider_animation","Animacja suwaka dla powiazanych produktów"
+"layout/title/product_view_related_products_slider_loop","Pętla dla powiazanych produktów"
+"layout/title/product_view_reviews_mode","Recenzja pod tytułem"
+"layout/title/product_view_shop_layout","Info rozkład sekcji"
+"layout/title/product_view_short_description_mode","Krótki opis"
+"layout/title/product_view_subtitle_mode","Podtytuł"
+"layout/title/product_view_tabs_style","Styl zakładek"
+"layout/title/product_view_upsell_products_slider_status","Suwak dla produktów upsell"
+"layout/title/product_view_upsell_products_slider_slides_to_show","Liczba przsunięć pokazanych dla produktów upsell"
+"layout/title/product_view_upsell_products_slider_slides_to_scroll","Liczba przsunięć dla produktów upsell"
+"layout/title/product_view_upsell_products_slider_animation","Animacja suwaka dla produktów upsell"
+"layout/title/product_view_upsell_products_slider_loop","Pętla dla produktów upsell"
+"layout/title/product_view_upsell_products_status","Status produtków upsell"
+"layout/title/socialmedia_share_position","Pozycja udostępnij w social mediach "
+"layout/title/sticky_header","Zamrozony nagłówek"
+"layout/title/to_top","Przycisk przewiń do góry"
+"layout/title/wishlist_display","Układ listy życzeń"
+"layout/title/product_attribute_display_mode","Wyswietl cechy w grupach"
+"layout/description/blog_link",
+"layout/description/catalog_mini_search",
+"layout/description/checkout_agreements_position",
+"layout/description/checkout_billing_address_layout",
+"layout/description/checkout_cart_add_to_cart_quantity_buttons_status",
+"layout/description/checkout_cart_clear_button","Wyświetl na stronie koszyka"
+"layout/description/checkout_cart_crosssells_position",
+"layout/description/checkout_cart_crosssells_slider_status",
+"layout/description/checkout_cart_layout",
+"layout/description/checkout_cart_product_thumbnail","Wyświetlanie Miniaturowego obrazu dla produktów na stronie koszyka"
+"layout/description/checkout_cart_product_unit_price","Wyświetlenie ceny produktu dla produktu na stronie koszyka"
+"layout/description/checkout_cart_shipping_section",
+"layout/description/checkout_shipping_address_layout",
+"layout/description/checkout_use_billing_shipping_address_above_form",
+"layout/description/cookie_notice",
+"layout/description/debug_mode","Pokaż paletę kolorów i informacje urzadzenia"
+"layout/description/disable_compare",
+"layout/description/disable_poll",
+"layout/description/disable_reviews",
+"layout/description/disable_tags",
+"layout/description/disable_wishlist",
+"layout/description/footer_legals",
+"layout/description/footer_marketing_mode",
+"layout/description/full_layout_mode",
+"layout/description/header_layout",
+"layout/description/homepage_banner_layout",
+"layout/description/input_text_layout",
+"layout/description/layered_nav_filters_size","Filtr zmieni się w dropdown jeśli liczba elementów przekracza ten limit"
+"layout/description/layered_nav_layout","Wyświetl na Liście produktów i w wynikach wyszukiwania"
+"layout/description/layered_navigation_position","Wyświetl pozycje nawigacji"
+"layout/description/mini_cart_layout","Wyświetl w nagłówku (wszystkie urządzenia)"
+"layout/description/nav_layout",
+"layout/description/page_background_image",
+"layout/description/page_background_repeat",
+"layout/description/preloader_status",
+"layout/description/product_list_add_to_cart_status","Dla prostych produktów"
+"layout/description/product_list_add_to_links_status","Dodaj do listy życzeń i dodaj do porównywarki"
+"layout/description/product_list_breadcrumbs_title",
+"layout/description/product_list_discount_mode","Jeśli ta opcja jest włączona wartość obnizki ceny wyswietli się pod ceną"
+"layout/description/product_list_discount_percentage_mode","Jeśli ta opcja jest włączona tekst „promo” zostanie zastąpiony obnizka procentowo"
+"layout/description/product_list_image_width","Procentowo w stosunku do szerokości elementu"
+"layout/description/product_list_item_box",
+"layout/description/product_list_item_title_description_display",
+"layout/description/product_list_page_layout",
+"layout/description/product_list_shortdescription_mode_status",
+"layout/description/product_list_tax_mode",
+"layout/description/product_list_tax_shipping_mode",
+"layout/description/product_view_add_to_cart_quantity_buttons_status",
+"layout/description/product_view_delivery_time_mode",
+"layout/description/product_view_discount_mode","Jeśli ta opcja jest włączona tekst wartość obniżki wyświetli się obok ceny"
+"layout/description/product_view_discount_percentage_mode","Jeśli ta opcja jest włączona procent obniżki wyświetli się na dużym zdjęciu"
+"layout/description/product_view_gallery_images_count",
+"layout/description/product_view_gallery_images_count_mobile",
+"layout/description/product_view_gallery_orientation",
+"layout/description/product_view_group_attributes_status",
+"layout/description/product_view_layout",
+"layout/description/product_view_main_image_action",
+"layout/description/product_view_manufacturer_price_mode",
+"layout/description/product_view_page_layout",
+"layout/description/product_view_related_products_slider_status",
+"layout/description/product_view_related_products_status",
+"layout/description/product_view_reviews_mode",
+"layout/description/product_view_shop_layout",
+"layout/description/product_view_short_description_mode",
+"layout/description/product_view_subtitle_mode",
+"layout/description/product_view_tabs_style",
+"layout/description/product_view_upsell_products_slider_status",
+"layout/description/product_view_upsell_products_status",
+"layout/description/socialmedia_share_position",
+"layout/description/sticky_header",
+"layout/description/to_top",
+"layout/description/wishlist_display",
+"layout/description/product_attribute_display_mode",
+"layout/options/blog_link/1","Po głownej nawigacji"
+"layout/options/blog_link/2","Przed główna nawigacją"
+"layout/options/blog_link/3","Wyłącz"
+"layout/options/catalog_mini_search/1","Włącz"
+"layout/options/catalog_mini_search/2","Wyłącz"
+"layout/options/checkout_agreements_position/1","Po formularzu opinii"
+"layout/options/checkout_agreements_position/2","Przed formularzem opinii"
+"layout/options/checkout_view_page_layout/1","Brak aktualizacji układu"
+"layout/options/checkout_view_page_layout/2","1 Kolumna"
+"layout/options/checkout_view_page_layout/3","2 kolumny z paskiem po prawej"
+"layout/options/checkout_view_page_orientation/1","Pionowo"
+"layout/options/checkout_view_page_orientation/2","Poziomo"
+"layout/options/checkout_billing_address_layout/1","Dropdown"
+"layout/options/checkout_billing_address_layout/2","Karty"
+"layout/options/checkout_cart_add_to_cart_quantity_buttons_status/1","Włącz"
+"layout/options/checkout_cart_add_to_cart_quantity_buttons_status/2","Wyłącz"
+"layout/options/checkout_cart_clear_button/1","Włącz"
+"layout/options/checkout_cart_clear_button/2","Wyłącz"
+"layout/options/checkout_cart_crosssells_position/1","Dół koszyka"
+"layout/options/checkout_cart_crosssells_position/2","Prawy pasek boczny"
+"layout/options/checkout_cart_crosssells_slider_status/1","Włącz"
+"layout/options/checkout_cart_crosssells_slider_status/2","Wyłącz"
+"layout/options/checkout_cart_layout/1","2 kolumny z prawym paskiem bocznym"
+"layout/options/checkout_cart_layout/2","1 Kolumna"
+"layout/options/checkout_cart_layout/3","2 kolumny z ma?ym prawym paskiem bocznym"
+"layout/options/checkout_cart_product_thumbnail/1","Włącz"
+"layout/options/checkout_cart_product_thumbnail/2","Wyłącz"
+"layout/options/checkout_cart_product_unit_price/1","Włącz"
+"layout/options/checkout_cart_product_unit_price/2","Wyłącz"
+"layout/options/checkout_cart_shipping_section/1","Włącz"
+"layout/options/checkout_cart_shipping_section/2","Wyłącz"
+"layout/options/checkout_shipping_address_layout/1","Dropdown"
+"layout/options/checkout_shipping_address_layout/2","Karty"
+"layout/options/checkout_use_billing_shipping_address_above_form/1","Włącz"
+"layout/options/checkout_use_billing_shipping_address_above_form/2","Wyłącz"
+"layout/options/cookie_notice/1","Wyłącz"
+"layout/options/cookie_notice/2","Włącz u góry strony"
+"layout/options/cookie_notice/3","Włącz na dole strony"
+"layout/options/debug_mode/1","Włącz"
+"layout/options/debug_mode/2","Wyłącz"
+"layout/options/disable_compare/1","Włącz"
+"layout/options/disable_compare/2","Wyłącz"
+"layout/options/disable_poll/1","Włącz"
+"layout/options/disable_poll/2","Wyłącz"
+"layout/options/disable_reviews/1","Włącz"
+"layout/options/disable_reviews/2","Wyłącz"
+"layout/options/disable_tags/1","Włącz"
+"layout/options/disable_tags/2","Wyłącz"
+"layout/options/disable_wishlist/1","Włącz"
+"layout/options/disable_wishlist/2","Wyłącz"
+"layout/options/footer_legals/1","Włącz"
+"layout/options/footer_legals/2","Wyłącz"
+"layout/options/footer_marketing_mode/1","Włącz na wszystkich stronach"
+"layout/options/footer_marketing_mode/2","Wyłącz na wszystkich stronach"
+"layout/options/footer_marketing_mode/3","Wyłącz na stronie głównej"
+"layout/options/footer_marketing_mode/4","Włącz tylko na stronie głównej"
+"layout/options/full_layout_mode/1","Włącz"
+"layout/options/full_layout_mode/2","Wyłącz"
+"layout/options/header_layout/1","Domyślnie"
+"layout/options/header_layout/2","Wersja 2"
+"layout/options/header_layout/3","Wersja 3"
+"layout/options/header_layout/4","Wersja 4"
+"layout/options/header_layout/5","Wersja 5"
+"layout/options/header_layout/6","Wersja 6"
+"layout/options/header_layout/7","Wersja 7"
+"layout/options/header_layout/8","Wersja 8"
+"layout/title/header_layout__search_icons","Układ wyszukiwarki"
+"layout/title/header_layout_account_icons","Układ konta"
+"layout/title/header_layout_wishlist_icons","Układ listy życzeń"
+"layout/options/header_layout__search_icons/1","Wyszukaj / ikona i widoczne wpisywanie"
+"layout/options/header_layout__search_icons/2","Wyszukaj / ikona i ukryte wpisywanie"
+"layout/options/header_layout__search_icons/3","Wyszukaj / przycisk i widoczne wpisywanie"
+"layout/options/header_layout_account_icons/1","Konto / tekst"
+"layout/options/header_layout_account_icons/2","Konto / ikona"
+"layout/options/header_layout_account_icons/3","Konto / ikona i widoczny tekst"
+"layout/options/header_layout_account_icons/3","Wyłącz"
+"layout/options/header_layout_wishlist_icons/1","Lista życzeń / ikona i widoczny tekst"
+"layout/options/header_layout_wishlist_icons/2","Lista życzeń / ikona "
+"layout/options/header_layout_wishlist_icons/3","Lista życzeń / tekst"
+"layout/title/header_layout_cart_icons","Układ koszyka"
+"layout/options/header_layout_cart_icons/1","Koszyk / ikona i widoczny tekst"
+"layout/options/header_layout_cart_icons/2","Koszyk / ikona"
+"layout/options/header_layout_cart_icons/3","Koszyk / widoczny tekst"
+"layout/title/header_layout_order_icons","Układ kolejności ikon"
+"layout/options/header_layout_order_icons/1","Wersja 1 / domyślna"
+"layout/options/header_layout_order_icons/2","Wersja 2"
+"layout/options/header_layout_order_icons/3","Wersja 3"
+"layout/options/header_layout_order_icons/4","Wersja 4"
+"layout/options/homepage_banner_layout/1","Okno"
+"layout/options/homepage_banner_layout/2","Okno i kolor tła"
+"layout/options/homepage_banner_layout/3","Pełna szerokość"
+"layout/options/input_text_layout/1","Pełna granica z efektem"
+"layout/options/input_text_layout/2","Pełna granica"
+"layout/options/input_text_layout/3","Pełna granica z zasięgiem"
+"layout/options/input_text_layout/4","Pełny kolor tła z zasięgiem granicy"
+"layout/options/input_text_layout/5","Pełna granica z cieniem"
+"layout/options/input_text_layout/6","Dół granicy z animacją"
+"layout/options/input_text_layout/7","Dół granicy prosty"
+"layout/options/layered_nav_filters_size/1","Wyłącz"
+"layout/options/layered_nav_filters_size/2",5
+"layout/options/layered_nav_filters_size/3",10
+"layout/options/layered_nav_filters_size/4",15
+"layout/options/layered_nav_filters_size/5",20
+"layout/options/layered_nav_filters_size/6",25
+"layout/options/layered_nav_layout/1","Kolumna Lewa"
+"layout/options/layered_nav_layout/2","Kolumna prawa u góry"
+"layout/options/layered_navigation_position/1","Lewo"
+"layout/options/layered_navigation_position/2","Środek"
+"layout/options/layered_navigation_position/3","Prawo"
+"layout/options/mini_cart_layout/1","Licznik – Dropdown"
+"layout/options/mini_cart_layout/2","Licznik & Grand Total – Dropdown"
+"layout/options/mini_cart_layout/3","Licznik & Grand Total – link do koszyka"
+"layout/options/mini_cart_layout/4","Licznik & Grand Total – link do kasy"
+"layout/options/mini_cart_layout/5","Wyłącz"
+"layout/options/nav_layout/1","Brak nawigacji"
+"layout/options/nav_layout/10","Górna nawigacja"
+"layout/options/nav_layout/2","Górna nawigacja – mega menu"
+"layout/options/nav_layout/3","Górna nawigacja – Dropdown"
+"layout/options/nav_layout/4","Nawigacja po lewej"
+"layout/options/nav_layout/5","Nawigacja po lewej – mega menu"
+"layout/options/nav_layout/6","Nawigacja po lewej – Push Down"
+"layout/options/nav_layout/7","Nawigacja po lewej – mega menu"
+"layout/options/nav_layout/8","Górny pojedynczy przycisk – mega menu"
+"layout/options/nav_layout/9","Górny pojedynczy przycisk – Lewe mega menu "
+"layout/options/page_background_image/1","Włącz"
+"layout/options/page_background_image/2","Wyłącz"
+"layout/options/page_background_repeat/1","Włącz"
+"layout/options/page_background_repeat/2","Wyłącz"
+"layout/options/preloader_status/1","Włącz"
+"layout/options/preloader_status/2","Wyłącz"
+"layout/options/product_list_add_to_cart_status/1","Włącz"
+"layout/options/product_list_add_to_cart_status/2","Wyłącz"
+"layout/options/product_list_add_to_links_status/1","Włącz"
+"layout/options/product_list_add_to_links_status/2","Wyłącz"
+"layout/options/product_list_breadcrumbs_title/1","Okruszki w tytule"
+"layout/options/product_list_breadcrumbs_title/2","Tylko tytuł"
+"layout/options/product_list_breadcrumbs_title/3","Okruszki w linii tytułu"
+"layout/options/product_list_discount_mode/1","Włącz"
+"layout/options/product_list_discount_mode/2","Wyłącz"
+"layout/options/product_list_discount_percentage_mode/1","Włącz"
+"layout/options/product_list_discount_percentage_mode/2","Wyłącz"
+"layout/options/product_list_image_width/1","Automatycznie"
+"layout/options/product_list_image_width/10","90%"
+"layout/options/product_list_image_width/11","100%"
+"layout/options/product_list_image_width/2","10%"
+"layout/options/product_list_image_width/3","20%"
+"layout/options/product_list_image_width/4","30%"
+"layout/options/product_list_image_width/5","40%"
+"layout/options/product_list_image_width/6","50%"
+"layout/options/product_list_image_width/7","60%"
+"layout/options/product_list_image_width/8","70%"
+"layout/options/product_list_image_width/9","80%"
+"layout/options/product_list_item_box/1","Domyślnie"
+"layout/options/product_list_item_box/2","Obraz z górną i dolną granicą"
+"layout/options/product_list_item_box/3","Obraz z podświetlonym tytułem i opisem, z granicą"
+"layout/options/product_list_item_box/4","Produkt z granicą"
+"layout/options/product_list_item_box/5","Produkt z cieniem"
+"layout/options/product_list_item_box/6","Minimalizuj"
+"layout/options/product_list_item_title_description_display/1","Tytuł i opis pod zdjęciem"
+"layout/options/product_list_item_title_description_display/2","Tytuł i opis nad zdjęciem"
+"layout/options/product_list_item_title_description_display/3","Tytuł nad zdjęciem i opis pod zdjęciem"
+"layout/options/product_list_page_layout/1","Brak aktualizacji układu"
+"layout/options/product_list_page_layout/2","1 Kolumna"
+"layout/options/product_list_page_layout/3","2 kolumny z lewym paskiem bocznym"
+"layout/options/product_list_page_layout/4","2 kolumny z prawym paskiem bocznym"
+"layout/options/product_list_page_layout/5","3 Kolumny"
+"layout/options/product_list_shortdescription_mode_status/1","Włącz"
+"layout/options/product_list_shortdescription_mode_status/2","Wyłącz"
+"layout/options/product_list_tax_mode/1","Włącz"
+"layout/options/product_list_tax_mode/2","Wyłącz"
+"layout/options/product_list_tax_shipping_mode/1","Włącz"
+"layout/options/product_list_tax_shipping_mode/2","Wyłącz"
+"layout/options/product_view_add_to_cart_quantity_buttons_status/1","Włącz"
+"layout/options/product_view_add_to_cart_quantity_buttons_status/2","Wyłącz"
+"layout/options/product_view_delivery_time_mode/1","Włącz w zakładkach"
+"layout/options/product_view_delivery_time_mode/2","Włącz obok asortymentu"
+"layout/options/product_view_delivery_time_mode/3","Wyłącz"
+"layout/options/product_view_discount_mode/1","Włącz"
+"layout/options/product_view_discount_mode/2","Wyłącz"
+"layout/options/product_view_discount_percentage_mode/1","Włącz"
+"layout/options/product_view_discount_percentage_mode/2","Wyłącz"
+"layout/options/product_view_gallery_images_count_mobile/1",2
+"layout/options/product_view_gallery_images_count_mobile/2",3
+"layout/options/product_view_gallery_images_count_mobile/3",4
+"layout/options/product_view_gallery_images_count_mobile/4",5
+"layout/options/product_view_gallery_images_count_mobile/5",6
+"layout/options/product_view_gallery_images_count/1",2
+"layout/options/product_view_gallery_images_count/2",3
+"layout/options/product_view_gallery_images_count/3",4
+"layout/options/product_view_gallery_images_count/4",5
+"layout/options/product_view_gallery_images_count/5",6
+"layout/options/product_view_gallery_orientation/1","Poziomo"
+"layout/options/product_view_gallery_orientation/2","Pionowo"
+"layout/options/product_view_mobile_gallery_orientation/1","Poziomo"
+"layout/options/product_view_mobile_gallery_orientation/2","Pionowo"
+"layout/options/product_view_group_attributes_status/1","Włącz"
+"layout/options/product_view_group_attributes_status/2","Wyłącz"
+"layout/options/product_view_layout/1","Domyślne"
+"layout/options/product_view_layout/2","Domyślne odbicie lustrzane"
+"layout/options/product_view_layout/3","Duży obraz"
+"layout/options/product_view_layout/4","Duży obraz odbicie lustrzane"
+"layout/options/product_view_layout/5","Mały obraz"
+"layout/options/product_view_layout/6","Mały obraz odbicie lustrzane"
+"layout/options/product_view_main_image_action/1","Brak akcji"
+"layout/options/product_view_main_image_action/2","Nowe okno wyskakujące"
+"layout/options/product_view_main_image_action/3","Modalne okno wyskakujace z przybliżonym obrazem"
+"layout/options/product_view_main_image_action/4","Chmura Zoom z przewijaniem"
+"layout/options/product_view_main_image_action/5","Chmura Zoom wewnątrz"
+"layout/options/product_view_main_image_action/6","Chmura Zoom na zewnątrz"
+"layout/options/product_view_main_image_action/7","Chmura Zoom duży kwadrat z przewijaniem"
+"layout/options/product_view_main_image_action/8","Modalne okno wyskakujace z przybliżonym obrazem + galeria"
+"layout/options/product_view_main_image_action/9","Szczegółowe wyskakujące okno – zalecane opcje"
+"layout/options/product_view_manufacturer_price_mode/1","Włącz"
+"layout/options/product_view_manufacturer_price_mode/2","Wyłącz"
+"layout/options/product_view_page_layout/1","Brak aktualizacji układu"
+"layout/options/product_view_page_layout/2","1 Kolumna"
+"layout/options/product_view_page_layout/3","2 kolumny z lewym paskiem bocznym"
+"layout/options/product_view_page_layout/4","2 kolumny z prawym paskiem bocznym"
+"layout/options/product_view_page_layout/5","3 Kolumny"
+"layout/options/product_view_related_products_slider_status/1","Włącz"
+"layout/options/product_view_related_products_slider_status/2","Wyłącz"
+"layout/options/product_view_related_products_slider_slides_to_show/1","1 Przesunięcie"
+"layout/options/product_view_related_products_slider_slides_to_show/2","2 Przesunięcia"
+"layout/options/product_view_related_products_slider_slides_to_show/3","3 Przesunięcia"
+"layout/options/product_view_related_products_slider_slides_to_show/4","4 Przesunięcia"
+"layout/options/product_view_related_products_slider_slides_to_show/5","5 Przesunięć"
+"layout/options/product_view_related_products_slider_slides_to_show/6","6 Przesunięć"
+"layout/options/product_view_related_products_slider_slides_to_scroll/1","1 Przesuniecie"
+"layout/options/product_view_related_products_slider_slides_to_scroll/2","2 Przesuniącia"
+"layout/options/product_view_related_products_slider_slides_to_scroll/3","3 Przesunięcia"
+"layout/options/product_view_related_products_slider_animation/1","100 ms"
+"layout/options/product_view_related_products_slider_animation/2","200 ms"
+"layout/options/product_view_related_products_slider_animation/3","300 ms"
+"layout/options/product_view_related_products_slider_animation/4","400 ms"
+"layout/options/product_view_related_products_slider_animation/5","500 ms"
+"layout/options/product_view_related_products_slider_loop/1","Włącz"
+"layout/options/product_view_related_products_slider_loop/2","Wyłącz"
+"layout/options/product_view_related_products_status/1","Włącz"
+"layout/options/product_view_related_products_status/2","Wyłącz"
+"layout/options/product_view_reviews_mode/1","Włącz"
+"layout/options/product_view_reviews_mode/2","Wyłącz"
+"layout/options/product_view_shop_layout/1","Domyślnie"
+"layout/options/product_view_shop_layout/2","Info sekcja 2"
+"layout/options/product_view_shop_layout/3","Info sekcja 3"
+"layout/options/product_view_shop_layout/4","Info sekcja 4"
+"layout/options/product_view_shop_layout/5","Info sekcja 5"
+"layout/options/product_view_short_description_mode/1","Włącz pod tytułem"
+"layout/options/product_view_short_description_mode/2","Wyłącz"
+"layout/options/product_view_subtitle_mode/1","Włączony w zakładkach"
+"layout/options/product_view_subtitle_mode/2","Włącz pod tytułem"
+"layout/options/product_view_subtitle_mode/3","Wyłącz"
+"layout/options/product_view_tabs_style/1","Obszar boczny"
+"layout/options/product_view_tabs_style/2","Cała szerokość"
+"layout/options/product_view_tabs_style/3","Cała szerokość – oddziel sekcje"
+"layout/options/product_view_upsell_products_slider_status/1","Włącz"
+"layout/options/product_view_upsell_products_slider_status/2","Wyłącz"
+"layout/options/product_view_upsell_products_status/1","Włącz"
+"layout/options/product_view_upsell_products_status/2","Wyłącz"
+"layout/options/product_view_upsell_products_slider_slides_to_show/1","1 Przesunięcie"
+"layout/options/product_view_upsell_products_slider_slides_to_show/2","2 Przesunięcia"
+"layout/options/product_view_upsell_products_slider_slides_to_show/3","3 Przesunięcia"
+"layout/options/product_view_upsell_products_slider_slides_to_show/4","4 Przesunięcia"
+"layout/options/product_view_upsell_products_slider_slides_to_show/5","5 Przesunięć"
+"layout/options/product_view_upsell_products_slider_slides_to_show/6","6 Przesunięć"
+"layout/options/product_view_upsell_products_slider_slides_to_scroll/1","1 Przesuniecie"
+"layout/options/product_view_upsell_products_slider_slides_to_scroll/2","2 Przesuniącia"
+"layout/options/product_view_upsell_products_slider_slides_to_scroll/3","3 Przesunięcia"
+"layout/options/product_view_upsell_products_slider_animation/1","100 ms"
+"layout/options/product_view_upsell_products_slider_animation/2","200 ms"
+"layout/options/product_view_upsell_products_slider_animation/3","300 ms"
+"layout/options/product_view_upsell_products_slider_animation/4","400 ms"
+"layout/options/product_view_upsell_products_slider_animation/5","500 ms"
+"layout/options/product_view_upsell_products_slider_loop/1","Włącz"
+"layout/options/product_view_upsell_products_slider_loop/2","Wyłącz"
+"layout/options/socialmedia_share_position/1","Wszystkie strony – sticky po lewej"
+"layout/options/socialmedia_share_position/2","Wszystkie strony – sticky po prawej"
+"layout/options/socialmedia_share_position/3","Tylko na stronie produktu"
+"layout/options/sticky_header/1","Włącz"
+"layout/options/sticky_header/2","Wyłącz"
+"layout/options/to_top/1","Włącz"
+"layout/options/to_top/2","Wyłącz"
+"layout/options/wishlist_display/1","W prawej kolumnie"
+"layout/options/wishlist_display/2","W lewej kolumnie"
+"layout/options/wishlist_display/3","Nic"
+"layout/options/product_attribute_display_mode/1","Włącz"
+"layout/options/product_attribute_display_mode/2","Wyłącz"
+"layout/help/blog_link",
+"layout/help/catalog_mini_search",
+"layout/help/checkout_agreements_position",
+"layout/help/checkout_billing_address_layout",
+"layout/help/checkout_cart_add_to_cart_quantity_buttons_status",
+"layout/help/checkout_cart_clear_button",
+"layout/help/checkout_cart_crosssells_position",
+"layout/help/checkout_cart_crosssells_slider_status",
+"layout/help/checkout_cart_layout",
+"layout/help/checkout_cart_product_thumbnail",
+"layout/help/checkout_cart_product_unit_price",
+"layout/help/checkout_cart_shipping_section",
+"layout/help/checkout_shipping_address_layout",
+"layout/help/checkout_use_billing_shipping_address_above_form",
+"layout/help/cookie_notice",
+"layout/help/debug_mode",
+"layout/help/disable_compare",
+"layout/help/disable_poll",
+"layout/help/disable_reviews",
+"layout/help/disable_tags",
+"layout/help/disable_wishlist",
+"layout/help/footer_legals",
+"layout/help/footer_marketing_mode",
+"layout/help/full_layout_mode",
+"layout/help/header_layout",
+"layout/help/homepage_banner_layout",
+"layout/help/input_text_layout",
+"layout/help/layered_nav_filters_size",
+"layout/help/layered_nav_layout",
+"layout/help/layered_navigation_position",
+"layout/help/mini_cart_layout",
+"layout/help/nav_layout",
+"layout/help/page_background_image",
+"layout/help/page_background_repeat",
+"layout/help/preloader_status",
+"layout/help/product_list_add_to_cart_status",
+"layout/help/product_list_add_to_links_status",
+"layout/help/product_list_breadcrumbs_title",
+"layout/help/product_list_discount_mode",
+"layout/help/product_list_discount_percentage_mode",
+"layout/help/product_list_image_width",
+"layout/help/product_list_item_box",
+"layout/help/product_list_item_title_description_display",
+"layout/help/product_list_page_layout",
+"layout/help/product_list_shortdescription_mode_status",
+"layout/help/product_list_tax_mode",
+"layout/help/product_list_tax_shipping_mode",
+"layout/help/product_view_add_to_cart_quantity_buttons_status",
+"layout/help/product_view_delivery_time_mode",
+"layout/help/product_view_discount_mode",
+"layout/help/product_view_discount_percentage_mode",
+"layout/help/product_view_gallery_images_count",
+"layout/help/product_view_gallery_images_count_mobile",
+"layout/help/product_view_gallery_orientation",
+"layout/help/product_view_group_attributes_status",
+"layout/help/product_view_layout",
+"layout/help/product_view_main_image_action",
+"layout/help/product_view_manufacturer_price_mode",
+"layout/help/product_view_page_layout",
+"layout/help/product_view_related_products_slider_status",
+"layout/help/product_view_related_products_status",
+"layout/help/product_view_reviews_mode",
+"layout/help/product_view_shop_layout",
+"layout/help/product_view_short_description_mode",
+"layout/help/product_view_subtitle_mode",
+"layout/help/product_view_tabs_style",
+"layout/help/product_view_upsell_products_slider_status",
+"layout/help/product_view_upsell_products_status",
+"layout/help/socialmedia_share_position",
+"layout/help/sticky_header",
+"layout/help/to_top",
+"layout/help/wishlist_display",
+"layout/help/product_attribute_display_mode",
+"layout/fieldset/general","Główne"
+"layout/tab/cart","Karta"
+"layout/tab/category_page_search_results","Strona Kategorii i Wyniki Wyszukiwania"
+"layout/tab/checkout","Kasa"
+"layout/tab/footer","Stopka"
+"layout/tab/general","Główne"
+"layout/tab/header","Nagłowek"
+"layout/tab/homepage","Strona główna"
+"layout/tab/modules","Moduły"
+"layout/tab/product_details","Szczegóły produktu"
+"layout/options/nav_layout/11","Górna nawigacja – Obraz podkategorii"
+"layout/title/newsletter_subscribe","Pokaż Newsletter"
+"layout/title/banner_arrows","Pokarz strzałki baneru"
+"layout/title/newsletter_menu_accordion","Włącz menu w stopce "
+"layout/title/product_list_description_html","Włącz tagi html w krótkim opisie"
+"layout/title/product_list_order_toolbar","Kolejność w pasku narzędzi"
+"layout/options/product_list_order_toolbar/1","Wersja 1 / domyślna"
+"layout/options/product_list_order_toolbar/2","Wersja 2"
+"layout/options/product_list_order_toolbar/3","Wersja 3"
+"layout/options/product_list_order_toolbar/4","Wersja 4"
+"layout/options/nav_layout/12","Menu z szarą nakładką"
+"layout/options/nav_layout/13","Menu z niestandardowymi blokami statycznymi"
+"layout/title/product_list_order_sort","Opcja sortuj kolejnosc produktów"
+"layout/title/product_view_specification_order","Zmień kolejność atrybutów specyfikacji"
+"layout/options/product_view_specification_order/1","Domyślnie"
+"layout/options/product_view_specification_order/2","Prosta tabela na 2 kolumnach"
+"layout/options/product_view_specification_order/3","Prosta lista - etykieta / wartość"
+"layout/options/product_view_specification_order/4","Prosta lista na 2 kolumnach"
+"layout/title/product_list_sort_by","Dropdown sortowanie przez"
+"layout/options/product_list_sort_by/1","Wersja 1 / domyślna"
+"layout/options/product_list_sort_by/2","Wersja 2"
+"layout/options/product_list_sort_by/3","Wersja 3"
+"layout/options/product_list_sort_by/4","Wersja 4"
+"layout/title/product_list_image_resize","Zmień rozmiar obrazu"
+"layout/options/product_list_image_resize/1","Obraz kwadratory / 300 x 300 "
+"layout/options/product_list_image_resize/2","Obraz portretowy / 300 x 400"
+"layout/options/product_list_image_resize/3","Obraz pejzażowy / 300 x 200"
+"layout/options/product_list_image_resize/4","Obraz kwadratowy duży / 400 x 400"
+"layout/options/product_list_image_resize/5","Obraz kwadratowy duży / 293 x 421"
+"layout/options/product_list_image_resize/6","Obraz duży / 600 x 600"
+"layout/options/product_list_image_resize/7","Obraz pejzażowy duży / 600 x 400"
+"layout/title/product_image_resize","Zmień rozmiar obrazu"
+"layout/options/product_image_resize/1","Obraz kwadratory / 515 x 515"
+"layout/options/product_image_resize/2","Obraz portretowy / 600 x 800"
+"layout/options/product_image_resize/3","Obraz pejzażowy / 640 x 480"
+"layout/options/product_image_resize/5","Obraz portretowy / 500 x 736"
+"layout/options/product_image_resize/4","Obraz kwadratowy duży / 1000 x 1000"
+"layout/options/product_image_resize/6","Obraz duży / 2000 x 2000"
+"layout/options/product_image_resize/7","Obraz duży / 1200 x 800"
+"layout/title/layered_nav_layout_list","Wyrównanie produktów w rzędzie"
+"layout/options/layered_nav_layout_list/1","Domyślna wartość"
+"layout/options/layered_nav_layout_list/2","Wyświetl 2 produkty w rzędzie"
+"layout/options/layered_nav_layout_list/3","Wyświetl 4 produkty w rzędzie"
+"layout/title/product_list_hover","Wyświetl 2 zdjęcie po najechaniu kursorem"
+"layout/title/product_view_gallery_images_popup_mobile","Zbliżenie zdjęcia (urzadzenia mobilne)"
+"layout/options/product_view_gallery_images_popup_mobile/1","Szczegółowe wyskakujące okno – zalecane opcje"
+"layout/options/product_view_gallery_images_popup_mobile/2","Wyłącz"
+"layout/title/sticky_header_all","Nagłówek sticky z ikonami (dodaj do listy życzeń i moje konto)"
+"layout/title/sticky_header_logo","Dodaj logo do nagłówka sticky"
+"layout/title/sticky_header_logo_mobile","Dodaj logo do mobilnego nagłówka sticky"
+"layout/title/product_list_pagination_pager","Pokaż pierwszą i ostatnią stronę paginacji"
+"layout/title/product_view_review_form","Pokaż formularz opinii w zakładkach"
+"layout/title/product_list_show_products_count","Pokaż liczbę produktów"
+"layout/title/product_view_add_to_cart_mobile","Pokaż przycisk dodaj do koszyka na scrolu"
+"layout/title/product_list_status","Wyświetl status produktu"
+"layout/title/product_view_mobile_swipe_gallery","Przesuń główny obraz"
+"layout/title/header_wishlist","Pokaż ikone listy życzeń w nagłówku "
+"layout/title/cart_view_proceed_to_checkout_mobile","Pokaż przycisk przejdz do kasy"
+"layout/title/product_view_promotion_countdown","Pokaż odliczanie promocji w widoku produktu"
+"layout/title/product_view_catalog_promotion_countdown","Pokaż odliczanie do wyświetlania produktów w katalogu Promocje"
+"layout/title/product_list_buy_now_button","Włącz przycisk „Kup teraz”"
+"layout/title/product_view_buy_now_button","Włacz przycisk „Kup teraz”"
+"layout/description/product_view_buy_now_button","Tylko jeżli Ajax moduł dodaj do koszyka jest wyłączony"
+"layout/title/cart_view_proceed_to_checkout","Włącz stałe pozycje selekcji dodaj do koszyka"
+"layout/title/checkout_onepage_hide_header","Ukryj nagłówek"
+"layout/title/checkout_onepage_hide_footer","Ukryj stopkę"
+"layout/title/nav_mobile_new_option","Włącz nowy mobilny rozkład nawigacji "
+"layout/title/product_view_layout_price_position","Pozycja ceny na rozkładzie w wersji 4"
+"layout/options/product_view_layout_price_position/1","W prawej kolumnie"
+"layout/options/product_view_layout_price_position/2","W lewej kolumnie (po SKU)"
+"layout/title/product_view_layout_tabs_position","Pozycja zakładek na roskładzie w wersji 4"
+"layout/options/product_view_layout_tabs_position/1","W lewej kolumnie"
+"layout/options/product_view_layout_tabs_position/2","Powyżej opinii"
+"layout/title/product_view_preselect_single_swatches","Próbki - Wybierz wstępnie pojedyncze próbki"
+"layout/title/product_view_select_swatch_product","Próbki - Wybierz prosty obraz produktu z wybranej próbki"
+"layout/title/checkout_cart_total_hide_tax","Ukryj informacje podatkowe w sekcji sum koszyka"
+"layout/title/logged_in_customer_address","Pokaż krok 2, jeśli użytkownik jest zalogowany z dodanym adresem"
+"layout/title/product_view_reviews_toggle","Włącz przełączanie recenzji"
+"layout/title/image_lazy_load","Włącz leniwe ładowanie obrazu"
+"layout/title/product_view_related_products_slider_mobile","Pokaż 2 powiązane produkty dla telefonu komórkowego"
+"layout/title/product_view_upsell_products_slider_mobile","Pokaż 2 produkty Upsell dla urządzeń mobilnych"
+"layout/title/checkout_cart_labels_wat","Pokaż etykietę WAT"
+"layout/title/checkout_aside_items","Pokaż produkty w prawej kolumnie"
+"layout/title/product_view_description_toggle","Włącz opcję zawężenia obszaru opisu produktu"
+"layout/title/product_view_description_toggle_value","Ustaw wartość dla skróconego opisu"
+"layout/options/product_view_description_toggle_value/1","Default"
+"layout/options/product_view_description_toggle_value/2","200 postacie"
+"layout/options/product_view_description_toggle_value/3","300 postacie"
+"layout/options/product_view_description_toggle_value/4","400 postacie"
+"layout/options/product_view_description_toggle_value/5","500 postacie"
+"layout/options/product_view_description_toggle_value/6","600 postacie"
+"layout/options/product_view_description_toggle_value/7","800 postacie"
+"layout/options/product_view_description_toggle_value/8","1000 postacie"
+"layout/options/product_view_description_toggle_value/9","1200 postacie"
+"layout/options/product_view_description_toggle_value/10","1400 postacie"
+"layout/title/anpc_links","Aktywuj łącza ANPC"

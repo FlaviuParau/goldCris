@@ -1,0 +1,16 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-breadcrumbs.scss
+    Version:        1.0
+    Description:    Product Details Page - Breadcrumbs
+    ------------------------------------------------------------------------- */
+
+.catalog-product-view,
+.review-product-list {
+    .breadcrumbs {
+        display: none;
+
+        @include phone {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-shop2.scss
+    Version:        1.0
+    Description:    Product Details Page - Shop - 2
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view_shop_layout == 2) {
+    @include desktop {
+        .product-view .product-shop {
+            .price-box,
+            .price-box-suggested {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

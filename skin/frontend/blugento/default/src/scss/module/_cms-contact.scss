@@ -1,0 +1,115 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_cms-contact.scss
+    Version:        1.0
+    Description:    CMS - Contact Page Styles
+    ------------------------------------------------------------------------- */
+
+.contact-page-container {
+    .info-form {
+        padding: 0 22px;
+
+        &.col-6 {
+            .col-6 {
+                width: 100%;
+            }
+        }
+
+        .info {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            color: color('r');
+        }
+
+        p {
+            margin-bottom: 0;
+            line-height: 2;
+        }
+
+        .input-box {
+            clear: both;
+        }
+
+        label {
+            color: color('r');
+        }
+
+        label em {
+            position: static;
+            float: none;
+            color: color('k');
+        }
+
+        textarea {
+            min-height: 185px;
+        }
+
+        .buttons-set {
+            margin-top: 0;
+            padding-top: 0;
+
+            p.required {
+                font-style: normal;
+                color: color('k');
+
+                @include mobile {
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    .addresses {
+        padding: 0 22px;
+
+        @include mobile {
+            margin-top: 30px;
+        }
+
+        .address {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid color('h');
+
+            @include desktop {
+                h2,
+                p,
+                ul {
+                    margin-left: 40px;
+                }
+            }
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            p {
+                color: color('r');
+            }
+
+            img {
+                width: 100%;
+                max-width: 560px;
+                height: auto;
+                margin: 10px 0 30px;
+            }
+
+            li {
+                line-height: 2;
+            }
+        }
+
+        h2 {
+            text-transform: uppercase;
+            color: color('e');
+        }
+
+    }
+
+    textarea {
+        resize: none;
+    }
+}

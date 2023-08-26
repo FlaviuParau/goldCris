@@ -1,0 +1,53 @@
+<?php /** @var $this Blugento_GoogleTagManager_Block_TM */
+if (!($isEnabled = $this->_gtmHelper->isEnabled())) {
+	return;
+}
+
+$accountId 	= $this->_gtmHelper->getAccountId();
+$categoryId = $this->_gtmHelper->getCategory();
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+
+foreach ($categories as $category) {
+    if ($category['value'] == $categoryId) {
+        $scriptCategory = strtolower($category['label']);
+    }
+}
+
+$scriptCategory = str_replace('analytics', 'statistics', $scriptCategory);
+$cookie 		= Mage::getSingleton('core/cookie')->get($scriptCategory);
+?>
+
+<?php if ($isEnabled && $accountId) : ?>
+	<script type="text/javascript">
+		var Blugento = Blugento || {};
+		Blugento.Gtm = [];
+
+		(function($) {
+			$(document).ready(function() {
+				function gtmEvent() {
+					<?php $this->getGlobalSuccessPageGtmTrackingCode(); ?>
+				}
+
+				if (!$('body').hasClass('gdpr-enabled') || '<?php echo $categoryId ?>' == '1' || '<?php echo $cookie ?>' == 'yes') {
+					gtmEvent();
+				} else {
+					// Accept only selected cookies
+					$('#accept-selected-cookies').on('click', function(e) {
+						if ($('#<?php echo $scriptCategory ?>').is(':checked') || $('#<?php echo $scriptCategory ?>').is('[readonly]')) {
+							gtmEvent();
+						}
+					});
+
+					// Accept all cookies
+					$('#accept-all-cookies').on('click', function(e) {
+						gtmEvent();
+					});
+
+					if ('<?php echo $scriptCategory ?>' == 'necessary') {
+						gtmEvent();
+					}
+				}
+			});
+		})(jQuery);
+	</script>
+<?php endif; ?>

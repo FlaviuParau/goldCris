@@ -1,0 +1,57 @@
+<!--@subject Balanță actualizată de admin {{var store.getFrontendName()}} @-->
+<!--@vars
+{"store url=\"\"":"Url magazin",
+"var recipient_name":"Nume destinatar",
+"var amount_delta":"Suma",
+"var operation_name":"Plată pentru comandă",
+"var current_balance":"Balanță curentă"}
+@-->
+<!--@styles
+@-->
+
+<body style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+    <table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+        <tr>
+            <td align="center" valign="top" style="padding:20px 0 20px 0">
+                <!-- [ header starts here] -->
+                <table bgcolor="FFFFFF" cellspacing="0" cellpadding="10" border="0" width="650" style="border:1px solid #E0E0E0;">
+                    <tr>
+                        <td valign="top">
+                            <a href="{{store url=""}}" style="color:#1E7EC8;"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}" border="0"/></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="action-content">
+                            <table cellspacing="0" cellpadding="0" class="message-container">
+                                <tr>
+                                    <td>
+                                        Dragă {{var recipient_name}},<br>
+                                        <br>
+                                        Soldul dvs. s-a schimbat {{var amount_delta}} ({{var operation_name}})<br>
+                                        <br>
+                                        Soldul dvs. actual este {{var current_balance}}.<br>
+                                        <br>
+                                        O zi bună!
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;">
+                            <center>
+                                <p style="font-size:12px; margin:0;">
+                                    Toate cele bune,<br>
+                                    Administrarea {{var store.getFrontendName()}}
+                                </p>
+                            </center>
+                        </td>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

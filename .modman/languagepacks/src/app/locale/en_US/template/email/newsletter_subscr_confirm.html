@@ -1,0 +1,54 @@
+<!--@subject Newsletter subscription confirmation @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$customer.name":"Customer Name",
+"var subscriber.getConfirmationLink()":"Subscriber Confirmation Url"}
+@-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h1>Thank you for subscribing.</h1>
+            <p><b>Since you have given your consent for us to send you direct marketing about our company and products, we
+            want to re-confirm your rights according to GDPR 679/2016 to guarantee the protection of your privacy
+            and personal date:</b></p>
+            <ul>
+                <li>the right to have access to your data</li>
+                <li>the right to edit your data</li>
+                <li>the right to restrict the processing of your personal data</li>
+                <li>the right to ask for your data to be deleted</li>
+                <li>the right to transfer your data (data portability)</li>
+                <li>the right to opt-out of data processing</li>
+                <li><b>the right to opt-out of profiling.</b></li>
+            </ul>
+            <p>You can find out more on our <a href="{{store direct_url='politica-de-confidentialitate'}}"><u>Privacy Policy</u></a> page</p>
+            <p>You can withdraw your consent at any time, by accessing the <b>unsubscribe</b> link available at the end of each
+                email; as a result, we will stop processing your personal details for direct marketing purposes.</p>
+
+            <p>Your data is securely stored and will not be used for any other purpose than the one mentioned. Your
+                details will only be shared to our 3rd party suppliers involved in marketing delivery and will not be
+                shared with any other 3rd party or international organisation.</p>
+
+            <p>All these rights can be applied through the links available in our <a href="{{store direct_url='politica-de-confidentialitate'}}"><u>Privacy Policy</u></a> page or through a
+                written request emailed to {{config path="trans_email/ident_general/email"}}.</p>
+
+            <p>To begin receiving the newsletter, you must first confirm your subscription:</p>
+            <table cellspacing="0" cellpadding="0" class="action-button" >
+                <tr>
+                    <td>
+                        <a href="{{var subscriber.getConfirmationLink()}}"><span>Confirm Subscription</span></a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

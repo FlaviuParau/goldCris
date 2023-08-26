@@ -1,0 +1,272 @@
+<?php
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+/* @var $this Mage_Catalog_Block_Product_View_Media */
+?>
+
+<?php
+$helperTheme = $this->helper('blugento_theme');
+
+$_productImageBackgroundColor = $helperTheme->getVariable('product-view__product-image_background-color', 'scss', '#fff');
+if (!preg_match('/^#[a-f0-9]{6}$/i', $_productImageBackgroundColor)) {
+    $_productImageBackgroundColor = '#fff';
+}
+$_productImageBackgroundColorToHex = $helperTheme->hex2rgb($_productImageBackgroundColor);
+$_productImageAction = (int) ($this->getLayout()->getBlock('root')->getProductImageAction() ?: 9);
+$_productPageGalleryOrientation = (int) ($this->getLayout()->getBlock('root')->getProductPageGalleryOrientation() ?: 1);
+$_productPageMobileGalleryOrientation = (int) ($this->getLayout()->getBlock('root')->getProductPageMobileGalleryOrientation() ?: 1);
+$_productPageGalleryImagesCount = (int) ($this->getLayout()->getBlock('root')->getProductPageGalleryImagesCount() ?: 3);
+$_productPageGalleryImagesCountMobile = (int) ($this->getLayout()->getBlock('root')->getProductPageGalleryImagesCountMobile() ?: 3);
+$_productImageResizeWidth = (int) (Mage::app()->getLayout()->getBlock('root')->getProductImageResizeWidth() ?: 515);
+$_productImageResizeHeight = (int) ($this->getLayout()->getBlock('root')->getProductImageResizeHeight() ?: 515);
+$_productPageGalleryImagesPopupMobile = (int) ($this->getLayout()->getBlock('root')->getProductPageGalleryImagesPopupMobile() ?: 1);
+
+$_product                   = $this->getProduct();
+$_productImage              = $_product->getImage();
+$_outputHelper              = $this->helper('catalog/output');
+$_imageHelper               = $this->helper('catalog/image');
+
+$_baseImageWidth                = $_productImageResizeWidth;
+$_productImageResizeWidth2x     = 2 * $_productImageResizeWidth;
+$_baseImageHeight               = $_productImageResizeHeight;
+$_productImageResizeHeight2x    = 2 * $_productImageResizeHeight;
+$_baseImage                     = (string) $_imageHelper->init($_product, 'image')->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth,$_productImageResizeHeight);
+$_galleryImageSize              = (int) Mage::getStoreConfig(Mage_Catalog_Helper_Image::XML_NODE_PRODUCT_SMALL_IMAGE_WIDTH) ?: $_baseImageWidth;
+$_galleryImageSize2x            = 2 * $_galleryImageSize;
+$_baseImageSize2x               = 2 * $_baseImageWidth;
+$_baseImageOriginal             = (string) $_imageHelper->init($_product, 'image')->resize(2000);
+$_baseImage2x                   = (string) $_imageHelper->init($_product, 'image')->backgroundColor($_productImageBackgroundColorToHex)->resize($_baseImageSize2x);
+$_baseImageAlt                  = $this->escapeHtml($this->getImageLabel());
+$_baseImageTitle                = $this->escapeHtml($this->getImageLabel());
+$_galleryImages                 = array();
+$_baseUrl = Mage::getBaseUrl();
+$_baseMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+$_baseMediaUrl = str_replace('/media', '', $_baseMedia);
+$_bannerWebp = Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/active') &&
+    Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/webp_conversion') && ($_baseUrl !== $_baseMediaUrl) ?: 0;
+$_srcWebp = $_bannerWebp ? '.webp' : '';
+
+// Process gallery images
+foreach ($this->getGalleryImages() as $_image) {
+    if ($_productImage && ($_productImage != 'no_selection') && ($_image->getFile() === $_productImage)) {
+        // Only add images that aren't the baseImage
+        // continue;
+    }
+
+    $_galleryImages []= $_image;
+}
+
+?>
+
+<?php if ($_baseImage): ?>
+	<div class="ajax-loader" style="height: <?php echo $_productImageResizeHeight; ?>px"></div>
+	<div id="product-image" class="product-image<?php if(count($_galleryImages) < 1) { echo ' no-thumbnails'; } ?>"
+	     data-action="<?php echo $_productImageAction ?>"
+	     data-action-mobile="<?php echo $_productPageGalleryImagesPopupMobile ?>"
+	>
+		<ul id="media-swipe" class="media-swipe slick-slider">
+			<?php $i = 0; ?>
+			<?php if (count($_galleryImages)) : ?>
+				<?php foreach ($_galleryImages as $_image): ?>
+					<?php
+                        $_imageOriginalSrcWebp  = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize(2000)->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false) . $_srcWebp;
+                        $_imageSrcWebp          = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth, $_productImageResizeHeight) . $_srcWebp;
+                        $_imageSrc2xWebp        = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth2x, $_productImageResizeHeight2x) . $_srcWebp;
+						$_imageOriginalSrc  = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize(2000)->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false);
+						$_imageSrc          = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth, $_productImageResizeHeight);
+						$_imageSrc2x        = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth2x, $_productImageResizeHeight2x);
+					?>
+					<li class="item <?php echo $_baseImage == $_imageSrc ? 'selected-image' : ''; ?>" data-item="item-count-<?php echo $i ?>" data-src="<?php echo $_imageOriginalSrc ?>">
+						<a
+							class            = "product-gallery"
+							href             = "<?php echo $_imageOriginalSrc ?>"
+							data-mfp-src     = "<?php echo $_imageOriginalSrc ?>"
+						>
+						<?php if ($_bannerWebp): ?>
+                                <picture>
+                                    <source
+                                        media="(min-width:320px)"
+                                        srcset="<?php echo $_imageSrcWebp . ' 1x,' . $_imageSrc2xWebp . ' 2x' ?>"
+                                        data-image      = "<?php echo $_imageSrcWebp ?>"
+                                        data-zoom-image = "<?php echo $_imageOriginalSrcWebp ?>"
+                                        type="image/webp"
+                                    />
+                                    <img
+                                        id              = "<?php echo $_baseImage == $_imageSrc ? 'product-image-img' : ''; ?>"
+                                        class           = "gallery-image visible"
+                                        src             = "<?php echo $_imageSrc ?>"
+                                        srcset          = "<?php echo $_imageSrc . ' 1x,' . $_imageSrc2x . ' 2x' ?>"
+                                        alt             = <?php if ($_image->getLabel()) : ?>
+                                                                "<?php echo $this->escapeHtml($_image->getLabel()); ?>"
+                                                        <?php else : ?>
+                                                                "<?php echo $this->escapeHtml($_product->getName()); ?>"
+                                                        <?php endif; ?>
+                                        title           = "<?php echo $this->escapeHtml($_product->getName()) ?>"
+										data-image      = "<?php echo $_imageSrc ?>"
+										data-zoom-image = "<?php echo $_imageOriginalSrc ?>"
+										width           = "<?php echo $_productImageResizeWidth ?>"
+										height          = "<?php echo $_productImageResizeHeight ?>"
+                                    />
+                                </picture>
+                            <?php else : ?>
+								<img
+									id              = "<?php echo $_baseImage == $_imageSrc ? 'product-image-img' : ''; ?>"
+									class           = "gallery-image visible"
+									src             = "<?php echo $_imageSrc ?>"
+									srcset          = "<?php echo $_imageSrc . ' 1x,' . $_imageSrc2x  . ' 2x' ?>"
+									alt             = <?php if ($_image->getLabel()) : ?>
+														"<?php echo $this->escapeHtml($_image->getLabel()); ?>"
+													<?php else : ?>
+														"<?php echo $this->escapeHtml($_product->getName()); ?>"
+													<?php endif; ?>
+									title           = "<?php echo $this->escapeHtml($_product->getName()) ?>"
+									data-image      = "<?php echo $_imageSrc ?>"
+									data-zoom-image = "<?php echo $_imageOriginalSrc ?>"
+									width           = "<?php echo $_productImageResizeWidth ?>"
+									height          = "<?php echo $_productImageResizeHeight ?>"
+								/>
+                            <?php endif; ?>
+						</a>
+					</li>
+					<?php $i++; ?>
+				<?php endforeach; ?>
+			<?php else : ?>
+				<a
+					href         = "<?php echo $_baseImageOriginal ?>"
+					class        = "product-gallery"
+					data-mfp-src = "<?php echo $_baseImageOriginal ?>"
+					data-src     = "<?php echo $_baseImageOriginal ?>"
+				>
+                    <?php if ($_bannerWebp): ?>
+                        <picture>
+                            <source
+                                class           = "gallery-image visible"
+                                media="(min-width:320px)"
+                                srcset="<?php echo $_baseImage. $_srcWebp . ' 1x,' . $_baseImage . $_srcWebp . ' 2x' ?>"
+                                alt             = "<?php echo $_baseImageAlt ?>"
+                                title           = "<?php echo $_baseImageTitle ?>"
+                                data-image      = "<?php echo $_baseImage ?>"
+                                data-zoom-image = "<?php echo $_baseImageOriginal ?>"
+                                width           = "<?php echo $_baseImageWidth ?>"
+                                height          = "<?php echo $_baseImageHeight ?>"
+                                type="image/webp"
+                            />
+                            <img
+                                id              = "product-image-img"
+                                class           = "gallery-image visible"
+                                src             = "<?php echo $_baseImage ?>"
+                                srcset          = "<?php echo $_baseImage . ' 1x,' . $_baseImage2x . ' 2x' ?>"
+                                alt             = "<?php echo $_baseImageAlt ?>"
+                                title           = "<?php echo $_baseImageTitle ?>"
+                                data-image      = "<?php echo $_baseImage ?>"
+                                data-zoom-image = "<?php echo $_baseImageOriginal ?>"
+                                width           = "<?php echo $_baseImageWidth ?>"
+                                height          = "<?php echo $_baseImageHeight ?>"
+                            />
+                        </picture>
+                    <?php else : ?>
+                        <img
+                            id              = "product-image-img"
+                            class           = "gallery-image visible"
+                            src             = "<?php echo $_baseImage ?>"
+                            srcset          = "<?php echo $_baseImage . ' 1x,' . $_baseImage2x . ' 2x' ?>"
+                            alt             = "<?php echo $_baseImageAlt ?>"
+                            title           = "<?php echo $_baseImageTitle ?>"
+                            data-image      = "<?php echo $_baseImage ?>"
+                            data-zoom-image = "<?php echo $_baseImageOriginal ?>"
+                            width           = "<?php echo $_baseImageWidth ?>"
+                            height          = "<?php echo $_baseImageHeight ?>"
+                        />
+                    <?php endif; ?>
+				</a>
+			<?php endif; ?>
+		</ul>
+	</div>
+<?php endif; ?>
+
+<?php if (count($_galleryImages) > 0): ?>
+    <div class="more-views" id="more-views">
+        <h4><?php echo $this->__('More Views') ?></h4>
+        <ul
+                id="media-carousel"
+                class="media-carousel slick-slider"
+                data-vertical="<?php echo ($_productPageGalleryOrientation == 2) ? 'true' : 'false' ?>"
+                data-mobile-vertical="<?php echo ($_productPageMobileGalleryOrientation == 2) ? 'true' : 'false' ?>"
+                data-nav="<?php echo (count($_galleryImages) > $_productPageGalleryImagesCount) ? 'true' : 'false' ?>"
+                data-gallery-images-count="<?php echo $_productPageGalleryImagesCount ?>"
+                data-gallery-images-count-mobile="<?php echo $_productPageGalleryImagesCountMobile ?>"
+        >
+            <?php $i = 0; ?>
+            <?php foreach ($_galleryImages as $_image): ?>
+				<?php
+                    $_imageOriginalSrc   = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize(2000)->constrainOnly(true)->keepAspectRatio(true)->keepFrame(false);
+                    $_imageSrc2x         = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_baseImageSize2x);
+                    $_imageSrc           = (string) $_imageHelper->init($_product, 'image', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth,$_productImageResizeHeight);
+                    $_thumbnailSrcWebp   = (string) $_imageHelper->init($_product, 'thumbnail', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth / 3,$_productImageResizeHeight / 3) . $_srcWebp;
+                    $_thumbnailSrc2xWebp = (string) $_imageHelper->init($_product, 'thumbnail', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth / 2,$_productImageResizeHeight / 2) . $_srcWebp;
+                    $_thumbnailSrc       = (string) $_imageHelper->init($_product, 'thumbnail', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth / 3,$_productImageResizeHeight / 3);
+                    $_thumbnailSrc2x     = (string) $_imageHelper->init($_product, 'thumbnail', $_image->getFile())->backgroundColor($_productImageBackgroundColorToHex)->resize($_productImageResizeWidth / 2,$_productImageResizeHeight / 2);
+                ?>
+                <li class="item" data-item="item-count-<?php echo $i ?>">
+                    <a
+						class            = "product-gallery item-image"
+						href             = "#"
+						title            = <?php if ($_image->getLabel()) : ?>
+												"<?php echo $this->escapeHtml($_image->getLabel()); ?>"
+											<?php else : ?>
+												"<?php echo $this->escapeHtml($_product->getName()); ?>"
+											<?php endif; ?>
+						data-image-index = "<?php echo $i ?>"
+						data-images      = '{"base": "<?php echo $_imageSrc ?>", "base2x": "<?php echo $_imageSrc2x ?>", "original": "<?php echo $_imageOriginalSrc ?>"}'
+						data-mfp-src     = "<?php echo $_imageOriginalSrc ?>"
+						data-image       = "<?php echo $_imageSrc ?>"
+						data-zoom-image  = "<?php echo $_imageOriginalSrc ?>"
+                    >
+					<?php if ($_bannerWebp): ?>
+                            <picture>
+                                <source
+                                    media="(min-width:320px)"
+                                    srcset="<?php echo $_thumbnailSrcWebp . ' 1x,' . $_thumbnailSrc2xWebp . ' 2x' ?>"
+                                    width           = "<?php echo $_galleryImageSize ?>"
+                                    height          = "<?php echo $_galleryImageSize ?>"
+                                    type="image/webp"
+                                />
+                                <img
+                                    class           = "img-responsive"
+                                    src             = "<?php echo $_thumbnailSrc ?>"
+                                    srcset          = "<?php echo $_thumbnailSrc . ' 1x,' . $_thumbnailSrc2x  . ' 2x' ?>"
+                                    alt             = <?php if ($_image->getLabel()) : ?>
+                                                            "<?php echo $this->escapeHtml($_image->getLabel()); ?>"
+                                                    <?php else : ?>
+                                                            "<?php echo $this->escapeHtml($_product->getName()); ?>"
+                                                    <?php endif; ?>
+                                    width           = "<?php echo $_galleryImageSize ?>"
+                                    height          = "<?php echo $_galleryImageSize ?>"
+                            />
+                            </picture>
+                        <?php else : ?>
+                            <img
+                                class           = "img-responsive"
+                                src             = "<?php echo $_thumbnailSrc ?>"
+                                srcset          = "<?php echo $_thumbnailSrc . ' 1x,' . $_thumbnailSrc2x  . ' 2x' ?>"
+                                alt             = <?php if ($_image->getLabel()) : ?>
+                                                         "<?php echo $this->escapeHtml($_image->getLabel()); ?>"
+                                                  <?php else : ?>
+                                                         "<?php echo $this->escapeHtml($_product->getName()); ?>"
+                                                  <?php endif; ?>
+                                width           = "<?php echo $_galleryImageSize ?>"
+                                height          = "<?php echo $_galleryImageSize ?>"
+                            />
+                        <?php endif; ?>
+                    </a>
+                </li>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
+
+<?php echo $this->getChildHtml('after') ?>

@@ -1,0 +1,59 @@
+<?php
+    $isEnabled = $this->isEnabled();
+    $_baseUrl = Mage::getBaseUrl();
+    $_baseMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+    $_baseMediaUrl = str_replace('/media', '', $_baseMedia);
+    $_bannerWebp = Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/active') &&
+    Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/webp_conversion') && ($__baseUrl != $_baseMediaUrl);
+    $_srcWebp = $_bannerWebp ? '.webp' : '';
+    $isEnabled = $this->isEnabled();
+    $isEnabledOnPagination = $this->isEnabledOnPagination();
+?>
+
+<?php if($isEnabled && $isEnabledOnPagination): ?>
+
+<?php
+$_helper      = $this->helper('catalog/output');
+$_category    = $this->getCurrentCategory();
+
+if ($_imgUrl  = $this->getSecondImageUrl($_category)) {
+    if ($_bannerWebp) {
+        $_imgHtml = '<p class="second-cat-img">
+            <picture>
+                <source
+                    media="(min-width:320px)"
+                    type="image/webp"
+                    srcset="' . $_imgUrl . '' . $_srcWebp . ', ' . $_imgUrl . '' . $_srcWebp . '"
+                    alt="' . $this->escapeHtml($_category->getName()) . '"
+                    title="' . $this->escapeHtml($_category->getName()) . '"
+                    type="image/webp"
+                />
+                <img
+                    src="' . $_imgUrl . '"
+                    srcset="' . $_imgUrl . ' 1x,' . $_imgUrl . ' 2x"
+                    alt="' . $this->escapeHtml($_category->getName()) . '"
+                    title="' . $this->escapeHtml($_category->getName()) . '"
+                />
+            </picture>
+        </p>';
+    } else {
+        $_imgHtml = '<p class="second-cat-img"><img src="' . $_imgUrl . '" srcset="' . $_imgUrl . ' 1x,' . $_imgUrl . ' 2x" alt="' . $this->escapeHtml($_category->getName()) . '" title="' . $this->escapeHtml($_category->getName()) . '" /></p>';
+    }
+
+    $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'second_image');
+}
+
+$_categoryDescriptionTruncate = Mage::getStoreConfig('blugento_categoryshowcase/general/category_description_truncate');
+$_categoryDescriptionTruncateValue = Mage::getStoreConfig('blugento_categoryshowcase/general/category_description_truncate_value') ?: 600;;
+?>
+<div class="category-second-intro">
+    <?php if ($_imgUrl): ?>
+        <?php echo $_imgHtml ?>
+    <?php endif; ?>
+    <div class="second-cat-desc category-description <?php if ($_categoryDescriptionTruncate): ?> description-truncated<?php endif; ?> std" data-truncated-value="<?php echo $_categoryDescriptionTruncateValue ?>">
+        <span class="description-content"><?php echo nl2br($_helper->categoryAttribute($_category, $_category->getSecondDescription(), 'second_description')) ?></span>
+        <span class="show-more"><?php echo $this->__('Read More') ?></span>
+        <span class="show-less"><?php echo $this->__('Show less') ?></span>
+    </div>
+</div>
+<?php endif; ?>

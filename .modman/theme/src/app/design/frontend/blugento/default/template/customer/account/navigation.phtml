@@ -1,0 +1,66 @@
+<?php
+$helper = $this->helper('customer');
+$_customer = Mage::getSingleton('customer/session')->getCustomer();
+$_customerFirstName = explode(' ', $_customer->getFirstname());
+$_customerLastName = explode(' ', $_customer->getLastname());
+$_nickName = substr($_customerFirstName[0], 0 , 1) . substr($_customerLastName[0], 0, 1);
+$_newCustomerLayout = (int) ($this->getLayout()->getBlock('root')->getMyAccountCustomerNewLayout() ?: 2);
+?>
+<?php if ($_newCustomerLayout == 1) : ?>
+	<div class="block block-account dock">
+	    <div class="block-title">
+		    <strong class="avatar"><?php echo $_nickName; ?></strong>
+	        <h2><?php echo $this->__('My Account'); ?></h2>
+	    </div>
+	    <div class="block-content">
+	        <ul>
+	            <?php $_links = $this->getLinks(); ?>
+	            <?php $_index = 1; ?>
+	            <?php $_count = count($_links); /* Add or Remove Account Left Navigation Links Here -*/
+	                //unset($_links['recurring_profiles']); /* Recurring Profiles */
+	                unset($_links['OAuth Customer Tokens']); // My Applications
+	                unset($_links['billing_agreements']); /* Billing Agreements */
+	            ?>
+	            <?php foreach ($_links as $_link): ?>
+	                <?php $_last = ($_index++ >= $_count); ?>
+	                <?php if ($this->isActive($_link)): ?>
+	                    <li class="current<?php echo ($_last ? ' last' : '') ?>"><a href="#"><strong><?php echo $_link->getLabel() ?></strong></a></li>
+	                <?php else: ?>
+	                    <li<?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+	                <?php endif; ?>
+	            <?php endforeach; ?>
+	             <li class="on-mobile">
+	                <a href="<?php echo $helper->getLogoutUrl(); ?>" title="<?php echo $this->__('Log Out'); ?>"><?php echo $this->__('Log Out'); ?></a>
+	            </li>
+	        </ul>
+	    </div>
+	</div>
+<?php elseif ($_newCustomerLayout == 2) : ?>
+	<div class="block block-account dock">
+		<div class="block-title">
+			<strong><span><?php echo $this->__('My Account'); ?></span></strong>
+		</div>
+		<div class="block-content">
+			<ul>
+				<?php $_links = $this->getLinks(); ?>
+				<?php $_index = 1; ?>
+				<?php $_count = count($_links); /* Add or Remove Account Left Navigation Links Here -*/
+				//unset($_links['recurring_profiles']); /* Recurring Profiles */
+				unset($_links['OAuth Customer Tokens']); // My Applications
+				unset($_links['billing_agreements']); /* Billing Agreements */
+				?>
+				<?php foreach ($_links as $_link): ?>
+					<?php $_last = ($_index++ >= $_count); ?>
+					<?php if ($this->isActive($_link)): ?>
+						<li class="current<?php echo ($_last ? ' last' : '') ?>"><a href="#"><strong><?php echo $_link->getLabel() ?></strong></a></li>
+					<?php else: ?>
+						<li<?php echo ($_last ? ' class="last"' : '') ?>><a href="<?php echo $_link->getUrl() ?>"><?php echo $_link->getLabel() ?></a></li>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				<li class="on-mobile">
+					<a href="<?php echo $helper->getLogoutUrl(); ?>" title="<?php echo $this->__('Log Out'); ?>"><?php echo $this->__('Log Out'); ?></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+<?php endif; ?>

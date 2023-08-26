@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout>
+
+    <blugento_localizer_frontend_agreements>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/content.phtml</template>
+            </action>
+        </reference>
+    </blugento_localizer_frontend_agreements>
+
+</layout>

@@ -1,0 +1,29 @@
+<?php
+    $columns = $this->getColumns();
+?>
+<table class="data-table" id="wishlist-table">
+    <tbody>
+        <?php if (count($this->getItems())): ?>
+            <?php foreach ($this->getItems() as $item): ?>
+                <tr id="item_<?php echo $item->getId(); ?>">
+                    <?php foreach ($columns as $key => $column): ?>
+                        <?php $_blockName = str_replace('.', '-', strtolower($column->getNameInLayout())); ?>
+                        <td class="<?php echo 'wishlist-cell' . $key ?> <?php echo $_blockName ?>"><?php $column->setItem($item); echo $column->toHtml($item) ?></td>
+                    <?php endforeach; ?>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <td colspan="<?php echo count($columns) ?>" class="wishlist-empty"><?php echo $this->__('This Wishlist has no Items'); ?></td>
+        <?php endif; ?>
+    </tbody>
+</table>
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getAdditionalHtml(); ?>
+<?php endforeach; ?>
+<script>
+//<![CDATA[
+<?php foreach ($columns as $column): ?>
+    <?php echo $column->getJs(); ?>
+<?php endforeach; ?>
+//]]>
+</script>

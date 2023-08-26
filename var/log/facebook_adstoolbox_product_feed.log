@@ -1,0 +1,121 @@
+2023-08-16T00:00:05+00:00 INFO (6): feed generation start...
+2023-08-16T00:00:05+00:00 INFO (6): Generating Categories
+2023-08-16T00:00:05+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-16T00:00:05+00:00 INFO (6): About to begin writing 49 products
+2023-08-16T00:00:05+00:00 INFO (6): Store id = 1 
+2023-08-16T00:00:05+00:00 INFO (6): Current Memory usage: 11.038803 M / 128M
+2023-08-16T00:00:05+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-16T00:00:05+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-16T00:00:05+00:00 INFO (6): generated!
+2023-08-16T00:00:05+00:00 INFO (6): feed generation finished, time used: 0 seconds
+2023-08-17T00:00:05+00:00 INFO (6): feed generation start...
+2023-08-17T00:00:05+00:00 INFO (6): Generating Categories
+2023-08-17T00:00:05+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-17T00:00:05+00:00 INFO (6): About to begin writing 49 products
+2023-08-17T00:00:05+00:00 INFO (6): Store id = 1 
+2023-08-17T00:00:05+00:00 INFO (6): Current Memory usage: 11.026901 M / 128M
+2023-08-17T00:00:05+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-17T00:00:05+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-17T00:00:05+00:00 INFO (6): generated!
+2023-08-17T00:00:05+00:00 INFO (6): feed generation finished, time used: 0 seconds
+2023-08-18T00:15:05+00:00 INFO (6): feed generation start...
+2023-08-18T00:15:05+00:00 INFO (6): Generating Categories
+2023-08-18T00:15:05+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-18T00:15:05+00:00 INFO (6): About to begin writing 49 products
+2023-08-18T00:15:05+00:00 INFO (6): Store id = 1 
+2023-08-18T00:15:05+00:00 INFO (6): Current Memory usage: 9.912216 M / 128M
+2023-08-18T00:15:05+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-18T00:15:05+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-18T00:15:05+00:00 INFO (6): generated!
+2023-08-18T00:15:05+00:00 INFO (6): feed generation finished, time used: 0 seconds
+2023-08-19T00:15:05+00:00 INFO (6): feed generation start...
+2023-08-19T00:15:05+00:00 INFO (6): Generating Categories
+2023-08-19T00:15:05+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-19T00:15:05+00:00 INFO (6): About to begin writing 49 products
+2023-08-19T00:15:05+00:00 INFO (6): Store id = 1 
+2023-08-19T00:15:05+00:00 INFO (6): Current Memory usage: 9.874825 M / 128M
+2023-08-19T00:15:05+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-19T00:15:06+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-19T00:15:06+00:00 INFO (6): generated!
+2023-08-19T00:15:06+00:00 INFO (6): feed generation finished, time used: 1 seconds
+2023-08-20T00:30:05+00:00 INFO (6): feed generation start...
+2023-08-20T00:30:05+00:00 INFO (6): Generating Categories
+2023-08-20T00:30:05+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-20T00:30:05+00:00 INFO (6): About to begin writing 49 products
+2023-08-20T00:30:05+00:00 INFO (6): Store id = 1 
+2023-08-20T00:30:05+00:00 INFO (6): Current Memory usage: 10.902237 M / 128M
+2023-08-20T00:30:05+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-20T00:30:05+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-20T00:30:05+00:00 INFO (6): generated!
+2023-08-20T00:30:05+00:00 INFO (6): feed generation finished, time used: 0 seconds
+2023-08-21T00:35:02+00:00 INFO (6): feed generation start...
+2023-08-21T00:35:02+00:00 INFO (6): Generating Categories
+2023-08-21T00:35:02+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-21T00:35:02+00:00 INFO (6): About to begin writing 49 products
+2023-08-21T00:35:02+00:00 INFO (6): Store id = 1 
+2023-08-21T00:35:02+00:00 INFO (6): Current Memory usage: 10.880707 M / 128M
+2023-08-21T00:35:02+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-21T00:35:03+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-21T00:35:03+00:00 INFO (6): generated!
+2023-08-21T00:35:03+00:00 INFO (6): feed generation finished, time used: 1 seconds
+2023-08-22T00:50:02+00:00 INFO (6): feed generation start...
+2023-08-22T00:50:02+00:00 INFO (6): Generating Categories
+2023-08-22T00:50:02+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-22T00:50:03+00:00 INFO (6): About to begin writing 49 products
+2023-08-22T00:50:03+00:00 INFO (6): Store id = 1 
+2023-08-22T00:50:03+00:00 INFO (6): Current Memory usage: 9.926582 M / 128M
+2023-08-22T00:50:03+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-22T00:50:03+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-22T00:50:03+00:00 INFO (6): generated!
+2023-08-22T00:50:03+00:00 INFO (6): feed generation finished, time used: 1 seconds
+2023-08-23T01:00:04+00:00 INFO (6): feed generation start...
+2023-08-23T01:00:04+00:00 INFO (6): Generating Categories
+2023-08-23T01:00:04+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-23T01:00:04+00:00 INFO (6): About to begin writing 49 products
+2023-08-23T01:00:04+00:00 INFO (6): Store id = 1 
+2023-08-23T01:00:04+00:00 INFO (6): Current Memory usage: 7.744759 M / 128M
+2023-08-23T01:00:04+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-23T01:00:05+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-23T01:00:05+00:00 INFO (6): generated!
+2023-08-23T01:00:05+00:00 INFO (6): feed generation finished, time used: 1 seconds
+2023-08-24T01:00:06+00:00 INFO (6): feed generation start...
+2023-08-24T01:00:06+00:00 INFO (6): Generating Categories
+2023-08-24T01:00:06+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-24T01:00:06+00:00 INFO (6): About to begin writing 49 products
+2023-08-24T01:00:06+00:00 INFO (6): Store id = 1 
+2023-08-24T01:00:06+00:00 INFO (6): Current Memory usage: 11.041199 M / 128M
+2023-08-24T01:00:06+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-24T01:00:06+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-24T01:00:06+00:00 INFO (6): generated!
+2023-08-24T01:00:06+00:00 INFO (6): feed generation finished, time used: 0 seconds
+2023-08-25T01:15:04+00:00 INFO (6): feed generation start...
+2023-08-25T01:15:04+00:00 INFO (6): Generating Categories
+2023-08-25T01:15:04+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-25T01:15:04+00:00 INFO (6): About to begin writing 49 products
+2023-08-25T01:15:04+00:00 INFO (6): Store id = 1 
+2023-08-25T01:15:04+00:00 INFO (6): Current Memory usage: 9.868713 M / 128M
+2023-08-25T01:15:04+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-25T01:15:04+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-25T01:15:04+00:00 INFO (6): generated!
+2023-08-25T01:15:04+00:00 INFO (6): feed generation finished, time used: 0 seconds
+2023-08-26T01:15:05+00:00 INFO (6): feed generation start...
+2023-08-26T01:15:05+00:00 INFO (6): Generating Categories
+2023-08-26T01:15:05+00:00 INFO (6): going to generate file:facebook_adstoolbox_product_feed.tsv
+2023-08-26T01:15:05+00:00 INFO (6): About to begin writing 49 products
+2023-08-26T01:15:05+00:00 INFO (6): Store id = 1 
+2023-08-26T01:15:05+00:00 INFO (6): Current Memory usage: 9.873444 M / 128M
+2023-08-26T01:15:05+00:00 INFO (6): scanning products [0 -> 49)...
+
+2023-08-26T01:15:06+00:00 INFO (6): generating gzip copy of facebook_adstoolbox_product_feed.tsv ...
+2023-08-26T01:15:06+00:00 INFO (6): generated!
+2023-08-26T01:15:06+00:00 INFO (6): feed generation finished, time used: 1 seconds

@@ -1,0 +1,45 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       _config.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_grunt.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_design.scss
+    Version:        1.0
+    Description:    Colors and Images Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_image.scss
+    Version:        1.0
+    Description:    Default Image Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_layout.scss
+    Version:        1.0
+    Description:    Default Layout Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_core.scss
+    Version:        1.0
+    Description:    Default Core Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_component.scss
+    Version:        1.0
+    Description:    Default Component Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_module.scss
+    Version:        1.0
+    Description:    Default Modules Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       config/_custom.scss
+    Version:        1.0
+    Description:    Custom Variables
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_util.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- *//*! ----------------------------------------------------------------------------
+    Filename:       mixin/_responsive.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */#popup-mobile .mfp-title,.mfp-bottom-bar .mfp-title{display:none;padding-right:0}#popup-mobile .mfp-title:after,.mfp-bottom-bar .mfp-title:after{content:'';display:table;clear:both}#popup-mobile button,.mfp-bottom-bar button{border:0}#popup-mobile .slick-next,#popup-mobile .slick-prev,.mfp-bottom-bar .slick-next,.mfp-bottom-bar .slick-prev{z-index:2;position:absolute;top:0;bottom:0;width:54px;border:0;font-size:0;background-color:rgba(255,255,255,.65);background-repeat:no-repeat;background-position:50% 50%}#popup-mobile .slick-prev,.mfp-bottom-bar .slick-prev{left:0;background-image:url(../../../images/icon--arrow-left--b1.svg)}#popup-mobile .slick-next,.mfp-bottom-bar .slick-next{right:0;background-image:url(../../../images/icon--arrow-right--b1.svg)}.mfp-slider ul li{display:inline-block}img.mfp-img{display:inline-block;vertical-align:middle;max-height:650px!important}.mfp-figure:after{background-color:#fff}.mfp-figure figure{min-width:30vw;min-height:60vh;line-height:60vh;text-align:center}.mfp-figure figcaption{line-height:normal}

@@ -1,0 +1,409 @@
+<?php
+    $_enabledGdpr = Mage::getStoreConfig('blugento_gdpruserdata/general/enabled');
+	$storeId = Mage::app()->getStore()->getStoreId();
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="fieldset">
+    <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+    <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+    <?php if (version_compare(Mage::getVersion(),"1.9.2.2",">=")): ?>
+        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+    <?php endif; ?>
+    <ul class="form-list">
+        <li class="fields">
+            <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
+        </li>
+        <li>
+            <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+            <div class="input-box">
+                <input type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="input-text validate-email required-entry" />
+            </div>
+        </li>
+        <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+        <?php if ($_dob->isEnabled()): ?>
+            <li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
+        <?php endif ?>
+        <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+        <?php if ($_taxvat->isEnabled()): ?>
+            <li><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
+        <?php endif ?>
+        <?php if (Mage::getStoreConfig('customer/address/regno_show', $storeId) == 'opt' || Mage::getStoreConfig('customer/address/regno_show', $storeId) == 'req') : ?>
+            <li class="fields">
+                <div class="field">
+                    <?php if (Mage::getStoreConfig('customer/address/regno_show') == 'req') : ?>
+                        <label for="blugento_customer_reg_no" class="required"><em>*</em><?php echo $this->__('Registration Number') ?></label>
+                    <?php else : ?>
+                        <label for="blugento_customer_reg_no"><?php echo $this->__('Registration Number') ?></label>
+                    <?php endif; ?>
+                    <div class="input-box">
+                        <input type="text" name="blugento_customer_reg_no" id="blugento_customer_reg_no"
+                               value="<?php echo $this->escapeHtml($this->getFormData()->getBlugentoCustomerRegNo()) ?>"
+                               title="<?php echo $this->__('Registration Number') ?>"
+                               class="input-text <?php echo Mage::getStoreConfig('customer/address/regno_show', $storeId) == 'req' ? 'required-entry validate-customer-reg-no' : '' ?>"/>
+                    </div>
+                </div>
+            </li>
+        <?php endif; ?>
+        <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+        <?php if ($_gender->isEnabled()): ?>
+            <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+        <?php endif ?>
+    </ul>
+</div>
+<?php if($this->getShowAddressFields() || Mage::getStoreConfig('customer/address/show_address_fields', $storeId)): ?>
+	<?php $this->setShowAddressFields(true); ?>
+    <div class="fieldset">
+        <input type="hidden" name="create_address" value="1" />
+        <ul class="form-list">
+            <li class="fields">
+	            <?php if (Mage::getStoreConfig('customer/address/company_show', $storeId) == 'opt' || Mage::getStoreConfig('customer/address/company_show', $storeId) == 'req') : ?>
+	                <div class="field">
+	                    <?php if (Mage::getStoreConfig('customer/address/company_show') == 'req') : ?>
+                            <label for="company" class="required"><em>*</em><?php echo $this->__('Company') ?></label>
+                        <?php else : ?>
+                            <label for="company"><?php echo $this->__('Company') ?></label>
+                        <?php endif; ?>
+	                    <div class="input-box">
+		                    <input type="text" name="company" id="company" value="<?php echo $this->escapeHtml($this->getFormData()->getCompany()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Company')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('company') ?>" />
+                        </div>
+	                </div>
+                <?php endif; ?>
+	            <?php if (Mage::getStoreConfig('customer/address/phone_show', $storeId) == 'opt' || Mage::getStoreConfig('customer/address/phone_show', $storeId) == 'req') : ?>
+	                <div class="field">
+	                    <?php if (Mage::getStoreConfig('customer/address/phone_show') == 'req') : ?>
+                            <label for="telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                        <?php else : ?>
+                            <label for="telephone"><?php echo $this->__('Telephone') ?></label>
+                        <?php endif; ?>
+	                    <div class="input-box">
+		                    <input type="text" name="telephone" id="telephone" value="<?php echo $this->escapeHtml($this->getFormData()->getTelephone()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Telephone')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('telephone') ?>" />
+                        </div>
+                    </div>
+	            <?php endif; ?>
+            </li>
+            <?php $_streetValidationClass = $this->helper('customer/address')->getAttributeValidationClass('street'); ?>
+	        <?php if (Mage::getStoreConfig('customer/address/street_show', $storeId) == 'opt' || Mage::getStoreConfig('customer/address/street_show', $storeId) == 'req') : ?>
+	            <li class="wide">
+                    <?php if (Mage::getStoreConfig('customer/address/street_show') == 'req') : ?>
+                        <label for="street_1" class="required"><em>*</em><?php echo $this->__('Street Address') ?></label>
+                    <?php else : ?>
+                        <label for="street_1"><?php echo $this->__('Street Address') ?></label>
+                    <?php endif; ?>
+                    <div class="input-box">
+	                    <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getFormData()->getStreet(1)) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Street Address')) ?>" id="street_1" class="input-text <?php echo $_streetValidationClass ?>" />
+                    </div>
+                </li>
+            <?php endif; ?>
+            <?php $_streetValidationClass = trim(str_replace('required-entry', '', $_streetValidationClass)); ?>
+            <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                <li class="wide">
+                    <div class="input-box">
+                        <input type="text" name="street[]" value="<?php echo $this->escapeHtml($this->getFormData()->getStreet($_i)) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Street Address %s', $_i)) ?>" id="street_<?php echo $_i ?>" class="input-text <?php echo $_streetValidationClass ?>" />
+                    </div>
+                </li>
+            <?php endfor; ?>
+            <li class="fields">
+	            <?php if (Mage::getStoreConfig('customer/address/city_show', $storeId) == 'opt' || Mage::getStoreConfig('customer/address/city_show', $storeId) == 'req') : ?>
+	                <div class="field">
+                        <?php if (Mage::getStoreConfig('customer/address/city_show') == 'req') : ?>
+                            <label for="city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                        <?php else : ?>
+                            <label for="city"><?php echo $this->__('City') ?></label>
+                        <?php endif; ?>
+                        <div class="input-box">
+	                        <input type="text" name="city" value="<?php echo $this->escapeHtml($this->getFormData()->getCity()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('City')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('city') ?>" id="city" />
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div class="field">
+                    <label for="region_id" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                    <div class="input-box">
+                        <select id="region_id" name="region_id" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="validate-select" style="display:none;">
+                            <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                        </select>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            $('region_id').setAttribute('defaultValue', "<?php echo $this->getFormData()->getRegionId() ?>");
+                            //]]>
+                        </script>
+                        <input type="text" id="region" name="region" value="<?php echo $this->escapeHtml($this->getRegion()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('State/Province')) ?>" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('region') ?>" style="display:none;" />
+                    </div>
+                </div>
+            </li>
+            <li class="fields">
+                <div class="field">
+                    <label for="zip" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="postcode" value="<?php echo $this->escapeHtml($this->getFormData()->getPostcode()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Zip/Postal Code')) ?>" id="zip" class="input-text <?php echo $this->helper('customer/address')->getAttributeValidationClass('postcode') ?>" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="country" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                    <div class="input-box">
+                        <?php echo $this->getCountryHtmlSelect() ?>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <input type="hidden" name="default_billing" value="1" />
+        <input type="hidden" name="default_shipping" value="1" />
+    </div>
+<?php endif; ?>
+<div class="fieldset">
+    <ul class="form-list">
+        <li class="fields">
+            <div class="field">
+                <label for="password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                <div class="input-box">
+                    <input autocomplete="new-password" type="password" name="password" id="password" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>" class="input-text required-entry validate-password" />
+                </div>
+            </div>
+            <div class="field">
+                <label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                <div class="input-box">
+                    <input autocomplete="new-password" type="password" name="confirmation" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Confirm Password')) ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                </div>
+            </div>
+        </li>
+        <?php echo $this->getChildHtml('form.additional.info'); ?>
+        <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+        <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+        <?php if ($this->isNewsletterEnabled()): ?>
+            <li class="control">
+                <div class="input-box">
+                    <input type="checkbox" name="is_subscribed" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                    <label for="is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
+                    <?php /* Extensions placeholder */ ?>
+                    <?php echo $this->getChildHtml('customer.form.register.newsletter')?>
+                </div>
+                <?php if ($_enabledGdpr): ?>
+                    <?php if (Mage::getStoreConfig('blugento_gdpruserdata/consent/read_more')): ?>
+                        <div class="content-popup-text show-less">
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-newsletter-checkbox-consent')->toHtml(); ?>
+                            <a href="#popup-conditions" class="show-more"><?php echo $this->__('[Show]') ?></a>
+                        </div>
+                        <script>
+                            (function($) {
+                                $('.content-popup-text .show-more').on('click', function() {
+                                    $(this).parent().removeClass('show-less');
+                                    $(this).remove();
+                                });
+                            })(jQuery);
+                        </script>
+                    <?php else: ?>
+                        <div class="content-popup-text" id="popup-conditions">
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-newsletter-checkbox-consent')->toHtml(); ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </li>
+        <?php endif ?>
+    </ul>
+    <?php if(Mage::helper('core')->isModuleEnabled('Blugento_GdprInformConsent')): ?>
+        <div class="gdpr-conditions">
+            <input name="gdpr_consent" id="gdpr-conditions-register" type="checkbox" class="checkbox required-entry">
+            <label for="gdpr-conditions-register" style="float:none;" class="required">
+                <?php echo $this->__('I agree with the processing of personal data under the ') ?>
+                <a class="privacy-policy-show-popup" href="#"><?php echo $this->__('Privacy Policy') ?></a>
+                <div id="privacy-policy-popup" class="modal privacy-policy-popup">
+                    <div class="sub-container">
+                        <div class="content">
+                            <div class="privacy-policy-popup-content">
+                                <div><?php echo $this->getPrivacyPolicyContent(); ?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+            <?php if (Mage::getStoreConfig('blugento_gdpruserdata/consent/read_more')): ?>
+                <div class="content-popup-text show-less">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-checkout-gdpr-acknowledgement')->toHtml(); ?>
+                    <a href="#popup-conditions" class="show-more"><?php echo $this->__('[Show]') ?></a>
+                </div>
+                <script>
+                    (function($) {
+                        $('.content-popup-text .show-more').on('click', function() {
+                            $(this).parent().removeClass('show-less');
+                            $(this).remove();
+                        });
+                    })(jQuery);
+                </script>
+            <?php else: ?>
+                <div class="content-popup-text">
+                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-checkout-gdpr-acknowledgement')->toHtml(); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+</div>
+<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnRegister()): ?>
+    <div class="no-display">
+        <input type="text" name="noSpam" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('No Spam')) ?>" id="no-spam" class="input-text no-display required-entry" />
+    </div>
+<?php endif; ?>
+<div class="buttons-set">
+	<button disabled title="<?php echo $this->__('Create account') ?>" name="send" id="g-recaptcha-register" class="button g-recaptcha-register disable" data-size="invisible" data-badge="bottomleft"><span><span><?php echo $this->__('Create account') ?></span></span></button>
+	<?php if (Mage::getStoreConfig('ajaxlogin/options/button_placement') === 'default'): ?>
+	    <p>
+	        <span><?php echo $this->__('Already a user?') ?></span>
+	        <a href="<?php echo $this->helper('customer')->getLoginUrl() ?>" class="login-btn"><?php echo $this->__('Login') ?></a>
+	    </p>
+	<?php endif; ?>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php if($this->getShowAddressFields()): ?>
+    new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+    <?php endif; ?>
+    //]]>
+</script>
+
+<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnRegister()): ?>
+    <script>
+        // Prevent form to submit if hidden input has value
+        jQuery('#ajaxlogin-create-form').submit(function(e) {
+            if (jQuery('#no-spam').val() !== '') {
+                e.preventDefault();
+
+                window.history.back();
+            }
+        });
+
+        function onSubmitRegister(token) {
+            setTimeout(function(){
+				jQuery('.g-recaptcha-register').attr('data-token', token);
+
+				if (jQuery('#no-spam').val() === '' || jQuery('#no-spam').val() === undefined) {
+					return new Promise(function (resolve, reject) {
+						var dataForm = new VarienForm('ajaxlogin-create-form');
+						var tokenHash = jQuery('.g-recaptcha-register').attr('data-token');
+
+						if (tokenHash && tokenHash.length > 100) {
+                            jQuery('#no-spam').removeClass('required-entry');
+
+                            if (dataForm.validator && dataForm.validator.validate()){
+                                jQuery('#ajaxlogin-create-form').attr('action', '<?php echo $this->getUrl('ajaxlogin/index/create', array('_secure'=>true)) ?>');
+                                submitRegister();
+                            }
+                        }
+                    });
+                } else {
+                    window.history.back();
+                }
+            }, 500);
+        }
+
+        // Check if captcha container have loaded class, if not than captcha will be loaded
+        function loadCaptchaRegister() {
+            // Fix for google recaptcha from 18 June
+            if ("NodeList" in window) {
+                if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+                    NodeList.prototype.each = NodeList.prototype.forEach;
+                }
+            }
+
+            if (!jQuery('.captcha_container_register').length) {
+                jQuery('#g-recaptcha-register').addClass('captcha_container_register');
+                var captchaContainer = null;
+                var loadCaptchaRegisterFunction = function() {
+                    captchaContainer = grecaptcha.render('g-recaptcha-register', {
+                        'sitekey': '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+                        'callback': onSubmitRegister
+                    });
+                };
+
+                loadCaptchaRegisterFunction();
+            }
+        };
+
+        // Once user insert a value, loadCaptchaContent will be called
+		jQuery('#ajaxlogin-create-form input').each(function(e) {
+			jQuery(this).on('change keyup blur input', function(e) {
+                loadCaptchaRegister();
+			});
+		});
+
+
+        jQuery('.g-recaptcha-register').on('click', function(e) {
+            onSubmitRegister();
+        });
+
+        // This script it's necessary when recaptcha is available
+        function submitRegister() {
+            if (typeof event != 'undefined') { // ie9 fix
+                event.preventDefault ? event.preventDefault() : event.returnValue = false;
+            }
+
+            if (!ajaxCreateForm.validator.validate()) {
+                return false;
+            }
+
+            $('ajaxlogin-window').addClassName('loading');
+            $('please-wait').show();
+
+            new Ajax.Request($('ajaxlogin-create-form').action, {
+                xhrFields: {
+                    withCredentials: true
+                },
+                method: "post",
+                parameters: $('ajaxlogin-create-form').serialize(),
+                onCreate: function(response) {
+                    var t = response.transport;
+                    t.setRequestHeader = t.setRequestHeader.wrap(function(original, k, v) {
+                        if (/^(accept|accept-language|content-language|cookie|access-control-allow-origin|access-control-allow-headers|access-control-allow-credentials)$/i.test(k))
+                            return original(k, v);
+                        if (/^content-type$/i.test(k) &&
+                            /^(application\/x-www-form-urlencoded|multipart\/form-data|text\/plain)(;.+)?$/i.test(v))
+                            return original(k, v);
+                        return;
+                    });
+                },
+                onSuccess: function(transport) {
+                    var section = $('ajaxlogin-create-form');
+                    if (!section) {
+                        return;
+                    }
+                    var ul = section.select('.messages')[0];
+                    if (ul) {
+                        ul.remove();
+                    }
+
+                    var response = transport.responseText.evalJSON();
+                    if (response.error) {
+                        $('ajaxlogin-window').removeClassName('loading');
+                        $('please-wait').hide();
+
+                        var section = $('ajaxlogin-create-form');
+                        if (!section) {
+                            return;
+                        }
+                        var ul = section.select('.messages')[0];
+                        if (!ul) {
+                            section.insert({
+                                top: '<ul class="messages"></ul>'
+                            });
+                            ul = section.select('.messages')[0]
+                        }
+                        var li = $(ul).select('.error-msg')[0];
+                        if (!li) {
+                            $(ul).insert({
+                                top: '<li class="error-msg"><ul></ul></li>'
+                            });
+                            li = $(ul).select('.error-msg')[0];
+                        }
+                        $(li).select('ul')[0].insert(
+                            '<li>' + response.error + '</li>'
+                        );
+                        self.updateCaptcha('user_login');
+                    }
+                    if (response.redirect) {
+                        document.location = response.redirect;
+                        return;
+                    }
+                }
+            });
+        }
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptchaRegisterFunction&render=explicit" async defer></script>
+<?php endif; ?>

@@ -1,0 +1,94 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_pager.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.pager {
+    @include cf;
+
+    &--no-toolbar {
+        margin-bottom: 15px;
+    }
+
+    select {
+        margin: 0 10px;
+    }
+
+    .amount {
+        float: left;
+        margin: 8px 10px 0 0;
+    }
+
+    .limiter {
+        float: right;
+
+        @include mobile {
+            label {
+                display: none;
+            }
+        }
+    }
+
+    @if ($product_list_order_sort == 2) {
+        .limiter {
+            display: none;
+
+            label {
+                display: none;
+            }
+        }
+    }
+
+    .pages {
+        float: right;
+        margin: 8px 0 0 10px;
+
+        @include phone-s {
+            float: left;
+            margin-left: 0;
+        }
+
+        strong {
+            display: none;
+        }
+
+        ol li {
+            display: inline-block;
+            padding: 0 10px;
+            vertical-align: middle;
+
+            &.first-page,
+            &.last-page {
+                a {
+                    font-size: 20px;
+                    line-height: 18px;
+                }
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            &.current {
+                color: color('r');
+            }
+
+            a.next {
+                &:after {
+                    content: $icon--arrow-right--a1;
+                    vertical-align: sub;
+                }
+            }
+
+            a.previous {
+                &:after {
+                    content: $icon--arrow-left--a1;
+                    vertical-align: sub;
+                }
+            }
+        }
+    }
+}

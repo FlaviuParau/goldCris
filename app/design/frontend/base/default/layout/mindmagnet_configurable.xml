@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <catalog_product_view>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name helper="mindmagnet_configurable/getConfigurableJs" />
+            </action>
+        </reference>
+    </catalog_product_view>
+
+    <PRODUCT_TYPE_configurable module="catalog">
+        <reference name="product.info.options.wrapper">
+            <block type="catalog/product_view_type_configurable"
+                   name="product.info.prices.configurable"
+                   as="prices_configurable"
+                   before="-"
+                   template="mindmagnet_configurable/catalog/product/view/type/prices/configurable.phtml"/>
+        </reference>
+    </PRODUCT_TYPE_configurable>
+</layout>

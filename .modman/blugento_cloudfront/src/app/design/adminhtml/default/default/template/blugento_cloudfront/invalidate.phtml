@@ -1,0 +1,45 @@
+<?php 
+
+$isEnabled = $this->isEnabled();
+
+?>
+<?php if ($isEnabled): ?>
+
+<?php $helper = Mage::helper('blugento_cloudfront'); ?>
+<br>
+<form action="<?php echo $this->getInvalidationUrl('invalidate'); ?>" method="get">
+    <h1><?php echo $helper->__('Amazon Cloudfront File Invalidation'); ?></h1>
+    <table class="form-list">
+        <tr>
+            <td class="scope-label">
+                <textarea name="invalidation_path" cols="75" rows="6"></textarea> <br>
+                <?php echo $helper->__('Separate multiple paths using a comma e.g /media/css_secure/*,/media/wysiwyg/image.png,/media/catalog/product/shoe.jpg') ?>
+            </td>
+        </tr>
+        <tr>
+            <td class="scope-label">
+                <button type="submit" class="scalable"><span><?php echo $helper->__('Submit') ?></span></button>
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+<table class="form-list">
+    <tr>
+        <td class="scope-label">
+            <button onclick="setLocation('<?php echo $this->getInvalidationUrl('invalidateCss') ?>')" type="button" class="scalable invalidate_btn"><span><?php echo $helper->__('Invalidate Skin&CSS') ?></span></button>
+        </td>
+    </tr>
+    <tr>
+        <td class="scope-label">
+            <button onclick="setLocation('<?php echo $this->getInvalidationUrl('invalidateWysiwyg') ?>')" type="button" class="scalable invalidate_btn"><span><?php echo $helper->__('Invalidate Media WYSIWYG') ?></span></button>
+        </td>
+    </tr>
+    <tr>
+        <td class="scope-label">
+            <button onclick="setLocation('<?php echo $this->getInvalidationUrl('invalidateJs') ?>')" type="button" class="scalable invalidate_btn"><span><?php echo $helper->__('Invalidate JS') ?></span></button>
+        </td>
+    </tr>
+</table>
+
+<?php endif ?>

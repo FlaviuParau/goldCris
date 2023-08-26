@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="header">
+            <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+            <block type="core/template" name="top.search.sticky" as="topSearchSticky" template="catalogsearch/form.mini.sticky.phtml"/>
+        </reference>
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="catalogsearch" ifconfig="catalog/seo/search_terms">
+                <label>Search Terms</label>
+                <url helper="catalogsearch/getSearchTermUrl" />
+                <title>Search Terms</title>
+            </action>
+            <action method="addLink" translate="label title" module="catalogsearch">
+                <label>Advanced Search</label>
+                <url helper="catalogsearch/getAdvancedSearchUrl" />
+                <title>Advanced Search</title>
+            </action>
+        </reference>
+    </default>
+
+    <catalogsearch_result_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="catalogsearch.leftnav">
+            <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+        </reference>
+        <reference name="search_result_list">
+            <block type="core/text_list" name="product_list.name.after" as="name.after" />
+            <block type="core/text_list" name="product_list.after" as="after" />
+        </reference>
+    </catalogsearch_result_index>
+
+    <catalogsearch_advanced_index>
+        <reference name="head">
+            <action method="removeItem">
+                <type>js_css</type>
+                <name>calendar/calendar-win2k-1.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/calendar.css</name>
+                <params />
+            </action>
+        </reference>
+    </catalogsearch_advanced_index>
+
+    <catalogsearch_advanced_result>
+        <reference name="search_result_list">
+            <block type="core/text_list" name="product_list.name.after" as="name.after" />
+            <block type="core/text_list" name="product_list.after" as="after" />
+        </reference>
+    </catalogsearch_advanced_result>
+
+</layout>

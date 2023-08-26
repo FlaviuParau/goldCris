@@ -1,0 +1,1571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/**
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to
+* newer versions in the future.
+*
+* @category    Blugento
+* @package     Blugento_ProductsWidget
+* @author      Mihai Rastasan <mihai.rastasan@blugento.ro>
+* @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/-->
+<widgets>
+	<blugento_productswidget_category type="blugento_productswidget/category">
+		<name>Blugento Products Category</name>
+		<parameters>
+			<display_title translate="label">
+				<visible>1</visible>
+				<label>Display Title</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<required>0</required>
+			</display_title>
+			<title translate="label">
+				<visible>1</visible>
+				<label>Title</label>
+				<type>text</type>
+				<depends>
+					<display_title><value>1</value></display_title>
+				</depends>
+				<required>1</required>
+			</title>
+			<category translate="label">
+				<visible>1</visible>
+				<label>Category</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_category</source_model>
+				<required>1</required>
+			</category>
+			<show_price translate="label">
+				<visible>1</visible>
+				<label>Show Products Price</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_price>
+			<show_add_to_cart translate="label">
+				<visible>1</visible>
+				<label>Show Add to Cart</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_cart>
+			<show_buy_now_button translate="label">
+				<visible>1</visible>
+				<label>Show Buy Now Button</label>
+				<type>select</type>
+				<value>2</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_buy_now_button>
+			<show_add_to_wishlist translate="label">
+				<visible>1</visible>
+				<label>Show Add to Wishlist</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_wishlist>
+			<show_add_to_compare translate="label">
+				<visible>1</visible>
+				<label>Show Add to Compare</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_compare>
+			<show_short_description translate="label">
+				<visible>1</visible>
+				<label>Show Short Description</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_description</source_model>
+				<required>0</required>
+			</show_short_description>
+			<allow_out_of_stock translate="label">
+				<visible>1</visible>
+				<label>Allow Out of Stock Products</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</allow_out_of_stock>
+			<max_items translate="label comment">
+				<visible>1</visible>
+				<label>Max Number of Products to Display</label>
+				<type>text</type>
+				<value>4</value>
+				<required>1</required>
+			</max_items>
+			<mobile_show_items translate="label">
+				<visible>1</visible>
+				<label>Show widget on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_show</source_model>
+				<required>0</required>
+			</mobile_show_items>
+			<mobile_max_items translate="label comment">
+				<visible>1</visible>
+				<label>Number of Products to Display on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_row</source_model>
+				<depends>
+					<standard_style>
+						<value>1</value>
+					</standard_style>
+				</depends>
+				<required>0</required>
+			</mobile_max_items>
+			<display_type translate="label">
+				<visible>1</visible>
+				<label>Slider</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_display</source_model>
+				<required>0</required>
+			</display_type>
+			<standard_style translate="label">
+				<visible>1</visible>
+				<label>Standard Style</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_style</source_model>
+				<depends>
+					<display_type><value>1</value></display_type>
+				</depends>
+				<required>1</required>
+			</standard_style>
+
+			<slider_animation translate="label">
+				<visible>1</visible>
+				<label>Slider Animation Speed</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_animation</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+				<value>500</value>
+			</slider_animation>
+			<slider_item_row translate="label">
+				<visible>1</visible>
+				<label>Slides to Show</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_row</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_row>
+			<slider_item_scroll translate="label">
+				<visible>1</visible>
+				<label>Slides to Scroll</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_scroll</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_scroll>
+			<slider_item_loop translate="label">
+				<visible>1</visible>
+				<label>Loop Option</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_loop</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_loop>
+			<slider_item_center translate="label">
+                <visible>1</visible>
+                <label>Center Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_center</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_center>
+			<slider_item_dots translate="label">
+                <visible>1</visible>
+                <label>Dots Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_dots</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_dots>
+			<slider_item_autoplay translate="label">
+				<visible>1</visible>
+				<label>Slider Autoplay</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_autoplay</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_autoplay>
+			<slider_item_cssease translate="label">
+				<visible>1</visible>
+				<label>Slider CssEase</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_cssease</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<slider_item_autoplay>1</slider_item_autoplay>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_cssease>
+			<type_of_template translate="label">
+				<visible>1</visible>
+				<label>Grid Template</label>
+				<type>select</type>
+				<value>grid-4 slider-enabled</value>
+				<source_model>blugento_productswidget/system_config_source_template_type</source_model>
+			</type_of_template>
+			<setup translate="label">
+				<visible>0</visible>
+				<label>Setup</label>
+				<type>text</type>
+				<helper_block>
+					<type>blugento_productswidget/adminhtml_widget_setup</type>
+				</helper_block>
+			</setup>
+		</parameters>
+	</blugento_productswidget_category>
+
+    <blugento_productswidget_custom type="blugento_productswidget/custom">
+        <name>Blugento Products Custom</name>
+		<parameters>
+			<display_title translate="label">
+				<visible>1</visible>
+				<label>Display Title</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<required>0</required>
+			</display_title>
+			<title translate="label">
+				<visible>1</visible>
+				<label>Title</label>
+				<type>text</type>
+				<depends>
+					<display_title><value>1</value></display_title>
+				</depends>
+				<required>1</required>
+			</title>
+			<products translate="label">
+				<visible>1</visible>
+				<label>List of Product IDs</label>
+				<type>text</type>
+				<required>0</required>
+			</products>
+			<show_price translate="label">
+				<visible>1</visible>
+				<label>Show Products Price</label>
+				<value>1</value>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_price>
+			<show_add_to_cart translate="label">
+				<visible>1</visible>
+				<label>Show Add to Cart</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_cart>
+			<show_buy_now_button translate="label">
+				<visible>1</visible>
+				<label>Show Buy Now Button</label>
+				<type>select</type>
+				<value>2</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_buy_now_button>
+			<show_add_to_wishlist translate="label">
+				<visible>1</visible>
+				<label>Show Add to Wishlist</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_wishlist>
+			<show_add_to_compare translate="label">
+				<visible>1</visible>
+				<label>Show Add to Compare</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_compare>
+			<show_short_description translate="label">
+				<visible>1</visible>
+				<label>Show Short Description</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_description</source_model>
+				<required>0</required>
+			</show_short_description>
+			<allow_out_of_stock translate="label">
+				<visible>1</visible>
+				<label>Allow Out of Stock Products</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</allow_out_of_stock>
+			<max_items translate="label comment">
+				<visible>1</visible>
+				<label>Max Number of Products to Display</label>
+				<type>text</type>
+				<value>4</value>
+				<required>1</required>
+			</max_items>
+			<mobile_show_items translate="label">
+				<visible>1</visible>
+				<label>Show widget on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_show</source_model>
+				<required>0</required>
+			</mobile_show_items>
+			<mobile_max_items translate="label comment">
+				<visible>1</visible>
+				<label>Number of Products to Display on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_row</source_model>
+				<depends>
+					<standard_style>
+						<value>1</value>
+					</standard_style>
+				</depends>
+				<required>0</required>
+			</mobile_max_items>
+			<display_type translate="label">
+				<visible>1</visible>
+				<label>Slider</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>blugento_productswidget/system_config_source_display</source_model>
+				<required>0</required>
+			</display_type>
+			<standard_style translate="label">
+				<visible>1</visible>
+				<label>Template</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_style</source_model>
+				<depends>
+					<display_type><value>1</value></display_type>
+				</depends>
+				<required>1</required>
+			</standard_style>
+
+			<slider_animation translate="label">
+				<visible>1</visible>
+				<label>Slider Animation Speed</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_animation</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+				<value>500</value>
+			</slider_animation>
+			<slider_item_row translate="label">
+				<visible>1</visible>
+				<label>Slides to Show</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_row</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_row>
+			<slider_item_scroll translate="label">
+				<visible>1</visible>
+				<label>Slides to Scroll</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_scroll</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_scroll>
+			<slider_item_loop translate="label">
+				<visible>1</visible>
+				<label>Loop Option</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_loop</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_loop>
+			<slider_item_center translate="label">
+                <visible>1</visible>
+                <label>Center Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_center</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_center>
+			<slider_item_dots translate="label">
+                <visible>1</visible>
+                <label>Dots Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_dots</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_dots>
+			<slider_item_autoplay translate="label">
+				<visible>1</visible>
+				<label>Slider Autoplay</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_autoplay</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_autoplay>
+			<slider_item_cssease translate="label">
+				<visible>1</visible>
+				<label>Slider CssEase</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_cssease</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<slider_item_autoplay>1</slider_item_autoplay>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_cssease>
+			<type_of_template translate="label">
+				<visible>1</visible>
+				<label>Grid Template</label>
+				<type>select</type>
+				<value>grid-4 slider-enabled</value>
+				<source_model>blugento_productswidget/system_config_source_template_type</source_model>
+			</type_of_template>
+			<setup translate="label">
+				<visible>0</visible>
+				<label>Setup</label>
+				<type>text</type>
+				<helper_block>
+					<type>blugento_productswidget/adminhtml_widget_setup</type>
+				</helper_block>
+			</setup>
+		</parameters>
+	</blugento_productswidget_custom>
+
+	<blugento_productswidget_discounted type="blugento_productswidget/discounted">
+		<name>Blugento Products Discounted</name>
+		<parameters>
+			<display_title translate="label">
+				<visible>1</visible>
+				<label>Display Title</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<required>0</required>
+			</display_title>
+			<title translate="label">
+				<visible>1</visible>
+				<label>Title</label>
+				<type>text</type>
+				<depends>
+					<display_title><value>1</value></display_title>
+				</depends>
+				<required>1</required>
+			</title>
+			<show_price translate="label">
+				<visible>1</visible>
+				<label>Show Products Price</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_price>
+			<show_add_to_cart translate="label">
+				<visible>1</visible>
+				<label>Show Add to Cart</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_cart>
+			<show_buy_now_button translate="label">
+				<visible>1</visible>
+				<label>Show Buy Now Button</label>
+				<type>select</type>
+				<value>2</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_buy_now_button>
+			<show_add_to_wishlist translate="label">
+				<visible>1</visible>
+				<label>Show Add to Wishlist</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_wishlist>
+			<show_add_to_compare translate="label">
+				<visible>1</visible>
+				<label>Show Add to Compare</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_compare>
+			<show_short_description translate="label">
+				<visible>1</visible>
+				<label>Show Short Description</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_description</source_model>
+				<required>0</required>
+			</show_short_description>
+			<allow_out_of_stock translate="label">
+				<visible>1</visible>
+				<label>Allow Out of Stock Products</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</allow_out_of_stock>
+			<max_items translate="label comment">
+				<visible>1</visible>
+				<label>Max Number of Products to Display</label>
+				<type>text</type>
+				<value>4</value>
+				<required>1</required>
+			</max_items>
+			<mobile_show_items translate="label">
+				<visible>1</visible>
+				<label>Show widget on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_show</source_model>
+				<required>0</required>
+			</mobile_show_items>
+			<mobile_max_items translate="label comment">
+				<visible>1</visible>
+				<label>Number of Products to Display on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_row</source_model>
+				<depends>
+					<standard_style>
+						<value>1</value>
+					</standard_style>
+				</depends>
+				<required>0</required>
+			</mobile_max_items>
+			<display_type translate="label">
+				<visible>1</visible>
+				<label>Display Type</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_display</source_model>
+				<required>0</required>
+			</display_type>
+			<standard_style translate="label">
+				<visible>1</visible>
+				<label>Standard Style</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_style</source_model>
+				<depends>
+					<display_type><value>1</value></display_type>
+				</depends>
+				<required>1</required>
+			</standard_style>
+			<slider_animation translate="label">
+				<visible>1</visible>
+				<label>Slider Animation Speed</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_animation</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+				<value>500</value>
+			</slider_animation>
+			<slider_item_row translate="label">
+				<visible>1</visible>
+				<label>Slides to Show</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_row</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_row>
+			<slider_item_scroll translate="label">
+				<visible>1</visible>
+				<label>Slides to Scroll</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_scroll</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_scroll>
+			<slider_item_loop translate="label">
+				<visible>1</visible>
+				<label>Loop Option</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_loop</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_loop>
+			<slider_item_center translate="label">
+                <visible>1</visible>
+                <label>Center Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_center</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_center>
+			<slider_item_dots translate="label">
+                <visible>1</visible>
+                <label>Dots Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_dots</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_dots>
+			<slider_item_autoplay translate="label">
+				<visible>1</visible>
+				<label>Slider Autoplay</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_autoplay</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_autoplay>
+			<slider_item_cssease translate="label">
+				<visible>1</visible>
+				<label>Slider CssEase</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_cssease</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<slider_item_autoplay>1</slider_item_autoplay>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_cssease>
+			<type_of_template translate="label">
+				<visible>1</visible>
+				<label>Grid Template</label>
+				<type>select</type>
+				<value>grid-4 slider-enabled</value>
+				<source_model>blugento_productswidget/system_config_source_template_type</source_model>
+			</type_of_template>
+			<setup translate="label">
+				<visible>0</visible>
+				<label>Setup</label>
+				<type>text</type>
+				<helper_block>
+					<type>blugento_productswidget/adminhtml_widget_setup</type>
+				</helper_block>
+			</setup>
+		</parameters>
+	</blugento_productswidget_discounted>
+
+	<blugento_productswidget_new type="blugento_productswidget/new">
+		<name>Blugento Products New</name>
+		<parameters>
+			<display_title translate="label">
+				<visible>1</visible>
+				<label>Display Title</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<required>0</required>
+			</display_title>
+			<title translate="label">
+				<visible>1</visible>
+				<label>Title</label>
+				<type>text</type>
+				<depends>
+					<display_title><value>1</value></display_title>
+				</depends>
+				<required>1</required>
+			</title>
+			<show_price translate="label">
+				<visible>1</visible>
+				<label>Show Products Price</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_price>
+			<show_add_to_cart translate="label">
+				<visible>1</visible>
+				<label>Show Add to Cart</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_cart>
+			<show_buy_now_button translate="label">
+				<visible>1</visible>
+				<label>Show Buy Now Button</label>
+				<type>select</type>
+				<value>2</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_buy_now_button>
+			<show_add_to_wishlist translate="label">
+				<visible>1</visible>
+				<label>Show Add to Wishlist</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_wishlist>
+			<show_add_to_compare translate="label">
+				<visible>1</visible>
+				<label>Show Add to Compare</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_compare>
+			<show_short_description translate="label">
+				<visible>1</visible>
+				<label>Show Short Description</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_description</source_model>
+				<required>0</required>
+			</show_short_description>
+			<allow_out_of_stock translate="label">
+				<visible>1</visible>
+				<label>Allow Out of Stock Products</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</allow_out_of_stock>
+			<max_items translate="label comment">
+				<visible>1</visible>
+				<label>Max Number of Products to Display</label>
+				<type>text</type>
+				<value>4</value>
+				<required>1</required>
+			</max_items>
+			<mobile_show_items translate="label">
+				<visible>1</visible>
+				<label>Show widget on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_show</source_model>
+				<required>0</required>
+			</mobile_show_items>
+			<mobile_max_items translate="label comment">
+				<visible>1</visible>
+				<label>Number of Products to Display on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_row</source_model>
+				<depends>
+					<standard_style>
+						<value>1</value>
+					</standard_style>
+				</depends>
+				<required>0</required>
+			</mobile_max_items>
+			<display_type translate="label">
+				<visible>1</visible>
+				<label>Display Type</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_display</source_model>
+				<required>0</required>
+			</display_type>
+			<standard_style translate="label">
+				<visible>1</visible>
+				<label>Standard Style</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_style</source_model>
+				<depends>
+					<display_type><value>1</value></display_type>
+				</depends>
+				<required>1</required>
+			</standard_style>
+
+			<slider_animation translate="label">
+				<visible>1</visible>
+				<label>Slider Animation Speed</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_animation</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+				<value>500</value>
+			</slider_animation>
+			<slider_item_row translate="label">
+				<visible>1</visible>
+				<label>Slides to Show</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_row</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_row>
+			<slider_item_scroll translate="label">
+				<visible>1</visible>
+				<label>Slides to Scroll</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_scroll</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_scroll>
+			<slider_item_loop translate="label">
+				<visible>1</visible>
+				<label>Loop Option</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_loop</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_loop>
+			<slider_item_center translate="label">
+                <visible>1</visible>
+                <label>Center Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_center</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_center>
+			<slider_item_dots translate="label">
+                <visible>1</visible>
+                <label>Dots Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_dots</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_dots>
+			<slider_item_autoplay translate="label">
+				<visible>1</visible>
+				<label>Slider Autoplay</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_autoplay</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_autoplay>
+			<slider_item_cssease translate="label">
+				<visible>1</visible>
+				<label>Slider CssEase</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_cssease</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<slider_item_autoplay>1</slider_item_autoplay>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_cssease>
+			<type_of_template translate="label">
+				<visible>1</visible>
+				<label>Grid Template</label>
+				<type>select</type>
+				<value>grid-4 slider-enabled</value>
+				<source_model>blugento_productswidget/system_config_source_template_type</source_model>
+			</type_of_template>
+			<setup translate="label">
+				<visible>0</visible>
+				<label>Setup</label>
+				<type>text</type>
+				<helper_block>
+					<type>blugento_productswidget/adminhtml_widget_setup</type>
+				</helper_block>
+			</setup>
+		</parameters>
+	</blugento_productswidget_new>
+
+	<blugento_productswidget_last type="blugento_productswidget/last">
+		<name>Blugento Products Last Added</name>
+		<parameters>
+			<display_title translate="label">
+				<visible>1</visible>
+				<label>Display Title</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<required>0</required>
+			</display_title>
+			<title translate="label">
+				<visible>1</visible>
+				<label>Title</label>
+				<type>text</type>
+				<depends>
+					<display_title><value>1</value></display_title>
+				</depends>
+				<required>1</required>
+			</title>
+			<show_price translate="label">
+				<visible>1</visible>
+				<label>Show Products Price</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_price>
+			<show_add_to_cart translate="label">
+				<visible>1</visible>
+				<label>Show Add to Cart</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_cart>
+			<show_buy_now_button translate="label">
+				<visible>1</visible>
+				<label>Show Buy Now Button</label>
+				<type>select</type>
+				<value>2</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_buy_now_button>
+			<show_add_to_wishlist translate="label">
+				<visible>1</visible>
+				<label>Show Add to Wishlist</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_wishlist>
+			<show_add_to_compare translate="label">
+				<visible>1</visible>
+				<label>Show Add to Compare</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_compare>
+			<show_short_description translate="label">
+				<visible>1</visible>
+				<label>Show Short Description</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_description</source_model>
+				<required>0</required>
+			</show_short_description>
+			<allow_out_of_stock translate="label">
+				<visible>1</visible>
+				<label>Allow Out of Stock Products</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</allow_out_of_stock>
+			<max_items translate="label comment">
+				<visible>1</visible>
+				<label>Max Number of Products to Display</label>
+				<type>text</type>
+				<value>4</value>
+				<required>1</required>
+			</max_items>
+			<mobile_show_items translate="label">
+				<visible>1</visible>
+				<label>Show widget on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_show</source_model>
+				<required>0</required>
+			</mobile_show_items>
+			<mobile_max_items translate="label comment">
+				<visible>1</visible>
+				<label>Number of Products to Display on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_row</source_model>
+				<depends>
+					<standard_style>
+						<value>1</value>
+					</standard_style>
+				</depends>
+				<required>0</required>
+			</mobile_max_items>
+			<display_type translate="label">
+				<visible>1</visible>
+				<label>Display Type</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_display</source_model>
+				<required>0</required>
+			</display_type>
+			<standard_style translate="label">
+				<visible>1</visible>
+				<label>Standard Style</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_style</source_model>
+				<depends>
+					<display_type><value>1</value></display_type>
+				</depends>
+				<required>1</required>
+			</standard_style>
+
+			<slider_animation translate="label">
+				<visible>1</visible>
+				<label>Slider Animation Speed</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_animation</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+				<value>500</value>
+			</slider_animation>
+			<slider_item_row translate="label">
+				<visible>1</visible>
+				<label>Slides to Show</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_row</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_row>
+			<slider_item_scroll translate="label">
+				<visible>1</visible>
+				<label>Slides to Scroll</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_scroll</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_scroll>
+			<slider_item_loop translate="label">
+				<visible>1</visible>
+				<label>Loop Option</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_loop</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_loop>
+			<slider_item_center translate="label">
+                <visible>1</visible>
+                <label>Center Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_center</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_center>
+			<slider_item_dots translate="label">
+                <visible>1</visible>
+                <label>Dots Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_dots</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_dots>
+			<slider_item_autoplay translate="label">
+				<visible>1</visible>
+				<label>Slider Autoplay</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_autoplay</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_autoplay>
+			<slider_item_cssease translate="label">
+				<visible>1</visible>
+				<label>Slider CssEase</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_cssease</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<slider_item_autoplay>1</slider_item_autoplay>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_cssease>
+			<type_of_template translate="label">
+				<visible>1</visible>
+				<label>Grid Template</label>
+				<type>select</type>
+				<value>grid-4 slider-enabled</value>
+				<source_model>blugento_productswidget/system_config_source_template_type</source_model>
+			</type_of_template>
+			<setup translate="label">
+				<visible>0</visible>
+				<label>Setup</label>
+				<type>text</type>
+				<helper_block>
+					<type>blugento_productswidget/adminhtml_widget_setup</type>
+				</helper_block>
+			</setup>
+		</parameters>
+	</blugento_productswidget_last>
+	
+	<blugento_productswidget_bestselling type="blugento_productswidget/bestselling">
+		<name>Blugento Products Bestselling</name>
+		<parameters>
+			<display_title translate="label">
+				<visible>1</visible>
+				<label>Display Title</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<value>1</value>
+				<required>0</required>
+			</display_title>
+			<title translate="label">
+				<visible>1</visible>
+				<label>Title</label>
+				<type>text</type>
+				<depends>
+					<display_title><value>1</value></display_title>
+				</depends>
+				<required>1</required>
+			</title>
+			<show_price translate="label">
+				<visible>1</visible>
+				<label>Show Products Price</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_price>
+			<show_add_to_cart translate="label">
+				<visible>1</visible>
+				<label>Show Add to Cart</label>
+				<type>select</type>
+				<value>1</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_cart>
+			<show_buy_now_button translate="label">
+				<visible>1</visible>
+				<label>Show Buy Now Button</label>
+				<type>select</type>
+				<value>2</value>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_buy_now_button>
+			<show_add_to_wishlist translate="label">
+				<visible>1</visible>
+				<label>Show Add to Wishlist</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_wishlist>
+			<show_add_to_compare translate="label">
+				<visible>1</visible>
+				<label>Show Add to Compare</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</show_add_to_compare>
+			<show_short_description translate="label">
+				<visible>1</visible>
+				<label>Show Short Description</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_description</source_model>
+				<required>0</required>
+			</show_short_description>
+			<allow_out_of_stock translate="label">
+				<visible>1</visible>
+				<label>Allow Out of Stock Products</label>
+				<type>select</type>
+				<source_model>adminhtml/system_config_source_yesno</source_model>
+				<required>0</required>
+			</allow_out_of_stock>
+			<max_items translate="label comment">
+				<visible>1</visible>
+				<label>Max Number of Products to Display</label>
+				<type>text</type>
+				<value>4</value>
+				<required>1</required>
+			</max_items>
+			<number_of_days translate="label comment">
+				<visible>1</visible>
+				<label>Number of days</label>
+				<type>text</type>
+				<value>60</value>
+				<required>1</required>
+			</number_of_days>
+			<mobile_show_items translate="label">
+				<visible>1</visible>
+				<label>Show widget on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_show</source_model>
+				<required>0</required>
+			</mobile_show_items>
+			<mobile_max_items translate="label comment">
+				<visible>1</visible>
+				<label>Number of Products to Display on mobile</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_mobile_item_row</source_model>
+				<depends>
+					<standard_style>
+						<value>1</value>
+					</standard_style>
+				</depends>
+				<required>0</required>
+			</mobile_max_items>
+			<display_type translate="label">
+				<visible>1</visible>
+				<label>Display Type</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_display</source_model>
+				<required>0</required>
+			</display_type>
+			<standard_style translate="label">
+				<visible>1</visible>
+				<label>Standard Style</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_style</source_model>
+				<depends>
+					<display_type><value>1</value></display_type>
+				</depends>
+				<required>1</required>
+			</standard_style>
+			<slider_animation translate="label">
+				<visible>1</visible>
+				<label>Slider Animation Speed</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_animation</source_model>
+				<depends>
+					<display_type>2</display_type>
+				</depends>
+				<value>500</value>
+			</slider_animation>
+			<slider_item_row translate="label">
+				<visible>1</visible>
+				<label>Slides to Show</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_row</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_row>
+			<slider_item_scroll translate="label">
+				<visible>1</visible>
+				<label>Slides to Scroll</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_scroll</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_scroll>
+			<slider_item_loop translate="label">
+				<visible>1</visible>
+				<label>Loop Option</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_loop</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_loop>
+			<slider_item_center translate="label">
+                <visible>1</visible>
+                <label>Center Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_center</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_center>
+			<slider_item_dots translate="label">
+                <visible>1</visible>
+                <label>Dots Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_dots</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_dots>
+			<slider_item_autoplay translate="label">
+				<visible>1</visible>
+				<label>Slider Autoplay</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_autoplay</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_autoplay>
+			<slider_item_center translate="label">
+                <visible>1</visible>
+                <label>Center Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_center</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_center>
+			<slider_item_dots translate="label">
+                <visible>1</visible>
+                <label>Dots Slider</label>
+                <type>select</type>
+                <source_model>blugento_productswidget/system_config_source_slider_item_dots</source_model>
+                <depends>
+                    <display_type>2</display_type>
+                    <type_of_template>
+                        <values>
+                            <o1>grid-4 slider-enabled</o1>
+                            <o2>grid-4 box-image slider-enabled</o2>
+                        </values>
+                    </type_of_template>
+                </depends>
+            </slider_item_dots>
+			<slider_item_cssease translate="label">
+				<visible>1</visible>
+				<label>Slider CssEase</label>
+				<type>select</type>
+				<source_model>blugento_productswidget/system_config_source_slider_item_cssease</source_model>
+				<depends>
+					<display_type>2</display_type>
+					<slider_item_autoplay>1</slider_item_autoplay>
+					<type_of_template>
+						<values>
+							<o1>grid-4 slider-enabled</o1>
+							<o2>grid-4 box-image slider-enabled</o2>
+						</values>
+					</type_of_template>
+				</depends>
+			</slider_item_cssease>
+			<type_of_template translate="label">
+				<visible>1</visible>
+				<label>Grid Template</label>
+				<type>select</type>
+				<value>grid-4 slider-enabled</value>
+				<source_model>blugento_productswidget/system_config_source_template_type</source_model>
+			</type_of_template>
+			<setup translate="label">
+				<visible>0</visible>
+				<label>Setup</label>
+				<type>text</type>
+				<helper_block>
+					<type>blugento_productswidget/adminhtml_widget_setup</type>
+				</helper_block>
+			</setup>
+		</parameters>
+	</blugento_productswidget_bestselling>
+
+</widgets>

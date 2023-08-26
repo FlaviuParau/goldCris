@@ -1,0 +1,92 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       core/_form.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+legend {
+    display: none;
+}
+
+input:not([type]),
+input[type='email'],
+input[type='search'],
+input[type='number'],
+input[type='password'],
+input[type='tel'],
+input[type='text'],
+select,
+textarea {
+    @if (($layout--input-text_layout == 7) or ($layout--input-text_layout == 6)) {
+        border: $input-text_border-width solid $input-text_border-color;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+        background-color: transparent;
+    } @else if ($layout--input-text_layout == 5) {
+        @include box-shadow(4px, 4px, 0, $input-text_box-shadow);
+        border: $input-text_border-width solid $input-text_border-color;
+        background-color: $input-text_background-color;
+    }  @else if($layout--input-text_layout == 4) {
+        border: $input-text_border-width solid lighten($input-text_border-color, 9.8%);
+        border-radius: 6px;
+        background-color: lighten($input-text_border-color, 9.8%);
+    }  @else if ($layout--input-text_layout == 3) {
+        border: $input-text_border-width solid $input-text_border-color;
+        border-radius: 6px;
+        background-color: $input-text_background-color;
+    }  @else if ($layout--input-text_layout == 2) {
+         border: $input-text_border-width solid $input-text_border-color;
+         background-color: $input-text_background-color;
+    }  @else {
+        border: $input-text_border-width solid $input-text_border-color;
+        border-right-color: lighten($input-text_border-color, 9.8%);
+        border-bottom-color: lighten($input-text_border-color, 9.8%);
+        background-color: $input-text_background-color;
+    }
+}
+
+input:not([type]),
+input[type='email'],
+input[type='search'],
+input[type='number'],
+input[type='password'],
+input[type='tel'],
+input[type='text'], 
+select {
+    height: $input-text_height;
+}
+
+
+select {
+    appearance: none;
+    padding: 2px 30px 2px 7px;
+    background-image: $icon--arrow-down--a1;
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) 50%;
+
+    .ie & {
+        padding: 2px 2px 2px 7px;
+        background-image: none;
+    }
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &.multiselect,
+    &[multiple] {
+        height: auto;
+        padding-right: 7px;
+        background-image: none;
+    }
+
+    .ie9 & {
+        background-image: none;
+    }
+
+    option {
+        padding: 5px;
+    }
+}

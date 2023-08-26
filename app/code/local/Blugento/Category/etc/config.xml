@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_Category>
+            <version>1.0.2</version>
+        </Blugento_Category>
+    </modules>
+    <global>
+        <blocks>
+            <blugento_category>
+                <class>Blugento_Category_Block</class>
+            </blugento_category>
+        </blocks>
+        <helpers>
+            <blugento_category>
+                <class>Blugento_Category_Helper</class>
+            </blugento_category>
+        </helpers>
+        <models>
+            <blugento_category>
+                <class>Blugento_Category_Model</class>
+            </blugento_category>
+        </models>
+        <resources>
+            <blugento_category_setup>
+                <setup>
+                    <module>Blugento_Category</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+            </blugento_category_setup>
+        </resources>
+    </global>
+</config>

@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_ConfigurableSwatch
+ * @author      Mihai Rastasan <mihai.rastasan@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_ConfigurableSwatch>
+            <version>1.0.0</version>
+        </Blugento_ConfigurableSwatch>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_configurableswatch>
+                <class>Blugento_ConfigurableSwatch_Block</class>
+            </blugento_configurableswatch>
+        </blocks>
+        <models>
+            <blugento_configurableswatch>
+                <class>Blugento_ConfigurableSwatch_Model</class>
+            </blugento_configurableswatch>
+        </models>
+        <helpers>
+            <blugento_configurableswatch>
+                <class>Blugento_ConfigurableSwatch_Helper</class>
+            </blugento_configurableswatch>
+        </helpers>
+    </global>
+
+    <frontend>
+        <routers>
+            <blugento_configurableswatch>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_ConfigurableSwatch</module>
+                    <frontName>configurableswatch</frontName>
+                </args>
+            </blugento_configurableswatch>
+        </routers>
+        <events>
+            <catalog_product_collection_load_after>
+                <observers>
+                    <configurableswatch_product_collection>
+                        <class>blugento_configurableswatch/observer</class>
+                        <method>productCollectionLoadAfter</method>
+                    </configurableswatch_product_collection>
+                </observers>
+            </catalog_product_collection_load_after>
+            <catalog_product_load_after>
+                <observers>
+                    <configurableswatch_product_load>
+                        <class>blugento_configurableswatch/observer</class>
+                        <method>productLoadAfter</method>
+                    </configurableswatch_product_load>
+                </observers>
+            </catalog_product_load_after>
+        </events>
+        <layout>
+            <updates>
+                <blugento_configurableswatch>
+                    <file>blugento_configurableswatch.xml</file>
+                </blugento_configurableswatch>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <blugento_configurableswatch>
+                    <files>
+                        <default>Blugento_ConfigurableSwatch.csv</default>
+                    </files>
+                </blugento_configurableswatch>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_configurableswatch before="Mage_Adminhtml">Blugento_ConfigurableSwatch_Adminhtml</blugento_configurableswatch>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <default>
+        <blugento_configurableswatch>
+            <general>
+                <enabled>0</enabled>
+                <img_width>21</img_width>
+                <img_height>21</img_height>
+                <swatch_image>1</swatch_image>
+            </general>
+        </blugento_configurableswatch>
+    </default>
+</config>

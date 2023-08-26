@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.1">
+    <default>
+        <reference name="root">
+            <action method="addBodyClass" ifconfig="gdpr_cookies/general/enabled">
+                <classname>gdpr-enabled</classname>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="gdprcookies" template="gdprcookies.phtml"/>
+        </reference>
+        <reference name="google_analytics">
+            <action method="setTemplate">
+                <template>extendgoogleanalytics/googleanalytics/ga.phtml</template>
+            </action>
+        </reference>
+    </default>
+</layout>
+

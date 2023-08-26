@@ -1,0 +1,4 @@
+src/app/code/local/Blugento/RobotsEditor                                     app/code/local/Blugento/RobotsEditor
+src/app/etc/modules/Blugento_RobotsEditor.xml                                app/etc/modules/Blugento_RobotsEditor.xml
+src/app/locale/en_US/Blugento_RobotsEditor.csv                               app/locale/en_US/Blugento_RobotsEditor.csv
+src/app/locale/ro_RO/Blugento_RobotsEditor.csv                               app/locale/ro_RO/Blugento_RobotsEditor.csv

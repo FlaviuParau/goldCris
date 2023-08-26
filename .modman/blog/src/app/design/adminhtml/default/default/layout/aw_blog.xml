@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_awblog_manage_blog_index>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="blog/manage_blog" name="blog" />
+        </reference>
+    </adminhtml_awblog_manage_blog_index>
+    <adminhtml_awblog_manage_blog_edit>
+        <update handle="editor" />
+    </adminhtml_awblog_manage_blog_edit>
+    <adminhtml_awblog_manage_blog_new>
+        <update handle="editor" />
+    </adminhtml_awblog_manage_blog_new>
+    <adminhtml_awblog_manage_comment_index>
+        <reference name="content">
+            <block type="blog/manage_comment" name="comment" />
+        </reference>
+    </adminhtml_awblog_manage_comment_index>
+    <adminhtml_awblog_manage_cat_index>
+        <reference name="content">
+            <block type="adminhtml/store_switcher" name="store_switcher" before="-" />
+            <block type="blog/manage_cat" name="cat" />
+        </reference>
+    </adminhtml_awblog_manage_cat_index>
+    <adminhtml_cms_page_edit>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>aw_blog/js/setup.js</name>
+            </action>
+        </reference>
+    </adminhtml_cms_page_edit>
+    <adminhtml_cms_block_edit>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>aw_blog/js/setup.js</name>
+            </action>
+        </reference>
+    </adminhtml_cms_block_edit>
+</layout>

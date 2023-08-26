@@ -1,0 +1,51 @@
+<?php
+$_htmlLang = $this->getLang();
+$_socialMediaSharePosition = ($this->getLayout()->getBlock('root')->getSocialMediaSharePosition() ?: 'left');
+$_inputTextLayout = ($this->getLayout()->getBlock('root')->getInputTextLayout() ?: '1');
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>  <html class="no-touch ie ie6 lt-ie9 lt-ie8 lt-ie7" lang="<?php echo $_htmlLang ?>">  <![endif]-->
+<!--[if IE 7 ]>     <html class="no-touch ie ie7 lt-ie9 lt-ie8" lang="<?php echo $_htmlLang ?>">         <![endif]-->
+<!--[if IE 8 ]>     <html class="no-touch ie ie8 lt-ie9" lang="<?php echo $_htmlLang ?>">                <![endif]-->
+<!--[if IE 9 ]>     <html class="no-touch ie ie9" lang="<?php echo $_htmlLang ?>">                       <![endif]-->
+<!--[if gt IE 9]>   <html class="no-touch ie" lang="<?php echo $_htmlLang ?>">                           <![endif]-->
+<!--!(IE)]><!-->    <html class="no-touch" lang="<?php echo $_htmlLang ?>">                              <!--<![endif]-->
+<head>
+    <?php echo $this->getChildHtml('head') ?>
+</head>
+<body class="layout-1column <?php echo trim($this->getBodyClass()) ?>" data-input-text-layout="<?php echo $_inputTextLayout ?>">
+    <?php echo $this->getChildHtml('after_body_start') ?>
+    <a id="top"></a>
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <?php echo $this->getChildHtml('header') ?>
+    <main class="page-main">
+        <div class="page-container-wrapper">
+            <div class="page-container">
+                <div class="row">
+                    <div class="main-content">
+                        <?php echo $this->getChildHtml('global_messages') ?>
+                        <?php echo $this->getChildHtml('breadcrumbs') ?>
+                        <?php echo $this->getChildHtml('content') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php if ($productCompare = trim($this->getChildHtml('page.product_compare'))): ?>
+            <div class="page-product-compare reveal" data-reveal="bottom">
+                <a href="#" class="reveal-trigger"></a>
+                <?php echo $productCompare ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($socialMediaShare = trim($this->getChildHtml('page.socialmedia_share'))): ?>
+            <div class="page-socialmedia-share page-socialmedia-share--<?php echo $_socialMediaSharePosition ?> reveal" data-reveal="bottom">
+                <a href="#" class="reveal-trigger"></a>
+                <?php echo $socialMediaShare ?>
+            </div>
+        <?php endif; ?>
+    </main>
+    <?php echo $this->getChildHtml('footer') ?>
+    <?php echo $this->getAbsoluteFooter() ?>
+    <?php echo $this->getChildHtml('end') ?>
+    <?php echo $this->getChildHtml('before_body_end') ?>
+</body>
+</html>

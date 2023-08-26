@@ -1,0 +1,84 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       dev/_device-info.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@if ($layout--debug_mode == 1) {
+    body {
+        margin-bottom: 30px;
+    }
+
+    .device-info,
+    %device-info {
+        z-index: z('device-info');
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        backface-visibility: hidden;
+        padding: 7px;
+        // scss-lint:disable all
+        font: 700 12px/16px $font-family-monospace;
+        // scss-lint:enable all
+        text-align: center;
+        background-color: $device-info_background-color;
+        color: $device-info_color;
+
+        @include mobile {
+            background-color: $device-info--mobile_background-color;
+
+            .type:before {
+                content: 'Mobile';
+            }
+        }
+
+        @include phone {
+            background-color: $device-info--phone_background-color;
+
+            .type:before {
+                content: 'Phone';
+            }
+        }
+
+        @include phone-s {
+            .size:before {
+                content: ' - S';
+            }
+        }
+
+        @include phone-m {
+            .size:before {
+                content: ' - M';
+            }
+        }
+
+        @include phone-l {
+            .size:before {
+                content: ' - L';
+            }
+        }
+
+        @include tablet {
+            background-color: $device-info--tablet_background-color;
+
+            .type:before {
+                content: 'Tablet';
+            }
+        }
+
+        @include landscape {
+            .mode:before {
+                content: ' - Landscape';
+            }
+        }
+
+        @include desktop {
+            background-color: $device-info--desktop_background-color;
+
+            .type:before {
+                content: 'Desktop';
+            }
+        }
+    }
+}

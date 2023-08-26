@@ -1,0 +1,192 @@
+<?php
+$_newsletterCheckbox            = (int) $this->getAddCheckbox();
+$_newsletterCheckboxLabel       = $this->getCheckboxLabel();
+$_newsletterCheckboxValidation  = $this->getCheckboxValidation();
+
+$_secondNewsletterCheckbox            = Mage::getStoreConfig('newsletter/subscription/add_second_checkbox');
+$_secondNewsletterCheckboxLabel       = Mage::getStoreConfig('newsletter/subscription/second_checkbox_label');
+$_secondNewsletterCheckboxValidation  = Mage::getStoreConfig('newsletter/subscription/second_checkbox_validation');
+?>
+
+<div class="block block-subscribe">
+    <div class="block-title">
+        <h4><?php echo $this->__('Subscribe to our') ?></h4>
+        <h5><?php echo $this->__('Newsletter') ?></h5>
+    </div>
+    <div class="block-content">
+        <?php if (Mage::helper('core')->isModuleEnabled('Blugento_Newsletterprotection') && Mage::getStoreConfig('newsletterprotection/newsletterprotection_group/newsletterprotection_active')): ?>
+            <form action="" method="post" id="footer-newsletter-validate-detail-widget">
+                <button id="g-recaptcha-widget" data-callback="onSubmitWidget" data-badge="bottomleft" data-size="invisible" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit')) ?>" class="g-recaptcha button disabled"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+                <div class="input-box">
+                    <input type="email" name="email" id="footer-newsletter-widget" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="input-text newsletter-input-widget required-entry validate-email" />
+                </div>
+                <input type="hidden" name="url" value="<?php echo Mage::helper('core/url')->getCurrentUrl()?>" />
+	            <?php if ($_newsletterCheckbox == 1) : ?>
+		            <div class="newsletter-checkbox">
+			            <input class="checkbox required-entry" id="newsletter-politics" type="checkbox" />
+			            <label for="newsletter-politics"><?php echo $_newsletterCheckboxLabel ?></label>
+			            <div class="validate-newsletter validation-advice"><?php echo $_newsletterCheckboxValidation; ?></div>
+		            </div>
+	            <?php endif;?>
+				<?php if ($_secondNewsletterCheckbox == 1) : ?>
+					<div class="second-newsletter-checkbox">
+						<input class="checkbox required-entry" id="newsletter-politics-second" type="checkbox" />
+						<label for="newsletter-politics-second"><?php echo $_secondNewsletterCheckboxLabel ?></label>
+						<div class="validate-newsletter validation-advice"><?php echo $_secondNewsletterCheckboxValidation; ?></div>
+					</div>
+				<?php endif;?>
+            </form>
+        <?php else: ?>
+        <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="footer-newsletter-validate-detail-widget">
+	        <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+	        <div class="input-box">
+               <input type="text" name="email" id="newsletter" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="input-text required-entry validate-email" />
+            </div>
+	        <?php if ($_newsletterCheckbox == 1) : ?>
+		        <div class="newsletter-checkbox">
+			        <input class="checkbox required-entry" id="newsletter-politics" type="checkbox" />
+			        <label for="newsletter-politics"><?php echo $_newsletterCheckboxLabel ?></label>
+			        <div class="validate-newsletter validation-advice"><?php echo $_newsletterCheckboxValidation; ?></div>
+		        </div>
+	        <?php endif;?>
+			<?php if ($_secondNewsletterCheckbox == 1) : ?>
+				<div class="second-newsletter-checkbox">
+					<input class="checkbox required-entry" id="newsletter-politics-second" type="checkbox" />
+					<label for="newsletter-politics-second"><?php echo $_secondNewsletterCheckboxLabel ?></label>
+					<div class="validate-newsletter validation-advice"><?php echo $_secondNewsletterCheckboxValidation; ?></div>
+				</div>
+			<?php endif;?>
+        </form>
+        <?php endif; ?>
+     </div>
+    <script>
+    //<![CDATA[
+		var dataForm = new VarienForm('footer-newsletter-validate-detail-widget');
+
+	    <?php if ($_newsletterCheckbox == 1) : ?>
+		    jQuery('.block-subscribe #newsletter-politics').on('change', function() {
+			    if (jQuery(this).is(':checked')) {
+				    jQuery('.block-subscribe button').removeClass('disabled');
+				    jQuery('.block-subscribe .validate-newsletter').hide();
+			    } else {
+				    jQuery('.block-subscribe button').addClass('disabled');
+				    jQuery('.block-subscribe .validate-newsletter').show();
+			    }
+		    });
+
+			jQuery('.block-subscribe button.disabled').on('click', function(e) {
+				if (jQuery('#newsletter-politics').is(':checked')) {
+					jQuery('.block-subscribe button').removeClass('disabled');
+					jQuery('.block-subscribe .newsletter-checkbox .validate-newsletter').hide();
+				} else {
+					e.preventDefault();
+					jQuery('.block-subscribe button').addClass('disabled');
+					jQuery('.block-subscribe .newsletter-checkbox .validate-newsletter').show();
+				}
+			});
+	    <?php endif;?>
+
+		<?php if ($_secondNewsletterCheckbox == 1) : ?>
+			jQuery('.block-subscribe #newsletter-politics-second').on('change', function() {
+				if (jQuery(this).is(':checked')) {
+					jQuery('.block-subscribe button').removeClass('disabled');
+					jQuery('.block-subscribe .second-newsletter-checkbox .validate-newsletter').hide();
+				} else {
+					jQuery('.block-subscribe button').addClass('disabled');
+					jQuery('.block-subscribe .second-newsletter-checkbox .validate-newsletter').show();
+				}
+			});
+
+			jQuery('.block-subscribe button.disabled').on('click', function(e) {
+				if (jQuery('#newsletter-politics-second').is(':checked')) {
+					jQuery('.block-subscribe button').removeClass('disabled');
+					jQuery('.block-subscribe .second-newsletter-checkbox .validate-newsletter').hide();
+				} else {
+					e.preventDefault();
+					jQuery('.block-subscribe button').addClass('disabled');
+					jQuery('.block-subscribe .second-newsletter-checkbox .validate-newsletter').show();
+				}
+			});
+		<?php endif;?>
+
+		function onSubmitWidget(token) {
+			return new Promise(function (resolve, reject) {
+				var dataForm = new VarienForm('footer-newsletter-validate-detail-widget');
+
+				if (grecaptcha.getResponse() !== "") {
+					<?php if ($_newsletterCheckbox == 1) : ?>
+						if (jQuery('#newsletter-politics').is(':checked')) {
+							jQuery('.block-subscribe button').removeClass('disabled');
+							jQuery('.block-subscribe .validate-newsletter').hide();
+							if (dataForm.validator && dataForm.validator.validate()){
+								jQuery('#footer-newsletter-validate-detail-widget').attr('action', '<?php echo $this->getFormActionUrl() ?>');
+								document.getElementById("footer-newsletter-validate-detail-widget").submit();
+							}
+						} else {
+							jQuery('.block-subscribe button').addClass('disabled');
+							jQuery('.block-subscribe .validate-newsletter').show();
+						}
+					<?php elseif ($_newsletterCheckbox == 1 && $_secondNewsletterCheckbox) : ?>
+						if (jQuery('#newsletter-politics').is(':checked') && jQuery('#newsletter-politics-second').is(':checked')) {
+							jQuery('.block-subscribe button').removeClass('disabled');
+							jQuery('.block-subscribe .validate-newsletter').hide();
+							jQuery('.block-subscribe .second-newsletter-checkbox .validate-newsletter').hide();
+							if (dataForm.validator && dataForm.validator.validate()){
+								jQuery('#footer-newsletter-validate-detail-widget').attr('action', '<?php echo $this->getFormActionUrl() ?>');
+								document.getElementById("footer-newsletter-validate-detail-widget").submit();
+							}
+						} else {
+							jQuery('.block-subscribe button').addClass('disabled');
+							jQuery('.block-subscribe .newsletter-checkbox .validate-newsletter').show();
+							jQuery('.block-subscribe .second-newsletter-checkbox .validate-newsletter').show();
+						}
+					<?php else: ?>
+						if (dataForm.validator && dataForm.validator.validate()){
+							jQuery('#footer-newsletter-validate-detail-widget').attr('action', '<?php echo $this->getFormActionUrl() ?>');
+							document.getElementById("footer-newsletter-validate-detail-widget").submit();
+						}
+					<?php endif;?>
+				}
+
+				grecaptcha.reset();
+			});
+		}
+    //]]>
+    </script>
+	<?php if ( Mage::helper('core')->isModuleEnabled('Blugento_Newsletterprotection') && Mage::getStoreConfig('newsletterprotection/newsletterprotection_group/newsletterprotection_active')): ?>
+		<script type="text/javascript">
+			// Check if captcha container have loaded class, if not than captcha will be loaded
+			function loadCaptchaContentWidget() {
+				setTimeout(function(){
+					// Fix for google recaptcha from 18 June
+					if ("NodeList" in window) {
+						if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+							NodeList.prototype.each = NodeList.prototype.forEach;
+						}
+					}
+
+					if (!jQuery('.captcha_container_loaded').length) {
+						jQuery('#g-recaptcha-widget').addClass('captcha_container_loaded');
+						var captchaContainer = null;
+						var loadCaptchaWidget = function() {
+							captchaContainer = grecaptcha.render('g-recaptcha-widget', {
+								'sitekey': '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+								'callback': onSubmitWidget
+							});
+						};
+
+						loadCaptchaWidget();
+					}
+				}, 300);
+			};
+
+			// Once user insert a value, loadCaptchaContentWidget will be called
+			jQuery('.newsletter-input-widget').each(function(e) {
+				jQuery(this).on('input', function(e) {
+					loadCaptchaContentWidget();
+				});
+			});
+		</script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=loadCaptchaWidget&render=explicit" async defer></script>
+	<?php endif;?>
+</div>

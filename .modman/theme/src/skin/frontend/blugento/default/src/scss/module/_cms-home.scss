@@ -1,0 +1,89 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_cms-home.scss
+    Version:        1.0
+    Description:    CMS - Homepage Styles
+    ------------------------------------------------------------------------- */
+
+.cms-index-index,
+.cms-home {
+    .page-main {
+        .page-container {
+            @if ($isFullLayoutMode) {
+                max-width: 100%;
+    
+                .main-content .row-wrapper.row-wrapper-wide .widget {
+                    @include cf;
+                    display: block;
+                    margin-right: -20px;
+                    margin-left: -20px;
+                }
+                
+                @include desktop {
+                    padding-right: 0;
+                    padding-left: 0;
+                }
+                
+                @include mobile {
+                    .main-content {
+                        padding-right: 0;
+                        padding-left: 0;
+                        box-sizing: border-box;
+    
+                        .row-wrapper {
+                            padding-right: 0;
+                            padding-left: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .showcase {
+            .bn-wrapper {
+                margin: 0 auto;
+                text-align: center;
+
+                @if ($layout--homepage-banner_layout != 3) {
+                    max-width: $page_width;
+                }
+
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+
+            .slick-slider {
+                img {
+                    @if ($layout--homepage-banner_layout == 3) {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .row {
+            margin-bottom: 20px;
+    
+            @if ($isFullLayoutMode) {
+                @include mobile {
+                    margin-right: 0;
+                    margin-left: 0;
+                }
+            }
+            
+            &:last-child {
+                margin-bottom: 0;
+    
+                @if ($isFullLayoutMode) {
+                    @include mobile {
+                        .col-12 {
+                            padding-right: 0;
+                            padding-left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

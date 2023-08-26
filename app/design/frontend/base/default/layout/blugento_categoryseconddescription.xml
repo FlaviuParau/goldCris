@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<layout>
+    <catalog_category_default translate="label">
+        <reference name="content">
+            <block type="blugento_categoryseconddescription/category_description" name="blugento_categoryseconddescription_description" template="blugento/categoryseconddescription/category/second_description.phtml" />
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered translate="label">
+        <reference name="content">
+            <block type="blugento_categoryseconddescription/category_description" name="blugento_categoryseconddescription_description" template="blugento/categoryseconddescription/category/second_description.phtml" />
+        </reference>
+    </catalog_category_layered>
+</layout>

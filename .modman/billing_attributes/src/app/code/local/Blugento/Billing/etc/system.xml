@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Billing Attributes
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Billing
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>30</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_billing translate="label" module="blugento_billing">
+            <label>Billing Attributes</label>
+            <tab>blugento</tab>
+            <sort_order>210</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <global_config translate="label" module="blugento_billing">
+                    <label>Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <individual_form translate="label">
+                            <label>Personal Purchase Form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If both forms are disabled this form will be enable by default.</comment>
+                        </individual_form>
+                        <legal_entity_form translate="label">
+                            <label>Legal Entity Purchase Form</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If both forms are disabled Personal Purchase Form will be enable by default.</comment>
+                        </legal_entity_form>
+                        <individual_title translate="label">
+                            <label>Individual Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </individual_title>
+                        <legal_entity_title translate="label">
+                            <label>Legal Entity Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </legal_entity_title>
+                        <region_before translate="label">
+                            <label>Region Before City</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Display Region before City</comment>
+                        </region_before>
+                        <country_before translate="label">
+                            <label>Country before Region</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Display Country before Region</comment>
+                        </country_before>
+                        <telephone_after_mail translate="label">
+                            <label>Telephone after Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Display Telephone after Email</comment>
+                        </telephone_after_mail>
+                    </fields>
+                </global_config>
+                <fields_config translate="label" module="blugento_billing">
+                    <label>Fields Display Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <firstname translate="label">
+                            <label>Firstname</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </firstname>
+                        <blugento_customer_cnp translate="label">
+                            <label>CNP</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </blugento_customer_cnp>
+                        <phone translate="label">
+                            <label>Phone</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone>
+                        <phone_min_length translate="label">
+                            <label>Phone Min Length</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_length</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone_min_length>
+                        <phone_max_length translate="label">
+                            <label>Phone Max Length</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_length</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </phone_max_length>
+                        <fax translate="label">
+                            <label>Fax</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </fax>
+                        <company translate="label">
+                            <label>Company</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </company>
+                        <blugento_customer_reg_no translate="label">
+                            <label>Nr Reg Com</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </blugento_customer_reg_no>
+                        <vat_id translate="label">
+                            <label>VAT Number</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </vat_id>
+                        <blugento_customer_iban translate="label">
+                            <label>IBAN</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </blugento_customer_iban>
+                        <blugento_customer_headquarter translate="label">
+                            <label>Headquarter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </blugento_customer_headquarter>
+                        <blugento_customer_bank translate="label">
+                            <label>Bank Name</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </blugento_customer_bank>
+                        <street_address translate="label">
+                            <label>Street</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_attributeclass</source_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </street_address>
+                        <street_address_max_length translate="label">
+                            <label>Street Max Length</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_billing/system_config_source_street_length</source_model>
+                            <sort_order>66</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </street_address_max_length>
+                        <country translate="label">
+                            <label>Country</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip>The country field will not be displayed only if in System->Configuration->General->Countries Options->Allow Countries will be selected only one country.</tooltip>
+                        </country>
+                        <postal_code translate="label">
+                            <label>Postal Code</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip>Postal Code will not be displayed only if all the allowed countries are selected for optional postal code. To set this option go to System->Configuration->General->Countries Options.</tooltip>
+                        </postal_code>
+                        <validate_vat translate="label tooltip">
+                            <label>Validate VAT Number</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip>Validation is made only for Romania. It's allowed with "RO" or without (depends on the TVA) and digits between 0 and 9, with minim of 6 digits and maxim of 8</tooltip>
+                        </validate_vat>
+                        <validate_name translate="label tooltip">
+                            <label>Validate First and Last Name</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <tooltip>Uses only letters (a-z or A-Z), numbers (0-9) or spaces in fields.</tooltip>
+                        </validate_name>
+                    </fields>
+                </fields_config>
+            </groups>
+        </blugento_billing>
+    </sections>
+</config>

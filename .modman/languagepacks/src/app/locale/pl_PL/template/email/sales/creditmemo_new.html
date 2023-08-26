@@ -1,0 +1,134 @@
+<!--@subject {{var store.getFrontendName()}}: Zwrotu # {{var creditmemo.increment_id}} do zamówienia # {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"htmlescape var=$order.getCustomerName()":"Customer Name",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var creditmemo.increment_id":"Credit Memo Id",
+"var order.increment_id":"Order Id",
+"var order.billing_address.format('html')":"Billing Address",
+"payment_html":"Payment Details",
+"var order.shipping_address.format('html')":"Shipping Address",
+"var order.shipping_description":"Shipping Description",
+"layout handle=\"sales_email_order_creditmemo_items\" creditmemo=$creditmemo order=$order":"Credit Memo Items Grid",
+"var comment":"Credit Memo Comment"}
+@-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td>
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td class="email-heading">
+                        <span class="email-heading-image">
+                            <img src="{{skin url=images/icon--checked-mail.png}}" alt="Checked icon" title="Checked Icon" />
+                        </span>
+                        <h1>Twoja faktura z {{var store.getFrontendName()}} została anulowana.</h1>
+                        <p>Możesz sprawdzić status swojego zamówienia przez <a href="{{store url="customer/account/"}}">zaloguj się na swoje konto</a>.</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <table cellpadding="0" cellspacing="0" border="0" class="order-details-wrapper">
+            <tr>
+                <th><h4>Twoja nota kredytowa</h4></th>
+                <th><h4>Zamówienie</h4></th>
+            </tr>
+            <tr>
+                <td>
+                    <strong><span class="no-link">#{{var creditmemo.increment_id}}</span></strong>
+                </td>
+                <td>
+                    <strong><span class="no-link">#{{var order.increment_id}}</span></strong>
+                </td>
+            </tr>
+        </table>
+    </tr>
+    <tr class="order-information">
+        <td>
+            <table cellpadding="0" cellspacing="0" border="0" class="order-details-shipping">
+                <tr>
+                    <td class="address-details">
+                        <h4>Rachunek do:</h4>
+                        <p><span class="no-link">{{var order.billing_address.format('html')}}</span></p>
+                    </td>
+                    {{depend order.getIsNotVirtual()}}
+                    <td class="address-details">
+                        <h4>Dostawa do:</h4>
+                        <p><span class="no-link">{{var order.shipping_address.format('html')}}</span></p>
+                    </td>
+                    {{/depend}}
+                </tr>
+                <tr>
+                    {{depend order.getIsNotVirtual()}}
+                    <td class="method-info">
+                        <h4>Sposób wysyłki:</h4>
+                        <p>{{var order.shipping_description}}</p>
+                    </td>
+                    {{/depend}}
+                    <td class="method-info">
+                        <h4>Metoda płatności:</h4>
+                        {{var payment_html}}
+                    </td>
+                </tr>
+            </table>
+            {{if comment}}
+            <table cellspacing="0" cellpadding="0" class="message-container">
+                <tr>
+                    <td>{{var comment}}</td>
+                </tr>
+            </table>
+            {{/if}}
+            <table cellpadding="0" cellspacing="0" border="0" class="order-items-details">
+                <tr>
+                    <td>
+                        {{layout handle="sales_email_order_creditmemo_items" creditmemo=$creditmemo order=$order}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="store-info">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    <td><h3>Zamów pytania?</h3></td>
+                </tr>
+                <tr>
+                    <td>
+                        {{depend store_phone}}
+                        <h4>Zadzwoń do nas:</h4><br />
+                        <p>
+                            <a href="tel:{{var phone}}">{{var store_phone}}</a>
+                        </p>
+                        {{/depend}}
+                        {{depend store_hours}}
+                        <p>
+                            <span class="no-link">{{var store_hours}}</span>
+                        </p>
+                        {{/depend}}
+                    </td>
+                    <td>
+                        {{depend store_email}}
+                        <h4>Email:</h4>
+                        <p>
+                            <a href="mailto:{{var store_email}}">{{var store_email}}</a>
+                        </p>
+                        {{/depend}}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

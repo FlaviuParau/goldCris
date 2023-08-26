@@ -1,0 +1,292 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_configurableswatches.scss
+    Version:        1.0
+    Description:    Catalog - Configurable Swatches Styles
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+ul.configurable-swatch-list,
+div.configurable-swatch-list {
+    margin-bottom: 18px;
+    @include cf;
+}
+
+/* General Swatch Styling */
+.swatch-link,
+.swatch-label {
+    display: block;
+    text-align: center;
+}
+
+.swatch-link {
+    position: relative;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    .x {
+        display: none;
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: transparent $configurable-swatches_bg_x no-repeat 50% 50%;
+        text-indent: -999em;
+    }
+}
+
+.swatch-label {
+    white-space: nowrap;
+    display: block;
+    margin: 0 auto;
+    padding: 3px;
+    border: 1px solid color('s');
+    background-color: color('b');
+
+    .wide-swatch & {
+    }
+
+    .has-no-image & {
+        min-width: 29px;
+    }
+
+    .product-options & {
+        padding: 7px;
+    }
+
+    .product-options .has-image & {
+        padding: 5px;
+    }
+
+    img,
+    span {
+        display: block;
+    }
+
+    span {
+        padding: 0 5px;
+    }
+}
+
+.not-available {
+    .swatch-link {
+        border-color: color('o');
+        
+        span {
+            color: color('s');
+        }
+        
+        .x {
+            display: block;
+        }
+    }
+    
+    &.selected {
+        span {
+            color: color('e');
+        }
+    }
+}
+
+.configurable-swatch-list {
+    clear: both;
+    margin: -5px 0 0 -5px;
+    
+    @include phone {
+        &[data-tooltip="1"] {
+            text-align: center;
+        }
+    }
+
+    li {
+        display: inline-block;
+        margin: 5px 0 0 5px;
+        vertical-align: top;
+    }
+
+    .products-grid &,
+    .products-list & {
+        margin-top: -5px + 10px;
+    }
+}
+
+.block-layered-nav {
+    .configurable-swatch-list {
+        em {
+            float: none;
+        }
+    }
+
+    .swatch-link {
+        display: inline-block;
+
+        @include desktop {
+            &:hover .swatch-label {
+                border-color: color('e');
+            }
+        }
+    }
+
+    .swatch-label {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.currently {
+    .value {
+        margin-left: 10px;
+    }
+
+    .swatch-link {
+        margin-left: 10px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    .swatch-current {
+        .btn-remove {
+            margin-top: 4px;
+        }
+    }
+}
+
+/* Other Swatch States */
+.configurable-swatch-list .hover .swatch-label,
+.swatch-link:hover .swatch-label {
+    border-color: color('e');
+}
+
+.configurable-swatch-list .selected .swatch-label {
+    background-color: color('r');
+    border-color: color('e');
+}
+
+.configurable-swatch-box {
+    background: none !important;
+
+    select.swatch-select {
+        display: none;
+    }
+
+    .validation-advice {
+        display: block;
+        float: left;
+        margin: 0 0 5px;
+        padding: 2px 5px !important;
+        border-radius: 3px;
+        font-weight: bold;
+        background-color: color('p');
+        color: color('b') !important;
+    }
+}
+
+.select-label {
+    color: color('e');
+}
+
+.blugento-swatches {
+    .swatch-label {
+        padding: 0 7px;
+        text-align: center;
+
+        span {
+            display: block;
+            text-align: center;
+        }
+
+        &.has-image {
+            padding: 0;
+        }
+    }
+
+    .has-image {
+        .swatch-label {
+            padding: 0;
+        }
+    }
+
+    .swatch-link {
+        &[title]:hover:after {
+            background: #333;
+            border: solid 1px #efefef;
+            color: #fff;
+            display: block;
+            float: left;
+            font-weight: bold;
+            line-height: 15px;
+            padding: 1px 10px 1px;
+            content: attr(title);
+            position: absolute;
+            bottom: 100%;
+            margin-bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+    
+        &[data-tooltip="1"] {
+            .tooltip {
+                position: absolute;
+                bottom: 40px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 500px;
+                visibility: hidden;
+                background-color: $color--primary;
+                color: $color--secondary;
+                text-align: center;
+                padding: 5px;
+                z-index: 1;
+    
+                @include phone {
+                    width: 250px;
+                }
+    
+                @include phone-s {
+                    width: 150px;
+                }
+            }
+        
+            &:hover {
+                .tooltip {
+                    visibility: visible;
+                }
+    
+                &::after {
+                    position: absolute;
+                    content: attr(title);
+                    top: -30px;
+                    bottom: initial;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    display: block;
+                    float: none;
+                    width: 500px;
+                    background: $color--primary;
+                    color: $color--secondary;
+                    border: none;
+                    font-weight: 700;
+                    line-height: 15px;
+                    padding: 5px 0;
+                    margin-bottom: 0;
+                    z-index: 1;
+    
+                    @include phone {
+                        width: 250px;
+                    }
+                    
+                    @include phone-s {
+                        width: 150px;
+                    }
+                }
+            }
+        }
+    }
+}

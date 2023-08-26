@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/diff-widget.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/vendor/diff-widget/diff-widget.js</name></action>
+        </reference>
+    </default>
+
+    <contacts_index_index>
+        <reference name="contactForm">
+            <block type="cms/block" name="cms_blugento_contact_info" as="info">
+                <action method="setBlockId"><block_id>blugento-contact-info</block_id></action>
+            </block>
+        </reference>
+    </contacts_index_index>
+
+    <wishlist_index_index translate="label">
+        <reference name="customer.wishlist.buttons">
+            <action method="unsetChild" ifconfig="wishlist/email/disable_share"><name>customer.wishlist.button.share</name></action>
+        </reference>
+    </wishlist_index_index>
+
+</layout>

@@ -1,0 +1,98 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Giftwrap
+ * @version    1.1.1
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php /** @var AW_Giftwrap_Block_Checkout_Onepage_Shippingmethod_Form $this */ ?>
+<?php if ($this->isCanShow()):?>
+<div id="aw-giftwrap-onestep-form">
+    <p>
+        <input type="checkbox" name="aw_giftwrap[add_gift_wrap]" id="aw-giftwrap-onestep-form-add-giftwrap" class="checkbox"
+            <?php echo $this->isGiftWrapWasSelected()?'checked':'';?>/>
+        <label for="aw-giftwrap-onestep-form-add-giftwrap"><?php echo $this->__("Add gift wrap");?></label>
+    </p>
+    <div id="aw-giftwrap-onestep-form-box" <?php echo $this->isGiftWrapWasSelected()?'':'class="no-display"';?>>
+        <div id="aw-giftwrap-onestep-form-box-types">
+            <ul class="form-list">
+                <li>
+                    <label class="required"><em>*</em><?php echo $this->__('Please select gift wrap design');?></label>
+                </li>
+            </ul>
+            <?php foreach ($this->getWrapTypeCollection() as $item):?>
+                <div class="aw-giftwrap-onestep-form-box-types-item">
+                    <div class="aw-giftwrap-onestep-form-box-types-item-option">
+                        <input type="radio" name="aw_giftwrap[wrap_type_id]" class="radio"
+                               id="aw-giftwrap-onestep-form-box-type-<?php echo $item->getId();?>" value="<?php echo $item->getId();?>"
+                               <?php echo ($item->getId() == $this->getSelectedGiftWrapType())?'checked="checked"':'';?>/>
+	                    <label for="aw-giftwrap-onestep-form-box-type-<?php echo $item->getId();?>">
+		                    <?php echo $item->getName();?>
+	                    </label>
+                    </div>
+                    <div class="aw-giftwrap-onestep-form-box-types-item-content">
+                        <div class="aw-giftwrap-onestep-form-box-types-item-detail">
+                            <img align="left" width="50" height="50" src="<?php echo $item->getImageUrl(50, 50);?>" alt="<?php echo $item->getName();?>"/>
+                            <?php echo $this->formatPrice($item->getPrice());?>
+                            <p><?php echo $item->getDescription();?></p>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            <?php endforeach;?>
+        </div>
+        <?php if ($this->isCanSpecifyMessageTextarea()):?>
+        <div id="aw-giftwrap-onestep-form-box-message">
+            <label for="aw-giftwrap-onestep-form-box-message-textarea"><?php echo $this->__("Gift Message");?></label>
+            <textarea name="aw_giftwrap[wrap_message]" id="aw-giftwrap-onestep-form-box-message-textarea"><?php echo $this->getSpecifiedGiftWrapMessage();?></textarea>
+        </div>
+        <?php endif;?>
+        <?php if ($this->isCanSpecifySeparatelyOption()):?>
+        <div id="aw-giftwrap-onestep-form-box-separately-option">
+            <input type="checkbox" name="aw_giftwrap[wrap_separately]" id="aw-giftwrap-onestep-form-box-separately-option-input" class="checkbox"
+                <?php echo $this->isGiftWrapSeparatelyWasSelected()?'checked':'';?>/>
+            <label for="aw-giftwrap-onestep-form-box-separately-option-input"><?php echo $this->__("Wrap each product separately");?></label>
+        </div>
+        <?php endif;?>
+    </div>
+</div>
+<script type="text/javascript">
+    $('aw-giftwrap-onestep-form-add-giftwrap').observe('change', function(e){
+        if ($('aw-giftwrap-onestep-form-add-giftwrap').getValue() === 'on') {
+            $('aw-giftwrap-onestep-form-box').removeClassName('no-display');
+        } else {
+            $('aw-giftwrap-onestep-form-box').addClassName('no-display');
+        }
+    });
+    var awGiftWrapUpdateOSCBlocks = function(e){
+        AWOnestepcheckoutCore.updater.startRequest(awOSCShipment.saveShipmentUrl, {
+            method: 'post',
+            parameters: Form.serialize(awOSCShipment.container.getAttribute('id'), true)
+        });
+    };
+    $$('.aw-giftwrap-onestep-form-box-types-item input[type=radio], ' +
+        '#aw-giftwrap-onestep-form-add-giftwrap, ' +
+        '#aw-giftwrap-onestep-form-box-separately-option-input').each(function(el) {
+        el.observe('click', awGiftWrapUpdateOSCBlocks);
+    });
+    $('aw-giftwrap-onestep-form-box-message-textarea').observe('change', awGiftWrapUpdateOSCBlocks);
+</script>
+<?php endif;?>

@@ -1,0 +1,48 @@
+<form id="discount-coupon-form" action="<?php echo $this->getFormActionUrl() ?>" method="post">
+    <div class="discount">
+        <h2><?php echo $this->__('Discount Codes') ?></h2>
+        <div class="discount-form">
+            <input type="hidden" name="remove" id="remove-coupone" value="0" />
+            <button
+	            type="<?php echo (Mage::helper('core')->isModuleEnabled('Blugento_AjaxCart') && Mage::helper('blugento_ajaxcart')->isEnabled()) ? 'submit' : 'button'?>"
+	            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Apply Coupon')) ?>"
+	            class="button"
+	            <?php if (Mage::helper('core')->isModuleEnabled('Blugento_AjaxCart') && !Mage::helper('blugento_ajaxcart')->isEnabled()) : ?>onclick="discountForm.submit(false)"<?php endif; ?>
+	            value="<?php echo Mage::helper('core')->quoteEscape($this->__('Apply Coupon')) ?>"
+            >
+	            <span><span><?php echo $this->__('Apply Code') ?></span></span>
+            </button>
+            <div class="input-box">
+                <input class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $this->escapeHtml($this->getCouponCode()) ?>" />
+            </div>
+            <?php if (strlen($this->getCouponCode())): ?>
+                <button
+	                type="<?php echo (Mage::helper('core')->isModuleEnabled('Blugento_AjaxCart') && Mage::helper('blugento_ajaxcart')->isEnabled()) ? 'submit' : 'button'?>"
+	                title="<?php echo Mage::helper('core')->quoteEscape($this->__('Cancel Coupon')) ?>"
+	                id="<?php echo (Mage::helper('core')->isModuleEnabled('Blugento_AjaxCart') && Mage::helper('blugento_ajaxcart')->isEnabled()) ? 'delete_coupon_button' : ''?>"
+	                class="button"
+	                <?php if (!Mage::helper('blugento_ajaxcart')->isEnabled()) : ?>onclick="discountForm.submit(true)"<?php endif; ?>
+	                value="<?php echo Mage::helper('core')->quoteEscape($this->__('Cancel Coupon')) ?>"
+                >
+	                <span><span><?php echo $this->__('Cancel Coupon') ?></span></span>
+                </button>
+            <?php endif; ?>
+        </div>
+    </div>
+</form>
+
+<script>
+//<![CDATA[
+var discountForm = new VarienForm('discount-coupon-form');
+discountForm.submit = function (isRemove) {
+    if (isRemove) {
+        $('coupon_code').removeClassName('required-entry');
+        $('remove-coupone').value = "1";
+    } else {
+        $('coupon_code').addClassName('required-entry');
+        $('remove-coupone').value = "0";
+    }
+    return VarienForm.prototype.submit.bind(discountForm)();
+}
+//]]>
+</script>

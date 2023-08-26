@@ -1,0 +1,76 @@
+<?php
+/** @var Cadence_Fbpixel_Helper_Data $helper */
+$helper = Mage::helper("cadence_fbpixel");
+if (!$helper->isVisitorPixelEnabled()) {
+    return;
+}
+
+if (!$helper->isConversionPixelEnabled()) {
+    return;
+}
+
+$analyticsCategoryId = Mage::getStoreConfig('cadence_fbpixel/analytics/category');
+$categories = Mage::getModel('gdprcookies/system_config_source_categories')->toOptionArray();
+foreach ($categories as $category) {
+    if ($category['value'] == $analyticsCategoryId) {
+        $analyticsCategory = strtolower($category['label']);
+    }
+}
+$analyticsCategory = str_replace('analytics', 'statistics', $analyticsCategory);
+?>
+<script>
+    (function($) {
+        $(document).ready(function() {
+            function facebookPixelEvents() {
+                <?php
+                    $helper = Mage::helper("cadence_fbpixel");
+                    $session = Mage::getSingleton('cadence_fbpixel/session');
+                    $id = $helper->getVisitorPixelId(); ?>
+                <?php if ($helper->isViewCategoryPixelEnabled() && $session->hasViewCategory()) : ?>
+                    <?php echo $helper->getPixelHtml('ViewCategory', $session->getViewCategory()); ?>
+                <?php endif; ?>
+                <?php if ($helper->isAddToCartPixelEnabled() && $session->hasAddToCart() && Mage::helper('core')->isModuleEnabled('Blugento_AjaxCart') && !Mage::helper('blugento_ajaxcart')->isEnabled()) : ?>
+                    <?php $addToCart = $helper->getPixelHtml('AddToCart', $session->getAddToCart()); ?>
+                    <?php echo $addToCart; ?>
+                    <?php if (Mage::getStoreConfig('cadence_fbpixel/visitor/debug')): ?>
+                        <?php Mage::log($addToCart, null, 'fb_pixel_debug.log') ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <?php if ($helper->isAddToWishlistPixelEnabled() && $session->hasAddToWishlist()): ?>
+                    <?php echo $helper->getPixelHtml('AddToWishlist', $session->getAddToWishlist()); ?>
+                <?php endif; ?>
+                <?php if ($helper->isInitiateCheckoutPixelEnabled() && $session->hasInitiateCheckout()): ?>
+                    <?php echo $helper->getPixelHtml('InitiateCheckout', $session->getInitiateCheckout()); ?>
+                <?php endif; ?>
+                <?php if ($helper->isViewProductPixelEnabled() && $session->hasViewProduct()): ?>
+                    <?php echo $helper->getPixelHtml('ViewContent', $session->getViewProduct()); ?>
+                <?php endif; ?>
+                <?php if ($helper->isSearchPixelEnabled() && $session->hasSearch()): ?>
+                    <?php echo $helper->getPixelHtml('Search', $session->getSearch()); ?>
+                <?php endif; ?>
+                <?php if ($helper->isConversionPixelEnabled() && $session->hasPlaceOrder()): ?>
+                    <?php echo $helper->getPixelHtml('Purchase', $session->getPlaceOrder()); ?>
+                <?php endif; ?>
+            }
+            if (!$('body').hasClass('gdpr-enabled') || '<?php echo $analyticsCategoryId ?>' == '1' || '<?php echo Mage::getSingleton('core/cookie')->get($analyticsCategory) ?>' == 'yes') {
+                facebookPixelEvents();
+            } else {
+                // Accept only selected cookies
+                $('#accept-selected-cookies').on('click', function(e) {
+                    if ($('#<?php echo $analyticsCategory ?>').is(':checked') || $('#<?php echo $analyticsCategory ?>').is('[readonly]')) {
+                        facebookPixelEvents();
+                    }
+                });
+
+                // Accept all cookies
+                $('#accept-all-cookies').on('click', function(e) {
+                    facebookPixelEvents();
+                });
+
+                if ('<?php echo $analyticsCategory ?>' == 'necessary') {
+                    facebookPixelEvents();
+                }
+            }
+        });
+    })(jQuery);
+</script>

@@ -1,0 +1,39 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_widgets.scss
+    Version:        1.0
+    Description:    Widgets - General Styles
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.block-gr-search {
+    @include cf;
+
+    .block-title {
+        margin-bottom: 15px;
+    }
+
+    li {
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+    label {
+        float: left;
+        clear: both;
+        margin-bottom: 2px;
+    }
+
+    .input-box {
+        float: left;
+        clear: both;
+    }
+
+    .button {
+        float: left;
+    }
+
+    select {
+        width: 300px;
+    }
+}

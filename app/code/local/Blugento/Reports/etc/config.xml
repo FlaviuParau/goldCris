@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Blugento_Reports>
+			<version>1.0.0</version>
+		</Blugento_Reports>
+	</modules>
+	<global>
+		<blocks>
+			<blugento_reports>
+				<class>Blugento_Reports_Block</class>
+			</blugento_reports>
+			<reports>
+				<rewrite>
+					<product_widget_viewed>Blugento_Reports_Block_Product_Widget_Viewed</product_widget_viewed>
+				</rewrite>
+			</reports>
+		</blocks>
+		<helpers>
+			<blugento_reports>
+				<class>Blugento_Reports_Helper</class>
+			</blugento_reports>
+		</helpers>
+		<models>
+			<blugento_reports>
+				<class>Blugento_Reports_Model</class>
+			</blugento_reports>
+		</models>
+	</global>
+</config>

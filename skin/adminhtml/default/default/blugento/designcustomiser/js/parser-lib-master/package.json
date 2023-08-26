@@ -1,0 +1,47 @@
+{
+  "name": "parserlib",
+  "version": "0.2.5",
+  "author": "Nicholas C. Zakas",
+  "contributors": [
+    "Nick Schonning"
+  ],
+  "description": "CSS3 SAX-inspired parser",
+  "license": "MIT",
+  "homepage": "https://github.com/CSSLint/parser-lib",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/CSSLint/parser-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CSSLint/parser-lib/issues"
+  },
+  "keywords": [
+    "parser",
+    "css",
+    "css3",
+    "sax",
+    "style",
+    "stylesheet"
+  ],
+  "main": "./src/index.js",
+  "scripts": {
+    "changelog": "node scripts/changelog.js",
+    "coverage": "ytestrunner -c",
+    "pretest": "jshint src tests scripts",
+    "build": "node scripts/build.js",
+    "test-yuitest": "ytestrunner",
+    "test": "npm run test-yuitest",
+    "prepublish": "npm test"
+  },
+  "devDependencies": {
+    "babybird": "0.0.1",
+    "browserify": "^13.0.0",
+    "concat-stream": "^1.5.1",
+    "factor-bundle": "^2.5.0",
+    "jshint": "^2.9.1",
+    "moment": "^2.11.2",
+    "shelljs": "^0.6.0",
+    "ytestrunner": "^0.3.3",
+    "yuitest": "^0.7.9"
+  }
+}

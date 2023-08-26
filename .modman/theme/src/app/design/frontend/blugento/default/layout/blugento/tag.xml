@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<layout>
+
+    <tag_product_list translate="label">
+        <label>Tags List (All Available)</label>
+        <!-- Mage_Tag -->
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+    </tag_product_list>
+
+    <default>
+        <!-- Move popular tags block at the bottom of the left block -->
+        <reference name="left">
+            <action method="unsetChild"><alias>tags_popular</alias></action>
+            <action method="insert">
+                <blockName>tags_popular</blockName>
+                <siblingName></siblingName>
+                <after>1</after>
+            </action>
+        </reference>
+    </default>
+
+    <customer_logged_in>
+        <reference name="customer_account_navigation.mobile">
+            <action method="addLink" translate="label" module="tag">
+                <name>tags</name>
+                <path>tag/customer/</path>
+                <label>My Tags</label>
+            </action>
+        </reference>
+    </customer_logged_in>
+
+</layout>

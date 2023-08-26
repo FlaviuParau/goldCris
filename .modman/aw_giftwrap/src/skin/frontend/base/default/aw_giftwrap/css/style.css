@@ -1,0 +1,152 @@
+#aw-giftwrap-onepage-form{
+    margin-top: 20px;
+}
+#aw-giftwrap-onepage-form-box{
+    border: 1px solid #d1d1d1;
+    background: #f5f5f5;
+    padding: 17px 20px;
+    margin-top:10px;
+}
+#aw-giftwrap-onepage-form-box label{
+    font-weight: bold;
+}
+.aw-giftwrap-onepage-form-box-types-item{
+    margin: 10px 0;
+}
+.aw-giftwrap-onepage-form-box-types-item-option{
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding-left: 20px;
+}
+.aw-giftwrap-onepage-form-box-types-item-content img{
+    margin-right: 10px;
+    border: thin solid #d1d1d1;
+}
+.aw-giftwrap-onepage-form-box-types-item-content label{
+    margin-bottom: 5px;
+    display: block;
+}
+.aw-giftwrap-onepage-form-box-types-item-content span.price{
+    padding-bottom: 8px;
+    font-weight: bold;
+    display: block;
+}
+.aw-giftwrap-onepage-form-box-types-item-detail{
+    padding-left: 20px;
+}
+.aw-giftwrap-onepage-form-box-types-item-detail p{
+    text-align: justify;
+}
+#aw-giftwrap-onepage-form-box-message{
+    margin-top:10px;
+}
+#aw-giftwrap-onepage-form-box-message textarea{
+    width: 100%;
+    height: 8em;
+}
+#aw-giftwrap-onepage-form-box-separately-option{
+    margin-top:10px;
+}
+/* ONESTEPCHECKOUT from AW */
+#aw-giftwrap-onestep-form{}
+#aw-giftwrap-onestep-form-box{
+    border: 1px solid #d1d1d1;
+    background: #f5f5f5;
+    padding: 5px 7px;
+    margin-top:10px;
+}
+#aw-giftwrap-onestep-form-box label{
+    font-weight: bold;
+}
+.aw-giftwrap-onestep-form-box-types-item{
+    margin: 10px 0;
+}
+.aw-giftwrap-onestep-form-box-types-item-option{
+    float: left;
+    margin-right: 5px;
+}
+.aw-giftwrap-onestep-form-box-types-item-content img{
+    margin-right: 10px;
+    border: thin solid #d1d1d1;
+}
+.aw-giftwrap-onestep-form-box-types-item-content label{
+    display: block;
+}
+.aw-giftwrap-onestep-form-box-types-item-content span.price{
+    font-weight: bold;
+    display: block;
+}
+.aw-giftwrap-onestep-form-box-types-item-detail p{
+    text-align: justify;
+}
+#aw-giftwrap-onestep-form-box-message{
+    margin-top:10px;
+}
+#aw-giftwrap-onestep-form-box-message textarea{
+    width: 98%;
+    height: 8em;
+}
+#aw-giftwrap-onestep-form-box-separately-option{
+    margin-top:10px;
+}
+
+/* View and Print order details section */
+#order-aw-giftwrap-box .col-1 {
+    width: 100%;
+}
+
+#order-aw-giftwrap-box .box-title {
+    width: 100%;
+}
+
+#order-aw-giftwrap-box .aw-giftwrap-details td {
+    padding-left: 0;
+}
+
+#order-aw-giftwrap-box .aw-giftwrap-details td.label {
+    padding-right: 15px;
+    width: 35%;
+    vertical-align: top;
+}
+
+#order-aw-giftwrap-box .aw-giftwrap-details td strong {
+    font-weight: bold;
+}
+
+#order-aw-giftwrap-box .aw-giftwrap-details td.value {
+    width: 450px;
+}
+#order-aw-giftwrap-box .aw-giftwrap-details td.value .description {
+    text-align: justify;
+}
+#order-aw-giftwrap-box .aw-giftwrap-details .aw-giftwrap-image-box {
+    float:        left;
+    margin-right: 10px;
+    border:       1px solid #ccc;
+}
+
+/* Product page label */
+.aw-giftwrap-available-icon {
+    height: 24px;
+    background-repeat: no-repeat;
+    padding-left: 26px;
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+.aw-giftwrap-available-icon.blue{
+    background-image: url('../images/aw-giftwrap-blue.png');
+}
+.aw-giftwrap-available-icon.green{
+    background-image: url('../images/aw-giftwrap-green.png');
+}
+.aw-giftwrap-available-icon.white-big{
+    background-image: url('../images/aw-giftwrap-white-big.png');
+}
+.aw-giftwrap-available-icon.white-small{
+    background-image: url(../images/aw-giftwrap-white-small.png);
+}
+.aw-giftwrap-available-label {
+    line-height: 24px !important;
+    font-weight: bold;
+}

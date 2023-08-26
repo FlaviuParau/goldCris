@@ -1,0 +1,3 @@
+src/app/code/local/Blugento/RemoveSymlinkNotification                                      app/code/local/Blugento/RemoveSymlinkNotification
+src/app/design/adminhtml/default/default/layout/blugento_removesymlinknotification.xml     app/design/adminhtml/default/default/layout/blugento_removesymlinknotification.xml
+src/app/etc/modules/Blugento_RemoveSymlinkNotification.xml                                 app/etc/modules/Blugento_RemoveSymlinkNotification.xml

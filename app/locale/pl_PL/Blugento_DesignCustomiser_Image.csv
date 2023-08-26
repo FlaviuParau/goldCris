@@ -1,0 +1,126 @@
+"image/title/page_favicon","Ikona ulubionych"
+"image/title/page_brand_logo","Logo Firmy"
+"image/title/page_brand_logo_email","Logo Firmy Email"
+"image/title/page_background-image","Tło storny"
+"image/title/page-footer__marketing-box--shipping__before","Stopka box marketingowy lewy"
+"image/title/page-footer__marketing-box--support__before","Stopka box marketingowy środkowy"
+"image/title/page-footer__marketing-box--newsletter__before","Stopka box marketingowy newsletter"
+"image/title/add-to-links__wishlist_background-image","Ikona Lista życzeń"
+"image/title/add-to-links__compare_background-image","Ikona Porównaj"
+"image/title/mini-cart__link__after","Ikona Mini-koszyk"
+"image/title/mini-cart__link--hover__after","Ikona Mini-koszyk po najechaniu kursorem "
+"image/title/mini-search__button_background-image","Ikona Mini-wyszukiwarka"
+"image/title/mini-search__button--hover_background-image","Ikona Mini-wyszukiwarka po najechaniu kursorem "
+"image/title/mini-profile__link_background-image","Ikona Mini-profil"
+"image/title/mini-wishlist__button_background-image","Ikona Lista życzeń"
+"image/title/mini-wishlist__button--hover_background-image","Ikona Lista życzeń po najechaniu kursorem"
+"image/title/toolbar__view-mode__grid_background-image","Ikona paska narzędzi"
+"image/title/toolbar__view-mode__grid--hover_background-image","Aktywna ikona paska narzędzi"
+"image/title/toolbar__view-mode__list_background-image","Ikona listy narzędzi"
+"image/title/toolbar__view-mode__list--hover_background-image","Aktywna ikona listy narzedzi"
+"image/title/block-compare__placeholder_background-image","Lokator ikony mini-porównaj"
+"image/title/list--social__item--facebook__link_background-image","Ikona Facebook"
+"image/title/list--social__item--facebook__link--hover_background-image","Ikona Facebook po najechaniu kursorem"
+"image/title/list--social__item--twitter__link_background-image","Ikona Twitter"
+"image/title/list--social__item--twitter__link--hover_background-image","Ikona Twitter po najchenaiu kursorem"
+"image/title/list--social__item--google__link_background-image","Ikona Google+"
+"image/title/list--social__item--google__link--hover_background-image","Ikona Google+ po najechaniu kursorem"
+"image/title/list--social__item--instagram__link_background-image","Ikona Instagram"
+"image/title/list--social__item--instagram__link--hover_background-image","Ikona Instagram po najechaniu kursorem"
+"image/title/list--social__item--linkedin__link_background-image","Ikona LinkedIn"
+"image/title/list--social__item--linkedin__link--hover_background-image","Ikona LinkedIn po najechaniu kursorem "
+"image/title/list--social__item--pinterest__link_background-image","Ikona Pintrest"
+"image/title/list--social__item--pinterest__link--hover_background-image","Ikona Pintrest po najechaniu kursorem "
+"image/title/list--social__item--tiktok__link_background-image","Ikona TikTok "
+"image/title/list--social__item--tiktok__link--hover_background-image","Ikona TikTok po najechaniu kursorem"
+"image/title/list--social__item--youtube__link_background-image","Ikona Youtube "
+"image/title/list--social__item--youtube__link--hover_background-image","Ikona Youtube po najechaniu kursorem"
+"image/title/list--social__item--flickr__link_background-image","Ikona Flickr"
+"image/title/list--social__item--flickr__link--hover_background-image","Ikona Flickr po najechaniu kursorem "
+"image/title/og-image","Udostępnij w socialmediach OG"
+"image/description/page_favicon","Rekomendowany rozmiar: 256px x 256px"
+"image/description/page_brand_logo","Wyświetl w naglówku (wszystkie urządzenia)"
+"image/description/page_brand_logo_email","Wyświetl w emailu. Tylko format GIF."
+"image/description/page_background-image","Wyświetl w tle na całej stronie. "
+"image/description/page-footer__marketing-box--shipping__before","Wyświetl w boxie marketingowym lewym na dole strony "
+"image/description/page-footer__marketing-box--support__before","Wyświetl w boxie marketingowym środkowym na dole strony "
+"image/description/page-footer__marketing-box--newsletter__before","Wyświetl w boxie marketingowym prawym na dole strony "
+"image/description/add-to-links__wishlist_background-image","Wyświetl na liście produktów i na stronie szczegółów produktu (wszystkie urzadzenia)"
+"image/description/add-to-links__compare_background-image","Wyświetl na liście produktów i na stronie szczegółów produktu (wszystkie urzadzenia)"
+"image/description/mini-cart__link__after","Wyświetl w nagłówku (wszystkie urzadzenia)"
+"image/description/mini-cart__link--hover__after","Wyświetl w nagłówku (wszystkie urzadzenia)"
+"image/description/mini-search__button_background-image","Wyświetl w nagłówku (wszystkie urzadzenia)"
+"image/description/mini-search__button--hover_background-image","Wyświetl w nagłówku (wszystkie urzadzenia)"
+"image/description/mini-profile__link_background-image","Wyświetl w nagłówku (urządzenia mobilne)"
+"image/description/toolbar__view-mode__grid_background-image","Wyświetl na liście produktów i na stronie wyników wyszukiwania (wszystkie urzadzenia)"
+"image/description/toolbar__view-mode__grid--hover_background-image","Wyświetl na liście produktów i na stronie wyników wyszukiwania (wszystkie urzadzenia)"
+"image/description/toolbar__view-mode__list_background-image","Wyświetl na liście produktów i na stronie wyników wyszukiwania (wszystkie urzadzenia)"
+"image/description/toolbar__view-mode__list--hover_background-image","Wyświetl na liście produktów i na stronie wyników wyszukiwania (wszystkie urzadzenia)"
+"image/description/block-compare__placeholder_background-image","Wyświetl w sekcji porównania produktów (wszystkie urzadzenia)"
+"image/description/list--social__item--facebook__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--facebook__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--twitter__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--twitter__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--google__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--google__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--instagram__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--instagram__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--linkedin__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--linkedin__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--pinterest__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--pinterest__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--tiktok__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--tiktok__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--youtube__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--youtube__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--flickr__link_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/list--social__item--flickr__link--hover_background-image","Wyświetl w stopce (wszystkie urzadzenia)"
+"image/description/og-image","Wyłącz obraz z udostępniania na kanałach społecznościowych za wyjatkiem strony kategorii "
+"image/fieldset/general","Głowne"
+"image/fieldset/logo","Logo"
+"image/fieldset/background","Tło"
+"image/fieldset/footer","Stopka"
+"image/fieldset/add_to_links","Dodaj do linków"
+"image/fieldset/header","Nagłówek"
+"image/fieldset/product_list","Lista produktów"
+"image/fieldset/social_links","Linki do mediów społecznościowych"
+"image/help/page_favicon",
+"image/help/page_brand_logo",
+"image/help/page_brand_logo_email",
+"image/help/page_background-image",
+"image/help/page-footer__marketing-box--shipping__before",
+"image/help/page-footer__marketing-box--support__before",
+"image/help/page-footer__marketing-box--newsletter__before",
+"image/help/add-to-links__wishlist_background-image",
+"image/help/add-to-links__compare_background-image",
+"image/help/mini-cart__link__after",
+"image/help/mini-cart__link--hover__after",
+"image/help/mini-search__button_background-image",
+"image/help/mini-search__button--hover_background-image",
+"image/help/mini-profile__link_background-image",
+"image/help/toolbar__view-mode__grid_background-image",
+"image/help/toolbar__view-mode__grid--hover_background-image",
+"image/help/toolbar__view-mode__list_background-image",
+"image/help/toolbar__view-mode__list--hover_background-image",
+"image/help/block-compare__placeholder_background-image",
+"image/help/list--social__item--facebook__link_background-image",
+"image/help/list--social__item--facebook__link--hover_background-image",
+"image/help/list--social__item--twitter__link_background-image",
+"image/help/list--social__item--twitter__link--hover_background-image",
+"image/help/list--social__item--google__link_background-image",
+"image/help/list--social__item--google__link--hover_background-image",
+"image/help/list--social__item--instagram__link_background-image",
+"image/help/list--social__item--instagram__link--hover_background-image",
+"image/help/list--social__item--linkedin__link_background-image",
+"image/help/list--social__item--linkedin__link--hover_background-image",
+"image/help/list--social__item--pinterest__link_background-image",
+"image/help/list--social__item--pinterest__link--hover_background-image",
+"image/help/list--social__item--tiktok__link_background-image",
+"image/help/list--social__item--tiktok__link--hover_background-image",
+"image/help/list--social__item--youtube__link_background-image",
+"image/help/list--social__item--youtube__link--hover_background-image",
+"image/help/list--social__item--flickr__link_background-image",
+"image/help/list--social__item--flickr__link--hover_background-image",
+"image/help/og-image",
+"image/title/add-to-links-hover__wishlist_background-image","Ikona listy życzń po najechaniu kursorem"
+"image/title/add-to-links-hover__compare_background-image","Ikona porównaj po najechaniu kursorem"

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+    <name>Me_Lff</name>
+    <version>0.9.1.0</version>
+    <stability>stable</stability>
+    <license uri="http://magevolve.com/terms-and-conditions">Magevolve Ltd. License</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Magevolve Free Shipping Remaining Cost Extension.&#xD;
+The extension adds a functionality to show how much money more user should spend to gain free shipping.</summary>
+    <description>The extension adds a functionality to show how much money more user should spend to gain free shipping.&#xD;
+The notification will be displayed on the cart page automatically if the module is enabled. The information can be displayed in the sidebar as well. The extension will show the notification only if the free shipping method is enabled, and it has the appropriate minimum order amount (not zero).&#xD;
+The notification text can be customized by the administrator at the extension's configuration panel. There are also options how to show tax information as well. The administrator is able to setup to show the notification box in the sidebar, and can select where to display it automatically.</description>
+    <notes>Version number: 0.9.1.0&#xD;
+Stability: Stable&#xD;
+Compatibility: CE 1.6.x, 1.7.x, 1.8.x, 1.9.x</notes>
+    <authors><author><name>Attila S&#xE1;gi</name><user>magevolve</user><email>sagi.attila@magevolve.hu</email></author></authors>
+    <date>2015-11-17</date>
+    <time>19:27:16</time>
+    <contents><target name="mageetc"><dir name="modules"><file name="Me_Lff.xml" hash="5d3f47955415800fd1a63d7f3a6c306d"/></dir></target><target name="magecommunity"><dir name="Me"><dir name="Lff"><dir name="Block"><dir name="Checkout"><dir name="Cart"><file name="Leftamountinfo.php" hash="965fa61437586d65a23883bba45a12ee"/></dir></dir></dir><dir name="Helper"><file name="Data.php" hash="e66939426f9a0b0bf3d902498eb3efb8"/></dir><dir name="Model"><dir name="Container"><dir name="Left"><file name="Leftamountinfo.php" hash="d64d37eb5d21d65377d8cd9692bae2ac"/></dir><dir name="Right"><file name="Leftamountinfo.php" hash="dd9b8df6b3451676bb08063543e2f921"/></dir></dir><file name="Observer.php" hash="291c04ef67c42f5a897cdb2655d29a43"/><dir name="System"><dir name="Config"><dir name="Backend"><file name="Check.php" hash="e6431637fee6ae4d4d7054aee5e885da"/><file name="Notification.php" hash="d7ba0cdc25d1eeadc848c9f7939c30fe"/><file name="Position.php" hash="8e1dd25133a9f2c4100d2d3a0ce20154"/><file name="Taxsuffix.php" hash="0127e0d720bfce7beb9a7aaab7029b6a"/></dir></dir></dir></dir><dir name="etc"><file name="adminhtml.xml" hash="26dec684499901f493b8b8e5d09fd20a"/><file name="cache.xml" hash="98eb166c22ec5c20fb19e4c2eeb2ad01"/><file name="config.xml" hash="ecfcf429edae6f97e7b1a884bc7a7b87"/><file name="system.xml" hash="9b547ef00627b1a6e6242a289c6c2510"/></dir></dir></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="me"><file name="lff.xml" hash="89c7f6896e22d327366b093979bc76a0"/></dir></dir><dir name="template"><dir name="me"><dir name="lff"><dir name="checkout"><dir name="cart"><file name="left-amount-info.phtml" hash="c0e2e6269a6aef26fa7bade4d9b7dd2d"/></dir></dir><dir name="sidebar"><file name="sidebar-info.phtml" hash="61dae47cf2fb7c95619131140135acc8"/></dir></dir></dir></dir></dir></dir><dir name="rwd"><dir name="enterprise"><dir name="template"><dir name="me"><dir name="lff"><dir name="sidebar"><file name="sidebar-info.phtml" hash="82233140c5952c84a3657f86bebff1dd"/></dir></dir></dir></dir><dir name="layout"><dir name="me"><file name="lff.xml" hash="beae93f33a8c70151d0bdd99b758adaf"/></dir></dir></dir></dir><dir name="enterprise"><dir name="default"><dir name="template"><dir name="me"><dir name="lff"><dir name="sidebar"><file name="sidebar-info.phtml" hash="82233140c5952c84a3657f86bebff1dd"/></dir></dir></dir></dir><dir name="layout"><dir name="me"><file name="lff.xml" hash="beae93f33a8c70151d0bdd99b758adaf"/></dir></dir></dir></dir></dir></target><target name="mageskin"><dir name="frontend"><dir name="base"><dir name="default"><dir name="css"><dir name="me"><dir name="lff"><file name="lff.css" hash="ce5e0dbf18e83622e0b0926883a6625d"/></dir></dir></dir></dir></dir><dir name="rwd"><dir name="default"><dir name="css"><dir name="me"><dir name="lff"><file name="lff.css" hash="b441a2508c79fd01f5f07aea04dc68ff"/></dir></dir></dir></dir></dir></dir></target><target name="magelocale"><dir name="en_US"><file name="Me_Lff.csv" hash="426ccefcbb8cf02063e8cefd7e0cddc1"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>5.6.15</max></php></required></dependencies>
+</package>

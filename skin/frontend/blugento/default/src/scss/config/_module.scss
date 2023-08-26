@@ -1,0 +1,402 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       config/_module.scss
+    Version:        1.0
+    Description:    Default Modules Variables
+    ------------------------------------------------------------------------- */
+
+//  ----------------------------------------------------------------------------
+//  Module :: Page
+//  ----------------------------------------------------------------------------
+
+$page_favicon:                                                  image($image--page_favicon) !default;
+$page_brand_logo:                                               image($image--page_brand_logo) !default;
+$page_brand_logo_email:                                         image($image--page_brand_logo_email) !default;
+$page_width:                                                    1130px !default;
+$page_background-color:                                         $color--secondary !default;
+$page_background-image:                                         image($image--page_background-image) !default;
+$page_color:                                                    $color--primary !default;
+$page-overlay_background-color:                                 rgba($page_background-color, .7) !default;
+$page-container_width:                                          false !default;
+$page-container_background-color:                               $page_background-color !default;
+$page-container_color:                                          $page_color !default;
+$page_header_logo_max-height:                                   76px !default;
+$page-header--sticky_background-color:                          color('b') !default;
+$page-header--sticky_box-shadow-color:                          rgba($reset-body_color, .2) !default;
+$page-header__logo_height:                                      78px !default;
+$page-header_background-color:                                  $page-container_background-color !default;
+$page-header_color:                                             $page-container_color !default;
+$page-header__link_color:                                       color('j') !default;
+$page-header__separator_color:                                  darken($page-header_background-color, 8%) !default;
+$page-header__list--links__list-item_color:                     $page-header__link_color !default;
+$page-header__list--links__list-item--selected_color:           $page-header_color !default;
+$page-header__links_text-transform:                             inherit !default;
+$page-main_background-color:                                    $page-container_background-color !default;
+$page-main_color:                                               $page-container_color !default;
+$page-footer_background-color:                                  $page-container_background-color !default;
+$page-footer_color:                                             $page-container_color !default;
+$page-footer__link_color:                                       color('r') !default;
+$page-footer__link--hover_color:                                color('e') !default;
+$page-footer__section_border-color:                             color('h') !default;
+$page-footer__marketing-box__input-text_border-color:           color('d') !default;
+$page-footer__marketing-box__input-text_border-bottom-color:    color('i') !default;
+$page-footer__marketing-box__button_background:                 color('e') !default;
+$page-footer__marketing-box__button_color:                      color('b') !default;
+$page-footer__marketing-box--shipping__before:                  image($image--page-footer__marketing-box--shipping__before) !default;
+$page-footer__marketing-box--support__before:                   image($image--page-footer__marketing-box--support__before) !default;
+$page-footer__marketing-box--newsletter__before:                image($image--page-footer__marketing-box--newsletter__before) !default;
+$page-footer__copyright_color:                                  $page-footer__link_color !default;
+$page-footer__marketing-box--newsletter_color:                  $page-footer_color !default;
+$page-footer__marketing-box--support_color:                     $page-footer_color !default;
+$page-footer__marketing-box--shipping_color:                    $page-footer_color !default;
+
+//  ----------------------------------------------------------------------------
+//  Module :: Catalog - Category View, Filters, Product List
+//  ----------------------------------------------------------------------------
+
+$product-category__title_font-style:                    $page-title_font-style !default;
+$product-category__title_font-weight:                   $page-title_font-weight !default;
+$product-category__title_font-size:                     $page-title_font-size !default;
+$product-category__title_line-height:                   $page-title_line-height !default;
+$product-category__title_font-family:                   $page-title_font-family !default;
+$product-category__title_text-transform:                $page-title_text-transform !default;
+$product-category__title_color:                         $page-title_color !default;
+
+$block-layered-nav__filter-fg:                          color('e') !default;
+$block-layered-nav__filter-matches-fg:                  color('f') !default;
+$block-layered-nav__title_color:                        $page-subtitle_color !default;
+$block-layered-nav__title_font-style:                   inherit !default;
+$block-layered-nav__title_font-weight:                  inherit !default;
+$block-layered-nav__title_font-size:                    22px !default;
+$block-layered-nav__title_font-family:                  inherit !default;
+$block-layered-nav__title_text-transform:               inherit !default;
+
+$products-grid__navigation_background-color:            rgba(color('b'), .65) !default;
+$products-grid__item-inner_background-color:            darken($page-main_background-color, 4%) !default;
+$products-grid__item__characteristics_color:            color('r') !default;
+$products-grid__item__baseprice_color:                  $products-grid__item__characteristics_color !default;
+$products-grid__item__price_color:                      color('e') !default;
+$products-grid__item__price_font-style:                 inherit !default;
+$products-grid__item__price_font-weight:                inherit !default;
+$products-grid__item__price_font-size:                  inherit !default;
+$products-grid__item__price_line-height:                inherit !default;
+$products-grid__item__price_font-family:                inherit !default;
+$products-grid__item__price-label_color:                color('r') !default;
+$products-grid__item__product-box_text-align:           left !default;
+$products-grid__item__product-name_color:               color('e') !default;
+$products-grid__item__product-name_font-style:          normal !default;
+$products-grid__item__product-name_font-weight:         900 !default;
+$products-grid__item__product-name_font-size:           16px !default;
+$products-grid__item__product-name_line-height:         20px !default;
+$products-grid__item__product-name_font-family:         $font-family-base !default;
+$products-grid__item__product-name_text-transform:      uppercase !default;
+$products-grid__item__old-price_color:                  color('r') !default;
+$products-grid__item__tax-details_display:              block !default;
+$products-grid__item__tax-details_color:                $products-grid__item__characteristics_color !default;
+
+$products-list__item__actions_margin-top:               20px !default;
+$products-list__item__description_font-size:            13px !default;
+$products-list__item__description_line-height:          17px !default;
+$products-list__item__price_margin-bottom:              0 !default;
+$products-list__item__product-box_text-align:           left !default;
+$products-list__item__product-name_margin-bottom:       0 !default;
+$products-list__item__product-actions_background-color: color('m') !default;
+$products-list__item__product-image_background-color:   #fff !default;
+$products-list__item__ratings_color:                    color('r') !default;
+
+$products-background-hover-button:                      $button-action_background-color !default;
+
+//  ----------------------------------------------------------------------------
+//  Module :: Catalog - Product Compare
+//  ----------------------------------------------------------------------------
+
+$block-compare__placeholder_background-image:               image($image--block-compare__placeholder_background-image) !default;
+$product-compare__item__product-image_background-color:     #fff !default;
+
+//  ----------------------------------------------------------------------------
+//  Module :: Catalog - Product View
+//  ----------------------------------------------------------------------------
+
+$product-view__product-name_color:                                      $page-title_color !default;
+$product-view__product-name_font-style:                                 $page-title_font-style !default;
+$product-view__product-name_font-weight:                                $page-title_font-weight !default;
+$product-view__product-name_font-size:                                  $page-title_font-size !default;
+$product-view__product-name_line-height:                                $page-title_line-height !default;
+$product-view__product-name_font-family:                                $page-title_font-family !default;
+$product-view__product-name_text-transform:                             inherit !default;
+$product-view__price_color:                                             color('e') !default;
+$product-view__price_font-style:                                        inherit !default;
+$product-view__price_font-weight:                                       inherit !default;
+$product-view__price_font-size:                                         40px !default;
+$product-view__price_line-height:                                       inherit !default;
+$product-view__price_font-family:                                       inherit !default;
+$product-view__old-price_color:                                         color('r') !default;
+$product-view__price-label_color:                                       color('r') !default;
+$product-view__product-options__required_font-style:                    inherit !default;
+$product-view__product-options__required_font-weight:                   inherit !default;
+$product-view__product-options__required_font-size:                     inherit !default;
+$product-view__product-options__required_font-family:                   inherit !default;
+$product-view__product-options__required_text-transform:                uppercase !default;
+$product-view__product-options__required_color:                         color('r') !default;
+$product-view__sku_color:                                               $product-view__product-options__required_color !default;
+$product-view__sku_display:                                             block !default;
+$product-view__add-to-cart__input_display:                              inline !default;
+$product-view__add-to-cart__button_background-color:                    $button-action_background-color !default;
+$product-view__add-to-cart__button_color:                               $button-action_color !default;
+$product-view__add-to-cart__button_text-transform:                      uppercase !default;
+$product-view__add-to-cart__button_font-style:                          inherit !default;
+$product-view__add-to-cart__button_font-weight:                         700 !default;
+$product-view__add-to-cart__button_font-size:                           16px !default;
+$product-view__add-to-cart__button_font-family:                         inherit !default;
+$product-view__product-collateral__list_border-color:                   color('c') !default;
+$product-view__product-collateral__list__item_color:                    color('r') !default;
+$product-view__product-collateral__list__item-active_background-color:  color('c') !default;
+$product-view__product-collateral__list__item-active_color:             color('e') !default;
+$product-view__availability__font-style:                                inherit !default;
+$product-view__availability__font-weight:                               700 !default;
+$product-view__availability__font-size:                                 14px !default;
+$product-view__availability__font-style:                                inherit !default;
+$product-view__availability__in-stock_color:                            color('q') !default;
+$product-view__availability__out-of-stock_color:                        color('e') !default;
+$product-view__availability_text-transform:                             uppercase !default;
+$product-view__availability_display:                                    block !default;
+$product-view__product-image_background-color:                          color('c') !default;
+$product-view__more-views__list__item__link_background-color:           $product-view__product-image_background-color !default;
+$product-view__tab-reviews__raitings_color:                             color('r') !default;
+$product-view__rating-table__rating-data_border-right:                  rgba(color('m'), .1) !default;
+$product-view__product-tags__list_color:                                color('r') !default;
+$product-view__product-tags__list__link_color:                          color('e') !default;
+$product-view__tax-details_color:                                       $product-view__product-options__required_color !default;
+$product-view__label-grouped_color:                                     color('r') !default;
+$product-view__product-shop__breadcrumbs_display:                       $breadcrumbs_display !default;
+$product-view__image_discount_percentage-background-color:              $color--fifth !default;
+$product-view__whatsapp_background_color:                               #25d366 !default;
+$product-view__whatsapp_hover_background_color:                         #1ab454 !default;
+$product-view__whatsapp_text_color:                                     #ffffff !default;
+$product-view__whatsapp_hover_text_color:                               #ffffff !default;
+$product-view__whatsapp_button_font-family:                             inherit !default;
+$product-view__whatsapp_button_font-weight:                             700 !default;
+$product-view__whatsapp_button_font-size:                               16px !default;
+$product-view__whatsapp_button_line-height:                             34px !default;
+$product-view__whatsapp_button_font-style:                              inherit !default;
+$product-view__whatsapp_button_text-transform:                          uppercase !default;
+
+//  ----------------------------------------------------------------------------
+//  Module :: Checkout - Mini-Cart
+//  ----------------------------------------------------------------------------
+
+$mini-cart__link_color:                             $page-header_color !default;
+$mini-cart__link--hover_color:                      color('g') !default;
+$mini-cart__link__after:                            image($image--mini-cart__link__after) !default;
+$mini-cart__link--hover__after:                     image($image--mini-cart__link--hover__after) !default;
+$mini-cart__block-content_background-color:         color('g') !default;
+$mini-cart__block-content_color:                    color('e') !default;
+$mini-cart__block-content-summary_color:            rgba(color('e'), .35) !default;
+$mini-cart__item_border-color:                      rgba($mini-cart__block-content_color, .1) !default;
+$mini-cart__link__qty_background-color:             color('q') !default;
+$mini-cart__link__qty_border-color:                 color('b') !default;
+$mini-cart__link__qty_color:                        color('b') !default;
+$mini-cart-button-view-color:                       color('b') !default;
+$mini-cart-button-view_background-color:            color('e') !default;
+$mini-cart-button-proceed-color:                    color('b') !default;
+$mini-cart-button-proceed_background-color:         color('q') !default;
+$mini-cart-button_font-weight:                      700 !default;
+$mini-cart-button_font-size:                        13px !default;
+$mini-cart-button_font-family:                      $font-family-base !default;
+$mini-cart-button_text-transform:                   uppercase !default;
+
+//  ----------------------------------------------------------------------------
+//  Module :: Checkout - Cart
+//  ----------------------------------------------------------------------------
+
+$cart-table_background-color:                           color('c') !default;
+$cart-table__sku-label_font-size:                       inherit !default;
+$cart-table__sku-label_color:                           color('r') !default;
+$cart-table__product-image_background-color:            #fff !default;
+$cart-table__product-name_color:                        inherit !default;
+$cart-table__product-name_text-transform:               inherit !default;
+$cart-table__product-name_font-style:                   inherit !default;
+$cart-table__product-name_font-weight:                  inherit !default;
+$cart-table__product-name_font-size:                    inherit !default;
+$cart-table__item-options_font-size:                    inherit !default;
+$cart-table__item-options_color:                        inherit !default;
+$cart-table__product-price_font-weight:                 inherit !default;
+$cart-table__product-price_font-size:                   inherit !default;
+$cart-table__product-price_color:                       inherit !default;
+$cart-table__product-sku_display:                       block !default;
+$cart__btn-checkout_background-color:                   $button-action_background-color !default;
+$cart__btn-checkout_color:                              $button-action_color !default;
+$cart__discount__button_background-color:               $button-secondary_background-color !default;
+$cart__discount__button_color:                          $button-secondary_color !default;
+$cart__cart-totals__table_background-color:             color('c') !default;
+$cart__cart-totals__table_color:                        color('e') !default;
+$cart__cart-totals__total_color:                        color('r') !default;
+$empty_cart-title-color:                                color('e') !default;
+$empty_cart-title-font-style:                           inherit !default;
+$empty_cart-title-font-weight:                          700 !default;
+$empty_cart-title-font-size:                            24px !default;
+$empty_cart-title-font-family:                          $font-family-base !default;
+$empty_cart-title_text-transform:                       uppercase !default;
+$empty_cart-button-color:                               color('b') !default;
+$empty_cart-button-background-color:                    color('e') !default;
+$empty_cart-button-hover-color:                         color('b') !default;
+$empty_cart-button-hover-background-color:              color('k') !default;
+$empty_cart-button-font-style:                          inherit !default;
+$empty_cart-button-font-weight:                         400 !default;
+$empty_cart-button-font-size:                           18px !default;
+$empty_cart-button-font-family:                         $font-family-base !default;
+$empty_cart-button_text-transform:                      none !default;
+$shopping-cart-table-button-empty-color:                color('b') !default;
+$shopping-cart-table-button-empty_background-color:     color('e') !default;
+$shopping-cart-table-button-update-color:               color('b') !default;
+$shopping-cart-table-button-update_background-color:    color('e') !default;
+$shopping-cart-table-button_font-weight:                700 !default;
+$shopping-cart-table-button_font-size:                  13px !default;
+$shopping-cart-table-button_font-family:                $font-family-base !default;
+$shopping-cart-table-button_text-transform:             uppercase !default;
+$cart__btn-checkout_hover_background-color:             $button-action_background-color !default;
+$cart__btn-checkout_hover_color:                        $button-action_color !default;
+$cart__btn-checkout_font-weight:                        700 !default;
+$cart__btn-checkout_font-size:                          13px !default;
+$cart__btn-checkout_font-family:                        $font-family-base !default;
+$cart__btn-checkout_text-transform:                     uppercase !default;
+
+//  ----------------------------------------------------------------------------
+//  Module :: Checkout - Onepage
+//  ----------------------------------------------------------------------------
+
+$checkout-onepage_step_background-color:                    color('b') !default;
+$checkout-onepage__step-title_color:                        color('r') !default;
+$checkout-onepage__step-title_active_color:                 color('e') !default;
+$checkout-onepage__step-title_text-transform:               none !default;
+$checkout-onepage__step-title_border-bottom-width:          2px !default;
+$checkout-onepage__step-title_border-bottom-color:          #f2f2f2 !default;
+$checkout-onepage__step-title_font-weight:                  inherit !default;
+$checkout-onepage__step-title_font-size:                    21px !default;
+$checkout-onepage__radio_buttons_background-color:          #F5F5F5 !default;
+$checkout-onepage__radio_buttons_color:                     #222 !default;
+$checkout-onepage__radio_buttons_border-color:              #F5F5F5 !default;
+$checkout-onepage__radio_buttons_border-active-color:       #E2E2E2 !default;
+$checkout-onepage__radio_buttons_border-width:              0 !default;
+$checkout-onepage__radio_buttons_font-size:                 16px !default;
+$checkout-onepage__radio_buttons_font-weight:               400 !default;
+$checkout-onepage__radio_buttons_text-transform:            none !default;
+$checkout-onepage__buttons_background-color:                color('k') !default;
+$checkout-onepage__buttons_font-size:                       14px !default;
+$checkout-onepage__buttons_font-weight:                     500 !default;
+$checkout-onepage__buttons_text-transform:                  uppercase !default;
+$checkout-onepage__buttons_color:                           color('b') !default;
+$checkout-onepage__progress-title_color:                    #585858 !default;
+$checkout-onepage__progress-complete-title_color:           #585858 !default;
+$checkout-onepage__progress-title_text-transform:           none !default;
+$checkout-onepage__progress-title_background-color:         color('b') !default;
+$checkout-onepage__progress-title_font-size:                15px !default;
+$checkout-onepage__progress-title_line-height:              22px !default;
+$checkout-onepage__progress-title_font-weight:              300 !default;
+$checkout-onepage__progress-title_border-width:             8px !default;
+$checkout-onepage__progress-title_border-color:             #cfcfcf !default;
+$checkout-onepage__progress-complete-title_border-color:    color('k') !default;
+$checkout-onepage__form_background-color:                   color('b') !default;
+$checkout-onepage__form_border-width:                       2px !default;
+$checkout-onepage__form_border-color:                       #F5F5F5 !default;
+$checkout-onepage__form_label-color:                        #222 !default;
+$checkout-onepage__form_label_font-weight:                  400 !default;
+$checkout-onepage__form_label_font-size:                    13px !default;
+$checkout-onepage__form_label_text-transform:               none !default;
+$checkout-onepage__form_input-color:                        #222 !default;
+$checkout-onepage__form_input_border-width:                 1px !default;
+$checkout-onepage__form_input_border-color:                 #E2E2E2 !default;
+$checkout-onepage__form_input_font-weight:                  400 !default;
+$checkout-onepage__form_input_font-size:                    16px !default;
+$checkout-onepage__form_input_text-transform:               none !default;
+$checkout-onepage__form_label_font-family:                  $font-family-base !default;
+$checkout-onepage__form_input_font-family:                  $font-family-base !default;
+$checkout-onepage__step-title_font-family:                  $font-family-base !default;
+$checkout-onepage__radio_buttons_font-family:               $font-family-base !default;
+$checkout-onepage__buttons_font-family:                     $font-family-base !default;
+$checkout-onepage__progress-title_font-family:              $font-family-base !default;
+
+//  ----------------------------------------------------------------------------
+//  Module :: Customer
+//  ----------------------------------------------------------------------------
+
+$register__block-content__title_font-family:                $font-family-base !default;
+$register__block-content__title_color:                      color('e') !default;
+$register__block-content__title_font-weight:                700 !default;
+$register__block-content__title_font-size:                  18px !default;
+$register__block-content__title_line-height:                30px !default;
+$register__block-content__title_text-transform:             uppercase !default;
+$register__block-content__form_background-color:            color('b') !default;
+$register__block-content__form_border-width:                1px !default;
+$register__block-content__form_border-color:                #cfcfcf !default;
+$register__block-content__form_label-color:                 #585858 !default;
+$register__block-content__form_label_font-weight:           700 !default;
+$register__block-content__form_label_font-size:             13px !default;
+$register__block-content__form_label_font-family:           $font-family-base !default;
+$register__block-content__form_label_text-transform:        uppercase !default;
+$register__block-content__form_input-color:                 #585858 !default;
+$register__block-content__form_input_border-width:          1px !default;
+$register__block-content__form_input_border-color:          #cfcfcf !default;
+$register__block-content__form_input_font-weight:           400 !default;
+$register__block-content__form_input_font-size:             15px !default;
+$register__block-content__form_input_font-family:           $font-family-base !default;
+$register__block-content__form_input_text-transform:        none !default;
+$register__block-content__form_button-background-color:     color('e') !default;
+$register__block-content__form_button-color:                color('b') !default;
+$register__block-content__form_button-font-weight:          700 !default;
+$register__block-content__form_button-font-size:            19px !default;
+$register__block-content__form_button-font-family:          $font-family-base !default;
+$account__block-content_border-color:                       #cfcfcf !default;
+$account__block-content__list_color:                        #cfcfcf !default;
+$account__block-content__list__current_color:               color('e') !default;
+$account__block-content__list__current_background-color:    #f2f2f2 !default;
+$account__block-content__title-color:                       color('e') !default;
+$account__block-content__title-font-weight:                 700 !default;
+$account__block-content__title-font-size:                   17px !default;
+$account__block-content__title_line-height:                 30px !default;
+$account__block-content__title-font-family:                 $font-family-base !default;
+$account__block-content__title_text-transform:              uppercase !default;
+$account__block-content__subtitle-color:                    color('e') !default;
+$account__block-content__subtitle-font-weight:              700 !default;
+$account__block-content__subtitle-font-size:                15px !default;
+$account__block-content__subtitle_line-height:              21px !default;
+$account__block-content__subtitle-font-family:              $font-family-base !default;
+$account__block-content__subtitle_text-transform:           uppercase !default;
+$account__block-content__panel_title-color:                 color('e') !default;
+$account__block-content__panel_title-font-weight:           300 !default;
+$account__block-content__panel_title-font-size:             15px !default;
+$account__block-content__panel_title_line-height:           21px !default;
+$account__block-content__panel_title-font-family:           $font-family-base !default;
+$account__block-content__panel_title_text-transform:        uppercase !default;
+$account__block-content__text-color:                        #585858 !default;
+$account__block-content__text-font-weight:                  300 !default;
+$account__block-content__text-font-size:                    15px !default;
+$account__block-content__text_line-height:                  21px !default;
+$account__block-content__text-font-family:                  $font-family-base !default;
+$account__block-content__text_text-transform:               none !default;
+$account__block-content__button-color:                      color('k') !default;
+$account__block-content_button_border-color:                color('k') !default;
+$account__block-content__button-font-weight:                300 !default;
+$account__block-content__button-font-size:                  13px !default;
+$account__block-content__button_line-height:                21px !default;
+$account__block-content__button-font-family:                $font-family-base !default;
+$account__block-content__button-text-transform:             none !default;
+$account__block-content__sidebar_title-font-weight:         700 !default;
+$account__block-content__sidebar_title-font-size:           17px !default;
+$account__block-content__sidebar_title_line-height:         30px !default;
+$account__block-content__sidebar_title-font-family:         $font-family-base !default;
+$account__block-content__sidebar_title_text-transform:      uppercase !default;
+$account__block-content__list-font-weight:                  300 !default;
+$account__block-content__list-font-size:                    15px !default;
+$account__block-content__list-font-family:                  $font-family-base !default;
+$account__block-content__list_text-transform:               none !default;
+$mini-profile__link_background-image:                       image($image--mini-profile__link_background-image) !default;
+$mini-wishlist__link_background-image:                      image($image--mini-wishlist__button_background-image) !default;
+$mini-wishlist--hover__link_background-image:               image($image--mini-wishlist__button--hover_background-image) !default;
+
+//  ----------------------------------------------------------------------------
+//  Module :: CatalogSearch
+//  ----------------------------------------------------------------------------
+
+$mini-search__button_background-image:          image($image--mini-search__button_background-image) !default;
+$mini-search__button--hover_background-image:   image($image--mini-search__button--hover_background-image) !default;
+$mini-search_display:                           block !default;

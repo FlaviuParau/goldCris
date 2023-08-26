@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <blugento_socialmedia translate="title" module="blugento_socialmedia">
+                                        <title>Social Media</title>
+                                        <sort_order>980</sort_order>
+                                    </blugento_socialmedia>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

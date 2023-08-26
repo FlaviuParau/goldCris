@@ -1,0 +1,11 @@
+src/app/code/local/Blugento/DeliveryDay                             app/code/local/Blugento/DeliveryDay
+
+src/app/etc/modules/Blugento_DeliveryDay.xml                        app/etc/modules/Blugento_DeliveryDay.xml
+
+src/app/design/frontend/base/default/layout/delivery_day.xml        app/design/frontend/base/default/layout/delivery_day.xml
+
+src/app/design/frontend/base/default/template/delivery_day.phtml    app/design/frontend/base/default/template/delivery_day.phtml
+
+src/app/design/frontend/base/default/template/delivery_day_cart.phtml    app/design/frontend/base/default/template/delivery_day_cart.phtml
+
+src/app/locale/ro_RO/Blugento_DeliveryDay.csv                       app/locale/ro_RO/Blugento_DeliveryDay.csv

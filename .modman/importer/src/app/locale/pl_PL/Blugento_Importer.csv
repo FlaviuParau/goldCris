@@ -1,0 +1,87 @@
+Attention: Products informations will be updated acording to the feed. Any wrong information about the products will override the existing product data.,Uwaga: informacje o produktach b?d? aktualizowane zgodnie z kana?em. Wszelkie b??dne informacje o produktach zast?pi? istniej?ce dane produktu.
+Error: Datafeed can not de downloaded/process,B??d: Nie mo?na pobra? / przetworzy? danych
+Map Fields,Map Fields
+Import/Export Profile,Importuj /Eksportuj Profil
+Profile Settings,Ustawienia profilu
+Run Profile,Uruchom profil
+Profile History,Historia profilu
+Profile Information,Informacje o Profilu
+Name,Nazwa
+Save Profile,Zapisz profil
+Delete Profile,Usu? profil
+Save and Continue Edit,Zapisz i kontynuuj edycj?
+New Profile,Nowy profil
+Entity type,Typ jednostki
+Entity type:,Typ jednostki:
+Behavior,Post?powanie
+Last Run Time,Czas ostatniego uruchomienia
+Products,Produkty
+Create Only,Tylko utwórz
+Update Only,Tylko aktualizacja
+Create & Update,Utwórz i zaktualizuj
+Process Images,Przetwarzaj obrazy
+Create Categories,Utwórz kategorie
+Data Source:,?ród?o danych:
+Upload File,Przesy?anie pliku
+Existing File,Istniej?cy plik
+File name:,Nazwa pliku:
+Path:,?cie?ka:
+Data Format:,Format danych:
+Select a file,Wybierz plik
+Value Delimiter:,Ogranicznik warto?ci:
+Enclose Values In:,Za??cz warto?ci w:
+Entity XML Node Name:,Nazwa w?z?a XML jednostki:
+" For XML files insert product node name. e.g. product, products, product_details","W przypadku plików XML wstaw nazw? w?z?a produktu. na przyk?ad produkt, produkty, szczegó?y_produktu"
+The profile you are trying to save no longer exists,"Profil, który próbujesz zapisa?, ju? nie istnieje"
+Profile Name,Nazwa profilu
+Entity Type,Typ jednostki
+Result,Wynik
+Run At,Uruchom o
+"(For Type Local Server need to use relative path to Magento install var/export or var/import, e.g. var/export, var/import, var/export/some/dir, var/import/some/dir)","(W przypadku typu Local Server nale?y u?y? ?cie?ki wzgl?dnej do instalacji Magento var / export lub var / import, np. Var / export, var / import, var / export / some / dir, var / import / some / dir)"
+Warning! Empty value can cause problems with CSV format.,Ostrze?enie! Pusta warto?? mo?e powodowa? problemy z formatem CSV.
+"For XML files insert product node name. e.g. product, products, product_details","W przypadku plików XML wstaw nazw? w?z?a produktu. na przyk?ad produkt, produkty, szczegó?y produktu"
+Remove comma symbol from price,Usu? symbol przecinka z ceny
+File Information,Informacje o pliku
+File Data Information,Informacje o pliku danych
+Use Default Values,U?yj warto?ci domy?lnych
+Default Store:,Domy?lny sklep:
+Default Website,Domy?lna strona internetowa
+Default Attribute Set Id,Domy?lny zestaw atrybutów Id
+Default Product Type,Domy?lny typ produktu
+Default Status,Domy?lny status
+Default Visibility,Domy?lna widoczno??
+Default Tax Class Id,Domy?lny identyfikator klasy podatkowej
+Default Weight,Domy?lna waga
+Category Separator,Separator kategorii
+Gallery Image Separator,Separator obrazów galerii
+(Products will be added/updated to this store if 'store' column is blank or missing in the import file.),"(Produkty zostan? dodane / zaktualizowane do tego sklepu, je?li kolumna „sklep” jest pusta lub brakuje jej w pliku importu.)"
+Alternative Boolean Attribute TRUE Values,Alternatywne warto?ci logiczne PRAWDA
+Alternative Boolean Attribute FALSE Values,Alternatywne warto?ci logiczne FA?SZ
+"(Add multiple values separated by comma like: yes,da,in stock)","(Dodaj wiele warto?ci oddzielonych przecinkami, np .: yes,tak,w magazynie)"
+"(Add multiple values separated by comma like: no,nu,out of stock)","(Dodaj wiele warto?ci oddzielonych przecinkami, np .: no,nie,brak w magazynie)"
+Automatically Run Profile,Automatycznie uruchom profil
+Run Frequency,Cz?stotliwo?? uruchomie?
+Last Run:,Ostatnie uruchomienie:
+In File:,W pliku:
+In Database:,W bazie danych:
+Transformation:,Transformacja:
+Add Field Mapping,Dodaj Field Mapping
+Remove,Usu?
+Field Mapping (not mapped attributes will be ignored),Field Mapping (niezmapowane atrybuty b?d? zignorowane)
+Test Profile Data,Testuj dane profilu
+Run Profile Import,Uruchom import profilu
+Force Import Profile Images,Wymu? import obrazów profilowych
+Please make sure that your changes were saved before running the profile.,"Upewnij si?, ?e zmiany zosta?y zapisane przed uruchomieniem profilu."
+Reset Filter,Resetuj Filtr
+Reset,Resetuj
+Search,Szukaj
+Back,Powrót
+Multiplier:,Powielacz:
+ %s images need to be processed., % Obrazy s musz? zosta? przetworzone.
+"If you choose ""YES"" you have to set behavior to ""Update Only"" or ""Create & Update"", otherwise the images will not be processed.","Je?li wybierzesz „TAK”, musisz ustawi? zachowanie na „Tylko aktualizuj” lub „Utwórz i aktualizuj”, w przeciwnym razie obrazy nie b?d? przetwarzane."
+Duplicate Images,Zduplikowane obrazy
+If an image is assigned to at least two products set this option to YES.,"Je?li obraz jest przypisany do co najmniej dwóch produktów, ustaw t? opcj? na TAK."
+No. of Imported Products,Liczba importowanych produktów
+No. of Updated Products,Liczba zaktualizowanych produktów
+Missing Images,Brakuj?ce obrazy
+Skipped Rows,Pomini?te wiersze

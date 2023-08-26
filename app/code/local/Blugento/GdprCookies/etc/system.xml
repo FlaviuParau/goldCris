@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <gdpr_cookies translate="label" module="gdprcookies">
+            <label>GDPR Cookies</label>
+            <tab>blugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>0</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enable GDPR Cookies</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <disablePersistent translate="label">
+                            <label>Disable GDPR Cookies Persistent</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </disablePersistent>
+                        <popup_title translate="label">
+                            <label>Pop-up Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </popup_title>
+                        <popup_content translate="label">
+                            <label>Pop-up Content</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </popup_content>
+                        <manage_page_link translate="label">
+                            <label>Manage Pop-up details link</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cms_page</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </manage_page_link>
+                        <cookies_list_link translate="label">
+                            <label>Manage Cookies List</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>gdprcookies/adminhtml_system_config_form_cookiesList</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookies_list_link>
+                        <ga_measurement_id translate="label">
+                            <label>GA Measurement ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ga_measurement_id>
+                    </fields>
+                </general>
+                <default_categories>
+                    <label>Default Cookie Categories</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <necessary translate="label">
+                            <label>Necessary</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </necessary>
+                        <analytics translate="label">
+                            <label>Statistics</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>gdprcookies/system_config_source_options</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </analytics>
+                        <marketing translate="label">
+                            <label>Marketing</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>gdprcookies/system_config_source_options</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </marketing>
+                    </fields>
+                </default_categories>
+                <custom_categories>
+                    <label>Custom Cookie Categories</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <categories>
+                            <label>Add Custom Cookie Categories</label>
+                            <frontend_model>gdprcookies/adminhtml_system_config_form_field_categories</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </categories>
+                    </fields>
+                </custom_categories>
+                <scripts>
+                    <label>Scripts</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <analytics translate="label">
+                            <label>Statistics Scripts Area</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </analytics>
+                        <marketing translate="label">
+                            <label>Marketing Scripts Area</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </marketing>
+                    </fields>
+                </scripts>
+                <lifetime_cookie>
+                    <label>Lifetime Cookies</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <lifetime_cookie_input translate="label">
+                            <label>Lifetime</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lifetime_cookie_input>
+                    </fields>
+                </lifetime_cookie>
+            </groups>
+        </gdpr_cookies>
+        <design>
+            <groups>
+                <head>
+                    <fields>
+                        <scripts_link translate="label">
+                            <label>Other Categories Scripts</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>gdprcookies/adminhtml_system_config_form_button</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </scripts_link>
+                    </fields>
+                </head>
+            </groups>
+        </design>
+        <google>
+            <groups>
+                <analytics>
+                    <fields>
+                        <category translate="label">
+                            <label>Script Category</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>gdprcookies/system_config_source_categories</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </category>
+                    </fields>
+                </analytics>
+            </groups>
+        </google>
+    </sections>
+</config>

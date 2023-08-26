@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<jstranslator>
+    <autocomplete_field_no_results translate="message" module="blugento_cautocomplete">
+        <message>No results found</message>
+    </autocomplete_field_no_results>
+    <autocomplete_field_no_matches translate="message" module="blugento_cautocomplete">
+        <message>No matches</message>
+    </autocomplete_field_no_matches>
+    <autocomplete_field_no_matches_easybox translate="message" module="blugento_cautocomplete">
+        <message>No matches easybox</message>
+    </autocomplete_field_no_matches_easybox>
+    <autocomplete_field_error translate="message" module="blugento_cautocomplete">
+        <message>Please complete this field and select one of the values ​​below.</message>
+    </autocomplete_field_error>
+    <autocomplete_field_typing translate="message" module="blugento_cautocomplete">
+        <message>Write</message>
+    </autocomplete_field_typing>
+    <autocomplete_field_more translate="message" module="blugento_cautocomplete">
+        <message>or more characters for results.</message>
+    </autocomplete_field_more>
+    <autocomplete_field_typing_results translate="message" module="blugento_cautocomplete">
+        <message>Begin typing for results.</message>
+    </autocomplete_field_typing_results>
+    <autocomplete_locker translate="message" module="blugento_cautocomplete">
+        <message>Please click and select your favourite easybox</message>
+    </autocomplete_locker>
+</jstranslator>

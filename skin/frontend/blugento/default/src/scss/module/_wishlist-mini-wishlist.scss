@@ -1,0 +1,60 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_wishlist-mini-wishlist.scss
+    Version:        1.0
+    Description:    Mini-Wishlist Styles (in Header, available on Version 2, Version 3 and Version 4)
+    ------------------------------------------------------------------------- */
+
+.mini-wishlist {
+    background-color: color('s');
+
+    @include mobile {
+        margin-left: 0;
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    > a {
+        display: table-cell;
+
+        > i {
+            vertical-align: middle;
+            position: relative;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: $add-to-links__wishlist_background-image no-repeat 50% 50%;
+            color: $mini-cart__link_color;
+
+            > em {
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                width: 20px;
+                height: 20px;
+                border: 3px solid color('b');
+                border-radius: 50%;
+                font-style: normal;
+                font-weight: 800;
+                font-size: 11px;
+                line-height: (20 / 11);
+                text-align: center;
+                background-color: color('q');
+                color: color('b');
+            }
+        }
+
+        > strong {
+            font-size: 12px;
+            background-color: color('e');
+            color: color('b');
+            padding: 10px;
+            margin-left: 10px;
+            vertical-align: top;
+            border-radius: 3px;
+
+            @include mobile {
+                display: none;
+            }
+        }
+    }
+}

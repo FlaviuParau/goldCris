@@ -1,0 +1,50 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       mixin/_util.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@mixin cf() {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin inline-block() {
+    display: inline-block;
+
+    @if support(ie, 6) {
+        * html & {
+            zoom: 1;
+            display: inline;
+        }
+    }
+
+    @if support(ie, 7) {
+        * + html & {
+            zoom: 1;
+            display: inline;
+        }
+    }
+}
+
+@mixin img-responsive($display: inline-block) {
+    width: 100%;
+    display: $display;
+    max-width: 100%;
+    height: auto;
+    vertical-align: text-bottom;
+}
+
+@mixin one-line-text() {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: '') {
+    box-shadow: $top $left $blur $color #{$inset};
+}

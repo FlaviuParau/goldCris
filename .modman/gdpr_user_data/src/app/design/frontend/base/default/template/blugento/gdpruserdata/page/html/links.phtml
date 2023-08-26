@@ -1,0 +1,19 @@
+<?php
+$helper = Mage::helper('blugento_gdpruserdata');
+?>
+<?php if($helper->isEnabled()): ?>
+<div class="my-account">
+	<div class="buttons-set">
+	    <button type="button" onclick="setLocation('<?php echo $this->getDeleteUrl(); ?>')" title="<?php echo $helper->__('Delete My Data') ?>" class="button">
+	        <span>
+	            <span><?php echo $helper->__('Delete My Data') ?></span>
+	        </span>
+	    </button>
+	    <button type="button" onclick="setLocation('<?php echo $this->getExportUrl(); ?>')" title="<?php echo $helper->__('Export My Data') ?>" class="button">
+	        <span>
+	            <span><?php echo $helper->__('Export My Data') ?></span>
+	        </span>
+	    </button>
+	</div>
+</div>
+<?php endif; ?>

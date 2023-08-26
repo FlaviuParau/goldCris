@@ -1,0 +1,115 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_product-view-tabs2.scss
+    Version:        1.0
+    Description:    Tabs Style: Full Width
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view_tabs-style == 2) {
+    .product-collateral {
+        clear: right;
+        float: right;
+        width: 100%;
+        margin-top: 50px;
+
+        .tabs-nav {
+            @include desktop {
+                display: flex;
+            }
+
+            .tab-reviews {
+                flex-grow: 1;
+                text-align: right;
+            }
+        }
+    
+        &[data-orientation='2'] {
+            border: 1px solid $product-view__product-collateral__list__item-active_background-color;
+            
+            .tabs-nav,
+            .tabs-container {
+                @include desktop {
+                    float: left;
+                }
+            }
+        
+            .tabs-nav {
+                border-right: 2px solid $product-view__product-collateral__list__item-active_background-color;
+                border-bottom: 2px solid $product-view__product-collateral__list__item-active_background-color;
+                flex-flow: row wrap;
+                justify-content: center;
+
+                @include desktop {
+                    width: 25%;
+                    padding: 0;
+                
+                    li {
+                        display: block;
+                        float: none;
+                        width: 100%;
+                    
+                        a {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        
+            .tabs-container {
+            
+                @include desktop {
+                    width: 75%;
+                }
+            
+                #block-related {
+                    padding-top: 0;
+                
+                    @include desktop {
+                        li.item {
+                            width: 25%;
+                        }
+                    }
+                    
+                    @include phone-sm {
+                        li.item {
+                            width: 100%;
+                        }
+                    }
+                }
+            
+                #pc-tab-reviews {
+                    padding-top: 20px;
+                
+                    .form-add-review {
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        @include phone {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .tab {
+            .button {
+                margin-bottom: 20px;
+
+                &:hover {
+                    background: $products-background-hover-button;
+                }
+            }
+        }
+
+        .data-table {
+            th,
+            td {
+                padding: 10px 20px;
+            }
+
+            th {
+                width: 30%;
+            }
+        }
+    }
+}

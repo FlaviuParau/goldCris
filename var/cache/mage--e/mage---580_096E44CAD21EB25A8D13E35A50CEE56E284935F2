@@ -1,0 +1,41 @@
+<div class="marketing-box marketing-box--shipping"><i>&nbsp;</i><div class="box-title"><h4>For orders above &euro; 50.-</h4><h5>Free Shipping</h5></div></div><div class="marketing-box marketing-box--support"><i>&nbsp;</i><div class="box-title"><h4>We offer complete</h4><h5>24/7 Support</h5></div></div>
+    <div class="marketing-box marketing-box--newsletter">
+        <i></i>
+        <div class="box-title">
+            <h4>Înscrieţi-vă la</h4>
+            <h5>Newsletter</h5>
+        </div>
+        <div class="box-content">
+                        <form action="https://goldcris.ro/newsletter/subscriber/new/?___SID=S" method="post" id="footer-newsletter-validate-detail">
+                <button type="submit" data-callback="onSubmit" title="Trimitere" class="button disabled"><span><span>Trimitere</span></span></button>
+                <div class="input-box">
+                    <input type="email" name="email" id="footer-newsletter" title="Abonați-vă la Newsletter-ul nostru" class="input-text newsletter-input required-entry validate-email" />
+                </div>
+                <input type="hidden" name="url" value="https://goldcris.ro/robots.txt" />
+	                                        </form>
+            
+            <script>
+            //<![CDATA[
+                var footerNewsletterSubscriberFormDetail = new VarienForm('footer-newsletter-validate-detail');
+	
+				
+                            //]]>
+            </script>
+            <script>
+                function onSubmit(token) {
+                    return new Promise(function (resolve, reject) {
+                        var dataForm = new VarienForm('footer-newsletter-validate-detail');
+
+                        if (grecaptcha.getResponse() !== "") {
+                                                            if (dataForm.validator && dataForm.validator.validate()){
+                                    jQuery('#footer-newsletter-validate-detail').attr('action', 'https://goldcris.ro/newsletter/subscriber/new/?___SID=S');
+                                    document.getElementById("footer-newsletter-validate-detail").submit();
+                                }
+                                                    }
+
+                        grecaptcha.reset();
+                    });
+                }
+            </script>
+                    </div>
+    </div>

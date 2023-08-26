@@ -1,0 +1,18 @@
+<config>
+    <modules>
+        <Blugento_Customer>
+            <version>1.0.0</version>
+        </Blugento_Customer>
+    </modules>
+    <frontend>
+        <routers>
+            <customer>
+                <args>
+                    <modules>
+                        <Blugento_Customer before="Mage_Customer">Blugento_Customer</Blugento_Customer>
+                    </modules>
+                </args>
+            </customer>
+        </routers>
+    </frontend>
+</config>

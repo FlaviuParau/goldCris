@@ -1,0 +1,5 @@
+src/app/code/local/Blugento/FullFeed                                     app/code/local/Blugento/FullFeed
+src/app/etc/modules/Blugento_FullFeed.xml                                app/etc/modules/Blugento_FullFeed.xml
+src/app/locale/en_US/Blugento_FullFeed.csv                               app/locale/en_US/Blugento_FullFeed.csv
+src/app/locale/ro_RO/Blugento_FullFeed.csv                               app/locale/ro_RO/Blugento_FullFeed.csv
+src/app/locale/pl_PL/Blugento_FullFeed.csv                               app/locale/pl_PL/Blugento_FullFeed.csv

@@ -1,0 +1,1571 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Feeds
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Feeds
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>10</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_feeds translate="label" module="blugento_feeds">
+            <label>Price Feeds Settings</label>
+            <tab>blugento</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <logos translate="label">
+                            <label>Display footer logos</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logos>
+                    </fields>
+                </general>
+                <shopmania translate="label">
+                    <label>Shopmania Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                        <logo_html translate="label">
+                            <label>Logo Image HTML</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo_html>
+                        <provider_url translate="label">
+                            <label>Feed Provider URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </provider_url>
+                        <root_category_id translate="label">
+                            <label>Root Category ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </root_category_id>
+                        <show_stores translate="label">
+                            <label>Show stores</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_stores>
+                        <storeview translate="label">
+                            <label>Select Store View</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_storeviews</source_model>
+                            <sort_order>85</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </storeview>
+                        <!--<taxes translate="label">-->
+                            <!--<label>Show taxes</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>90</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</taxes>-->
+                        <!--<add_vat translate="label">-->
+                            <!--<label>Add VAT to prices</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>8</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</add_vat>-->
+                        <!--<vat_value translate="label comment">-->
+                            <!--<label>VAT value</label>-->
+                            <!--<comment>Possible values: percent value - integer or float number ex 19 or 19.5; default value: 24.</comment>-->
+                            <!--<frontend_type>text</frontend_type>-->
+                            <!--<sort_order>9</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</vat_value>-->
+                        <shipping translate="label">
+                            <label>Add shipping to datafeed</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </shipping>
+                        <availability translate="label">
+                            <label>Add availability to datafeed</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </availability>
+                        <gtin translate="label">
+                            <label>Add GTIN to datafeed</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </gtin>
+                        <add_tagging translate="label">
+                            <label>Add GA Tagging to product URL</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </add_tagging>
+                        <tagging_params translate="label comment">
+                            <label>Add custom Tagging to product URL</label>
+                            <comment><![CDATA[possible values url_encode(TAGGING_PARAMS) default value tagging_params=utm_source=shopmania&utm_medium=cpc&utm_campaign=direct_link]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </tagging_params>
+                        <description translate="label">
+                            <label>Display Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/source_shopmania_description</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </description>
+                        <description_length translate="label comment">
+                            <label>Description length</label>
+                            <comment>Used when description is set to "Fixed number of characters"</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </description_length>
+                        <image translate="label">
+                            <label>Display image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>170</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </image>
+                        <specialprice translate="label">
+                            <label>Display special price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>180</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </specialprice>
+                        <on_stock translate="label">
+                            <label>Show only in stock products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>190</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </on_stock>
+                        <currency translate="label comment">
+                            <label>Get prices in specified currency</label>
+                            <comment>Possible values: RON, USD, EUR etc.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </currency>
+                        <!--<pg translate="label comment">-->
+                            <!--<label>Get feed paginated</label>-->
+                            <!--<comment>Possible values: 1, 2 etc.</comment>-->
+                            <!--<frontend_type>text</frontend_type>-->
+                            <!--<sort_order>17</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</pg>-->
+                        <!--<limit translate="label comment">-->
+                            <!--<label>Limit displayed products</label>-->
+                            <!--<comment>Possible values: 10, 20 etc. (integer)</comment>-->
+                            <!--<frontend_type>text</frontend_type>-->
+                            <!--<sort_order>18</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</limit>-->
+                        <!--<use_localtime translate="label comment">-->
+                            <!--<label>Use localtime</label>-->
+                            <!--<comment>Used when Mage::app()->getLocale()->storeTimeStamp($storeId) is not defined.</comment>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>210</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</use_localtime>-->
+                        <display_currency translate="label comment">
+                            <label>Display currency code</label>
+                            <comment>Force the display of certain currency code. Possible values: RON, USD, EUR etc.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </display_currency>
+                        <!--<grouped_main translate="label">-->
+                            <!--<label>Show main product data for grouped products (grouped, bundle, configurable)</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>230</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</grouped_main>-->
+                        <show_grouped_options translate="label">
+                            <label>Show hidden grouped product options</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>240</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_grouped_options>
+                        <show_products translate="label">
+                            <label>Show products visible on:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/source_shopmania_visibility</source_model>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_products>
+                        <show_simple_products translate="label">
+                            <label>Show simple products visible on:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/source_shopmania_visibilitysimple</source_model>
+                            <sort_order>260</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_simple_products>
+                        <show_grouped_products translate="label">
+                            <label>Show grouped products visible on:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/source_shopmania_visibilitysimple</source_model>
+                            <sort_order>270</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_grouped_products>
+                        <show_conf_products translate="label">
+                            <label>Show configurable products visible on:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/source_shopmania_visibilitysimple</source_model>
+                            <sort_order>280</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_conf_products>
+                        <show_bundle_products translate="label">
+                            <label>Show bundle products visible on:</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/source_shopmania_visibilitysimple</source_model>
+                            <sort_order>290</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_bundle_products>
+                        <!--<show_associated_products translate="label">-->
+                            <!--<label>Show simple associated products used in bundle and grouped products</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>300</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</show_associated_products>-->
+                        <bundle_products_price translate="label">
+                            <label>Show prices for bundle products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/source_shopmania_bundleprice</source_model>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </bundle_products_price>
+                        <!--<in_site_filter translate="label">-->
+                            <!--<label>Use in store filter for multiple stores</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>320</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</in_site_filter>-->
+                        <!--<gender translate="label">-->
+                            <!--<label>Add gender to category</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>31</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</gender>-->
+                        <final_price translate="label">
+                            <label>Show final price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>330</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </final_price>
+                        <show_cat translate="label">
+                            <label>Show categories</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>340</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_cat>
+                        <attribute translate="label">
+                            <label>Display product attributes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>350</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </attribute>
+                        <force translate="label comment">
+                            <label>Modify server config options</label>
+                            <comment>512M memory limit, unlimited execution time</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>360</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </force>
+                        <url_path translate="label">
+                            <label>Product URL path</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>370</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url_path>
+
+                    </fields>
+                </shopmania>
+                <pricero translate="label">
+                    <label>Price.ro Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                        <logo_html translate="label">
+                            <label>Logo Image HTML</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo_html>
+                        <provider_url translate="label">
+                            <label>Feed Provider URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </provider_url>
+                        <root_category_id translate="label">
+                            <label>Root Category ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </root_category_id>
+                        <show_description translate="label">
+                            <label>Show description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_description>
+                        <show_image translate="label">
+                            <label>Show image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_image>
+                        <!--<add_vat translate="label">-->
+                            <!--<label>Add VAT to prices</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>7</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</add_vat>-->
+                        <!--<vat_value translate="label comment">-->
+                            <!--<label>VAT value</label>-->
+                            <!--<comment>Possible values: percent value - integer or float number ex 19 or 19.5; default value: 24.</comment>-->
+                            <!--<frontend_type>text</frontend_type>-->
+                            <!--<sort_order>8</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</vat_value>-->
+                        <in_stock translate="label">
+                            <label>In stock message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </in_stock>
+                        <out_of_stock translate="label">
+                            <label>Out of stock message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </out_of_stock>
+                        <currency translate="label">
+                            <label>Currency</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </currency>
+                    </fields>
+                </pricero>
+                <compariro translate="label">
+                    <label>Compari.ro Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <comment>Create 'compari_categorytext' attribute and set values for each product</comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <category translate="label">
+                            <label>Filter Products by Category</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_categories</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Choose the categories from which to display the products.</comment>
+                        </category>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                        <logo_html translate="label">
+                            <label>Logo Image HTML</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo_html>
+                        <provider_url translate="label">
+                            <label>Feed Provider URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </provider_url>
+                        <root_category_id translate="label">
+                            <label>Root Category ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </root_category_id>
+                        <show_description translate="label">
+                            <label>Show description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_description>
+                        <show_image translate="label">
+                            <label>Show image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_image>
+                        <storeview translate="label">
+                            <label>Select Store View</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_storeviews</source_model>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </storeview>
+                        <!--<add_vat translate="label">-->
+                            <!--<label>Add VAT to prices</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>7</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</add_vat>-->
+                        <!--<vat_value translate="label comment">-->
+                            <!--<label>VAT value</label>-->
+                            <!--<comment>Possible values: percent value - integer or float number ex 19 or 19.5; default value: 24.</comment>-->
+                            <!--<frontend_type>text</frontend_type>-->
+                            <!--<sort_order>8</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</vat_value>-->
+                        <in_stock translate="label">
+                            <label>In stock message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </in_stock>
+                        <out_of_stock translate="label">
+                            <label>Out of stock message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </out_of_stock>
+                        <currency translate="label">
+                            <label>Currency</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </currency>
+                    </fields>
+                </compariro>
+                <okaziiro translate="label">
+                    <label>Okazii.ro Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <comment>Create 'delivery_time_okazii' attribute and set values for each product</comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                        <logo_html translate="label">
+                            <label>Logo Image HTML</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo_html>
+                        <provider_url translate="label">
+                            <label>Feed Provider URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </provider_url>
+                    </fields>
+                </okaziiro>
+                <paralero translate="label">
+                    <label>2performant Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                        <logo_html translate="label">
+                            <label>Logo Image HTML</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo_html>
+                        <provider_url translate="label">
+                            <label>Feed Provider URL</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </provider_url>
+                        <force_currency translate="label comment">
+                            <label>Get prices in specified currency</label>
+                            <comment>Possible values: RON, USD, EUR etc.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </force_currency>
+                        <show_description translate="label">
+                            <label>Show description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_description>
+                        <show_image translate="label">
+                            <label>Show image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_image>
+                        <!--<add_vat translate="label">-->
+                            <!--<label>Add VAT to prices</label>-->
+                            <!--<frontend_type>select</frontend_type>-->
+                            <!--<source_model>adminhtml/system_config_source_yesno</source_model>-->
+                            <!--<sort_order>7</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</add_vat>-->
+                        <!--<vat_value translate="label comment">-->
+                            <!--<label>VAT value</label>-->
+                            <!--<comment>Possible values: percent value - integer or float number ex 19 or 19.5; default value: 24.</comment>-->
+                            <!--<frontend_type>text</frontend_type>-->
+                            <!--<sort_order>8</sort_order>-->
+                            <!--<show_in_default>1</show_in_default>-->
+                            <!--<show_in_website>0</show_in_website>-->
+                            <!--<show_in_store>0</show_in_store>-->
+                        <!--</vat_value>-->
+                        <in_stock translate="label">
+                            <label>In stock message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </in_stock>
+                        <out_of_stock translate="label">
+                            <label>Out of stock message</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </out_of_stock>
+                        <currency translate="label">
+                            <label>Currency</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </currency>
+                        <url_extension translate="label">
+                            <label><![CDATA[ Remove <strong>.html</strong> from URL ]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>
+                                <model>blugento_feeds/system_config_source_urlComment</model>
+                            </comment>
+                        </url_extension>
+                    </fields>
+                </paralero>
+                <mabor translate="label">
+                    <label>Mabor Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                    </fields>
+                </mabor>
+                <ga translate="label">
+                    <label>Google adwords remarketing Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                        <show_description translate="label">
+                            <label>Show description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_description>
+                        <show_option translate="label">
+                            <label>Download option</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_downloadOptions</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_option>
+                    </fields>
+                </ga>
+                <gacustom translate="label">
+                    <label>Google adwords remarketing Custom Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>40</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                        <show_description translate="label">
+                            <label>Show description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_description>
+                        <show_option translate="label">
+                            <label>Download option</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_downloadOptions</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_option>
+                    </fields>
+                </gacustom>
+                <googleshopping translate="label">
+                    <label>Google Shopping Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>45</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <logo translate="label,comment">
+                            <label>Logo Image</label>
+                            <comment>Allowed file types: jpg, jpeg, gif, png.</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_feeds/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_datafeeds/logo</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </logo>
+                        <show_description translate="label">
+                            <label>Show description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_description>
+                        <show_option translate="label">
+                            <label>Download option</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_downloadOptions</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_option>
+                    </fields>
+                </googleshopping>
+                <bringo translate="label">
+                    <label>Bringo Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                    </fields>
+                </bringo>
+                <profitshare translate="label">
+                    <label>Profitshare Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>60</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>This URL generates a file in media/blugento_datafeeds .</comment>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                    </fields>
+                </profitshare>
+                <glami translate="label">
+                    <label>Glami Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <comment>Create 'glami_categorytext', 'glami_culoare', 'glami_listare' attribute and set values for each product</comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <description translate="label">
+                            <label>Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_description</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </description>
+                    </fields>
+                </glami>
+                <favi translate="label">
+                    <label>Favi Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>75</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <comment>Create 'favi_categorytext', 'delivery_time', 'delivery_cost', 'delivery_time_favi', 'delivery_cost_favi' attribute and set values for each product</comment>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <description translate="label">
+                            <label>Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_description</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </description>
+                        <include_only_favicategory translate="label">
+                            <label>Include only products with favi_categorytext attribute</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </include_only_favicategory>
+                        <product_attributes translate="label comment">
+                            <label>Product Attributes</label>
+                            <frontend_model>blugento_feeds/system_config_form_field_attributes</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Select product attributes that will be added differently in feed</comment>
+                        </product_attributes>
+                        <replace_attributes translate="label">
+                            <label>Replace attributes in feed</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </replace_attributes>
+                        <replace_product_attributes translate="label comment">
+                            <label>Replace Product Attributes</label>
+                            <frontend_model>blugento_feeds/system_config_form_field_replaceAttributes</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Add attributes that needs to have values from a different attribute in feed</comment>
+                            <depends><replace_attributes>1</replace_attributes></depends>
+                        </replace_product_attributes>
+                    </fields>
+                </favi>
+                <fashionup translate="label">
+                    <label>Fashion Up Feed</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>80</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <url translate="label">
+                            <label>URL</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>blugento_feeds/system_config_form_field_url</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </url>
+                        <cache_time translate="label">
+                            <label>Cache Time</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_hours</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Set the lifetime of the feed before it expire and it's auto-generated (in hours).</comment>
+                        </cache_time>
+                        <run_time translate="label">
+                            <label>Run Time</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </run_time>
+                        <description translate="label">
+                            <label>Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_feeds/system_config_source_description</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </description>
+                    </fields>
+                </fashionup>
+            </groups>
+        </blugento_feeds>
+    </sections>
+</config>

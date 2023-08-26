@@ -1,0 +1,44 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       core/_grid.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+@import '../mixin/_util.scss';
+
+.row,
+%row {
+    @include cf;
+    @include make-grid-row();
+}
+
+// -----------------------------------------------------------------------------
+
+@include make-grid();
+
+@media (min-width: $screen-xl) {
+    @include make-grid(xl);
+}
+
+@media (max-width: $screen-lg-max) {
+    @include make-grid(lg);
+}
+
+@media (max-width: $screen-md-max) {
+    @include make-grid(md);
+}
+
+@media (max-width: $screen-sm-max) {
+    @include make-grid(sm);
+}
+
+@media (max-width: $screen-s-max) {
+    @include make-grid(s);
+}
+
+@media (max-width: $screen-xs-max) {
+    @include make-grid(xs);
+}
+
+@media (max-width: $screen-xxs-max) {
+    @include make-grid(xxs);
+}

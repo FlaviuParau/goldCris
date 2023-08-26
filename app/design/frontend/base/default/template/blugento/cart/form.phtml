@@ -1,0 +1,249 @@
+<?php
+/**
+ * Blugento_Cart_Block_Form
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Cart
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+ */
+
+$product     = $this->getInquiryProduct();
+$productID   = $this->getInquiryProductID();
+$productUrl  = $this->getUrlProduct();
+$successPage = $this->getSuccessPage($productID);
+?>
+
+<form action="<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?><?php else: ?><?php echo $this->getFormAction(); ?><?php endif; ?>" id="contactForm" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="inquiry_product" id="inquiry_product" value="<?php echo $product; ?>" />
+	<input type="hidden" name="inquiry_product_id" id="inquiry_product_id" value="<?php echo $productID; ?>" />
+	<input type="hidden" name="redirect_to" value="<?php echo $successPage; ?>">
+	<div class="fieldset">
+		
+		<h2><a href="<?php echo $productUrl; ?>" title="<?php echo $product; ?>"><?php echo $product; ?></a></h2>
+		
+		<h2 class="legend"><?php echo Mage::helper('blugento_cart')->__('Send your inquiry') ?></h2>
+		<div class="choose-entity">
+			<label for="entity-form"><?php echo Mage::helper('blugento_cart')->__('Purchase Type') ?></label>
+			<select onchange="changePurchaseType()" id="purchase-type">
+				<option value="1"><?php echo Mage::helper('blugento_cart')->__('Personal Purchase') ?></option>
+				<option value="2"><?php echo Mage::helper('blugento_cart')->__('Company Purchase') ?></option>
+			</select>
+		</div>
+		<ul class="form-list form-list--inline">
+			<li class="fields">
+				<div class="field">
+					<label for="name" class="required"><?php echo Mage::helper('blugento_cart')->__('Name') ?><em>*</em></label>
+					<div class="input-box">
+						<input name="name" id="name" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Name')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+					</div>
+				</div>
+				<div class="field">
+					<label for="email" class="required"><?php echo Mage::helper('blugento_cart')->__('Email address') ?><em>*</em></label>
+					<div class="input-box">
+						<input name="email" id="email" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Email address')) ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+					</div>
+				</div>
+			</li>
+			<li>
+				<label for="address"><?php echo Mage::helper('blugento_cart')->__('Address') ?></label>
+				<div class="input-box">
+					<input name="address" id="address" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Address')) ?>" value="" class="input-text" type="text" />
+				</div>
+			</li>
+			<li>
+				<label for="county"><?php echo Mage::helper('blugento_cart')->__('County') ?></label>
+				<div class="input-box">
+					<input name="county" id="county" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('County')) ?>" value="" class="input-text" type="text" />
+				</div>
+			</li>
+			<li>
+				<label for="locality"><?php echo Mage::helper('blugento_cart')->__('Locality') ?></label>
+				<div class="input-box">
+					<input name="locality" id="locality" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Locality')) ?>" value="" class="input-text" type="text" />
+				</div>
+			</li>
+			<div id="company-fields" style="display:none">
+				<li>
+					<label for="company"><?php echo Mage::helper('blugento_cart')->__('Company Name') ?></label>
+					<div class="input-box">
+						<input name="company" id="company" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Company Name')) ?>" value="" class="input-text" type="text" />
+					</div>
+				</li>
+				<li>
+					<label for="reg-nr"><?php echo Mage::helper('blugento_cart')->__('Company Registration Number') ?></label>
+					<div class="input-box">
+						<input name="reg-nr" id="reg-nr" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Company Registration Number')) ?>" value="" class="input-text" type="text" />
+					</div>
+				</li>
+				<li>
+					<label for="vat"><?php echo Mage::helper('blugento_cart')->__('VAT Number') ?></label>
+					<div class="input-box">
+						<input name="vat" id="vat" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('VAT Number')) ?>" value="" class="input-text" type="text" />
+					</div>
+				</li>
+				<li>
+					<label for="headquarter"><?php echo Mage::helper('blugento_cart')->__('Headquarter') ?></label>
+					<div class="input-box">
+						<input name="headquarter" id="headquarter" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Headquarter')) ?>" value="" class="input-text" type="text" />
+					</div>
+				</li>
+			</div>
+			<li>
+				<label for="telephone"><?php echo Mage::helper('blugento_cart')->__('Phone number') ?></label>
+				<div class="input-box">
+					<input name="telephone" id="telephone" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Phone number')) ?>" value="" class="input-text" type="tel" />
+				</div>
+			</li>
+            <li class="wide">
+                <label><?php echo Mage::helper('blugento_cart')->__('Your file') ?></label>
+                <div class="input-box">
+                    <input type="file" class="upload_file_input" name="blugento_files" id="blugento_files">
+                </div>
+            </li>
+			<li class="wide">
+				<label for="comment" class="required"><?php echo Mage::helper('blugento_cart')->__('Your inquiry') ?><em>*</em></label>
+				<div class="input-box">
+					<textarea name="comment" id="comment" title="<?php echo Mage::helper('core')->quoteEscape(Mage::helper('blugento_cart')->__('Your inquiry')) ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<?php if (Mage::helper('core')->isModuleEnabled('Blugento_GdprInformConsent')) : ?>
+		<div class="gdpr-conditions">
+			<input id="gdpr-conditions-form" type="checkbox" class="checkbox required-entry"><label for="gdpr-conditions-form" style="float:none;"><?php echo $this->__('Accept GDPR Conditions') ?></label>
+			<div class="validation-advice no-display-field"><?php echo $this->__('This is a required field.') ?></div>
+			<?php if (Mage::getStoreConfig('blugento_gdpruserdata/consent/read_more')) : ?>
+				<div class="content-popup-text show-less">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-checkout-gdpr-acknowledgement')->toHtml(); ?>
+					<a href="#popup-conditions" class="show-more"><?php echo $this->__('[Show]') ?></a>
+				</div>
+				<script>
+					(function($) {
+						$('.content-popup-text .show-more').on('click', function() {
+							$(this).parent().removeClass('show-less');
+							$(this).remove();
+						});
+					})(jQuery);
+				</script>
+			<?php else: ?>
+				<div class="content-popup-text">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blugento-checkout-gdpr-acknowledgement')->toHtml(); ?>
+				</div>
+			<?php endif; ?>
+			<script>
+				(function($) {
+					if (!$('#gdpr-conditions-form').is(':checked')) {
+						$('.btn-checkout').wrap('<div class="btn-checkout-wrap"></div>');
+						$('.btn-checkout-wrap').append('<span class="btn-checkout-overlay"></span>');
+					}
+					
+					$('#gdpr-conditions-form').on('change', function() {
+						if($('#gdpr-conditions-form').is(':checked')) {
+							$('.gdpr-conditions .validation-advice').hide();
+							$('.btn-checkout-overlay').hide();
+						} else {
+							$('.gdpr-conditions .validation-advice').show();
+							$('.btn-checkout-overlay').show();
+						}
+					});
+					
+					$('.btn-checkout-overlay').on('click', function() {
+						$('.gdpr-conditions .validation-advice').show();
+					});
+				})(jQuery);
+			</script>
+		</div>
+	<?php endif; ?>
+	<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?>
+		<div class="no-display">
+			<input type="text" name="noSpam" value="" title="<?php echo Mage::helper('core')->quoteEscape($this->__('No Spam')) ?>" id="no-spam" class="input-text no-display required-entry" />
+		</div>
+	<?php endif; ?>
+	<div class="buttons-set">
+		<p class="required"><?php echo Mage::helper('blugento_cart')->__('* Required Fields') ?></p>
+		<input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+		<input type="hidden" id="captcha" name="captcha" value="">
+        <button type="submit" data-callback="onHuman" title="<?php echo Mage::helper('blugento_cart')->__('Send Inquiry') ?>" name="send" id="g-recaptcha-contact" class="g-recaptcha-contact button disabled" data-badge="bottomleft" data-size="invisible"><span><span><?php echo Mage::helper('blugento_cart')->__('Send Inquiry') ?></span></span></button>
+	</div>
+</form>
+<script type="text/javascript">
+	//<![CDATA[
+	var contactForm = new VarienForm('contactForm', false);
+	//]]>
+</script>
+
+<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha') && $this->helper('recaptcha')->showOnContact()): ?>
+    <script>
+		// Prevent form to submit if hidden input has value
+        jQuery('#contactForm').submit(function(e) {
+            if (jQuery('#no-spam').val() !== '') {
+                e.preventDefault();
+
+                window.history.back();
+            }
+        });
+
+        function onSubmitContact(token) {
+			setTimeout(function(){
+				jQuery('.g-recaptcha-contact').attr('data-token', token);
+
+                if (jQuery('#no-spam').val() === '' || jQuery('#no-spam').val() === undefined) {
+                    return new Promise(function (resolve, reject) {
+                        var dataForm = new VarienForm('contactForm');
+						var tokenHash = jQuery('.g-recaptcha-contact').attr('data-token');
+
+						if (tokenHash && tokenHash.length > 100) {
+                            jQuery('#no-spam').removeClass('required-entry');
+
+                            if (dataForm.validator && dataForm.validator.validate()){
+                                jQuery('#contactForm').attr('action', '<?php echo $this->getFormAction() ?>');
+
+                                document.getElementById("contactForm").submit();
+                            }
+                        }
+                    });
+                } else {
+                    window.history.back();
+                }
+            }, 500);
+		}
+
+        // Check if captcha container have loaded class, if not than captcha will be loaded
+        function loadCaptchaContact() {
+			// Fix for google recaptcha from 18 June
+			if ("NodeList" in window) {
+				if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+					NodeList.prototype.each = NodeList.prototype.forEach;
+				}
+			}
+				
+			if (!jQuery('.captcha_container_contact').length) {
+                jQuery('#g-recaptcha-contact').addClass('captcha_container_contact');
+                var captchaContainer = null;
+                var loadCaptchaContactFunction = function() {
+                    captchaContainer = grecaptcha.render('g-recaptcha-contact', {
+                        'sitekey': '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+                        'callback': onSubmitContact
+                    });
+                };
+
+                loadCaptchaContactFunction();
+            }
+        };
+
+        // Once user insert a value, loadCaptchaContent will be called
+        jQuery('#contactForm input, #contactForm textarea').each(function(e) {
+            jQuery(this).on('change keyup blur input', function(e) {
+                loadCaptchaContact();
+            });
+        });
+
+		jQuery('.g-recaptcha-contact').on('click', function(e) {
+            onSubmitContact();
+        });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptchaContactFunction&render=explicit" async defer></script>
+<?php endif; ?>

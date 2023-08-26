@@ -1,0 +1,56 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_block.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.main-aside {
+    .block + .block {
+        margin-top: 20px;
+    }
+
+    .block {
+        .actions {
+            margin-top: 15px;
+
+            a {
+                @extend %button;
+                vertical-align: top;
+            }
+        }
+    }
+
+    .block:not(.block-layered-nav):not(.block-account):not(.opc-block-progress) {
+        .block-title {
+            padding: 15px;
+            background-color: $block__block-title_background-color;
+            color: $block__block-title_color;
+            font-size: 17px;
+
+            @include mobile {
+                margin-bottom: 0;
+            }
+
+            small {
+                font-size: inherit;
+            }
+        }
+
+        .block-subtitle {
+            margin-bottom: 10px;
+        }
+
+        .block-content {
+            padding: 15px;
+
+            @include mobile {
+                display: none;
+            }
+        }
+
+        li {
+            overflow: hidden;
+            margin-top: 5px;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<?php
+$_element = $this->getElement();
+$containerId = $_element->getFieldsetContainerId();
+?>
+
+<?php if ($_element->getFieldsetContainerId()): ?>
+<div id="<?php echo $containerId; ?>" class="container-tab">
+<?php endif; ?>
+
+    <?php if ($_element->getLegend()): ?>
+    <div class="no-show" id="legend-<?php echo $containerId; ?>">
+        <?php echo $_element->getLegend(); ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if (!$_element->getNoContainer()): ?>
+    <div class="fieldset fieldset-designcustomiser" id="<?php echo $_element->getHtmlId() ?>">
+    <?php endif; ?>
+
+        <?php echo $_element->getSubFieldsetHtml() ?>
+
+    <?php if (!$_element->getNoContainer()): ?>
+    </div>
+    <?php endif; ?>
+
+<?php if ($_element->getFieldsetContainerId()): ?>
+</div>
+<?php endif; ?>

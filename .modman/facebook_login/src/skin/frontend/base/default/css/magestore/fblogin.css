@@ -1,0 +1,93 @@
+.customer-account-login .facebook-wrapper {
+	background-color: #f2f2f2;
+	width: 50%;
+	padding: 20px;
+}
+
+.account-login .fb-login h2 {
+	padding-bottom: 5px;
+	font-size: 24px;
+	color: #000;
+}
+
+.facebook-wrapper .button {
+	margin-top: 10px;
+}
+
+button.fb_button {
+	border: 0;
+	background-color: transparent;
+}
+
+#bt-loginfb a.fb_button {
+	text-decoration: none;
+	padding-left: 0;
+}
+
+span.fb_button_text {
+	display: block;
+	position: relative;
+	text-align: center;
+	padding-left: 45px;
+	padding-right: 10px;
+	line-height: 40px;
+	color: #fff;
+	background-color: #4267b2;
+	border-radius: 3px;
+	font-size: 16px;
+	font-weight: 500;
+}
+
+span.fb_button_text::before {
+	position: absolute;
+	content: '';
+	top: 50%;
+	left: 5px;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	width: 32px;
+	height: 32px;
+	background: url('fblogin/i_fb-white.png') center center no-repeat;
+	background-size: 100%;
+	font-weight: 600;
+}
+
+.col-1.new-users li.button {
+	min-width: 80px;
+	background: none;
+	display: block;
+	text-align: left;
+}
+
+.fb-seprate {
+	margin-top: 30px;
+}
+
+#connected {
+	text-align: center;
+	margin-top: 60px;
+}
+
+#connected #image {
+	margin-bottom: 10px;
+}
+
+#form-loginfb {
+	margin-top: 20px;
+}
+
+#form-loginfb img {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+#form-loginfb p {
+	display: inline-block;
+	line-height: 50px;
+	vertical-align: top;
+	margin-left: 10px;
+	font-size: 16px;
+}

@@ -1,0 +1,331 @@
+<?php if (Mage::getStoreConfig('gdpr_cookies/general/enabled')) : ?>
+<div class="gdpr-cookies" id="gdpr-cookies">
+    <?php
+        $defaultCategories = Mage::helper('gdprcookies')->getDefaultCookiesCategories();
+        $customCategories = Mage::helper('gdprcookies')->getCustomCookiesCategories();
+        $analytics = $defaultCategories['analytics'];
+        $marketing = $defaultCategories['marketing'];
+        $statisticsScript =  Mage::getStoreConfig("gdpr_cookies/scripts/analytics");
+        $marketingScript =  Mage::getStoreConfig("gdpr_cookies/scripts/marketing");
+        $lifetimeCookies =  Mage::getStoreConfig("gdpr_cookies/lifetime_cookie/lifetime_cookie_input");
+        $persistentGdpr = Mage::getStoreConfig('gdpr_cookies/general/disablePersistent');
+	    $seoHelper = $this->helper('blugento_seoenhancements/siteLogo');
+	    $gaMeasurementId = Mage::getStoreConfig('gdpr_cookies/general/ga_measurement_id');
+	
+	    if ($seoLogo = $seoHelper->getNewSiteLogo()) {
+		    $logoImage = $seoLogo;
+	    } else {
+		    // Get logo image from variable-image.xml
+		    $logoImage = Mage::helper('blugento_theme')->getVariable('page_brand_logo', 'image', 'var_page_brand_logo.png');
+            $extension = pathinfo($logoImage, PATHINFO_EXTENSION);
+
+            if ($extension == 'svg') {
+                $logoImage = $this->getSkinUrl('blugento/images/' . $logoImage);
+            } else {
+                $logoImage = $this->getSkinUrl('images/' . $logoImage);
+            }
+	    }
+
+        // Get details button link from store config
+	    $pageLink = Mage::getStoreConfig('gdpr_cookies/general/manage_page_link');
+	    
+	    // Check if page link is set correctly, if not revert to default
+	    if (strpos($pageLink, 'cookie') !== false) {
+	    	$detailsLink = Mage::getUrl($pageLink);
+	    } else {
+	    	$detailsLink = Mage::getUrl('politica-de-utilizare-cookie-uri');
+	    }
+    ?>
+    <div class="page-container">
+        <div class="row">
+            <div class="col-12">
+                <div class="gdpr-logo">
+                    <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+                        <img src="<?php echo $logoImage ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                    </a>
+                </div>
+                <div class="gdpr-box">
+                    <div class="gdpr-header">
+                        <h4 class="gdpr-title"><?php echo Mage::getStoreConfig('gdpr_cookies/general/popup_title') ?></h4>
+                        <p>
+                            <?php echo Mage::getStoreConfig('gdpr_cookies/general/popup_content') ?>
+                        </p>
+                    </div>
+                    <div class="gdpr-content">
+                        <ul class="gdpr-list">
+                            <li
+                                class="gdpr-list-item gdpr-item-necessary <?php if ($analytics == 4 && $marketing == 4): ?>no-display<?php endif; ?>"
+                            >
+                                <label><?php echo $this->__('Necessary') ?></label>
+                            </li>
+                            <li class="gdpr-list-item gdpr-item-statistics <?php if ($analytics == 4): ?>no-display<?php endif; ?>">
+                                <input
+                                    type="checkbox"
+                                    value="statistics"
+                                    id="statistics"
+                                    title="<?php echo $this->__('Statistics') ?>"
+                                    <?php if ($analytics == 1 || $analytics == 4): ?>checked="checked"<?php endif; ?>
+                                    <?php if ($analytics == 3): ?>checked="checked" readonly<?php endif; ?>
+                                />
+                                <label for="statistics"><?php echo $this->__('Statistics') ?></label>
+                            </li>
+                            <li class="gdpr-list-item gdpr-item-marketing <?php if ($marketing == 3): ?>readonly<?php endif; ?> <?php if ($marketing == 4): ?>no-display<?php endif; ?>">
+                                <input
+                                    type="checkbox"
+                                    value="marketing"
+                                    id="marketing"
+                                    title="<?php echo $this->__('Marketing') ?>"
+                                    <?php if ($marketing == 1 || $analytics == 4): ?>checked="checked"<?php endif; ?>
+                                    <?php if ($marketing == 3): ?>checked="checked" readonly<?php endif; ?>
+                                />
+                                <label for="marketing"><?php echo $this->__('Marketing') ?></label>
+                            </li>
+                            <?php
+                                $i = 0;
+                                $j = 0; 
+                                $k = 0; 
+                            ?>
+                            <?php foreach ($customCategories as $customCategory): ?>
+                                <?php 
+                                    $customId = $i++; 
+                                    $customFor = $j++;
+                                    $customFunction = $k++;
+                                ?>
+                                <li class="gdpr-list-item customCookie <?php if ($customCategory['option'] == 4): ?>no-display<?php endif; ?>">
+                                    <input 
+                                        type="checkbox"
+                                        value="customCookie<?php echo $customCategory['category'] ?>"
+                                        id="customCookie<?php echo $customId ?>"
+                                        title="<?php echo $customCategory['category'] ?>"
+                                        <?php if ($customCategory['option'] == 1 || $customCategory['option'] == 4): ?>checked="checked"<?php endif; ?>
+                                        <?php if ($customCategory['option'] == 3): ?>checked="checked" readonly<?php endif; ?>
+                                    />
+                                    <label for="customCookie<?php echo $customFor ?>">
+                                        <?php echo $customCategory['category'] ?>
+                                    </label>
+                                    <script>
+                                        function customCookie<?php echo $customFunction ?>()
+                                        {
+                                            <?php echo $customCategory['textarea'] ?>
+                                        }
+                                    </script>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                        <div class="gdpr-buttons">
+                            <a href=<?php echo $detailsLink ?> title="<?php echo $this->__('More Details') ?>" class="gdpr-more-details">
+                                <?php echo $this->__('More Details') ?>
+                            </a>
+                            <button type="button" title="<?php echo $this->__('Save') ?>" id="accept-selected-cookies" class="button accept-selected-cookies">
+                                <span><span><?php echo $this->__('Save') ?></span></span>
+                            </button>
+                            <button type="button" title="<?php echo $this->__('Accept all') ?>" id="accept-all-cookies" class="button accept-all-cookies">
+                                <span><span><?php echo $this->__('Accept all') ?></span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php if ($gaMeasurementId != '') : ?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $gaMeasurementId ?>"></script>
+<?php endif; ?>
+
+<script>
+    (function($) {
+        $(document).ready(function() {
+            <?php if ($gaMeasurementId != '') : ?>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                // Default ad_storage to 'denied'.
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied'
+                });
+
+                gtag('js', new Date());
+                gtag('config', '<?php echo $gaMeasurementId ?>');
+            <?php endif; ?>
+
+            // Delete Cookies
+            var delete_cookie = function(name) {
+                document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
+
+            // Hide elements if category scripts are set to hidden
+            if ($('.gdpr-list li.no-display').length == $('.gdpr-list li').length) {
+                $('.gdpr-list').addClass('hide-checkbox').css('visibility','hidden');
+                $('#accept-selected-cookies').hide();
+            }
+
+            // Set main GDPR cookie
+            gdprVisible = 'gdprVisible';
+            gdprCookie = 'gdprCookie';
+            gdprCookieEnabled = $.cookie(gdprVisible);
+            gdprCookiePopUp = $.cookie(gdprCookie);
+            now = new Date();
+
+            now.setTime(now.getTime() + 1 * <?php echo $lifetimeCookies ?> * 1000);
+
+
+            $('.gdpr-list input').each(function(e) {
+                var cookieGdpr = $(this).attr('id');
+                if($.cookie(cookieGdpr) == 'no') {
+                    $(this).attr('checked', false);
+                }
+            });
+
+            // Accept only selected cookies
+            $('#accept-selected-cookies').on('click', function(e) {
+                e.preventDefault();
+
+                <?php if ($persistentGdpr) : ?>
+                    $.cookie(gdprVisible, 'no', {
+                        expires: now
+                    });
+                <?php endif; ?>
+
+                $('.gdpr-list input').each(function(e) {
+                    var cookieGdpr = $(this).attr('id');
+                    if ($(this).is(':checked') || $(this).is('[readonly]')) {
+                        $.cookie(cookieGdpr, 'yes', {
+                            expires: now
+                        });
+
+                        eval(cookieGdpr + '();')
+                    }
+                });
+
+                <?php foreach ($customCategories as $customCategory): ?>
+                    if ($('#customCookie<?php echo $customCategory['option'] ?>').is(':checked')) {
+                        customCookie<?php echo $customCategory['option'] ?>();
+                    }
+                <?php endforeach; ?>
+
+                $.cookie(gdprCookie, 'yes', {
+                    expires: now
+                });
+
+                <?php if ($gaMeasurementId != '') : ?>
+                    gtag('consent', 'update', {
+                        'ad_storage': 'granted'
+                    });
+                <?php endif; ?>
+
+                $('#gdpr-cookies').removeClass('gdpr-active');
+            });
+
+            <?php if ($persistentGdpr) : ?>
+                if ($.cookie(gdprVisible) == 'yes') {
+                    $('#gdpr-cookies').addClass('gdpr-hidden');
+                    $('#accept-selected-cookies').trigger('click');
+                };
+            <?php endif; ?>
+
+            // Check if GDPR cookie it's set
+            if (gdprCookiePopUp != 'yes') {
+                $('#gdpr-cookies').addClass('gdpr-active');
+            } else {
+                <?php foreach ($customCategories as $customCategory): ?>
+                    if ($('#customCookie<?php echo $customCategory['option'] ?>').is(':checked') && gdprCookiePopUp == 'yes') {
+                        customCookie<?php echo $customCategory['option'] ?>();
+                    }
+                <?php endforeach; ?>
+            }
+
+            // Check all GDPR cookies if are set, "yes" will check input / "no" input will be unchecked
+            $('.gdpr-list input').each(function(e) {
+                var cookieGdpr = $(this).attr('id');
+
+                if ($.cookie(cookieGdpr) == 'yes') {
+                    $(this).attr('checked', true);
+
+                    // Initialize gdpr functions
+                    if ($('#statistics').is(':checked') || $('#statistics').is('[readonly]')) {
+                        statistics();
+                    } else if ($('#marketing').is(':checked') || $('#marketing').is('[readonly]')) {
+                        marketing();
+                    }
+                } else {
+                    if (!$(this).is(':checked')) {
+                        $(this).attr('checked', false);
+                    }
+                }
+            });
+
+            // Add analytics and marketing in functions
+            function statistics()
+            {
+                <?php echo $statisticsScript ?>
+            }
+
+            function marketing()
+            {
+                <?php echo $marketingScript ?>
+            }
+
+            // Accept all cookies
+            $('#accept-all-cookies').on('click', function(e) {
+                e.preventDefault();
+
+                $('.gdpr-list input').each(function(e) {
+                    var cookieGdpr = $(this).attr('id');
+
+                    if (!$(this).is(':checked')) {
+                        $(this).trigger('click');
+                    }
+
+                    $.cookie(cookieGdpr, 'yes', {
+                        expires: now
+                    });
+
+                    eval(cookieGdpr + '();')
+                });
+
+                $.cookie(gdprCookie, 'yes', {
+                    expires: now
+                });
+
+                <?php if ($persistentGdpr) : ?>
+                    $.cookie(gdprVisible, 'no', {
+                        expires: now
+                    });
+                <?php endif; ?>
+
+                <?php if ($gaMeasurementId != '') : ?>
+                    gtag('consent', 'update', {
+                        'ad_storage': 'granted'
+                    });
+                <?php endif; ?>
+
+                statistics();
+                marketing();
+
+                $('#gdpr-cookies').removeClass('gdpr-active');
+            });
+
+            // Open GDPR content from footer link
+            $('.show-gdpr-cookie').each(function() {
+                $(document).on('click', '.show-gdpr-cookie', function(e) {
+                    e.preventDefault();
+
+                    $('#gdpr-cookies').removeClass('gdpr-hidden').addClass('gdpr-active');
+                });
+            });
+
+            <?php if ($persistentGdpr) : ?>
+                $.cookie(gdprVisible, 'yes', {
+                    expires: now
+                });
+            <?php endif; ?>
+        });
+    })(jQuery);
+</script>
+<?php endif; ?>

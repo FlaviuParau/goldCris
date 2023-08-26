@@ -1,0 +1,36 @@
+<!--@subject Zapytanie o cenę@-->
+
+Produkt:
+{{var data.inquiry_product}}
+
+Szczegóły:
+
+Imię: {{var data.name}}
+
+E-mail: {{var data.email}}
+
+Telefon: {{var data.telephone}}
+
+Adres: {{var data.address}}
+
+Województwo: {{var data.county}}
+
+Miasto: {{var data.locality}}
+
+{{if data.company}}
+Nazwa firmy: {{var data.company}}
+{{/if}}
+
+{{if data.reg-nr}}
+Nr. Reg. Com: {{var data.reg-nr}}
+{{/if}}
+
+{{if data.vat}}
+Num. VAT: {{var data.vat}}
+{{/if}}
+
+{{if data.headquarter}}
+Siedziba: {{var data.headquarter}}
+{{/if}}
+
+Wiadomość: {{var data.comment}}

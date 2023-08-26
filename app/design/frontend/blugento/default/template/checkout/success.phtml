@@ -1,0 +1,160 @@
+<?php
+$blugentoBlock = Mage::getModel('cms/block')
+    ->setStoreId(Mage::app()->getStore()->getId())
+    ->load('blugento_success_page');
+$enableProfitShare = Mage::getStoreConfig('blugento_theme/profitshare/enable');
+$order = Mage::getSingleton('sales/order')->loadByIncrementId($this->getOrderId());
+?>
+<?php $itemsTotal = 0; ?>
+<?php if ($enableProfitShare && $this->getOrderId()): ?>
+    <?php
+        $advCode = Mage::getStoreConfig('blugento_theme/profitshare/advertisercode');
+        $encParams = Mage::helper('blugento_theme')->getHashP($this->getOrderId());
+        
+        $_items = $order->getAllItems();
+        foreach ($_items as $item) {
+            $itemsTotal += $item->getRowTotal();
+        }
+        echo '<img src="https://profitshare.ro/cs/' . $advCode . '/?external_reference=' . $this->getOrderId()
+            . '&hash=' . $encParams . '&value=' . $itemsTotal
+            . '" alt="" border="" width="1" height="1" style="border:none !important; margin:0px !important;" />';
+    ?>
+<?php endif; ?>
+<?php $enableTwoPerformant = Mage::getStoreConfig('blugento_theme/two_performant_track/enable'); ?>
+<?php if ($enableTwoPerformant) : ?>
+	<?php
+	$_campaingUnique = Mage::getStoreConfig('blugento_theme/two_performant_track/campaign_unique');
+	$_confirm        = Mage::getStoreConfig('blugento_theme/two_performant_track/confirm');
+	$_priceInclTax   = Mage::getStoreConfig('blugento_theme/two_performant_track/price_incl_tax');
+	$_withTaxAmount  = Mage::getStoreConfig('blugento_theme/two_performant_track/with_tax_amount');
+	$products        = $order->getAllVisibleItems();
+	$productNames    = array();
+    $taxAmount       = 0;
+
+	foreach ($products as $product) :
+		$name = str_replace(array('\'', '"', '='), '', $product->getName());
+		$name = str_replace('ă', 'a', $name);
+		$name = str_replace('â', 'a', $name);
+		$name = str_replace('î', 'i', $name);
+		$name = str_replace('ș', 's', $name);
+		$name = str_replace('ț', 't', $name);
+        $taxAmount += $product->getTaxAmount();
+		
+		$productNames[] = $name;
+	endforeach;
+	?>
+	<?php if ($_priceInclTax && !$_withTaxAmount): ?>
+		<iframe style="width: 1px; height: 1px;" height='1' width='1' scrolling='no' marginheight='0' marginwidth='0' frameborder='0' src='//event.2performant.com/events/salecheck?amount=<?php echo ($order->getBaseSubtotalInclTax() + $order->getDiscountAmount()) / 1.19; ?>&campaign_unique=<?php echo $_campaingUnique; ?>&confirm=<?php echo $_confirm; ?>&description=<?php echo implode(', ', $productNames); ?>&transaction_id=<?php echo $order->getIncrementId(); ?>'></iframe>
+    <?php elseif ($_priceInclTax && $_withTaxAmount): ?>
+        <iframe style="width: 1px; height: 1px;" height='1' width='1' scrolling='no' marginheight='0' marginwidth='0' frameborder='0' src='//event.2performant.com/events/salecheck?amount=<?php echo $order->getBaseSubtotalInclTax() + $order->getDiscountAmount() - $taxAmount; ?>&campaign_unique=<?php echo $_campaingUnique; ?>&confirm=<?php echo $_confirm; ?>&description=<?php echo implode(', ', $productNames); ?>&transaction_id=<?php echo $order->getIncrementId(); ?>'></iframe>
+	<?php else: ?>
+		<iframe style="width: 1px; height: 1px;" height='1' width='1' scrolling='no' marginheight='0' marginwidth='0' frameborder='0' src='//event.2performant.com/events/salecheck?amount=<?php echo $order->getBaseSubtotal() + $order->getDiscountAmount(); ?>&campaign_unique=<?php echo $_campaingUnique; ?>&confirm=<?php echo $_confirm; ?>&description=<?php echo implode(', ', $productNames); ?>&transaction_id=<?php echo $order->getIncrementId(); ?>'></iframe>
+	<?php endif; ?>
+<?php endif; ?>
+
+<?php $enable2PerformantBigBear = Mage::getStoreConfig('blugento_theme/two_performant_big_bear/enable'); ?>
+<?php if ($enable2PerformantBigBear) : ?>
+    <!-- Beginning 2Performant Big Bear Script -->
+    <script> var tpOrder = {
+            id: "<?php echo $this->getOrderId() ?>",
+            placed_at: "<?php echo strtotime($order->getCreatedAt()) ?>",
+            currency_code: "<?php echo $order->getOrderCurrencyCode() ?>",
+            items: [
+                <?php foreach ($order->getAllItems() as $item) : ?>
+                    {
+                        quantity: "<?php echo $item->getQtyOrdered() ?>",
+                        product_id: "<?php echo $item->getProductId() ?>",
+                        value: "<?php echo $item->getPrice() ?>",
+                        name: "<?php echo $item->getName() ?>",
+                        category: [<?php echo Mage::getModel('blugento_theme/categories')->getCategoriesNames($item->getProduct()); ?>],
+                        brand: "<?php echo $item->getProduct()->getAttributeText('manufacturer') ?>",
+                    },
+                <?php endforeach; ?>
+            ]}
+    </script>
+    <script defer src='https://attr-2p.com/<?php echo Mage::getStoreConfig('blugento_theme/two_performant_big_bear/identifier'); ?>/sls/1.js'></script>
+    <!-- Finish 2Performant Big Bear Script -->
+<?php endif; ?>
+
+<?php
+    $fbTrackPurchase = Mage::getStoreConfig('blugento_theme/miscellaneous/fbtrack');
+    if($fbTrackPurchase):
+?>
+<?php
+    $order = Mage::getSingleton('sales/order')->loadByIncrementId($this->getOrderId());
+    echo "<script>if (typeof fbq === 'function') {fbq('track', 'Purchase',{ value: ".$order->getGrandTotal().", currency: '".$order->getOrderCurrencyCode()."' })};</script>";
+?>
+<?php endif; ?>
+<?php if ($blugentoBlock && $blugentoBlock->getIsActive()): ?>
+
+    <?php
+    $var = array(
+        'order_id' => $this->escapeHtml($this->getOrderId()),
+        'order_view_url' => '#',
+        'order_print_url' => '#',
+        'continue_shopping_url' => $this->getUrl(),
+	    'can_view_order' => false,
+	    'customer_name' => $order->getCustomerFirstname()
+    );
+    
+    $var['can_view_order'] = $this->getCanViewOrder();
+    
+    if ($this->getCanViewOrder() && $this->getCanPrintOrder()) {
+        $var['order_view_url'] = $this->escapeHtml($this->getViewOrderUrl());
+        $var['order_print_url'] = $this->getPrintUrl();
+    }
+
+    $filterModel = Mage::getModel('widget/template_filter');
+    $filterModel->setVariables($var);
+
+    echo $filterModel->filter($blugentoBlock->getContent());
+    ?>
+
+<?php else: ?>
+
+    <div class="page-title">
+        <h1><?php echo $this->__('Your order has been received.') ?></h1>
+    </div>
+
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+
+    <h2 class="sub-title"><?php echo $this->__('Hello ') . $order->getCustomerFirstname(); ?></h2>
+    <h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+    <?php if ($this->getOrderId()): ?>
+        <?php if ($this->getCanViewOrder()): ?>
+            <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+        <?php else: ?>
+            <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+        <?php endif; ?>
+
+        <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+
+        <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()): ?>
+            <p>
+                <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+                <?php echo $this->getChildHtml() ?>
+            </p>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if ($this->getAgreementRefId()): ?>
+        <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId()))) ?></p>
+    <?php endif; ?>
+
+    <?php if ($profiles = $this->getRecurringProfiles()): ?>
+        <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+        <ul class="disc">
+            <?php foreach ($profiles as $profile): ?>
+                <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id'))); ?>
+                <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description'))) ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+
+    <div class="buttons-set">
+        <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+    </div>
+
+<?php endif; ?>
+

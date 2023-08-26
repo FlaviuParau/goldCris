@@ -1,0 +1,12 @@
+src/app/code/community/TM/Core                                  app/code/community/TM/Core
+src/app/code/community/TM/FacebookLB                            app/code/community/TM/FacebookLB
+src/app/design/adminhtml/default/default/layout/tmcore.xml      app/design/adminhtml/default/default/layout/tmcore.xml
+src/app/design/adminhtml/default/default/template/tmcore        app/design/adminhtml/default/default/template/tmcore
+src/app/design/frontend/base/default/layout/tm/core.xml         app/design/frontend/base/default/layout/tm/core.xml
+src/app/design/frontend/base/default/layout/tm/FacebookLB.xml   app/design/frontend/base/default/layout/tm/FacebookLB.xml
+src/app/design/frontend/base/default/template/tm/facebooklb     app/design/frontend/base/default/template/tm/facebooklb
+src/app/etc/modules/TM_Core.xml                                 app/etc/modules/TM_Core.xml
+src/app/etc/modules/TM_FacebookLB.xml                           app/etc/modules/TM_FacebookLB.xml
+src/js/tm/adminhtml/core                                        js/tm/adminhtml/core
+src/js/tm/lib                                        			js/tm/lib
+src/skin/frontend/base/default/tm/facebooklb                    skin/frontend/base/default/tm/facebooklb

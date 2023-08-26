@@ -1,0 +1,10 @@
+src/app/code/local/Blugento/FanCourier						app/code/local/Blugento/FanCourier
+
+src/app/design/adminhtml/blugento/default/layout/blugento_fancourier.xml	app/design/adminhtml/blugento/default/layout/blugento_fancourier.xml
+src/app/design/adminhtml/blugento/default/template/blugento/fancourier		app/design/adminhtml/blugento/default/template/blugento/fancourier
+
+src/app/etc/modules/Blugento_FanCourier.xml					app/etc/modules/Blugento_FanCourier.xml
+
+src/app/locale/ro_RO/Blugento_FanCourier.csv					app/locale/ro_RO/Blugento_FanCourier.csv
+
+src/lib/blugento_fancourier							lib/blugento_fancourier

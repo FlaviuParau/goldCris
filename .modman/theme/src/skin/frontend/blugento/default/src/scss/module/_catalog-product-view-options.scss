@@ -1,0 +1,114 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-options.scss
+    Version:        1.0
+    Description:    Product Details Page - Options
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.product-options {
+    @include cf;
+
+    clear: both;
+
+    p.required {
+        display: none;
+    }
+
+    dt {
+        margin-bottom: 10px;
+
+        label {
+            display: inline-block;
+            font-size: $product-view__product-options__required_font-size;
+            font-weight: $product-view__product-options__required_font-weight;
+            font-style: $product-view__product-options__required_font-style;
+            font-family: $product-view__product-options__required_font-family;
+            text-transform: $product-view__product-options__required_text-transform;
+            color: $product-view__product-options__required_color;
+        }
+
+        .price-notice {
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+    }
+
+    dd {
+        @include cf;
+
+        margin-bottom: 20px;
+
+        .input-box {
+            padding: 0;
+
+            &.input-box-spaced {
+                padding: 10px;
+
+                @include mobile {
+                    padding: 0;
+                }
+            }
+        }
+
+        .datetime-picker {
+            width: 150px;
+
+            + img {
+                cursor: pointer;
+            }
+        }
+
+        .time-picker {
+            float: left;
+
+            > b {
+                float: left;
+                margin: 9px 0 0 15px;
+            }
+        }
+
+        textarea {
+            width: 100%;
+            height: 8em;
+        }
+
+        select {
+            float: left;
+            min-width: 210px;
+            margin-left: 15px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &.datetime-picker {
+                min-width: 70px;
+            }
+        }
+
+        .bundle-option-select {
+            width: 100%;
+        }
+
+        .qty-holder {
+            float: left;
+            margin-right: 10px;
+
+            input {
+                width: 37px;
+                text-align: center;
+            }
+        }
+
+        .p.note {
+            margin: 0;
+        }
+    }
+}
+
+.product-options-bottom {
+    @include cf;
+
+    margin: 10px 0 30px;
+}

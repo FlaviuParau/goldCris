@@ -1,0 +1,18 @@
+src/app/code/local/Amasty/Geoip                                             app/code/local/Amasty/Geoip
+src/app/code/local/Amasty/GeoipRedirect                                     app/code/local/Amasty/GeoipRedirect
+
+src/app/design/adminhtml/default/default/layout/amasty/amgeoip.xml          app/design/adminhtml/default/default/layout/amasty/amgeoip.xml
+src/app/design/adminhtml/default/default/template/amgeoip                   app/design/adminhtml/default/default/template/amgeoip
+src/app/design/adminhtml/default/default/template/amasty/geoipredirect      app/design/adminhtml/default/default/template/amasty/geoipredirect
+
+src/app/etc/modules/Amasty_Geoip.xml                                        app/etc/modules/Amasty_Geoip.xml
+src/app/etc/modules/Amasty_GeoipRedirect.xml                                app/etc/modules/Amasty_GeoipRedirect.xml
+
+src/app/etc/amastygeoipredirect.xml                                         app/etc/amastygeoipredirect.xml
+
+src/js/amasty/amgeoip                                                       js/amasty/amgeoip
+
+src/skin/adminhtml/default/default/amasty/amgeoip                           skin/adminhtml/default/default/amasty/amgeoip
+src/skin/adminhtml/default/default/images/amgeoip                           skin/adminhtml/default/default/images/amgeoip
+
+src/app/locale/en_US/Amasty_GeoipRedirect.csv                               app/locale/en_US/Amasty_GeoipRedirect.csv

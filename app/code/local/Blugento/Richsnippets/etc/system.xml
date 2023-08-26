@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_RichSnippets
+ * @author      Stîncel-Toader Octavian-Cristian <tavi@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>10</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_richsnippets translate="label" module="blugento_richsnippets">
+            <label>Rich Snippets</label>
+            <tab>blugento</tab>
+            <sort_order>2000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <organization translate="label">
+                    <label>Organization</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <name translate="label">
+                            <label>Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </name>
+                        <legal_name translate="label">
+                            <label>Legal Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </legal_name>
+                        <url translate="label">
+                            <label>Url</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-url</validate>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </url>
+                        <logo translate="label comment">
+                            <label>Logo</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_richsnippets/system_config_backend_logo</backend_model>
+                            <base_url type="media">blugento_richsnippets/logo</base_url>
+                            <comment><![CDATA[Allowed file types: <strong>jpg, jpeg, png</strong>.]]></comment>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </logo>
+                        <founding_date translate="label comment">
+                            <label>Founding Date</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[Use only <strong>DIGITS</strong>!]]></comment>
+                            <validate>validate-digits</validate>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </founding_date>
+                        <founders translate="label comment">
+                            <label>Founders</label>
+                            <frontend_type>text</frontend_type>
+                            <comment><![CDATA[List founders name separated by <strong>COMMAS</strong>!]]></comment>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </founders>
+                        <map_address translate="label">
+                            <label>Map Address</label>
+                            <frontend_model>blugento_richsnippets/adminhtml_system_config_form_field_organization_address</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </map_address>
+                        <map_contact_point translate="label">
+                            <label>Map ContactPoint</label>
+                            <frontend_model>blugento_richsnippets/adminhtml_system_config_form_field_organization_contact</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </map_contact_point>
+                        <facebook translate="label comment">
+                            <label>Facebook</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-url</validate>
+                            <comment><![CDATA[Facebook Url]]></comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </facebook>
+                        <instagram translate="label comment">
+                            <label>Instagram</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-url</validate>
+                            <comment><![CDATA[Instagram Url]]></comment>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </instagram>
+                        <twitter translate="label comment">
+                            <label>Twitter</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-url</validate>
+                            <comment><![CDATA[Twitter Url]]></comment>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </twitter>
+                        <linkedin translate="label comment">
+                            <label>LinkedIn</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-url</validate>
+                            <comment><![CDATA[LinkedIn Url]]></comment>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </linkedin>
+                        <youtube translate="label comment">
+                            <label>YouTube</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-url</validate>
+                            <comment><![CDATA[YouTube Url]]></comment>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </youtube>
+                        <pinterest translate="label comment">
+                            <label>Pinterest</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-url</validate>
+                            <comment><![CDATA[Pinterest Url]]></comment>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </pinterest>
+                    </fields>
+                </organization>
+                <product translate="label">
+                    <label>Product Data</label>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <review translate="label comment">
+                            <label>Enable Review &amp; Rating data</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[<strong>*NOTE:</strong> If you are <strong>NOT using reviews</strong> in your project, please <strong>DISABLE</strong> this option for <strong>better performance</strong>.]]></comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </review>
+                        <split_configurable_products translate="label comment">
+                            <label>Split Configurable Products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[<strong>It's recommended using this</strong> function and split the simple products in the configurable ones <strong>to generate UNIQUE DATA for each simple product</strong>! <br /> <strong>*NOTE:</strong> Attributes used for creating configurable products <strong>MUST HAVE "Used in Product Listing" option enabled!</strong>]]></comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </split_configurable_products>
+                        <supper_attributes translate="label comment">
+                            <label>Map Supper Attributes</label>
+                            <frontend_model>blugento_richsnippets/adminhtml_system_config_form_field_product_superAttributes</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <comment><![CDATA[Map <strong>supper attributes</strong> used for creating configurable products. <br /> <strong>*NOTE:</strong> Attributes must have enabled <strong>"Use To Create Configurable Product"</strong>! <br /> <strong>*NOTE:</strong> Name used for mapping must be written in <strong>ENGLISH</strong>!]]></comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </supper_attributes>
+                        <map_attributes translate="label comment">
+                            <label>Map Attributes</label>
+                            <frontend_model>blugento_richsnippets/adminhtml_system_config_form_field_product_attributes</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <comment><![CDATA[Map <strong>additional attributes</strong> that will be used. <br /> <strong>*NOTE:</strong> Attributes must have enabled <strong>"Use in Layered Navigation"</strong>! <br /> <strong>*NOTE:</strong> Name used for mapping must be written in <strong>ENGLISH</strong>!]]></comment>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </map_attributes>
+                        <show_price translate="label">
+                            <label>Show product prices</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_price>
+                    </fields>
+                </product>
+                <breadcrumbs translate="label">
+                    <label>Enable Breadcrumbs</label>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </breadcrumbs>
+                <website translate="label">
+                    <label>Enable Website</label>
+                    <sort_order>7</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </website>
+                <blog translate="label">
+                    <label>Enable Blog</label>
+                    <sort_order>8</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                    </fields>
+                </blog>
+            </groups>
+        </blugento_richsnippets>
+    </sections>
+</config>

@@ -1,0 +1,196 @@
+<?php
+$helperCart = false;
+$hideAllAddToCart = false;
+$displayCustomBtn = false;
+$customBtnText = '';
+$customBtnPage = '';
+
+if (Mage::helper('core')->isModuleEnabled('Blugento_Cart')) {
+    $helperCart = $this->helper('blugento_cart');
+    $hideAllAddToCart = $helperCart->getHideAll();
+    $displayCustomBtn = $helperCart->getDisplayCustomButton();
+
+    if ($displayCustomBtn) {
+        $customBtnText = $helperCart->getCustomBtnText();
+        $customBtnPage = $helperCart->getCustomBtnPage();
+    }
+}
+
+$helperTheme = $this->helper('blugento_theme');
+$helperLocalizer = $this->helper('blugento_localizer');
+
+$_productImageBackgroundColor = $helperTheme->getVariable('products-list__item__product-image_background-color', 'scss', '#fff');
+if (!preg_match('/^#[a-f0-9]{6}$/i', $_productImageBackgroundColor)) {
+    $_productImageBackgroundColor = '#fff';
+}
+$_productImageBackgroundColorToHex = $helperTheme->hex2rgb($_productImageBackgroundColor);
+$_productListAddToLinksStatus = (int) ($this->getLayout()->getBlock('root')->getProductListAddToLinksStatus() ?: 1);
+$_productListImageWidth = $this->getLayout()->getBlock('root')->getProductListImageWidth() ?: 180;
+$_productListTaxMode = (int) ($this->getLayout()->getBlock('root')->getProductListTaxMode() ?: 1);
+$_productAddToCartStatus = (int) ($this->getLayout()->getBlock('root')->getProductAddToCartStatus() ?: 2);
+$_productListTaxShippingMode = (int) ($this->getLayout()->getBlock('root')->getProductListTaxShippingMode() ?: 2);
+$_productListDiscountPercentageMode = (int) ($this->getLayout()->getBlock('root')->getProductListDiscountPercentageMode() ?: 2);
+$_productListShortDescriptionStatus = (int) ($this->getLayout()->getBlock('root')->getProductListShortDescriptionStatus() ?: 1);
+$_productListTitleBottomMode = (int) ($this->getLayout()->getBlock('root')->getProductListTitleBottomMode() ?: 1);
+$_productListShortDescriptionBottomMode = (int) ($this->getLayout()->getBlock('root')->getProductListShortDescriptionBottomMode() ?: 1);
+$_productListDiscountPercentageMode = (int) ($this->getLayout()->getBlock('root')->getProductListDiscountPercentageMode() ?: 2);
+$_productListDiscountMode = (int) ($this->getLayout()->getBlock('root')->getProductListDiscountMode() ?: 2);
+
+$shippingCostUrl = '#shipping-info';
+?>
+
+<?php
+$_productCollection = $this->getLoadedProductCollection();
+if ( ! $_productCollection) {
+    return;
+}
+$_outputHelper = $this->helper('catalog/output');
+$_imageHelper = $this->helper('catalog/image');
+/* @var $_taxHelper Mage_Tax_Helper_Data */
+$_taxHelper = $this->helper('tax');
+$_YotpoAppKey = Mage::getStoreConfig('yotpo/yotpo_general_group/yotpo_appkey');
+
+$_taxInfo = '';
+if ($_taxHelper->displayPriceExcludingTax()) {
+    $_taxInfo = '<span class="tax-details">' . $this->__('Excluding tax') . '</span>';
+} else {
+    $_taxInfo = '<span class="tax-details">' . $this->__('Including tax') . '</span>';
+}
+
+$rightNow = time();
+$_products = array();
+
+$_priceDisplayType = $this->getPriceDisplayType();
+
+foreach ($_productCollection as $_product) {
+    $_products[$_product->getId()] = array(
+        'product'                   => $_product,
+        'id'                        => $_product->getId(),
+        'sku'                       => $_product->getSku(),
+        'url'                       => $_product->getProductUrl(),
+        'image'                     => (string) $_imageHelper->init($_product, 'small_image')->keepFrame(true)->backgroundColor($_productImageBackgroundColorToHex)->resize(300),
+        'image@2x'                  => (string) $_imageHelper->init($_product, 'small_image')->keepFrame(true)->backgroundColor($_productImageBackgroundColorToHex)->resize(600),
+        'image_alt'                 => $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true),
+        'name'                      => $_outputHelper->productAttribute($_product, $_product->getName() , 'name'),
+        'productStatus'             => $_product->getData('product_status'),
+        'name_after'                => '',
+        'name_stripped'             => $this->stripTags($_product->getName(), null, true),
+        'manufacturer'              => $_product->getAttributeText('manufacturer'),
+        'manufacturer_id'           => $_product->getManufacturer(),
+        'short_description'         => strip_tags($_outputHelper->productAttribute($_product, $_product->getShortDescription(), 'short_description')),
+        'price'                     => trim($this->getPriceHtml($_product, true)),
+        'price-discount'            => $helperTheme->getDiscountValue($_product),
+        'price-discount-percentage' => $helperTheme->getDiscountPercentage($_product),
+        'base_price'                => ((float) $_product->getFinalPrice()) ? Mage::helper('baseprice')->getBasePriceLabel($_product, false) : '',
+        'is_saleable'               => $_product->isSaleable(),
+        'add_to_cart'               => $this->getAddToCartUrl($_product),
+        'whishlist_url'             => ($this->helper('wishlist')->isAllow()) ? $this->helper('wishlist')->getAddUrl($_product) : '',
+        'compare_url'               => $this->getAddToCompareUrl($_product),
+        'has_add_to_links'          => ($_productListAddToLinksStatus == 1),
+        'reviews'                   => ($_product->getRatingSummary()) ? $this->getReviewsSummaryHtml($_product, 'short') : '',
+        'is_new'                    => ($_product->getNewsFromDate() || $_product->getNewsToDate()) &&
+                                       (
+                                           $rightNow >= strtotime($_product->getNewsFromDate()) && $rightNow <= strtotime($_product->getNewsToDate()) ||
+                                           $rightNow >= strtotime($_product->getNewsFromDate()) && is_null($_product->getNewsToDate()) ||
+                                           $rightNow <= strtotime($_product->getNewsToDate()) && is_null($_product->getNewsFromDate())
+                                       ),
+        'is_sale'                   => $_product->getSpecialPrice() &&
+                                       (
+                                           $rightNow >= strtotime($_product->getSpecialFromDate()) && $rightNow <= strtotime($_product->getSpecialToDate()) ||
+                                           $rightNow >= strtotime($_product->getSpecialFromDate()) && is_null($_product->getSpecialToDate()) ||
+                                           $rightNow <= strtotime($_product->getSpecialToDate()) && is_null($_product->getSpecialFromDate())
+                                       )
+    );
+
+    if (method_exists($this, 'getFormattedTaxRate')) {
+        if ($_productListTaxMode == 1) {
+            $_hasSeparator = true;
+            if ($_priceDisplayType == Mage_Tax_Model_Config::DISPLAY_TYPE_EXCLUDING_TAX) {
+                $tax_text = '<span class="tax-details">' . $this->__('Excl. %s Tax', $this->getFormattedTaxRate($_product));
+            } elseif ($_priceDisplayType == Mage_Tax_Model_Config::DISPLAY_TYPE_INCLUDING_TAX)  {
+                $tax_text = '<span class="tax-details">' . $this->__('Incl. %s Tax', $this->getFormattedTaxRate($_product));
+            } else {
+                $tax_text = '<span class="tax-details">';
+                $_hasSeparator = false;
+            }
+            if ($_productListTaxShippingMode == 1) {
+                if ($_hasSeparator) {
+                    $tax_text .= '<span class="tax-separator">, </span>';
+                }
+                if ($this->isIncludingShippingCosts()) {
+                    $tax_text .= '<span class="shipping-cost-details">' . $this->__('incl. <a href="%s">Shipping Cost</a>', $shippingCostUrl) . '</span>';
+                } else {
+                    $tax_text .= '<span class="shipping-cost-details">' . $this->__('excl. <a href="%s">Shipping Cost</a>', $shippingCostUrl) . '</span>';
+                }
+            }
+            $tax_text .= '</span>';
+        } else {
+            $tax_text = '';
+        }
+        $_products[$_product->getId()]['tax'] = $tax_text;
+    } else {
+        $_products[$_product->getId()]['tax'] = ($_productListTaxMode == 1) ? $_taxInfo : '';
+    }
+
+    $_products[$_product->getId()]['has_labels'] = $_products[$_product->getId()]['is_new'] || $_products[$_product->getId()]['is_sale'];
+
+    // Provides extra blocks on which to hang some features for products in the list
+    // Features providing UI elements targeting this block will display directly below the product name
+    if ($this->getChild('name.after')) {
+        $_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
+        foreach ($_nameAfterChildren as $_nameAfterChildName) {
+            $_nameAfterChild = $this->getChild('name.after')->getChild($_nameAfterChildName);
+            $_nameAfterChild->setProduct($_product);
+            $_products[$_product->getId()]['name_after'] .= $_nameAfterChild->toHtml();
+        }
+    }
+}
+?>
+<?php if ( ! $_productCollection->count()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <div id="shipping-info" class="modal mfp-hide">
+        <?php echo $helperLocalizer->getShippingCostHtml() ?>
+    </div>
+    <div class="category-products">
+        <?php echo $this->getToolbarHtml() ?>
+        <?php echo $this->getChildHtml('catalog.topfilter'); /* THIS IS THE NEW LINE */ ?>
+        <?php if ($this->getMode() != 'grid'): ?>
+            <?php // List mode ?>
+            <ol class="products-list">
+                <?php foreach ($_products as $_p): ?>
+                    <li class="item">
+                        <?php $f = Mage::getBaseDir() . '/app/design/frontend/blugento/default/template/baseprice/list-list-item.phtml'; ?>
+                        <?php include($f) ?>
+                    </li>
+                <?php endforeach; ?>
+            </ol>
+        <?php else: ?>
+            <?php // Grid Mode ?>
+            <ul class="products-grid">
+                <?php foreach ($_products as $_p): ?>
+                    <li class="item">
+                        <?php $f = Mage::getBaseDir() . '/app/design/frontend/blugento/default/template/baseprice/list-grid-item.phtml'; ?>
+                        <?php include($f) ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+        <div class="toolbar-bottom">
+            <?php echo $this->getToolbarHtml() ?>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        // Set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>

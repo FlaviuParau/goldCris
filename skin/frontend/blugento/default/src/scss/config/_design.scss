@@ -1,0 +1,122 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       config/_design.scss
+    Version:        1.0
+    Description:    Colors and Images Variables
+    ------------------------------------------------------------------------- */
+
+//  ----------------------------------------------------------------------------
+//  Colors
+//  ----------------------------------------------------------------------------
+
+$color--primary:        #000 !default;
+$color--secondary:      #fff !default;
+$color--third:          #0076bf !default;
+$color--fourth:         #f68933 !default;
+$color--fifth:          #f9dcb0 !default;
+$color--transparent:    rgba(0, 0, 0, 0) !default;
+
+$palette: (
+    'a': mix($color--secondary, $color--primary, 60%),
+    'b': $color--secondary,
+    'c': darken($color--secondary, 4%),
+    'd': darken($color--secondary, 20%),
+    'e': $color--primary,
+    'f': darken($color--secondary, 25%),
+    'g': $color--fifth,
+    'h': darken($color--secondary, 7%),
+    'i': darken($color--secondary, 10%),
+    'j': darken($color--secondary, 35%),
+    'k': $color--fourth,
+    'l': darken($color--secondary, 8%),
+    'm': lighten($color--primary, 18%),
+    'n': lighten($color--third, 16%),
+    'o': darken($color--fourth, 2%),
+    'p': #f00000,
+    'q': $color--third,
+    'r': mix($color--primary, $color--secondary, 35%),
+    's': mix($color--primary, $color--secondary, 15%),
+    't': lighten($color--primary, 48%)
+) !default;
+
+//  ----------------------------------------------------------------------------
+//  Icons
+//  ----------------------------------------------------------------------------
+
+$icon--arrow-down--a1:          image('icon--arrow-down--a1.svg') !default;
+$icon--arrow-down--b1:          image('icon--arrow-down--b1.svg') !default;
+$icon--arrow-down--c1:          image('icon--arrow-down--c1.svg') !default;
+$icon--arrow-down--d1:          image('icon--arrow-down--d1.svg') !default;
+$icon--arrow-left--a1:          image('icon--arrow-left--a1.svg') !default;
+$icon--arrow-left--b1:          image('icon--arrow-left--b1.svg') !default;
+$icon--arrow-right--a1:         image('icon--arrow-right--a1.svg') !default;
+$icon--arrow-right--b1:         image('icon--arrow-right--b1.svg') !default;
+$icon--arrow-up--a1:            image('icon--arrow-up--a1.svg') !default;
+$icon--arrow-up--b1:            image('icon--arrow-up--b1.svg') !default;
+$icon--arrow-up--c1:            image('icon--arrow-up--c1.svg') !default;
+$icon--arrow-up--d1:            image('icon--arrow-up--d1.svg') !default;
+$icon--cart--a1:                image('icon--cart--a1.svg') !default;
+$icon--cart--b1:                image('icon--cart--b1.svg') !default;
+$icon--checkbox--a1:            image('icon--checkbox--a1.svg') !default;
+$icon--checkbox--a1--checked:   image('icon--checkbox--a1--checked.svg') !default;
+$icon--checkbox--b1:            image('icon--checkbox--b1.svg') !default;
+$icon--checkbox--b1--checked:   image('icon--checkbox--b1--checked.svg') !default;
+$icon--checkbox--c1:            image('icon--checkbox--c1.svg') !default;
+$icon--checkbox--c1--checked:   image('icon--checkbox--c1--checked.svg') !default;
+$icon--checkbox--c1--disabled:  image('icon--checkbox--c1--disabled.svg') !default;
+$icon--checkbox--d1:            image('icon--checkbox--d1.svg') !default;
+$icon--checkbox--d1--checked:   image('icon--checkbox--d1--checked.svg') !default;
+$icon--checkbox--d1--hover:     image('icon--checkbox--d1--hover.svg') !default;
+$icon--compare--a1:             image('icon--compare--a1.svg') !default;
+$icon--edit--a1:                image('icon--edit--a1.svg') !default;
+$icon--facebook--a1:            image('icon--facebook--a1.svg') !default;
+$icon--facebook--a2:            image('icon--facebook--a2.svg') !default;
+$icon--flickr--a1:              image('icon--flickr--a1.svg') !default;
+$icon--flickr--a2:              image('icon--flickr--a2.svg') !default;
+$icon--google--a1:              image('icon--google--a1.svg') !default;
+$icon--google--a2:              image('icon--google--a2.svg') !default;
+$icon--grid--a1:                image('icon--grid--a1.svg') !default;
+$icon--grid--a2:                image('icon--grid--a2.svg') !default;
+$icon--heart--a1:               image('icon--heart--a1.svg') !default;
+$icon--heart--b1:               image('icon--heart--b1.svg') !default;
+$icon--instagram--a1:           image('icon--instagram--a1.svg') !default;
+$icon--instagram--a2:           image('icon--instagram--a2.svg') !default;
+$icon--linkedin--a1:            image('icon--linkedin--a1.svg') !default;
+$icon--linkedin--a2:            image('icon--linkedin--a2.svg') !default;
+$icon--list--a1:                image('icon--list--a1.svg') !default;
+$icon--list--a2:                image('icon--list--a2.svg') !default;
+$icon--loupe--a1:               image('icon--loupe--a1.svg') !default;
+$icon--loupe--a2:               image('icon--loupe--a2.svg') !default;
+$icon--no-stock:                image('icon--no-stock.svg') !default;
+$icon--pinterest--a1:           image('icon--pinterest--a1.svg') !default;
+$icon--pinterest--a2:           image('icon--pinterest--a2.svg') !default;
+$icon--placeholder--a1:         image('icon--placeholder--a1.svg') !default;
+$icon--profile--a1:             image('icon--profile--a1.svg') !default;
+$icon--radio--a1:               image('icon--radio--a1.svg') !default;
+$icon--radio--a1--checked:      image('icon--radio--a1--checked.svg') !default;
+$icon--remove--a1:              image('icon--remove--a1.svg') !default;
+$icon--remove--a2:              image('icon--remove--a2.svg') !default;
+$icon--star--a1:                image('icon--star--a1.svg') !default;
+$icon--star--a2:                image('icon--star--a2.svg') !default;
+$icon--star--b1:                image('icon--star--b1.svg') !default;
+$icon--star--b2:                image('icon--star--b2.svg') !default;
+$icon--twitter--a1:             image('icon--twitter--a1.svg') !default;
+$icon--twitter--a2:             image('icon--twitter--a2.svg') !default;
+$icon--tiktok--a1:              image('icon--tiktok--a1.svg') !default;
+$icon--tiktok--a2:              image('icon--tiktok--a2.svg') !default;
+$icon--youtube--a1:             image('icon--youtube--a1.svg') !default;
+$icon--youtube--a2:             image('icon--youtube--a2.svg') !default;
+$configurable-swatches_bg_x:    image('bg_x.png') !default;
+$icon--plus--a1:                image('icon--plus--a1.svg') !default;
+$icon--minus--a1:               image('icon--minus--a1.svg') !default;
+$icon--share--a1:               image('icon--share--a1.svg') !default;
+$checkout-step-button-arrow:    image('checkout-step-button-arrow.svg') !default;
+$checkout-step-title-checked:   image('checkout-step-title-checked.png') !default;
+$checkout-step-back-arrow:      image('checkout-step-back-arrow.png') !default;
+$checkout-step-checkmark:       image('i_checkmark.png') !default;
+$icon--loading:                 image('loading--wishlist--compare.svg') !default;
+$icon--checked-mark:            image('icon--check-mark.svg') !default;
+$icon--arrow--left:             image('icon--arrow-left--c1.svg') !default;
+$icon--arrow--right:            image('icon--arrow-right--c1.svg') !default;
+$icon--arrow--menu-back:        image('icon--arrow--menu-back--c1.svg') !default;
+$anpc-sal:                      image('i_anpc-sal.svg') !default;
+$anpc-sol:                      image('i_anpc-sol.svg') !default;

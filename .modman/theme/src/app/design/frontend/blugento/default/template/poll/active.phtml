@@ -1,0 +1,39 @@
+<?php if (isset($poll)): ?>
+<div class="block block-poll">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Community Poll') ?></span></strong>
+    </div>
+    <form id="pollForm" action="<?php echo $action ?>" method="post" onsubmit="return validatePollAnswerIsSelected();">
+        <div class="block-content">
+            <p class="block-subtitle"><?php echo $this->escapeHtml($poll->getPollTitle()); ?></p>
+            <?php if ($poll_answers): ?>
+            <ul id="poll-answers">
+                <?php foreach ($poll_answers as $answer): ?>
+                <li>
+                    <input type="radio" name="vote" class="radio poll_vote" id="vote_<?php echo $answer->getId() ?>" value="<?php echo $answer->getAnswerId() ?>" />
+                    <label for="vote_<?php echo $answer->getId() ?>"><?php echo $this->escapeHtml($answer->getAnswerTitle()) ?></label>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Vote')) ?>" class="button"><span><span><?php echo $this->__('Vote') ?></span></span></button>
+            </div>
+        </div>
+    </form>
+    <script>
+    //<![CDATA[
+        function validatePollAnswerIsSelected()
+        {
+            var options = $$('input.poll_vote');
+            for (i in options) {
+                if (options[i].checked == true) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    //]]>
+    </script>    
+</div>
+<?php endif; ?>

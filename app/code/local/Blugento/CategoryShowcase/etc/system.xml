@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>15</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <blugento_categoryshowcase translate="label" module="blugento_categoryshowcase">
+            <label>Category Showcase</label>
+            <comment></comment>
+            <tab>blugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General Settings</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <sort_order>1</sort_order>
+                    <fields>
+                        <category_showcase_description translate="label">
+                            <label>Enable Description</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>1</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_showcase_description>
+                        <category_showcase_image_width translate="label">
+                            <label>Category Image Width</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <source_model>blugento_categoryshowcase/system_config_source_image_width</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_showcase_image_width>
+                        <category_showcase_image_height translate="label">
+                            <label>Category Image Height</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>3</sort_order>
+                            <source_model>blugento_categoryshowcase/system_config_source_image_height</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_showcase_image_height>
+                        <category_description_truncate translate="label">
+                            <label>Truncate Description</label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>4</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_description_truncate>
+                        <category_description_truncate_value translate="label">
+                            <label>Set value for description</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_description_truncate_value>
+                    </fields>
+                </general>
+            </groups>
+        </blugento_categoryshowcase>
+    </sections>
+</config>

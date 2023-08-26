@@ -1,0 +1,10 @@
+<?php
+$ratingSummary = $this->getRatingSummary() ?: 0;
+$reviewsCount  = (int) ($this->getReviewsCount() ?: 0);
+?>
+<div class="ratings">
+	<span class="rating-link"><?php echo $this->__('%d Review(s)', $reviewsCount) ?></span>
+    <div class="rating-box">
+        <div class="rating" style="width: <?php echo $ratingSummary ?>%;"></div>
+    </div>
+</div>

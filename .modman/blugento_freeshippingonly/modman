@@ -1,0 +1,6 @@
+src/app/code/local/Blugento/FreeshippingOnly                                                                                app/code/local/Blugento/FreeshippingOnly
+src/app/etc/modules/Blugento_FreeshippingOnly.xml                                                                           app/etc/modules/Blugento_FreeshippingOnly.xml
+
+src/app/design/frontend/base/default/layout/blugento_freeshippingonly.xml                                                   app/design/frontend/base/default/layout/blugento_freeshippingonly.xml
+src/app/design/frontend/base/default/template/freeshippingonly/checkout/onepage/shipping_method/available.phtml             app/design/frontend/base/default/template/freeshippingonly/checkout/onepage/shipping_method/available.phtml
+

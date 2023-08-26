@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<jstranslator>
+    <selection translate="message">
+       <message>selection</message>
+   </selection>
+    <selections translate="message">
+       <message>selections</message>
+   </selections>
+</jstranslator>

@@ -1,0 +1,21 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_global-site-notice.scss
+    Version:        1.0
+    Description:    Global Site Notice
+    ------------------------------------------------------------------------- */
+
+.global-site-notice {
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 11px;
+    background: $global-site-notice_background;
+    color: $global-site-notice_color;
+
+    .notice-inner {
+        text-align: center;
+    }
+
+    p {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/lightgallery-all.min.js</name>
+                <param>data-module="catalog"</param>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/catalog.js</name>
+                <param>data-module="catalog"</param>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/countdown.js</name>
+                <param>data-module="catalog"</param>
+            </action>
+        </reference>
+        <reference name="left">
+            <action method="unsetChild"><name>left.permanent.callout</name></action>
+        </reference>
+        <reference name="right">
+            <action method="unsetChild"><name>catalog.compare.sidebar</name></action>
+            <action method="unsetChild"><name>right.permanent.callout</name></action>
+        </reference>
+        <reference name="root">
+            <block type="catalog/product_compare_sidebar" name="catalog.compare.sidebar" as="page.product_compare" template="catalog/product/compare/sidebar.phtml" before="-" />
+        </reference>
+    </default>
+
+    <catalog_category_view>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/vendor/blugento-filters/filters-search.js</name>
+                <param>data-module="catalog"</param>
+            </action>
+        </reference>
+    </catalog_category_view>
+
+    <catalog_category_default>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <!-- Move catalog navigation block at the top of the left block -->
+        <reference name="left">
+            <action method="unsetChild">
+                <alias>catalog.leftnav</alias>
+            </action>
+            <action method="insert">
+                <blockName>catalog.leftnav</blockName>
+                <siblingName></siblingName>
+                <after>0</after>
+            </action>
+        </reference>
+        <reference name="catalog.leftnav">
+            <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+        </reference>
+        <reference name="product_list">
+            <block type="core/text_list" name="product_list.name.after" as="name.after" />
+            <block type="core/text_list" name="product_list.after" as="after" />
+        </reference>
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <!-- Move catalog navigation block at the top of the left block -->
+        <reference name="left">
+            <action method="unsetChild">
+                <alias>catalog.leftnav</alias>
+            </action>
+            <action method="insert">
+                <blockName>catalog.leftnav</blockName>
+                <siblingName></siblingName>
+                <after>0</after>
+            </action>
+        </reference>
+        <reference name="catalog.leftnav">
+            <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+        </reference>
+        <reference name="product_list">
+            <block type="core/text_list" name="product_list.name.after" as="name.after" />
+            <block type="core/text_list" name="product_list.after" as="after" />
+        </reference>
+    </catalog_category_layered>
+
+    <catalog_product_compare_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title">
+                <crumbName>home</crumbName>
+                <crumbInfo>
+                    <label>Homepage</label>
+                    <title>Homepage</title>
+                    <link>/</link>
+                </crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title">
+                <crumbName>compare</crumbName>
+                <crumbInfo>
+                    <label>Compare Products</label>
+                    <title>Compare Products</title>
+                    <link></link>
+                </crumbInfo>
+            </action>
+        </reference>
+    </catalog_product_compare_index>
+
+    <catalog_product_view>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="removeItem">
+                <type>js_css</type>
+                <name>calendar/calendar-win2k-1.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/calendar.css</name>
+                <params />
+            </action>
+        </reference>
+        <reference name="product.info">
+            <action method="addReviewSummaryTemplate"><type>short</type><template>review/helper/summary_short.phtml</template></action>
+            <action method="addReviewSummaryTemplate"><type>add</type><template>review/helper/add.phtml</template></action>
+            <block type="review/form" name="product.review.form" as="review_form">
+                <block type="page/html_wrapper" name="product.review.form.fields.before" as="form_fields_before" translate="label">
+                    <label>Review Form Fields Before</label>
+                    <action method="setMayBeInvisible"><value>1</value></action>
+                </block>
+            </block>
+            <block type="review/product_view_list" name="product.info.product_review_list" as="review_list" template="review/product/view/list.phtml" />
+            <block type="catalog/product_view_type_simple" name="product.info.availability" as="product_availability" template="catalog/product/view/availability.phtml">
+                <block type="core/text_list" name="product.info.simple.extra" as="product_type_data_extra" translate="label">
+                    <label>Product Extra Info</label>
+                </block>
+            </block>
+            <block type="catalog/product_list_related" name="catalog.product.related" as="related_products" template="catalog/product/list/related.phtml">
+                <action method="setItemLimit"><type>related_products</type><limit>30</limit></action>
+            </block>
+            <block type="catalog/product_list_upsell" name="product.info.upsell" as="upsell_products" template="catalog/product/list/upsell.phtml">
+                <action method="setItemLimit"><type>upsell</type><limit>30</limit></action>
+            </block>
+            <block type="catalog/product_view_attributes" name="product.additionalinfo" as="additionalinfo" template="catalog/product/view/additionalinfo.phtml">
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle" translate="value"><value>Additional Info</value></action>
+            </block>
+        </reference>
+        <reference name="product.info.media">
+            <block type="core/text_list" name="product.info.media.after" as="after" />
+        </reference>
+        <reference name="product.description">
+            <action method="setTitle"><name>Description</name></action>
+        </reference>
+        <reference name="product.attributes">
+            <action method="setTitle"><name>Information</name></action>
+        </reference>
+        <reference name="product.info.options.wrapper.bottom">
+            <remove name="product.clone_prices" />
+        </reference>
+        <reference name="right">
+            <action method="unsetChild"><name>catalog.product.related</name></action>
+        </reference>
+    </catalog_product_view>
+
+    <PRODUCT_TYPE_configurable>
+        <reference name="product.info.options.configurable">
+            <block type="core/text_list" name="product.info.options.configurable.renderers" as="attr_renderers" />
+            <block type="core/text_list" name="product.info.options.configurable.after" as="after" />
+        </reference>
+    </PRODUCT_TYPE_configurable>
+
+</layout>

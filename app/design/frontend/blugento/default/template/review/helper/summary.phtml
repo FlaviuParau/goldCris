@@ -1,0 +1,21 @@
+<?php
+$ratingSummary = $this->getRatingSummary() ?: 0;
+$reviewsCount  = (int) ($this->getReviewsCount() ?: 0);
+?>
+<?php if ($this->getReviewsCount()): ?>
+    <div class="ratings">
+	    <?php if ($ratingSummary): ?>
+            <div class="rating-box">
+                <div class="rating" style="width: <?php echo $ratingSummary ?>%;"></div>
+            </div>
+        <?php endif; ?>
+
+        <p class="rating-links">
+            <a href="<?php echo $this->getReviewsUrl() ?>"><?php echo $this->__('%d Review(s)', $reviewsCount) ?></a>
+            <span class="separator">|</span>
+            <a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Add Your Review') ?></a>
+        </p>
+    </div>
+<?php elseif ($this->getDisplayIfEmpty()): ?>
+    <p class="no-rating"><a href="<?php echo $this->getReviewsUrl() ?>#review-form"><?php echo $this->__('Write a Review') ?></a></p>
+<?php endif; ?>

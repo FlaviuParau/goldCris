@@ -1,0 +1,38 @@
+<?php
+/**
+ * This file is part of a Blugento Localizer e.V. module.
+ *
+ * @category  Blugento
+ * @package   Blugento Localizer
+ */
+?>
+<?php
+/**
+ * @var $this Blugento_Localizer_Block_Imprint_Content
+ */
+?>
+
+<?php if (strlen(trim($this->getBankAccount())) || strlen(trim($this->getSwift()))): ?>
+    <h3><?php echo $this->__('Bank Information') ?></h3>
+<?php endif; ?>
+<?php if (strlen(trim($this->getBankAccountOwner()))): ?>
+    <?php echo $this->__('Account owner') ?>: <?php echo $this->getBankAccountOwner() ?><br />
+<?php endif; ?>
+<?php if (strlen(trim($this->getBankAccount()))): ?>
+    <?php echo $this->__('Account') ?>: <?php echo $this->getBankAccount() ?><br />
+<?php endif; ?>
+<?php if (strlen(trim($this->getBankCodeNumber()))): ?>
+    <?php echo $this->__('Bank number') ?>: <?php echo $this->getBankCodeNumber() ?><br />
+<?php endif; ?>
+<?php if (strlen(trim($this->getBankName()))): ?>
+    <?php echo $this->__('Bank name') ?>: <?php echo $this->getBankName() ?><br />
+<?php endif; ?>
+<?php if (strlen(trim($this->getSwift()))): ?>
+    <?php echo $this->__('SWIFT') ?>: <?php echo $this->getSwift() ?><br />
+<?php endif; ?>
+<?php if (strlen(trim($this->getIban()))): ?>
+    <?php echo $this->__('IBAN') ?>: <?php echo $this->getIban() ?><br />
+<?php endif; ?>
+<?php if (strlen(trim($this->getClearing()))): ?>
+    <?php echo $this->__('Clearing') ?>: <?php echo $this->getClearing() ?><br />
+<?php endif; ?>

@@ -1,0 +1,9 @@
+Scripts for thank you page,Skrypty dla strony z podzi?kowaniami
+Scripts for all pages,Skrypty dla wszystkich stron
+Scripts for product page,Skrypty dla stron produkt�w
+Scripts for checkout page,Skrypty dla strony kasy
+Scripts for cart page,Skrypty dla strony koszyka
+"Will be displayed on thank you page. Use placeholders for variables: {{value}}, {{currency}}, {{order_id}}, {{order_items}}, {{value_excl_tax}}, {{firstname}}, {{lastname}}, {{email}}, {{phone_number}}, {{street}}, {{city}}, {{region}}, {{postal_code}}, {{country}}, {{amount}}, {{shipping_cost}}, {{order_items_new}}","Zostanie wy?wietlony na stronie z podzi?kowaniami. U?yj nawias�w dla zmiennych: {{value}}, {{currency}}, {{order_id}}, {{order_items}}, {{value_excl_tax}}, {{firstname}}, {{lastname}}, {{email}}, {{phone_number}}, {{street}}, {{city}}, {{region}}, {{postal_code}}, {{country}}, {{amount}}, {{shipping_cost}}, {{order_items_new}}"
+Will be displayed on all pages.,B?dzie wy?wietlany na wszystkich stronach.
+"Will be displayed on product page. Use placeholders for variables: {{product_id}}, {{product_type}}, {{price}}","B?dzie wy?wietlany na stronie produktu. U?yj nawias�w dla zmiennych: {{product_id}}, {{product_type}}, {{price}}"
+"Will be displayed on cart page. Use placeholders for variables: {{value}}, {{currency}}, {{products}}","B?dzie wy?wietlany na stronie koszyka. U?yj nawias�w dla zmiennych: {{value}}, {{currency}}, {{products}}"

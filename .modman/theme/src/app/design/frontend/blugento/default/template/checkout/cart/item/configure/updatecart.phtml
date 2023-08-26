@@ -1,0 +1,60 @@
+<?php $_product = $this->getProduct(); ?>
+<?php $buttonTitle = $this->__('Update Cart'); ?>
+<?php
+$_productViewAddToCartQuantityButtons = (int) ($this->getLayout()->getBlock('root')->getProductViewAddToCartQuantityButtons() ?: 2);
+$_productViewAddToCartMobile = (int) ($this->getLayout()->getBlock('root')->getProductViewAddToCartMobile() ?: 1);
+$_productViewBuyNowButton = (int) ($this->getLayout()->getBlock('root')->getProductViewBuyNowButton() ?: 2);
+
+if (Mage::helper('core')->isModuleEnabled('Milople_Personalized') && Mage::helper('personalized/personalized')->isEnabled() && Mage::helper('personalized/personalized')->allowPersonalization($_product)) {
+    $is_side     = Mage::helper('personalized/data')->getSideCount($_product);
+    $modelAreas  = Mage::getModel('personalized/area')->getCollection()->addFieldToFilter('product_id', $_product->getId())->getData();
+    $counterLoop = 0;
+    $width       = Mage::helper('personalized/data')->getConfig('upload_image/canvas_width');
+    $height      = Mage::helper('personalized/data')->getConfig('upload_image/canvas_height');
+}
+?>
+<?php if ($_product->isSaleable()): ?>
+	<div class="add-to-cart">
+		<?php if (!$_product->isGrouped()): ?>
+			<?php
+			$defValue = $this->getProductDefaultQty() * 1;
+			$defIncrement = 1;
+			if ($_product->getStockItem()->getData('enable_qty_increments')) {
+				if ($_product->getStockItem()->getIsQtyDecimal() == 1) {
+					$defValue = number_format($_product->getStockItem()->getData('min_sale_qty'), 2);
+					$defIncrement = number_format($_product->getStockItem()->getData('qty_increments'), 2);
+				} else {
+					$defValue = number_format($_product->getStockItem()->getData('min_sale_qty'), 0);
+					$defIncrement = number_format($_product->getStockItem()->getData('qty_increments'), 0);
+				}
+			}
+			?>
+			<label for="qty"><?php echo $this->__('Qty:') ?></label>
+			<?php if (!Mage::helper('core')->isModuleEnabled('Blugento_ProductQuantityDropdown') || !Mage::getStoreConfig("blugento_cart/product_qty_dropdown/enabled")) : ?>
+				<input class="<?php if ($_product->getStockItem()->getIsQtyDecimal() == 1): ?>decimals<?php endif; ?>"
+				       type="text" name="qty" id="qty" maxlength="12" data-increment="<?php echo $defIncrement; ?>"
+				       value="<?php echo $defValue; ?>" title="<?php echo $this->__('Qty') ?>"/>
+			<?php endif; ?>
+			<?php if (Mage::helper('core')->isModuleEnabled('Blugento_InvitationTemplate')
+				&& Mage::helper('blugento_invitationtemplate')->validToDisplay($_product)): ?>
+				<input type="hidden" name="invitation-template" id="invitation-template"/>
+			<?php endif; ?>
+			<?php if (!Mage::helper('core')->isModuleEnabled('Blugento_ProductQuantityDropdown') || !Mage::getStoreConfig("blugento_cart/product_qty_dropdown/enabled")) : ?>
+				<?php if ($_productViewAddToCartQuantityButtons == 1): ?>
+					<div class="button-counter">
+						<span class="plus"></span>
+						<span class="minus"></span>
+					</div>
+				<?php endif; ?>
+			<?php endif; ?>
+		<?php endif; ?>
+		<button type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button" class="button btn-cart" onclick="productAddToCartForm.submit(this)"><span><span><?php echo $buttonTitle ?></span></span></button>
+        <?php if ($_productViewAddToCartMobile == 1): ?>
+        <span type="button" title="<?php echo $buttonTitle ?>" id="product-addtocart-button-fixed" class="button btn-cart no-display"><span><span><?php echo $buttonTitle ?></span></span></span>
+        <?php endif; ?>
+        <?php if ($_productViewBuyNowButton == 1 && !Mage::getStoreConfig('blugento_ajaxcart/general/enable')) : ?>
+          <?php echo $this->getLayout()->createBlock('blugento_theme/catalog_product_design')->setProduct($_product)->setTemplate('catalog/product/buy_now.phtml')->toHtml(); ?>
+        <?php endif; ?>
+        <?php echo $this->getChildHtml('', true, true) ?>
+	</div>
+<?php endif; ?>

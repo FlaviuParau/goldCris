@@ -1,0 +1,6 @@
+src/app/code/community/Me/Lff                             app/code/community/Me/Lff
+src/app/design/frontend/base/default/layout/me/lff.xml    app/design/frontend/base/default/layout/me/lff.xml
+src/app/design/frontend/base/default/template/me/lff      app/design/frontend/base/default/template/me/lff
+src/app/etc/modules/Me_Lff.xml                            app/etc/modules/Me_Lff.xml
+src/app/locale/en_US/Me_Lff.csv                           app/locale/en_US/Me_Lff.csv
+src/skin/frontend/base/default/css/me/lff                 skin/frontend/base/default/css/me/lff

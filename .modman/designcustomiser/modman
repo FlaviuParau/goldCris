@@ -1,0 +1,10 @@
+src/app/code/local/Blugento/DesignCustomiser                                     app/code/local/Blugento/DesignCustomiser
+src/app/locale/de_DE/*                                                           app/locale/de_DE/
+src/app/locale/en_US/*                                                           app/locale/en_US/
+src/app/locale/ro_RO/*                                                           app/locale/ro_RO/
+src/app/locale/pl_PL/*                                                           app/locale/pl_PL/
+src/app/design/adminhtml/default/default/layout/blugento_designcustomiser.xml    app/design/adminhtml/default/default/layout/blugento_designcustomiser.xml
+src/app/design/adminhtml/default/default/template/blugento/designcustomiser      app/design/adminhtml/default/default/template/blugento/designcustomiser
+src/app/etc/modules/Blugento_DesignCustomiser.xml                                app/etc/modules/Blugento_DesignCustomiser.xml
+src/skin/adminhtml/default/default/blugento/designcustomiser                     skin/adminhtml/default/default/blugento/designcustomiser
+src/lib/Varien/Data/Form/Element/Prevnext.php                                    lib/Varien/Data/Form/Element/Prevnext.php

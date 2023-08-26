@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2020 Amasty (https://www.amasty.com)
+ * @package Amasty_Commonrules
+ */
+-->
+<config>
+    <modules>
+        <Amasty_Commonrules>
+            <version>1.0.7</version>
+        </Amasty_Commonrules>
+    </modules>
+
+    <global>
+        <models>
+            <amcommonrules>
+                <class>Amasty_Commonrules_Model</class>
+            </amcommonrules>
+            <salesrule>
+                <rewrite>
+                    <rule_condition_product>Amasty_Commonrules_Model_SalesRule_Rule_Condition_Product</rule_condition_product>
+                </rewrite>
+            </salesrule>
+        </models>
+
+        <blocks>
+            <amcommonrules>
+                <class>Amasty_Commonrules_Block</class>
+            </amcommonrules>
+        </blocks>
+
+        <helpers>
+            <amcommonrules>
+                <class>Amasty_Commonrules_Helper</class>
+            </amcommonrules>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Amasty_Commonrules after="Mage_Adminhtml">Amasty_Commonrules_Adminhtml</Amasty_Commonrules>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Amasty_Commonrules>
+                    <files>
+                        <default>Amasty_Commonrules.csv</default>
+                    </files>
+                </Amasty_Commonrules>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>

@@ -1,0 +1,45 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_reveal.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.page-main-overflow {
+    .reveal {
+        z-index: z('sub-dock');
+        position: fixed !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        border-top: 3px solid color('a');
+        background-color: color('c');
+        transform: translate(0, 100%);
+        transition: transform .3s ease;
+
+        &-trigger {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 2 * $grid-gutter-width;
+            width: round(40px * $phi);
+            height: 40px;
+            border: 3px solid color('a');
+            border-bottom: 0;
+            background-color: color('c');
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+        }
+
+        + .reveal .reveal-trigger {
+            left: round(40px * $phi) + 4 * $grid-gutter-width;
+        }
+
+        &--active {
+            z-index: z('dock');
+            transform: translate(0, 0);
+        }
+    }
+}

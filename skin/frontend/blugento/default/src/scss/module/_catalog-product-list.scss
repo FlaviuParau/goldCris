@@ -1,0 +1,51 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-list.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@import 'catalog-product-list6';
+@import 'catalog-product-list5';
+@import 'catalog-product-list4';
+@import 'catalog-product-list3';
+@import 'catalog-product-list2';
+@import 'catalog-product-list1';
+@import 'catalog-product-list-items-row';
+@import 'catalog-product-list-hover';
+@import 'catalog-product-list-quantity';
+
+.products-grid,
+%products-grid,
+.products-list,
+%products-list {
+    @if ($layout--product-list_item_title_description_display == 3) {
+        .product-name {
+            margin-bottom: 0;
+            padding: 18px 20px;
+        }
+    } @elseif ($layout--product-list_item_title_description_display == 2) {
+        .product-name {
+            padding: 18px 20px 0;
+        }
+
+        .desc {
+            overflow: hidden;
+            margin-bottom: 20px;
+            padding: 0 20px;
+            line-height: $products-list__item__description_line-height;
+        }
+
+        .yotpo {
+            padding: 0 20px;
+        }
+    }
+}
+
+.products-list,
+%products-list {
+    @if ($layout--product-list_item_title_description_display == 3) {
+        .desc {
+            padding: 10px 20px;
+        }
+    }
+}

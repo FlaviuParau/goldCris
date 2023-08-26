@@ -1,0 +1,345 @@
+<?php
+/**
+ * Product additional attributes template
+ *
+ * @see Mage_Catalog_Block_Product_View_Attributes
+ */
+?>
+
+<?php
+$_productViewDeliveryTimeMode = (int)($this->getLayout()->getBlock('root')->getProductViewDeliveryTimeMode() ?: 1);
+$_productViewSubtitleMode = (int)($this->getLayout()->getBlock('root')->getProductViewSubtitleMode() ?: 1);
+$_productViewShortDescriptionMode = (int)($this->getLayout()->getBlock('root')->getProductViewShortDescriptionMode() ?: 1);
+$_productViewGroupAttributesStatus = (int)($this->getLayout()->getBlock('root')->getProductViewGroupAttributesStatus() ?: 2);
+$_productSpecificationOrder = (int)($this->getLayout()->getBlock('root')->getProductSpecificationOrder() ?: 1);
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+$_additionalGroup = $this->getAdditionalDataCustom();
+?>
+
+<?php if ($_additional = $this->getAdditionalData()) : ?>
+	<?php if ($_productSpecificationOrder == 1) : ?>
+		<?php if ($_productViewGroupAttributesStatus == 1) : ?>
+			<?php foreach ($_additionalGroup as $_additional) : ?>
+				<h3 class="label"><?php echo $this->__($_additional['title']); ?></h3>
+				<table class="data-table" id="product-attribute-specs-table">
+					<tbody>
+					<?php foreach ($_additional['items'] as $_data) : ?>
+						<?php if (($_data['code'] == 'delivery_time') && ($_productViewDeliveryTimeMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if (($_data['code'] == 'subtitle') && ($_productViewSubtitleMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if (($_data['code'] == 'short_description') && ($_productViewShortDescriptionMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if ($_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('No') && $_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('N/A')) : ?>
+							<?php $attrMultiSelectValues = $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?>
+							<?php if (is_array($attrMultiSelectValues)) : ?>
+								<tr>
+									<th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
+									<td class="data">
+										<ul class="multiselect-attributes cf">
+										<?php foreach ($attrMultiSelectValues as $attr) : ?>
+											<?php echo '<li>' . $attr . '</li>'; ?>
+										<?php endforeach; ?>
+										</ul>
+									</td>
+								</tr>
+							<?php else : ?>
+								<tr>
+									<th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
+									<td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+								</tr>
+							<?php endif; ?>
+						<?php endif; ?>
+					<?php endforeach; ?>
+					</tbody>
+				</table>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<table class="data-table" id="product-attribute-specs-table">
+				<tbody>
+				<?php foreach ($_additional as $_data) : ?>
+					<?php if (($_data['code'] == 'delivery_time') && ($_productViewDeliveryTimeMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if (($_data['code'] == 'subtitle') && ($_productViewSubtitleMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if (($_data['code'] == 'short_description') && ($_productViewShortDescriptionMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if ($_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('No') && $_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('N/A')) : ?>
+						<?php $attrMultiSelectValues = $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?>
+						<?php if (is_array($attrMultiSelectValues)) : ?>
+							<tr>
+								<th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
+								<td class="data">
+									<ul class="multiselect-attributes cf">
+										<?php foreach ($attrMultiSelectValues as $attr) : ?>
+											<?php echo '<li>' . $attr . '</li>'; ?>
+										<?php endforeach; ?>
+									</ul>
+								</td>
+							</tr>
+						<?php else : ?>
+							<tr>
+								<th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
+								<td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+							</tr>
+						<?php endif; ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+	<?php endif; ?>
+	<?php if ($_productSpecificationOrder == 2) : ?>
+		<?php if ($_productViewGroupAttributesStatus == 1) : ?>
+			<?php foreach ($_additionalGroup as $_additional) : ?>
+				<h3 class="label"><?php echo $this->__($_additional['title']); ?></h3>
+				<table class="data-table" id="product-attribute-specs-table">
+					<tbody>
+					<?php $i=1; ?>
+					<?php foreach ($_additional['items'] as $_data) : ?>
+						<?php if (($_data['code'] == 'delivery_time') && ($_productViewDeliveryTimeMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if (($_data['code'] == 'subtitle') && ($_productViewSubtitleMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if (($_data['code'] == 'short_description') && ($_productViewShortDescriptionMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if ($_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('No') && $_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('N/A')) : ?>
+							<?php $attrMultiSelectValues = $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?>
+							<?php if (is_array($attrMultiSelectValues)) : ?>
+								<?php if ($i % 2 != 0) : ?>
+									<tr>
+								<?php endif; ?>
+									<th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
+									<td class="data">
+										<ul class="multiselect-attributes cf">
+											<?php foreach ($attrMultiSelectValues as $attr) : ?>
+												<?php echo '<li>' . $attr . '</li>'; ?>
+											<?php endforeach; ?>
+										</ul>
+									</td>
+								<?php if ($i % 2 == 0) : ?>
+									</tr>
+								<?php endif; ?>
+							<?php else : ?>
+								<?php if ($i % 2 != 0) : ?>
+									<tr>
+								<?php endif; ?>
+								<th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])); ?></th>
+								<td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?></td>
+								<?php if ($i % 2 == 0) : ?>
+									</tr>
+								<?php endif; ?>
+							<?php endif; ?>
+						<?php endif; ?>
+						<?php $i++; ?>
+					<?php endforeach; ?>
+					</tbody>
+				</table>
+			<?php endforeach; ?>
+		<?php else : ?>
+			<table class="data-table" id="product-attribute-specs-table">
+				<tbody>
+				<?php $i=1; ?>
+				<?php foreach ($_additional as $_data) : ?>
+					<?php if (($_data['code'] == 'delivery_time') && ($_productViewDeliveryTimeMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if (($_data['code'] == 'subtitle') && ($_productViewSubtitleMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if (($_data['code'] == 'short_description') && ($_productViewShortDescriptionMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if ($_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('No') && $_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('N/A')) : ?>
+						<?php $attrMultiSelectValues = $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?>
+						<?php if (is_array($attrMultiSelectValues)) : ?>
+							<?php if ($i % 2 != 0) : ?>
+								<tr>
+							<?php endif; ?>
+							<th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></th>
+							<td class="data">
+								<ul class="multiselect-attributes cf">
+									<?php foreach ($attrMultiSelectValues as $attr) : ?>
+										<?php echo '<li>' . $attr . '</li>'; ?>
+									<?php endforeach; ?>
+								</ul>
+							</td>
+							<?php if ($i % 2 == 0) : ?>
+								</tr>
+							<?php endif; ?>
+						<?php else : ?>
+							<?php if ($i % 2 != 0) : ?>
+								<tr>
+							<?php endif; ?>
+							<th class="label"><?php echo $this->escapeHtml($this->__($_data['label'])); ?></th>
+							<td class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?></td>
+							<?php if ($i % 2 == 0) : ?>
+								</tr>
+							<?php endif; ?>
+						<?php endif; ?>
+					<?php endif; ?>
+					<?php $i++; ?>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+		<?php endif; ?>
+	<?php endif; ?>
+	<?php if ($_productSpecificationOrder == 3) : ?>
+		<?php if ($_productViewGroupAttributesStatus == 1) : ?>
+			<?php foreach ($_additionalGroup as $_additional) : ?>
+				<h3 class="label"><?php echo $this->__($_additional['title']); ?></h3>
+				<ul class="data-list" id="product-attribute-specs-list">
+					<?php foreach ($_additional['items'] as $_data) : ?>
+						<?php if (($_data['code'] == 'delivery_time') && ($_productViewDeliveryTimeMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if (($_data['code'] == 'subtitle') && ($_productViewSubtitleMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if (($_data['code'] == 'short_description') && ($_productViewShortDescriptionMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if ($_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('No') && $_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('N/A')) : ?>
+							<?php $attrMultiSelectValues = $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?>
+							<?php if (is_array($attrMultiSelectValues)) : ?>
+								<li>
+									<span class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></span>
+									<div class="data">
+										<ul class="multiselect-attributes cf">
+											<?php foreach ($attrMultiSelectValues as $attr) : ?>
+												<?php echo '<li>' . $attr . '</li>'; ?>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								</li>
+							<?php else : ?>
+								<li>
+									<span class="label"><?php echo $this->escapeHtml($this->__($_data['label'])); ?>:</span>
+									<span class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?></span>
+								</li>
+							<?php endif; ?>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</ul>
+			<?php endforeach; ?>
+		<?php else : ?>
+			<ul class="data-list" id="product-attribute-specs-list">
+				<?php foreach ($_additional as $_data) : ?>
+					<?php if (($_data['code'] == 'delivery_time') && ($_productViewDeliveryTimeMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if (($_data['code'] == 'subtitle') && ($_productViewSubtitleMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if (($_data['code'] == 'short_description') && ($_productViewShortDescriptionMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if ($_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('No') && $_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('N/A')) : ?>
+						<?php $attrMultiSelectValues = $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?>
+						<?php if (is_array($attrMultiSelectValues)) : ?>
+							<li>
+								<span class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></span>
+								<div class="data">
+									<ul class="multiselect-attributes cf">
+										<?php foreach ($attrMultiSelectValues as $attr) : ?>
+											<?php echo '<li>' . $attr . '</li>'; ?>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+							</li>
+						<?php else : ?>
+							<li>
+								<span class="label"><?php echo $this->escapeHtml($this->__($_data['label'])); ?>:</span>
+								<span class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?></span>
+							</li>
+						<?php endif; ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+	<?php endif; ?>
+	<?php if ($_productSpecificationOrder == 4) : ?>
+		<?php if ($_productViewGroupAttributesStatus == 1) : ?>
+			<?php foreach ($_additionalGroup as $_additional) : ?>
+				<h3 class="label"><?php echo $this->__($_additional['title']); ?></h3>
+				<ul class="data-list" id="product-attribute-specs-list">
+					<?php foreach ($_additional['items'] as $_data) : ?>
+						<?php if (($_data['code'] == 'delivery_time') && ($_productViewDeliveryTimeMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if (($_data['code'] == 'subtitle') && ($_productViewSubtitleMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if (($_data['code'] == 'short_description') && ($_productViewShortDescriptionMode != 1)) : ?>
+							<?php continue; ?>
+						<?php endif; ?>
+						<?php if ($_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('No') && $_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('N/A')) : ?>
+							<?php $attrMultiSelectValues = $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?>
+							<?php if (is_array($attrMultiSelectValues)) : ?>
+								<li>
+									<span class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></span>
+									<div class="data">
+										<ul class="multiselect-attributes cf">
+											<?php foreach ($attrMultiSelectValues as $attr) : ?>
+												<?php echo '<li>' . $attr . '</li>'; ?>
+											<?php endforeach; ?>
+										</ul>
+									</div>
+								</li>
+							<?php else : ?>
+								<li>
+									<span class="label"><?php echo $this->escapeHtml($this->__($_data['label'])); ?>:</span>
+									<span class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?></span>
+								</li>
+							<?php endif; ?>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</ul>
+			<?php endforeach; ?>
+		<?php else : ?>
+			<ul class="data-list" id="product-attribute-specs-list">
+				<?php foreach ($_additional as $_data) : ?>
+					<?php if (($_data['code'] == 'delivery_time') && ($_productViewDeliveryTimeMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if (($_data['code'] == 'subtitle') && ($_productViewSubtitleMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if (($_data['code'] == 'short_description') && ($_productViewShortDescriptionMode != 1)) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
+					<?php if ($_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('No') && $_helper->productAttribute($_product, $_data['value'], $_data['code']) != $this->__('N/A')) : ?>
+						<?php $attrMultiSelectValues = $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?>
+						<?php if (is_array($attrMultiSelectValues)) : ?>
+							<li>
+								<span class="label"><?php echo $this->escapeHtml($this->__($_data['label'])) ?></span>
+								<div class="data">
+									<ul class="multiselect-attributes cf">
+										<?php foreach ($attrMultiSelectValues as $attr) : ?>
+											<?php echo '<li>' . $attr . '</li>'; ?>
+										<?php endforeach; ?>
+									</ul>
+								</div>
+							</li>
+						<?php else : ?>
+							<li>
+								<span class="label"><?php echo $this->escapeHtml($this->__($_data['label'])); ?>:</span>
+								<span class="data"><?php echo $_helper->productAttribute($_product, $_data['value'], $_data['code']); ?></span>
+							</li>
+						<?php endif; ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+	<?php endif; ?>
+<?php endif; ?>

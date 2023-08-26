@@ -1,0 +1,17 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Scheckout
+ */
+?>
+<?php if ($this->hasCustomerAtrtibutesRelations()): ?>
+    <?php $relations = $this->getRelationJSONData(); ?>
+    <?php $typeAddress = $this->getTypeAddress(); ?>
+    <script type="text/javascript">
+        var relationData = '<?php echo $relations?>'.evalJSON();
+        var typeAddress = '<?php echo $typeAddress; ?>';
+        var amastyCustomAttrRelation = new CustomAttrRelation(relationData, typeAddress);
+        amastyCustomAttrRelation.listener_changes();
+    </script>
+<?php endif; ?>

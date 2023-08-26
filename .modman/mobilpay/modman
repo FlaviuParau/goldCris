@@ -1,0 +1,11 @@
+/src/app/code/local/Mobilpay/Cc                          app/code/local/Mobilpay/Cc
+/src/app/design/adminhtml/default/default/template/cc    app/design/adminhtml/default/default/template/cc
+/src/app/design/frontend/base/default/template/cc        app/design/frontend/base/default/template/cc
+/src/app/etc/modules/Mobilpay_Cc.xml                     app/etc/modules/Mobilpay_Cc.xml
+/src/lib/Mobilpay/Payment                                lib/Mobilpay/Payment
+/src/skin/frontend/base/default/images/mobilpay.gif      skin/frontend/base/default/images/mobilpay.gif
+
+src/app/locale/en_US/template/email/mobilpay_recurrent_canceled.html		app/locale/en_US/template/email/mobilpay_recurrent_canceled.html
+src/app/locale/en_US/template/email/mobilpay_recurrent_suspended.html		app/locale/en_US/template/email/mobilpay_recurrent_suspended.html
+src/app/locale/ro_RO/template/email/mobilpay_recurrent_canceled.html		app/locale/ro_RO/template/email/mobilpay_recurrent_canceled.html
+src/app/locale/ro_RO/template/email/mobilpay_recurrent_suspended.html		app/locale/ro_RO/template/email/mobilpay_recurrent_suspended.html

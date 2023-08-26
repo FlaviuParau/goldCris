@@ -1,0 +1,124 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_dock.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@include mobile {
+    .dock-close-active {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        bottom: 0;
+        right: 10px;
+        z-index: z('dock');
+
+        &:before,
+        &:after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 40px;
+            background-color: color('e');
+            -webkit-transition: all .3s;
+            transition: all .3s;
+        }
+
+        &:before {
+            -webkit-transform: rotate(135deg);
+            -ms-transform: rotate(135deg);
+            transform: rotate(135deg);
+            top: 3px;
+            position: relative;
+        }
+
+        &:after {
+            -webkit-transform: rotate(-135deg);
+            -ms-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+        }
+    }
+
+    .block-cart-aside,
+    .header-wishlist-count,
+    .block-account {
+        .dock-close-active {
+            left: 10px;
+            right: inherit;
+        }
+    }
+
+    .wrap-dock--active {
+        z-index: z('wrap-dock');
+    }
+
+    .dock,
+    %dock {
+        z-index: z('dock');
+        position: fixed !important;
+        overflow: auto !important;
+        display: none;
+        margin: 0 !important;
+        background-color: color('b');
+        color: color('e');
+
+        .dock-open &--right,
+        .dock-open &--left {
+            top: 0 !important;
+            bottom: 0 !important;
+            width: 234px !important;
+            height: 100% !important;
+        }
+
+        &--top,
+        &--bottom {
+            right: 0 !important;
+            left: 0 !important;
+        }
+
+        &--top {
+            top: 0 !important;
+        }
+
+        &--right {
+            right: 0 !important;
+        }
+
+        &--left {
+            left: 0 !important;
+        }
+
+        &--bottom {
+            bottom: 0 !important;
+        }
+    }
+
+    .dock-open,
+    %dock-open {
+        overflow: hidden;
+        position: fixed;
+
+        &--left {
+            top: 0;
+            left: 234px !important;
+        }
+
+        &--right {
+            top: 0;
+            right: 234px !important;
+        }
+    }
+
+    body[data-dock] .dock--active {
+        z-index: z('dock');
+        display: block !important;
+    }
+
+    body[data-dock]:not([data-dock=".ajax-login-modal"]):not(.pointer-events-disabled) .dock--active {
+        pointer-events: none;
+    }
+
+    body.pointer-events-disabled .dock--active {
+        pointer-events: inherit;
+    }
+}

@@ -1,0 +1,95 @@
+<?php
+$_helper = $this->helper('blugento_theme');
+
+$_marketing = trim($this->getChildHtml('cms_blugento_footer_marketing'));
+$_links = trim($this->getChildHtml('cms_blugento_footer_links'));
+$_block1 = trim($this->getChildHtml('cms_blugento_footer_block-1'));
+$_block2 = trim($this->getChildHtml('cms_blugento_footer_block-2'));
+$_legals = trim($this->getChildHtml('legals'));
+$_feeds = trim($this->getChildHtml('blugento_datafeeds'));
+$_anpcLinks = (int) ($this->getLayout()->getBlock('root')->getAnpcLinks() ?: 1);
+
+$_linksColumnClass = 'col-xxs-12 col-xs-8 col-s-8 col-sm-6 col-4';
+$_block1ColumnClass = 'col-s-6 col-sm-3 col-3';
+$_block2ColumnClass = 'col-s-6 col-sm-3 col-3';
+
+$_newsletterMenuAccordion = (int) ($this->getLayout()->getBlock('root')->getNewsletterMenuAccordion() ?: 1);
+
+if ( ! trim(strip_tags($_marketing, '<img>'))) {
+    $_marketing = false;
+}
+if ( ! trim(strip_tags($_links, '<img>'))) {
+    $_links = false;
+}
+if ( ! trim(strip_tags($_block1, '<img>'))) {
+    $_block1 = false;
+    $_block2ColumnClass = 'col-s-12 col-sm-6 col-6';
+}
+if ( ! trim(strip_tags($_block2, '<img>'))) {
+    $_block2 = false;
+    $_block1ColumnClass = 'col-s-12 col-sm-6 col-6';
+}
+?>
+<footer class="page-footer">
+    <?php if ($_marketing): ?>
+    <div class="page-container-wrapper">
+        <div class="page-container">
+            <?php echo $_marketing ?>
+        </div>
+    </div>
+    <?php endif; ?>
+    <div class="page-container-wrapper">
+        <div class="page-container">
+            <div class="row">
+                <?php if ($_links): ?>
+                <div class="<?php echo $_linksColumnClass ?> menu-toggle-<?php echo $_newsletterMenuAccordion ?>">
+                    <div class="footer-links"><?php echo $_links ?></div>
+                </div>
+                <?php endif; ?>
+                <?php if ($_block1): ?>
+                <div class="<?php echo $_block1ColumnClass ?>">
+                    <div class="footer-block-1"><?php echo $_block1 ?></div>
+                </div>
+                <?php endif; ?>
+                <?php if ($_block2): ?>
+                <div class="<?php echo $_block2ColumnClass ?>">
+                    <div class="footer-block-2"><?php echo $_block2 ?></div>
+                </div>
+                <?php endif; ?>
+                <?php if ($_anpcLinks == 1): ?>
+                    <div class="anpc-content col-12">
+                        <ul class="row">
+                            <li class="anpc-sal">
+                                <a href="https://anpc.ro/ce-este-sal/" target="_blank" rel="noindex nofollow"></a>
+                            </li>
+                            <li class="anpc-sol">
+                                <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home.chooseLanguage" target="_blank" rel="noindex nofollow"></a>
+                            </li>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php if ($_legals): ?>
+            <div class="page-container page-container--small"><?php echo $_legals ?></div>
+        <?php endif; ?>
+    </div>
+    <?php if ($_feeds): ?>
+        <div class="page-container-wrapper page-container-wrapper--feeds">
+            <div class="page-container">
+                <?php echo $_feeds; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+    <div class="col-xxs-12">
+        <div class="branding">
+            <p class="copyright">
+                <?php echo str_replace(['{{shop_name}}', '{{year}}'], [$_helper->getStoreName(), $_helper->getCurrentYear()], $this->getCopyright()) . '&nbsp;' .  $this->__('Powered by') ?>
+                <a href="<?php echo $_helper->getBlugentoUrl() ?>" rel="<?php if (Mage::getStoreConfig('blugento_theme/blugento_footer/footer_copyright')): ?>nofollow<?php else: ?>noopener<?php endif; ?>" target="_blank" title="<?php echo $this->__('blugento') ?>">
+                    <strong><?php echo $this->__('goldcris') ?></strong>
+                </a>
+            </p>
+            <?php echo $this->getChildHtml('footer.socialmedia') ?>
+        </div>
+    </div>
+</footer>

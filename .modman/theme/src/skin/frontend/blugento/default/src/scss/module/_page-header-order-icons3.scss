@@ -1,0 +1,133 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-header-oder-icons3.scss
+    Version:        1.0
+    Description:    Header Layout: Default
+    ------------------------------------------------------------------------- */
+
+/* Icons order for layout menu version 3 */
+@if ($layout--header_layout == 3) {
+    .page-header {
+        .desktop {
+            .header-wishlist-count {
+                .block-wishlist {
+                    padding-top: 15px;
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 2) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 15px 0;
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                        padding: 8px 0;
+
+                        > ul {
+                            top: 56px;
+
+                          &:after {
+                              right: 4px;
+                          }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 3) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 29px 0;
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                        padding: 20px 20px 20px 0;
+
+                        > ul {
+                            top: 66px;
+
+                            &:after {
+                                right: 25px;
+                            }
+                        }
+                    }
+                }
+
+                .block-cart {
+                    margin-left: 0;
+                    padding: 0;
+                    border-left: 0;
+                    border-right: 3px solid color('c');
+
+                    .block-cart-aside {
+                        left: 0;
+                        right: inherit;
+
+                        .block-content:after {
+                            left: 25px;
+                            right: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 4) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 29px 0;
+                    margin-left: 0;
+
+                  > ul {
+                      right: inherit;
+                      left: 0;
+
+                      &:after {
+                          left: -7px;
+                      }
+                  }
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                       padding: 20px 20px 20px 0;
+
+                        > ul {
+                            top: 66px;
+
+                            &:after {
+                                right: 25px;
+                            }
+                        }
+                    }
+                }
+
+                .block-cart {
+                    margin-left: 0;
+                    padding: 0;
+                    border-left: 0;
+
+                    .block-cart-aside {
+                        left: 0;
+                        right: inherit;
+
+                      .block-content:after {
+                          left: 25px;
+                          right: inherit;
+                      }
+                    }
+                }
+            }
+        }
+    }
+}

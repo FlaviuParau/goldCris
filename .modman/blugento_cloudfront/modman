@@ -1,0 +1,8 @@
+src/app/code/local/Blugento/Cloudfront																				app/code/local/Blugento/Cloudfront
+
+src/app/design/adminhtml/default/default/layout/blugento_cloudfront.xml											    app/design/adminhtml/default/default/layout/blugento_cloudfront.xml
+src/app/design/adminhtml/default/default/template/blugento_cloudfront												app/design/adminhtml/default/default/template/blugento_cloudfront
+
+src/app/etc/modules/Blugento_Cloudfront.xml																			app/etc/modules/Blugento_Cloudfront.xml
+
+src/app/locale/ro_RO/Blugento_Cloudfront.csv                                                                        app/locale/ro_RO/Blugento_Cloudfront.csv

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_ApplyCatalogRules>
+            <version>1.0.0</version>
+        </Blugento_ApplyCatalogRules>
+    </modules>
+    <global>
+        <helpers>
+            <applycatalogrules>
+                <class>Blugento_ApplyCatalogRules_Helper</class>
+            </applycatalogrules>
+        </helpers>
+        <models>
+            <applycatalogrules>
+                <class>Blugento_ApplyCatalogRules_Model</class>
+            </applycatalogrules>
+        </models>
+    </global>
+    <crontab>
+        <jobs>
+            <applycatalogrules_applyrulesatnight>
+                <schedule>
+                    <cron_expr>0 0,1,2,21,22,23 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>applycatalogrules/cron::applyRulesAtNight</model>
+                </run>
+            </applycatalogrules_applyrulesatnight>
+        </jobs>
+    </crontab>
+</config>

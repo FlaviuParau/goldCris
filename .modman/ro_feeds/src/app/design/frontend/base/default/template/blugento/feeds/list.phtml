@@ -1,0 +1,34 @@
+<?php
+/**
+* Blugento Feeds
+*
+* Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+* LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+*
+* @package Blugento_Feeds
+* @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+* @link http://www.blugento.com
+*/
+?>
+
+<?php /* @var $this Blugento_Feeds_Block_Feeds */ ?>
+
+<?php if ($this->feedLogosActive()): ?>
+    <ul class="feeds">
+        <?php $feeds = $this->getFeeds(); ?>
+        <?php foreach ($feeds as $feed): ?>
+            <li>
+                <?php if ($feed['logo_html']) : ?>
+                    <?php echo $feed['logo_html']; ?>
+                <?php else : ?>
+                    <?php if ($feed['url']): ?>
+                        <a href="<?php echo $feed['url']; ?>" target="_blank" rel="nofollow"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blugento_datafeeds/logo/' . $feed['logo']; ?>" alt="" /></a>
+                    <?php else: ?>
+                        <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blugento_datafeeds/logo/' . $feed['logo']; ?>" alt="" />
+                    <?php endif; ?>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+

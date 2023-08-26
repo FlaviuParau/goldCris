@@ -1,0 +1,16 @@
+src/app/code/local/Amasty/Base                                          app/code/local/Amasty/Base
+src/app/code/local/Apache/Solr                                          app/code/local/Apache/Solr
+
+src/app/design/adminhtml/default/default/layout/amasty/ambase           app/design/adminhtml/default/default/layout/amasty/ambase
+
+src/app/design/adminhtml/default/default/template/amasty/ambase         app/design/adminhtml/default/default/template/amasty/ambase
+
+src/app/etc/modules/Amasty_Base.xml                                     app/etc/modules/Amasty_Base.xml
+src/app/locale/en_US/Amasty_Base.csv                                    app/locale/en_US/Amasty_Base.csv
+
+src/js/amasty/ambase                                                    js/amasty/ambase
+src/js/prototype/windows/themes/magento                                 js/prototype/windows/themes/magento
+src/js/prototype/windows/themes/magento.css                             js/prototype/windows/themes/magento.css
+
+src/skin/adminhtml/default/default/css/amasty/ambase                    skin/adminhtml/default/default/css/amasty/ambase
+src/skin/adminhtml/default/default/images/ambase                        skin/adminhtml/default/default/images/ambase

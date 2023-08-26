@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_Popup
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_Popup>
+            <version>1.0.4</version>
+        </Blugento_Popup>
+    </modules>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_popup before="Mage_Adminhtml">Blugento_Popup_Adminhtml</blugento_popup>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <global>
+        <blocks>
+            <blugento_popup>
+                <class>Blugento_Popup_Block</class>
+            </blugento_popup>
+        </blocks>
+
+        <helpers>
+            <blugento_popup>
+                <class>Blugento_Popup_Helper</class>
+            </blugento_popup>
+        </helpers>
+
+        <models>
+            <blugento_popup>
+                <class>Blugento_Popup_Model</class>
+                <resourceModel>popup_resource</resourceModel>
+            </blugento_popup>
+
+            <popup_resource>
+                <class>Blugento_Popup_Model_Resource</class>
+                <entities>
+                    <popup>
+                        <table>blugento_popup</table>
+                    </popup>
+                </entities>
+            </popup_resource>
+        </models>
+
+        <resources>
+            <blugento_popup_setup>
+                <setup>
+                    <module>Blugento_Popup</module>
+                </setup>
+            </blugento_popup_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_popup>
+                    <file>blugento_popup.xml</file>
+                </blugento_popup>
+            </updates>
+        </layout>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Blugento_Popup>
+                    <files>
+                        <default>Blugento_Popup.csv</default>
+                    </files>
+                </Blugento_Popup>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_popup>
+            <general>
+                <display_time>2000</display_time>
+                <cookie_expiration_time>24</cookie_expiration_time>
+            </general>
+        </blugento_popup>
+    </default>
+</config>

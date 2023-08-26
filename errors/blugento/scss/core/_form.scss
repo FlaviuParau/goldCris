@@ -1,0 +1,55 @@
+//  ----------------------------------------------------------------------------
+//  Filename:       core/form.scss
+//  Version:        1.0
+//  Description:    -
+//  ----------------------------------------------------------------------------
+
+legend {
+    display: none;
+}
+
+input:not([type]),
+input[type='email'],
+input[type='search'],
+input[type='number'],
+input[type='password'],
+input[type='tel'],
+input[type='text'],
+select,
+textarea {
+    border: 1px solid $input-text_border-color;
+    border-right-color: lighten($input-text_border-color, 9.8%);
+    border-bottom-color: lighten($input-text_border-color, 9.8%);
+}
+
+select {
+    appearance: none;
+    height: 35px;
+    padding: 7px 30px 7px 7px;
+    background-color: $select_background-color;
+    background-image: $icon--arrow-down--a1;
+    background-repeat: no-repeat;
+    // scss-lint:disable all
+    background-position: 96% 50%;
+    background-position: calc(100% - 10px) 50%;
+    // scss-lint:enable all
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    &.multiselect,
+    &[multiple] {
+        height: auto;
+        padding-right: 7px;
+        background-image: none;
+    }
+
+    .ie9 & {
+        background-image: none;
+    }
+
+    option {
+        padding: 5px;
+    }
+}

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<config>
+    <tabs>
+        <blugento translate="label">
+            <label>Blugento</label>
+            <sort_order>20</sort_order>
+        </blugento>
+    </tabs>
+    <sections>
+        <magento_corefixes translate="label" module="magento_corefixes">
+            <label>Magento Core Fixes</label>
+            <tab>blugento</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <fix_diacritics translate="label">
+                    <label>Fix Diacritics</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <diacritics_to_replace translate="label">
+                            <label>Diacritics to Replace</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Insert all the diacritics that you want to be replaced in products and categories URL.</comment>
+                        </diacritics_to_replace>
+                        <characters_for_replacement translate="label">
+                            <label>Characters for Replacement</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Insert all the new characters that you want to be instead of diacritics, in the exact same order like above.</comment>
+                        </characters_for_replacement>
+                    </fields>
+                </fix_diacritics>
+            </groups>
+        </magento_corefixes>
+    </sections>
+</config>

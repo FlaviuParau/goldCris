@@ -1,0 +1,83 @@
+<?php
+/**
+ * Grouped product data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ * @see Mage_Catalog_Block_Product_View_Type_Grouped
+ */
+?>
+<?php $this->setPreconfiguredValue(); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_associatedProducts = $this->getAssociatedProducts(); ?>
+<?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
+
+<?php echo $this->getChildHtml('product_type_data_tax') ?>
+<?php echo $this->getChildHtml('product_type_data_extra') ?>
+
+<div class="blugento-custom-grouped">
+    <button type="button" title="<?php echo $this->__('Choose variations') ?>" class="button btn-variations">
+        <span>
+            <span><?php echo $this->__('Choose variations') ?></span>
+        </span>
+    </button>
+
+    <div class="grouped-box">
+        <header class="blugento-label-grouped">
+            <?php echo $this->__('Available Variations') ?>
+            <span class="variations"></span>
+        </header>
+
+        <div class="blugento-grouped-items" id="super-product-table">
+            <ul>
+            <?php if ($_hasAssociatedProducts): ?>
+                <?php foreach ($_associatedProducts as $_item): ?>
+                    <?php
+                        $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true);
+                        $defValue = $this->getMinimalQty($_product) == null ? 1 : $this->getProductDefaultQty() * 1;
+                        $defIncrement = 1;
+                    ?>
+                    <li class="item <?php if (!$_item->isSaleable()): ?>out-of-stock<?php endif; ?>">
+                        <div class="image">
+                            <img class="thumbnail"
+                                src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->constrainOnly(true)->resize(96); ?>"
+                                alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+                                title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+                        </div>
+                        <?php if ($this->getCanShowProductPrice($_product)): ?>
+                            <div class="grouped-details">
+                                <h4><?php echo $this->escapeHtml($_item->getName()) ?></h4>
+                                <div class="product-sku"><?php echo $this->__('SKU') ?>: <span><?php echo $this->escapeHtml($_item->getSku()) ?></div>
+                                <?php if ($this->getCanShowProductPrice($_item)): ?>
+                                    <?php echo $this->getPriceHtml($_item, true) ?>
+                                    <?php echo $this->getTierPriceHtml($_item) ?>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="qty">
+                            <?php if ($_product->isSaleable()): ?>
+                                <?php if ($_item->isSaleable()): ?>
+                                    <input class="qty-input <?php if ($_product->getStockItem()->getIsQtyDecimal() == 1): ?>decimals<?php endif; ?>"
+                                        type="text" name="super_group[<?php echo $_item->getId() ?>]" maxlength="12" data-minimum="0" data-increment="1"
+                                        value="<?php echo $_item->getQty()*1 ?>" title="<?php echo $this->__('Qty') ?>"/>
+                                    <div class="button-counter-qty">
+                                        <span class="plus"></span>
+                                        <span class="minus"></span>
+                                    </div>
+                                <?php else: ?>
+                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <li>
+                    <div><?php echo $this->__('No options of this product are available.') ?></div>
+                </li>
+            <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+</div>

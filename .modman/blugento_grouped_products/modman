@@ -1,0 +1,12 @@
+src/app/etc/modules/Blugento_Grouped.xml					            app/etc/modules/Blugento_Grouped.xml
+
+src/app/code/local/Blugento/Grouped					                    app/code/local/Blugento/Grouped
+
+src/app/design/frontend/blugento/default/template/blugento_grouped	    app/design/frontend/blugento/default/template/blugento_grouped
+src/app/design/frontend/blugento/default/layout/blugento_grouped.xml	app/design/frontend/blugento/default/layout/blugento_grouped.xml
+
+src/app/locale/pl_PL/*                                                  app/locale/pl_PL/
+src/app/locale/ro_RO/*                                                  app/locale/ro_RO/
+src/app/locale/de_DE/*                                                  app/locale/de_DE/
+
+src/skin/frontend/base/default/blugento-grouped                         skin/frontend/base/default/blugento-grouped

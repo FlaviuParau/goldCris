@@ -1,0 +1,87 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       mixin/_grid.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@mixin make-grid-row($gutter: $grid-gutter-width) {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: ($gutter / -2);
+    margin-right: ($gutter / -2);
+}
+
+@mixin make-grid-columns($class) {
+    $col: 'col';
+
+    @if ($class != '') {
+        $col: "col-#{$class}";
+    }
+
+    $i: 1;
+    $list: ".#{$col}-#{$i}, %#{$col}-#{$i}, ";
+
+    @for $i from (2) through $grid-columns {
+        $list: "#{$list}, .#{$col}-#{$i}, %#{$col}-#{$i}";
+    }
+
+    #{$list} {
+        position: relative;
+        float: left;
+        // Prevent columns from collapsing when empty
+        min-height: 1px;
+        // Inner gutter via padding
+        padding-left: ($grid-gutter-width / 2);
+        padding-right: ($grid-gutter-width / 2);
+    }
+}
+
+@mixin set-grid-column($index, $class, $type) {
+    $col: 'col';
+
+    @if ($class != '') {
+        $col: "col-#{$class}";
+    }
+
+    @if ($type == width) and ($index > 0) {
+        .#{$col}-#{$index},
+        %#{$col}-#{$index} {
+            width: percentage(($index / $grid-columns));
+        }
+    }
+
+    @if ($type == push) {
+        .#{$col}-push-#{$index},
+        %#{$col}-push-#{$index} {
+            left: percentage(($index / $grid-columns));
+        }
+    }
+
+    @if ($type == pull) {
+        .#{$col}-pull-#{$index},
+        %#{$col}-pull-#{$index} {
+            right: percentage(($index / $grid-columns));
+        }
+    }
+
+    @if ($type == offset) {
+        .#{$col}-offset-#{$index},
+        %#{$col}-offset-#{$index} {
+            margin-left: percentage(($index / $grid-columns));
+        }
+    }
+}
+
+@mixin set-grid-columns($columns, $class, $type) {
+    @for $i from 0 through $columns {
+        @include set-grid-column($i, $class, $type);
+    }
+}
+
+@mixin make-grid($class: '') {
+    @include make-grid-columns($class);
+    @include set-grid-columns($grid-columns, $class, width);
+    @include set-grid-columns($grid-columns, $class, pull);
+    @include set-grid-columns($grid-columns, $class, push);
+    @include set-grid-columns($grid-columns, $class, offset);
+}

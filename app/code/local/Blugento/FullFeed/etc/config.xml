@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_FullFeed
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_FullFeed>
+            <version>1.0.0</version>
+        </Blugento_FullFeed>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_fullfeed>
+                <class>Blugento_FullFeed_Block</class>
+            </blugento_fullfeed>
+        </blocks>
+        <models>
+            <blugento_fullfeed>
+                <class>Blugento_FullFeed_Model</class>
+            </blugento_fullfeed>
+        </models>
+        <helpers>
+            <blugento_fullfeed>
+                <class>Blugento_FullFeed_Helper</class>
+            </blugento_fullfeed>
+        </helpers>
+
+        <!--<events>-->
+            <!--<admin_system_config_changed_section_blugento_fullfeed>-->
+                <!--<observers>-->
+                    <!--<module_name>-->
+                        <!--<class>blugento_fullfeed/feed</class>-->
+                        <!--<method>adminSystemConfigChangedSection</method>-->
+                    <!--</module_name>-->
+                <!--</observers>-->
+            <!--</admin_system_config_changed_section_blugento_fullfeed>-->
+        <!--</events>-->
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <Blugento_FullFeed>
+                    <files>
+                        <default>Blugento_FullFeed.csv</default>
+                    </files>
+                </Blugento_FullFeed>
+            </modules>
+        </translate>
+
+        <routers>
+            <blugento_fullfeed>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_FullFeed</module>
+                    <frontName>fullfeed</frontName>
+                </args>
+            </blugento_fullfeed>
+        </routers>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_fullfeed before="Mage_Adminhtml">Blugento_FullFeed_Adminhtml</blugento_fullfeed>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <blugento_fullfeed>
+                    <files>
+                        <default>Blugento_FullFeed.csv</default>
+                    </files>
+                </blugento_fullfeed>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_fullfeed>
+            <general>
+                <enabled></enabled>
+                <cache_time></cache_time>
+                <product_attributes></product_attributes>
+                <only_active></only_active>
+            </general>
+            <options>
+                <html_in_feed>1</html_in_feed>
+            </options>
+            <feed_1>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_1>
+            <feed_2>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_2>
+            <feed_3>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_3>
+            <feed_4>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_4>
+            <feed_5>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_5>
+            <feed_6>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_6>
+            <feed_7>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_7>
+            <feed_8>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_8>
+            <feed_9>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_9>
+            <feed_10>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_10>
+            <feed_11>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_11>
+            <feed_12>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_12>
+            <feed_13>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_13>
+            <feed_14>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_14>
+            <feed_15>
+                <simple_price>1</simple_price>
+                <filter_by_visibility>1,2,3,4</filter_by_visibility>
+                <default_category_names>Default Category</default_category_names>
+                <gallery_separator>,</gallery_separator>
+            </feed_15>
+        </blugento_fullfeed>
+    </default>
+
+    <crontab>
+        <jobs>
+            <blugento_fullfeed>
+                <schedule>
+                    <cron_expr>*/30 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>blugento_fullfeed/feed::cronGenerateFeed</model>
+                </run>
+            </blugento_fullfeed>
+
+            <blugento_fullfeed_time>
+                <schedule>
+                    <cron_expr>0 22 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>blugento_fullfeed/feed::cronResetCacheTime</model>
+                </run>
+            </blugento_fullfeed_time>
+        </jobs>
+    </crontab>
+</config>

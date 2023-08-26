@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Blugento Sliders
+*
+* Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+* LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+*
+* @package Blugento_Sliders
+* @author Daniel Gheoltan <daniel.gheoltan@mindmagnetsoftware.com>
+* @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+* @link http://www.blugento.com
+*/
+-->
+<layout>
+    <blugento_sliders_default>
+        <reference name="head">
+            <action method="addCss"><css>blugento/sliders/css/main.css</css></action>
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+        </reference>
+    </blugento_sliders_default>
+
+    <adminhtml_blugento_sliders_index>
+        <update handle="blugento_sliders_default" />
+        <reference name="content">
+            <block type="core/text" name="blugento_sliders.dashboard.title">
+                <action method="setText">
+                    <text><![CDATA[<div class="content-header"><h3>Blugento Sliders</h3></div>]]></text>
+                </action>
+            </block>
+            <block type="blugento_sliders/adminhtml_dashboard" name="blugento_sliders.dashboard" />
+            <block type="core/text" name="blugento_sliders.tabs.content">
+                <action method="setText">
+                    <text><![CDATA[
+                        <div id="blugento-sliders-tab-content"></div>
+                        <style type="text/css">#blugento-sliders-tab-content .content-header { display: none; }</style>
+                    ]]></text>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_blugento_sliders_index>
+    
+    <adminhtml_blugento_sliders_group_edit>
+        <update handle="blugento_sliders_default" />
+        <reference name="left">
+            <block type="blugento_sliders/adminhtml_group_edit_tabs" name="group.tabs" />
+        </reference>
+        <reference name="content">
+            <block type="blugento_sliders/adminhtml_group_edit" name="groups" />
+        </reference>
+    </adminhtml_blugento_sliders_group_edit>
+    
+    <adminhtml_blugento_sliders_banner_edit>
+        <update handle="blugento_sliders_default" />
+        <reference name="head">
+            <action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+            <action method="addJs"><script>lib/flex.js</script></action>
+            <action method="addJs"><script>lib/FABridge.js</script></action>
+            <action method="addJs"><script>mage/adminhtml/flexuploader.js</script></action>
+            <action method="addJs"><script>mage/adminhtml/browser.js</script></action>
+            <action method="addJs"><file>lib/uploader/flow.min.js</file></action>
+            <action method="addJs"><file>lib/uploader/fusty-flow.js</file></action>
+            <action method="addJs"><file>lib/uploader/fusty-flow-factory.js</file></action>
+            <action method="addJs"><file>mage/adminhtml/uploader/instance.js</file></action>
+            <action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+        </reference>
+        <reference name="left">
+            <block type="blugento_sliders/adminhtml_banner_edit_tabs" name="banners.tabs" />
+        </reference>
+        <reference name="content">
+            <block type="blugento_sliders/adminhtml_banner_edit" name="banners" />
+        </reference>
+    </adminhtml_blugento_sliders_banner_edit>
+</layout>

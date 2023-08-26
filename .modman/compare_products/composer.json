@@ -1,0 +1,10 @@
+{
+    "name": "blugento/blugento_compare",
+    "homepage": "https://bitbucket.org/blugento/blugento-compare-products.git",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "description": "Magento extension that allows to enable/disable the Magento default Compare functionality, set the maximum allowed items in compare list and the message displayed when the limit is exceeded.",
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "Allows to manage this package as a dependency"
+    }
+}

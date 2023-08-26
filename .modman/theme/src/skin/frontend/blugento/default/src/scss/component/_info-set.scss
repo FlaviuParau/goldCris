@@ -1,0 +1,18 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_info-set.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.info-set {
+    margin-bottom: 20px;
+
+    .legend {
+        margin-bottom: 10px;
+    }
+
+    &-highlight {
+        padding: 20px;
+        background-color: color('c');
+    }
+}

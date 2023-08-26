@@ -1,0 +1,198 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-header-oder-icons2.scss
+    Version:        1.0
+    Description:    Header Layout: Default
+    ------------------------------------------------------------------------- */
+
+/* Icons order for layout menu version 2 */
+@if ($layout--header_layout == 2) {
+    @if ($layout--order_icons == 2) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 15px 0;
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                        padding: 8px 0;
+
+                        > ul {
+                            top: 60px;
+                            left: 0;
+
+                            &:after {
+                                left: -7px;
+                            }
+                        }
+                    }
+                }
+
+                .header-wishlist-count {
+                    padding: 7px 0;
+                    margin: 0;
+
+                    .block-wishlist {
+                        padding-top: 12px;
+                        left: 0;
+
+                        .block-content {
+                            &:after {
+                                left: -4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 3) {
+        .page-header {
+            .page-container--nav {
+                .page-container-inner {
+                    -webkit-box-align: unset;
+                    -webkit-align-items: unset;
+                    -ms-flex-align: unset;
+                    align-items: center;
+                }
+            }
+
+            .desktop {
+                .mini-account {
+                    padding: 29px 0;
+                }
+
+                @if ($layout--layered-nav_position == 2) {
+                    .mini-search {
+                        margin: 15px 0;
+                        -webkit-box-flex: inherit;
+                        -webkit-flex-grow: inherit;
+                        -ms-flex-positive: inherit;
+                        flex-grow: inherit;
+                    }
+
+                    .form-search button {
+                        position: relative;
+                        height: 46px;
+                    }
+
+                    .mini-search {
+                        .form-search input {
+                            position: absolute;
+                            right: 0;
+                        }
+                    }
+                }
+
+                @if ($layout_account_icons == 2) {
+                    .mini-account {
+                        padding: 20px 20px 20px 0;
+
+                        > ul {
+                            top: 76px;
+
+                            &:after {
+                                right: 25px;
+                            }
+                        }
+                    }
+                }
+
+                .header-wishlist-count {
+                    padding: 22px 0 20px 20px;
+                    margin: 0;
+
+                    a {
+                        span.label {
+                            color: $color--secondary;
+                        }
+                    }
+                }
+
+                @if ($layout_account_icons == 3) {
+                    .mini-account {
+                        padding: 20px 20px 15px 0;
+                    }
+                }
+
+                @if ($layout_account_icons == 1) {
+                    .mini-account {
+                        padding-right: 20px;
+                    }
+                }
+
+                @if ($layout_wishlist_icons == 3) {
+                    .header-wishlist-count {
+                        padding: 29px 0 29px 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 4) {
+        .page-header {
+            .desktop {
+              .mini-account {
+                  padding: 29px 0;
+              }
+
+              .mini-search {
+                 margin-left: 0;
+              }
+
+              .header-block:empty {
+                  display: none;
+              }
+
+              @if ($layout_account_icons == 2) {
+                .mini-account {
+                  padding: 20px 20px 20px 0;
+
+                  > ul {
+                    top: 76px;
+
+                    &:after {
+                      right: 25px;
+                    }
+                  }
+                }
+              }
+
+                .header-wishlist-count {
+                  padding: 20px 0 20px 20px;
+                  margin: 0;
+
+                    a {
+                        span.label {
+                            color: $color--secondary;
+                        }
+                    }
+
+                    .block-wishlist {
+                        padding-top: 0;
+                    }
+                }
+
+                @if ($layout_account_icons == 3) {
+                    .mini-account {
+                        padding: 20px 0 15px;
+                    }
+                }
+
+                @if ($layout_wishlist_icons == 3) {
+                    .header-wishlist-count {
+                        padding: 29px 0 29px 20px;
+                    }
+                }
+
+                @if ($layout_wishlist_icons == 1) {
+                  .header-wishlist-count {
+                    padding: 23px 0 20px 20px;
+                  }
+                }
+            }
+        }
+    }
+}

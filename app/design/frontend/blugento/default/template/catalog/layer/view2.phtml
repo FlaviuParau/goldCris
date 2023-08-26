@@ -1,0 +1,40 @@
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+<?php
+?>
+<?php if ($this->canShowBlock()): ?>
+	<div class="filters-mobile-trigger on-mobile" data-dock=".block-layered-nav-top"><?php echo $this->__('Filter') ?></div>
+	<div class="block block-layered-nav-top dock">
+		<div class="block-content">
+			<?php $_filters = $this->getFilters() ?>
+			<?php $state = $this->getStateHtml(); ?>
+			<?php if ($_filters && $state): ?>
+				<div class="currently-wrapper">
+					<?php echo $state ?>
+				</div>
+			<?php endif; ?>
+			<div id="tab-layered-nav-container">
+				<?php $i = 0; ?>
+				<ul id="tab-layered-nav-container-nav">
+					<?php foreach ($_filters as $_filter): ?>
+						<?php if ($_filter->getItemsCount()): ?>
+							<li class="filter-box">
+								<label for="tab-layered-nav-<?php echo $i ?>"><?php echo $this->__($_filter->getName()) ?>:</label>
+								<div class="tab" id="tab-layered-nav-<?php echo $i ?>">
+									<input class="filter-input show-all" type="text" class="validate" autofocus autocomplete="off" placeholder="<?php echo $this->__('All') ?>" list="tab-layered-nav-<?php echo $i ?>" />
+									<?php echo $_filter->getHtml() ?>
+								</div>
+							</li>
+							<?php $i++; ?>
+						<?php endif; ?>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>

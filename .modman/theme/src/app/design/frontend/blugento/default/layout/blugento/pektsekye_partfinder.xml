@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="head">
+            <action method="removeItem">
+                <type>skin_css</type>
+                <name>pektsekye/partfinder/main.css</name>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>css/pektsekye/partfinder/main.css</name>
+            </action>
+        </reference>
+    </default>
+
+    <cms_index_index>
+        <reference name="content">
+            <remove name="partfinder_selector" />
+        </reference>
+    </cms_index_index>
+
+</layout>

@@ -1,0 +1,95 @@
+//  ----------------------------------------------------------------------------
+//  Filename:       component/form-list.scss
+//  Version:        1.0
+//  Description:    -
+//  ----------------------------------------------------------------------------
+
+.form-list,
+%form-list {
+    @extend %cf;
+
+    label {
+        @include inline-block();
+
+        + a {
+            @include inline-block();
+            vertical-align: middle;
+        }
+    }
+
+    .link-tip {
+        margin-left: 15px;
+    }
+
+    .input-box,
+    .input-text,
+    select {
+        clear: both;
+        width: 100%;
+    }
+
+    .control,
+    .field,
+    .wide,
+    > li:not(.fields) {
+        margin-bottom: 15px;
+    }
+
+    .fields {
+        > div:not(.field) {
+            display: flex;
+            flex-flow: row wrap;
+            width: 100%;
+        }
+    }
+
+    .field {
+        width: 100%;
+    }
+
+    label {
+        &:first-child {
+            margin-bottom: 3px;
+        }
+    }
+
+    .control {
+        label {
+        }
+    }
+}
+
+.form-list--inline,
+%form-list--inline {
+    label {
+        &:first-child {
+            float: left;
+            width: 120px;
+            margin: 0 10px 0 0;
+            padding: 10px 0;
+
+            @include phone-sm {
+                float: none;
+                width: auto;
+                margin: 0 0 3px;
+                padding: 0;
+            }
+        }
+
+        &.required {
+            em {
+                right: 0;
+
+                @include phone-sm {
+                    right: -10px;
+                }
+            }
+        }
+    }
+
+    .input-box {
+        clear: none;
+        width: auto;
+        overflow: hidden;
+    }
+}

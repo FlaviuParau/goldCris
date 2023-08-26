@@ -1,0 +1,146 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       config/_layout.scss
+    Version:        1.0
+    Description:    Default Layout Variables
+    ------------------------------------------------------------------------- */
+
+//  ----------------------------------------------------------------------------
+//  General
+//  ----------------------------------------------------------------------------
+
+$layout--debug_mode:                                        2 !default;
+$layout--page_background-image:                             2 !default;
+$layout--page_background-repeat:                            no-repeat !default;
+$layout--preloader_status:                                  2 !default;
+$layout--to_top:                                            1 !default;
+$layout--cookie-notice:                                     1 !default;
+$layout--sticky_header:                                     2 !default;
+$layout--sticky_header_all:                                 2 !default;
+$layout--full-layout_mode:                                  2 !default;
+$layout--input-text_layout:                                 1 !default;
+$layout--sticky_header_logo:                                1 !default;
+$layout--sticky_header_logo_mobile:                         1 !default;
+$layout--nav_mobile_new_option:                             1 !default;
+$layout--sticky_header-links:                               2 !default;
+
+//  ----------------------------------------------------------------------------
+//  Homepage
+//  ----------------------------------------------------------------------------
+
+$layout--homepage-banner_layout:                            1 !default;
+
+//  ----------------------------------------------------------------------------
+//  Modules
+//  ----------------------------------------------------------------------------
+
+$layout--wishlist_display:                                  1 !default;
+
+//  ----------------------------------------------------------------------------
+//  Header
+//  ----------------------------------------------------------------------------
+
+$layout--header_layout:                                     1 !default;
+$layout--nav_layout:                                        2 !default;
+$layout--layered-nav_position:                              1 !default;
+$layout--mini-cart_layout:                                  1 !default;
+$layout--catalog_mini-search:                               1 !default;
+$layout--blog_link:                                         1 !default;
+$layout_search_icons:                                       1 !default;
+$layout_account_icons:                                      1 !default;
+$layout_wishlist_icons:                                     1 !default;
+$layout_cart_icons:                                         1 !default;
+$layout--order_icons:                                       1 !default;
+
+//  ----------------------------------------------------------------------------
+//  Footer
+//  ----------------------------------------------------------------------------
+
+$layout--footer_marketing_mode:                             1 !default;
+$newsletter_menu_accordion:                                 2 !default;
+
+//  ----------------------------------------------------------------------------
+//  Category Page & Search Results
+//  ----------------------------------------------------------------------------
+
+$layout--product-list_page_layout:                          1 !default;
+$layout--layered-nav_layout_list:                           1 !default;
+$layout--product-list_hover:                                2 !default;
+$layout--layered-nav_layout:                                1 !default;
+$layout--product-list_item_box:                             1 !default;
+$layout--product-list_item_title_description_display:       1 !default;
+$layout--product-list_image_width:                          auto !default;
+$layout--product_list_add_to_cart_status:                   2 !default;
+$layout--product-list_breadcrumbs_title:                    1 !default;
+$layout--product-list_discount_percentage_mode:             2 !default;
+$layout--product-list_discount_mode:                        2 !default;
+$layout--product_list_add_to_cart_status:                   2 !default;
+$product_list_description_html:                             1 !default;
+$product_list_order_toolbar:                                1 !default;
+$product_list_order_sort:                                   2 !default;
+$product_list_sort_by:                                      1 !default;
+$product_list_show_empty_reviews:                           2 !default;
+
+//  ----------------------------------------------------------------------------
+//  Product Details
+//  ----------------------------------------------------------------------------
+
+$layout--product-view_page_layout:                          1 !default;
+$layout--product-view:                                      1 !default;
+$layout--product-view_shop_layout:                          1 !default;
+$layout--product_view_layout_price_position:                1 !default;
+$layout--product_view_layout_tabs_position:                 1 !default;
+$layout--product_view_tabs_orientation:                     1 !default;
+$layout--product-view_tabs-style:                           1 !default;
+$layout--product-view_gallery_orientation:                  1 !default;
+$layout--product-view_mobile_gallery_orientation:           1 !default;
+$layout--product-view_gallery_images_count:                 3 !default;
+$layout--product-view_gallery_images_count_mobile:          3 !default;
+$layout--product-view_main_image_action:                    1 !default;
+$layout--product-view_reviews_mode:                         2 !default;
+$layout--product-view_discount_percentage_mode:             2 !default;
+$layout--product-view_discount_mode:                        2 !default;
+$layout--product-view_add_to_cart_quantity_buttons_status:  2 !default;
+$layout--product-view_group_attributes_status:              2 !default;
+$layout--product-view_specification-order:                  1 !default;
+$product_list_pagination_pager:                             1 !default;
+$layout--product_view_add_to_cart_mobile:                   1 !default;
+$layout--product_view_buy_now_button:                       2 !default;
+$layout--product_view_reviews_toggle:                       2 !default;
+$layout--product_view_description_toggle:                   2 !default;
+$layout--product_view_description_toggle_value:             10000 !default;
+
+//  ----------------------------------------------------------------------------
+//  Cart
+//  ----------------------------------------------------------------------------
+
+$layout--checkout_cart_clear_button:                        2 !default;
+$layout--checkout_cart_shipping_section:                    2 !default;
+$layout--checkout_cart_product_thumbnail:                   1 !default;
+$layout--checkout_cart_product_unit_price:                  1 !default;
+$layout--checkout_cart_layout:                              1 !default;
+$layout--checkout_cart_add_to_cart_quantity_buttons_status: 2 !default;
+$mini_cart_image_layout:                                    1 !default;
+$layout--checkout_cart_modal:                               2 !default;
+$layout--cart_view_proceed_to_checkout_mobile:              1 !default;
+$layout--cart_view_proceed_to_checkout:                     2 !default;
+$layout--checkout_cart_total_hide_tax:                      2 !default;
+
+//  ----------------------------------------------------------------------------
+//  Checkout
+//  ----------------------------------------------------------------------------
+
+$layout--checkout_billing_address_layout:                   1 !default;
+$layout--checkout_shipping_address_layout:                  1 !default;
+$layout--checkout_use_billing_shipping_address_above_form:  1 !default;
+$layout--checkout_agreements_position:                      1 !default;
+$layout--checkout_view_page_orientation:                    1 !default;
+$layout--checkout-view_page_layout:                         1 !default;
+$checkout_view_new_layout:                                  2 !default;
+
+//  ----------------------------------------------------------------------------
+//  My account
+//  ----------------------------------------------------------------------------
+$my_account_register_new_layout:                            2 !default;
+$my_account_login_new_layout:                               2 !default;
+$my_account_customer_new_layout:                            2 !default;
+

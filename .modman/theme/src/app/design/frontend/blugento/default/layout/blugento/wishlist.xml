@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<layout>
+
+    <customer_logged_in>
+        <reference name="header">
+            <block type="wishlist/customer_sidebar" name="wishlist_mini" as="wishlist" template="wishlist/mini.phtml" />
+        </reference>
+        <reference name="customer_account_navigation.mobile">
+            <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active">
+                <name>wishlist</name>
+                <path>wishlist/</path>
+                <label>My Wishlist</label>
+            </action>
+        </reference>
+    </customer_logged_in>
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist.items">
+            <action method="unsetChildren" />
+            <block type="wishlist/customer_wishlist_item_column_image" name="customer.wishlist.item.image" template="wishlist/item/column/image.phtml" />
+            <block type="wishlist/customer_wishlist_item_column_comment" name="customer.wishlist.item.info" template="wishlist/item/column/info.phtml">
+                <action method="setTitle" translate="title">
+                    <title>Product Details and Comment</title>
+                </action>
+                <block type="wishlist/customer_wishlist_item_column_cart" name="customer.wishlist.item.cart" template="wishlist/item/column/cart.phtml">
+                    <action method="setTitle" translate="title">
+                        <title>Add to Cart</title>
+                    </action>
+                </block>
+            </block>
+            <block type="wishlist/customer_wishlist_item_column_cart" name="customer.wishlist.item.edit" template="wishlist/item/column/edit.phtml" />
+            <block type="wishlist/customer_wishlist_item_column_remove" name="customer.wishlist.item.remove" template="wishlist/item/column/remove.phtml" />
+        </reference>
+    </wishlist_index_index>
+
+</layout>

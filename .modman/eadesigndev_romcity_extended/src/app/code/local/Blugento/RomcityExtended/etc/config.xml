@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Blugento_RomcityExtended>
+            <version>1.0.0</version>
+        </Blugento_RomcityExtended>
+    </modules>
+    <global>
+        <resources>
+            <blugento_romcity_setup>
+                <setup>
+                    <module>Blugento_RomcityExtended</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </blugento_romcity_setup>
+        </resources>
+    </global>
+</config>

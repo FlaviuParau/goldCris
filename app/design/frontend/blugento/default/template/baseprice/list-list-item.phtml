@@ -1,0 +1,112 @@
+<?php
+    $_productListDescriptionHtml = (int) ($this->getLayout()->getBlock('root')->getProductListDescriptionHtml() ?: 2);
+?>
+
+<div class="item-inner">
+    <?php if ($_productListTitleBottomMode == 2): ?>
+        <h2 class="product-name">
+            <a href="<?php echo $_p['url'] ?>" title="<?php echo $_p['name_stripped'] ?>"><?php echo $_p['name'] ?></a>
+        </h2>
+        <?php if (Mage::helper('core')->isModuleEnabled('Yotpo_Yotpo') && ($_YotpoAppKey != '')): ?>
+            <?php $this->helper('yotpo')->showBottomline($this, $_p['product']) ?>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php if ($_productListShortDescriptionStatus == 1 && $_productListShortDescriptionBottomMode == 2): ?>
+        <?php if ($_productListDescriptionHtml == 1): ?>
+            <div class="desc std"><?php echo $_p['product']->getShortDescription() ?></div>
+        <?php else: ?>
+            <div class="desc std"><?php echo Mage::helper('core/string')->truncate($_p['short_description'], 200) ?></div>
+        <?php endif; ?>
+    <?php endif; ?>
+    <a href="<?php echo $_p['url'] ?>" title="<?php echo $_p['image_alt'] ?>" class="product-image">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="<?php echo $_p['image'] ?>" data-srcset="<?php echo $_p['image'] . ' 1x, ' . $_p['image@2x'] . ' 2x'; ?>" alt="<?php echo $_p['image_alt'] ?>" width="300" height="300" id="product-collection-image-<?php echo $_p['id'] ?>" />
+        <?php if ($_p['has_labels']): ?>
+            <div class="product-badges">
+                <?php if ($_p['is_new']): ?>
+                    <div class="badge badge--new"><?php echo $this->__('New!') ?></div>
+                <?php endif; ?>
+                <?php if ($_p['is_sale']): ?>
+                    <div class="badge badge--sale">
+                        <?php if ($_p['price-discount-percentage'] && ($_productListDiscountPercentageMode == 1)): ?>
+                            <?php echo $_p['price-discount-percentage'] ?>
+                        <?php else: ?>
+                            <?php echo $this->__('Sale!') ?>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+    </a>
+    <?php if ($_p['manufacturer_id']): ?>
+        <div class="mnfr-<?php echo $_p['manufacturer_id'] ?> mnfr-list"></div>
+    <?php endif; ?>
+    <div class="product-box">
+        <div class="short-info">
+            <div class="product-headings">
+                <?php if ($_p['manufacturer']): ?>
+                    <h3 class="product-manufacturer"><?php echo $_p['manufacturer'] ?></h3>
+                <?php endif; ?>
+                <?php if ($_productListTitleBottomMode == 1): ?>
+                    <h2 class="product-name">
+                        <a href="<?php echo $_p['url'] ?>" title="<?php echo $_p['name_stripped'] ?>"><?php echo $_p['name'] ?></a>
+                    </h2>
+                    <?php if (Mage::helper('core')->isModuleEnabled('Yotpo_Yotpo') && ($_YotpoAppKey != '')): ?>
+                        <?php $this->helper('yotpo')->showBottomline($this, $_p['product']) ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
+            <?php if ($_productListShortDescriptionStatus == 1 && $_productListShortDescriptionBottomMode == 1): ?>
+                <?php if ($_productListDescriptionHtml == 1): ?>
+                    <div class="desc std"><?php echo $_p['product']->getShortDescription() ?></div>
+                <?php else: ?>
+                    <div class="desc std"><?php echo Mage::helper('core/string')->truncate($_p['short_description'], 200) ?></div>
+                <?php endif; ?>
+            <?php endif; ?>
+        </div>
+        <div class="product-info">
+            <div class="product-price">
+                <?php echo $_p['price'] ?>
+                <?php if ($_p['base_price']): ?>
+                    <span class="baseprice">(<?php echo $_p['base_price'] ?>)</span>
+                <?php endif; ?>
+                <?php if ($_p['price-discount'] && ($_productListDiscountMode == 1)): ?>
+                    <div class="discount">
+                        <span><?php echo $_p['price-discount'] ?></span>
+                    </div>
+                <?php endif; ?>
+                <?php echo $_p['tax'] ?>
+            </div>
+            <?php echo $_p['name_after'] ?>
+        </div>
+        <div class="product-actions">
+            <?php if (!$hideAllAddToCart) : ?>
+                <?php if ($helperCart && $displayCustomBtn && !$_p['is_saleable']) : ?>
+                    <a href="<?php echo $helperCart->getButtonURL($_p['id']); ?>" title="<?php echo $customBtnText ?>" class="button button--block"><?php echo $customBtnText; ?></a>
+                <?php else: ?>
+                    <?php if (($_p['product']->getTypeId() == 'simple') && ($_productAddToCartStatus == 1)): ?>
+                        <?php if ($_p['is_saleable']): ?>
+                            <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_p['product']) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php else: ?>
+                            <?php if ($this->displayProductStockStatus()): ?>
+                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <a href="<?php echo $_p['url'] ?>" title="<?php echo $this->__('View Details') ?>" class="button button--block"><?php echo $this->__('View Details') ?></a>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endif; ?>
+
+            <?php if ($_p['has_add_to_links']): ?>
+                <ul class="add-to-links">
+                    <?php if ($_p['whishlist_url']): ?>
+                        <li><a href="<?php echo $_p['whishlist_url'] ?>" class="link-wishlist"><?php echo $this->__('Wishlist') ?></a></li>
+                    <?php endif; ?>
+                    <?php if ($_p['compare_url']): ?>
+                        <li><a href="<?php echo $_p['compare_url'] ?>" class="link-compare"><?php echo $this->__('Compare') ?></a></li>
+                    <?php endif; ?>
+                </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

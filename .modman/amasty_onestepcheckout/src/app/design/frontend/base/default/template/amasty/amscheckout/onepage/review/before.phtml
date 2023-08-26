@@ -1,0 +1,12 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_Scheckout
+ */
+?>
+<div id="review_lookup"></div>
+<?php if (Mage::helper('amscheckout')->is3DSecureEnabled()): ?>
+<input type="hidden" id="centinel_url" value="<?php echo $this->helper('amscheckout')->getAuthCentinelUrl()?>"/>
+<div id="amasty_before_centinel" style="display:none"></div>
+<?php endif;?>

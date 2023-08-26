@@ -1,0 +1,57 @@
+/*!-------------------------------------------------------------------------
+    Filename:       module/_catalog-category-grid.scss
+    Version:        1.0
+    Description:    Category Box Image for Homepage
+    ------------------------------------------------------------------------- */
+
+.col-3,
+.col-4,
+.col-5 {
+    @include phone-s {
+        .category-box-image {
+            span.subtitle {
+                font-style: $page-subtitle_font-style;
+                font-weight: $page-subtitle_font-weight;
+                font-size: $page-subtitle_font-size;
+                line-height: $page-subtitle_line-height;
+                font-family: $page-subtitle_font-family;
+                color: $page-subtitle_color;
+            }
+
+            a {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+
+    .category-box-image {
+        margin-bottom: 10px;
+
+        span.subtitle {
+            display: block;
+            padding: 18px 5px;
+            background-color: $products-grid__item-inner_background-color;
+            text-align: center;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 16px;
+            font-family: inherit;
+            text-transform: uppercase;
+        }
+
+        a {
+            display: block;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            img {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+}

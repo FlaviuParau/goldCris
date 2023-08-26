@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <catalog translate="label" module="catalog">
+            <label>Catalog</label>
+            <sort_order>200</sort_order>
+        </catalog>
+    </tabs>
+
+    <sections>
+        <catalog>
+            <groups>
+                <product_image>
+                    <fields>
+                        <base_height translate="label comment">
+                            <label>Base Image Height</label>
+                            <comment>Maximum height base product image will be scaled down to in pixels</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </base_height>
+                    </fields>
+                </product_image>
+            </groups>
+        </catalog>
+    </sections>
+</config>

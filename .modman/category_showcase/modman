@@ -1,0 +1,9 @@
+src/app/code/local/Blugento/CategoryShowcase                                        app/code/local/Blugento/CategoryShowcase
+src/app/etc/modules/Blugento_CategoryShowcase.xml                                   app/etc/modules/Blugento_CategoryShowcase.xml
+
+src/app/design/frontend/base/default/layout/blugento_categoryshowcase.xml           app/design/frontend/base/default/layout/blugento_categoryshowcase.xml
+src/app/design/frontend/base/default/template/blugento/categoryshowcase             app/design/frontend/base/default/template/blugento/categoryshowcase
+
+src/app/locale/de_DE/*                                                              app/locale/de_DE/
+src/app/locale/en_US/*                                                              app/locale/en_US/
+src/app/locale/ro_RO/*                                                              app/locale/ro_RO/

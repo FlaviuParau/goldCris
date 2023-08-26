@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0.0">
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/admin-jquery.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/admin-mmenu.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/admin-general.js</name>
+            </action>
+        </reference>
+    </default>
+    <adminhtml_catalog_product_new>
+        <reference name="head">
+            <action method="addItem" ifconfig="cataloginventory/item_options/default_stock_availability">
+                <type>skin_js</type>
+                <name>js/admin-product.js</name>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_new>
+</layout>

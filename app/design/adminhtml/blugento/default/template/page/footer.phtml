@@ -1,0 +1,75 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<p class="bug-report">
+    <a href="<?php echo $this->getBugreportUrl() ?>" id="footer_bug_tracking"><?php echo $this->__('Help Us Keep Magento Healthy - Report All Bugs') ?></a><br/>
+    <?php echo $this->__('Interface Locale: %s', $this->getLanguageSelect()) ?>
+</p>
+<p class="legality">
+    <a href="<?php echo $this->getConnectWithMagentoUrl() ?>" id="footer_connect"><?php echo $this->__('Connect with the Magento Community') ?></a><br/>
+    <?php if(Mage::getStoreConfig('general/country/default', 0) == 'RO'): ?>
+        <img src="<?php echo $this->getSkinUrl('images/varien_logo.gif') ?>" class="v-middle" alt="" />
+    <?php else: ?>
+        <img src="<?php echo $this->getSkinUrl('images/varien_logo_zento.png') ?>" class="v-middle" alt="" />
+    <?php endif; ?>&nbsp;&nbsp;
+    <?php echo $this->__('Magento&trade; is a trademark of Magento Inc.<br/>Copyright &copy; %s Magento Inc.', date('Y')) ?>
+</p>
+<?php echo $this->__('Magento ver. %s', Mage::getVersion()) ?>
+<script type="text/javascript">
+    $('footer_bug_tracking').target = 'Varien_External';
+    $('footer_connect').target = 'Varien_External';
+    function setInterfaceLanguage(evt){
+        var elem = Event.element(evt);
+        if(elem){
+            setLocation('<?php echo $this->getChangeLocaleUrl() ?>locale/'+elem.value+'/<?php echo $this->getRefererParamName() ?>/<?php echo $this->getUrlForReferer() ?>');
+        }
+    }
+    Event.observe('interface_locale', 'change', setInterfaceLanguage)
+</script>
+<?php if(Mage::helper('core')->isModuleEnabled('Intercom_Adminchat')): ?>
+    <?php if(Mage::getStoreConfig('intercom_adminchat/general/enable')): ?>
+        <?php if(Mage::helper('intercom_adminchat')->getEmail()): ?>
+        <script>
+            window.intercomSettings = {
+                app_id: "<?php echo Mage::helper('intercom_adminchat')->getAppId(); ?>",
+                name: "<?php echo Mage::getSingleton('admin/session')->getUser()->getName(); ?>", // Full name
+                email: "<?php echo Mage::helper('intercom_adminchat')->getEmail(); ?>", // Email address
+                created_at: "<?php echo Mage::getStoreConfig('intercom_adminchat/general/customer_since'); ?>", // Signup Date
+                shop_url: "<?php echo Mage::helper('intercom_adminchat')->getDomain(); ?>",
+                shop_code: "<?php echo Mage::getStoreConfig('intercom_adminchat/general/shop_code'); ?>",
+                user_hash: "<?php
+                    echo hash_hmac(
+                        'sha256', // hash function
+                        Mage::helper('intercom_adminchat')->getEmail(), // user's email address
+                        'zIHDTOn6oDiZNrdb_qRRMoO-oLNEg-yeubFZ5sU1' // secret key (keep safe!)
+                    );
+                    ?>"
+            };
+        </script>
+        <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/fmjefzxq';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

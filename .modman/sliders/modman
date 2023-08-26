@@ -1,0 +1,12 @@
+src/app/code/local/Blugento/Sliders/                        app/code/local/Blugento/Sliders/
+src/app/design/adminhtml/default/default/layout/*           app/design/adminhtml/default/default/layout/
+src/app/design/frontend/base/default/layout/*               app/design/frontend/base/default/layout/
+src/app/design/frontend/base/default/template/blugento/*    app/design/frontend/base/default/template/blugento/
+src/app/etc/modules/*                                       app/etc/modules/
+src/app/locale/de_DE/*                                      app/locale/de_DE/
+src/app/locale/en_US/*                                      app/locale/en_US/
+src/app/locale/ro_RO/*                                      app/locale/ro_RO/
+src/skin/adminhtml/default/default/blugento/*               skin/adminhtml/default/default/blugento/
+src/skin/frontend/base/default/css/blugento/*               skin/frontend/base/default/css/blugento/
+src/skin/frontend/base/default/images/blugento/*            skin/frontend/base/default/images/blugento/
+src/lib/MobileDetect/Mobile_Detect.php                      lib/MobileDetect/Mobile_Detect.php

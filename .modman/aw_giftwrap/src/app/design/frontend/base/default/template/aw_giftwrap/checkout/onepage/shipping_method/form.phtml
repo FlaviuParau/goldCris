@@ -1,0 +1,101 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento community edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Giftwrap
+ * @version    1.1.1
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php /** @var AW_Giftwrap_Block_Checkout_Onepage_Shippingmethod_Form $this */ ?>
+<?php if ($this->isCanShow()):?>
+<div id="aw-giftwrap-onepage-form" class="no-display">
+    <p>
+        <input type="checkbox" name="aw_giftwrap[add_gift_wrap]" id="aw-giftwrap-onepage-form-add-giftwrap" class="checkbox"/>
+        <label for="aw-giftwrap-onepage-form-add-giftwrap"><?php echo $this->__("Add gift wrap");?></label>
+    </p>
+    <div id="aw-giftwrap-onepage-form-box" class="no-display">
+        <div id="aw-giftwrap-onepage-form-box-types">
+            <ul class="form-list">
+                <li>
+                    <label class="required"><em>*</em><?php echo $this->__('Please select gift wrap design');?></label>
+                </li>
+            </ul>
+            <?php $isFirst = true;?>
+            <?php foreach ($this->getWrapTypeCollection() as $item):?>
+                <div class="aw-giftwrap-onepage-form-box-types-item">
+                    <div class="aw-giftwrap-onepage-form-box-types-item-option">
+                        <input type="radio" name="aw_giftwrap[wrap_type_id]" class="radio" <?php echo ($isFirst)?'checked="checked"':'';?>
+                               id="aw-giftwrap-onepage-form-box-type-<?php echo $item->getId();?>" value="<?php echo $item->getId();?>" >
+	                    <label for="aw-giftwrap-onepage-form-box-type-<?php echo $item->getId();?>">
+		                    <?php echo $item->getName();?>
+	                    </label>
+                    </div>
+                    <div class="aw-giftwrap-onepage-form-box-types-item-content">
+                        <div class="aw-giftwrap-onepage-form-box-types-item-detail">
+                            <img align="left" width="100" height="100" src="<?php echo $item->getImageUrl(100, 100);?>" alt="<?php echo $item->getName();?>"/>
+                            <?php echo $this->formatPrice($item->getPrice());?>
+                            <p><?php echo $item->getDescription();?></p>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+                <?php $isFirst = false;?>
+            <?php endforeach;?>
+        </div>
+        <?php if ($this->isCanSpecifyMessageTextarea()):?>
+        <div id="aw-giftwrap-onepage-form-box-message">
+            <label for="aw-giftwrap-onepage-form-box-message-textarea"><?php echo $this->__("Gift Message");?></label>
+            <textarea name="aw_giftwrap[wrap_message]" id="aw-giftwrap-onepage-form-box-message-textarea"></textarea>
+        </div>
+        <?php endif;?>
+        <?php if ($this->isCanSpecifySeparatelyOption()):?>
+        <div id="aw-giftwrap-onepage-form-box-separately-option">
+            <input type="checkbox" name="aw_giftwrap[wrap_separately]" id="aw-giftwrap-onepage-form-box-separately-option-input" class="checkbox"/>
+            <label for="aw-giftwrap-onepage-form-box-separately-option-input"><?php echo $this->__("Wrap each product separately");?></label>
+        </div>
+        <?php endif;?>
+    </div>
+</div>
+<script type="text/javascript">
+    (function(){
+        var containerEl = $$("#aw-giftwrap-onepage-form").first();
+        var insertBefore = $$("#shipping-method-buttons-container").first();
+        if (!insertBefore || !containerEl) {
+            return;
+        }
+        insertBefore.up().insertBefore(containerEl, insertBefore);
+        containerEl.removeClassName("no-display");
+    })();
+
+    /* IE 7-8 fix start */
+    $('aw-giftwrap-onepage-form-add-giftwrap').observe('click', function(e){
+        $('aw-giftwrap-onepage-form-add-giftwrap').blur();
+    });
+    /* IE 7-8 fix end */
+
+    $('aw-giftwrap-onepage-form-add-giftwrap').observe('change', function(e){
+        if ($('aw-giftwrap-onepage-form-add-giftwrap').getValue() === 'on') {
+            $('aw-giftwrap-onepage-form-box').removeClassName('no-display');
+        } else {
+            $('aw-giftwrap-onepage-form-box').addClassName('no-display');
+        }
+    });
+</script>
+<?php endif;?>

@@ -1,0 +1,5 @@
+src/app/code/local/Europaymentrate/Euplatescrate                        app/code/local/Europaymentrate/Euplatescrate
+src/app/design/adminhtml/default/default/layout/euplatescrate.xml       app/design/adminhtml/default/default/layout/euplatescrate.xml
+src/app/design/frontend/base/default/template/euplatescrate             app/design/frontend/base/default/template/euplatescrate
+src/app/etc/modules/Europaymentrate_Euplatescrate.xml                   app/etc/modules/Europaymentrate_Euplatescrate.xml
+src/js/euplatescrate.js                                                 js/euplatescrate.js

@@ -1,0 +1,13 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_customer-mini-account.scss
+    Version:        1.0
+    Description:    Mini-Account Styles (in Header)
+    ------------------------------------------------------------------------- */
+
+.mini-account {
+    float: right;
+
+    @include mobile {
+        display: none;
+    }
+}

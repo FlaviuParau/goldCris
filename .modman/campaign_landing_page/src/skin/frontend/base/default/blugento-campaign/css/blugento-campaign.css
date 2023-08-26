@@ -1,0 +1,177 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       blugento-campaign.css
+    Version:        1.0
+    Description:    Blugento Campaign styling
+    ------------------------------------------------------------------------- */
+    .campaign {
+        overflow-x: hidden;
+    }
+
+    /* Dock mobile open */
+    .campaign.dock-open {
+        position: absolute;
+    }
+
+    /* Back button */
+    .column-1-campaign .back-button {
+        margin-bottom: 20px;
+    }
+
+    .campaign .back-button a {
+        text-decoration: none;
+    }
+
+    .campaign .page-title {
+        clear: both;
+    }
+
+    .campaign .page-container-wrapper {
+        background: transparent;
+    }
+
+    .campaign .back-button a:hover {
+        text-decoration: underline;
+    }
+
+    /* Main menu */
+    .campaign-main-menu,
+    .campaign .nav-mobile.scroll-to-fixed-fixed {
+        background: transparent;
+        padding: 20px 0;
+    }
+
+    .main-aside .campaign-main-menu a {
+        background: #EBEBEB;
+        display: block;
+        padding: 10px 20px;
+        margin-right: 10px;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+    .main-aside .campaign-main-menu a.active {
+        background: #000;
+        color: #fff;
+    }
+
+    .campaign .main-content {
+        min-height: 200px;
+    }
+
+    .campaign .ajax-overlay {
+        background: rgba(0, 0, 0, 0.7);
+        position: absolute;
+    }
+
+    .campaign .ajax-overlay .ajax-loader {
+        position: absolute;
+    }
+
+    .ajax-overlay .ajax-loader:after,
+    .ajax-overlay .ajax-loader:before {
+        margin: -25px 0 0 -25px;
+    }
+
+    .touch .campaign .slick-dots {
+        margin-top: 10px;
+    }
+
+    @media (min-width: 995px) {
+        .main-aside .campaign-main-menu a:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .campaign-main-menu .main-menu {
+            width: auto !important;
+            margin-left: 0 !important;
+        }
+    }
+
+    .campaign-main-menu li {
+        margin-bottom: 5px;
+    }
+
+    .campaign-main-menu li ul {
+        margin: 10px 0 0 10px;
+    }
+
+    .campaign .widget {
+        display: block;
+        clear: both;
+        margin-top: 20px;
+    }
+
+    .campaign .block-cart {
+        display: block;
+        float: right;
+        position: relative;
+    }
+
+    .campaign .block-cart:hover .block-cart-aside {
+        display: block;
+    }
+
+    /* Cms page */
+    .cms-page-view.campaign .std li {
+        list-style: none;
+    }
+
+    /* 1 Column Campaign */
+    .column-1-campaign .main-aside {
+        width: 100%;
+    }
+
+    .column-1-campaign .main-aside li,
+    .column-1-campaign .main-aside a {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+
+    .column-1-campaign .main-aside ul ul {
+        margin: 0;
+    }
+
+    @media (max-width: 1024px) {
+        .layout-2columns-left.campaign .main-aside,
+        .layout-2columns-left.campaign .main-content {
+            width: 100%;
+            float: none;
+        }
+
+        .touch .campaign .slick-dots {
+            position: inherit;
+            top: 0;
+            left: 0;
+        }
+    }
+
+    @media (max-width: 995px) {
+        .campaign .back-button {
+            margin-bottom: 20px;
+        }
+
+        .campaign-main-menu {
+            background: #ffffff;
+            padding: 10px 0;
+        }
+
+
+        .main-aside .campaign-main-menu li,
+        .main-aside .campaign-main-menu a {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .main-aside ul ul {
+            margin: 0;
+        }
+
+        .main-aside .campaign-main-menu a {
+            margin-right: 10px;
+        }
+
+        .cms-page-view.campaign .std .products-grid li {
+            width: 50%;
+        }
+    }

@@ -1,0 +1,397 @@
+<?php
+/**
+ * MindMagnet
+ *
+ * @category    MindMagnet
+ * @package     MindMagnet_PrimeCheckout
+ * @author      Daniel Gheoltan <daniel.gheoltan@mindmagnetsoftware.com>
+ * @copyright   Copyright (c) 2011 Mind Magnet Software (http://www.mindmagnetsoftware.com)
+ *
+ */
+?>
+
+<?php
+$_checkoutBillingAddressLayout = (int) ($this->getLayout()->getBlock('root')->getCheckoutBillingAddressLayout() ?: 1);
+$_checkoutUseBillingShippingAddressAboveForm = (int) ($this->getLayout()->getBlock('root')->getCheckoutUseBillingShippingAddressAboveForm() ?: 1);
+?>
+
+<?php
+$customer = Mage::getSingleton('customer/session')->getCustomer();
+$customerId = Mage::getSingleton('customer/session')->getCustomer();
+$customer = Mage::getModel('customer/customer')->load($customerId->getId());
+$data = array();
+$streetAddressMaxLength = Mage::getStoreConfig('blugento_billing/fields_config/street_address_max_length', $storeId);
+?>
+
+<?php
+/* @var Blugento_Billing_Helper_Data $billHelper */
+$billHelper = Mage::helper('blugento_billing');
+
+$attributePurchaseType = Mage::getSingleton('eav/config')->getAttribute('customer_address', 'blugento_purchase_type');
+$attributePurchaseTypeOptions = $attributePurchaseType->getSource()->getAllOptions(false);
+$attributePf = $billHelper->checkPfAttribute() ? 3 : 0;
+$attributePj = $billHelper->checkPjAttribute() ? 4 : 0;
+$selectedPurchaseType = $billHelper->bothFormsEnabled() ? $attributePurchaseTypeOptions[0]['value'] : 0;
+$purchaseType = $this->getAddress()->getBlugentoPurchaseType();
+if (!$purchaseType) {
+    $purchaseType = $attributePurchaseTypeOptions ? $attributePurchaseTypeOptions[0]['value'] : 0;
+}
+
+?>
+
+<?php
+/** @var MindMagnet_PrimeCheckout_Helper_Data $_helper */
+$_helper = Mage::helper('primecheckout');
+$showAddressForm = $_helper->showAddressForm() ? 1 : 0;
+$defaultShipping = Mage::getSingleton('customer/session')->getCustomer()->getDefaultShipping();
+?>
+
+<form id="co-shipping-form" action="">
+    <ul class="form-list form-list--horizontal">
+        <?php if ($this->customerHasAddresses()): ?>
+            <li class="wide">
+                <h4><?php echo $this->__('Select a shipping address from your address book or enter a new address.') ?></h4>
+                <div class="addresses-box">
+                    <?php $_customerAddresses = $this->getCustomer()->getAddresses(); ?>
+                    <?php if (count($_customerAddresses)): ?>
+                    <?php $areIdentical = $_helper->areCustomerAddressesIdentical(); ?>
+                    <?php // if billing and shipping addresses are identical - skip one ?>
+                    <?php if ($areIdentical) array_shift($_customerAddresses); ?>
+                        <ul>
+                            <?php foreach ($_customerAddresses as $addresse):?>
+                            <li class="control">
+                                <input 
+                                    name="opc-shipping-address"
+                                    id="opc-shipping-<?php echo $addresse->getId() ?>"
+                                    type="radio"
+                                    onclick="shipping.fillAddressFromJSON(<?php echo $addresse->getId() ?>, '<?php echo $showAddressForm ?>');"
+                                    <?php echo $addresse->getId() == $defaultShipping ? 'checked="checked"' : '' ?>
+                                    class="radio"
+                                />
+                                <label for="opc-shipping-<?php echo $addresse->getId() ?>"><?php echo $addresse->format('oneline') ?></label>
+                            </li>
+                            <?php endforeach; ?>
+                            <li class="control co-address-new">
+                                <input name="opc-shipping-address" id="opc-shipping-new" type="radio" onclick="shipping.fillAddressFromJSON();" class="radio" />
+                                <label for="opc-shipping-new"><?php echo $this->__('New Address') ?></label>
+                            </li>
+                        </ul>
+                    <?php endif; ?>
+                </div>
+            </li>
+        <?php endif; ?>
+        <li id="shipping-new-address-form"<?php if ($this->customerHasAddresses()): ?> style="display: none;"<?php endif; ?>>
+            <fieldset>
+                <input type="hidden" name="shipping[address_id]" value="<?php echo $this->getAddress()->getId() ?>" id="shipping:address_id" />
+                <ul>
+                    <?php if($billHelper->bothFormsEnabled()): ?>
+                        <li class="control chose-entity">
+                            <?php foreach($attributePurchaseTypeOptions as $option): ?>
+                                <?php
+                                if ($option['label'] == 'Personal Purchase') {
+                                    $attributePf = $option['value'];
+                                } else {
+                                    $attributePj = $option['value'];
+                                }
+                                ?>
+                                <input
+                                        type="radio"
+                                        name="shipping[blugento_purchase_type]"
+                                        id="shipping:blugento_purchase_type_<?php echo $option['value']; ?>"
+                                        value="<?php echo $option['value']; ?>"
+                                    <?php if ($purchaseType == $option['value']): ?>
+                                        <?php $selectedPurchaseType = $option['value']; ?>
+                                        checked="checked"
+                                    <?php endif; ?>
+                                        title="<?php echo Mage::helper('core')->quoteEscape($this->__($option['label'])) ?>"
+                                        class="radio"
+                                        onclick="displayPurchaseType(this)"
+                                />
+                                <label for="shipping:blugento_purchase_type_<?php echo $option['value']; ?>"><?php echo $this->__($option['label']); ?></label>
+                            <?php endforeach; ?>
+                        </li>
+                    <?php endif; ?>
+                    <li class="fields"><?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getAddress())->setFieldIdFormat('shipping:%s')->setFieldNameFormat('shipping[%s]')->setFieldParams('onchange="shipping.setSameAsBilling(false)"')->toHtml() ?></li>
+                    <li class="fields">
+                        <div class="field">
+                            <label for="shipping:telephone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="shipping[telephone]" value="<?php echo $this->htmlEscape($this->getAddress()->getTelephone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text required-entry" id="shipping:telephone" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="shipping:fax"><?php echo $this->__('Fax') ?></label>
+                            <div class="input-box">
+                                <input type="text" name="shipping[fax]" value="<?php echo $this->htmlEscape($this->getAddress()->getFax()) ?>" title="<?php echo $this->__('Fax') ?>" class="input-text" id="shipping:fax" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="fields">
+                        <?php if ($billHelper->getAttributeClass('company')): ?>
+                            <div class="field blugento-purchase-type-billing blugento-purchase-type-billing-<?php echo $attributePj; ?>" <?php if ($selectedPurchaseType == $attributePj || ($billHelper->bothFormsEnabled() && $selectedPurchaseType != $attributePj)): ?>style="display: none;"<?php endif; ?>>
+                                <label for="shipping:company" <?php if ($billHelper->getAttributeClass('company') == 'required-entry') echo 'class="required"'; ?>>
+                                    <?php echo $this->__('Company') ?>
+                                    <?php if ($billHelper->getAttributeClass('company') == 'required-entry'): ?> <em>*</em> <?php endif; ?>
+                                </label>
+                                <div class="input-box">
+                                    <input
+                                            type="text"
+                                            name="shipping[company]"
+                                            id="shipping:company"
+                                            value="<?php echo $this->escapeHtml($this->getAddress()->getCompany()) ?>"
+                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Company')) ?>"
+                                            class="conditional-required-pj input-text <?php echo $billHelper->getAttributeClass('company') ?>"
+                                    />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($billHelper->getAttributeClass('blugento_customer_reg_no')): ?>
+                            <div class="field blugento-purchase-type-billing blugento-purchase-type-billing-<?php echo $attributePj; ?>" <?php if ($selectedPurchaseType == $attributePj || ($billHelper->bothFormsEnabled() && $selectedPurchaseType != $attributePj)): ?>style="display: none;"<?php endif; ?>>
+                                <label for="shipping:blugento_customer_reg_no" <?php if ($billHelper->getAttributeClass('blugento_customer_reg_no') == 'required-entry') echo 'class="required"'; ?>>
+                                    <?php echo $this->__('Company Registration Number') ?>
+                                    <?php if ($billHelper->getAttributeClass('blugento_customer_reg_no') == 'required-entry'): ?> <em>*</em> <?php endif; ?>
+                                </label>
+                                <div class="input-box">
+                                    <input
+                                            type="text"
+                                            name="shipping[blugento_customer_reg_no]"
+                                            id="shipping:blugento_customer_reg_no"
+                                            value="<?php echo $this->escapeHtml($this->getAddress()->getBlugentoCustomerRegNo()) ?>"
+                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Company Registration Number')) ?>"
+                                            class="input-text <?php echo $billHelper->getAttributeClass('blugento_customer_reg_no') ?>"
+                                    />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($billHelper->getAttributeClass('vat_id')): ?>
+                            <div class="field blugento-purchase-type-billing blugento-purchase-type-billing-<?php echo $attributePj; ?>" <?php if ($selectedPurchaseType == $attributePj || ($billHelper->bothFormsEnabled() && $selectedPurchaseType != $attributePj)): ?>style="display: none;"<?php endif; ?>>
+                                <label for="shipping:vat_id" <?php if ($billHelper->getAttributeClass('vat_id') == 'required-entry') echo 'class="required"'; ?>>
+                                    <?php echo $this->__('VAT Number') ?>
+                                    <?php if ($billHelper->getAttributeClass('vat_id') == 'required-entry'): ?> <em>*</em> <?php endif; ?>
+                                </label>
+                                <div class="input-box">
+                                    <input
+                                            type="text"
+                                            name="shipping[vat_id]"
+                                            id="shipping:vat_id"
+                                            value="<?php echo $this->escapeHtml($this->getAddress()->getVatId()) ?>"
+                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('VAT Number')) ?>"
+                                            class="conditional-required-pj input-text <?php echo $billHelper->getAttributeClass('vat_id') ?>"
+                                    />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($billHelper->getAttributeClass('blugento_customer_iban')): ?>
+                            <div class="field blugento-purchase-type-billing blugento-purchase-type-billing-<?php echo $attributePj; ?>" <?php if ($selectedPurchaseType == $attributePj || ($billHelper->bothFormsEnabled() && $selectedPurchaseType != $attributePj)): ?>style="display: none;"<?php endif; ?>>
+                                <label for="shipping:blugento_customer_iban" <?php if ($billHelper->getAttributeClass('blugento_customer_iban') == 'required-entry') echo 'class="required"'; ?>>
+                                    <?php echo $this->__('IBAN') ?>
+                                    <?php if ($billHelper->getAttributeClass('blugento_customer_iban') == 'required-entry'): ?> <em>*</em> <?php endif; ?>
+                                </label>
+                                <div class="input-box">
+                                    <input
+                                            type="text"
+                                            name="shipping[blugento_customer_iban]"
+                                            id="shipping:blugento_customer_iban"
+                                            value="<?php echo $this->escapeHtml($this->getAddress()->getBlugentoCustomerIban()) ?>"
+                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('IBAN')) ?>"
+                                            class="input-text <?php echo $billHelper->getAttributeClass('blugento_customer_iban') ?>"
+                                    />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($billHelper->getAttributeClass('blugento_customer_headquarter')): ?>
+                            <div class="field blugento-purchase-type-billing blugento-purchase-type-billing-<?php echo $attributePj; ?>" <?php if ($selectedPurchaseType == $attributePj || ($billHelper->bothFormsEnabled() && $selectedPurchaseType != $attributePj)): ?>style="display: none;"<?php endif; ?>>
+                                <label for="shipping:blugento_customer_headquarter" <?php if ($billHelper->getAttributeClass('blugento_customer_headquarter') == 'required-entry') echo 'class="required"'; ?>>
+                                    <?php echo $this->__('Headquarter') ?>
+                                    <?php if ($billHelper->getAttributeClass('blugento_customer_headquarter') == 'required-entry'): ?> <em>*</em> <?php endif; ?>
+                                </label>
+                                <div class="input-box">
+                                    <input
+                                            type="text"
+                                            name="shipping[blugento_customer_headquarter]"
+                                            id="shipping:blugento_customer_headquarter"
+                                            value="<?php echo $this->escapeHtml($this->getAddress()->getBlugentoCustomerIban()) ?>"
+                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Headquarter')) ?>"
+                                            class="input-text <?php echo $billHelper->getAttributeClass('blugento_customer_headquarter') ?>"
+                                    />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($billHelper->getAttributeClass('blugento_customer_bank')): ?>
+                            <div class="field blugento-purchase-type-billing blugento-purchase-type-billing-<?php echo $attributePj; ?>" <?php if ($selectedPurchaseType == $attributePj || ($billHelper->bothFormsEnabled() && $selectedPurchaseType != $attributePj)): ?>style="display: none;"<?php endif; ?>>
+                                <label for="shipping:blugento_customer_bank" <?php if ($billHelper->getAttributeClass('blugento_customer_bank') == 'required-entry') echo 'class="required"'; ?>>
+                                    <?php echo $this->__('Bank Name') ?>
+                                    <?php if ($billHelper->getAttributeClass('blugento_customer_bank') == 'required-entry'): ?> <em>*</em> <?php endif; ?>
+                                </label>
+                                <div class="input-box">
+                                    <input
+                                            type="text"
+                                            id="shipping:blugento_customer_bank"
+                                            name="shipping[blugento_customer_bank]"
+                                            value="<?php echo $this->escapeHtml($this->getAddress()->getBlugentoCustomerBank()) ?>"
+                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Bank Name')) ?>"
+                                            class="input-text <?php echo $billHelper->getAttributeClass('blugento_customer_bank') ?>"
+                                    />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($billHelper->getAttributeClass('blugento_customer_cnp')): ?>
+                            <div class="field blugento-purchase-type-billing blugento-purchase-type-billing-<?php echo $attributePf; ?>" <?php if (!$billHelper->bothFormDisabled() && (!$billHelper->bothFormsEnabled() && $selectedPurchaseType == $attributePf) || ($billHelper->bothFormsEnabled() && $selectedPurchaseType != $attributePf)): ?>style="display: none;"<?php endif; ?>>
+                                <label for="shipping:blugento_customer_cnp" <?php if ($billHelper->getAttributeClass('blugento_customer_cnp') == 'required-entry') echo 'class="required"'; ?>>
+                                    <?php echo $this->__('CNP') ?>
+                                    <?php if ($billHelper->getAttributeClass('blugento_customer_cnp') == 'required-entry'): ?> <em>*</em> <?php endif; ?>
+                                </label>
+                                <div class="input-box">
+                                    <input
+                                            type="text"
+                                            id="shipping:blugento_customer_cnp"
+                                            name="shipping[blugento_customer_cnp]"
+                                            maxlength="13"
+                                            value="<?php echo $this->escapeHtml($this->getAddress()->getBlugentoCustomerCnp()) ?>"
+                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('CNP')) ?>"
+                                            class="input-text <?php echo $billHelper->getAttributeClass('blugento_customer_cnp') ?>"
+                                    />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!$this->isCustomerLoggedIn()): ?>
+                            <div class="field">
+                                <label for="shipping:email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                                <div class="input-box">
+                                    <input
+                                            type="text"
+                                            name="shipping[email]"
+                                            id="shipping:email"
+                                            value="<?php echo $this->escapeHtml($this->getAddress()->getEmail()) ?>"
+                                            title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>"
+                                            class="input-text validate-email required-entry"
+                                    />
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="wide">
+                        <div class="field">
+                            <label for="shipping:street1" class="required"><em>*</em><?php echo $this->__('Address') ?></label>
+                            <div class="input-box">
+                                <input type="text" title="<?php echo $this->__('Street Address') ?>" name="shipping[street][]" id="shipping:street1" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet(1)) ?>" class="input-text required-entry <?php echo $streetAddressMaxLength ? 'validate-length maximum-length-' . $streetAddressMaxLength : '' ?>" />
+                            </div>
+                        </div>
+                    </li>
+                    <?php for ($_i = 2, $_n = $this->helper('customer/address')->getStreetLines(); $_i <= $_n; $_i++): ?>
+                        <li class="wide">
+                            <div class="input-box">
+                                <input type="text" title="<?php echo $this->__('Street Address %s', $_i) ?>" name="shipping[street][]" id="shipping:street<?php echo $_i?>" value="<?php echo $this->htmlEscape($this->getAddress()->getStreet($_i)) ?>" class="input-text <?php echo $streetAddressMaxLength ? 'validate-length maximum-length-' . $streetAddressMaxLength : '' ?>" />
+                            </div>
+                        </li>
+                    <?php endfor; ?>
+                    <li class="fields">
+                        <div class="field">
+                            <label for="shipping:region" class="required"><em>*</em><?php echo $this->__('State/Province') ?></label>
+                            <div class="input-box">
+                                <select id="shipping:region_id" name="shipping[region_id]" title="<?php echo $this->__('State/Province') ?>" class="validate-select" style="display: none;">
+                                    <option value=""><?php echo $this->__('Please select region, state or province') ?></option>
+                                </select>
+                                <script>
+                                //<![CDATA[
+                                    $('shipping:region_id').setAttribute('defaultValue',  "<?php echo $this->getAddress()->getRegionId() ?>");
+                                //]]>
+                                </script>
+                                <input type="text" id="shipping:region" name="shipping[region]" value="<?php echo $this->htmlEscape($this->getAddress()->getRegion()) ?>" title="<?php echo $this->__('State/Province') ?>" class="input-text" style="display: none;" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="shipping:city" class="required"><em>*</em><?php echo $this->__('City') ?></label>
+                            <div class="input-box">
+                                <input type="text" title="<?php echo $this->__('City') ?>" name="shipping[city]" value="<?php echo $this->htmlEscape($this->getAddress()->getCity()) ?>" class="input-text required-entry" id="shipping:city" />
+                            </div>
+                        </div>
+                    </li>
+                    <li class="fields">
+                        <div class="field"<?php if ($this->getCountrySoloMode() == 'hide'): ?> style="display: none;"<?php endif; ?>>
+                            <label for="shipping:country_id" class="required"><em>*</em><?php echo $this->__('Country') ?></label>
+                            <div class="input-box">
+                                <?php if ($this->getCountrySoloMode() == 'default'): ?>
+                                    <?php echo $this->getCountryHtmlSelect('shipping') ?>
+                                <?php elseif ($this->getCountrySoloMode() == 'text_only'): ?>
+                                    <p class="co-country-text"><?php echo $this->getDefaultCountryName() ?></p>
+                                    <input type="hidden" name="shipping[country_id]" id="shipping:country_id" value="<?php echo $this->getDefaultCountryId() ?>" />
+                                <?php elseif ($this->getCountrySoloMode() == 'input_disabled'): ?>
+                                    <input type="text" disabled="disabled" title="<?php echo $this->__('Country') ?>" name="shipping[country_name]" id="shipping:country_name" value="<?php echo $this->getDefaultCountryName() ?>" class="input-text" />
+                                    <input type="hidden" name="shipping[country_id]" id="shipping:country_id" value="<?php echo $this->getDefaultCountryId() ?>" />
+                                <?php elseif ($this->getCountrySoloMode() == 'hide'): ?>
+                                    <input type="hidden" name="shipping[country_id]" id="shipping:country_id" value="<?php echo $this->getDefaultCountryId() ?>" />
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="shipping:postcode" class="required"><em>*</em><?php echo $this->__('Zip/Postal Code') ?></label>
+                            <div class="input-box">
+                                <input type="text" title="<?php echo $this->__('Zip/Postal Code') ?>" name="shipping[postcode]" id="shipping:postcode" value="<?php echo $this->htmlEscape($this->getAddress()->getPostcode()) ?>" class="input-text validate-postcode required-entry" />
+                            </div>
+                        </div>
+                    </li>
+                    <?php if ($this->isCustomerLoggedIn() && $this->customerHasAddresses()): ?>
+                        <li class="control">
+                            <input type="checkbox" name="shipping[save_in_address_book]" value="1" title="<?php echo $this->__('Save in address book') ?>" id="shipping:save_in_address_book"<?php if ($this->getAddress()->getSaveInAddressBook()): ?> checked="checked"<?php endif; ?> class="checkbox" /><label for="shipping:save_in_address_book"><?php echo $this->__('Save in address book') ?></label>
+                        </li>
+                    <?php else: ?>
+                        <li class="no-display"><input type="hidden" name="shipping[save_in_address_book]" value="1" /></li>
+                    <?php endif; ?>
+                </ul>
+            </fieldset>
+        </li>
+        <li class="no-display"><input type="hidden" name="shipping[same_as_billing]" id="shipping:same_as_billing" value="0" /></li>
+    </ul>
+    <?php echo $this->getBlockHtml('formkey') ?>
+</form>
+<script>
+//<![CDATA[
+    var shipping = new Shipping('co-shipping-form', '<?php echo $this->getUrl('checkout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('checkout/prime/saveShipping') ?>','<?php echo $this->getUrl('checkout/prime/shippingMethod') ?>', <?php echo $this->helper('primecheckout')->getAjaxUpdateTriggersJSON('shipping') ?>, <?php echo Mage::helper('core')->jsonEncode(Mage::getStoreConfigFlag('primecheckout/general/display_address_form')) ?>);
+    var shippingForm = new VarienForm('co-shipping-form');
+
+    //shippingForm.extraChildParams = ' onchange="shipping.setSameAsBilling(false);"';
+    //shippingForm.setElementsRelation('shipping:country_id', 'shipping:region', '<?php echo $this->getUrl('directory/json/childRegion') ?>', '<?php echo $this->__('Select State/Province...') ?>');
+    $('shipping-address-select') && shipping.newAddress(!$('shipping-address-select').value);
+
+    var shippingRegionUpdater = new RegionUpdater('shipping:country_id', 'shipping:region', 'shipping:region_id', countryRegions, undefined, 'shipping:postcode');
+//]]>
+function displayPurchaseType(obj) {
+    $$('.blugento-purchase-type-billing').invoke('hide');
+    $$('.blugento-purchase-type-billing-' + $(obj).getValue()).invoke('show');
+}
+</script>
+
+<script type="text/javascript">
+	//<![CDATA[
+	document.observe('dom:loaded', function() {
+		Validation.add('validate-postcode', 'Please enter a valid zip code. For example 90602 or 90602-1234.', function(v) {
+			if (document.getElementById('shipping:country_id').value === 'RO') {
+				return Validation.get('IsEmpty').test(v) || /(^\d{6}$)/.test(v);
+			} else {
+				return true;
+			}
+		});
+	});
+	
+	Event.observe(document.getElementById('shipping:country_id'), 'change', function (event) {
+		Validation.add('validate-postcode', 'Please enter a valid zip code. For example 90602 or 90602-1234.', function(v) {
+			if (event.target.value === 'RO') {
+				return Validation.get('IsEmpty').test(v) || /(^\d{6}$)/.test(v);
+			} else {
+				return true;
+			}
+		});
+	});
+	//]]>
+</script>
+
+<?php echo $this->getChildHtml('shipping_method') ?>

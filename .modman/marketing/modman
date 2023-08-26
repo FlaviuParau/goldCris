@@ -1,0 +1,6 @@
+src/app/code/local/Blugento/Marketing/                                  app/code/local/Blugento/Marketing/
+src/app/etc/modules/Blugento_Marketing.xml                              app/etc/modules/Blugento_Marketing.xml
+src/app/design/frontend/base/default/template/blugento/marketing        app/design/frontend/base/default/template/blugento/marketing
+src/app/design/frontend/base/default/layout/blugento_marketing.xml      app/design/frontend/base/default/layout/blugento_marketing.xml
+src/app/locale/ro_RO/Blugento_Marketing.csv                             app/locale/ro_RO/Blugento_Marketing.csv
+src/app/locale/pl_PL/Blugento_Marketing.csv                             app/locale/pl_PL/Blugento_Marketing.csv

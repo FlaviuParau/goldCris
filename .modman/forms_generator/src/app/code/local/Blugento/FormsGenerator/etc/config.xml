@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_FormsGenerator
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_FormsGenerator>
+            <version>1.0.3</version>
+        </Blugento_FormsGenerator>
+    </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_formsgenerator before="Mage_Adminhtml">Blugento_FormsGenerator_Adminhtml</blugento_formsgenerator>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_formsgenerator module="Blugento_FormsGenerator">
+                    <file>formsgenerator.xml</file>
+                </blugento_formsgenerator>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <blugento_formsgenerator>
+                    <files>
+                        <default>Blugento_FormsGenerator.csv</default>
+                    </files>
+                </blugento_formsgenerator>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <formsgenerator>
+                <use>standard</use>
+                <args>
+                    <modules>
+                        <blugento_formsgenerator before="Blugento_Form">Blugento_FormsGenerator</blugento_formsgenerator>
+                    </modules>
+                    <frontName>formsgenerator</frontName>
+                </args>
+            </formsgenerator>
+        </routers>
+        <translate>
+            <modules>
+                <blugento_formsgenerator>
+                    <files>
+                        <default>Blugento_FormsGenerator.csv</default>
+                    </files>
+                </blugento_formsgenerator>
+            </modules>
+        </translate>
+    </frontend>
+    <global>
+        <blocks>
+            <blugento_formsgenerator>
+                <class>Blugento_FormsGenerator_Block</class>
+            </blugento_formsgenerator>
+        </blocks>
+        <helpers>
+            <blugento_formsgenerator>
+                <class>Blugento_FormsGenerator_Helper</class>
+            </blugento_formsgenerator>
+        </helpers>
+        <models>
+            <blugento_formsgenerator>
+                <class>Blugento_FormsGenerator_Model</class>
+                <resourceModel>blugento_formsgenerator_mysql4</resourceModel>
+            </blugento_formsgenerator>
+
+            <blugento_formsgenerator_mysql4>
+                <class>Blugento_FormsGenerator_Model_Mysql4</class>
+                <entities>
+                    <forms>
+                        <table>blugento_generated_forms</table>
+                    </forms>
+                </entities>
+            </blugento_formsgenerator_mysql4>
+
+            <widget>
+                <rewrite>
+                    <template_filter>Blugento_FormsGenerator_Model_Template_Filter</template_filter>
+                </rewrite>
+            </widget>
+        </models>
+        <resources>
+            <blugento_formsgenerator_setup>
+                <setup>
+                    <module>Blugento_FormsGenerator</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </blugento_formsgenerator_setup>
+
+            <blugento_formsgenerator_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </blugento_formsgenerator_write>
+            <blugento_formsgenerator_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </blugento_formsgenerator_read>
+        </resources>
+    </global>
+    <default>
+        <formsgenerator>
+            <general>
+                <comment>1</comment>
+                <multiple>1</multiple>
+            </general>
+        </formsgenerator>
+    </default>
+</config>

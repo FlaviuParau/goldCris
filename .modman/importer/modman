@@ -1,0 +1,7 @@
+src/app/code/local/Blugento/Importer		                             app/code/local/Blugento/Importer
+src/app/locale/en_US/Blugento_Importer.csv		                         app/locale/en_US/Blugento_Importer.csv
+src/app/locale/ro_RO/Blugento_Importer.csv		                         app/locale/ro_RO/Blugento_Importer.csv
+src/app/etc/modules/Blugento_Importer.xml	                             app/etc/modules/Blugento_Importer.xml
+src/app/design/adminhtml/default/default/template/blugento/importer      app/design/adminhtml/default/default/template/blugento/importer
+src/app/design/adminhtml/default/default/layout/blugento_importer.xml    app/design/adminhtml/default/default/layout/blugento_importer.xml
+src/app/locale/pl_PL/Blugento_Importer.csv		                         app/locale/pl_PL/Blugento_Importer.csv

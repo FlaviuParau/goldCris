@@ -1,0 +1,8 @@
+<?php
+
+class Blugento_Googleshopping_Model_Adminhtml_System_Config_Source_Attributeplus
+    extends Blugento_Googleshopping_Model_Adminhtml_System_Config_Source_Attribute_Abstract
+{
+
+
+}

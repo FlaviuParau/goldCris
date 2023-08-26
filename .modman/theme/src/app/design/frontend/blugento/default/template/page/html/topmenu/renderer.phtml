@@ -1,0 +1,114 @@
+<?php
+/** @var Blugento_Category_Block_Html_Topmenu_Renderer $this */
+/** @var Varien_Data_Tree_Node $menuTree */
+/** @var string $childrenWrapClass */
+
+$html = '';
+$children = $menuTree->getChildren();
+$parentLevel = $menuTree->getLevel();
+$childLevel = is_null($parentLevel) ? 0 : $parentLevel + 1;
+
+$counter = 1;
+$childrenCount = $children->count();
+
+$parentPositionClass = $menuTree->getPositionClass();
+$itemPositionClassPrefix = $parentPositionClass ? $parentPositionClass . '-' : 'nav-';
+
+$_subcategoryImage = (int) ($this->getLayout()->getBlock('root')->getNavLayout() ?: 11);
+
+$_baseUrl = Mage::getBaseUrl();
+$_baseMedia = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+$_baseMediaUrl = str_replace('/media', '', $_baseMedia);
+$_bannerWebp = Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/active') &&
+    Mage::getStoreConfig('blugento_cloudfront/blugento_cloudfront/webp_conversion') && ($_baseUrl != $_baseMediaUrl);
+$_srcWebp = $_bannerWebp ? '.webp' : '';
+
+foreach ($children as $child) {
+
+    $child->setLevel($childLevel);
+    $child->setPositionClass($itemPositionClassPrefix . $counter);
+
+    $outermostClassCode = 'level'. $childLevel;
+    $_hasChildren = ($child->hasChildren()) ? 'has-children' : '';
+    $dataViewAll = ($child->hasChildren()) ? ' data-all="'. $this->__('View All') .'"' : '';
+
+    $html .= '<li data-submenu-id='. $itemPositionClassPrefix . $counter .' '. $this->_getRenderedMenuItemAttributes($child) .'>';
+
+    if ($_subcategoryImage == 11) {
+        if (1 == $childLevel) {
+	        $submenuImage = $this->getMegamenuImageUrl($child);
+	        $submenuImageClass = (!empty($submenuImage)) ? ' submenu-image' : '';
+
+            $html .= '<div class="submenuimage' . $submenuImageClass . '">';
+
+            if (!empty($submenuImage)) {
+                $html .= '<div class="level1-left">';
+
+                if ($_bannerWebp) {
+                    $html .= '<a href="'. $child->getUrl() .'" class="'. trim($outermostClassCode .' '. $_hasChildren) .'"'. $dataViewAll .'><picture><source media="(min-width:320px)" srcset="' . $submenuImage . '' . $_srcWebp . '" type="image/webp" /><img src="' . $submenuImage . '" class="img-responsive" alt="" /></picture></a><span class="arrow-trigger"></span>';
+                } else {
+                    $html .= '<a href="'. $child->getUrl() .'" class="'. trim($outermostClassCode .' '. $_hasChildren) .'"'. $dataViewAll .'><img src="' . $submenuImage . '" class="img-responsive" alt="" /></a><span class="arrow-trigger"></span>';
+                }
+
+                $html .= '</div>';
+            }
+	        $html .= '</div>';
+        }
+    }
+
+    $html .= '<a href="'. $child->getUrl() .'" class="'. trim($outermostClassCode .' '. $_hasChildren) .'"'. $dataViewAll .'>'. $this->escapeHtml($child->getName()) .'</a><span class="'. trim($_hasChildren) .'"></span>';
+
+    if (0 == $childLevel) {
+        $submenuImage = $this->getMegamenuImageUrl($child);
+	    $submenuImageClass = (!empty($submenuImage)) ? ' submenu-image' : '';
+
+		$html .= '<div id='. $itemPositionClassPrefix . $counter .' class="submenu' . $submenuImageClass . '">';
+		if (!empty($submenuImage) && $_subcategoryImage != 13) {
+			if ($_subcategoryImage == 11) {
+
+			} else {
+                $html .= '<div class="level0-left">';
+
+                if ($_bannerWebp) {
+                    $html .= '<picture><source media="(min-width:320px)" srcset="' . $submenuImage . '' . $_srcWebp . '" type="image/webp" /><img src="' . $submenuImage . '" class="img-responsive" alt="" /></picture>';
+                } else {
+                    $html .= '<img src="' . $submenuImage . '" class="img-responsive" alt="" />';
+                }
+
+				$html .= '</div>';
+			}
+		} elseif ($_subcategoryImage == 13) {
+			$submenuLeftBlockId  = $this->getLeftBlockContent($child);
+			$submenuRightBlockId = $this->getRightBlockContent($child);
+			
+			if ($submenuLeftBlockId) {
+				$html .= '<div class="top-menu-left-block">';
+				$html .= $this->getLayout()->createBlock('cms/block')->setBlockId($submenuLeftBlockId)->toHtml();
+				$html .= '</div>';
+			}
+			if ($submenuRightBlockId) {
+				$html .= '<div class="top-menu-right-block">';
+				$html .= $this->getLayout()->createBlock('cms/block')->setBlockId($submenuRightBlockId)->toHtml();
+				$html .= '</div>';
+			}
+		}
+	}
+
+    $nextChildLevel = $childLevel + 1;
+
+    if (!empty($_hasChildren)) {
+        $html .= '<ul class="level' . $childLevel . '">';
+        $html .=     $this->render($child, false);
+        $html .= '</ul>';
+    }
+
+    if (0 == $childLevel) {
+        $html .= '</div>';
+    }
+
+    $html .= '</li>';
+
+    $counter++;
+}
+
+return $html;

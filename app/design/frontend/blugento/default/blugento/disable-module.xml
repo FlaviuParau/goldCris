@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0"><module><name>Mage_Tag</name><disable>2</disable></module><module><name>Mage_Wishlist</name><disable>1</disable></module><module><name>Mage_Review</name><disable>1</disable></module><module><name>Mage_Poll</name><disable>1</disable></module><module><name>Blugento_Compare</name><disable>1</disable></module>
+</layout>

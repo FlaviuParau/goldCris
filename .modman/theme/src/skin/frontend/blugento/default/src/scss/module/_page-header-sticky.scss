@@ -1,0 +1,321 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-header-sticky.scss
+    Version:        1.0
+    Description:    Sticky Header Styles
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+@if ($layout--sticky_header == 1) {
+    .page-container-wrapper--sticky {
+        visibility: hidden;
+        opacity: 0;
+        z-index: 11;
+        position: fixed;
+        top: -60px;
+        right: 0;
+        left: 0;
+        max-width: 100%;
+        background-color: $page-header--sticky_background-color !important;
+        box-shadow: 0 1px 3px 0 $page-header--sticky_box-shadow-color;
+
+        .page-header.sticky & {
+            visibility: visible;
+            opacity: 1;
+            top: 0;
+            transition-property: top, opacity, visibility;
+            transition-duration: .3s, .3s, 3s;
+        }
+
+        // --------------------------------------------------------------------
+
+        .page-container {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .page-container-inner {
+            display: flex;
+            border-width: 0;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        .logo {
+            height: 46px;
+
+            a,
+            img {
+                display: inline-block;
+                height: 46px;
+                vertical-align: middle;
+            }
+        }
+
+        // --------------------------------------------------------------------
+
+        @if ($isTopNavigation) {
+            .nav-container--sticky {
+                display: flex;
+                align-items: center;
+                
+                @include cf;
+
+                @if ($layout--sticky_header_logo == 1) {
+                    margin-left: 20px;
+                }
+                
+                padding: 0 10px;
+                background-color: $nav--primary_background-color;
+
+                @include mobile {
+                    display: none;
+                }
+    
+                .links-after li > a,
+                .links-before li > a {
+                    padding: 15px;
+                }
+            }
+        }
+        
+        &.on-desktop {
+            .nav-mobile-trigger {
+                display: none;
+        
+                @include mobile {
+                    display: block;
+                    float: left;
+    
+                    @if ($layout--header_layout == 1 or $layout--header_layout == 6 or $layout--header_layout == 7 or $layout--header_layout == 8) {
+                        padding: 7px 0;
+                    }
+                }
+            }
+        }
+
+        @include mobile {
+            .nav-container--sticky {
+                display: none;
+            }
+
+            .mini-cart {
+                border: 0;
+                padding-left: 0;
+                margin: 0;
+            }
+        }
+
+        .mini-search-wrapper--sticky {
+            flex-grow: 2;
+            border-right: 1px solid $page-header__separator_color;
+            margin-right: 20px;
+            padding-right: 20px;
+            
+            @if ($layout--header_layout == 1 or $layout--header_layout == 6 or $layout--header_layout == 7 or $layout--header_layout == 8) {
+                .mobile-trigger--search {
+                    padding-top: 7px;
+                }
+            }
+        }
+
+        .mini-cart-wrapper--sticky {
+            padding: 7px 0;
+    
+            @include mobile {
+                @if ($layout--header_layout == 7 and $layout--sticky_header_all == 2) {
+                    margin-left: 20px;
+                }
+            }
+        }
+    
+        .mobile-trigger--search {
+            display: none;
+        
+            @include mobile {
+                display: block;
+            }
+        }
+    }
+}
+
+@if ($layout--sticky_header_all == 1) {
+    .page-header {
+        .page-container-wrapper--sticky.on-desktop {
+            .tablet-logo {
+                display: none;
+
+                @include mobile {
+                    display: none;
+                }
+
+                @include tablet {
+                    display: block;
+                    float: left;
+                    height: 46px;
+                    margin: -2px 0;
+                    max-width: 126px;
+                }
+            }
+
+            .logo-wrapper--sticky {
+                @include mobile {
+                    display: none;
+                }
+    
+                @include phone {
+                    display: block;
+                }
+            }
+
+            .wishlist-count--sticky,
+            .account--sticky {
+                padding: 7px 0;
+
+                .label {
+                    vertical-align: top;
+                    color: $color--primary;
+                    display: inline-block;
+                    padding: 8px 0;
+
+                    @include mobile {
+                        display: none;
+                    }
+                }
+
+                @include mobile {
+                    padding: 0 10px;
+
+                    .header-wishlist-count {
+                        padding: 0;
+                    }
+                }
+            }
+
+            .wishlist-count--sticky {
+                .label {
+                    @if ($layout_wishlist_icons == 2) {
+                        display: none;
+                    }
+                }
+
+                @if ($layout_wishlist_icons == 3) {
+                    i {
+                        display: none;
+                    }
+                }
+            }
+
+            .mini-search-wrapper--sticky {
+                border: 0;
+                padding: 0;
+                margin-right: 20px;
+    
+                @include mobile {
+                    margin-right: 0;
+                }
+                
+                .mobile-trigger {
+                    display: none;
+
+                    @include mobile {
+                        display: block;
+                    }
+                }
+            }
+
+            .mini-account,
+            .block-cart {
+                padding: 0;
+
+                > ul {
+                    top: 50px;
+                }
+
+                .block-cart-aside {
+                    top: 30px;
+
+                    .block-content:after {
+                        right: 8px;
+                    }
+                }
+            }
+
+            .mini-account {
+                margin-right: 20px;
+
+                @include mobile {
+                    display: block;
+
+                    .label {
+                        display: none;
+                    }
+                }
+            }
+
+            .account--sticky {
+                @include mobile {
+                    display: none;
+                }
+            }
+
+            .header-wishlist-count {
+                display: block;
+                margin: 0 20px 0 0;
+                
+                @include mobile {
+                    margin: 0;
+                }
+            }
+
+            .mini-search {
+                margin: 0;
+            }
+
+            .mini-cart-wrapper--sticky {
+                @include mobile {
+                    padding: 0;
+
+                    .mini-cart {
+                        padding-left: 10px;
+                    }
+                }
+            }
+
+            .mobile-trigger {
+                @include mobile {
+                    padding: 7px 10px;
+                    margin: 0;
+                }
+            }
+
+            .mini-cart-wrapper--sticky,
+            .wishlist-count--sticky {
+                @include mobile {
+                    border-left: 1px solid color('l');
+                    padding-top: 7px;
+                    padding-bottom: 7px;
+
+                    .mini-cart {
+                        border: 0;
+                        padding: 0 0 0 10px;
+                    }
+                }
+            }
+            
+            .mobile-trigger--profile {
+                display: none;
+
+                @include mobile {
+                    display: block;
+                }
+            }
+
+            .mobile-trigger--search {
+                @include mobile {
+                    border-left: 0;
+                }
+            }
+        }
+    }
+}

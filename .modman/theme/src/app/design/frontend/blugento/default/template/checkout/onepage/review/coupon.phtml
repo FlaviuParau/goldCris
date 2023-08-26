@@ -1,0 +1,61 @@
+<div class="order-discount-coupon" id="checkout-discount-coupon-box">
+    <form id="co-discount-coupon-form" action="<?php echo $this->getUrl('blugentocheckout/checkout/saveCoupon') ?>" method="post">
+        <div class="discount">
+            <div class="discount-form">
+                <input type="hidden" name="remove" id="remove-coupon" value="0" />
+                <ul class="form-list">
+                    <li>
+                        <label for="coupon-code"><?php echo $this->__('Enter your coupon code if you have one.') ?></label>
+                        <div class="input-box">
+                            <input
+	                            name="coupon_code"
+	                            value="<?php echo $this->htmlEscape($this->getCouponCode()) ?>"
+	                            id="coupon-code"
+	                            class="input-text"
+                            />
+                        </div>
+	                    <div id="message-info"></div>
+                        <div class="buttons-set">
+                            <button
+	                            type="button"
+	                            value="<?php echo $this->__('Apply Coupon') ?>"
+	                            onclick="discountCoupon.apply()"
+	                            title="<?php echo $this->__('Apply Coupon') ?>"
+	                            id="btn-apply-coupon"
+	                            class="button"
+	                            <?php if (strlen($this->getCouponCode()) > 0): ?> style="display: none;"<?php endif; ?>
+                            >
+	                            <span><span><?php echo $this->__('Apply Coupon') ?></span></span>
+                            </button>
+                            <button
+	                            type="button"
+	                            value="<?php echo $this->__('Cancel Coupon') ?>"
+	                            onclick="discountCoupon.cancel()"
+	                            title="<?php echo $this->__('Cancel Coupon') ?>"
+	                            id="btn-cancel-coupon"
+	                            class="button"
+	                            <?php if (strlen($this->getCouponCode()) == 0): ?> style="display: none;"<?php endif; ?>
+                            >
+	                            <span><span><?php echo $this->__('Cancel Coupon') ?></span></span>
+                            </button>
+                            <span class="please-wait" id="discount-coupon-please-wait" style="display: none;">
+                                <img
+	                                src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>"
+	                                title="<?php echo $this->__('Loading...') ?>"
+	                                alt="<?php echo $this->__('Loading...') ?>"
+	                                class="v-middle"
+                                />
+	                            <?php echo $this->__('Loading...') ?>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    <script>
+    //<![CDATA[
+        discountCoupon = new DiscountCoupon('co-discount-coupon-form', '<?php echo $this->getUrl('blugentocheckout/checkout/saveCoupon') ?>', '<?php echo $this->getCouponCode() ?>');
+    //]]>
+    </script>
+</div>

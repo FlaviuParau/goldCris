@@ -1,0 +1,30 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /** @var $this Amasty_StoreCredit_Block_Checkout_Onepage_Payment_Additional */ ?>
+
+
+<?php if ($this->canShowBlock()): ?>
+	function setAmstcredAmountAvailable(balance, formattedBalance) {
+		if ($('customerbalance_placer')) {
+			if (balance == 0) {
+				$('amstcred_use_customer_balance').checked = false;
+				$('amstcred_use_customer_balance').disabled = true;
+				$('amstcred-customerbalance').hide();
+			} else {
+				$('amstcred_use_customer_balance').disabled = false;
+				$('amstcred-customerbalance').show();
+			}
+		}
+
+		if ($('amstcred_available_amount')) {
+			$('amstcred_available_amount').innerHTML = formattedBalance;
+		}
+	}
+
+	setAmstcredAmountAvailable('<?php echo $this->getBalance(); ?>', '<?php echo Mage::helper('core')->currency($this->getBalance()); ?>');
+<?php endif;?>

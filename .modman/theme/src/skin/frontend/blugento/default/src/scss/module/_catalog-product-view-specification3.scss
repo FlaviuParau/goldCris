@@ -1,0 +1,19 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-specification3.scss
+    Version:        1.0
+    Description:    Catalog product specification: Version 3
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view_specification-order == 3) {
+    #product-attribute-specs-list  {
+        li {
+            list-style: disc inside;
+            padding: 5px 0;
+
+            span.label {
+                font-weight: 700;
+                margin-right: 10px;
+            }
+        }
+    }
+}

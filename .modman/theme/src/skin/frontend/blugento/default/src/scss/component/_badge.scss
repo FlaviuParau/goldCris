@@ -1,0 +1,44 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_badge.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.catalog-product-view {
+    .product-badges {
+        position: absolute;
+        right:0;
+        top:0;
+        max-width:75px;
+    }
+}
+
+.badge,
+%badge {
+    display: inline-block;
+    padding: 12px;
+    vertical-align: baseline;
+    white-space: nowrap;
+    font-style: $badge_font-style;
+    font-weight: $badge_font-weight;
+    font-size: $badge_font-size;
+    line-height: 1;
+    font-family: $badge_font-family;
+    text-align: center;
+    text-transform: $badge_text-transform;
+    margin-bottom: 10px;
+}
+
+.badge--new,
+%badge--new {
+    display: $badge--new_display;
+    background-color: $badge--new_background-color;
+    color: $badge--new_color;
+}
+
+.badge--sale,
+%badge--sale {
+    display: $badge--sale_display;
+    background-color: $badge--sale_background-color;
+    color: $badge--sale_color;
+}

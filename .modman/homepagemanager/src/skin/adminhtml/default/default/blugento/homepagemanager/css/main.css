@@ -1,0 +1,184 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       main.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+/*! ----------------------------------------------------------------------------
+    Filename:       config.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+/*! ----------------------------------------------------------------------------
+    Filename:       config/core.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+/*! ----------------------------------------------------------------------------
+    Filename:       mixin/grid.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+/*! ----------------------------------------------------------------------------
+    Filename:       mixin/util.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+/*! ----------------------------------------------------------------------------
+    Filename:       core/grid.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+.row { display: flex; flex-flow: row wrap; margin-left: 0px; margin-right: 0px; }
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { position: relative; float: left; min-height: 1px; padding-left: 0px; padding-right: 0px; }
+
+.col-1 { width: 8.33333%; }
+
+.col-2 { width: 16.66667%; }
+
+.col-3 { width: 25%; }
+
+.col-4 { width: 33.33333%; }
+
+.col-5 { width: 41.66667%; }
+
+.col-6 { width: 50%; }
+
+.col-7 { width: 58.33333%; }
+
+.col-8 { width: 66.66667%; }
+
+.col-9 { width: 75%; }
+
+.col-10 { width: 83.33333%; }
+
+.col-11 { width: 91.66667%; }
+
+.col-12 { width: 100%; }
+
+.col-pull-0 { right: 0%; }
+
+.col-pull-1 { right: 8.33333%; }
+
+.col-pull-2 { right: 16.66667%; }
+
+.col-pull-3 { right: 25%; }
+
+.col-pull-4 { right: 33.33333%; }
+
+.col-pull-5 { right: 41.66667%; }
+
+.col-pull-6 { right: 50%; }
+
+.col-pull-7 { right: 58.33333%; }
+
+.col-pull-8 { right: 66.66667%; }
+
+.col-pull-9 { right: 75%; }
+
+.col-pull-10 { right: 83.33333%; }
+
+.col-pull-11 { right: 91.66667%; }
+
+.col-pull-12 { right: 100%; }
+
+.col-push-0 { left: 0%; }
+
+.col-push-1 { left: 8.33333%; }
+
+.col-push-2 { left: 16.66667%; }
+
+.col-push-3 { left: 25%; }
+
+.col-push-4 { left: 33.33333%; }
+
+.col-push-5 { left: 41.66667%; }
+
+.col-push-6 { left: 50%; }
+
+.col-push-7 { left: 58.33333%; }
+
+.col-push-8 { left: 66.66667%; }
+
+.col-push-9 { left: 75%; }
+
+.col-push-10 { left: 83.33333%; }
+
+.col-push-11 { left: 91.66667%; }
+
+.col-push-12 { left: 100%; }
+
+.col-offset-0 { margin-left: 0%; }
+
+.col-offset-1 { margin-left: 8.33333%; }
+
+.col-offset-2 { margin-left: 16.66667%; }
+
+.col-offset-3 { margin-left: 25%; }
+
+.col-offset-4 { margin-left: 33.33333%; }
+
+.col-offset-5 { margin-left: 41.66667%; }
+
+.col-offset-6 { margin-left: 50%; }
+
+.col-offset-7 { margin-left: 58.33333%; }
+
+.col-offset-8 { margin-left: 66.66667%; }
+
+.col-offset-9 { margin-left: 75%; }
+
+.col-offset-10 { margin-left: 83.33333%; }
+
+.col-offset-11 { margin-left: 91.66667%; }
+
+.col-offset-12 { margin-left: 100%; }
+
+/*! ----------------------------------------------------------------------------
+    Filename:       core/util.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+.cf:after, .row:after { content: ''; display: table; clear: both; }
+
+.layouts-images { padding-top: 18px; }
+.layouts-images > div { overflow: hidden; margin-bottom: 20px; }
+.layouts-images label { margin-bottom: 10px; display: block; font-size: 16px; font-weight: bold; }
+.layouts-images li { float: left; margin-right: 20px; }
+.layouts-images li img { max-width: 100px; }
+
+.mce_blugento_homepagemanager img.mceIcon { width: 16px !important; height: 16px !important; margin: 2px; }
+
+.hm-layout-data > li { overflow: hidden; clear: both; float: left; width: 100%; margin-bottom: 10px; border-radius: 5px; background-color: #777; }
+.hm-layout-data .row { padding: 2px; }
+
+.hm-fbtn-wrap { position: absolute; right: 0; bottom: 0; left: 0; overflow: hidden; border-top: 2px solid #777; border-radius: 0 0 4px 4px; background-color: #fff; }
+
+.hm-fbtn { float: right; cursor: pointer; display: block; width: 24px; height: 24px; line-height: 24px; padding: 4px; border-left: 1px solid #f1f1f1; text-align: center; text-decoration: none; background-color: #fff; background-repeat: no-repeat; background-position: 50% 50%; }
+.hm-fbtn:hover { text-decoration: none; background-color: #f1f1f1; }
+.hm-fbtn--widget-add { background-image: url("../images/plus.png"); }
+.hm-fbtn--widget-edit { background-image: url("../images/pencil.png"); }
+.hm-fbtn--clear { background-image: url("../images/minus.png"); }
+.hm-fbtn--clear-disabled { cursor: default; background-image: url("../images/minus-gray.png"); }
+.hm-fbtn img { display: block; vertical-align: middle; }
+
+.hm-col-content { position: relative; min-width: 250px; min-height: 150px; background: #f1f1f1; }
+
+.hm-row-handler { float: left; width: 30px; height: 144px; padding-bottom: 5px; padding-top: 5px; border-bottom-left-radius: 4px; border-top-left-radius: 4px; background: #777; }
+
+.hm-row-container * { box-sizing: border-box; }
+.hm-row-container > div + div { border-left: 2px solid #777; }
+
+.hm-sort { cursor: move; width: 30px; height: 20px; margin-bottom: 10px; background: url("../images/move.png") no-repeat 50% 50%; }
+
+.hm-delete { cursor: pointer; width: 30px; height: 20px; margin-bottom: 10px; background: url("../images/delete.png") no-repeat 50% 50%; }
+
+.hm-full { cursor: pointer; width: 30px; height: 20px; margin-bottom: 10px; text-align: center; }
+
+.hm-clone { cursor: pointer; background: url("../images/copy.png") no-repeat 50% 50%; width: 30px; height: 20px; }
+
+.hm-widget-preview { display: table; }
+.hm-widget-preview img, .hm-widget-preview span { display: table-cell; vertical-align: middle; }
+.hm-widget-preview img { width: 35px; margin-right: 5px; }
+
+.ui-button-icon-only .ui-icon { margin-top: -8px !important; margin-left: -8px !important; }

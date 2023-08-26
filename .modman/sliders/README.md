@@ -1,0 +1,1 @@
+Blugento Sliders Extension

@@ -1,0 +1,38 @@
+<?php
+/**
+ * @category    Blugento
+ * @package     Blugento_Localizer
+ */
+?>
+<?php
+/**
+ * @var $this Blugento_Localizer_Block_Legals
+ * @var $helper Blugento_Localizer_Helper_Data
+ * @var $_taxHelper Mage_Tax_Helper_Data
+ */
+$helper = $this->helper('blugento_localizer');
+$_taxHelper = $this->helper('tax');
+$shippingUrl = $this->getUrl($this->__('cms_page_shipping'));
+?>
+<div class="legals">
+    <?php if ($_taxHelper->displayPriceExcludingTax()): ?>
+        <?php if ($helper->isShippingIncludedInPrice()): ?>
+            <?php echo $this->__('All prices excluding tax and including <a href="%s">shipping</a>.', $shippingUrl) ?>
+        <?php else: ?>
+            <?php echo $this->__('All prices excluding tax and excluding <a href="%s">shipping</a>.', $shippingUrl) ?>
+        <?php endif; ?>
+    <?php elseif ($_taxHelper->displayPriceIncludingTax()): ?>
+        <?php if ($helper->isShippingIncludedInPrice()): ?>
+            <?php echo $this->__('All prices including tax and including <a href="%s">shipping</a>.', $shippingUrl) ?>
+        <?php else: ?>
+            <?php echo $this->__('All prices including tax and excluding <a href="%s">shipping</a>.', $shippingUrl) ?>
+        <?php endif; ?>
+    <?php elseif ($_taxHelper->displayBothPrices()): ?>
+        <?php if ($helper->isShippingIncludedInPrice()): ?>
+            <?php echo $this->__('All prices including <a href="%s">shipping</a>.', $shippingUrl) ?>
+        <?php else: ?>
+            <?php echo $this->__('All prices excluding <a href="%s">shipping</a>.', $shippingUrl) ?>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php echo $this->__('The crossed prices correspond to the previous prices on %s.', $helper->getStoreName()) ?>
+</div>

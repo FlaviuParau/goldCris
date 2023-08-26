@@ -1,0 +1,12 @@
+src/app/code/local/Blugento/FormsGenerator																app/code/local/Blugento/FormsGenerator
+
+src/app/etc/modules/Blugento_FormsGenerator.xml															app/etc/modules/Blugento_FormsGenerator.xml
+
+src/app/design/adminhtml/default/default/layout/formsgenerator.xml								        app/design/adminhtml/default/default/layout/formsgenerator.xml
+src/app/design/adminhtml/default/default/template/formsgenerator							            app/design/adminhtml/default/default/template/formsgenerator
+
+src/js/blugento/formsgenerator																			js/blugento/formsgenerator
+
+src/skin/adminhtml/default/default/blugento/formsgenerator												skin/adminhtml/default/default/blugento/formsgenerator
+
+src/app/locale/ro_RO/Blugento_FormsGenerator.csv                                                        app/locale/ro_RO/Blugento_FormsGenerator.csv

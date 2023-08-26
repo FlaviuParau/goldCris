@@ -1,0 +1,26 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-main.scss
+    Version:        1.0
+    Description:    Page - Main Styles
+    ------------------------------------------------------------------------- */
+
+.page-main {
+    position: relative;
+
+    .page-container-wrapper {
+        background-color: $page-main_background-color;
+        color: $page-main_color;
+    }
+
+    .page-container {
+        @if (not $isContainerPaddingTop) {
+            padding-top: 0;
+        }
+    }
+    
+    .please-wait {
+        img {
+            max-width: 38px;
+        }
+    }
+}

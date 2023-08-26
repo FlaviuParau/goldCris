@@ -1,0 +1,233 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-product-view-media.scss
+    Version:        1.0
+    Description:    Product Details Page - Media
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.catalog-product-view {
+    .mfp-wrap {
+        #popup-mobile {
+            padding: 0 14px;
+
+            li {
+                a {
+                    display: block;
+                    text-align: center;
+
+                    img {
+                        display: inline-block;
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+
+            #media-mobile {
+                border: 1px solid $color--primary;
+                border-bottom: 0;
+                margin-bottom: -2px;
+            }
+
+            #media-carousel-mobile {
+                border-top: 2px solid $color--primary;
+                z-index: 10;
+
+                li {
+                    border-right: 1px solid $color--primary;
+                    border-left: 1px solid $color--primary;
+                }
+            }
+
+            .mfp-close {
+                top: 0;
+                right: 20px;
+            }
+        }
+    }
+}
+
+.product-view {
+    .product-img-box {
+        position: relative;
+        float: left;
+        width: 50%;
+
+        @include tablet {
+            padding-right: 20px;
+        }
+
+        @include phone {
+            width: 100%;
+            padding-right: 0;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .product-image {
+            position: relative;
+            background-color: $product-view__product-image_background-color;
+            text-align: center;
+    
+            #media-swipe {
+                opacity: 0;
+            }
+
+            .product-gallery {
+                @if ($layout--product-view_main_image_action == 1) {
+                    cursor: default;
+                }
+            }
+        }
+    
+        #media-carousel,
+        .product-badges,
+        .discount-percentage {
+            display: none;
+        }
+    
+        .ajax-loader {
+            position: absolute;
+            content: '';
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            background: $ajax-overlay_background-color image('opc-ajax-loader.gif') center center no-repeat;
+            background-size: 50px;
+            z-index: 100;
+        }
+
+        #popup-mobile {
+            clear: both;
+            display: none;
+            visibility: hidden;
+            height: 0;
+            z-index: -1;
+            opacity: 0;
+
+            @include mobile {
+                display: block !important;
+            }
+
+            > div {
+                float: none;
+                width: 100%;
+            }
+        }
+    
+        @if ($layout--product-view_discount_percentage_mode == 1) {
+            .discount-percentage {
+                position: absolute;
+                min-width: 67px;
+                top: 0;
+                right: 0;
+            
+                span {
+                    display: block;
+                    padding: 10px;
+                    font-weight: 600;
+                    text-align: center;
+                    color: color('e');
+                    background-color: $product-view__image_discount_percentage-background-color;
+                }
+                
+                + .product-badges {
+                    top: 47px;
+                    min-width: 67px;
+                    
+                    .badge--sale {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .options-list, .custom-options-wrapper {
+        @include cf;
+    }
+
+    .input-box {
+        .clear-all {
+            display: none;
+            cursor: pointer;
+        }
+    }
+
+    .custom-options-wrapper {
+        margin: 10px 0 10px -20px;
+
+        li {
+            float: left;
+            margin: 0 0 20px 20px;
+            width: calc(100% / 4 - 20px);
+
+            .custom-options-image-box {
+                position: relative;
+                padding-top: 20px;
+
+                .price-box-custom {
+                    background: $color--primary;
+                    display: inline-block;
+                    position: absolute;
+                    right: 10px;
+                    bottom: 20px;
+                    color: $color--secondary;
+                    padding: 5px 10px;
+                    text-align: center;
+                }
+            }
+
+            .product-name-sku {
+                text-align: center;
+            }
+
+            label {
+                background-position: 0 0;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            input[type=radio]:checked + label,
+            input[type=radio]:checked + span.label > label {
+                background-image: url(../images/icon--checkbox--b1--checked.svg);
+            }
+
+            input[type=radio]+label, input[type=radio]+span.label>label {
+                background-image: url(../images/icon--checkbox--b1.svg);
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                -webkit-transition: -webkit-transform 0.2s;
+                -moz-transition: -moz-transform 0.2s;
+                transition: transform 0.2s;
+            }
+
+            &:hover img {
+                -webkit-transform: scale(0.9);
+                -moz-transform: scale(0.9);
+                -ms-transform: scale(0.9);
+                -o-transform: scale(0.9);
+                transform: scale(0.9);
+            }
+        }
+    }
+}
+
+@import 'catalog-product-view-media2';
+@import 'catalog-product-view-media1';

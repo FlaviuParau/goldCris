@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <sections>
+          <blugento_socialmedia>
+              <groups>
+                  <space_between_groups2>
+                      <label>--------------------------------------------------------------------------------------------------------------</label>
+                      <frontend_type>text</frontend_type>
+                      <sort_order>13</sort_order>
+                      <show_in_default>1</show_in_default>
+                      <show_in_website>1</show_in_website>
+                      <show_in_store>1</show_in_store>
+                  </space_between_groups2>
+                <like_general translate="label">
+                    <label>Facebook Like General</label>
+                    <sort_order>14</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <appid translate="label">
+                            <label>FaceBook Application Id and Key</label>
+                            <comment><![CDATA[Get <a href="http://www.facebook.com/developers/createapp.php">Facebook API</a> access info.]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </appid>
+                        <appsecret translate="label">
+                            <label>FaceBook Application Secret Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </appsecret>
+                        <lang translate="label">
+                            <label>Button Language</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>TM_FacebookLB_Adminhtml_Model_System_Config_Source_Lang</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </lang>
+                    </fields>
+                </like_general>
+                <category_products translate="label">
+                    <label>FaceBook Like Button (Category Products)</label>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                        <fields>
+                            <enabled translate="label">
+                                <label>Enabled</label>
+                                <frontend_type>select</frontend_type>
+                                <source_model>adminhtml/system_config_source_yesno</source_model>
+                                <sort_order>10</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </enabled>
+                            <send translate="lable comment">
+                                <label>Send button</label>
+                                <comment>Specifies whether to include a share button beside the Like button.</comment>
+                                <frontend_type>select</frontend_type>
+                                <source_model>adminhtml/system_config_source_yesno</source_model>
+                                <sort_order>23</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </send>
+                            <layout translate="label comment">
+                                <label>Layout style</label>
+                                <comment><![CDATA[See the <a href="https://developers.facebook.com/docs/plugins/like-button/#faqlayout">Facebook Dev FAQ</a> for more details.]]></comment>
+                                <frontend_type>select</frontend_type>
+                                <source_model>TM_FacebookLB_Adminhtml_Model_System_Config_Source_Layout</source_model>
+                                <sort_order>25</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </layout>
+                            <showfaces translate="lable comment">
+                                <label>Show faces</label>
+                                <comment>Specifies whether to display profile photos below the button (standard layout only).</comment>
+                                <frontend_type>select</frontend_type>
+                                <source_model>adminhtml/system_config_source_yesno</source_model>
+                                <sort_order>30</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                                <depends><layout>standard</layout></depends>
+                            </showfaces>
+                            <width translate="lable comment">
+                                <label>Width</label>
+                                <comment><![CDATA[The width of the plugin (standard layout only), which is subject to the minimum and default width. See <a href="https://developers.facebook.com/docs/plugins/like-button/#faqlayout">Layout Settings at Facebook Dev FAQ</a> for more details.]]></comment>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>40</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                                <depends><layout>standard</layout></depends>
+                            </width>
+                            <verb translate="label">
+                                <label>Verb on the button</label>
+                                <frontend_type>select</frontend_type>
+                                <source_model>TM_FacebookLB_Adminhtml_Model_System_Config_Source_Verb</source_model>
+                                <sort_order>50</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </verb>
+                            <color translate="label comment">
+                                <label>Color scheme</label>
+                                <comment>The color scheme used by the plugin for any text outside of the button itself.</comment>
+                                <frontend_type>select</frontend_type>
+                                <source_model>TM_FacebookLB_Adminhtml_Model_System_Config_Source_Color</source_model>
+                                <sort_order>70</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </color>
+                        </fields>
+                </category_products>
+                <productlike translate="label">
+                    <label>FaceBook Like Button (Product Page)</label>
+                    <sort_order>16</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                        <fields>
+                            <enabled translate="label">
+                                <label>Enabled</label>
+                                <frontend_type>select</frontend_type>
+                                <source_model>adminhtml/system_config_source_yesno</source_model>
+                                <sort_order>10</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </enabled>
+                            <send translate="lable comment">
+                                <label>Send button</label>
+                                <comment>Specifies whether to include a share button beside the Like button.</comment>
+                                <frontend_type>select</frontend_type>
+                                <source_model>adminhtml/system_config_source_yesno</source_model>
+                                <sort_order>23</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </send>
+                            <layout translate="label comment">
+                                <label>Layout style</label>
+                                <comment><![CDATA[See the <a href="https://developers.facebook.com/docs/plugins/like-button/#faqlayout">Facebook Dev FAQ</a> for more details.]]></comment>
+                                <frontend_type>select</frontend_type>
+                                <source_model>TM_FacebookLB_Adminhtml_Model_System_Config_Source_Layout</source_model>
+                                <sort_order>25</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </layout>
+                            <showfaces translate="lable comment">
+                                <label>Show faces</label>
+                                <comment>Specifies whether to display profile photos below the button (standard layout only).</comment>
+                                <frontend_type>select</frontend_type>
+                                <source_model>adminhtml/system_config_source_yesno</source_model>
+                                <sort_order>30</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                                <depends><layout>standard</layout></depends>
+                            </showfaces>
+                            <width translate="lable comment">
+                                <label>Width</label>
+                                <comment><![CDATA[The width of the plugin (standard layout only), which is subject to the minimum and default width. See <a href="https://developers.facebook.com/docs/plugins/like-button/#faqlayout">Layout Settings at Facebook Dev FAQ</a> for more details.]]></comment>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>40</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                                <depends><layout>standard</layout></depends>
+                            </width>
+                            <verb translate="label">
+                                <label>Verb on the button</label>
+                                <frontend_type>select</frontend_type>
+                                <source_model>TM_FacebookLB_Adminhtml_Model_System_Config_Source_Verb</source_model>
+                                <sort_order>50</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </verb>
+                            <color translate="label comment">
+                                <label>Color scheme</label>
+                                <comment>The color scheme used by the plugin for any text outside of the button itself.</comment>
+                                <frontend_type>select</frontend_type>
+                                <source_model>TM_FacebookLB_Adminhtml_Model_System_Config_Source_Color</source_model>
+                                <sort_order>70</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                            </color>
+                        </fields>
+                </productlike>
+            </groups>
+        </blugento_socialmedia>
+    </sections>
+</config>

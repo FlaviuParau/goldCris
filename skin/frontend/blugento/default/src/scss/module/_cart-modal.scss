@@ -1,0 +1,136 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_dock.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+.overlay-modal,
+.close-modal {
+  display: none;
+}
+
+@if ($layout--checkout_cart_modal == 1) {
+  body {
+    #ajaxcart-modal {
+      display: none;
+    }
+    
+    &.checkout-cart-index.coupon-ajax,
+    &.ajax-cart-error {
+      #ajaxcart-modal {
+        display: initial;
+      }
+    }
+
+    .block-cart {
+      .block-cart-aside {
+        right: -420px;
+        left: inherit !important;
+
+        @include mobile {
+          width: 100% !important;
+
+          .close-modal {
+            display: block;
+            font-size: 50px;
+            position: absolute;
+            right: 10px;
+            top: -12px;
+            cursor: pointer;
+
+            &:after{
+              display: inline-block;
+              content: "\00d7";
+              color: color('m');
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .block-cart:hover {
+    .block-cart-aside {
+      display: none;
+    }
+  }
+
+  .cart-modal-open {
+    #ajaxcart-overlay {
+      background: transparent;
+    }
+
+    .block-cart > a {
+      z-index: z('wrap-dock');
+    }
+
+    .overlay-modal {
+      background-color: color('m');
+      display: block;
+      opacity: 0.8;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 11;
+    }
+
+    .close-modal {
+      display: block;
+      font-size: 50px;
+      line-height: 60px;
+      position: absolute;
+      right: 10px;
+      top: 0;
+      cursor: pointer;
+
+      &:after{
+        display: inline-block;
+        content: "\00d7";
+        color: color('m');
+      }
+    }
+
+    .block-cart-aside {
+      display: block !important;
+    }
+
+    .block-cart-aside  {
+      background-color: $mini-cart__block-content_background-color;
+      z-index: z('dock');
+      position: fixed !important;
+      overflow: auto !important;
+      display: none;
+      margin: 0 !important;
+      color: color('b');
+      top: 0 !important;
+      bottom: 0 !important;
+      height: 100% !important;
+
+      .actions {
+        .button {
+          display: block;
+          margin: 10px 0 0;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .dock-open,
+  %dock-open,
+  .cart-modal-open {
+    overflow: hidden;
+    position: fixed;
+
+    &--right {
+      top: 0;
+      right: 420px;
+    }
+
+    .dock-trigger--active {
+      z-index: z('dock');
+      position: relative;
+    }
+  }
+}

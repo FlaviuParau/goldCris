@@ -1,0 +1,14 @@
+src/app/code/local/Amasty/StoreCredit								app/code/local/Amasty/StoreCredit
+src/app/design/adminhtml/default/default/layout/amasty/amstcred		app/design/adminhtml/default/default/layout/amasty/amstcred
+src/app/design/adminhtml/default/default/template/amasty/amstcred	app/design/adminhtml/default/default/template/amasty/amstcred
+src/app/design/frontend/base/default/layout/amasty/amstcred			app/design/frontend/base/default/layout/amasty/amstcred
+src/app/design/frontend/base/default/template/amasty/amstcred		app/design/frontend/base/default/template/amasty/amstcred
+src/app/design/frontend/rwd/default/layout/amasty/amstcred			app/design/frontend/rwd/default/layout/amasty/amstcred
+src/app/etc/modules/Amasty_StoreCredit.xml							app/etc/modules/Amasty_StoreCredit.xml
+src/app/locale/en_US/template/email/*								app/locale/en_US/template/email
+src/app/locale/en_US/Amasty_StoreCredit.csv							app/locale/en_US/Amasty_StoreCredit.csv
+src/app/locale/ro_RO/template/email/*								app/locale/ro_RO/template/email
+src/app/locale/ro_RO/Amasty_StoreCredit.csv							app/locale/ro_RO/Amasty_StoreCredit.csv
+src/js/amasty/amstcred												js/amasty/amstcred
+src/skin/frontend/base/default/css/amasty/amstcred					skin/frontend/base/default/css/amasty/amstcred
+src/skin/frontend/rwd/default/css/amasty/amstcred					skin/frontend/rwd/default/css/amasty/amstcred

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="setCanLoadExtJs"><flag>1</flag></action>
+            <action method="setCanLoadRulesJs"><flag>1</flag></action>
+            <action method="addCss"><name>aw_giftwrap/css/style.css</name></action>
+        </reference>
+    </adminhtml_system_config_edit>
+
+    <!-- AW_Giftwrap section adding to order view START -->
+    <adminhtml_sales_order_view>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/adminhtml_sales_view_details" name="aw_giftwrap_sales_view_details" template="aw_giftwrap/sales/view/details.phtml">
+                <block type="aw_giftwrap/adminhtml_sales_view_details_giftwrap" name="aw_giftwrap_sales_view_details_giftwrap" template="aw_giftwrap/sales/view/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="order_totals">
+            <block type="aw_giftwrap/adminhtml_sales_order_totals_giftwrap" name="aw_giftwrap.order.totals" template="aw_giftwrap/sales/totals/giftwrap.phtml" />
+        </reference>
+    </adminhtml_sales_order_view>
+    <adminhtml_sales_order_shipment_new>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/adminhtml_sales_view_details" name="aw_giftwrap_sales_view_details" template="aw_giftwrap/sales/view/details.phtml">
+                <block type="aw_giftwrap/adminhtml_sales_view_details_giftwrap" name="aw_giftwrap_sales_view_details_giftwrap" template="aw_giftwrap/sales/view/details/giftwrap.phtml" />
+            </block>
+        </reference>
+    </adminhtml_sales_order_shipment_new>
+    <adminhtml_sales_order_shipment_view>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/adminhtml_sales_view_details" name="aw_giftwrap_sales_view_details" template="aw_giftwrap/sales/view/details.phtml">
+                <block type="aw_giftwrap/adminhtml_sales_view_details_giftwrap" name="aw_giftwrap_sales_view_details_giftwrap" template="aw_giftwrap/sales/view/details/giftwrap.phtml" />
+            </block>
+        </reference>
+    </adminhtml_sales_order_shipment_view>
+    <adminhtml_sales_order_invoice_new>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/adminhtml_sales_view_details" name="aw_giftwrap_sales_view_details" template="aw_giftwrap/sales/view/details.phtml">
+                <block type="aw_giftwrap/adminhtml_sales_view_details_giftwrap" name="aw_giftwrap_sales_view_details_giftwrap" template="aw_giftwrap/sales/view/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="aw_giftwrap/adminhtml_sales_order_totals_giftwrap" name="aw_giftwrap.invoice.totals" template="aw_giftwrap/sales/totals/giftwrap.phtml" />
+        </reference>
+    </adminhtml_sales_order_invoice_new>
+    <adminhtml_sales_order_invoice_view>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/adminhtml_sales_view_details" name="aw_giftwrap_sales_view_details" template="aw_giftwrap/sales/view/details.phtml">
+                <block type="aw_giftwrap/adminhtml_sales_view_details_giftwrap" name="aw_giftwrap_sales_view_details_giftwrap" template="aw_giftwrap/sales/view/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="invoice_totals">
+            <block type="aw_giftwrap/adminhtml_sales_order_totals_giftwrap" name="aw_giftwrap.invoice.totals" template="aw_giftwrap/sales/totals/giftwrap.phtml" />
+        </reference>
+    </adminhtml_sales_order_invoice_view>
+    <adminhtml_sales_order_invoice_updateqty>
+        <reference name="invoice_totals">
+            <block type="aw_giftwrap/adminhtml_sales_order_totals_giftwrap" name="aw_giftwrap.invoice.totals" template="aw_giftwrap/sales/totals/giftwrap.phtml" />
+        </reference>
+    </adminhtml_sales_order_invoice_updateqty>
+    <adminhtml_sales_order_creditmemo_new>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/adminhtml_sales_view_details" name="aw_giftwrap_sales_view_details" template="aw_giftwrap/sales/view/details.phtml">
+                <block type="aw_giftwrap/adminhtml_sales_view_details_giftwrap" name="aw_giftwrap_sales_view_details_giftwrap" template="aw_giftwrap/sales/view/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="aw_giftwrap/adminhtml_sales_order_totals_giftwrap" name="aw_giftwrap.invoice.totals" template="aw_giftwrap/sales/totals/giftwrap.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_new>
+    <adminhtml_sales_order_creditmemo_view>
+        <reference name="head">
+            <action method="addCss"><stylesheet>aw_giftwrap/css/style.css</stylesheet></action>
+        </reference>
+        <reference name="content">
+            <block type="aw_giftwrap/adminhtml_sales_view_details" name="aw_giftwrap_sales_view_details" template="aw_giftwrap/sales/view/details.phtml">
+                <block type="aw_giftwrap/adminhtml_sales_view_details_giftwrap" name="aw_giftwrap_sales_view_details_giftwrap" template="aw_giftwrap/sales/view/details/giftwrap.phtml" />
+            </block>
+        </reference>
+        <reference name="creditmemo_totals">
+            <block type="aw_giftwrap/adminhtml_sales_order_totals_giftwrap" name="aw_giftwrap.invoice.totals" template="aw_giftwrap/sales/totals/giftwrap.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_view>
+    <adminhtml_sales_order_creditmemo_updateqty>
+        <reference name="creditmemo_totals">
+            <block type="aw_giftwrap/adminhtml_sales_order_totals_giftwrap" name="aw_giftwrap.invoice.totals" template="aw_giftwrap/sales/totals/giftwrap.phtml" />
+        </reference>
+    </adminhtml_sales_order_creditmemo_updateqty>
+    <!-- AW_Giftwrap section adding to order view END -->
+</layout>

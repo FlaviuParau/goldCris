@@ -1,0 +1,5 @@
+src/app/code/community/Retargeting/Tracker                            app/code/community/Retargeting/Tracker
+src/app/design/frontend/base/default/layout/retargeting_tracker.xml   app/design/frontend/base/default/layout/retargeting_tracker.xml
+src/app/design/frontend/base/default/template/retargeting_tracker     app/design/frontend/base/default/template/retargeting_tracker
+src/app/etc/modules/Retargeting_Tracker.xml                           app/etc/modules/Retargeting_Tracker.xml
+src/lib/Retargeting                                                   lib/Retargeting

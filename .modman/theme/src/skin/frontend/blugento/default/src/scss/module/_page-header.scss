@@ -1,0 +1,27 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-header.scss
+    Version:        1.0
+    Description:    General Header Styles
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+@import 'page-header-v8';
+@import 'page-header-v7';
+@import 'page-header-v6';
+@import 'page-header-v5';
+@import 'page-header-v4';
+@import 'page-header-v3';
+@import 'page-header-v2';
+@import 'page-header-v1';
+
+@import 'page-header-sticky';
+
+.mini-wrapper {
+   @include cf;
+}
+
+.hello-user {
+   text-align: center;
+   padding: 10px 0;
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="right">
+            <remove name="right.reports.product.viewed" />
+            <remove name="right.reports.product.compared" />
+        </reference>
+    </default>
+
+</layout>

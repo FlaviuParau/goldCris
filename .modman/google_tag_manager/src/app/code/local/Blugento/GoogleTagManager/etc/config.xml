@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_GoogleTagManager
+ * @author      Stîncel-Toader Octavian-Cristian <tavi@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<modules>
+		<Blugento_GoogleTagManager>
+			<version>1.0.0</version>
+		</Blugento_GoogleTagManager>
+	</modules>
+	<global>
+		<blocks>
+			<blugento_googletagmanager>
+				<class>Blugento_GoogleTagManager_Block</class>
+			</blugento_googletagmanager>
+		</blocks>
+		<helpers>
+			<blugento_googletagmanager>
+				<class>Blugento_GoogleTagManager_Helper</class>
+			</blugento_googletagmanager>
+		</helpers>
+		<models>
+			<blugento_googletagmanager>
+				<class>Blugento_GoogleTagManager_Model</class>
+			</blugento_googletagmanager>
+		</models>
+	</global>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<Blugento_GoogleTagManager after="Mage_Adminhtml">Blugento_GoogleTagManager</Blugento_GoogleTagManager>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<adminhtml>
+		<translate>
+			<modules>
+				<blugento_googletagmanager>
+					<files>
+						<default>Blugento_GoogleTagManager.csv</default>
+					</files>
+				</blugento_googletagmanager>
+			</modules>
+		</translate>
+	</adminhtml>
+	<frontend>
+		<layout>
+			<updates>
+				<blugento_googletagmanager>
+					<file>blugento_googletagmanager.xml</file>
+				</blugento_googletagmanager>
+			</updates>
+		</layout>
+		<events>
+			<catalog_controller_product_view>
+				<observers>
+					<blugento_googletagmanager_product_click_view>
+						<class>blugento_googletagmanager/observer</class>
+						<method>observeProductClick</method>
+					</blugento_googletagmanager_product_click_view>
+				</observers>
+			</catalog_controller_product_view>
+			<checkout_cart_add_product_complete>
+				<observers>
+					<blugento_googletagmanager_quote_add_item>
+						<class>blugento_googletagmanager/observer</class>
+						<method>addQuoteItem</method>
+					</blugento_googletagmanager_quote_add_item>
+				</observers>
+			</checkout_cart_add_product_complete>
+			<sales_quote_remove_item>
+				<observers>
+					<blugento_googletagmanager_quote_remove_item>
+						<class>blugento_googletagmanager/observer</class>
+						<method>removeQuoteItem</method>
+					</blugento_googletagmanager_quote_remove_item>
+				</observers>
+			</sales_quote_remove_item>
+			<sales_order_place_after>
+				<observers>
+					<blugento_googletagmanager_order_place_after>
+						<class>blugento_googletagmanager/observer</class>
+						<method>orderPlaceAfter</method>
+					</blugento_googletagmanager_order_place_after>
+				</observers>
+			</sales_order_place_after>
+		</events>
+		<translate>
+			<modules>
+				<blugento_googletagmanager>
+					<files>
+						<default>Blugento_GoogleTagManager.csv</default>
+					</files>
+				</blugento_googletagmanager>
+			</modules>
+		</translate>
+	</frontend>
+</config>

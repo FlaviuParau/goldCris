@@ -1,0 +1,59 @@
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+
+<?php
+$_navLayout = (int) ($this->getLayout()->getBlock('root')->getNavLayout() ?: 2);
+$_blogLink =  (int) ($this->getLayout()->getBlock('root')->getblogLink () ?: 1);
+?>
+
+<?php
+$_menu = $this->getHtml('level-top', 'submenu');
+if (($_navLayout == 8) || ($_navLayout == 9)) {
+    $isMenuButton = true;
+
+    $rootCategoryId = Mage::app()->getStore()->getRootCategoryId();
+    $rootCategory = Mage::getModel('catalog/category')->load($rootCategoryId);
+    $rootCategoryName = $rootCategory->getName();
+}
+$isMenuButton = ($_navLayout == 8) || ($_navLayout == 9);
+$isBlog = Mage::helper('core')->isModuleEnabled('AW_Blog');
+if ($isBlog) {
+    $blogHelper = Mage::helper('blog');
+    $isBlog = $blogHelper->isEnabled();
+    $blogRoute = $blogHelper->getRoute();
+}
+
+?>
+
+<nav class="nav-container dock">
+    <?php echo $this->getChildHtml('before_links') ?>
+    <?php if ($isBlog && $_blogLink == 2): ?>
+        <ul class="links-after"><li><a href="<?php echo $this->getUrl($blogRoute) ?>"><?php echo $this->__('Blog') ?></a></li></ul>
+    <?php endif; ?>
+    <?php if ($_menu): ?>
+        <div class="nav-wrapper" id="nav-wrapper">
+            <?php if ($isMenuButton): ?>
+                <div class="nav--primary-button on-desktop" id="nav-primary-button"><?php echo $rootCategoryName ?></div>
+            <?php endif; ?>
+            <ul class="nav nav--primary" id="nav" data-layout="<?php echo $_navLayout ?>">
+                <li class="level0 actions">
+                    <a href="#" data-action="back" class="back"><?php echo $this->__('Back') ?></a>
+                </li>
+                <?php echo $_menu ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+    <?php echo $this->getChildHtml('after_links') ?>
+    <?php if ($isBlog && $_blogLink == 1): ?>
+        <ul class="links-after"><li><a href="<?php echo $this->getUrl($blogRoute) ?>"><?php echo $this->__('Blog') ?></a></li></ul>
+    <?php endif; ?>
+    <div class="nav-blocks on-mobile">
+        <?php echo $this->getChildHtml('currency.mobile') ?>
+        <?php echo $this->getChildHtml('store_language.mobile') ?>
+    </div>
+</nav>

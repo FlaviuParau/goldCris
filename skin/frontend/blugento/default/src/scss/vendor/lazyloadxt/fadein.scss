@@ -1,0 +1,8 @@
+.lazy-hidden {
+    opacity: 0;
+}
+
+.lazy-loaded {
+    transition: opacity .3s;
+    opacity: 1;
+}

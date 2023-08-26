@@ -1,0 +1,23 @@
+# Blugento Code Quality Automated Process
+image: php:7.0
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - composer
+        script:
+          - apt-get update && apt-get install -y unzip git
+          - pear install pear/PHP_CodeSniffer phpmd/phpmd 
+          - git clone https://github.com/magento-ecg/coding-standard
+          - curl -O https://s3-eu-west-1.amazonaws.com/mm-automation/phpmd/mindmagnet-magento2-phpmd.xml
+          - phpcs --standard=./coding-standard/EcgM2 ./src/
+          # - phpmd src/ text mindmagnet-magento2-phpmd.xml
+  branches:
+    master:
+      - step:
+          image: python:3.5.1
+          script:
+            - pip install awscli
+            - tar -zcf ./module.tar.gz ./src ./modman
+            - aws s3 mv ./module.tar.gz s3://blugento-modules/$BITBUCKET_REPO_SLUG.tar.gz

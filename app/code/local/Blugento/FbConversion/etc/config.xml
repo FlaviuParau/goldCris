@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+
+<!--
+  ~
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the Open Software License (OSL 3.0)
+  ~ that is bundled with this package in the file LICENSE.txt.
+  ~ It is also available through the world-wide-web at this URL:
+  ~ http://opensource.org/licenses/osl-3.0.php
+  ~
+  ~ DISCLAIMER
+  ~
+  ~ Do not edit or add to this file if you wish to upgrade this extension to
+  ~ newer versions in the future.
+  ~
+  ~ @category    Blugento
+  ~ @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+  ~ @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  ~
+  -->
+
+<config>
+    <modules>
+        <Blugento_FbConversion>
+            <version>1.0.3</version>
+        </Blugento_FbConversion>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_fbconversion>
+                <class>Blugento_FbConversion_Block</class>
+            </blugento_fbconversion>
+        </blocks>
+
+        <helpers>
+            <blugento_fbconversion>
+                <class>Blugento_FbConversion_Helper</class>
+            </blugento_fbconversion>
+        </helpers>
+
+        <models>
+            <blugento_fbconversion>
+                <class>Blugento_FbConversion_Model</class>
+                <resourceModel>fbconversion_resource</resourceModel>
+            </blugento_fbconversion>
+
+            <fbconversion_resource>
+                <class>Blugento_FbConversion_Model_Resource</class>
+                <entities>
+                    <event>
+                        <table>blugento_fbconversion_event</table>
+                    </event>
+                </entities>
+            </fbconversion_resource>
+        </models>
+
+        <resources>
+            <blugento_fbconversion_setup>
+                <setup>
+                    <module>Blugento_FbConversion</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </blugento_fbconversion_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <events>
+            <catalog_controller_product_view>
+                <observers>
+                    <blugento_fbconversion_product_view>
+                        <class>blugento_fbconversion/observer</class>
+                        <method>productPageViewEvent</method>
+                    </blugento_fbconversion_product_view>
+                </observers>
+            </catalog_controller_product_view>
+
+            <controller_action_predispatch>
+                <observers>
+                    <blugento_fbconversion_predispatch>
+                        <class>blugento_fbconversion/observer</class>
+                        <method>pagesViewEvent</method>
+                    </blugento_fbconversion_predispatch>
+                </observers>
+            </controller_action_predispatch>
+
+            <checkout_cart_product_add_after>
+                <observers>
+                    <blugento_fbconversion_add_cart>
+                        <class>blugento_fbconversion/observer</class>
+                        <method>addToCart</method>
+                    </blugento_fbconversion_add_cart>
+                </observers>
+            </checkout_cart_product_add_after>
+
+            <sales_order_place_after>
+                <observers>
+                    <blugento_fbconversion_place_order>
+                        <class>blugento_fbconversion/observer</class>
+                        <method>placeOrder</method>
+                    </blugento_fbconversion_place_order>
+                </observers>
+            </sales_order_place_after>
+
+            <wishlist_add_product>
+                <observers>
+                    <blugento_fbconversion_add_wishlist>
+                        <class>blugento_fbconversion/observer</class>
+                        <method>addToWishlist</method>
+                    </blugento_fbconversion_add_wishlist>
+                </observers>
+            </wishlist_add_product>
+        </events>
+    </frontend>
+
+    <crontab>
+        <jobs>
+            <blugento_fbconversion>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>blugento_fbconversion/cron::sendEventData</model>
+                </run>
+            </blugento_fbconversion>
+        </jobs>
+    </crontab>
+</config>

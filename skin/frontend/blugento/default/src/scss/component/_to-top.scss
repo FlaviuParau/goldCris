@@ -1,0 +1,33 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_to-top.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@if ($layout--to_top == 1) {
+    .to-top {
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        z-index: z('to-top');
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        width: 50px;
+        height: 50px;
+        background: $to-top_background-color $icon--arrow-up--c1 no-repeat 50% 50%;
+        transition: opacity .5s ease, visibility .5s ease;
+
+        @include mobile {
+            display: none;
+        }
+
+        &:hover {
+            background-color: color('q');
+        }
+
+        &.visible {
+            opacity: 1;
+        }
+    }
+}

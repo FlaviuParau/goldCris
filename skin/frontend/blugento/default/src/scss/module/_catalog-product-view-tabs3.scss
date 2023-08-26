@@ -1,0 +1,75 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_product-view-tabs3.scss
+    Version:        1.0
+    Description:    Tabs Style: Full Width - Separate Sections
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view_tabs-style == 3) {
+    .product-collateral {
+        clear: right;
+        float: right;
+        width: 100%;
+        margin-top: 50px;
+
+        @include phone {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .tab {
+            .button {
+                margin-bottom: 20px;
+            }
+        }
+
+        .data-table {
+            th,
+            td {
+                padding: 10px 20px;
+            }
+
+            th {
+                width: 30%;
+            }
+        }
+
+        .tabs-nav {
+            display: none;
+        }
+
+        .tab-nav {
+            display: block;
+            background: none;
+
+            .rating-link {
+                display: inline-block;
+                font-size: 26px;
+                font-weight: 700;
+                line-height: 32px;
+                color: #000;
+    
+                @include phone-s {
+                    font-size: 23px;
+                    line-height: 35px;
+                }
+            }
+        
+            .rating-link + .rating-box {
+                background-size: 32px 32px;
+                width: 160px;
+                height: 32px;
+                vertical-align: top;
+    
+                .rating {
+                    background-size: 32px 32px;
+                    height: 32px;
+                }
+            }
+        }
+
+        .tab {
+            display: block !important;
+            padding: 10px 10px 20px;
+        }
+    }
+}

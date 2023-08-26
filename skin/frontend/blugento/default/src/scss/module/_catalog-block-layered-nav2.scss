@@ -1,0 +1,231 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_catalog-block-layered-nav2.scss
+    Version:        1.0
+    Description:    Filters Position: Right Column on Top
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+@if ($layout--layered-nav_layout == 2) {
+    .block-layered-nav-top {
+        @include mobile {
+            .tab {
+                .filter-input {
+                    border: 0;
+                    height: 30px;
+                    line-height: 30px;
+                    width: 100%;
+                    margin-bottom: 10px;
+                    padding: 0 10px;
+                }
+
+                ol {
+                    display: block !important;
+                }
+            }
+        }
+
+        @include desktop {
+            .block-content {
+                display: inline-block;
+                width: 100%;
+                margin: 30px 0;
+            }
+
+            ul,
+            ol {
+                margin-left: -20px;
+
+                > li {
+                    display: inline-block;
+                    margin: 0 0 20px 20px;
+                    width: 150px;
+
+                    label,
+                    .label {
+                        display: block;
+                        margin-bottom: 5px;
+                        cursor: pointer;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                    }
+
+                    &.active {
+                        ol {
+                            display: block;
+                        }
+                    }
+                }
+            }
+
+            .currently-wrapper {
+                float: left;
+
+                .currently {
+                    li {
+                        position: relative;
+
+                        .btn-remove {
+                            width: 9px;
+                            background-position: 50% 50%;
+                            vertical-align: text-bottom;
+                            position: absolute;
+                            right: 5px;
+                            bottom: 4px;
+                        }
+
+                        .value {
+                            background: color('c');
+                            display: block;
+                            padding: 3px 22px 3px 5px;
+                            margin: 0;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            overflow: hidden;
+                        }
+                    }
+
+                    p {
+                        display: none;
+                    }
+                }
+            }
+
+            .tab {
+                background-position: 95% center;
+                background-size: 17px 17px;
+                background-repeat: no-repeat;
+                border: 1px solid color('c');
+                padding: 3px 5px;
+                border-radius: 3px;
+                position: relative;
+
+                .filter-input {
+                    border: 0;
+                    height: auto;
+                }
+
+                &:after,
+                &:before {
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    border-style: solid;
+                    border-color: transparent transparent color('e') transparent;
+                    position: absolute;
+                    right: 5px;
+                }
+
+                &:after {
+                    border-width: 0 3px 6px 3px;
+                    top: 4px;
+                }
+
+                &:before {
+                    border-width: 6px 3px 0 3px;
+                    border-color: #000000 transparent transparent transparent;
+                    bottom: 4px;
+                }
+
+                .show-all {
+                    display: block;
+                    cursor: pointer;
+                }
+
+                ol {
+                    background-color: color('b');
+                    border: 1px solid color('e');
+                    border-radius: 3px;
+                    display: none;
+                    margin-bottom: 10px;
+                    color: color('e');
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 100%;
+                    z-index: 10;
+                    margin: 0;
+
+                    li {
+                        display: block;
+                        padding: 4px 10px;
+                        width: auto;
+                        margin: 0;
+
+                        &.active {
+                            background: color('c');
+                        }
+                    }
+
+                    em {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        @include mobile {
+            padding: 15px 18px;
+
+            .block-title {
+                margin-bottom: 15px;
+
+                strong {
+                    font-weight: 400;
+                }
+            }
+
+            .block-subtitle {
+                display: none;
+            }
+
+            dt,
+            .block-subtitle {
+                margin-bottom: 13px;
+                font-weight: bold;
+                font-size: 14px;
+                text-transform: uppercase;
+                color: $product-category__title_color;
+            }
+
+            dd {
+                margin-bottom: 17px;
+            }
+
+            ol {
+                margin-top: -5px;
+            }
+
+            li {
+                margin-top: 5px;
+
+                a {
+                    color: color('c');
+                }
+
+                em {
+                    float: right;
+                    font-style: normal;
+                    color: $block-layered-nav__filter-matches-fg;
+                }
+            }
+
+            .currently-wrapper {
+                margin: 0 -18px 40px;
+                padding: 20px;
+                background-color: color('c');
+                color: color('e');
+
+                .btn-remove {
+                    float: right;
+                }
+            }
+
+            .currently {
+                li {
+                    @include cf;
+                }
+            }
+        }
+    }               
+}

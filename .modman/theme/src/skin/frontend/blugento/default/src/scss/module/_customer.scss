@@ -1,0 +1,1507 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_customer.scss
+    Version:        1.0
+    Description:    Customer - General Styles
+    TOC:
+        - Login / Create Account / Forgot Password / Reset Forgotten Password
+        - My Account Global Styles
+        - Dashboard
+        - General Account Box
+        - Address Book
+        - Order View
+    ------------------------------------------------------------------------- */
+
+//  ----------------------------------------------------------------------------
+//  Login / Create Account / Forgot Password / Reset Forgotten Password
+//  ----------------------------------------------------------------------------
+
+@import '../mixin/_util.scss';
+
+@if (($my_account_register_new_layout == 2) and ($my_account_login_new_layout == 2)) {
+    .registered-users {
+        float: left;
+        width: 49%;
+        padding: 25px;
+        background-color: color('c');
+        
+        @include phone {
+            width: 100%;
+        }
+    }
+    
+    .new-users {
+        float: right;
+        width: 49%;
+        padding: 25px;
+        
+        @include phone {
+            width: 100%;
+            margin-top: 15px;
+            padding-left: 0;
+        }
+    }
+    
+    .account-login {
+        @include cf;
+        
+        strong.title-info {
+            width: calc(50% - 33px);
+            background-color: color('c');
+            padding: 0 0 0 20px;
+            margin: 0;
+            
+            @include mobile {
+                width: 100%;
+                padding-left: 0;
+                text-align: center;
+            }
+        }
+        
+        .facebook-wrapper {
+            width: calc(50% - 13px);
+            background-color: color('c');
+            
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+    
+    .account-create {
+        > form {
+            padding: 25px;
+            background-color: color('c');
+        }
+    }
+    
+    .account-forgotpassword {
+        .buttons-set p.required {
+            float: left;
+        }
+        
+        .form-list .input-text {
+            max-width: 300px;
+        }
+    }
+    
+    .account-resetforgottenpassword {
+        .form-list .input-text {
+            max-width: 300px;
+        }
+        
+        .fieldset {
+            margin-top: 40px;
+        }
+        
+        .buttons-set p.required {
+            float: left;
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  My Account Global Styles
+    //  ----------------------------------------------------------------------------
+    
+    .customer-account {
+        .main-aside {
+            .nav-container {
+                @include desktop {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+    .my-account {
+        @include cf;
+        
+        .page-title {
+            display: none;
+            &.title-buttons {display: block}
+            
+            @include mobile {
+                display: block;
+            }
+        }
+        
+        h2.legend {
+            padding-bottom: 5px;
+            color: color('f');
+        }
+        
+        a {
+            color: color('q');
+            
+            &.link-print {
+                @include inline-block();
+                padding: 10px 20px;
+                border: 0;
+                font-weight: 700;
+                text-transform: uppercase;
+                background-color: $button_background-color;
+                color: $button_color;
+                font-size: 13px;
+            }
+        }
+        
+        .data-table {
+            margin-bottom: $box_spacing;
+            
+            h2 {
+                margin-bottom: 5px;
+                font-weight: 700;
+            }
+            
+            p {
+                margin-bottom: 5px;
+            }
+            
+            span.nobr {
+                color: color('r');
+            }
+            
+            a.nobr {
+                text-transform: uppercase;
+                font-weight: 700;
+                color: color('q');
+            }
+        }
+    }
+    
+    .form-list {
+        .customer-dob {
+            .dob-month,
+            .dob-day {
+                float: left;
+                width: 40px;
+                margin-right: 20px;
+            }
+            
+            .dob-year {
+                float: left;
+                width: 80px;
+            }
+        }
+    }
+    
+    .window-overlay {
+        z-index: 990;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0b0b0b;
+        opacity: .8;
+    }
+    
+    .remember-me-popup {
+        z-index: 1000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        margin: -85px 0 0 -200px;
+        text-align: left;
+        background-color: color('b');
+    
+        &-head {
+            position: relative;
+            padding: 10px;
+        }
+    
+        &-body {
+            padding: 10px;
+        }
+    
+        &-close {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            display: block;
+            width: 15px;
+            height: 15px;
+            line-height: initial;
+        
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  Dashboard
+    //  ----------------------------------------------------------------------------
+    
+    .dashboard {
+        .welcome-msg {
+            margin-bottom: 15px;
+            
+            .hello {
+                font-size: 19px;
+                margin-bottom: 13px;
+            }
+        }
+        
+        // Recent Orders
+        .box-recent {
+            .data-table {
+                margin-bottom: 0;
+            }
+        }
+        
+        // Recent Reviews
+        .box-reviews {
+            li {
+                @include cf;
+                
+                padding: 10px 0;
+                border-top: 1px solid color('c');
+                
+                .number {
+                    float: left;
+                    margin-right: 10px;
+                }
+                
+                .details {
+                    overflow: hidden;
+                }
+                
+                .product-name {
+                    margin-bottom: 5px;
+                }
+                
+                .ratings {
+                    strong,
+                    .rating-box {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  General Account Box
+    //  ----------------------------------------------------------------------------
+    
+    .box-account {
+        @include cf;
+        
+        margin-bottom: 15px;
+        
+        &.box-info {
+            padding: 10px 15px;
+            background-color: color('c');
+        }
+        
+        .box-head {
+            h2 {
+                margin-bottom: 10px;
+                font-size: 19px;
+                color: color('a');
+            }
+            
+            a {
+                display: block;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+                font-weight: 700;
+                color: color('q');
+            }
+        }
+        
+        .box-title {
+            margin-bottom: 10px;
+            
+            h3 {
+                display: inline-block;
+                margin-right: 10px;
+                font-weight: 700;
+                
+                @include mobile {
+                    display: block;
+                }
+            }
+        }
+        
+        .box-content {
+            margin-bottom: 10px;
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  Address Book
+    //  ----------------------------------------------------------------------------
+    
+    .addresses-list {
+        margin: 0;
+        padding: 10px 15px;
+        background-color: color('c');
+        
+        h2 {
+            margin-bottom: 15px;
+        }
+        
+        .item {
+            margin-bottom: 20px;
+            
+            h3 {
+                margin-bottom: 10px;
+                font-weight: 700;
+            }
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  Order View
+    //  ----------------------------------------------------------------------------
+    
+    .sales-order-view {
+        @include mobile {
+            .order-info-box {
+                margin-bottom: 0;
+                
+                .col-1,
+                .col-2 {
+                    padding: 0 5px 20px;
+                }
+            }
+        }
+        
+        .page-title {
+            display: block;
+        }
+        
+        .my-account {
+            padding-top: 0;
+        }
+        
+        .order-info {
+            margin-bottom: 15px;
+            
+            li {
+                font-size: 20px;
+                color: color('f');
+            }
+        }
+    }
+    
+    .billing-agreements {
+        h2 {
+            margin: 10px 0;
+        }
+        
+        button {
+            margin-top: 10px;
+        }
+        
+        .box-content > p {
+            margin-bottom: 5px;
+            color: color('r');
+        }
+    }
+    
+    strong.title-info {
+        display: none;
+        margin: 15px 0;
+        color: $register__block-content__form_label-color;
+        font-weight: $register__block-content__form_label_font-weight;
+        font-size: $register__block-content__form_label_font-size;
+        font-family: $register__block-content__form_label_font-family;
+        text-transform: $register__block-content__form_label_text-transform;
+    }
+    
+    div.facebook-wrapper,
+    div.google-connect-login {
+        + strong.title-info {
+            display: block;
+        }
+    }
+} @else if (($my_account_register_new_layout == 1) or ($my_account_login_new_layout == 1)) {
+    .account-login {
+        @include cf;
+        border: $register__block-content__form_border-width solid $register__block-content__form_border-color;
+    
+        strong.title-info {
+            display: none;
+            color: $register__block-content__form_label-color;
+            font-weight: $register__block-content__form_label_font-weight;
+            font-size: $register__block-content__form_label_font-size;
+            font-family: $register__block-content__form_label_font-family;
+            text-transform: $register__block-content__form_label_text-transform;
+            width: calc(50% - 20px);
+            background-color: #f2f2f2;
+            padding: 0 0 0 20px;
+            margin: 0;
+            
+            @include mobile {
+                width: 100%;
+            }
+        }
+    
+        div.facebook-wrapper,
+        div.google-connect-login {
+            + strong.title-info {
+                display: block;
+            }
+        }
+        
+        div.google-connect-login {
+            background-color: #f2f2f2 !important;
+            width: 50% !important;
+            
+            @include mobile {
+                width: 100%;
+            }
+        }
+        
+        .page-title {
+            margin-top: 15px;
+            
+            h1 {
+                font-family: $register__block-content__title_font-family;
+                color: $register__block-content__title_color;
+                font-weight: $register__block-content__title_font-weight;
+                font-size: $register__block-content__title_font-size;
+                line-height: $register__block-content__title_line-height;
+                text-transform: $register__block-content__title_text-transform;
+            }
+        }
+        
+        form {
+            @include cf;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -o-flex;
+            display: flex;
+            align-items: center;
+            background-color: $register__block-content__form_background-color;
+            
+            @include phone {
+                flex-flow: row wrap;
+            }
+            
+            .registered-users {
+                float: left;
+                width: 50%;
+                padding: 25px;
+                background-color: #f2f2f2;
+                
+                @include phone {
+                    width: 100%;
+                }
+            }
+            
+            .new-users {
+                float: right;
+                width: 50%;
+                padding: 25px;
+                
+                p {
+                    color: color('e');
+                    font-size: 15px;
+                    line-height: 25px;
+                }
+                
+                @include phone {
+                    width: 100%;
+                    margin-top: 15px;
+                }
+            }
+            
+            ul.form-list {
+                margin-top: 15px;
+            }
+            
+            label {
+                color: $register__block-content__form_label-color;
+                font-weight: $register__block-content__form_label_font-weight;
+                font-size: $register__block-content__form_label_font-size;
+                font-family: $register__block-content__form_label_font-family;
+                text-transform: $register__block-content__form_label_text-transform;
+                
+                &:first-child {
+                    margin-bottom: 8px;
+                }
+            }
+            
+            .input-box {
+                input {
+                    color: $register__block-content__form_input-color;
+                    border: $register__block-content__form_input_border-width solid $register__block-content__form_input_border-color;
+                    font-weight: $register__block-content__form_input_font-weight;
+                    font-size: $register__block-content__form_input_font-size;
+                    font-family: $register__block-content__form_input_font-family;
+                    text-transform: $register__block-content__form_input_text-transform;
+                    
+                    @include phone-s {
+                        &.input-text {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            
+            .buttons-set {
+                @include phone-s {
+                    margin-top: 0;
+                    padding-top: 0;
+                }
+                
+                button.button {
+                    background-color: $register__block-content__form_button-background-color;
+                    color: $register__block-content__form_button-color;
+                    font-weight: $register__block-content__form_button-font-weight;
+                    font-size: $register__block-content__form_button-font-size;
+                    font-family: $register__block-content__form_button-font-family;
+                    text-transform: uppercase;
+                    
+                    @include desktop {
+                        padding-right: 45px;
+                        padding-left: 45px;
+                    }
+                    
+                    @include phone-s {
+                        font-size: 15px;
+                    }
+                }
+            }
+            
+            strong.title-info {
+                display: none;
+                margin: 15px 0;
+                color: $register__block-content__form_label-color;
+                font-weight: $register__block-content__form_label_font-weight;
+                font-size: $register__block-content__form_label_font-size;
+                font-family: $register__block-content__form_label_font-family;
+                text-transform: $register__block-content__form_label_text-transform;
+                width: calc(50% - 20px);
+                background-color: #f2f2f2;
+                padding: 0 0 0 20px;
+                
+                @include mobile {
+                    width: 100%;
+                    padding-left: 0;
+                    text-align: center;
+                }
+            }
+            
+            div.facebook-wrapper,
+            div.google-connect-login {
+                + strong.title-info {
+                    display: block;
+                }
+            }
+            
+            h1,
+            h2 {
+                font-family: $register__block-content__title_font-family;
+                color: $register__block-content__title_color;
+                font-weight: $register__block-content__title_font-weight;
+                font-size: $register__block-content__title_font-size;
+                line-height: $register__block-content__title_line-height;
+                text-transform: $register__block-content__title_text-transform;
+            }
+            
+            p.required,
+            a:not(.button) {
+                color: color('k');
+                font-size: 15px;
+                line-height: 25px;
+            }
+            
+            a:not(.button) {
+                color: color('e');
+            }
+            
+            span.fb_button_text {
+                max-width: inherit;
+            }
+        }
+    }
+    
+    .account-create {
+        background-color: $register__block-content__form_background-color;
+        border: $register__block-content__form_border-width solid $register__block-content__form_border-color;
+    
+        .facebook-wrapper .fb-login div.button,
+        div.inchoo-google-connect-inner {
+            text-align: center;
+        }
+    
+        strong.title-info {
+            display: none;
+            margin: 15px 0;
+            color: $register__block-content__form_label-color;
+            font-weight: $register__block-content__form_label_font-weight;
+            font-size: $register__block-content__form_label_font-size;
+            font-family: $register__block-content__form_label_font-family;
+            text-transform: $register__block-content__form_label_text-transform;
+            text-align: center;
+        }
+    
+        div.facebook-wrapper,
+        div.google-connect-login {
+            + strong.title-info {
+                display: block;
+            }
+        }
+        
+        .account-login {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .page-title {
+            margin-bottom: 0;
+            text-align: center;
+        }
+        
+        h1,
+        h2 {
+            font-family: $register__block-content__title_font-family;
+            color: $register__block-content__title_color;
+            font-weight: $register__block-content__title_font-weight;
+            font-size: $register__block-content__title_font-size;
+            line-height: $register__block-content__title_line-height;
+            text-transform: $register__block-content__title_text-transform;
+        }
+        
+        span.fb_button_text {
+            max-width: inherit;
+        }
+        
+        > form {
+            padding: 25px;
+            
+            label {
+                color: $register__block-content__form_label-color;
+                font-weight: $register__block-content__form_label_font-weight;
+                font-size: $register__block-content__form_label_font-size;
+                font-family: $register__block-content__form_label_font-family;
+                text-transform: $register__block-content__form_label_text-transform;
+                
+                &:first-child {
+                    margin-bottom: 8px;
+                }
+            }
+            
+            input[type='checkbox'] + label {
+                font-size: 13px;
+            }
+            
+            .input-box {
+                input {
+                    color: $register__block-content__form_input-color;
+                    border: $register__block-content__form_input_border-width solid $register__block-content__form_input_border-color;
+                    font-weight: $register__block-content__form_input_font-weight;
+                    font-size: $register__block-content__form_input_font-size;
+                    font-family: $register__block-content__form_input_font-family;
+                    text-transform: $register__block-content__form_input_text-transform;
+                    
+                    @include phone-s {
+                        &.input-text {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            
+            .buttons-set {
+                button.button {
+                    background-color: $register__block-content__form_button-background-color;
+                    color: $register__block-content__form_button-color;
+                    font-weight: $register__block-content__form_button-font-weight;
+                    font-size: $register__block-content__form_button-font-size;
+                    font-family: $register__block-content__form_button-font-family;
+                    text-transform: uppercase;
+                    
+                    @include desktop {
+                        padding-right: 45px;
+                        padding-left: 45px;
+                    }
+                    
+                    @include phone-s {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        
+        .content-popup-text {
+            @include phone-s {
+                margin-left: 0;
+            }
+            
+            p {
+                font-size: 11px;
+                line-height: 25px;
+            }
+        }
+        
+        p.required {
+            color: color('k');
+            font-size: 15px;
+            line-height: 25px;
+        }
+    }
+    
+    .account-forgotpassword {
+        background-color: $register__block-content__form_background-color;
+        border: $register__block-content__form_border-width solid $register__block-content__form_border-color;
+        
+        .account-forgotpassword-wrapper {
+            padding: 25px;
+        }
+        
+        .page-title {
+            h1 {
+                font-family: $register__block-content__title_font-family;
+                color: $register__block-content__title_color;
+                font-weight: $register__block-content__title_font-weight;
+                font-size: $register__block-content__title_font-size;
+                line-height: $register__block-content__title_line-height;
+                text-transform: $register__block-content__title_text-transform;
+            }
+        }
+        
+        form {
+            p {
+                color: color('e');
+                font-size: 15px;
+                line-height: 25px;
+            }
+            
+            label {
+                color: $register__block-content__form_label-color;
+                font-weight: $register__block-content__form_label_font-weight;
+                font-size: $register__block-content__form_label_font-size;
+                font-family: $register__block-content__form_label_font-family;
+                text-transform: $register__block-content__form_label_text-transform;
+                
+                &:first-child {
+                    margin-bottom: 8px;
+                }
+            }
+            
+            .input-box {
+                input {
+                    color: $register__block-content__form_input-color;
+                    border: $register__block-content__form_input_border-width solid $register__block-content__form_input_border-color;
+                    font-weight: $register__block-content__form_input_font-weight;
+                    font-size: $register__block-content__form_input_font-size;
+                    font-family: $register__block-content__form_input_font-family;
+                    text-transform: $register__block-content__form_input_text-transform;
+                    
+                    @include phone-s {
+                        &.input-text {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+            
+            .buttons-set {
+                button.button {
+                    background-color: $register__block-content__form_button-background-color;
+                    color: $register__block-content__form_button-color;
+                    font-weight: $register__block-content__form_button-font-weight;
+                    font-size: $register__block-content__form_button-font-size;
+                    font-family: $register__block-content__form_button-font-family;
+                    text-transform: uppercase;
+                    
+                    @include desktop {
+                        padding-right: 45px;
+                        padding-left: 45px;
+                    }
+                    
+                    @include phone-s {
+                        font-size: 15px;
+                    }
+                }
+            }
+            
+            p.required {
+                color: color('k');
+                font-size: 15px;
+                line-height: 25px;
+            }
+        }
+    }
+    
+    .account-resetforgottenpassword {
+        .form-list .input-text {
+            max-width: 300px;
+        }
+        
+        .fieldset {
+            margin-top: 40px;
+        }
+        
+        .buttons-set p.required {
+            float: left;
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  My Account Global Styles
+    //  ----------------------------------------------------------------------------
+    
+    .customer-account {
+        .main-aside {
+            .nav-container {
+                @include desktop {
+                    display: none;
+                }
+            }
+        }
+    }
+    
+    .my-account {
+        @include cf;
+        border: 1px solid $account__block-content_border-color;
+        padding: 20px;
+        margin-left: -11px;
+        
+        .page-title {
+            display: none;
+            
+            @include mobile {
+                display: block;
+            }
+        }
+        
+        .data-table {
+            margin-bottom: $box_spacing;
+            
+            h2 {
+                margin-bottom: 5px;
+                font-weight: 700;
+            }
+            
+            p {
+                margin-bottom: 5px;
+            }
+        }
+    }
+    
+    .form-list {
+        .customer-dob {
+            .dob-month,
+            .dob-day {
+                float: left;
+                width: 40px;
+                margin-right: 20px;
+            }
+            
+            .dob-year {
+                float: left;
+                width: 80px;
+            }
+        }
+    }
+    
+    .window-overlay {
+        z-index: 990;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0b0b0b;
+        opacity: .8;
+    }
+    
+    .remember-me-popup {
+        z-index: 1000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        margin: -85px 0 0 -200px;
+        text-align: left;
+        background-color: color('b');
+    
+        &-head {
+            position: relative;
+            padding: 10px;
+        }
+    
+        &-body {
+            padding: 10px;
+        }
+    
+        &-close {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            display: block;
+            width: 15px;
+            height: 15px;
+            line-height: initial;
+        
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  Dashboard
+    //  ----------------------------------------------------------------------------
+    
+    .dashboard {
+        .welcome-msg {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid $account__block-content_border-color;
+            
+            .hello {
+                strong {
+                    font-weight: $account__block-content__title-font-weight;
+                    font-size: $account__block-content__title-font-size;
+                    font-family: $account__block-content__title-font-family;
+                    text-transform: $account__block-content__title_text-transform;
+                    line-height: $account__block-content__title_line-height;
+                    margin-bottom: 13px;
+                }
+            }
+            
+            p {
+                color: $account__block-content__text-color;
+                font-weight: $account__block-content__text-font-weight;
+                font-size: $account__block-content__text-font-size;
+                line-height: $account__block-content__text_line-height;
+                font-family: $account__block-content__text-font-family;
+                text-transform: $account__block-content__text_text-transform;
+            }
+        }
+        
+        // Recent Orders
+        .box-recent {
+            .data-table {
+                margin-bottom: 0;
+                border-color: $account__block-content_border-color;
+                
+                thead {
+                    background-color: $account__block-content__list__current_background-color;
+                    
+                    tr.first {
+                        text-align: left;
+                    }
+                }
+                
+                th,
+                td {
+                    border-color: $account__block-content_border-color;
+                    color: $account__block-content__text-color;
+                    font-weight: $account__block-content__text-font-weight;
+                    font-size: $account__block-content__text-font-size;
+                    line-height: $account__block-content__text_line-height;
+                    font-family: $account__block-content__text-font-family;
+                    text-transform: $account__block-content__text_text-transform;
+                    
+                    span.nobr {
+                        border-color: $account__block-content_border-color;
+                        color: $account__block-content__text-color;
+                        font-weight: $account__block-content__text-font-weight;
+                        font-size: $account__block-content__text-font-size;
+                        line-height: $account__block-content__text_line-height;
+                        font-family: $account__block-content__text-font-family;
+                        text-transform: $account__block-content__text_text-transform;
+                        
+                        a {
+                            color: $account__block-content__button-color;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // Recent Reviews
+        .box-reviews {
+            li {
+                @include cf;
+                
+                padding: 10px 0;
+                border-top: 1px solid color('c');
+                
+                .number {
+                    float: left;
+                    margin-right: 10px;
+                }
+                
+                .details {
+                    overflow: hidden;
+                }
+                
+                .product-name {
+                    margin-bottom: 5px;
+                }
+                
+                .ratings {
+                    strong,
+                    .rating-box {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  General Account Box
+    //  ----------------------------------------------------------------------------
+    
+    .box-account {
+        @include cf;
+        margin-bottom: 15px;
+        
+        .box-head {
+            h2 {
+                margin-bottom: 10px;
+                font-size: $account__block-content__subtitle-font-size;
+                color: $account__block-content__subtitle-color;
+                font-weight: $account__block-content__subtitle-font-weight;
+                line-height: $account__block-content__subtitle_line-height;
+                font-family: $account__block-content__subtitle-font-family;
+                text-transform: $account__block-content__subtitle_text-transform;
+            }
+            
+            a {
+                display: inline-block;
+                margin-bottom: 15px;
+                color: $account__block-content__button-color;
+                font-weight: $account__block-content__button-font-weight;
+                font-size: $account__block-content__button-font-size;
+                line-height: $account__block-content__button_line-height;
+                font-family: $account__block-content__button-font-family;
+                text-transform: $account__block-content__button-text-transform;
+                border: 1px solid $account__block-content_button_border-color;
+                padding: 5px;
+                
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        
+        .box-title {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid $account__block-content_border-color;
+            
+            h3 {
+                display: inline-block;
+                margin-right: 10px;
+                color: $account__block-content__panel_title-color;
+                font-weight: $account__block-content__panel_title-font-weight;
+                font-size: $account__block-content__panel_title-font-size;
+                line-height: $account__block-content__panel_title_line-height;
+                font-family: $account__block-content__panel_title-font-family;
+                text-transform: $account__block-content__panel_title_text-transform;
+                
+                @include mobile {
+                    display: block;
+                    margin-right: 0;
+                    margin-bottom: 10px;
+                }
+            }
+            
+            a {
+                color: $account__block-content__button-color;
+                font-weight: $account__block-content__button-font-weight;
+                font-size: $account__block-content__button-font-size;
+                line-height: $account__block-content__button_line-height;
+                font-family: $account__block-content__button-font-family;
+                text-transform: $account__block-content__button-text-transform;
+                border: 1px solid $account__block-content_button_border-color;
+                padding: 5px;
+                
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+        
+        .box-content {
+            margin-bottom: 10px;
+            
+            > *,
+            address {
+                color: $account__block-content__text-color;
+                font-weight: $account__block-content__text-font-weight;
+                font-size: $account__block-content__text-font-size;
+                line-height: $account__block-content__text_line-height;
+                font-family: $account__block-content__text-font-family;
+                text-transform: $account__block-content__text_text-transform;
+            }
+            
+            a {
+                display: inline-block;
+                margin: 10px 0;
+                padding: 5px;
+                color: $account__block-content__button-color;
+                font-weight: $account__block-content__button-font-weight;
+                font-size: $account__block-content__button-font-size;
+                line-height: $account__block-content__button_line-height;
+                font-family: $account__block-content__button-font-family;
+                text-transform: $account__block-content__button-text-transform;
+                border: 1px solid $account__block-content_button_border-color;
+                
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  Address Book
+    //  ----------------------------------------------------------------------------
+    
+    .addresses-list {
+        margin: 0;
+        
+        h2 {
+            margin-bottom: 15px;
+            font-size: $account__block-content__subtitle-font-size;
+            color: $account__block-content__subtitle-color;
+            font-weight: $account__block-content__subtitle-font-weight;
+            line-height: $account__block-content__subtitle_line-height;
+            font-family: $account__block-content__subtitle-font-family;
+            text-transform: $account__block-content__subtitle_text-transform;
+        }
+        
+        .item {
+            margin-bottom: 20px;
+            
+            h3 {
+                margin-bottom: 10px;
+                color: $account__block-content__panel_title-color;
+                font-weight: $account__block-content__panel_title-font-weight;
+                font-size: $account__block-content__panel_title-font-size;
+                line-height: $account__block-content__panel_title_line-height;
+                font-family: $account__block-content__panel_title-font-family;
+                text-transform: $account__block-content__panel_title_text-transform;
+            }
+            
+            > *,
+            address {
+                color: $account__block-content__text-color;
+                font-weight: $account__block-content__text-font-weight;
+                font-size: $account__block-content__text-font-size;
+                line-height: $account__block-content__text_line-height;
+                font-family: $account__block-content__text-font-family;
+                text-transform: $account__block-content__text_text-transform;
+            }
+            
+            a {
+                display: inline-block;
+                margin: 10px 0;
+                padding: 5px;
+                color: $account__block-content__button-color;
+                font-weight: $account__block-content__button-font-weight;
+                font-size: $account__block-content__button-font-size;
+                line-height: $account__block-content__button_line-height;
+                font-family: $account__block-content__button-font-family;
+                text-transform: $account__block-content__button-text-transform;
+                border: 1px solid $account__block-content_button_border-color;
+                
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    
+    //  ----------------------------------------------------------------------------
+    //  Order View
+    //  ----------------------------------------------------------------------------
+    
+    .sales-order-view {
+        @include mobile {
+            .order-info-box {
+                margin-bottom: 0;
+                
+                .col-1,
+                .col-2 {
+                    padding: 0 5px 20px;
+                }
+            }
+        }
+        
+        .page-title {
+            display: block;
+        }
+        
+        .my-account {
+            padding-top: 0;
+        }
+        
+        .order-info {
+            margin-bottom: 15px;
+            
+            li {
+                font-size: 20px;
+                color: color('f');
+            }
+        }
+    }
+    
+    .billing-agreements {
+        h2 {
+            margin: 10px 0;
+        }
+        
+        button {
+            margin-top: 10px;
+        }
+        
+        .box-content > p {
+            margin-bottom: 5px;
+            color: color('r');
+        }
+    }
+    
+    .my-account {
+        p {
+            color: $account__block-content__text-color;
+            font-weight: $account__block-content__text-font-weight;
+            font-size: $account__block-content__text-font-size;
+            line-height: $account__block-content__text_line-height;
+            font-family: $account__block-content__text-font-family;
+            text-transform: $account__block-content__text_text-transform;
+        }
+        
+        p.required {
+            color: color('k');
+        }
+        
+        label {
+            color: $checkout-onepage__form_label-color;
+            font-weight: $checkout-onepage__form_label_font-weight;
+            font-size: $checkout-onepage__form_label_font-size;
+            text-transform: $checkout-onepage__form_label_text-transform;
+            font-family: $checkout-onepage__form_label_font-family;
+            
+            &:first-child {
+                margin-bottom: 8px;
+            }
+        }
+        
+        input,
+        select,
+        textarea {
+            color: $checkout-onepage__form_input-color;
+            border: $checkout-onepage__form_input_border-width solid $checkout-onepage__form_input_border-color;
+            font-weight: $checkout-onepage__form_input_font-weight;
+            font-size: $checkout-onepage__form_input_font-size;
+            text-transform: $checkout-onepage__form_input_text-transform;
+            font-family: $checkout-onepage__form_input_font-family;
+        }
+        
+        @include phone-s {
+            input.input-text {
+                width: 100%;
+            }
+        }
+        
+        @include mobile {
+            .page-title h1,
+            .page-title h2 {
+                display: none;
+            }
+        }
+        
+        .data-table {
+            margin-bottom: 0;
+            border-color: $account__block-content_border-color;
+            
+            thead {
+                background-color: $account__block-content__list__current_background-color;
+                
+                tr.first {
+                    text-align: left;
+                }
+            }
+            
+            th,
+            td {
+                border-color: $account__block-content_border-color;
+                color: $account__block-content__text-color;
+                font-weight: $account__block-content__text-font-weight;
+                font-size: $account__block-content__text-font-size;
+                line-height: $account__block-content__text_line-height;
+                font-family: $account__block-content__text-font-family;
+                text-transform: $account__block-content__text_text-transform;
+                
+                span.nobr {
+                    color: $account__block-content__text-color;
+                    font-weight: $account__block-content__text-font-weight;
+                    font-size: $account__block-content__text-font-size;
+                    line-height: $account__block-content__text_line-height;
+                    font-family: $account__block-content__text-font-family;
+                    text-transform: $account__block-content__text_text-transform;
+                    
+                    a {
+                        display: block;
+                        text-align: right;
+                        color: $account__block-content__button-color;
+                        
+                        @include phone-sm {
+                            text-align: center;
+                        }
+                    }
+                    
+                    strong {
+                        font-weight: $account__block-content__text-font-weight;
+                    }
+                }
+                
+                .product-name a,
+                a.nobr {
+                    color: $account__block-content__button-color;
+                    font-weight: $account__block-content__text-font-weight;
+                    font-size: $account__block-content__text-font-size;
+                    line-height: $account__block-content__text_line-height;
+                    font-family: $account__block-content__text-font-family;
+                    text-transform: $account__block-content__text_text-transform;
+                }
+            }
+        }
+        
+        textarea {
+            resize: none;
+        }
+        
+        h2.legend {
+            margin-bottom: 10px;
+            font-size: $account__block-content__subtitle-font-size;
+            color: $account__block-content__subtitle-color;
+            font-weight: $account__block-content__subtitle-font-weight;
+            line-height: $account__block-content__subtitle_line-height;
+            font-family: $account__block-content__subtitle-font-family;
+            text-transform: $account__block-content__subtitle_text-transform;
+        }
+        
+        .buttons-set {
+            button.button {
+                background-color: transparent;
+                color: $account__block-content__button-color;
+                font-weight: $account__block-content__button-font-weight;
+                font-size: $account__block-content__button-font-size;
+                line-height: $account__block-content__button_line-height;
+                font-family: $account__block-content__button-font-family;
+                text-transform: $account__block-content__button-text-transform;
+                border: 1px solid $account__block-content_button_border-color;
+            }
+        }
+        
+        .box-reviews {
+            li.item {
+                span.number {
+                    color: $account__block-content__text-color;
+                    font-weight: $account__block-content__text-font-weight;
+                    font-size: $account__block-content__text-font-size;
+                    line-height: $account__block-content__text_line-height;
+                    font-family: $account__block-content__text-font-family;
+                    text-transform: $account__block-content__text_text-transform;
+                }
+                
+                h3.product-name {
+                    a {
+                        color: $account__block-content__button-color;
+                        font-weight: $account__block-content__text-font-weight;
+                        font-size: $account__block-content__text-font-size;
+                        line-height: $account__block-content__text_line-height;
+                        font-family: $account__block-content__text-font-family;
+                        text-transform: $account__block-content__text_text-transform;
+                    }
+                }
+            }
+        }
+        
+        .my-wishlist {
+            table {
+                background-color: transparent;
+                
+                .label {
+                    color: $checkout-onepage__form_label-color;
+                    font-weight: $checkout-onepage__form_label_font-weight;
+                    font-size: $checkout-onepage__form_label_font-size;
+                    text-transform: $checkout-onepage__form_label_text-transform;
+                    font-family: $checkout-onepage__form_label_font-family;
+                }
+                
+                .add-to-cart-alt {
+                    button {
+                        background-color: transparent;
+                        color: $account__block-content__button-color;
+                        font-weight: $account__block-content__button-font-weight;
+                        font-size: $account__block-content__button-font-size;
+                        line-height: $account__block-content__button_line-height;
+                        font-family: $account__block-content__button-font-family;
+                        text-transform: $account__block-content__button-text-transform;
+                        border: $checkout-onepage__form_input_border-width solid $checkout-onepage__form_input_border-color;
+                        height: 45px;
+                    }
+                }
+            }
+        }
+        
+        .product-details {
+            > * {
+                color: $account__block-content__text-color;
+                font-weight: $account__block-content__text-font-weight;
+                font-size: $account__block-content__text-font-size;
+                line-height: $account__block-content__text_line-height;
+                font-family: $account__block-content__text-font-family;
+                text-transform: $account__block-content__text_text-transform;
+            }
+            
+            h2.product-name {
+                font-size: $account__block-content__subtitle-font-size;
+                color: $account__block-content__subtitle-color;
+                font-weight: $account__block-content__subtitle-font-weight;
+                line-height: $account__block-content__subtitle_line-height;
+                font-family: $account__block-content__subtitle-font-family;
+                text-transform: $account__block-content__subtitle_text-transform;
+            }
+        }
+        
+        .page-title.title-buttons {
+            h1 {
+                font-weight: $account__block-content__title-font-weight;
+                font-size: $account__block-content__title-font-size;
+                font-family: $account__block-content__title-font-family;
+                text-transform: $account__block-content__title_text-transform;
+                line-height: $account__block-content__title_line-height;
+            }
+            
+            a {
+                color: $account__block-content__button-color;
+                font-weight: $account__block-content__text-font-weight;
+                font-size: $account__block-content__text-font-size;
+                line-height: $account__block-content__text_line-height;
+                font-family: $account__block-content__text-font-family;
+                text-transform: $account__block-content__text_text-transform;
+            }
+        }
+        
+        .box-info.box-account {
+            .order-info {
+                li {
+                    margin-bottom: 10px;
+                    font-size: $account__block-content__subtitle-font-size;
+                    color: $account__block-content__subtitle-color;
+                    font-weight: $account__block-content__subtitle-font-weight;
+                    line-height: $account__block-content__subtitle_line-height;
+                    font-family: $account__block-content__subtitle-font-family;
+                    text-transform: $account__block-content__subtitle_text-transform;
+                }
+            }
+        }
+    }
+}

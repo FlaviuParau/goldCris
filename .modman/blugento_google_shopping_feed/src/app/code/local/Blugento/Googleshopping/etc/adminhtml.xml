@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <googleshopping translate="title" module="googleshopping">
+                                        <title>Google Shopping</title>
+                                    </googleshopping>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+					<googleshopping module="googleshopping">
+						<title>Googleshopping</title>
+						<sort_order>200</sort_order>
+						<children>
+							<googleshopping module="googleshopping">
+								<title>Googleshopping Manual Feed Generation</title>
+								<sort_order>100</sort_order>
+								<action>adminhtml/googleshopping/</action>
+							</googleshopping>
+						</children>
+					</googleshopping>                      
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

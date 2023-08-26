@@ -1,0 +1,69 @@
+@import '../../grunt';
+@import '../../config';
+@import '../../mixin/util';
+@import '../../mixin/responsive';
+
+.mfp-bottom-bar,
+#popup-mobile {
+    .mfp-title {
+        @include cf;
+
+        display: none;
+        padding-right: 0;
+    }
+
+    button {
+        border: 0;
+    }
+
+    .slick-prev,
+    .slick-next {
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 54px;
+        border: 0;
+        font-size: 0;
+        background-color: $products-grid__navigation_background-color;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+    }
+
+    .slick-prev {
+        left: 0;
+        background-image: url('../../../images/icon--arrow-left--b1.svg');
+    }
+
+    .slick-next {
+        right: 0;
+        background-image: url('../../../images/icon--arrow-right--b1.svg');
+    }
+}
+
+.mfp-slider ul li {
+    display: inline-block;
+}
+
+img.mfp-img {
+    display: inline-block;
+    vertical-align: middle;
+    max-height: 650px !important;
+}
+
+.mfp-figure {
+    &:after {
+        background-color: #fff;
+    }
+
+    figure {
+        min-width: 30vw;
+        min-height: 60vh;
+        line-height: 60vh;
+        text-align: center;
+    }
+
+    figcaption {
+        line-height: normal;
+    }
+}

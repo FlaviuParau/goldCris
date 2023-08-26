@@ -1,0 +1,41 @@
+<?php
+/**
+ * Class Me_Lff_Block_Checkout_Cart_Leftamountinfo
+ *
+ * @category  Me
+ * @package   Me_Lff
+ * @author    Attila Sági <sagi.attila@magevolve.com>
+ * @copyright 2015 Magevolve Ltd. (http://magevolve.com)
+ * @license   http://magevolve.com/terms-and-conditions Magevolve Ltd. License
+ * @link      http://magevolve.com
+ */
+?>
+<?php
+/**
+ * @see Me_Lff_Block_Checkout_Cart_Leftamountinfo
+ */
+?>
+<?php $lffHelper = Mage::helper('me_lff'); ?>
+<?php if ($lffHelper->isFreeShippingNotificationAvailable()) : ?>
+    <?php $coreHelper = Mage::helper('core'); ?>
+    <?php $price = $this->getAmountPrice(); ?>
+    <?php if($price > 0) :  ?>
+        <div class="block me-lff-notification">
+            <div class="block-title">
+                <?php if($blockTitle = $lffHelper->getBlockTitle()) : ?>
+                    <strong><span><?php echo $this->escapeHtml($blockTitle) ?></span></strong>
+                <?php else : ?>
+                    <strong><span><?php echo $lffHelper->__('Free Shipping Info') ?></span></strong>
+                <?php endif; ?>
+            </div>
+            <div class="block-content">
+                <?php $priceInfo = $coreHelper->formatPrice($price) . ' ' . $this->getTaxSuffixInfo(); ?>
+                <?php if ($notificationText = $lffHelper->getBlockNotificationText()) : ?>
+                    <p><?php echo str_replace('%s', $priceInfo, $notificationText); ?></p>
+                <?php else : ?>
+                    <p><?php echo $lffHelper->__('You need to add %s more to your cart, in order to use free shipping.', $priceInfo); ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

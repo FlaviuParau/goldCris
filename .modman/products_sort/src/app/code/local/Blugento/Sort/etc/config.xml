@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Products Sort
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Sort
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <modules>
+        <Blugento_Sort>
+            <version>1.0.0</version>
+        </Blugento_Sort>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_sort>
+                <class>Blugento_Sort_Block</class>
+            </blugento_sort>
+            <catalog>
+                <rewrite>
+                    <product_list_toolbar>Blugento_Sort_Block_Product_List_Toolbar</product_list_toolbar>
+                </rewrite>
+            </catalog>
+        </blocks>
+
+        <helpers>
+            <blugento_sort>
+                <class>Blugento_Sort_Helper</class>
+            </blugento_sort>
+        </helpers>
+
+        <models>
+            <catalog>
+                <rewrite>
+                    <config>Blugento_Sort_Model_Config</config>
+                    <category_attribute_source_sortby>Blugento_Sort_Model_Category_Attribute_Source_Sortby</category_attribute_source_sortby>
+                </rewrite>
+            </catalog>
+            <catalog_resource>
+                <rewrite>
+                    <product_collection>Blugento_Sort_Model_Resource_Product_Collection</product_collection>
+                </rewrite>
+            </catalog_resource>
+            <blugento_sort>
+                <class>Blugento_Sort_Model</class>
+            </blugento_sort>
+        </models>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_sort>
+                    <file>blugento_sort.xml</file>
+                </blugento_sort>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <blugento_sort>
+                    <files>
+                        <default>Blugento_Sort.csv</default>
+                    </files>
+                </blugento_sort>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_Sort after="Mage_Adminhtml">Blugento_Sort</Blugento_Sort>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_sort>
+                    <file>blugento_sort.xml</file>
+                </blugento_sort>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_sort>
+                    <files>
+                        <default>Blugento_Sort.csv</default>
+                    </files>
+                </blugento_sort>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_sort>
+            <global_config>
+                <popularity>0</popularity>
+                <new_products>1</new_products>
+                <discount>1</discount>
+            </global_config>
+        </blugento_sort>
+    </default>
+</config>

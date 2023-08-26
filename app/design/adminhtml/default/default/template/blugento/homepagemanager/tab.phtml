@@ -1,0 +1,10 @@
+<?php
+echo $this->getLayout()->createBlock('blugento_homepagemanager/adminhtml_form_layout')
+    ->setBlockId('adminhtml_form_layout')
+    ->setTemplate('blugento/homepagemanager/form_layout.phtml')
+    ->toHtml();
+
+echo $this->getLayout()->createBlock('page/html')
+    ->setBlockId('adminhtml_blugento_homepagemanager')
+    ->setTemplate('blugento/homepagemanager/index.phtml')
+    ->toHtml();

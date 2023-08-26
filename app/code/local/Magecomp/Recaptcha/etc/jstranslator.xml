@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<jstranslator>
+	<validate-customer-reg-no translate="message" module="recaptcha">
+		<message>Please enter a valid company registration number.</message>
+	</validate-customer-reg-no>
+</jstranslator>

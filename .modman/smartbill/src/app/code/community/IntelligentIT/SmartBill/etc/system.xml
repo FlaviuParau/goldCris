@@ -1,0 +1,639 @@
+<?xml version="1.0"?>
+
+<config>
+    <tabs>
+        <smartbill translate="label" module="smartbill">
+            <label>Smart Bill Cloud</label>
+            <sort_order>210</sort_order>
+        </smartbill>
+    </tabs>
+    
+    <sections>
+        <connect translate="label" module="smartbill">
+            <class>separator-top</class>
+            <label>Autentificare</label>
+            <tab>smartbill</tab>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <logindata translate="label">
+                    <label>Autentificare Smart Bill Cloud</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                       <logoimage translate="label comment">
+                           <label></label>
+                           <!-- <frontend_model>IntelligentIT_SmartBill_Block_Adminhtml_Logo</frontend_model> -->
+                           <frontend_model>smartbill/adminhtml_logo</frontend_model>
+                           <sort_order>1</sort_order>
+                           <show_in_default>1</show_in_default>
+                           <show_in_website>1</show_in_website>
+                           <show_in_store>1</show_in_store>
+                       </logoimage>
+
+                        <username translate="label">
+                            <label>Nume utilizator / adresa email</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <validate>required-entry</validate>
+                            <!-- <tooltip>tooltip</tooltip> -->
+                        </username>
+
+                        <password translate="label">
+                            <label>Parola</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <!-- <validate>required-entry</validate> -->
+                        </password>
+
+                        <connected translate="label">
+                            <label></label>
+                            <!-- <frontend_model>IntelligentIT_SmartBill_Block_Adminhtml_Connected</frontend_model> -->
+                            <frontend_model>smartbill/adminhtml_Connected</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </connected>
+
+                        <token translate="label">
+                            <label>token (hidden)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </token>
+
+                        <support_email translate="label">
+                            <label>supportEmail (hidden)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </support_email>
+                    </fields>
+                </logindata>
+            </groups>
+        </connect>
+
+        <!-- <import_data translate="label" module="smartbill">
+            <class>separator-top</class>
+            <label>Import date</label>
+            <tab>smartbill</tab>
+            <sort_order>110</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <samplegroup1 translate="label">
+                    <label>Sample group 1 label</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    </fields>
+                </samplegroup1>                
+            </groups>
+        </import_data> -->
+
+        <settings translate="label" module="smartbill">
+            <class>separator-top</class>
+            <label>Setari</label>
+            <tab>smartbill</tab>
+            <sort_order>120</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <companydata translate="label">
+                    <!-- <label>Compania</label> -->
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <message_not_connected translate="label">
+                            <label></label>
+                            <!-- <frontend_type>Hidden</frontend_type> -->
+                            <!-- <frontend_model>IntelligentIT_SmartBill_Block_Adminhtml_NotConnected</frontend_model> -->
+                            <frontend_model>smartbill/adminhtml_NotConnected</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </message_not_connected>
+                        <company translate="label">
+                            <label>Compania implicita</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_CompanySelectionOptions</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Daca ai mai multe firme pe cont, vei emite pe cea selectata</comment>
+                            <!-- <depends>
+                                <module>samplesection1/logindata/token</module>
+                            </depends> -->
+                        </company>
+                        <company_change translate="label">
+                            <label></label>
+                            <!-- <frontend_type>Hidden</frontend_type> -->
+                            <!-- <frontend_model>IntelligentIT_SmartBill_Block_Adminhtml_CompanyChange</frontend_model> -->
+                            <frontend_model>smartbill/adminhtml_CompanyChange</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </company_change>
+
+                        <connected translate="label">
+                            <label>connected (hidden)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_IsConnected</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </connected>
+                    </fields>
+                </companydata>
+
+                <vatsettingsdata translate="label">
+                    <label>Setari TVA</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <message_no_vat translate="label">
+                            <label>Neplatitor TVA</label>
+                            <frontend_type>Hidden</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <depends>
+                                <is_tax_payer>0</is_tax_payer>
+                            </depends>
+                        </message_no_vat>
+                        <price_include_vat translate="label">
+                            <label>Preturile produselor includ TVA?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Daca vrei ca preturile sa fie transmise din Magento catre Smart Bill cu TVA inclus</comment>
+                            <depends>
+                                <is_tax_payer>1</is_tax_payer>
+                            </depends>
+                        </price_include_vat>
+                        <vat translate="label">
+                            <label>Cota TVA produse</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_VATSelectionOptions</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Ce cota TVA se va aplica produselor pe documentul emis in Smart Bill</comment>
+                            <depends>
+                                <is_tax_payer>1</is_tax_payer>
+                            </depends>
+                            <validate>validate-select</validate>
+                        </vat>
+                        <transport_include_vat translate="label">
+                            <label>Pretul transportului include TVA?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Daca vrei ca pretul transportului sa fie transmis din Magento catre Smart Bill cu TVA inclus</comment>
+                            <depends>
+                                <is_tax_payer>1</is_tax_payer>
+                            </depends>
+                        </transport_include_vat>
+                        <vat_transport translate="label">
+                            <label>Cota TVA transport</label>
+                            <source_model>smartbill/config_TransportVATSelectionOptions</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <depends>
+                                <is_tax_payer>1</is_tax_payer>
+                            </depends>
+                            <validate>validate-select</validate>
+                        </vat_transport>
+
+                        <is_tax_payer translate="label">
+                            <label>Este platitor de TVA (hidden)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </is_tax_payer>
+                        <!-- <connected translate="label">
+                            <label>connected (hidden)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_IsConnected</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </connected> -->
+                    </fields>
+                </vatsettingsdata>
+
+                <docssettingsdata translate="label">
+                    <label>Setari emitere documente</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <!-- <company translate="label">
+                            <label>Compania implicita</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_CompanySelectionOptions</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Daca ai mai multe firme pe cont, vei emite pe cea selectata</comment>
+                        </company> -->
+                        <export_document translate="label">
+                            <label>Tipul de document emis in Smart Bill</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_DocumentTypeSelectionOptions</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <validate>validate-select</validate>
+                        </export_document>
+                        <invoice_series translate="label">
+                            <label>Serie implicita factura</label>
+                            <source_model>smartbill/config_InvoiceSeriesSelectionOptions</source_model>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <depends>
+                                <export_document>0</export_document>
+                            </depends>
+                            <validate>validate-select</validate>
+                        </invoice_series>
+                        <proforma_series translate="label">
+                            <label>Serie implicita proforma</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_ProformaSeriesSelectionOptions</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <depends>
+                                <export_document>1</export_document>
+                            </depends>
+                            <validate>validate-select</validate>
+                        </proforma_series>
+                        <!-- <document_date translate="label">
+                            <label>Data emitere document</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_DocumentDateSelectionOptions</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </document_date> -->
+
+                        <order_qty_source translate="label">
+                            <label>Cantitate implicita</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_QuantityReferenceSourceSelectionOptions</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <validate>validate-select</validate>
+                        </order_qty_source>
+                        <order_unit_type translate="label">
+                            <label>Unitatea de masura implicita</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_UnitTypeReferenceSourceSelectionOptions</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Ce unitate de masura se va aplica produselor pe documentul emis in Smart Bill</comment>
+                            <validate>validate-select</validate>
+                        </order_unit_type>
+                        <unit_attribute translate="label">
+                            <label>Atribut Produs</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_ProductAttributes</source_model>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Alegeti atributul de pe care se va lua unitatea de masura direct de pe produs. (Doar atribute de tip text sau textarea)</comment>
+                            <depends>
+                                <order_unit_type>@@@@@</order_unit_type>
+                            </depends>
+                        </unit_attribute>
+                        <currency_product translate="label">
+                            <label>Preturile produselor din Magento sunt in</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_CurrenciesSelectionOptions</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Moneda aceasta se va prelua pe documentul emis in Smart Bill</comment>
+                            <validate>validate-select</validate>
+                        </currency_product>
+                        <currency translate="label">
+                            <label>Moneda documentului emis in Smart Bill</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_DocumentCurrencySelectionOptions</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </currency>
+
+                        <add_transport translate="label">
+                            <label>Include transportul in factura?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </add_transport>
+                        <save_client translate="label">
+                            <label>Salveaza clientul in Smart Bill</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Salvand clientul in Smart Bill, vei avea datele lui disponibile pentru emiteri ulterioare</comment>
+                        </save_client>
+                        <use_stock translate="label">
+                            <label>Descarca gestiune Smart Bill</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </use_stock>
+                        <warehouse translate="label">
+                            <label>Gestiune</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_WarehouseSelectionOptions</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                            <!-- <depends>
+                                <use_stock>1</use_stock>
+                            </depends> -->
+                            <!-- <validate>validate-select</validate> -->
+                        </warehouse>
+                        <!-- <separate_discounts translate="label">
+                            <label>Afiseaza pretul final, cu discount inclus</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </separate_discounts> -->
+
+                        <!-- <connected translate="label">
+                            <label>connected (hidden)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </connected> -->
+                        <invoice_email_client translate="label">
+                            <label>Trimite clientului email cu factura</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_email_client>
+                        <template translate="label">
+                            <label>Invoice Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_emailTemplate</source_model>
+                            <sort_order>160</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <invoice_email_client>1</invoice_email_client>
+                            </depends>
+                        </template>
+                    </fields>
+                </docssettingsdata>
+
+                <extrasettingsdata translate="label">
+                    <label>Setari diverse</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>0</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <expanded>0</expanded>
+                    <fields>
+                        <ask_settings translate="label">
+                            <label>Intreaba de fiecare data setarile?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </ask_settings>
+
+                        <company_name translate="label">
+                            <label>Denumire companie (hidden)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </company_name>
+                        <vat_code translate="label">
+                            <label>Nr inregistrare TVA (hidden)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </vat_code>
+                        <use_payment_tax translate="label">
+                            <label>usePaymentTax (hidden)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </use_payment_tax>                        
+                        <save_product translate="label">
+                            <label>saveProductToDb (hidden)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </save_product>
+                        <enable_stock translate="label">
+                            <label>isStockEnabled (hidden)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </enable_stock>
+
+                        <!-- <connected translate="label">
+                            <label>connected (hidden)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>smartbill/config_IsConnected</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment></comment>
+                        </connected> -->
+                    </fields>
+                </extrasettingsdata>
+            </groups>
+        </settings>
+
+        <help translate="label" module="smartbill">
+            <class>separator-top</class>
+            <label>Ajutor</label>
+            <tab>smartbill</tab>
+            <sort_order>130</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <how_to translate="label">
+                    <label>Cum facturez comenzile Magento in Smart Bill</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <how_to_content translate="label">
+                            <label></label>
+                            <!-- <frontend_model>IntelligentIT_SmartBill_Block_Adminhtml_HowToContent</frontend_model> -->
+                            <frontend_model>smartbill/adminhtml_HowToContent</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </how_to_content>
+                    </fields>
+                </how_to>
+                <faq translate="label">
+                    <label>Intrebari frecvente</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <faq_content translate="label">
+                            <label></label>
+                            <!-- <frontend_model>IntelligentIT_SmartBill_Block_Adminhtml_FAQContent</frontend_model> -->
+                            <frontend_model>smartbill/adminhtml_FAQContent</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment></comment>
+                        </faq_content>
+                    </fields>
+                </faq>
+            </groups>
+        </help>        
+
+    </sections>
+</config>

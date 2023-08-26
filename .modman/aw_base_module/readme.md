@@ -1,0 +1,1 @@
+Ahead Works base module. All Ahead Works extensions will be installed with this module.

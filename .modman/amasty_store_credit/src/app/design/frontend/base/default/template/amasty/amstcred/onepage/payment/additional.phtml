@@ -1,0 +1,112 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php /** @var $this Amasty_StoreCredit_Block_Checkout_Onepage_Payment_Additional */ ?>
+
+
+<?php if ($this->canShowBlock()): ?>
+	<div class="checkout-onepage-payment-additional-amstcred-customerbalance" id="amstcred-customerbalance">
+		<input type="hidden" id="amstcred_use_customer_balance_hidden" name="payment[amstcred_use_customer_balance]" value="0" />
+		<input
+			type="checkbox"
+			class="checkbox"
+			name="payment[amstcred_use_customer_balance]"
+			value="1"
+			id="amstcred_use_customer_balance"
+			<?php echo ($this->isCustomerBalanceUsed() ? 'checked' : '') ?>/>
+
+		<?php $balance = Mage::helper('core')->currency($this->getBalance()); ?>
+		<label for="amstcred_use_customer_balance">
+			<strong>
+				<?php echo Mage::helper('amstcred')->__('Use Store Credit'); ?>	(<span id="amstcred_available_amount"><?php echo $balance; ?></span> <?php echo Mage::helper('amstcred')->__('available'); ?>)
+			</strong>
+		</label>
+	</div>
+	<script type="text/javascript">
+		//<![CDATA[
+		var amstcredBalanceUsed = <?php if ($this->isCustomerBalanceUsed()): ?>true<?php else: ?>false<?php endif; ?>;
+		var storeCredUsed = <?php echo (float)$this->getQuote()->getBaseAmstcredAmountUsed(); ?>
+
+		if (amstcredBalanceUsed) {
+			quoteBaseGrandTotal += storeCredUsed;
+			checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+			amstcredBalanceUsed = false;
+		}
+
+		Payment.prototype.clickAmstcredBalanceCheckbox = function() {
+		    if (quoteBaseGrandTotal < 0.0001 && amstcredBalanceUsed == false) {
+		        return;
+            }
+
+			if (!amstcredBalanceUsed && $('amstcred_use_customer_balance').checked) {
+		        quoteBaseGrandTotal -= <?php echo (float)$this->getBalance(); ?>;
+				amstcredBalanceUsed = true;
+				checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+			}
+			if (amstcredBalanceUsed && !$('amstcred_use_customer_balance').checked) {
+				quoteBaseGrandTotal += <?php echo (float)$this->getBalance(); ?>;
+				amstcredBalanceUsed = false;
+				checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+			}
+			if (((checkQuoteBaseGrandTotal < 0.0001 || checkQuoteBaseGrandTotal > 0.0001) && quoteBaseGrandTotal == 0) || (quoteBaseGrandTotal > checkQuoteBaseGrandTotal)) {
+				quoteBaseGrandTotal = checkQuoteBaseGrandTotal;
+			}
+
+			if (quoteBaseGrandTotal < 0.0001) {
+				var elements = Form.getElements(this.form);
+				for (var i=0; i<elements.length; i++) {
+					if ($('amstcred_use_customer_balance').checked) {
+						if (elements[i].name == 'payment[method]') {
+							elements[i].disabled = true;
+						}
+					}
+					if (elements[i].name == 'payment[method]' && elements[i].value == 'free') {
+						elements[i].checked = false;
+						elements[i].disabled = true;
+						$(elements[i].parentNode).hide();
+					}
+				}
+				if ($('amstcred_use_customer_balance').checked) {
+					$('checkout-payment-method-load').hide();
+					payment.switchMethod();
+				}
+			} else {
+				var elements = Form.getElements(this.form);
+				for (var i=0; i<elements.length; i++) {
+					if (elements[i].name == 'payment[method]') {
+						elements[i].disabled = false;
+					}
+				}
+				$('checkout-payment-method-load').show();
+				payment.switchMethod(payment.lastUsedMethod);
+			}
+		}
+
+		if (payment) {
+			var amstcredBalanceInit = function() {
+				if ($('amstcred_use_customer_balance')) {
+					$('amstcred_use_customer_balance').disabled = false;
+				}
+				if ($('amstcred_use_customer_balance_hidden')) {
+					$('amstcred_use_customer_balance_hidden').disabled = false;
+				}
+				this.clickAmstcredBalanceCheckbox();
+			}
+			payment.addAfterInitFunction('amstcred', amstcredBalanceInit.bind(payment));
+			var amstcredBalanceValidate = function() {
+				if (quoteBaseGrandTotal < 0.0001) {
+					return true;
+				}
+				return false;
+			}
+			payment.addBeforeValidateFunction('amstcred', amstcredBalanceValidate.bind(payment));
+		}
+
+		Event.observe($('amstcred_use_customer_balance'), 'click', payment.clickAmstcredBalanceCheckbox);
+		//]]>
+	</script>
+<?php endif;?>

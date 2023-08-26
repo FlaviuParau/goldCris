@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_UploadFiles
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_UploadFiles>
+            <version>1.0.0</version>
+        </Blugento_UploadFiles>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_uploadfiles>
+                <class>Blugento_UploadFiles_Block</class>
+            </blugento_uploadfiles>
+        </blocks>
+        <models>
+            <blugento_uploadfiles>
+                <class>Blugento_UploadFiles_Model</class>
+            </blugento_uploadfiles>
+        </models>
+        <helpers>
+            <blugento_uploadfiles>
+                <class>Blugento_UploadFiles_Helper</class>
+            </blugento_uploadfiles>
+        </helpers>
+        <events>
+            <admin_system_config_changed_section_blugento_uploadfiles>
+                <observers>
+                    <mymodule>
+                        <type>singleton</type>
+                        <class>blugento_uploadfiles/observer</class>
+                        <method>adminSystemConfigSave</method>
+                    </mymodule>
+                </observers>
+            </admin_system_config_changed_section_blugento_uploadfiles>
+        </events>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <Blugento_UploadFiles>
+                    <files>
+                        <default>Blugento_UploadFiles.csv</default>
+                    </files>
+                </Blugento_UploadFiles>
+            </modules>
+        </translate>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Blugento_UploadFiles after="Mage_Adminhtml">Blugento_UploadFiles_Adminhtml</Blugento_UploadFiles>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <blugento_uploadfiles>
+                    <files>
+                        <default>Blugento_UploadFiles.csv</default>
+                    </files>
+                </blugento_uploadfiles>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <blugento_uploadfiles>
+            <general>
+                <path></path>
+            </general>
+        </blugento_uploadfiles>
+    </default>
+</config>

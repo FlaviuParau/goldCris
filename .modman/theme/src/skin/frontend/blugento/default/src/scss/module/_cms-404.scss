@@ -1,0 +1,36 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_cms-404.scss
+    Version:        1.0
+    Description:    CMS - No Route Page Styles
+    ------------------------------------------------------------------------- */
+
+.cms-no-route {
+    .page-title {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 42px;
+    }
+
+    .std {
+        text-align: center;
+        color: color('a');
+
+        a {
+            color: color('e');
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+
+        ul {
+            margin-top: 10px;
+        }
+    
+        #error-404-item {
+            display: block;
+            margin: 30px auto;
+        }
+    }
+}

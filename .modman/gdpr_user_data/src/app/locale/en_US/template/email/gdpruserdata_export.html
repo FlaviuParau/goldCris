@@ -1,0 +1,18 @@
+<!--@subject Export User Data @-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header"}}
+{{inlinecss file="email-inline.css"}}
+
+<table cellpadding="0" cellspacing="0" border="0">
+    <tr>
+        <td class="action-content">
+            <h4>Hello,</h4>
+            <h4>Your export user data request was successfully registered.</h4>
+            <h4>To download your data please click this link: <a href="{{var export_url}}">Export Data</a></h4>
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer"}}

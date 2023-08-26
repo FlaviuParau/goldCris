@@ -1,0 +1,56 @@
+//  ----------------------------------------------------------------------------
+//  Filename:       mixin/util.scss
+//  Version:        1.0
+//  Description:    -
+//  ----------------------------------------------------------------------------
+
+@mixin cf() {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin inline-block() {
+    display: inline-block;
+
+    @if support(ie, 6) {
+        * html & {
+            zoom: 1;
+            display: inline;
+        }
+    }
+
+    @if support(ie, 7) {
+        * + html & {
+            zoom: 1;
+            display: inline;
+        }
+    }
+}
+
+@mixin z-index($component) {
+    @if ($component == 'preloader') {
+        z-index: 2147483647;
+    } @elseif ($component == 'dock') {
+        z-index: 9999;
+    } @elseif ($component == 'sub-dock') {
+        z-index: 9998;
+    } @elseif ($component == 'device-info') {
+        z-index: 9001;
+    } @elseif ($component == 'page-overlay') {
+        z-index: 9000;
+    } @elseif ($component == 'to-top') {
+        z-index: 1000;
+    } @else {
+        z-index: 10000;
+    }
+}
+
+@mixin img-responsive($display: inline-block) {
+    display: $display;
+    max-width: 100%;
+    height: auto;
+    vertical-align: text-bottom;
+}

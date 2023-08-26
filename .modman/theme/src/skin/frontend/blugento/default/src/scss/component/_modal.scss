@@ -1,0 +1,36 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_modal.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.modal {
+    position: relative;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px 44px 20px 30px;
+    text-align: left;
+    background: $page-container_background-color none !important;
+}
+
+.privacy-policy-popup {
+    display: none;
+}
+
+#fancybox-wrap {
+    .privacy-policy-popup {
+        display: block;
+        min-width: 300px;
+        padding: 50px 20px 45px;
+
+        .content p {
+            float: none;
+        }
+    }
+}
+
+.mfp-wrap {
+    .privacy-policy-popup {
+        display: block;
+    }
+}

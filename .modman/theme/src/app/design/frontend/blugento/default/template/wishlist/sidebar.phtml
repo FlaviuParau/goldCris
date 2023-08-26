@@ -1,0 +1,38 @@
+<?php
+/* @var $this Mage_Wishlist_Block_Customer_Sidebar */
+?>
+<?php if ($this->helper('wishlist')->isAllow() && $this->hasWishlistItems()): ?>
+<div class="block block-wishlist dock">
+    <div class="block-title">
+        <strong><span><?php echo $this->getTitle(); ?></span></strong>
+    </div>
+    <div class="block-content">
+        <p class="block-subtitle"><?php echo $this->__('Last Added Items') ?></p>
+        <ol class="mini-products-list" id="wishlist-sidebar">
+        <?php foreach ($this->getWishlistItems() as $_item): ?>
+            <?php $product = $_item->getProduct(); ?>
+            <li class="item">
+                <div class="product-details">
+                    <div class="edit-remove">
+                        <a href="<?php echo $this->getItemRemoveUrl($_item) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Remove This Item')) ?>" onclick="return confirm('<?php echo Mage::helper('core')->quoteEscape($this->__('Are you sure you would like to remove this item from the wishlist?'), true) ?>');" class="btn-remove"><?php echo $this->__('Remove This Item') ?></a>
+                    </div>
+                    <a href="<?php echo $this->getProductUrl($_item) ?>" title="<?php echo $this->escapeHtml($product->getName()) ?>" class="product-image">
+                        <img src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(71,104); ?>" alt="<?php echo $this->escapeHtml($product->getName()) ?>" width="71" height="104" />
+                    </a>
+                    <div class="product-cart-details">
+                        <p class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->escapeHtml($product->getName()) ?></a></p>
+                        <?php echo $this->getPriceHtml($product, false, '-wishlist') ?>
+                        <?php if ($product->isSaleable() && $product->isVisibleInSiteVisibility()): ?>
+                            <a href="<?php echo $this->getItemAddToCartUrl($_item) ?>" class="link-cart"><?php echo $this->__('Add to Cart') ?></a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </li>
+        <?php endforeach; ?>
+        </ol>
+        <div class="actions">
+            <a href="<?php echo $this->helper('wishlist')->getListUrl() ?>" class="button"><?php echo $this->__('Wishlist') ?></a>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

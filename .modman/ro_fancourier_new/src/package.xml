@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>FAN_Courier_Romania_Shipping</name>
+    <version>1.0.2.2</version>
+    <stability>beta</stability>
+    <license uri="http://www.opensource.org/licenses/gpl-license.php">GPL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>FAN Courier - Magento Shipping Method Module. Modul FAN Courier - selfAWB pentru Magento eCommerce 1.6.2.0.</summary>
+    <description>Pentru detalii nu ezitati sa ne contactati la adresa de e-mail selfawb@fancourier.ro. Instalare modul FAN Courier - selfAWB pentru aplicatia web Magento eCommerce ver 1.6.2.0. Modulul permite calcularea taxelor de transport si generarea documentelor de trasport (AWB).</description>
+    <notes>Versiune Beta (stabila) pentru integrarea selfAWB in Magento.</notes>
+    <authors><author><name>Bogdan Serban</name><user>bogdan_serban</user><email>it@fancourier.ro</email></author></authors>
+    <date>2013-02-27</date>
+    <time>08:25:29</time>
+    <contents><target name="magelocal"><dir name="FANCourier"><file name="MANUAL.PDF" hash="2604fafeffe7e525aa53b4b97d349453"/><dir name="Ship"><dir name="Block"><file name="Ship.php" hash="4db68160e958195ce0a1af50e16b1afd"/></dir><dir name="Helper"><file name="Data.php" hash="888fd388a6f6104057406c4ac34c4bbe"/></dir><dir name="Model"><dir name="Carrier"><file name="FANCourier.php" hash="0fb4f68e8abe7ba8d227093e41ef0576"/></dir></dir><dir name="controllers"><file name="IndexController.php" hash="476bf9c472b449217f4bfe5d1c72ad58"/></dir><dir name="etc"><file name="config.xml" hash="2a5aa36ad2a1d42490ea44dda59593bb"/><file name="system.xml" hash="fc24b911449277e72a900390893fa8e2"/></dir></dir><file name="Thumbs.db" hash="1bc2c24a3b0600b3fb3bdd35038726d3"/></dir></target><target name="mageetc"><dir name="modules"><file name="FANCourier_Ship.xml" hash="364b3bb58302faf9ea1866a0b3c1254e"/></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Cart Settings
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_Cart
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<layout version="1.0.0">
+    <!--<catalog_product_view translate="label">-->
+        <!--<reference name="product.info.addtocart">-->
+            <!--<action method="setTemplate">-->
+                <!--<template>blugento/cart/addtocart.phtml</template>-->
+            <!--</action>-->
+        <!--</reference>-->
+    <!--</catalog_product_view>-->
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="blugento_cart/product" name="product_not_saleable" template="blugento/cart/product.phtml" />
+        </reference>
+    </catalog_product_view>
+
+    <cms_page_view>
+        <reference name="head">
+            <action method="addJs"><script>blugento/cart/product.js</script></action>
+        </reference>
+    </cms_page_view>
+</layout>

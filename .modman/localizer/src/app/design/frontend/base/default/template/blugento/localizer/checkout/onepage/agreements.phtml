@@ -1,0 +1,38 @@
+<?php
+/**
+ * This file is part of a Blugento Localizer e.V. module.
+ *
+ * @category  Blugento
+ * @package   Blugento Localizer
+ */
+?>
+<?php
+/**
+ * @var $this Mage_Checkout_Block_Agreements
+ * @var $helper Blugento_Localizer_Helper_Data
+ */
+$helper = $this->helper('blugento_localizer');
+$agreements = $this->getAgreements();
+?>
+
+<form action="" id="checkout-agreements" onsubmit="return false;">
+    <?php echo $this->getChildHtml('order_comment') ?>
+
+    <?php if (count($agreements)): ?>
+        <ol class="checkout-agreements">
+            <?php foreach ($agreements as $agreement): ?>
+                <li>
+                    <p class="agree">
+                        <?php if ($agreement->getIsRequired()): ?>
+                            <input type="checkbox" id="agreement-<?php echo $agreement->getId()?>" name="agreement[<?php echo $agreement->getId()?>]" value="1" title="<?php echo $this->escapeHtml($agreement->getCheckboxText()) ?>" class="checkbox" />
+                        <?php endif; ?>
+                        <label <?php if ($agreement->getIsRequired()): ?>for="agreement-<?php echo $agreement->getId()?>"<?php endif; ?>><?php echo $agreement->getIsHtml() ? $agreement->getCheckboxText() : $this->escapeHtml($agreement->getCheckboxText()) ?></label>
+                        <?php if (trim($agreement->getContent())): ?>
+                            <a href="<?php echo $helper->getAgreementUrl($agreement) ?>" onclick="window.open(this.href, '', 'width=600,height=600,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes').focus(); return false;"><?php echo $this->__('[Show]') ?></a>
+                        <?php endif; ?>
+                    </p>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    <?php endif; ?>
+</form>

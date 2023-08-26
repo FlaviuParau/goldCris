@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Blugento_OrderStatusColor>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Blugento_OrderStatusColor>
+    </modules>
+</config>

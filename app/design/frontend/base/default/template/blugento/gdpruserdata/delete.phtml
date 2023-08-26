@@ -1,0 +1,92 @@
+<?php
+    $helper = Mage::helper('blugento_gdpruserdata');
+?>
+
+<form action="<?php echo $this->getDeleteFormAction() ?>" id="gdpr-delete-form" method="POST" onSubmit="return validateRecaptcha()">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $helper->__('Delete My Data') ?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="email-contact" class="required"><em>*</em><?php echo $helper->__('Email Address') ?></label>
+                    <input name="email_contact" id="email-contact" title="<?php echo $helper->__('Email Address') ?>" class="input-text required-entry validate-email" type="email" value="<?php echo $this->getCustomerEmail() ?>">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required">* <?php echo $helper->__('Required Fields') ?></p>
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;">
+        <button type="submit"title="<?php echo $helper->__('Submit Request') ?>" name="send" id="g-recaptcha-delete" class="g-recaptcha-delete button disabled" data-badge="bottomleft" data-size="invisible"><span><span><?php echo $helper->__('Submit Request') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+    var contactForm = new VarienForm('gdpr-delete-form', false);
+</script>
+<?php if (Mage::helper('core')->isModuleEnabled('Magecomp_Recaptcha')): ?>
+    <script>
+        function onSubmitDelete(token) {
+            setTimeout(function(){
+                jQuery('.g-recaptcha-delete').attr('data-token', token);
+
+                return new Promise(function (resolve, reject) {
+                    var dataForm = new VarienForm('gdpr-delete-form');
+                    var tokenHash = jQuery('.g-recaptcha-delete').attr('data-token');
+
+                    if (tokenHash && tokenHash.length > 100) {
+                        jQuery('#no-spam-review').removeClass('required-entry');
+
+                        if (dataForm.validator && dataForm.validator.validate()){
+                            jQuery('#gdpr-delete-form').attr('action', '<?php echo $this->getAction() ?>');
+                            document.getElementById("gdpr-delete-form").submit();
+                        }
+                    }
+                });
+            }, 500);
+        }
+
+        // Check if captcha container have loaded class, if not than captcha will be loaded
+        function loadCaptchaDelete() {
+            setTimeout(function(){
+                // Fix for google recaptcha from 18 June
+				if ("NodeList" in window) {
+					if (!NodeList.prototype.each && NodeList.prototype.forEach) {
+						NodeList.prototype.each = NodeList.prototype.forEach;
+					}
+				}
+
+                if (!jQuery('.captcha_container_delete').length) {
+                    jQuery('#g-recaptcha-delete').addClass('captcha_container_delete');
+                    var captchaContainer = null;
+                    var loadCaptchaDeleteFunction = function() {
+                        captchaContainer = grecaptcha.render('g-recaptcha-delete', {
+                            'sitekey': '<?php echo $this->helper('recaptcha')->getKey(); ?>',
+                            'callback': onSubmitDelete
+                        });
+                    };
+
+                    loadCaptchaDeleteFunction();
+                }
+            }, 300);
+        };
+
+        // Once user insert a value, loadCaptchaContent will be called
+        jQuery('#gdpr-delete-form input').each(function(e) {
+            jQuery(this).on('input', function(e) {
+                loadCaptchaDelete();
+            });
+        });
+
+        // Once inputs are autofilled show captcha
+		if(jQuery('#email-contact:-webkit-autofill')){
+			if (!jQuery('.captcha_container_login').length) {
+				loadCaptchaExport();
+			}
+		}
+
+        jQuery('.g-recaptcha-delete').on('click', function(e) {
+            onSubmitDelete();
+        });
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=loadCaptchaDeleteFunction&render=explicit" async defer></script>
+    <?php endif; ?>

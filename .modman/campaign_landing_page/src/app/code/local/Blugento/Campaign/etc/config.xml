@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_Campaign
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_Campaign>
+            <version>1.0.0</version>
+        </Blugento_Campaign>
+    </modules>
+
+    <global>
+        <page>
+            <layouts>
+                <one_column_campaign translate="label">
+                    <label>1 Column Campaign</label>
+                    <template>page/1column-campaign.phtml</template>
+                    <layout_handle>blugento_campaign</layout_handle>
+                </one_column_campaign>
+                <two_columns_campaign translate="label">
+                    <label>2 Columns Campaign</label>
+                    <template>page/2columns-campaign.phtml</template>
+                    <layout_handle>blugento_campaign</layout_handle>
+                </two_columns_campaign>
+                <two_columns_campaign_category_ajax translate="label">
+                    <label>2 Columns Campaign Category Ajax</label>
+                    <template>page/2columns-campaign-category-ajax.phtml</template>
+                    <layout_handle>blugento_campaign</layout_handle>
+                </two_columns_campaign_category_ajax>
+            </layouts>
+        </page>
+        
+        <blocks>
+            <blugento_campaign>
+                <class>Blugento_Campaign_Block</class>
+            </blugento_campaign>
+        </blocks>
+
+        <helpers>
+            <blugento_campaign>
+                <class>Blugento_Campaign_Helper</class>
+            </blugento_campaign>
+        </helpers>
+
+        <models>
+            <blugento_campaign>
+                <class>Blugento_Campaign_Model</class>
+                <resourceModel>campaign_resource</resourceModel>
+            </blugento_campaign>
+
+            <campaign_resource>
+                <class>Blugento_Campaign_Model_Resource</class>
+                <entities>
+                    <campaign>
+                        <table>blugento_campaign</table>
+                    </campaign>
+                </entities>
+            </campaign_resource>
+        </models>
+
+        <resources>
+            <blugento_campaign_setup>
+                <setup>
+                    <module>Blugento_Campaign</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </blugento_campaign_setup>
+
+            <blugento_campaign_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </blugento_campaign_write>
+
+            <blugento_campaign_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </blugento_campaign_read>
+        </resources>
+
+        <events>
+            <cms_page_save_after>
+                <observers>
+                    <blugento_campaign_cmspage>
+                        <class>blugento_campaign/observer</class>
+                        <method>setCampaignLayout</method>
+                    </blugento_campaign_cmspage>
+                </observers>
+            </cms_page_save_after>
+
+            <controller_action_postdispatch>
+                <observers>
+                    <blugento_campaign_redirect>
+                        <class>blugento_campaign/observer</class>
+                        <method>redirectToCampaign</method>
+                    </blugento_campaign_redirect>
+                </observers>
+            </controller_action_postdispatch>
+        </events>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_campaign before="Mage_Adminhtml">Blugento_Campaign_Adminhtml</blugento_campaign>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Blugento_Campaign>
+                    <files>
+                        <default>Blugento_Campaign.csv</default>
+                    </files>
+                </Blugento_Campaign>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_campaign>
+                    <file>blugento_campaign.xml</file>
+                </blugento_campaign>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <Blugento_Campaign>
+                    <files>
+                        <default>Blugento_Campaign.csv</default>
+                    </files>
+                </Blugento_Campaign>
+            </modules>
+        </translate>
+
+        <routers>
+            <blugento_campaign>
+                <use>standard</use>
+                <args>
+                    <module>Blugento_Campaign</module>
+                    <frontName>campaign</frontName>
+                </args>
+            </blugento_campaign>
+        </routers>
+    </frontend>
+    
+    <default>
+        <blugento_campaign>
+            <general>
+                <enabled>0</enabled>
+                <back_to_homepage>go back to homepage</back_to_homepage>
+                <cookie_lifetime>3600</cookie_lifetime>
+                <cache_lifetime>3600</cache_lifetime>
+            </general>
+        </blugento_campaign>
+    </default>
+</config>

@@ -1,0 +1,129 @@
+<?php
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+?>
+
+<?php
+$_miniCartLayout = $this->getLayout()->getBlock('root') ? (int) ($this->getLayout()->getBlock('root')->getMiniCartLayout() ?: 1) : 1;
+$_checkoutCartModal = $this->getLayout()->getBlock('root') ? (int) ($this->getLayout()->getBlock('root')->getCheckoutCartModal() ?: 2) : 2;
+?>
+
+<?php
+$cartHelper = $this->helper('checkout/cart');
+
+$_cartQty = $cartHelper->getSummaryCount();
+if (empty($_cartQty)) {
+    $_cartQty = 0;
+}
+
+$total = Mage::helper('checkout')->formatPrice(Mage::getModel('checkout/cart')->getQuote()->getGrandTotal());
+?>
+
+<div class="block block-cart">
+    <?php if ($_miniCartLayout == 4): ?>
+        <a href="<?php echo $this->getCheckoutUrl() ?>" title="<?php echo $this->__('Cart') ?>" <?php echo ($_cartQty > 0 ? '' : 'class="empty"') ?>>
+            <i>
+                <?php if ($_cartQty > 0): ?>
+                    <em><?php echo ($_cartQty < 10) ? $_cartQty : "9+" ?></em>
+                <?php endif; ?>
+            </i>
+            <span><?php echo $this->__($total) ?></span>
+            <strong><?php echo $this->__('Checkout') ?></strong>
+        </a>
+    <?php elseif ($_miniCartLayout == 3): ?>
+        <a href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('Cart') ?>" <?php echo ($_cartQty > 0 ? '' : 'class="empty"') ?>>
+            <i>
+                <?php if ($_cartQty > 0): ?>
+                    <em><?php echo ($_cartQty < 10) ? $_cartQty : "9+" ?></em>
+                <?php endif; ?>
+            </i>
+            <span><?php echo $this->__($total) ?></span>
+            <strong>
+                <?php if (Mage::helper('core')->isModuleEnabled('LanguagePacks_NonDiacritics')) : ?>
+                    <?php echo $this->__('View  Cart') ?>
+                <?php else : ?>
+                    <?php echo $this->__('View Cart') ?>
+                <?php endif; ?>
+            </strong>
+        </a>
+    <?php elseif ($_miniCartLayout == 2): ?>
+        <a href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('Cart') ?>" rel="nofollow" data-dock=".block-cart-aside" data-dock-position="right" <?php echo ($_cartQty > 0 ? '' : 'class="empty"') ?>>
+            <i>
+                <?php if ($_cartQty > 0): ?>
+                    <em><?php echo ($_cartQty < 10) ? $_cartQty : "9+" ?></em>
+                <?php endif; ?>
+            </i>
+            <span><?php echo $this->__($total) ?></span>
+        </a>
+    <?php else: ?>
+        <a href="<?php echo $this->getUrl('checkout/cart') ?>" title="<?php echo $this->__('Cart') ?>" rel="nofollow" data-dock=".block-cart-aside" data-dock-position="right" <?php echo ($_cartQty > 0 ? '' : 'class="empty"') ?>>
+            <i>
+                <?php if ($_cartQty > 0): ?>
+                    <em><?php echo ($_cartQty < 10) ? $_cartQty : "9+" ?></em>
+                <?php endif; ?>
+            </i>
+            <span><?php echo $this->__('Cart') ?></span>
+        </a>
+    <?php endif; ?>
+
+    <?php if ($this->getIsNeedToDisplaySideBar() && (($_miniCartLayout == 1) || ($_miniCartLayout == 2))): ?>
+        <div class="block-cart-aside dock" data-modal="<?php echo $_checkoutCartModal ?>">
+            <?php $_cartQty = $this->getSummaryCount() ?>
+            <div class="block-content">
+                <span class="close-modal"></span>
+                <?php if ($_cartQty > 0): ?>
+                    <div class="summary">
+                        <?php if ($_cartQty == 1): ?>
+                            <p class="amount"><?php echo $this->__('There is <a href="%s">1 item</a> in your cart.', $this->getUrl('checkout/cart')) ?></p>
+                        <?php else: ?>
+                            <p class="amount"><?php echo $this->__('There are <a href="%s">%s items</a> in your cart.', $this->getUrl('checkout/cart'), $_cartQty) ?></p>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+                <?php $_items = $this->getRecentItems() ?>
+                <?php if (count($_items)): ?>
+                    <ol id="cart-sidebar" class="mini-products-list">
+                        <?php foreach ($_items as $_item): ?>
+                            <?php echo $this->getItemHtml($_item) ?>
+                        <?php endforeach; ?>
+                    </ol>
+                    <div class="sidebar-bottom">
+                        <p class="subtotal">
+                            <?php if ($this->canApplyMsrp()): ?>
+                                <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
+                            <?php else: ?>
+                                <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                                <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                                    <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+                                <?php endif; ?>
+                                <span class="label"><?php echo $this->__('Total') ?></span>
+                            <?php endif; ?>
+                        </p>
+                        <div class="actions">
+                            <a class="button view-cart" href="<?php echo $this->getUrl('checkout/cart'); ?>" title="<?php echo $this->__('Cart'); ?>">
+                                <?php if (Mage::helper('core')->isModuleEnabled('LanguagePacks_NonDiacritics')) : ?>
+                                    <?php echo $this->__('View  Cart') ?>
+                                <?php else : ?>
+                                    <?php echo $this->__('View Cart') ?>
+                                <?php endif; ?>
+                            </a>
+                            <?php if ($_checkoutCartModal == 1): ?>
+                                <a class="button btn-close" href="#" title="<?php echo $this->__('Check other Products'); ?>"><?php echo $this->__('Check other Products'); ?></a>
+                            <?php endif; ?>
+                            <?php if ($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+                                <?php // echo $this->getChildHtml('extra_actions') ?>
+                                <a title="<?php echo Mage::helper('core')->quoteEscape($this->__('Checkout')) ?>" class="button proceed-checkout" href="<?php echo $this->getCheckoutUrl() ?>"><?php echo $this->__('Proceed to Checkout') ?></a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+    <span class="overlay-modal"></span>
+</div>

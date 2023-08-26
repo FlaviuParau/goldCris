@@ -1,0 +1,168 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_tabs.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.tabs-nav {
+    padding: 0 15px;
+    border-bottom: 10px solid $product-view__product-collateral__list__item-active_background-color;
+
+    @include mobile {
+        display: none;
+    }
+
+    > li {
+        display: inline-block;
+        color: $product-view__product-collateral__list__item_color;
+
+        &.activeli {
+            background-color: $product-view__product-collateral__list__item-active_background-color;
+            color: $product-view__product-collateral__list__item-active_color;
+            
+            &.tab-reviews {
+                background-color: transparent;
+                
+                a {
+                    display: inline-block;
+                    background-color: $product-view__product-collateral__list__item-active_background-color;
+                }
+            }
+        }
+
+        &.tab-reviews {
+            float: right;
+        }
+
+        a {
+            display: block;
+            padding: 20px;
+        }
+    }
+}
+
+.tab {
+    padding: 30px 35px;
+
+    @include mobile {
+        padding: 20px 10px;
+    }
+
+    &.description {
+        ul,
+        ol {
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            list-style-type: initial;
+        }
+
+        ol li {
+            list-style-type: decimal;
+        }
+
+        &.toggle-description {
+            position: relative;
+            margin-bottom: 30px;
+
+            .std.truncated-description::before {
+                position: absolute;
+                content: '';
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: -webkit-linear-gradient(top,rgba(255,255,255,0) 33.33%,#fff 100%);
+                background-image: -o-linear-gradient(top,rgba(255,255,255,0) 33.33%,#fff 100%);
+                background-image: linear-gradient(to bottom,rgba(255,255,255,0) 33.33%,#fff 100%);
+                background-repeat: repeat-x;
+            }
+
+            a.button {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+
+                &.show-description {
+                    bottom: 30px;
+                }
+
+                &.hide-description {
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    .button {
+        margin-bottom: 20px;
+    }
+
+    .mediathek {
+        vertical-align: top;
+
+        .fa-file-o {
+            background: url("../images/icon--file.svg") no-repeat;
+            background-size: 20px 20px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+
+        a {
+            display: inline-block;
+            vertical-align: top;
+            line-height: 23px;
+        }
+    }
+}
+
+@include mobile {
+    .tabs-container {
+        display: flex;
+        flex-flow: row wrap;
+
+        span {
+            flex-basis: 100%;
+            
+            &.related-products-container {
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+#tab-product-collateral[data-orientation="1"][data-style="3"] {
+    .tabs-container {
+        display: flex;
+        flex-flow: row wrap;
+        
+        > span {
+            flex-basis: 100%;
+        }
+    }
+}
+
+.tab-nav {
+    display: none;
+    position: relative;
+    margin-bottom: 2px;
+    padding: 10px;
+    text-transform: uppercase;
+    background: color('c') $icon--arrow-down--a1 no-repeat calc(100% - 10px) 50%;
+    background-size: 20px;
+    
+    @include mobile {
+        display: block;
+    }
+
+    &.active {
+        background-image: $icon--arrow-up--a1;
+    }
+}

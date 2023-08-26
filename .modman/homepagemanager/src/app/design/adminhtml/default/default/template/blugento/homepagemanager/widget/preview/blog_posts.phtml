@@ -1,0 +1,9 @@
+<div class="hm-widget-preview">
+    <img src="<?php echo $this->getSkinUrl('blugento/homepagemanager/images/widget/blog_posts.svg'); ?>" alt="" />
+    <span>
+        <?php echo $this->__('Blog: Latest posts'); ?>
+        <?php if ($title = $this->getData('title')): ?>
+            <br /><strong><?php echo $title; ?></strong>
+        <?php endif; ?>
+    </span>
+</div>

@@ -1,0 +1,62 @@
+<?php
+/**
+ * Grouped product data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ * @see Mage_Catalog_Block_Product_View_Type_Grouped
+ */
+?>
+<?php $this->setPreconfiguredValue(); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_associatedProducts = $this->getAssociatedProducts(); ?>
+<?php $_hasAssociatedProducts = count($_associatedProducts) > 0; ?>
+
+<?php echo $this->getChildHtml('product_type_data_tax') ?>
+<?php echo $this->getChildHtml('product_type_data_extra') ?>
+
+<span class="label-grouped"><?php echo $this->__('Select Collection Items') ?></span>
+<table class="grouped-items-table" id="super-product-table">
+	<col />
+	<col />
+	<col />
+	<tbody>
+	<?php if ($_hasAssociatedProducts): ?>
+		<?php foreach ($_associatedProducts as $_item): ?>
+			<?php $_finalPriceInclTax = $this->helper('tax')->getPrice($_item, $_item->getFinalPrice(), true) ?>
+			<tr>
+				<td>
+					<?php if ($_product->isSaleable()): ?>
+						<?php if ($_item->isSaleable()): ?>
+							<input type="text" name="super_group[<?php echo $_item->getId() ?>]" maxlength="12" value="<?php echo $_item->getQty()*1 ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Qty')) ?>" class="input-text qty" />
+						<?php else: ?>
+							<p class="availability out-of-stock"><span></span></p>
+						<?php endif; ?>
+					<?php else: ?>
+						<p class="availability out-of-stock"><span></span></p>
+					<?php endif; ?>
+				</td>
+				<td class="image" style="width: 110px;">
+					<img class="thumbnail"
+					     src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->constrainOnly(true)->resize(105, 80); ?>"
+					     alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+					     title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+				</td>
+				<?php if ($this->getCanShowProductPrice($_product)): ?>
+					<td>
+						<h4><?php echo $this->escapeHtml($_item->getName()) ?></h4>
+						<div class="product-sku"><?php echo $this->__('SKU') ?>: #<span><?php echo $this->escapeHtml($_item->getSku()) ?></div>
+						<?php if ($this->getCanShowProductPrice($_item)): ?>
+							<?php echo $this->getPriceHtml($_item, true) ?>
+							<?php echo $this->getTierPriceHtml($_item) ?>
+						<?php endif; ?>
+					</td>
+				<?php endif; ?>
+			</tr>
+		<?php endforeach; ?>
+	<?php else: ?>
+		<tr>
+			<td colspan="<?php if ($_product->isSaleable()): ?>4<?php else : ?>3<?php endif; ?>"><?php echo $this->__('No options of this product are available.') ?></td>
+		</tr>
+	<?php endif; ?>
+	</tbody>
+</table>

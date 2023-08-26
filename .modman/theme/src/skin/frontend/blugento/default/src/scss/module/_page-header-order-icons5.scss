@@ -1,0 +1,96 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-header-oder-icons5.scss
+    Version:        1.0
+    Description:    Header Layout: Default
+    ------------------------------------------------------------------------- */
+
+/* Icons order for layout menu version 5 */
+@if ($layout--header_layout == 5) {
+    @if ($layout--order_icons == 4) {
+        .page-header {
+            .desktop {
+                .mini-account {
+                    padding: 22px 0 20px;
+                    margin-right: 20px;
+                }
+
+                .header-wishlist-count {
+                    margin-right: 0;
+
+                    .block-wishlist {
+                        padding-top: 23px;
+                    }
+                }
+
+                @if ($layout_wishlist_icons == 3) {
+                    .header-wishlist-count {
+                        margin: 24px 0 15px 10px;
+                    }
+                }
+
+                .mini-search {
+                    margin-left: 0;
+                    max-width: inherit;
+                }
+
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 3) {
+        .page-header {
+            .desktop {
+                .header-wishlist-count {
+                    .block-wishlist {
+                        padding-top: 23px;
+                    }
+                }
+
+                @if ($layout_wishlist_icons == 3) {
+                    .header-wishlist-count {
+                        margin: 24px 20px 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 2) {
+        .page-header {
+            .desktop {
+                .header-wishlist-count {
+                    margin: 23px 20px 20px 0;
+                }
+
+                @if ($layout_wishlist_icons == 3) {
+                    .header-wishlist-count {
+                        margin: 24px 20px 15px 10px;
+                    }
+                }
+
+                .mini-account {
+                    padding: 23px 0 16px;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+
+    @if ($layout--order_icons == 1) {
+        .page-header {
+            .desktop {
+                @if ($layout_wishlist_icons == 3) {
+                    .header-wishlist-count {
+                        margin: 24px 0 15px 10px;
+                    }
+                }
+
+                .header-wishlist-count {
+                    .block-wishlist {
+                        padding-top: 23px;
+                    }
+                }
+            }
+        }
+    }
+}

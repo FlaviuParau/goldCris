@@ -1,0 +1,11 @@
+src/app/code/local/Blugento/HomepageManager                                     app/code/local/Blugento/HomepageManager
+src/app/design/adminhtml/default/default/layout/blugento_homepagemanager.xml    app/design/adminhtml/default/default/layout/blugento_homepagemanager.xml
+src/app/design/adminhtml/default/default/template/blugento/homepagemanager      app/design/adminhtml/default/default/template/blugento/homepagemanager
+src/app/etc/modules/Blugento_HomepageManager.xml                                app/etc/modules/Blugento_HomepageManager.xml
+src/app/locale/de_DE/*                                                          app/locale/de_DE/
+src/app/locale/en_US/*                                                          app/locale/en_US/
+src/app/locale/ro_RO/*                                                          app/locale/ro_RO/
+src/skin/adminhtml/default/default/blugento/homepagemanager                     skin/adminhtml/default/default/blugento/homepagemanager
+src/js/tiny_mce/plugins/blugento_homepagemanager                                js/tiny_mce/plugins/blugento_homepagemanager
+src/app/code/local/Blugento/Form                                                app/code/local/Blugento/Form
+src/app/etc/modules/Blugento_Form.xml                                           app/etc/modules/Blugento_Form.xml

@@ -1,0 +1,28 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       component/_data-table.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+.data-table,
+%data-table {
+    width: 100%;
+    border: 1px solid $data-table_border-color;
+
+    th,
+    td {
+        padding: 10px;
+        border-bottom: 1px solid $data-table_border-color;
+        vertical-align: top;
+    }
+
+    thead {
+        background-color: $data-table__th_background-color;
+        color: $data-table__th_color;
+    }
+
+    tbody {
+        background-color: $data-table__td_background-color;
+        color: $data-table__td_color;
+    }
+}

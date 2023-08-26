@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<layout>
+
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>blugento/orderstatuscolor/css/main.css</name></action>
+        </reference>
+    </default>
+
+    <add_jscolor>
+        <reference name="head">
+            <action method="addJs"><script>jscolor/jscolor.js</script></action>
+        </reference>
+    </add_jscolor>
+
+    <adminhtml_sales_order_status_edit>
+        <update handle="add_jscolor" />
+    </adminhtml_sales_order_status_edit>
+
+    <adminhtml_sales_order_status_new>
+        <update handle="add_jscolor" />
+    </adminhtml_sales_order_status_new>
+
+    <adminhtml_system_config_edit>
+        <update handle="add_jscolor" />
+    </adminhtml_system_config_edit>
+    <adminhtml_sales_order_index>
+        <reference name="head">
+            <action method="addItem" ifconfig="admin/order_grid/color_whole_row"><type>skin_js</type><name>blugento/orderstatuscolor/js/main.js</name></action>
+        </reference>
+    </adminhtml_sales_order_index>
+
+    <!-- Adds a new column to show the status color in the status grid -->
+    <adminhtml_sales_order_status_index>
+        <reference name="sales_order_status.grid">
+            <action method="addColumnAfter">
+                <columnId>status_color</columnId>
+                <arguments helper="blugento_orderstatuscolor/data/getStatusColorColumn" />
+                <after>state</after>
+            </action>
+        </reference>
+    </adminhtml_sales_order_status_index>
+
+    <!-- Adds color update when status text is updated -->
+    <adminhtml_sales_order_addcomment>
+        <block type="adminhtml/sales_order_view_history" name="order_history_js_update" template="blugento/orderstatuscolor/sales/order/view/history/js-update.phtml" output="toHtml" />
+    </adminhtml_sales_order_addcomment>
+
+</layout>

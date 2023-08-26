@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <blugento_seoenhancements translate="label">
+            <label>SEO Enhancements</label>
+            <tab>blugento</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1905</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <enhancements_group translate="label">
+                    <label>SEO Enhancements</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable_pagination translate="label">
+                            <label>Enable SEO pagination</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_pagination>
+                        <add_pagination_to_title translate="label">
+                            <label>Add Pagination to Page Title</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_pagination_to_title>
+                        <add_pagination_to_description translate="label">
+                            <label>Add Pagination to Page Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_pagination_to_description>
+                        <simplify_category_meta_title translate="label">
+                            <label>Simplify Category Page Title</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </simplify_category_meta_title>
+                        <simplify_product_meta_title translate="label">
+                            <label>Simplify Product Page Title</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </simplify_product_meta_title>
+                        <add_nofollow_on_filters_general translate="label comment">
+                            <label>Add noindex to filters in general</label>
+                            <comment>Excluding pagination</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_nofollow_on_filters_general>
+                        <add_nofollow_on_pagination translate="label comment">
+                            <label>Add noindex to pagination</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><add_nofollow_on_filters_general>1</add_nofollow_on_filters_general></depends>
+                        </add_nofollow_on_pagination>
+                        <add_nofollow_on_filters translate="label comment">
+                            <label>Add noindex to filters and pagination</label>
+                            <comment>Only if multiple filters are selected is present</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_nofollow_on_filters>
+                        <add_nofollow_on_multiple_filters translate="label comment">
+                            <label>Add noindex to multiple filters</label>
+                            <comment>Only if multiple filters are selected is present</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_nofollow_on_multiple_filters>
+                        <add_noindex_on_facebook_links translate="label comment">
+                            <label>Add noindex to facebook links</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </add_noindex_on_facebook_links>
+                        <search_page_noindex_follow translate="label">
+                            <label>Add NOINDEX/FOLLOW on search page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>On search page with pagination also.</comment>
+                        </search_page_noindex_follow>
+                        <use_attributes translate="label">
+                            <label>Use Canonical Link Meta Tag For Attributes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_attributes>
+                        <remove_canonical_attributes translate="label">
+                            <label>Remove Canonical Link Meta Tag For Filterable Attributes</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>blugento_seoenhancements/system_config_source_attributes</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <use_attributes>1</use_attributes>
+                            </depends>
+                        </remove_canonical_attributes>
+                        <force_canonical_attributes translate="label">
+                            <label>Force Canonical Link Meta Tag For Filterable Attributes</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>blugento_seoenhancements/system_config_source_attributes</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <use_attributes>1</use_attributes>
+                            </depends>
+                        </force_canonical_attributes>
+                        <category_use_parentcategory translate="label comment">
+                            <label>Remove Parent Category Path for Category URLs</label>
+                            <comment>If enabled removes all parent categories from the URL path, so that /clothing/shoes becomes /shoes. (*Note: URL reindexing is necessary!)</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_use_parentcategory>
+                        <canonical_review translate="label">
+                            <label>Include Canonical Link on Review Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </canonical_review>
+                        <category_canonical translate="label">
+                            <label>Include Canonical Link on Category Page</label>
+                            <comment>If enabled, the canonical link apears twice on category filter page. You should disable the other option from Sys - Config - Catalog - Search Engine Optimisations - Use Canonical Link Meta Tag For Categories</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </category_canonical>
+                        <dir_order_canonical translate="label">
+                            <label>Canonical on dir and order params</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>71</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>If disabled, the canonical link will be removed if dir and order params exist</comment>
+                            <depends><category_canonical>1</category_canonical></depends>
+                        </dir_order_canonical>
+                        <pagination_no_canonical translate="label">
+                            <label>No Canonical on Pagination</label>
+                            <comment>If enabled, the canonical link will be removed if pagination greater than 1</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>72</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><category_canonical>1</category_canonical></depends>
+                        </pagination_no_canonical>
+                        <category_canonical_pagination translate="label">
+                            <label>Choose Canonical Type on Pagination</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_seoenhancements/system_config_source_pagination</source_model>
+                            <sort_order>75</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><category_canonical>1</category_canonical></depends>
+                        </category_canonical_pagination>
+                        <canonical_on_cms_pages translate="label">
+                            <label>Include Canonical Link on CMS Pages</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>77</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </canonical_on_cms_pages>
+                        <new_page_title translate="label">
+                            <label>Change Title Page and H1 in Category Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </new_page_title>
+                        <change_page_and_meta_title translate="label comment">
+                            <label>Change title tag, page title on category and meta title</label>
+                            <comment>If enabled, this option will change the title tag, the page title on filtered category and meta with the selected attribute</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </change_page_and_meta_title>
+                        <selected_attributes translate="label comment">
+                            <label>Select Attributes</label>
+                            <comment>The selected attributes will change title tag, page title on category and meta title</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>blugento_seoenhancements/system_config_source_selectedAttributes</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends>
+                                <change_page_and_meta_title>1</change_page_and_meta_title>
+                            </depends>
+                        </selected_attributes>
+                        <change_default_favicon translate="label comment">
+                            <label>Change favicon</label>
+                            <comment><![CDATA[If enabled, this option will change the favicon found in design customizer]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </change_default_favicon>
+                        <add_new_favicon translate="label comment">
+                            <label>New Favicon Icon</label>
+                            <comment><![CDATA[Allowed file types: ICO, PNG, GIF, JPG, JPEG. Not all browsers support all these formats!]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_seoenhancements/system_config_backend_favicon</backend_model>
+                            <base_url type="media">seo_enhancements/favicon</base_url>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <change_default_favicon>1</change_default_favicon>
+                            </depends>
+                        </add_new_favicon>
+                        <change_default_logo translate="label">
+                            <label>Change logo for open graph</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </change_default_logo>
+                        <add_new_logo translate="label comment">
+                            <label>New OG Logo</label>
+                            <comment><![CDATA[Allowed file types: ICO, PNG, GIF, JPG, JPEG. Not all browsers support all these formats!]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_seoenhancements/system_config_backend_logo</backend_model>
+                            <base_url type="media">seo_enhancements/og-logo</base_url>
+                            <sort_order>125</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <change_default_logo>1</change_default_logo>
+                            </depends>
+                        </add_new_logo>
+                        <change_default_site_logo translate="label">
+                            <label>Change site logo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </change_default_site_logo>
+                        <add_new_site_logo translate="label comment">
+                            <label>New Site Logo</label>
+                            <comment><![CDATA[Allowed file types: ICO, PNG, GIF, JPG, JPEG. Not all browsers support all these formats!]]></comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>blugento_seoenhancements/system_config_backend_siteLogo</backend_model>
+                            <base_url type="media">seo_enhancements/site-logo</base_url>
+                            <sort_order>135</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <change_default_site_logo>1</change_default_site_logo>
+                            </depends>
+                        </add_new_site_logo>
+                        <remove_category_description translate="label">
+                            <label>Remove category description from pagination</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>if pagination greater than 1</comment>
+                        </remove_category_description>
+                        <viewport_user_scalable translate="label">
+                            <label>Set Viewport User Scalable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>145</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The "user-scalable" parameter enables zooming on a page for people with low vision who rely on screen magnifiers to properly see the contents of a web page. Defaults to "no".</comment>
+                        </viewport_user_scalable>
+                        <viewport_maximum_scale translate="label">
+                            <label>Set Viewport Maximum Scale</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The "maximum-scale" parameter limits the amount the user can zoom. Defaults to "1"</comment>
+                        </viewport_maximum_scale>
+                    </fields>
+                </enhancements_group>
+            </groups>
+        </blugento_seoenhancements>
+    </sections>
+</config>

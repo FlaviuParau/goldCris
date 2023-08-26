@@ -1,0 +1,4 @@
+src/app/code/local/Blugento/UrlCheck                                     app/code/local/Blugento/UrlCheck
+src/app/etc/modules/Blugento_UrlCheck.xml                                app/etc/modules/Blugento_UrlCheck.xml
+src/app/locale/en_US/Blugento_UrlCheck.csv                               app/locale/en_US/Blugento_UrlCheck.csv
+src/app/locale/ro_RO/Blugento_UrlCheck.csv                               app/locale/ro_RO/Blugento_UrlCheck.csv

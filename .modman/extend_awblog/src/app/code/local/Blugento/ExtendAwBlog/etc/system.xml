@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--/**
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to
+* newer versions in the future.
+*
+* @category    Blugento
+* @package     Blugento_ExtendAwBlog
+* @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/-->
+
+<config>
+    <sections>
+        <blog translate="label" module="blugento_extendawblog">
+            <groups>
+                <blog translate="label">
+                    <label>General Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <sort_direction translate="label">
+                            <label>Sort Order</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_extendawblog/system_config_source_sortorder</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_direction>
+                        <sort_by translate="label">
+                            <label>Sort By</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_extendawblog/system_config_source_sortby</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_by>
+                        <image_width translate="label">
+                            <label>Image Width</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_width>
+                        <image_height translate="label">
+                            <label>Image Height</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_height>
+                        <image_width_view translate="label">
+                            <label>Image Width View</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_width_view>
+                        <image_height_view translate="label">
+                            <label>Image Height View</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image_height_view>
+                        <category_general_page translate="label">
+                            <label>Display Category in Main Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>blugento_extendawblog/system_config_source_categories</source_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Only the posts from the selected category will be displayed on main blog page (/blog). Leave it empty if you want to display the posts from all the categories.</comment>
+                        </category_general_page>
+                    </fields>
+                </blog>
+            </groups>
+        </blog>
+    </sections>
+</config>

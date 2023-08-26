@@ -1,0 +1,329 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-footer.scss
+    Version:        1.0
+    Description:    Page - Footer Styles
+    ------------------------------------------------------------------------- */
+
+@import '../mixin/_util.scss';
+
+.page-footer {
+    @include phone-s {
+        text-align: center;
+    }
+
+    a {
+        color: $page-footer__link_color;
+
+        &:hover {
+            color: $page-footer__link--hover_color;
+        }
+    }
+
+    .page-container-wrapper {
+        border-top: 1px solid $page-footer__section_border-color;
+        line-height: 20px;
+        background-color: $page-footer_background-color;
+        color: $page-footer_color;
+
+        @include mobile {
+            padding: 0;
+        }
+    }
+
+    .page-container {
+        @include desktop {
+            padding-top: 35px;
+            padding-bottom: 35px;
+        }
+
+        > .marketing-box,
+        .row > div {
+            @include desktop-s {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .anpc-content {
+        order: 1;
+        padding-top: 20px;
+
+        ul {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-basis: 100%;
+          flex-flow: row wrap;
+      
+          li {
+            margin-bottom: 16px;
+      
+            a {
+              background-size: 250px 50px;
+              background-repeat: no-repeat;
+              display: block;
+              width: 250px;
+              height: 50px;
+            }
+      
+            &.anpc-sal {
+              a {
+                background-image: $anpc-sal;
+              }
+            }
+      
+            &.anpc-sol {
+              a {
+                background-image: $anpc-sol;
+              }
+            }
+          }
+        }
+
+        @include phone-m {
+            ul {
+              li {
+                margin: 0 4px;
+              }
+            }
+        }
+
+        @include desktop {
+            ul {
+              li {
+                margin: 0 4px;
+              }
+            }
+        }
+    }
+
+    .page-container--small {
+        font-size: 11px;
+
+        @include desktop {
+            padding-bottom: 10px;
+        }
+    }
+
+    .marketing-box {
+        float: left;
+        margin-right: 45px;
+
+        @include desktop-s {
+            width: 50%;
+            margin-right: 0;
+            text-align: center;
+        }
+
+        @include phone-sm {
+            width: 100%;
+        }
+
+        > em,
+        > i {
+            display: inline-block;
+            width: 60px;
+            height: 50px;
+            vertical-align: middle;
+            margin-right: 12px;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: contain;
+        }
+
+        &--shipping > em,
+        &--shipping > i {
+            background-image: $page-footer__marketing-box--shipping__before;
+        }
+
+        &--support em,
+        &--support i {
+            background-image: $page-footer__marketing-box--support__before;
+        }
+
+        &--newsletter em,
+        &--newsletter i {
+            background-image: $page-footer__marketing-box--newsletter__before;
+        }
+
+        .box-title,
+        .box-content {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .box-content {
+            margin-left: 23px;
+
+            @include phone-sm {
+                display: block;
+                margin: 10px auto 0;
+            }
+        }
+
+        h4 {
+            font-size: inherit;
+        }
+
+        h5 {
+            font-weight: 900;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+    }
+
+    .marketing-box--newsletter {
+		@include cf;
+		
+        float: right;
+        margin-right: 0;
+
+        @if ($page-footer__marketing-box--newsletter_color != $page-footer_color) {
+            color: $page-footer__marketing-box--newsletter_color;
+        }
+
+        @include desktop-s {
+            width: 100%;
+        }
+
+        .input-box {
+            position: relative;
+            float: right;
+
+            @include phone {
+                float: none;
+            }
+        }
+
+        .input-text {
+            min-width: 260px;
+
+            @include phone-s {
+                min-width: 0;
+            }
+        }
+
+        .button {
+            position: relative;
+            z-index: 1;
+            float: right;
+            padding-left: 12px;
+            padding-right: 12px;
+            background: $page-footer__marketing-box__button_background;
+            color: $page-footer__marketing-box__button_color;
+            height: $input-text_height;
+        }
+
+        .validation-advice {
+            top: 100%;
+            left: 0;
+            width: 100%;
+            line-height: (17 / 13);
+        }
+        
+        .newsletter-checkbox,
+        .second-newsletter-checkbox {
+            position: relative;
+            max-width: 350px;
+            padding-top: 10px;
+            clear: right;
+            
+            .validate-newsletter {
+                display: none;
+            }
+        }
+    }
+
+    .marketing-box--support {
+        color: $page-footer__marketing-box--support_color;
+    }
+
+    .marketing-box--shipping {
+        color: $page-footer__marketing-box--shipping_color;
+    }
+
+    .branding {
+    }
+
+    .copyright {
+        color: $page-footer__copyright_color;
+    }
+
+    .footer-links {
+        @include cf;
+
+        ul {
+            float: left;
+            width: 50%;
+            padding-right: 20px;
+        }
+
+        @if ($newsletter_menu_accordion == 1) {
+            @include mobile {
+                ul {
+                    float: none;
+                    width: 100%;
+                    padding: 0;
+
+                    li {
+                        display: none;
+                        padding: 0 10px;
+
+                        &:first-child {
+                            border-bottom: 1px solid $page-footer__section_border-color;
+                            display: block;
+                            cursor: pointer;
+                            padding: 5px 20px 5px 10px;
+                            margin-bottom: 5px;
+                            text-transform: uppercase;
+                            position: relative;
+
+                            &:after {
+                                content: '';
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 10px 5px 0 5px;
+                                border-color: $page-footer__section_border-color transparent transparent transparent;
+                                position: absolute;
+                                right: 10px;
+                                top: 10px;
+                            }
+                        }
+                    }
+
+                    &.toggle-footer-menu {
+                        li {
+                            display: block;
+
+                            &:first-child {
+                                &:after {
+                                    content: '';
+                                    border-width: 0 5px 10px 5px;
+                                    border-color: transparent transparent $page-footer__section_border-color transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .legals {
+        text-align: center;
+    }
+
+    .feeds {
+        margin-bottom: -20px;
+        font-size: 0;
+        line-height: 0;
+        text-align: center;
+
+        li {
+            display: inline-block;
+            margin: 0 10px 20px;
+            vertical-align: middle;
+        }
+    }
+}

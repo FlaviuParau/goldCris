@@ -1,0 +1,143 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_product-view-tabs1.scss
+    Version:        1.0
+    Description:    Tabs Style - Side Area
+    ------------------------------------------------------------------------- */
+
+@if ($layout--product-view_tabs-style == 3) {
+} @elseif ($layout--product-view_tabs-style == 2) {
+} @else {
+    .product-collateral {
+        &.exceeded-tabs-limit {
+            clear: right;
+            float: right;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .tabs-nav {
+            @include desktop {
+                display: flex;
+            }
+
+            .tab-reviews {
+                flex-grow: 1;
+                text-align: right;
+            }
+        }
+        
+        &[data-orientation='2'] {
+            border: 1px solid $product-view__product-collateral__list__item-active_background-color;
+            
+            .tabs-nav,
+            .tabs-container {
+                @include desktop {
+                    float: left;
+                }
+            }
+    
+            .tabs-nav {
+                border-right: 2px solid $product-view__product-collateral__list__item-active_background-color;
+                border-bottom: 2px solid $product-view__product-collateral__list__item-active_background-color;
+                flex-flow: row wrap;
+                justify-content: center;
+
+                @include desktop {
+                    width: 25%;
+                    padding: 0;
+                    
+                    li {
+                        display: block;
+                        float: none;
+                        width: 100%;
+                        
+                        a {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            
+            .tabs-container {
+                @include desktop {
+                    width: 75%;
+                    
+                    .tab,
+                    .tab .block {
+                        padding-top: 10px;
+                    }
+                }
+                
+                #block-related {
+                    @include desktop {
+                        li.item {
+                            width: 25%;
+                        }
+                    }
+                }
+                
+                #pc-tab-reviews {
+                    padding-top: 0;
+                    
+                    .form-add-review {
+                        margin-top: 0;
+                    }
+                }
+            }
+            
+            &[data-style='1'] {
+                @include desktop {
+                    .tab.custom,
+                    #block-related {
+                        li.item {
+                            width: 50%;
+                        }
+                    }
+                }
+            }
+        }
+        
+        @include phone {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .tab {
+            .button {
+                margin-bottom: 20px;
+            }
+        }
+
+        .data-table {
+            th,
+            td {
+                padding: 10px 20px;
+            }
+
+            th {
+                width: 30%;
+            }
+        }
+
+        .enhanced-reviews  {
+            .review-button {
+                float: none;
+                width: auto;
+                padding: 0;
+                margin-bottom: 20px;
+            }
+    
+            .data-table-review {
+                float: none;
+                width: auto;
+            }
+        }
+
+        .form-add-review {
+            > form {
+                width: auto;
+                padding: 30px;
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+<div id="main" class="col-main">
+<!-- [start] content -->
+    <div class="page-title">
+        <h1>404 error: Page not found.</h1>
+    </div>
+<!-- [end] content -->
+</div>
+
+<?php  date_default_timezone_set("Europe/Bucharest");
+Mage::log(date('Y-m-d H:i:s').' - '.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'], null, '404_error.log' ); ?>

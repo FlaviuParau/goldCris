@@ -1,0 +1,13 @@
+src/app/etc/modules/Blugento_Campaign.xml			                                            app/etc/modules/Blugento_Campaign.xml
+
+src/app/code/local/Blugento/Campaign				                                            app/code/local/Blugento/Campaign
+
+src/app/locale/ro_RO/Blugento_Campaign.csv					                                    app/locale/ro_RO/Blugento_Campaign.csv
+
+src/app/design/frontend/base/default/layout/blugento_campaign.xml                               app/design/frontend/base/default/layout/blugento_campaign.xml
+src/app/design/frontend/base/default/template/page/1column-campaign.phtml                       app/design/frontend/base/default/template/page/1column-campaign.phtml
+src/app/design/frontend/base/default/template/page/2columns-campaign.phtml                      app/design/frontend/base/default/template/page/2columns-campaign.phtml
+src/app/design/frontend/base/default/template/page/2columns-campaign-category-ajax.phtml        app/design/frontend/base/default/template/page/2columns-campaign-category-ajax.phtml
+src/app/design/frontend/base/default/template/blugento_campaign			                        app/design/frontend/base/default/template/blugento_campaign
+
+src/skin/frontend/base/default/blugento-campaign                                                skin/frontend/base/default/blugento-campaign

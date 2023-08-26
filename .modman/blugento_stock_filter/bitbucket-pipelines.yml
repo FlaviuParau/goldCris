@@ -1,0 +1,10 @@
+# Blugento Automated Deploy Process
+image: blugento/pipeline-code-review
+
+pipelines:
+ branches:
+   master:
+     - step:
+         script:
+           - tar -zcf ./module.tar.gz ./src ./modman
+           - aws s3 mv ./module.tar.gz s3://blugento-modules/$BITBUCKET_REPO_SLUG.tar.gz

@@ -1,0 +1,35 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       module/_page-socialmedia.scss
+    Version:        1.0
+    Description:    Page - Social Media Styles
+    ------------------------------------------------------------------------- */
+
+.page-socialmedia-share {
+    position: fixed;
+    top: 50%;
+
+    &--right {
+        right: 0;
+    }
+
+    &--left {
+        left: 0;
+    }
+
+    .reveal-trigger {
+        background-image: $icon--share--a1;
+    }
+}
+
+.page-main-overflow {
+    .page-socialmedia-share {
+        .list--social {
+            display: block;
+
+            .list__item {
+                float: left;
+                margin-right: 10px;
+            }
+        }
+    }
+}

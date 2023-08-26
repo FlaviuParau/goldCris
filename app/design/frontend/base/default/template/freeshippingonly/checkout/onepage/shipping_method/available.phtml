@@ -1,0 +1,186 @@
+<?php /** @var $this Mage_Checkout_Block_Onepage_Shipping_Method_Available */ ?>
+<?php
+    $_shippingRateGroups = $this->getShippingRates();
+    $_methodTitle = Mage::getStoreConfig('carriers/blugento_storepickup/method_title');
+?>
+<?php if (!$_shippingRateGroups): ?>
+    <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+<?php else:
+    if (Mage::helper('core')->isModuleEnabled('Blugento_FreeshippingOnly') && Mage::getStoreConfig('freeshipping_only/freeshipping_only_group/enabled')){
+        if ( array_key_exists('freeshipping', $_shippingRateGroups )) {
+            foreach ($_shippingRateGroups as $code => $_rates) {
+                if (!in_array($code, ['freeshipping', 'flatrate', 'storepickup', 'bgsamedayeasybox'])) {
+                    unset($_shippingRateGroups[$code]);
+                    continue;
+                }
+                foreach ($_rates as $_rate){
+                    if ($_rate->getPrice() != 0){
+                        unset($_shippingRateGroups[$code]);
+                    }
+                }
+            }
+        }
+    }
+    ?>
+    <dl class="sp-methods <?php if(Mage::helper('core')->isModuleEnabled('Blugento_Storepickup') &&
+    Mage::getStoreConfig('carriers/blugento_storepickup/enabled')): ?>store-pick-up <?php if(Mage::helper('core')->isModuleEnabled('Blugento_Storepickup') &&
+    Mage::getStoreConfig('carriers/blugento_storepickup/enableDropdown')): ?> store-pick-up-dropdown<?php endif; ?><?php endif; ?>">
+        <?php $shippingCodePrice = array(); ?>
+        <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates): ?>
+            <span class="payment-title">
+                <?php if (Mage::getStoreConfig('carriers/' . $code .'/active')) : ?>
+                    <dt><?php echo $this->escapeHtml($this->getCarrierName($code)) ?></dt>
+                <?php endif; ?>
+                <dd>
+                    <ul>
+                        <?php $_sole = $_sole && count($_rates) == 1; foreach ($_rates as $_rate): ?>
+                            <?php $shippingCodePrice[] = "'" . $_rate->getCode() . "':" . (float)$_rate->getPrice(); ?>
+                            <li>
+                                <?php if ($_rate->getErrorMessage()): ?>
+                                    <ul class="messages"><li class="error-msg"><ul><li><?php echo $_rate->getErrorMessage(); ?></li></ul></li></ul>
+                                <?php else: ?>
+                                <?php if ($_sole): ?>
+                                    <span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>
+                                <?php else: ?>
+                                <?php if ($_rate->getCode() === $this->getAddressShippingMethod()): ?>
+                                    <script type="text/javascript">
+                                        //<![CDATA[
+                                        lastPrice = <?php echo (float)$_rate->getPrice(); ?>;
+                                        //]]>
+                                    </script>
+                                <?php endif; ?>
+                                <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if ($_rate->getCode() === $this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio" />
+                                <?php endif; ?>
+                                    <label for="s_method_<?php echo $_rate->getCode() ?>">
+                                        <?php echo $_rate->getMethodTitle() ?>
+                                        <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                        <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+                                        <?php echo $_excl; ?>
+                                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                            (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                        <?php endif; ?>
+                                    </label>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </dd>
+            </span>
+        <?php endforeach; ?>
+    </dl>
+
+    <?php if (Mage::getStoreConfig('carriers/bgsamedayeasybox/active')) : ?>
+        <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('blugento_sameday/blugento-sameday.phtml')->toHtml(); ?>
+    <?php endif; ?>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        <?php if (!empty($shippingCodePrice)): ?>
+        var shippingCodePrice = {<?php echo implode(',', $shippingCodePrice); ?>};
+        <?php endif; ?>
+
+        $$('input[type="radio"][name="shipping_method"]').each(function(el) {
+            Event.observe(el, 'click', function() {
+                if (el.checked == true) {
+                    var getShippingCode = el.getValue();
+                    <?php if (!empty($shippingCodePrice)): ?>
+                    var newPrice = shippingCodePrice[getShippingCode];
+                    if (!lastPrice) {
+                        lastPrice = newPrice;
+                        quoteBaseGrandTotal += newPrice;
+                    }
+                    if (newPrice != lastPrice) {
+                        quoteBaseGrandTotal += (newPrice-lastPrice);
+                        lastPrice = newPrice;
+                    }
+                    <?php endif; ?>
+                    checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+                    return false;
+                }
+            });
+        });
+
+        function checkPayment() {
+            // Preselect correct payment method
+            if (jQuery('#s_method_zitecDpd_1, #s_method_bgurgentcargus_bgurgentcargus').length) {
+                setTimeout(() => {
+                    if (jQuery('#s_method_zitecDpd_1').is(':checked')) {
+                        jQuery('#p_method_zitec_dpd_cashondelivery').prop('checked', true);
+                    } else if (jQuery('#s_method_bgurgentcargus_bgurgentcargus').is(':checked')) {
+                        jQuery('#p_method_cashondelivery').prop('checked', true);
+                    }
+                }, 1200);
+            }
+        }
+
+        // Add selected class for payment fields
+        if (!jQuery('.store-pick-up').length || jQuery('#s_method_bgsamedayeasybox_bgsamedayeasybox').length) {
+            jQuery('.payment-title').each(function () {
+                const inputId = jQuery(this).find('input').attr('id');
+
+                jQuery(this).addClass(inputId);
+
+                jQuery(this).each(function () {
+                    if (jQuery(this).find('input').is(':checked')) {
+                        jQuery(this).addClass('selected');
+                    }
+
+                    jQuery(this).on('click', function () {
+                        jQuery('.payment-title').removeClass('selected');
+
+                        if (!jQuery(this).hasClass('selected')) {
+                            jQuery(this).addClass('selected');
+
+                            if (jQuery(this).find('li').length < 2) {
+                                jQuery(this).find('input[type="radio"]').prop('checked', true);
+                            }
+                        } else {
+                            jQuery(this).removeClass('selected');
+                        }
+                    });
+                });
+            });
+        }
+
+        if (!jQuery('.store-pick-up').length) {
+            jQuery('.payment-title').each(function () {
+                if (jQuery('#checkout-shipping-method-load span.no-display').length) {
+                    checkPayment();
+                }
+
+                jQuery('.payment-title').on('click', function () {
+                    checkPayment();
+                });
+            });
+        }
+
+        // Show dropdown if more than 5 shipment methods are available
+        if (jQuery('.store-pick-up-dropdown').length) {
+            jQuery('.payment-title dt').each(function () {
+                if (jQuery(this).text() === '<?php echo $_methodTitle; ?>') {
+                    if (jQuery(this).parent().find('li').length > 5) {
+                        jQuery(this).parent().addClass('store-dropdown');
+                    }
+                }
+            });
+
+            jQuery('body').on('click', function () {
+                jQuery('.store-dropdown').removeClass('opened');
+            });
+
+            jQuery('.store-dropdown dt').on('click', function (e) {
+                e.stopPropagation();
+                jQuery(this).parent().toggleClass('opened');
+            });
+
+            jQuery('.store-dropdown li label').each(function (e) {
+                jQuery(this).on('click', function (e) {
+                    jQuery('.store-dropdown dt label').remove();
+                    var selectedShipment = jQuery(this).clone().removeAttr('for');
+                    jQuery(selectedShipment).appendTo('.store-dropdown dt');
+                });
+            });
+        }
+        //]]>
+    </script>
+<?php endif; ?>

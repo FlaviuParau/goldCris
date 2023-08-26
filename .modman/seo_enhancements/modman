@@ -1,0 +1,8 @@
+src/app/code/local/Blugento/*                               app/code/local/Blugento/
+src/app/etc/modules/*                                       app/etc/modules/
+src/app/design/frontend/base/default/layout/*               app/design/frontend/base/default/layout/
+src/app/design/frontend/base/default/template/blugento/*    app/design/frontend/base/default/template/blugento/
+
+src/app/locale/ro_RO/Blugento_SeoEnhancements.csv               app/locale/ro_RO/Blugento_SeoEnhancements.csv
+src/app/locale/de_DE/Blugento_SeoEnhancements.csv               app/locale/de_DE/Blugento_SeoEnhancements.csv
+src/app/locale/en_US/Blugento_SeoEnhancements.csv               app/locale/en_US/Blugento_SeoEnhancements.csv

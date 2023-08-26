@@ -1,0 +1,22 @@
+/*! ----------------------------------------------------------------------------
+    Filename:       _config.scss
+    Version:        1.0
+    Description:    -
+    ------------------------------------------------------------------------- */
+
+@function color($key) {
+    @return map-get($palette, $key);
+}
+
+@function image($name) {
+    @return url('../images/#{$name}');
+}
+
+@import 'config/grunt';
+@import 'config/design';
+@import 'config/image';
+@import 'config/layout';
+@import 'config/core';
+@import 'config/component';
+@import 'config/module';
+@import 'config/custom';

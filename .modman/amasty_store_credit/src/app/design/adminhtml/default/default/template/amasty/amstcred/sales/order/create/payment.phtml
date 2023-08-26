@@ -1,0 +1,33 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_StoreCredit
+ */
+?>
+<?php
+/**
+ * @var $this Amasty_StoreCredit_Block_Adminhtml_Sales_Order_Create_Payment
+ */
+?>
+<?php if ($this->canShowBlock()): ?>
+	<?php $balance = $this->getQuote()->getStore()->convertPrice($this->getBalance(), true, false); ?>
+    <div>
+        <input id="amstcred_use_customer_balance" value="1" name="payment[amstcred_use_customer_balance]" type="checkbox" <?php if ($this->isCustomerBalanceUsed()): ?>checked="checked"<?php endif; ?> />
+        <label for="amstcred_use_customer_balance">
+			<?php echo Mage::helper('amstcred')->__('Use Store Credit'); ?>	(<span id="amstcred_available_amount"><?php echo $balance; ?></span> <?php echo Mage::helper('amstcred')->__('available'); ?>)
+		</label>
+        <script type="text/javascript">
+            function toggleAmstcredUseCustomerBalance()
+            {
+                value = ($('amstcred_use_customer_balance').checked ? 1 : 0);
+                var data = {};
+                data['payment[amstcred_use_customer_balance]'] = value;
+
+                order.loadArea(['totals', 'billing_method'], true, data);
+            }
+            Event.observe($('amstcred_use_customer_balance'), 'change', toggleAmstcredUseCustomerBalance);
+            Event.observe(document, 'dom:loaded', toggleAmstcredUseCustomerBalance);
+        </script>
+    </div>
+<?php endif; ?>

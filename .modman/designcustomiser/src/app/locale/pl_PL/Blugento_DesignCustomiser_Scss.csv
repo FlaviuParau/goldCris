@@ -1,0 +1,1032 @@
+"scss/title/account__block-content__list__current_background-color","Aktywny kolor tła"
+"scss/title/account__block-content__list__current_color","Aktywny kolor tekstu"
+"scss/title/account__block-content__list_color","Kolor tekstu"
+"scss/title/add-to-links_color","Kolor tekstu"
+"scss/title/add-to-links_font","Czcionka"
+"scss/title/badge_font","Czcionka"
+"scss/title/badge--new_background-color","Nowy kolor tła"
+"scss/title/badge--new_color","Nowy kolor tekstu"
+"scss/title/badge--new_display","Nowe wyświetlenie"
+"scss/title/badge--sale_background-color","Kolor tła sprzedaży"
+"scss/title/badge--sale_color","Kolor tekstu sprzedaży"
+"scss/title/badge--sale_display","Wyświetlanie sprzedaży"
+"scss/title/block__block-title_background-color","Kolor tła"
+"scss/title/block__block-title_color","Kolor tekstu"
+"scss/title/block-layered-nav__title_color","Kolor tytułu"
+"scss/title/block-layered-nav__title_font","Czcionka"
+"scss/title/breadcrumbs__leaf_color","Aktywny kolor tekstu"
+"scss/title/breadcrumbs_color","Color tekstu"
+"scss/title/breadcrumbs_display","Wyświetlanie"
+"scss/title/breadcrumbs_font","Czcionka"
+"scss/title/button_background-color","Kolor tła"
+"scss/title/button_color","Kolor tekstu"
+"scss/title/button-action_background-color","Kolor tła akcji"
+"scss/title/button-action_color","Kolor tekstu akcji"
+"scss/title/cart__btn-checkout_background-color","Kolor tła"
+"scss/title/cart__btn-checkout_color","Kolor tekstu"
+"scss/title/cart__cart-totals__table_background-color","Kolor tła"
+"scss/title/cart__cart-totals__table_color","Kolor tekstu"
+"scss/title/cart__cart-totals__total_color","Grand Total kolor tekstu"
+"scss/title/cart__discount__button_background-color","Kolor tła"
+"scss/title/cart__discount__button_color","Kolor tekstu"
+"scss/title/cart-table__item-options_color","Kolor tekstu"
+"scss/title/cart-table__item-options_font","Czcionka"
+"scss/title/cart-table__product-image_background-color","Kolor tła"
+"scss/title/cart-table__product-name_color","Kolor tekstu"
+"scss/title/cart-table__product-name_font","Czcionka"
+"scss/title/cart-table__product-price_color","Kolor "
+"scss/title/cart-table__product-price_font","Czcionka"
+"scss/title/cart-table__product-sku_display","Wyświetlenie SKU"
+"scss/title/cart-table__sku-label_color","Kolor tekstu"
+"scss/title/cart-table__sku-label_font","Czcionka"
+"scss/title/cart-table_background-color","Kolor tła"
+"scss/fieldset/step_background","Kolor tła step"
+"scss/title/checkout-onepage_step_background-color","Kolor tła"
+"scss/title/checkout-onepage__buttons_background-color","Kolor tła"
+"scss/title/checkout-onepage__buttons_color","Kolor tekstu"
+"scss/title/checkout-onepage__buttons_font","Czcionka"
+"scss/title/checkout-onepage__progress-title_background-color","Kolor tła"
+"scss/title/checkout-onepage__progress-title_color","Kolor tekstu"
+"scss/title/checkout-onepage__progress-title_font","Czcionka"
+"scss/title/checkout-onepage__step-title_active_color","Kolor tekstu aktywny"
+"scss/title/checkout-onepage__step-title_border","Grubość granicy"
+"scss/title/checkout-onepage__step-title_border-bottom-color","Kolor dolnej granicy"
+"scss/title/checkout-onepage__step-title_color","Kolor tekstu"
+"scss/title/checkout-onepage__step-title_font","Czcionka"
+"scss/title/color--fifth","Piąty"
+"scss/title/color--fourth","Czwarty"
+"scss/title/color--primary","Pierwszy"
+"scss/title/color--secondary","Drugi"
+"scss/title/color--third","Trzeci"
+"scss/title/data-table__td_background-color","Kolor tła Body"
+"scss/title/data-table__td_color","Kolor tekstu body"
+"scss/title/data-table__th_background-color","Kolor tła nagłówka"
+"scss/title/data-table__th_color","Kolor tekstu nagłówka"
+"scss/title/data-table_border-color","Kolor granicy"
+"scss/title/font_base","Czcionka"
+"scss/title/google_fonts","Czcionki google"
+"scss/title/header_separator-line_border-color","Kolor separatora"
+"scss/title/input-text_background-color","Kolor tła"
+"scss/title/input-text_border","Grancia"
+"scss/title/input-text_border-color","Kolor granicy"
+"scss/title/letter-spacing","Odległość między literami "
+"scss/title/message--error__background-color","Kolor tła błędu"
+"scss/title/message--notice_background-color","Kolor tła informacja"
+"scss/title/message--success_background-color","Kolor tła sukces"
+"scss/title/mini-cart__block-content_background-color","Kolor tła"
+"scss/title/mini-cart__block-content_color","Kolor tekstu"
+"scss/title/mini-cart__link_color","Kolor tekstu linka"
+"scss/title/mini-cart__link--hover_color","Kolor po najechaniu kursorem"
+"scss/title/nav__button_background-color","Kolor tła"
+"scss/title/nav__button_color","Kolor tekstu"
+"scss/title/nav__button_font","Czcionka"
+"scss/title/nav--primary__level0-link_color","Kolor tekstu"
+"scss/title/nav--primary__level0-link_font","Czcionka"
+"scss/title/nav--primary__level0-link_padding","Wypełnienie przedmiotu"
+"scss/title/nav--primary__level0-link_padding-right","Prawo i Lewo"
+"scss/title/nav--primary__level0-link_padding-top","Góra i Dół"
+"scss/title/nav--primary__level0-link--hover_color","Kolor po najechaniu kursorem"
+"scss/title/nav--primary__level0-list_padding-global","Główne"
+"scss/title/nav--primary__level0-list-separator_color","Kolor separatora"
+"scss/title/nav--primary__level1-link_font","Czcionka"
+"scss/title/nav--primary__level2_background-color","Kolor tła"
+"scss/title/nav--primary__level2-link_color","Kolor tekstu"
+"scss/title/nav--primary__level2-link_font","Czcionka"
+"scss/title/nav--primary__level2-link_padding","Wypełnienie przedmiotu"
+"scss/title/nav--primary__level2-link_padding-right","Prawo i Lewo"
+"scss/title/nav--primary__level2-link_padding-top","Góra i Dół"
+"scss/title/nav--primary__level3_background-color","Kolor tła"
+"scss/title/nav--primary__level3-link_color","Kolor tekstu"
+"scss/title/nav--primary__level3-link_font","Czcionka"
+"scss/title/nav--primary__level3-link_padding","Wypełnienie przedmiotu"
+"scss/title/nav--primary__level3-link_padding-right","Prawo i Lewo"
+"scss/title/nav--primary__level3-link_padding-top","Góra i Dół"
+"scss/title/nav--primary__level4_background-color","Kolor tła"
+"scss/title/nav--primary__level4-link_color","Kolor tekstu"
+"scss/title/nav--primary__level4-link_font","Czcionka"
+"scss/title/nav--primary__level4-link_padding","Wypełnienie przedmiotu"
+"scss/title/nav--primary__level4-link_padding-right","Prawo i Lewo"
+"scss/title/nav--primary__level4-link_padding-top","Góra i Dół"
+"scss/title/nav--primary__submenu_background-color","Kolor tła"
+"scss/title/nav--primary__submenu_color","Kolor tekstu"
+"scss/title/nav--primary__ul-level0-link_padding","Wypełnienie przedmiotu"
+"scss/title/nav--primary_background-color","Kolor tła"
+"scss/title/nav--primary_border-bottom","Dolna granicy"
+"scss/title/nav--primary_border-bottom_color","Kolor dolnej granicy"
+"scss/title/nav--primary_border-left","Lewa granica"
+"scss/title/nav--primary_border-left_color","Kolor lewej granicy"
+"scss/title/nav--primary_border-right","Prawa granica"
+"scss/title/nav--primary_border-right_color","Kolor prawej granicy"
+"scss/title/nav--primary_border-top","Górna grancia"
+"scss/title/nav--primary_border-top_color","Kolor górnej granicy"
+"scss/title/page_background-color","Kolor tła"
+"scss/title/page_color","Kolor tekstu"
+"scss/title/page_size","Romiar strony"
+"scss/title/page-container_background-color","Kolor tła kontenera"
+"scss/title/page-footer__link--hover_color","Kolor linku po najechaniu kursorem"
+"scss/title/page-footer__marketing-box--newsletter_color","Kolor tekstu newslettera"
+"scss/title/page-footer__marketing-box--shipping_color","Kolor tekstu lewo"
+"scss/title/page-footer__marketing-box--support_color","Kolor tekstu środek"
+"scss/title/page-footer_background-color","Kolor tła"
+"scss/title/page-footer_color","Kolor tekstu"
+"scss/title/page-footer_link-color","Kolor linku"
+"scss/title/page-header_background-color","Kolor tła"
+"scss/title/page-header_color","Kolor tekstu"
+"scss/title/page-header_link_color","Kolor tekstu"
+"scss/title/page-main_background-color","Kolor tła"
+"scss/title/page-main_color","Kolor tekstu"
+"scss/title/page-subtitle_color","Kolor tekstu podtytułu"
+"scss/title/page-subtitle_font","Czcionka podtytułu"
+"scss/title/page-title_color","Kolor tekstu tytułu"
+"scss/title/page-title_font","Czcionka tytułu"
+"scss/title/preloader__cicle-1_stroke","Kolor 1"
+"scss/title/preloader__cicle-2_stroke","Kolor 2"
+"scss/title/product_price_font","Czcionka"
+"scss/title/product_price_list_font","Czcionka"
+"scss/title/product_title_font","Czcionka"
+"scss/title/product-category__title_color","Kolor tekstu"
+"scss/title/product-category__title_font","Czcionka"
+"scss/title/product-compare__item__product-image_background-color","Kolor obrazu w tle"
+"scss/title/product-view__add-to-cart__button_background-color","Kolor tła"
+"scss/title/product-view__add-to-cart__button_color","Kolor tekstu"
+"scss/title/product-view__add-to-cart__button_font","Czcionka"
+"scss/title/product-view__add-to-cart__input_display","Wyświetlanie"
+"scss/title/product-view__availability__in-stock_color","Kolor w asortymencie"
+"scss/title/product-view__availability__out-of-stock_color","Kolor brak asortymentu"
+"scss/title/product-view__availability_display","Wyswietlenie"
+"scss/title/product-view__availability_font","Czcionka"
+"scss/title/product-view__price_color","Kolor "
+"scss/title/product-view__product-collateral__list__item_color","Kolor tekstu"
+"scss/title/product-view__product-collateral__list__item-active_background-color","Aktywny kolor tła"
+"scss/title/product-view__product-collateral__list__item-active_color","Aktywny kolor tekstu"
+"scss/title/product-view__product-image_background-color","Kolor tła"
+"scss/title/product-view__product-name_color","Kolor tekstu"
+"scss/title/product-view__product-options__required_color","Kolor tekstu"
+"scss/title/product-view__product-options__required_font","Czcionka"
+"scss/title/product-view__product-shop__breadcrumbs_display","Wyświetlenie"
+"scss/title/product-view__sku_display","Wyświetlenie SKU"
+"scss/title/products-grid__item__characteristics_color","Kolor "
+"scss/title/products-grid__item__price_color","Kolor "
+"scss/title/products-grid__item__product-name_color","Kolor tekstu"
+"scss/title/products-grid__item__product-name_font","Czcionka"
+"scss/title/products-grid__item__tax-details_display","Wyświetlenie podatku"
+"scss/title/products-grid__item-inner_background-color","Kolor tła"
+"scss/title/products-grid__product-box_text-align","Pozycja informacyjna - tryb siatki"
+"scss/title/products-list__item__actions_margin","Margines"
+"scss/title/products-list__item__actions_margin-top","Góra"
+"scss/title/products-list__item__price_margin","Margines"
+"scss/title/products-list__item__price_margin-bottom","Dół"
+"scss/title/products-list__item__product-image_background-color","Kolor tła"
+"scss/title/products-list__item__product-name_margin","Margines"
+"scss/title/products-list__item__product-name_margin-bottom","Dół"
+"scss/title/products-list__product-box_text-align","Pozycja informacyjna – tryb listy"
+"scss/description/account__block-content__list__current_background-color","Kolor tła aktywnego linku do nawigacji klienta"
+"scss/description/account__block-content__list__current_color","Kolor tekstu aktywnego linku do nawigacji klienta"
+"scss/description/account__block-content__list_color","Kolor tekstu linku do nawigacji klienta"
+"scss/description/add-to-links_color","Dodaj do listy życzeń / Porównaj kolor czcionki"
+"scss/description/add-to-links_font",
+"scss/description/badge_font",
+"scss/description/badge--new_background-color","Kolor tła znaku Nowość"
+"scss/description/badge--new_color","Kolor tekstu znaku Nowość"
+"scss/description/badge--new_display","Tryb wyswietlania dla znaku Nowość"
+"scss/description/badge--sale_background-color","Kolor tła dla znaku Nowość"
+"scss/description/badge--sale_color","Kolor tekstu znaku Wyprzedaż"
+"scss/description/badge--sale_display","Tryb wyświetlania dla znaku Wyprzedaż"
+"scss/description/block__block-title_background-color","Kolor tła tytułów w blokach bocznych (np. Ostatnio oglądane produkty, tagi, PayPal, lista życzeń)"
+"scss/description/block__block-title_color","Kolor tekstu tytułów w blokach bocznych (np. Ostatnio oglądane produkty, tagi, PayPal, lista życzeń)"
+"scss/description/block-layered-nav__title_color",
+"scss/description/block-layered-nav__title_font",
+"scss/description/breadcrumbs__leaf_color",
+"scss/description/breadcrumbs_color","Kolor tekstu dla okruszków na każdej stronie"
+"scss/description/breadcrumbs_display","Tryb wyświetlania dla okruszków na każdej stronie"
+"scss/description/breadcrumbs_font",
+"scss/description/button_background-color","Kolor tła przycisku za wyjatkiem akcji i kuponu"
+"scss/description/button_color","Kolor tekstu przycisku"
+"scss/description/button-action_background-color","Kolor tła przycisku akcji"
+"scss/description/button-action_color","Kolor czcionki przycisku akcji"
+"scss/description/cart__btn-checkout_background-color","Kolor tła przycisku „przejdź do kasy”"
+"scss/description/cart__btn-checkout_color","Kolor tekstu przycisku „przejdź do kasy”"
+"scss/description/cart__cart-totals__table_background-color","Kolor tła całej sekcji"
+"scss/description/cart__cart-totals__table_color","Kolor tekstu całej sekcji"
+"scss/description/cart__cart-totals__total_color","Kolor tła Grand Total"
+"scss/description/cart__discount__button_background-color","Kolor tła przycisku „uźyj kodu”"
+"scss/description/cart__discount__button_color","Kolor tekstu przycisku „uźyj kodu”"
+"scss/description/cart-table__item-options_color","Kolor tekstu opcje produktu "
+"scss/description/cart-table__item-options_font",
+"scss/description/cart-table__product-image_background-color","Kolor tła obrazu każdego elementu koszyka"
+"scss/description/cart-table__product-name_color","Kolor tekstu dla nazwy produktu"
+"scss/description/cart-table__product-name_font",
+"scss/description/cart-table__product-price_color","Kolor ceny"
+"scss/description/cart-table__product-price_font",
+"scss/description/cart-table__product-sku_display","Tryb wyświetlania dla SKU"
+"scss/description/cart-table__sku-label_color","Kolor tekstu SKU"
+"scss/description/cart-table__sku-label_font",
+"scss/description/cart-table_background-color","Kolor tła dla przedmiotów w koszyku"
+"scss/description/checkout-onepage__buttons_background-color","Kolor tła dla przycisków w kasie"
+"scss/description/checkout-onepage__buttons_color","Kolor tekstu dla przycisków w kasie"
+"scss/description/checkout-onepage__buttons_font",
+"scss/description/checkout-onepage__progress-title_background-color","Kolor tła tytułu sekcji postępu"
+"scss/description/checkout-onepage__progress-title_color","Kolor tekstu tytułu sekcji postępu"
+"scss/description/checkout-onepage__progress-title_font",
+"scss/description/checkout-onepage__step-title_active_color","Kolor tekstu tytułu aktywnego kroku"
+"scss/description/checkout-onepage__step-title_border-bottom-color","Kolor dolnej granicy tytułu kroku"
+"scss/description/checkout-onepage__step-title_color","Kolor tekstu tytułu kroku"
+"scss/description/checkout-onepage__step-title_font",
+"scss/description/color--fifth",
+"scss/description/color--fourth","Służy do tworzenia innych kolorów"
+"scss/description/color--primary","Służy do tekstu gdy kolor nie jest ustawiona na inny, jako tło przycisków oraz do tworzenia innych kolorów"
+"scss/description/color--secondary","Używany do tła, tekstu poziomu nawigacji 0, tekstu przycisków oraz do tworzenia innych kolorów"
+"scss/description/color--third","Używany jako tło dla przycisków akcji, licznika koszyka, dostępności „w asortymencie”, linków i do tworzenia innych kolorów"
+"scss/description/data-table__td_background-color","Kolor tła korpusu tabel danych"
+"scss/description/data-table__td_color","Kolor tekstu korpusu tabel danych"
+"scss/description/data-table__th_background-color","Kolor tła nagłówka tabel danych"
+"scss/description/data-table__th_color","Kolor tekstu nagłówka tabel danych"
+"scss/description/data-table_border-color","Kolor tła nagłówka tabel danych"
+"scss/description/font_base","Główna czcionka, używana we wszystkich sekcjach gdy czcionka nie jest ustawiona na inną?"
+"scss/description/font-family-base","Główna rodzina czcionek"
+"scss/description/font-size","Główny rozmiar czcionki"
+"scss/description/font-style","Główny styl czcionki"
+"scss/description/font-weight","Główna grubość czcionki"
+"scss/description/google_fonts","Wybierz czcionki google, które chcesz włączyć na Twojej stronie"
+"scss/description/header_separator-line_border-color","Linia separujaca linki"
+"scss/description/input-text_background-color",
+"scss/description/input-text_border",
+"scss/description/input-text_border-color",
+"scss/description/letter-spacing",
+"scss/description/line-height","Głowna wysokość linii"
+"scss/description/message--error__background-color","Kolor tła wiadomości o błędzie"
+"scss/description/message--notice_background-color","Kolor tła wiadomości informacyjnej"
+"scss/description/message--success_background-color","Kolor tła wiadomości o powodzeniu operacji"
+"scss/description/mini-cart__block-content_background-color","Kolor tła bloku mini koszyka"
+"scss/description/mini-cart__block-content_color","Kolor tekstu bloku mini koszyka"
+"scss/description/mini-cart__link_color","Kolor linku mini koszyka"
+"scss/description/mini-cart__link--hover_color","Kolor linku koszyka po najechaniu kursorem"
+"scss/description/nav__button_background-color","Kolor tła przycisku nawigacji"
+"scss/description/nav__button_color","Kolor tekstu przycisku nawigacji"
+"scss/description/nav__button_font",
+"scss/description/nav--primary__level0-link_color","Kolor tekstu pierwszego stopnia"
+"scss/description/nav--primary__level0-link_font",
+"scss/description/nav--primary__level0-link_padding","Wypełnienie linku (wewnętrzna przestrzeń nawigacji)"
+"scss/description/nav--primary__level0-link_padding-right",
+"scss/description/nav--primary__level0-link_padding-top",
+"scss/description/nav--primary__level0-link--hover_color","Kolor tekstu pierwszego poziomu po najechaniu kursorem"
+"scss/description/nav--primary__level0-list_padding-global",
+"scss/description/nav--primary__level0-list-separator_color","Kolor linii separujacej między linkami nawigacji"
+"scss/description/nav--primary__level1-link_font",
+"scss/description/nav--primary__level2_background-color","Kolor tła trzeciego stopnia nawigacji "
+"scss/description/nav--primary__level2-link_color","Kolor tekstu trzeciego stopnia nawigacji "
+"scss/description/nav--primary__level2-link_font",
+"scss/description/nav--primary__level2-link_padding",
+"scss/description/nav--primary__level2-link_padding-right",
+"scss/description/nav--primary__level2-link_padding-top","Nawigacja drugiego poziomu Uzupełnianie przedmiotów "
+"scss/description/nav--primary__level3_background-color","Kolor tła dla poziomu czwartego nawigacji"
+"scss/description/nav--primary__level3-link_color","Kolor tekstu poziomu czwartego nawigacji"
+"scss/description/nav--primary__level3-link_font",
+"scss/description/nav--primary__level3-link_padding",
+"scss/description/nav--primary__level3-link_padding-right",
+"scss/description/nav--primary__level3-link_padding-top",
+"scss/description/nav--primary__level4_background-color","Kolor tła dla poziomu piatego nawigacji"
+"scss/description/nav--primary__level4-link_color","Kolor tekstu poziomu piatego nawigacji"
+"scss/description/nav--primary__level4-link_font",
+"scss/description/nav--primary__level4-link_padding",
+"scss/description/nav--primary__level4-link_padding-right",
+"scss/description/nav--primary__level4-link_padding-top",
+"scss/description/nav--primary__submenu_background-color","Kolor tła dla poziomu szóstego nawigacji"
+"scss/description/nav--primary__submenu_color","Kolor tekstu poziomu szóstego nawigacji"
+"scss/description/nav--primary__ul-level0-link_padding","Uzupełnianie każdego linku (wewęntrzna przestrzeń nawigacji)"
+"scss/description/nav--primary_background-color","Kolor tła dla poziomu pierwszego nawigacji"
+"scss/description/page_background-color","Kolor tła na kazdej stronie"
+"scss/description/page_color","Kolor tekstu na kazdej stronie (gdy nie jest ustawiony na inny)"
+"scss/description/page_size",
+"scss/description/page-container_background-color","Kolor tła zbioru na kazdej stronie"
+"scss/description/page-footer__link--hover_color","Kolor linku w stopce po najechaniu kursorem"
+"scss/description/page-footer__marketing-box--newsletter_color","Kolor tekstu stopki w sekcji newslettera"
+"scss/description/page-footer__marketing-box--shipping_color","Kolor tekstu stopki w sekcji lewej"
+"scss/description/page-footer__marketing-box--support_color","Kolor tekstu stopki w sekcji środkowej"
+"scss/description/page-footer_background-color",
+"scss/description/page-footer_color","Kolor tekstu stopki "
+"scss/description/page-footer_link-color","Kolor linku w stopce"
+"scss/description/page-header_background-color","Kolor tła nagłówka"
+"scss/description/page-header_color","Kolor tekstu nagłówka, taki jak: Tekst koszyka, aktywne linki i linki po najechaniu kursorem"
+"scss/description/page-header_link_color","Kolor linku nagłówka oprócz tekstu koszyka i aktywnego linku"
+"scss/description/page-main_background-color","Kolor tła kontenera oprócz nagłówka i stopki"
+"scss/description/page-main_color","Kolor tekstu kontenera (gdzie nie jest specjalnie ustawiony), za wyjątkiem nagłówka i stopki"
+"scss/description/page-subtitle_color","Kolor tekstu napisów powiązanych, Upsells, Strona główna, Nowe produkty"
+"scss/description/page-subtitle_font",
+"scss/description/page-title_color","Kolor tekstu tytułu strony na kasie, w koszyku, szczegółach produktu, porównaniu, logowaniu, rejestracji, stronach sukcesu"
+"scss/description/page-title_font",
+"scss/description/preloader__cicle-1_stroke","Kolor pierwszego koła Preloadera"
+"scss/description/preloader__cicle-2_stroke","Kolor drugiego  koła Preloadera"
+"scss/description/product_price_font",
+"scss/description/product_price_list_font",
+"scss/description/product_title_font",
+"scss/description/product-category__title_color","Kolor tekstu strony kategorii i tytułu wyników wyszukiwania"
+"scss/description/product-category__title_font",
+"scss/description/product-compare__item__product-image_background-color","Kolor tła obrazu każdego elementu na liście porównania"
+"scss/description/product-view__add-to-cart__button_background-color","Kolor tła przycisku „dodaj do koszyka”"
+"scss/description/product-view__add-to-cart__button_color","Kolor tekstu przycisku „dodaj do koszyka”"
+"scss/description/product-view__add-to-cart__button_font",
+"scss/description/product-view__add-to-cart__input_display","Tryb wyświetlania dla wprowadzanej ilości"
+"scss/description/product-view__availability__in-stock_color","Kolor tekstu „w asortymencie”"
+"scss/description/product-view__availability__out-of-stock_color","Kolor tekstu „brak asortymentu”"
+"scss/description/product-view__availability_display","Tryb wyświetlania dla tekstu dostepności"
+"scss/description/product-view__availability_font",
+"scss/description/product-view__price_color",
+"scss/description/product-view__product-collateral__list__item_color","Kolor tekstu kart"
+"scss/description/product-view__product-collateral__list__item-active_background-color","Kolor tła aktywnych kart"
+"scss/description/product-view__product-collateral__list__item-active_color","Kolor tekstu aktywnych kart"
+"scss/description/product-view__product-image_background-color",
+"scss/description/product-view__product-name_color","Kolor nazwy produktu"
+"scss/description/product-view__product-options__required_color","Kolor tekstu SKU i etykiety (za wyjatkiem prostych produktów)"
+"scss/description/product-view__product-options__required_font",
+"scss/description/product-view__product-shop__breadcrumbs_display","Tryb wyswietlania dla okruszków"
+"scss/description/product-view__sku_display","Tryb wyświetlania dla SKU"
+"scss/description/products-grid__item__characteristics_color","Kolor tekstu dla wskazówki podatkowej na stronie kategorii"
+"scss/description/products-grid__item__price_color","Kolor ceny na liście produktów"
+"scss/description/products-grid__item__product-name_color","Kolor tekstu nazwy produktu"
+"scss/description/products-grid__item__product-name_font",
+"scss/description/products-grid__item__tax-details_display","Tryb wyświetlania dla podatku"
+"scss/description/products-grid__item-inner_background-color","Kolor tła dla każdej pozycja na liście produktów"
+"scss/description/products-grid__product-box_text-align",
+"scss/description/products-list__item__actions_margin",
+"scss/description/products-list__item__actions_margin-top","Odstępy pomiędzy przyciskami akcyjnymi"
+"scss/description/products-list__item__price_margin",
+"scss/description/products-list__item__price_margin-bottom","Odstępy pod cenami produktów "
+"scss/description/products-list__item__product-image_background-color","Kolor tła obrazu każdej pozycji na liście produktów"
+"scss/description/products-list__item__product-name_margin",
+"scss/description/products-list__item__product-name_margin-bottom","Odstępy pod nazwami produktów "
+"scss/description/products-list__product-box_text-align",
+"scss/description_auto/account__block-content__list__current_background-color","4% ciemniejszy niś drugi kolor"
+"scss/description_auto/account__block-content__list__current_color","Pierwszy kolor"
+"scss/description_auto/account__block-content__list_color","35% nieprzezroczystości od pierwszego koloru"
+"scss/description_auto/add-to-links_color","Pierwszy kolor"
+"scss/description_auto/add-to-links_font",
+"scss/description_auto/add-to-links_font-size","12px"
+"scss/description_auto/add-to-links_text-transform","nic"
+"scss/description_auto/badge_font",
+"scss/description_auto/badge_font-size","13px"
+"scss/description_auto/badge_font-weight",700
+"scss/description_auto/badge_text-transform","duże litery"
+"scss/description_auto/badge--new_background-color","16% jaśniejszy od trzeciego koloru"
+"scss/description_auto/badge--new_color","Drugi kolor"
+"scss/description_auto/badge--new_display","blok"
+"scss/description_auto/badge--sale_background-color","2% ciemniejszy niż czwarty kolor"
+"scss/description_auto/badge--sale_color","Drugi kolor"
+"scss/description_auto/badge--sale_display","blok"
+"scss/description_auto/block__block-title_background-color","4% ciemniejszy niż drugi kolor"
+"scss/description_auto/block__block-title_color","Pierwszy kolor"
+"scss/description_auto/block-layered-nav__title_color","Pierwszy kolor"
+"scss/description_auto/block-layered-nav__title_font",
+"scss/description_auto/block-layered-nav__title_font-size","22px"
+"scss/description_auto/block-layered-nav__title_font-weight",400
+"scss/description_auto/breadcrumbs__leaf_color","18% jaśniejszy od pierwszego koloru"
+"scss/description_auto/breadcrumbs_color","48% jaśniejszy od pierwszego koloru"
+"scss/description_auto/breadcrumbs_display","blok"
+"scss/description_auto/breadcrumbs_font",
+"scss/description_auto/breadcrumbs_font-size","13px"
+"scss/description_auto/breadcrumbs_font-weight",400
+"scss/description_auto/breadcrumbs_text-transform","nic"
+"scss/description_auto/button_background-color","Pierwszy kolor"
+"scss/description_auto/button_color","Drugi kolor"
+"scss/description_auto/button-action_background-color","Trzeci kolor"
+"scss/description_auto/button-action_color","Drugi kolor"
+"scss/description_auto/cart__btn-checkout_background-color","Przyciski > Kolor tła działania"
+"scss/description_auto/cart__btn-checkout_color","Przyciski > Kolor tekstu działania"
+"scss/description_auto/cart__cart-totals__table_background-color","Pierwszy kolor"
+"scss/description_auto/cart__cart-totals__table_color","Primary color"
+"scss/description_auto/cart__cart-totals__total_color","35% nieprzezroczystości od pierwszego koloru"
+"scss/description_auto/cart__discount__button_background-color","2% ciemniejszy niż czwarty kolor"
+"scss/description_auto/cart__discount__button_color","Drugi kolor"
+"scss/description_auto/cart-table__item-options_color","Pierwszy kolor"
+"scss/description_auto/cart-table__item-options_font",
+"scss/description_auto/cart-table__item-options_font-size","13px"
+"scss/description_auto/cart-table__product-image_background-color","Biały"
+"scss/description_auto/cart-table__product-name_color","Pierwszy kolor"
+"scss/description_auto/cart-table__product-name_font",
+"scss/description_auto/cart-table__product-name_font-size","13px"
+"scss/description_auto/cart-table__product-name_font-weight",400
+"scss/description_auto/cart-table__product-price_color","4% ciemniejszy niż drugi kolor"
+"scss/description_auto/cart-table__product-price_font",
+"scss/description_auto/cart-table__product-price_font-size","13px"
+"scss/description_auto/cart-table__product-price_font-weight",400
+"scss/description_auto/cart-table__product-sku_display","blok"
+"scss/description_auto/cart-table__sku-label_color","35% nieprzezroczystości od pierwszego koloru"
+"scss/description_auto/cart-table__sku-label_font",
+"scss/description_auto/cart-table__sku-label_font-size","13px"
+"scss/description_auto/cart-table_background-color","4% ciemniejszy niż drugi kolor"
+"scss/description_auto/checkout-onepage__buttons_background-color","Trzeci kolor"
+"scss/description_auto/checkout-onepage__buttons_color","Drugi kolor"
+"scss/description_auto/checkout-onepage__buttons_font",
+"scss/description_auto/checkout-onepage__buttons_font-size","13px"
+"scss/description_auto/checkout-onepage__buttons_font-weight",700
+"scss/description_auto/checkout-onepage__buttons_text-transform","du?e litery"
+"scss/description_auto/checkout-onepage__progress-title_background-color","4% ciemniejszy niż drugi kolor"
+"scss/description_auto/checkout-onepage__progress-title_color","35% nieprzezroczystości od pierwszego koloru"
+"scss/description_auto/checkout-onepage__progress-title_font",
+"scss/description_auto/checkout-onepage__progress-title_font-size","13px"
+"scss/description_auto/checkout-onepage__progress-title_font-weight",400
+"scss/description_auto/checkout-onepage__progress-title_text-transform","duże litery"
+"scss/description_auto/checkout-onepage__step-title_active_color","Pierwszy kolor"
+"scss/description_auto/checkout-onepage__step-title_border-bottom-color","10% ciemniejszy niż kolor tła kontenera"
+"scss/description_auto/checkout-onepage__step-title_color","35% nieprzezroczystości od pierwszego koloru"
+"scss/description_auto/checkout-onepage__step-title_font",
+"scss/description_auto/checkout-onepage__step-title_font-size","13px"
+"scss/description_auto/checkout-onepage__step-title_font-weight",400
+"scss/description_auto/checkout-onepage__step-title_text-transform","duże litery"
+"scss/description_auto/color--fifth",
+"scss/description_auto/color--fourth",
+"scss/description_auto/color--primary",
+"scss/description_auto/color--secondary",
+"scss/description_auto/color--third",
+"scss/description_auto/data-table__td_background-color","Drugi kolor"
+"scss/description_auto/data-table__td_color","Pierwszy kolor"
+"scss/description_auto/data-table__th_background-color","4% ciemniejszy niż drugi kolor"
+"scss/description_auto/data-table__th_color","Pierwszy kolor"
+"scss/description_auto/data-table_border-color","4% ciemniejszy niż drugi kolor"
+"scss/description_auto/font_base",
+"scss/description_auto/font-family-base","Roboto', Arial, sans-serif"
+"scss/description_auto/font-size","13px"
+"scss/description_auto/font-style","normal"
+"scss/description_auto/font-weight",400
+"scss/description_auto/google_fonts",
+"scss/description_auto/header_separator-line_border-color","8% ciemniejszy niż kolor tła nagłówka"
+"scss/description_auto/input-text_background-color",
+"scss/description_auto/input-text_border",
+"scss/description_auto/input-text_border-color",
+"scss/description_auto/letter-spacing",
+"scss/description_auto/line-height","17px"
+"scss/description_auto/message--error__background-color",
+"scss/description_auto/message--notice_background-color",
+"scss/description_auto/message--success_background-color",
+"scss/description_auto/mini-cart__block-content_background-color","36% jasniejszy od czwartego koloru"
+"scss/description_auto/mini-cart__block-content_color","Pierwszy kolor"
+"scss/description_auto/mini-cart__link_color","Nagłówek > Kolor tekstu"
+"scss/description_auto/mini-cart__link--hover_color","36% jaśniejszy od czwartego koloru"
+"scss/description_auto/nav__button_background-color","18% jaśniejszy od pierwszego koloru"
+"scss/description_auto/nav__button_color","Drugi kolor"
+"scss/description_auto/nav__button_font",
+"scss/description_auto/nav__button_font-size","15px"
+"scss/description_auto/nav__button_font-weight",700
+"scss/description_auto/nav__button_text-transform","duże litery"
+"scss/description_auto/nav--primary__level0-link_color","Drugi kolor"
+"scss/description_auto/nav--primary__level0-link_font",
+"scss/description_auto/nav--primary__level0-link_font-size","15px"
+"scss/description_auto/nav--primary__level0-link_font-weight",900
+"scss/description_auto/nav--primary__level0-link_line-height","113% od rozmiaru czcionki"
+"scss/description_auto/nav--primary__level0-link_padding",
+"scss/description_auto/nav--primary__level0-link_padding-right","10px"
+"scss/description_auto/nav--primary__level0-link_padding-top","10px"
+"scss/description_auto/nav--primary__level0-link_text-transform","duże litery"
+"scss/description_auto/nav--primary__level0-link--hover_color","36% jaśniejszy od czwartego koloru"
+"scss/description_auto/nav--primary__level0-list_padding-global",
+"scss/description_auto/nav--primary__level0-list-separator_color","Kolor tła nawigacji poziomu 1"
+"scss/description_auto/nav--primary__level1-link_font",
+"scss/description_auto/nav--primary__level1-link_font-size","12px"
+"scss/description_auto/nav--primary__level1-link_font-weight",700
+"scss/description_auto/nav--primary__level1-link_line-height","113% od rozmiaru czcionki nawigacji poziomu 2"
+"scss/description_auto/nav--primary__level1-link_text-transform","duże litery"
+"scss/description_auto/nav--primary__level2_background-color","Nawigacja poziom drugi > Kolor tła"
+"scss/description_auto/nav--primary__level2-link_color","Nawigacja poziom drugi > Kolor tekstu"
+"scss/description_auto/nav--primary__level2-link_font",
+"scss/description_auto/nav--primary__level2-link_font-size","Nawigacja poziom drugi rozmiar czcionki"
+"scss/description_auto/nav--primary__level2-link_font-weight","Nawigacja poziom drugi grubość czcionki"
+"scss/description_auto/nav--primary__level2-link_padding",
+"scss/description_auto/nav--primary__level2-link_padding-right",
+"scss/description_auto/nav--primary__level2-link_padding-top",
+"scss/description_auto/nav--primary__level2-link_text-transform","Nawigacja poziom drugi transformacja tekstu"
+"scss/description_auto/nav--primary__level3_background-color","Nawigacja poziom trzeci > Kolor tła"
+"scss/description_auto/nav--primary__level3-link_color","Nawigacja poziom trzeci > Kolor tekstu"
+"scss/description_auto/nav--primary__level3-link_font",
+"scss/description_auto/nav--primary__level3-link_font-size","Nawigacja poziom trzeci rozmiar czcionki"
+"scss/description_auto/nav--primary__level3-link_font-weight","Nawigacja poziom trzeci grubość czcionki"
+"scss/description_auto/nav--primary__level3-link_padding",
+"scss/description_auto/nav--primary__level3-link_padding-right",
+"scss/description_auto/nav--primary__level3-link_padding-top",
+"scss/description_auto/nav--primary__level3-link_text-transform","Nawigacja poziom trzeci transformacja tekstu"
+"scss/description_auto/nav--primary__level4_background-color","Nawigacja poziom czwarty > Kolor tła"
+"scss/description_auto/nav--primary__level4-link_color","Nawigacja poziom czwarty > Kolor tekstu"
+"scss/description_auto/nav--primary__level4-link_font",
+"scss/description_auto/nav--primary__level4-link_font-size","Nawigacja poziom czwarty rozmiar czcionki"
+"scss/description_auto/nav--primary__level4-link_font-weight","Nawigacja poziom czwarty grubość czcionki"
+"scss/description_auto/nav--primary__level4-link_padding",
+"scss/description_auto/nav--primary__level4-link_padding-right",
+"scss/description_auto/nav--primary__level4-link_padding-top",
+"scss/description_auto/nav--primary__level4-link_text-transform","Nawigacja poziom czwarty transformacja tekstu"
+"scss/description_auto/nav--primary__submenu_background-color","36% jaśniejszy od czwartego koloru"
+"scss/description_auto/nav--primary__submenu_color","18% jaśniejszy od pierwszego koloru"
+"scss/description_auto/nav--primary__ul-level0-link_padding",
+"scss/description_auto/nav--primary_background-color","18% jaśniejszy od pierwszego koloru"
+"scss/description_auto/page_background-color","Drugi kolor"
+"scss/description_auto/page_color","Pierwszy kolor"
+"scss/description_auto/page_size",
+"scss/description_auto/page-container_background-color","Drugi kolor"
+"scss/description_auto/page-footer__link--hover_color","35% nieprzezroczystości od pierwszego koloru"
+"scss/description_auto/page-footer__marketing-box--newsletter_color","Pierwszy kolor"
+"scss/description_auto/page-footer__marketing-box--shipping_color","Pierwszy kolor"
+"scss/description_auto/page-footer__marketing-box--support_color","Pierwszy kolor"
+"scss/description_auto/page-footer_background-color","Strona > Kolor tła kontenera"
+"scss/description_auto/page-footer_color","Strona > Kolor tekstu kontenera"
+"scss/description_auto/page-footer_link-color","35% nieprzezroczystości od pierwszego koloru"
+"scss/description_auto/page-header_background-color","Strona > Kolor tła kontenera"
+"scss/description_auto/page-header_color","Strona > Kolor tekstu kontenera"
+"scss/description_auto/page-header_link_color","35% ciemnniejszy od drugiego koloru"
+"scss/description_auto/page-main_background-color","Drugi kolor"
+"scss/description_auto/page-main_color","Pierwszy kolor"
+"scss/description_auto/page-subtitle_color","Pierwszy kolor z 15% nieprzejrzystością"
+"scss/description_auto/page-subtitle_font",
+"scss/description_auto/page-subtitle_font-size","42px"
+"scss/description_auto/page-title_color","Pierwszy kolor"
+"scss/description_auto/page-title_font",
+"scss/description_auto/page-title_font-size","42px"
+"scss/description_auto/preloader__cicle-1_stroke","Czwarty kolor"
+"scss/description_auto/preloader__cicle-2_stroke","Trzeci kolor"
+"scss/description_auto/product_price_font",
+"scss/description_auto/product_price_list_font",
+"scss/description_auto/product_title_font",
+"scss/description_auto/product-category__title_color","20% ciemniejszy od drugiego koloru "
+"scss/description_auto/product-category__title_font",
+"scss/description_auto/product-category__title_font-family",
+"scss/description_auto/product-category__title_font-size",
+"scss/description_auto/product-category__title_font-style",
+"scss/description_auto/product-category__title_font-weight",
+"scss/description_auto/product-compare__item__product-image_background-color","Biały"
+"scss/description_auto/product-view__add-to-cart__button_background-color",
+"scss/description_auto/product-view__add-to-cart__button_color",
+"scss/description_auto/product-view__add-to-cart__button_font",
+"scss/description_auto/product-view__add-to-cart__button_font-size","16px"
+"scss/description_auto/product-view__add-to-cart__button_font-weight",700
+"scss/description_auto/product-view__add-to-cart__button_text-transform",
+"scss/description_auto/product-view__add-to-cart__input_display",
+"scss/description_auto/product-view__availability__font-size","14px"
+"scss/description_auto/product-view__availability__font-weight",700
+"scss/description_auto/product-view__availability__in-stock_color","Trzeci kolor"
+"scss/description_auto/product-view__availability__out-of-stock_color","Pierwszy kolor"
+"scss/description_auto/product-view__availability_display",
+"scss/description_auto/product-view__availability_font",
+"scss/description_auto/product-view__availability_text-transform",
+"scss/description_auto/product-view__price_color","Pierwszy kolor"
+"scss/description_auto/product-view__price_font-family","Roboto', Arial, sans-serif"
+"scss/description_auto/product-view__price_font-size","40px"
+"scss/description_auto/product-view__price_font-style","norlany"
+"scss/description_auto/product-view__price_font-weight",400
+"scss/description_auto/product-view__price_line-height","17px"
+"scss/description_auto/product-view__product-collateral__list__item_color",
+"scss/description_auto/product-view__product-collateral__list__item-active_background-color",
+"scss/description_auto/product-view__product-collateral__list__item-active_color","Pierwszy kolor"
+"scss/description_auto/product-view__product-image_background-color",
+"scss/description_auto/product-view__product-name_color","Tytuł strony > Kolor tekstu"
+"scss/description_auto/product-view__product-name_font-family","Tytuł > Rodzina czcionek"
+"scss/description_auto/product-view__product-name_font-size","Tytuł strony > Rozmiar czcionki"
+"scss/description_auto/product-view__product-name_font-style","Tytuł strony > Styl czcionki"
+"scss/description_auto/product-view__product-name_font-weight","Tytuł strony > Grubość czcionki"
+"scss/description_auto/product-view__product-name_line-height","Tytuł strony > wysokość linii"
+"scss/description_auto/product-view__product-name_text-transform","Tytuł strony> transformacja tekstu"
+"scss/description_auto/product-view__product-options__required_color",
+"scss/description_auto/product-view__product-options__required_font",
+"scss/description_auto/product-view__product-options__required_font-size","13px"
+"scss/description_auto/product-view__product-options__required_text-transform",
+"scss/description_auto/product-view__product-shop__breadcrumbs_display",
+"scss/description_auto/product-view__sku_display",
+"scss/description_auto/products-grid__item__characteristics_color",
+"scss/description_auto/products-grid__item__price_color","Pierwszy kolor"
+"scss/description_auto/products-grid__item__price_font-family","Roboto', Arial, sans-serif"
+"scss/description_auto/products-grid__item__price_font-size","13px"
+"scss/description_auto/products-grid__item__price_font-style","normalny"
+"scss/description_auto/products-grid__item__price_font-weight",400
+"scss/description_auto/products-grid__item__price_line-height","17px"
+"scss/description_auto/products-grid__item__product-name_color","Pierwszy kolor"
+"scss/description_auto/products-grid__item__product-name_font",
+"scss/description_auto/products-grid__item__product-name_font-family","Roboto', Arial, sans-serif"
+"scss/description_auto/products-grid__item__product-name_font-size","16px"
+"scss/description_auto/products-grid__item__product-name_font-style","nic"
+"scss/description_auto/products-grid__item__product-name_font-weight",900
+"scss/description_auto/products-grid__item__product-name_line-height","125% rozmiaru czcionki"
+"scss/description_auto/products-grid__item__product-name_text-transform",
+"scss/description_auto/products-grid__item__tax-details_display",
+"scss/description_auto/products-grid__item-inner_background-color","4% ciemniejszy od drugiego koloru"
+"scss/description_auto/products-grid__product-box_text-align",
+"scss/description_auto/products-list__item__actions_margin",
+"scss/description_auto/products-list__item__actions_margin-top","20px"
+"scss/description_auto/products-list__item__price_margin",
+"scss/description_auto/products-list__item__price_margin-bottom","15px"
+"scss/description_auto/products-list__item__product-image_background-color","Biały"
+"scss/description_auto/products-list__item__product-name_margin",
+"scss/description_auto/products-list__item__product-name_margin-bottom","0px"
+"scss/description_auto/products-list__product-box_text-align",
+"scss/help/account__block-content__list__current_background-color",
+"scss/help/account__block-content__list__current_color",
+"scss/help/account__block-content__list_color",
+"scss/help/add-to-links_color",
+"scss/help/add-to-links_font",
+"scss/help/add-to-links_font-size",
+"scss/help/add-to-links_text-transform",
+"scss/help/badge_font",
+"scss/help/badge_font-size",
+"scss/help/badge_font-weight",
+"scss/help/badge_text-transform",
+"scss/help/badge--new_background-color",
+"scss/help/badge--new_color",
+"scss/help/badge--new_display",
+"scss/help/badge--sale_background-color",
+"scss/help/badge--sale_color",
+"scss/help/badge--sale_display",
+"scss/help/block__block-title_background-color",
+"scss/help/block__block-title_color",
+"scss/help/block-layered-nav__title_color",
+"scss/help/block-layered-nav__title_font",
+"scss/help/block-layered-nav__title_font-size",
+"scss/help/block-layered-nav__title_font-weight",
+"scss/help/breadcrumbs__leaf_color",
+"scss/help/breadcrumbs_color",
+"scss/help/breadcrumbs_display",
+"scss/help/breadcrumbs_font",
+"scss/help/breadcrumbs_font-size",
+"scss/help/breadcrumbs_font-weight",
+"scss/help/breadcrumbs_text-transform",
+"scss/help/button_background-color",
+"scss/help/button_color",
+"scss/help/button-action_background-color",
+"scss/help/button-action_color",
+"scss/help/cart__btn-checkout_background-color",
+"scss/help/cart__btn-checkout_color",
+"scss/help/cart__cart-totals__table_background-color",
+"scss/help/cart__cart-totals__table_color",
+"scss/help/cart__cart-totals__total_color",
+"scss/help/cart__discount__button_background-color",
+"scss/help/cart__discount__button_color",
+"scss/help/cart-table__item-options_color",
+"scss/help/cart-table__item-options_font",
+"scss/help/cart-table__product-image_background-color",
+"scss/help/cart-table__product-name_color",
+"scss/help/cart-table__product-name_font",
+"scss/help/cart-table__product-name_font-size",
+"scss/help/cart-table__product-name_font-weight",
+"scss/help/cart-table__product-price_color",
+"scss/help/cart-table__product-price_font",
+"scss/help/cart-table__product-price_font-size",
+"scss/help/cart-table__product-price_font-weight",
+"scss/help/cart-table__product-sku_display",
+"scss/help/cart-table__sku-label_color",
+"scss/help/cart-table__sku-label_font",
+"scss/help/cart-table__sku-label_font-size",
+"scss/help/cart-table_background-color",
+"scss/help/checkout-onepage__buttons_background-color",
+"scss/help/checkout-onepage__buttons_color",
+"scss/help/checkout-onepage__buttons_font",
+"scss/help/checkout-onepage__buttons_font-size",
+"scss/help/checkout-onepage__buttons_font-weight",
+"scss/help/checkout-onepage__buttons_text-transform",
+"scss/help/checkout-onepage__progress-title_background-color",
+"scss/help/checkout-onepage__progress-title_color",
+"scss/help/checkout-onepage__progress-title_font",
+"scss/help/checkout-onepage__progress-title_font-size",
+"scss/help/checkout-onepage__progress-title_font-weight",
+"scss/help/checkout-onepage__progress-title_text-transform",
+"scss/help/checkout-onepage__step-title_active_color",
+"scss/help/checkout-onepage__step-title_border-bottom-color",
+"scss/help/checkout-onepage__step-title_color",
+"scss/help/checkout-onepage__step-title_font",
+"scss/help/checkout-onepage__step-title_font-size",
+"scss/help/checkout-onepage__step-title_font-weight",
+"scss/help/checkout-onepage__step-title_text-transform",
+"scss/help/color--fifth",
+"scss/help/color--fourth",
+"scss/help/color--primary",
+"scss/help/color--secondary",
+"scss/help/color--third",
+"scss/help/data-table__td_background-color",
+"scss/help/data-table__td_color",
+"scss/help/data-table__th_background-color",
+"scss/help/data-table__th_color",
+"scss/help/data-table_border-color",
+"scss/help/font_base",
+"scss/help/font-family-base",
+"scss/help/font-size",
+"scss/help/font-style",
+"scss/help/font-weight",
+"scss/help/google_fonts",
+"scss/help/header_separator-line_border-color",
+"scss/help/input-text_background-color",
+"scss/help/input-text_border",
+"scss/help/input-text_border-color",
+"scss/help/letter-spacing",
+"scss/help/line-height",
+"scss/help/message--error__background-color",
+"scss/help/message--notice_background-color",
+"scss/help/message--success_background-color",
+"scss/help/mini-cart__block-content_background-color",
+"scss/help/mini-cart__block-content_color",
+"scss/help/mini-cart__link_color",
+"scss/help/mini-cart__link--hover_color",
+"scss/help/nav__button_background-color",
+"scss/help/nav__button_color",
+"scss/help/nav__button_font",
+"scss/help/nav__button_font-size",
+"scss/help/nav__button_font-weight",
+"scss/help/nav__button_text-transform",
+"scss/help/nav--primary__level0-link_color",
+"scss/help/nav--primary__level0-link_font",
+"scss/help/nav--primary__level0-link_font-size",
+"scss/help/nav--primary__level0-link_font-weight",
+"scss/help/nav--primary__level0-link_line-height",
+"scss/help/nav--primary__level0-link_padding",
+"scss/help/nav--primary__level0-link_padding-right",
+"scss/help/nav--primary__level0-link_padding-top",
+"scss/help/nav--primary__level0-link_text-transform",
+"scss/help/nav--primary__level0-link--hover_color",
+"scss/help/nav--primary__level0-list_padding-global",
+"scss/help/nav--primary__level0-list-separator_color",
+"scss/help/nav--primary__level1-link_font",
+"scss/help/nav--primary__level1-link_font-size",
+"scss/help/nav--primary__level1-link_font-weight",
+"scss/help/nav--primary__level1-link_line-height",
+"scss/help/nav--primary__level1-link_text-transform",
+"scss/help/nav--primary__level2_background-color",
+"scss/help/nav--primary__level2-link_color",
+"scss/help/nav--primary__level2-link_font",
+"scss/help/nav--primary__level2-link_font-size",
+"scss/help/nav--primary__level2-link_font-weight",
+"scss/help/nav--primary__level2-link_padding",
+"scss/help/nav--primary__level2-link_padding-right",
+"scss/help/nav--primary__level2-link_padding-top",
+"scss/help/nav--primary__level2-link_text-transform",
+"scss/help/nav--primary__level3_background-color",
+"scss/help/nav--primary__level3-link_color",
+"scss/help/nav--primary__level3-link_font",
+"scss/help/nav--primary__level3-link_font-size",
+"scss/help/nav--primary__level3-link_font-weight",
+"scss/help/nav--primary__level3-link_padding",
+"scss/help/nav--primary__level3-link_padding-right",
+"scss/help/nav--primary__level3-link_padding-top",
+"scss/help/nav--primary__level3-link_text-transform",
+"scss/help/nav--primary__level4_background-color",
+"scss/help/nav--primary__level4-link_color",
+"scss/help/nav--primary__level4-link_font",
+"scss/help/nav--primary__level4-link_font-size",
+"scss/help/nav--primary__level4-link_font-weight",
+"scss/help/nav--primary__level4-link_padding",
+"scss/help/nav--primary__level4-link_padding-right",
+"scss/help/nav--primary__level4-link_padding-top",
+"scss/help/nav--primary__level4-link_text-transform",
+"scss/help/nav--primary__submenu_background-color",
+"scss/help/nav--primary__submenu_color",
+"scss/help/nav--primary__ul-level0-link_padding",
+"scss/help/nav--primary_background-color",
+"scss/help/page_background-color",
+"scss/help/page_color",
+"scss/help/page_size",
+"scss/help/page-container_background-color",
+"scss/help/page-footer__link--hover_color",
+"scss/help/page-footer__marketing-box--newsletter_color",
+"scss/help/page-footer__marketing-box--shipping_color",
+"scss/help/page-footer__marketing-box--support_color",
+"scss/help/page-footer_background-color",
+"scss/help/page-footer_color",
+"scss/help/page-footer_link-color",
+"scss/help/page-header_background-color",
+"scss/help/page-header_color",
+"scss/help/page-header_link_color",
+"scss/help/page-main_background-color",
+"scss/help/page-main_color",
+"scss/help/page-subtitle_color",
+"scss/help/page-subtitle_font",
+"scss/help/page-subtitle_font-size",
+"scss/help/page-title_color",
+"scss/help/page-title_font",
+"scss/help/page-title_font-size",
+"scss/help/preloader__cicle-1_stroke",
+"scss/help/preloader__cicle-2_stroke",
+"scss/help/product_price_font",
+"scss/help/product_price_list_font",
+"scss/help/product_title_font",
+"scss/help/product-category__title_color",
+"scss/help/product-category__title_font",
+"scss/help/product-category__title_font-family",
+"scss/help/product-category__title_font-size",
+"scss/help/product-category__title_font-style",
+"scss/help/product-category__title_font-weight",
+"scss/help/product-compare__item__product-image_background-color",
+"scss/help/product-view__add-to-cart__button_background-color",
+"scss/help/product-view__add-to-cart__button_color",
+"scss/help/product-view__add-to-cart__button_font",
+"scss/help/product-view__add-to-cart__button_font-size",
+"scss/help/product-view__add-to-cart__button_font-weight",
+"scss/help/product-view__add-to-cart__button_text-transform",
+"scss/help/product-view__add-to-cart__input_display",
+"scss/help/product-view__availability__font-size",
+"scss/help/product-view__availability__font-weight",
+"scss/help/product-view__availability__in-stock_color",
+"scss/help/product-view__availability__out-of-stock_color",
+"scss/help/product-view__availability_display",
+"scss/help/product-view__availability_font",
+"scss/help/product-view__availability_text-transform",
+"scss/help/product-view__price_color",
+"scss/help/product-view__price_font-family",
+"scss/help/product-view__price_font-size",
+"scss/help/product-view__price_font-style",
+"scss/help/product-view__price_font-weight",
+"scss/help/product-view__price_line-height",
+"scss/help/product-view__product-collateral__list__item_color",
+"scss/help/product-view__product-collateral__list__item-active_background-color",
+"scss/help/product-view__product-collateral__list__item-active_color",
+"scss/help/product-view__product-image_background-color",
+"scss/help/product-view__product-name_color",
+"scss/help/product-view__product-name_font-family",
+"scss/help/product-view__product-name_font-size",
+"scss/help/product-view__product-name_font-style",
+"scss/help/product-view__product-name_font-weight",
+"scss/help/product-view__product-name_line-height",
+"scss/help/product-view__product-name_text-transform",
+"scss/help/product-view__product-options__required_color",
+"scss/help/product-view__product-options__required_font",
+"scss/help/product-view__product-options__required_font-size",
+"scss/help/product-view__product-options__required_text-transform",
+"scss/help/product-view__product-shop__breadcrumbs_display",
+"scss/help/product-view__sku_display",
+"scss/help/products-grid__item__characteristics_color",
+"scss/help/products-grid__item__price_color",
+"scss/help/products-grid__item__price_font-family",
+"scss/help/products-grid__item__price_font-size",
+"scss/help/products-grid__item__price_font-style",
+"scss/help/products-grid__item__price_font-weight",
+"scss/help/products-grid__item__price_line-height",
+"scss/help/products-grid__item__product-name_color",
+"scss/help/products-grid__item__product-name_font",
+"scss/help/products-grid__item__product-name_font-family",
+"scss/help/products-grid__item__product-name_font-size",
+"scss/help/products-grid__item__product-name_font-style",
+"scss/help/products-grid__item__product-name_font-weight",
+"scss/help/products-grid__item__product-name_line-height",
+"scss/help/products-grid__item__product-name_text-transform",
+"scss/help/products-grid__item__tax-details_display",
+"scss/help/products-grid__item-inner_background-color",
+"scss/help/products-grid__product-box_text-align",
+"scss/help/products-list__item__actions_margin",
+"scss/help/products-list__item__actions_margin-top",
+"scss/help/products-list__item__price_margin",
+"scss/help/products-list__item__price_margin-bottom",
+"scss/help/products-list__item__product-image_background-color",
+"scss/help/products-list__item__product-name_margin",
+"scss/help/products-list__item__product-name_margin-bottom",
+"scss/help/products-list__product-box_text-align",
+"scss/fieldset/actions_list_mode","Akcje (tryb listy)"
+"scss/fieldset/add_to_cart_button","Przycisk dodaj do koszyka"
+"scss/fieldset/add_to_cart_quantity","Dodaj do koszyka ilość"
+"scss/fieldset/aside_block_title","Boczny tytuł bloku"
+"scss/fieldset/availability","Dostępność"
+"scss/fieldset/badges","Znaki"
+"scss/fieldset/breadcrumbs","Okruszki"
+"scss/fieldset/button_checkout","Przycisk Kasa"
+"scss/fieldset/button_discount","Przycisk Obniżka"
+"scss/fieldset/buttons","Przyciski"
+"scss/fieldset/characteristics","Charakterystyka"
+"scss/fieldset/characteristics_eg_label_sku","Charakterystyka (np.. etykieta, SKU)"
+"scss/fieldset/characteristics_eg_label_sku_tax","Charakterystyka (np.. etykieta, SKU, podatek)"
+"scss/fieldset/colors","Kolory"
+"scss/fieldset/compare","Porównaj"
+"scss/fieldset/fonts","Czcionki"
+"scss/fieldset/general","Główne"
+"scss/fieldset/header_links","Linki do nagłówków"
+"scss/fieldset/header_mini_cart","Nagłowek mini koszyk"
+"scss/fieldset/headlines","Nagłówki"
+"scss/fieldset/image","Obraz"
+"scss/fieldset/inputs","Wprowadzanie"
+"scss/fieldset/item","Obiekt"
+"scss/fieldset/layered-nav","Nawigacja warstwowa"
+"scss/fieldset/main_content","Główna zawartosć"
+"scss/fieldset/marketing_footer","Stopka marketingowa "
+"scss/fieldset/messages","Wiadomości"
+"scss/fieldset/navigation","Nawigacja"
+"scss/fieldset/navigation_button","Przycisk nawigacji"
+"scss/fieldset/navigation_fifth_level","Poziom piąty nawigacji"
+"scss/fieldset/navigation_first_level","Poziom pierwszy nawigacji "
+"scss/fieldset/navigation_fourth_level","Poziom czwarty nawigacji"
+"scss/fieldset/navigation_second_level","Poziom drugi nawigacji"
+"scss/fieldset/navigation_third_level","Poziom trzeci nawigacji "
+"scss/fieldset/page","Strona"
+"scss/fieldset/page_title","Tytuł strony"
+"scss/fieldset/preloader","Moduł ładowania wstępnego"
+"scss/fieldset/price","Cena"
+"scss/fieldset/price_list_mode","Cena (tryb listy)"
+"scss/fieldset/product_image","Zdjęcie produktu"
+"scss/fieldset/product_options_eg_article_size_color","Warianty produktu (np.. rozmiar, kolor)"
+"scss/fieldset/product_price","Cena produktu"
+"scss/fieldset/product_title","Tytuł produktu "
+"scss/fieldset/product_title_list_mode","Nazwa produktu (tryb listy)"
+"scss/fieldset/progress_title","Tytuł postępu"
+"scss/fieldset/step_buttons","Przyciski Radio step"
+"scss/title/checkout-onepage__buttons_radio_background-color","Kolor tła"
+"scss/title/checkout-onepage__buttons_radio_color","Kolor tekstu"
+"scss/title/checkout-onepage__radio_buttons_border","Szerokość granicy"
+"scss/title/checkout-onepage__buttons_radio_border-color","Kolor granicy"
+"scss/title/checkout-onepage__buttons_radio_border-active-color","Aktywny kolor granicy"
+"scss/title/checkout-onepage__radio_buttons_font","Czcionka"
+"scss/fieldset/step_buttons","Przycisk kroku"
+"scss/fieldset/step_title","Tytuł kroku"
+"scss/fieldset/tables","Tabele"
+"scss/fieldset/tabs","Karty"
+"scss/fieldset/title","Tytuł"
+"scss/fieldset/totals","Ogół"
+"scss/fieldset/wishlist_compare_links","Lista życzeń / Porównaj linki"
+"scss/tab/cart","Karta"
+"scss/tab/category_page_search_results","Strona kategorii i wyników wyszukiwania"
+"scss/tab/checkout","Kasa"
+"scss/tab/footer","Stopka"
+"scss/tab/general","Główne"
+"scss/tab/header","Nagłówek"
+"scss/tab/modules","Moduły"
+"scss/tab/my_account","Moje konto"
+"scss/tab/product_details","Szczeguły produktu"
+"scss/fieldset/step_forms","Formularze sekcji kroków"
+"scss/title/checkout-onepage__form_border","Szerokość granicy formularza"
+"scss/title/checkout-onepage__form_border-color","Kolor granicy formularza"
+"scss/title/checkout-onepage__form_background-color","Tkolor tła granicy formularza"
+"scss/title/checkout-onepage__form_label-color","Kolor etykiety"
+"scss/title/checkout-onepage__form_label_font","Czcionka etykiety"
+"scss/title/checkout-onepage__form_input-color","Kolor wprowadzania"
+"scss/title/checkout-onepage__form_input_border","Granica wprowadzania"
+"scss/title/checkout-onepage__form_input_border-color","Kolor granicy wprowadzania"
+"scss/title/checkout-onepage__form_input_font","Czcionka wprowadzania"
+"scss/title/checkout-onepage__progress-complete-title_color","Kolor kompletnego tekstu"
+"scss/title/checkout-onepage__progress-title_border","Granica"
+"scss/title/checkout-onepage__progress-title_border-color","Kolor granicy"
+"scss/title/checkout-onepage__progress-complete-title_border-color","Kolor granicy kompletnego tytułu"
+"scss/fieldset/register_title","Tytuł strony zarejestruj się / zaloguj się"
+"scss/title/register__block-content__title_color","Kolor "
+"scss/title/register__block-content__title_font","Czcionka"
+"scss/fieldset/register_form","Formularz zarejestruj się / zaloguj się"
+"scss/title/register__block-content__form_background-color","Kolor tła"
+"scss/title/register__block-content__form_border","Granica formularza"
+"scss/title/register__block-content__form_border-color","Kolor granicy formularza"
+"scss/title/register__block-content__form_label-color","Kolor etykiety"
+"scss/title/register__block-content__form_label_font","Czcionka etykiety"
+"scss/title/register__block-content__form_input-color","Kolor wpisywanego tekstu"
+"scss/title/register__block-content__form_input_border","Granica okna wpisywania"
+"scss/title/register__block-content__form_input_border-color","Kolor granicy okna wpisywania"
+"scss/title/register__block-content__form_input_font","Czcionka wpisywania"
+"scss/title/register__block-content__form_button-background-color","Kolor tła przycisku"
+"scss/title/register__block-content__form_button-color","Kolor przycisku"
+"scss/title/register__block-content__form_button-font","Czcionka przycisku"
+"scss/fieldset/sidebar_navigation","Moje konto menu boczne"
+"scss/fieldset/my_account_content","Moje konto główna treść"
+"scss/title/account__block-content_border-color","Kolor granicy"
+"scss/title/account__block-content__title_background-color","Kolor tła tytułu"
+"scss/title/account__block-content__title-color","Kolor tytułu"
+"scss/title/account__block-content__title-font","Czcionka tytułu"
+"scss/title/account__block-content__list-font","Lista czcionek linków"
+"scss/title/account__block-content__subtitle-color","Kolor podtytułu"
+"scss/title/account__block-content__subtitle-font","Czcionka podtytułu"
+"scss/title/account__block-content__panel_title-color","Kolor tytułu panelu"
+"scss/title/account__block-content__panel_title-font","Czcionka tytułu panelu"
+"scss/title/account__block-content__text-color","Kolor tekstu"
+"scss/title/account__block-content__text-font","Czcionka tekstu"
+"scss/title/account__block-content__button-color","Kolor przycisku"
+"scss/title/account__block-content__button-font","Czcionka przycisku"
+"scss/title/account__block-content__sidebar_title-color","Kolor tytułu"
+"scss/title/account__block-content_button_border-color","Kolor granicy przycisku"
+"layout/title/product_view_tabs_orientation","Orientacja kart"
+"layout/options/product_view_tabs_orientation/1","Pozioma"
+"layout/options/product_view_tabs_orientation/2","Pionowa"
+"scss/title/empty_cart-title-color","Kolor tytułu opróżnij koszyk"
+"scss/title/empty_cart-title-font","Czcionka tytułu opróżnij koszyk"
+"scss/title/empty_cart-button-color","Kolor przycisku opróżnij koszyk "
+"scss/title/empty_cart-button-background-color","Kolor tła przycisku opróżnij koszyk "
+"scss/title/empty_cart-button-hover-color","Kolor przycisku opróżnij koszyk po najechaniu kursorem"
+"scss/title/empty_cart-button-hover-background-color","Kolor tła przycisku opróżnij koszyk po najechaniu kursorem"
+"scss/title/empty_cart-button-font","Czcionka przycisku opróżnij koszyk"
+"scss/fieldset/empty_cart","Opróżnij koszyk"
+"layout/title/checkout_view_new_layout","Nowy rozdład dla strony kasy"
+"layout/tab/my_account","Moje konto"
+"layout/title/my_account_register_new_layout","Nowy rozdład dla strony rejestracji"
+"layout/title/my_account_login_new_layout","Nowy rozdład dla strony logowania"
+"scss/title/product-view__product-collateral-group-name_background-color","Kolor tła dla grupy cech"
+"scss/title/product-view__product-collateral-group-name_color","Kolor grupy cech"
+"scss/title/product-view__product-collateral-group-name_font","Czcionka grupy cech"
+"layout/title/my_account_customer_new_layout","Nowy układ strony konsumenta"
+"scss/title/mini-cart-button-view-color","Kolor przycisku zobacz koszyk"
+"scss/title/mini-cart-button-view_background-color","Kolor tła przycisku zobacz koszyk"
+"scss/title/mini-cart-button-proceed-color","Kolor porzycisku przejdź do kasy"
+"scss/title/mini-cart-button-proceed_background-color","Kolor tła przycisku przejdź do kasy"
+"scss/title/mini-cart-button__border","Granica dla przycisków mini koszyk"
+"scss/title/mini-cart-button-view__border-color","Kolor granicy dla przycisku zobacz koszyk"
+"scss/title/mini-cart-button-proceed__border-color","Kolor granicy dla przycisku przejdź do kasy"
+"scss/title/mini-cart-button_font","Czcionka przycisku Mini koszyka"
+"scss/fieldset/shopping_cart_table","Przyciski tabeli koszyka"
+"scss/title/shopping-cart-table-button-empty-color","Kolor przycisku opróźnij koszyk"
+"scss/title/shopping-cart-table-button-empty_background-color","Kolor tła przycisku opróźnij koszyk"
+"scss/title/shopping-cart-table-button-update-color","Kolor przycisku zaktualizuj koszyk"
+"scss/title/shopping-cart-table-button-update_background-color","Kolor tła przycisku zaktualizuj koszyk"
+"scss/title/shopping-cart-table-button_border","Granica dla przycisków w tabeli koszyka"
+"scss/title/shopping-cart-table-button-empty_border-color","Kolor granicy dla wyczyść koszyk"
+"scss/title/shopping-cart-table-button-update_border-color","Kolor granicy dla zaktualizuj koszyk"
+"scss/title/shopping-cart-table-button_font","Czcionka dla tabeli przycisku koszyka zakupowego "
+"scss/title/button-action_border","Granica"
+"scss/title/button-action_border-color","Kolor granicy"
+"scss/title/button-action_hover_border-color","Kolor granicy po najechaniu kursorem"
+"scss/title/button-action_font","Czcionka"
+"scss/title/cart__btn-checkout_hover_background-color","Kolor tła przycisku po najechaniu kursorem"
+"scss/title/cart__btn-checkout_hover_color","Kolor przycisku po najechaniu kursorem"
+"scss/title/cart__btn-checkout_border","Granica przycisku"
+"scss/title/cart__btn-checkout_border-color","Kolor granicy przycisku"
+"scss/title/cart__btn-checkout_hover_border-color","Kolor granicy przycisku po najechaniu kursorem"
+"scss/title/cart__btn-checkout_font","Czcionka przycisku"

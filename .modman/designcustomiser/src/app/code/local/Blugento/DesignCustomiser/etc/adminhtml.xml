@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Blugento Design Customiser
+ *
+ * Copyright (C) 2015-2016 Blugento <contact@blugento.com>
+ * LICENSE: GNU General Public License for more details <http://opensource.org/licenses/gpl-license.php>
+ *
+ * @package Blugento_DesignCustomiser
+ * @author Simona Trifan <simona.plesuvu@mindmagnetsoftware.com>
+ * @link http://www.blugento.com
+*/
+-->
+<config>
+    <menu>
+        <blugento_adminmenu translate="title" module="blugento_designcustomiser">
+            <title>Blugento</title>
+            <sort_order>10</sort_order>
+            <children>
+                <blugento_designcustomiser translate="title" module="blugento_designcustomiser">
+                    <title>Customise Design</title>
+                    <sort_order>10</sort_order>
+                    <action>adminhtml/adminhtml_design</action>
+                </blugento_designcustomiser>
+            </children>
+        </blugento_adminmenu>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <blugento_adminmenu translate="title" module="blugento_designcustomiser">
+                        <title>Blugento</title>
+                        <sort_order>1</sort_order>
+                        <children>
+                            <blugento_designcustomiser translate="title" module="blugento_designcustomiser">
+                                <title>Customise Design</title>
+                                <sort_order>10</sort_order>
+                            </blugento_designcustomiser>
+                            <importexport translate="title" module="blugento_designcustomiser">
+                                <title>Import/Export Design</title>
+                            </importexport>
+                        </children>
+                    </blugento_adminmenu>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <blugento_designcustomiser>
+                                        <title>Scss settings</title>
+                                    </blugento_designcustomiser>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

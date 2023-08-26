@@ -1,0 +1,645 @@
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+$_productListOrderToolbar = (int)($this->getLayout()->getBlock('root')->getProductListOrderToolbar() ?: 1);
+$_productListSortBy = (int)($this->getLayout()->getBlock('root')->getProductListSortBy() ?: 1);
+$_productListShowProductsCount = (int)($this->getLayout()->getBlock('root')->getProductListShowProductsCount() ?: 2);
+?>
+<?php if ($this->getCollection()->getSize()): ?>
+    <div class="toolbar" data-sort-by="<?php echo $_productListSortBy ?>">
+
+        <!-- Show sort by / tabs -->
+        <?php if ($_productListSortBy == 4): ?>
+            <?php if ($this->isExpanded()): ?>
+                <div class="sort-by">
+                    <ul onchange="setLocation(this.value)">
+                        <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                            <?php if ($_order != 'Price' && $_order != 'Name'): ?>
+                                <li <?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                    <a href="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"><?php echo $this->__($_order) ?></a>
+                                </li>
+                            <?php else: ?>
+                                <?php
+                                    $labelAsc  = $_order == 'Price' ? ': Low to High' : ': A-Z';
+                                    $labelDesc = $_order == 'Price' ? ': High to Low' : ': Z-A';
+                                    $labelAscTrans = $this->__($labelAsc);
+                                    $labelDescTrans = $this->__($labelDesc);
+                                ?>
+
+                                <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> selected="selected"<?php endif; ?>>
+                                    <a href="<?php echo $this->getOrderUrl($_key, 'asc') ?>"><?php echo $this->__($_order) . $labelAscTrans ?></a>
+                                </li>
+                                <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+                                    <a href="<?php echo $this->getOrderUrl($_key, 'desc') ?>"><?php echo $this->__($_order) . $labelDescTrans ?></a>
+                                </li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+        <!-- Change order for toolbar / default value 1 -->
+        <?php if ($_productListOrderToolbar == 1): ?>
+            <div class="pager">
+                <div class="limiter">
+                    <label><?php echo $this->__('Show') ?></label>
+                    <select onchange="setLocation(this.value)">
+                        <?php foreach ($this->getAvailableLimit() as $_key => $_limit): ?>
+                            <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if ($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                <?php echo $_limit ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label><?php echo $this->__('product(s)') ?></label>
+                </div>
+                <?php echo trim($this->getPagerHtml()) ?>
+            </div>
+
+            <?php if ($this->isExpanded()): ?>
+                <div class="sorter">
+
+                    <?php if ($this->isEnabledViewSwitcher()): ?>
+                        <div class="view-mode">
+                            <?php $_modes = $this->getModes(); ?>
+                            <?php if ($_modes && count($_modes) > 1): ?>
+                                <label><?php echo $this->__('View as') ?>:</label>
+                                <?php foreach ($this->getModes() as $_code => $_label): ?>
+                                    <?php if ($this->isModeActive($_code)): ?>
+                                        <strong title="<?php echo $_label ?>"
+                                                class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></strong>
+                                    <?php else: ?>
+                                        <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>"
+                                           class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="sort-by">
+                        <label><?php echo $this->__('Sort By :') ?></label>
+
+                        <!-- Show sort by / default value 1 -->
+                        <?php if ($_productListSortBy == 1): ?>
+                            <select onchange="setLocation(this.value)">
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_productListOrderToolbar == 1): ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"<?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                            <?php if ($this->getCurrentDirection() == 'desc'): ?>
+                                <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>"
+                                   class="sort-by-switcher sort-by-switcher--desc"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><?php echo $this->__('Set Ascending Direction') ?></a>
+                            <?php else: ?>
+                                <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>"
+                                   class="sort-by-switcher sort-by-switcher--asc"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><?php echo $this->__('Set Descending Direction') ?></a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <!-- Show sort by / with name and price asc/desc -->
+                        <?php if ($_productListSortBy == 2): ?>
+                            <select onchange="setLocation(this.value)">
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_order != 'Price' && $_order != 'Name'): ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"<?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) ?>
+                                        </option>
+                                    <?php else: ?>
+                                        <?php
+                                            $labelAsc  = $_order == 'Price' ? ': Low to High' : ': A-Z';
+                                            $labelDesc = $_order == 'Price' ? ': High to Low' : ': Z-A';
+                                            $labelAscTrans = $this->__($labelAsc);
+                                            $labelDescTrans = $this->__($labelDesc);
+                                        ?>
+
+                                        <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) . $labelAscTrans ?>
+                                        </option>
+                                        <option value="<?php echo $this->getOrderUrl($_key, 'desc') ?>"<?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) . $labelDescTrans ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php endif; ?>
+
+                        <!-- Show sort by / Fancy dropdown with price and name asc/desc -->
+                        <?php if ($_productListSortBy == 3): ?>
+                            <span class="selected-sort"></span>
+                            <ul>
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_order != 'Price' && $_order != 'Name'): ?>
+                                        <li <?php if ($this->isOrderCurrent($_key)): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"><?php echo $this->__($_order) ?></a>
+                                        </li>
+                                    <?php else: ?>
+                                        <?php
+                                            $labelAsc  = $_order == 'Price' ? ': Low to High' : ': A-Z';
+                                            $labelDesc = $_order == 'Price' ? ': High to Low' : ': Z-A';
+                                            $labelAscTrans = $this->__($labelAsc);
+                                            $labelDescTrans = $this->__($labelDesc);
+                                        ?>
+
+                                        <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, 'asc') ?>"><?php echo $this->__($_order) . $labelAscTrans ?></a>
+                                        </li>
+                                        <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, 'desc') ?>"><?php echo $this->__($_order) . $labelDescTrans ?></a>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+            <?php endif; ?>
+
+            <?php if ($_productListShowProductsCount == 1): ?>
+                <div class="count-container">
+                    <?php if($this->getLastPageNum()>1): ?>
+	                    <?php if (Mage::helper('core')->isModuleEnabled('Strategery_Infinitescroll') && Mage::helper('infinitescroll')->isEnabled()) : ?>
+		                   <p class="amount amount--has-pages">
+			                    <span class="show"><?php echo $this->__('Show') ?></span>
+			                    <span class="amount-start"><?php echo $this->getFirstNum() ?></span>
+			                    <span>-</span>
+			                    <span class="amount-end"><?php echo $this->getLastNum() ?></span>
+			                    <span><?php echo $this->__('of') ?></span>
+			                    <span class="max-amount"><?php echo $this->getTotalNum() ?></span>
+			                    <span class="results"><?php echo $this->__('Results') ?></span>
+		                    </p>
+			            <?php else : ?>
+	                        <p class="amount amount--has-pages">
+	                            <span class="show"><?php echo $this->__('Show') ?></span>
+	                            <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+	                            <span class="results"><?php echo $this->__('Results') ?></span>
+	                        </p>
+			            <?php endif; ?>
+                    <?php else: ?>
+                        <p class="amount amount--no-pages">
+                            <span><?php echo $this->__('Show') ?></span>
+                            <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+                        </p>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <!-- Change order for toolbar / value 2 -->
+        <?php if ($_productListOrderToolbar == 2): ?>
+            <div class="pager">
+                <div class="limiter">
+                    <label><?php echo $this->__('Show') ?></label>
+                    <select onchange="setLocation(this.value)">
+                        <?php foreach ($this->getAvailableLimit() as $_key => $_limit): ?>
+                            <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if ($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                <?php echo $_limit ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label><?php echo $this->__('product(s)') ?></label>
+                </div>
+                <?php echo trim($this->getPagerHtml()) ?>
+            </div>
+
+            <?php if ($_productListShowProductsCount == 1): ?>
+                <div class="count-container">
+                    <?php if($this->getLastPageNum()>1): ?>
+	                    <?php if (Mage::helper('core')->isModuleEnabled('Strategery_Infinitescroll') && Mage::helper('infinitescroll')->isEnabled()) : ?>
+		                    <p class="amount amount--has-pages">
+			                    <span class="show"><?php echo $this->__('Show') ?></span>
+			                    <span class="amount-start"><?php echo $this->getFirstNum() ?></span>
+			                    <span>-</span>
+			                    <span class="amount-end"><?php echo $this->getLastNum() ?></span>
+			                    <span><?php echo $this->__('of') ?></span>
+			                    <span class="max-amount"><?php echo $this->getTotalNum() ?></span>
+			                    <span class="results"><?php echo $this->__('Results') ?></span>
+		                    </p>
+	                    <?php else : ?>
+		                    <p class="amount amount--has-pages">
+			                    <span class="show"><?php echo $this->__('Show') ?></span>
+			                    <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+			                    <span class="results"><?php echo $this->__('Results') ?></span>
+		                    </p>
+	                    <?php endif; ?>
+                    <?php else: ?>
+                        <p class="amount amount--no-pages">
+                            <span><?php echo $this->__('Show') ?></span>
+                            <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+                        </p>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($this->isExpanded()): ?>
+                <div class="sorter">
+
+                    <?php if ($this->isEnabledViewSwitcher()): ?>
+                        <div class="view-mode">
+                            <?php $_modes = $this->getModes(); ?>
+                            <?php if ($_modes && count($_modes) > 1): ?>
+                                <label><?php echo $this->__('View as') ?>:</label>
+                                <?php foreach ($this->getModes() as $_code => $_label): ?>
+                                    <?php if ($this->isModeActive($_code)): ?>
+                                        <strong title="<?php echo $_label ?>"
+                                                class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></strong>
+                                    <?php else: ?>
+                                        <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>"
+                                           class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="sort-by">
+                        <label><?php echo $this->__('Sort By :') ?></label>
+
+                        <!-- Show sort by / default value 1 -->
+                        <?php if ($_productListSortBy == 1): ?>
+                            <select onchange="setLocation(this.value)">
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_productListOrderToolbar == 2): ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"<?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                            <?php if ($this->getCurrentDirection() == 'desc'): ?>
+                                <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>"
+                                   class="sort-by-switcher sort-by-switcher--desc"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><?php echo $this->__('Set Ascending Direction') ?></a>
+                            <?php else: ?>
+                                <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>"
+                                   class="sort-by-switcher sort-by-switcher--asc"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><?php echo $this->__('Set Descending Direction') ?></a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <!-- Show sort by / with name and price asc/desc -->
+                        <?php if ($_productListSortBy == 2): ?>
+                            <select onchange="setLocation(this.value)">
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_order != 'Price' && $_order != 'Name'): ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"<?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) ?>
+                                        </option>
+                                    <?php else: ?>
+                                        <?php
+                                            $labelAsc  = $_order == 'Price' ? ': Low to High' : ': A-Z';
+                                            $labelDesc = $_order == 'Price' ? ': High to Low' : ': Z-A';
+                                            $labelAscTrans = $this->__($labelAsc);
+                                            $labelDescTrans = $this->__($labelDesc);
+                                        ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) . $labelAscTrans ?>
+                                        </option>
+                                        <option value="<?php echo $this->getOrderUrl($_key, 'desc') ?>"<?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) . $labelDescTrans ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php endif; ?>
+
+                        <!-- Show sort by / Fancy dropdown with price and name asc/desc -->
+                        <?php if ($_productListSortBy == 3): ?>
+                            <span class="selected-sort"></span>
+                            <ul>
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_order != 'Price' && $_order != 'Name'): ?>
+                                        <li <?php if ($this->isOrderCurrent($_key)): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"><?php echo $this->__($_order) ?></a>
+                                        </li>
+                                    <?php else: ?>
+                                        <?php
+                                            $labelAsc  = $_order == 'Price' ? ': Low to High' : ': A-Z';
+                                            $labelDesc = $_order == 'Price' ? ': High to Low' : ': Z-A';
+                                            $labelAscTrans = $this->__($labelAsc);
+                                            $labelDescTrans = $this->__($labelDesc);
+                                        ?>
+
+                                        <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, 'asc') ?>"><?php echo $this->__($_order) . $labelAscTrans ?></a>
+                                        </li>
+                                        <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, 'desc') ?>"><?php echo $this->__($_order) . $labelDescTrans ?></a>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <!-- Change order for toolbar / value 3 -->
+        <?php if ($_productListOrderToolbar == 3): ?>
+            <div class="pager">
+                <div class="limiter">
+                    <label><?php echo $this->__('Show') ?></label>
+                    <select onchange="setLocation(this.value)">
+                        <?php foreach ($this->getAvailableLimit() as $_key => $_limit): ?>
+                            <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if ($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                <?php echo $_limit ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label><?php echo $this->__('product(s)') ?></label>
+                </div>
+                <?php echo trim($this->getPagerHtml()) ?>
+            </div>
+
+            <?php if ($_productListShowProductsCount == 1): ?>
+                <div class="count-container">
+                    <?php if($this->getLastPageNum()>1): ?>
+	                    <?php if (Mage::helper('core')->isModuleEnabled('Strategery_Infinitescroll') && Mage::helper('infinitescroll')->isEnabled()) : ?>
+		                    <p class="amount amount--has-pages">
+			                    <span class="show"><?php echo $this->__('Show') ?></span>
+			                    <span class="amount-start"><?php echo $this->getFirstNum() ?></span>
+			                    <span>-</span>
+			                    <span class="amount-end"><?php echo $this->getLastNum() ?></span>
+			                    <span><?php echo $this->__('of') ?></span>
+			                    <span class="max-amount"><?php echo $this->getTotalNum() ?></span>
+			                    <span class="results"><?php echo $this->__('Results') ?></span>
+		                    </p>
+	                    <?php else : ?>
+		                    <p class="amount amount--has-pages">
+			                    <span class="show"><?php echo $this->__('Show') ?></span>
+			                    <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+			                    <span class="results"><?php echo $this->__('Results') ?></span>
+		                    </p>
+	                    <?php endif; ?>
+                    <?php else: ?>
+                        <p class="amount amount--no-pages">
+                            <span><?php echo $this->__('Show') ?></span>
+                            <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+                        </p>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($this->isExpanded()): ?>
+                <div class="sorter">
+                    <div class="sort-by">
+                        <label><?php echo $this->__('Sort By :') ?></label>
+
+                        <!-- Show sort by / default value 1 -->
+                        <?php if ($_productListSortBy == 1): ?>
+                            <select onchange="setLocation(this.value)">
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_productListOrderToolbar == 3): ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"<?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                            <?php if ($this->getCurrentDirection() == 'desc'): ?>
+                                <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>"
+                                   class="sort-by-switcher sort-by-switcher--desc"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><?php echo $this->__('Set Ascending Direction') ?></a>
+                            <?php else: ?>
+                                <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>"
+                                   class="sort-by-switcher sort-by-switcher--asc"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><?php echo $this->__('Set Descending Direction') ?></a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <!-- Show sort by / with name and price asc/desc -->
+                        <?php if ($_productListSortBy == 2): ?>
+                            <select onchange="setLocation(this.value)">
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_order != 'Price' && $_order != 'Name'): ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"<?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) ?>
+                                        </option>
+                                    <?php else: ?>
+                                        <?php
+                                            $labelAsc  = $_order == 'Price' ? ': Low to High' : ': A-Z';
+                                            $labelDesc = $_order == 'Price' ? ': High to Low' : ': Z-A';
+                                            $labelAscTrans = $this->__($labelAsc);
+                                            $labelDescTrans = $this->__($labelDesc);
+                                        ?>
+
+                                        <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) . $labelAscTrans ?>
+                                        </option>
+                                        <option value="<?php echo $this->getOrderUrl($_key, 'desc') ?>"<?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) . $labelDescTrans ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php endif; ?>
+
+                        <!-- Show sort by / Fancy dropdown with price and name asc/desc -->
+                        <?php if ($_productListSortBy == 3): ?>
+                            <span class="selected-sort"></span>
+                            <ul>
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_order != 'Price'): ?>
+                                        <li <?php if ($this->isOrderCurrent($_key)): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"><?php echo $this->__($_order) ?></a>
+                                        </li>
+                                    <?php else: ?>
+                                        <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, 'asc') ?>"><?php echo $this->__($_order) . ': Low to High' ?></a>
+                                        </li>
+                                        <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, 'asc') ?>"><?php echo $this->__($_order) . ': High to Low' ?></a>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php if ($this->isEnabledViewSwitcher()): ?>
+                        <div class="view-mode">
+                            <?php $_modes = $this->getModes(); ?>
+                            <?php if ($_modes && count($_modes) > 1): ?>
+                                <label><?php echo $this->__('View as') ?>:</label>
+                                <?php foreach ($this->getModes() as $_code => $_label): ?>
+                                    <?php if ($this->isModeActive($_code)): ?>
+                                        <strong title="<?php echo $_label ?>"
+                                                class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></strong>
+                                    <?php else: ?>
+                                        <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>"
+                                           class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <!-- Change order for toolbar / value 4 -->
+        <?php if ($_productListOrderToolbar == 4): ?>
+            <?php if ($_productListShowProductsCount == 1): ?>
+                <div class="count-container">
+                    <?php if($this->getLastPageNum()>1): ?>
+	                    <?php if (Mage::helper('core')->isModuleEnabled('Strategery_Infinitescroll') && Mage::helper('infinitescroll')->isEnabled()) : ?>
+		                    <p class="amount amount--has-pages">
+			                    <span class="show"><?php echo $this->__('Show') ?></span>
+			                    <span class="amount-start"><?php echo $this->getFirstNum() ?></span>
+			                    <span>-</span>
+			                    <span class="amount-end"><?php echo $this->getLastNum() ?></span>
+			                    <span><?php echo $this->__('of') ?></span>
+			                    <span class="max-amount"><?php echo $this->getTotalNum() ?></span>
+			                    <span class="results"><?php echo $this->__('Results') ?></span>
+		                    </p>
+	                    <?php else : ?>
+		                    <p class="amount amount--has-pages">
+			                    <span class="show"><?php echo $this->__('Show') ?></span>
+			                    <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+			                    <span class="results"><?php echo $this->__('Results') ?></span>
+		                    </p>
+	                    <?php endif; ?>
+                    <?php else: ?>
+                        <p class="amount amount--no-pages">
+                            <span><?php echo $this->__('Show') ?></span>
+                            <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+                        </p>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($this->isExpanded()): ?>
+                <div class="sorter sorter-left">
+                    <div class="sort-by">
+                        <label><?php echo $this->__('Sort By :') ?></label>
+
+                        <!-- Show sort by / default value 1 -->
+                        <?php if ($_productListSortBy == 1): ?>
+                            <select onchange="setLocation(this.value)">
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_productListOrderToolbar == 4): ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"<?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                            <?php if ($this->getCurrentDirection() == 'desc'): ?>
+                                <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>"
+                                   class="sort-by-switcher sort-by-switcher--desc"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><?php echo $this->__('Set Ascending Direction') ?></a>
+                            <?php else: ?>
+                                <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>"
+                                   class="sort-by-switcher sort-by-switcher--asc"
+                                   title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><?php echo $this->__('Set Descending Direction') ?></a>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <!-- Show sort by / with name and price asc/desc -->
+                        <?php if ($_productListSortBy == 2): ?>
+                            <select onchange="setLocation(this.value)">
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_order != 'Price' && $_order != 'Name'): ?>
+                                        <option value="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"<?php if ($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) ?>
+                                        </option>
+                                    <?php else: ?>
+                                        <?php
+                                            $labelAsc  = $_order == 'Price' ? ': Low to High' : ': A-Z';
+                                            $labelDesc = $_order == 'Price' ? ': High to Low' : ': Z-A';
+                                            $labelAscTrans = $this->__($labelAsc);
+                                            $labelDescTrans = $this->__($labelDesc);
+                                        ?>
+
+                                        <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) . $labelAscTrans ?>
+                                        </option>
+                                        <option value="<?php echo $this->getOrderUrl($_key, 'desc') ?>"<?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> selected="selected"<?php endif; ?>>
+                                            <?php echo $this->__($_order) . $labelDescTrans ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                        <?php endif; ?>
+
+                        <!-- Show sort by / Fancy dropdown with price and name asc/desc -->
+                        <?php if ($_productListSortBy == 3): ?>
+                            <span class="selected-sort"></span>
+                            <ul>
+                                <?php foreach ($this->getAvailableOrders() as $_key => $_order): ?>
+                                    <?php if ($_order != 'Price'): ?>
+                                        <li <?php if ($this->isOrderCurrent($_key)): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, ($_key != 'new_products' && $_key != 'discount') ? 'asc' : 'desc') ?>"><?php echo $this->__($_order) ?></a>
+                                        </li>
+                                    <?php else: ?>
+                                        <?php
+                                            $labelAsc  = $_order == 'Price' ? ': Low to High' : ': A-Z';
+                                            $labelDesc = $_order == 'Price' ? ': High to Low' : ': Z-A';
+                                            $labelAscTrans = $this->__($labelAsc);
+                                            $labelDescTrans = $this->__($labelDesc);
+                                        ?>
+
+                                        <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'asc'): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, 'asc') ?>"><?php echo $this->__($_order) . $labelAscTrans ?></a>
+                                        </li>
+                                        <li <?php if ($this->isOrderCurrent($_key) && $this->getCurrentDirection() == 'desc'): ?> class="selected"<?php endif; ?>>
+                                            <a href="<?php echo $this->getOrderUrl($_key, 'desc') ?>"><?php echo $this->__($_order) . $labelDescTrans ?></a>
+                                        </li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <div class="pager">
+                <div class="limiter">
+                    <label><?php echo $this->__('Show') ?></label>
+                    <select onchange="setLocation(this.value)">
+                        <?php foreach ($this->getAvailableLimit() as $_key => $_limit): ?>
+                            <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if ($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                <?php echo $_limit ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <label><?php echo $this->__('product(s)') ?></label>
+                </div>
+                <?php echo trim($this->getPagerHtml()) ?>
+            </div>
+
+            <?php if ($this->isExpanded()): ?>
+                <div class="sorter">
+                    <?php if ($this->isEnabledViewSwitcher()): ?>
+                        <div class="view-mode">
+                            <?php $_modes = $this->getModes(); ?>
+                            <?php if ($_modes && count($_modes) > 1): ?>
+                                <label><?php echo $this->__('View as') ?>:</label>
+                                <?php foreach ($this->getModes() as $_code => $_label): ?>
+                                    <?php if ($this->isModeActive($_code)): ?>
+                                        <strong title="<?php echo $_label ?>"
+                                                class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></strong>
+                                    <?php else: ?>
+                                        <a href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>"
+                                           class="<?php echo strtolower($_code); ?>"><?php echo $_label ?></a>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+
+    </div>
+<?php endif; ?>

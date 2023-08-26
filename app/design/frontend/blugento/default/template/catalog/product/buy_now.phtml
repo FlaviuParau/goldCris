@@ -1,0 +1,57 @@
+<?php
+$_product = $this->getProduct();
+$_page = $this->getRequest()->getControllerName();
+
+if ($_page == 'product') {
+    $htmlId  = 'buy-now-please-wait';
+    $onclick = 'productBuyNowForm.submit(this)';
+} elseif ($_page == 'category') {
+    $htmlId  = 'buy-now-please-wait-' . $_product->getEntityId();
+    $onclick = "setCheckoutLocation('" . $this->getAddToCartUrl($_product) . "', '" . Mage::getUrl("checkout") . "', '" . $htmlId . "')";
+} else {
+    $htmlId  = 'buy-now-please-wait-' . $this->getWidgetType() . '-' . $_product->getEntityId();
+    $onclick = "setCheckoutLocation('" . $this->getAddToCartUrl($_product) . "', '" . Mage::getUrl("checkout") . "', '" . $htmlId . "')";
+}
+?>
+
+<button type="button"
+        title="<?php echo $this->__('Buy Now') ?>"
+        class="button btn-cart buy-now-button"
+        onclick="<?php echo $onclick ?>">
+	<span><span><?php echo $this->__('Buy Now') ?></span></span>
+</button>
+<span class="please-wait" id="<?php echo $htmlId; ?>" style=" display: none; ">
+    <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Please Wait...') ?>" title="" class="v-middle">
+	<?php echo $this->__('Please Wait...') ?>
+</span>
+
+<script>
+    var productBuyNowForm = new VarienForm('product_addtocart_form');
+    productBuyNowForm.submit = function (button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+            if (url) {
+                form.action = url;
+            }
+            var inputReturn= document.createElement('input');
+            inputReturn.type = 'hidden';
+            inputReturn.name = 'return_url';
+            inputReturn.value = "<?php echo Mage::getUrl('checkout/onepage')?>";
+            document.getElementById('product_addtocart_form').appendChild(inputReturn);
+            var e = null;
+            try {
+                this.form.submit();
+            } catch (e) {
+            	console.log(e);
+            }
+            this.form.action = oldUrl;
+            if (e) {
+                throw e;
+            }
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+        }
+    }.bind(productBuyNowForm);
+</script>

@@ -1,0 +1,55 @@
+<?php
+$_productCollection = $this->getItems();
+
+if (($this->getProductViewRelatedProductsStatus() != 1) && (!Mage::helper('core')->isModuleEnabled('Kinex_AutoRelated'))) {
+    return;
+}
+
+$_productNameAfter = false;
+if ($this->getChild('name.after')) {
+    foreach ($this->getChild('name.after')->getSortedChildren() as $_nameAfterChildName) {
+        $_productNameAfter .= $this->getChild('name.after')->getChild($_nameAfterChildName)->setProduct($_product)->toHtml();
+    }
+}
+?>
+<?php if ($_productCollection && count($_productCollection)): ?>
+    <?php $_isSlider = (count($_productCollection) > 1) && ($this->getProductViewRelatedProductsSliderStatus() == 1); ?>
+    <div class="block block-related" id="block-related">
+        <h2 class="subtitle"><?php echo $this->__('Similar Products') ?></h2>
+        <div class="block-content">
+            <ul
+                class="products-grid grid-6"
+                <?php if ($_isSlider): ?>
+                    data-slider-related="true"
+	                data-slider-item-row="<?php echo $this->getProductViewRelatedProductsSliderSlidesToShow() ?>"
+	                data-slider-item-scroll="<?php echo $this->getProductViewRelatedProductsSliderSlidesToScroll() ?>"
+	                data-slider-animation="<?php echo $this->getProductViewRelatedProductsSliderAnimation() ?>"
+                    data-slider-item-loop="<?php echo $this->getProductViewRelatedProductsSliderLoop() ?>"
+                    data-mobile-items="<?php echo $this->getProductViewRelatedProductsSliderMobile() ?>"
+                    data-center="<?php echo $this->getProductViewRelatedProductsSliderCenter(); ?>"
+                    data-dots="<?php echo $this->getProductViewRelatedProductsSliderDots(); ?>"
+                <?php endif; ?>
+                >
+                <?php foreach ($_productCollection as $_product): ?>
+                    <?php $_product->setNameAfter($_productNameAfter); ?>
+                    <li class="item">
+                        <?php echo $this->getLayout()->createBlock('blugento_theme/catalog_product_design')->setProduct($_product)->setTemplate('catalog/product/list-grid-item.phtml')->toHtml(); ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        // Set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>

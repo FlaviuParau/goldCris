@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_ProductLabels
+ * @author      Ciprian Mariuta <ciprian.mariuta@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Blugento_ProductLabels>
+            <version>1.0.4</version>
+        </Blugento_ProductLabels>
+    </modules>
+
+    <global>
+        <blocks>
+            <blugento_productlabels>
+                <class>Blugento_ProductLabels_Block</class>
+            </blugento_productlabels>
+        </blocks>
+
+        <helpers>
+            <blugento_productlabels>
+                <class>Blugento_ProductLabels_Helper</class>
+            </blugento_productlabels>
+        </helpers>
+
+        <models>
+            <blugento_productlabels>
+                <class>Blugento_ProductLabels_Model</class>
+                <resourceModel>productlabels_resource</resourceModel>
+            </blugento_productlabels>
+
+            <productlabels_resource>
+                <class>Blugento_ProductLabels_Model_Resource</class>
+                <entities>
+                    <label>
+                        <table>blugento_productlabels_label</table>
+                    </label>
+                </entities>
+            </productlabels_resource>
+        </models>
+
+        <resources>
+            <blugento_productlabels_setup>
+                <setup>
+                    <module>Blugento_ProductLabels</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </blugento_productlabels_setup>
+
+            <blugento_productlabels_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </blugento_productlabels_write>
+
+            <blugento_productlabels_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </blugento_productlabels_read>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <blugento_productlabels before="Mage_Adminhtml">Blugento_ProductLabels_Adminhtml</blugento_productlabels>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <blugento_productlabels>
+                    <file>blugento_productlabels.xml</file>
+                </blugento_productlabels>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_productlabels>
+                    <files>
+                        <default>Blugento_ProductLabels.csv</default>
+                    </files>
+                </blugento_productlabels>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <blugento_productlabels>
+                    <file>blugento_productlabels.xml</file>
+                </blugento_productlabels>
+            </updates>
+        </layout>
+
+        <translate>
+            <modules>
+                <blugento_productlabels>
+                    <files>
+                        <default>Blugento_ProductLabels.csv</default>
+                    </files>
+                </blugento_productlabels>
+            </modules>
+        </translate>
+    </frontend>
+    <default>
+        <blugento_productlabels>
+            <general>
+                <enabled>1</enabled>
+            </general>
+        </blugento_productlabels>
+    </default>
+</config>

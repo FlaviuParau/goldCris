@@ -1,0 +1,95 @@
+<?php
+/**
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_DesignCustomiser
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+
+<?php
+/**
+ * @see Blugento_DesignCustomiser_Block_Adminhtml_Form_Renderer_Image_Default
+ */
+?>
+
+<?php
+$_element           = $this->getElement();
+$_trId              = $_element->getHtmlContainerId();
+$_class             = $_element->getFieldsetHtmlClass();
+$_variable          = $_element->getVariable();
+$_translationPrefix = $_variable->getTranslationPrefix();
+$_url               = $_variable->getUrl($_variable->getDefault()) . '?t=' . uniqid();
+$_help              = $this->__($_translationPrefix . '/help/' . $_variable->getId());
+$_descriptionKey    = $_translationPrefix . '/description/' . $_variable->getId();
+$_description       = $this->__($_descriptionKey) != $_descriptionKey ? $this->__($_descriptionKey) : '';
+?>
+
+<?php if (!$_element->getNoDisplay()): ?>
+    <tr <?php if ($_trId): ?> id="<?php echo $_trId ?>"<?php endif; ?> class="designcustomiser-box designcustomiser-box--image">
+        <td class="label<?php echo $_class ? " {$_class}-label" : '' ?>">
+            <?php if ($_help): ?>
+                <div class="input-help">
+                    <a href="<?php echo $_help ?>" rel="noopener" target="_blank" class="help" title="<?php echo $this->__('Read details') ?>"></a>
+                </div>
+            <?php endif; ?>
+            <?php echo trim($_element->getLabelHtml()) ?>
+        </td>
+        <td class="<?php echo $_element->hasValueClass() ? $_element->getValueClass() : 'value' ?><?php echo $_class ? " {$_class}-value" : '' ?>">
+
+            <a
+                href="<?php echo $_url ?>"
+                onclick="imagePreview('<?php echo $_element->getHtmlId() ?>_image'); return false;"
+                >
+                <img
+                    src="<?php echo $_url ?>"
+                    id="<?php echo $_element->getHtmlId() ?>_image"
+                    title="<?php echo $_element->getValue() ?>"
+                    alt="<?php echo $_element->getValue() ?>"
+                    class="small-image-preview v-middle img-responsive"
+            /></a>
+
+            <div class="input-box input-box--image">
+                <div class="input-box__inner">
+                    <input
+                        id="<?php echo $_element->getHtmlId() ?>"
+                        class="input-file"
+                        type="file"
+                        title="<?php echo $_element->getLabel() ?>"
+                        value="<?php echo $_element->getEscapedValue() ?>"
+                        name="<?php echo $_element->getName() ?>"
+                    />
+                </div>
+            </div>
+
+            <?php if ($_description): ?>
+                <div class="description">
+                    <p class="note"><span><?php echo $_description ?></span></p>
+                </div>
+            <?php endif; ?>
+
+            <div class="reset-default">
+                <input
+                    type="checkbox"
+                    name="reset-image-<?php echo $_variable->getId() ?>"
+                    value="<?php echo $_variable->getDefault() ?>"
+                    id="reset-image-<?php echo $_variable->getId() ?>"
+                    onclick="if (!this.checked) { return true; } if (confirm('<?php echo $this->__('Do you really want to reset the image? Previous image will be deleted!') ?>')) { return true; } return false;"
+                />
+                <label for="reset-image-<?php echo $_variable->getId() ?>"><?php echo $this->__('Reset to default') ?></label>
+            </div>
+
+        </td>
+    </tr>
+<?php endif; ?>

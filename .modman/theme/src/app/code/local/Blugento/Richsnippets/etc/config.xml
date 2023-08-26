@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to
+ * newer versions in the future.
+ *
+ * @category    Blugento
+ * @package     Blugento_RichSnippets
+ * @author      Stîncel-Toader Octavian-Cristian <tavi@blugento.ro>
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+
+<config>
+	<modules>
+		<Blugento_Richsnippets>
+			<version>1.0.0</version>
+		</Blugento_Richsnippets>
+	</modules>
+	<global>
+		<models>
+			<blugento_richsnippets>
+				<class>Blugento_Richsnippets_Model</class>
+			</blugento_richsnippets>
+		</models>
+		<blocks>
+			<blugento_richsnippets>
+				<class>Blugento_Richsnippets_Block</class>
+			</blugento_richsnippets>
+		</blocks>
+		<helpers>
+			<blugento_richsnippets>
+				<class>Blugento_Richsnippets_Helper</class>
+			</blugento_richsnippets>
+		</helpers>
+	</global>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<Blugento_Richsnippets after="Mage_Adminhtml">Blugento_Richsnippets</Blugento_Richsnippets>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
+	</admin>
+	<adminhtml>
+		<translate>
+			<modules>
+				<Blugento_Richsnippets>
+					<files>
+						<blugento_richsnippets>Blugento_Richsnippets.csv</blugento_richsnippets>
+					</files>
+				</Blugento_Richsnippets>
+			</modules>
+		</translate>
+	</adminhtml>
+	<frontend>
+		<layout>
+			<updates>
+				<richsnippets>
+					<file>blugento_richsnippets.xml</file>
+				</richsnippets>
+			</updates>
+		</layout>
+		<events>
+			<controller_action_layout_load_before>
+				<observers>
+					<blugento_richsnippets_generate_block>
+						<class>blugento_richsnippets/observer</class>
+						<method>addContactCustomHandle</method>
+					</blugento_richsnippets_generate_block>
+				</observers>
+			</controller_action_layout_load_before>
+			<cms_generate_breadcrumbs>
+				<observers>
+					<blugento_richsnippets_add_breadcrumb>
+						<class>blugento_richsnippets/observer</class>
+						<method>addPageBreadcrumbs</method>
+					</blugento_richsnippets_add_breadcrumb>
+				</observers>
+			</cms_generate_breadcrumbs>
+		</events>
+		<translate>
+			<modules>
+				<Blugento_Richsnippets>
+					<files>
+						<blugento_richsnippets>Blugento_Richsnippets.csv</blugento_richsnippets>
+					</files>
+				</Blugento_Richsnippets>
+			</modules>
+		</translate>
+	</frontend>
+	<default>
+		<blugento_richsnippets>
+			<organization>
+				<enabled>1</enabled>
+			</organization>
+			<product>
+				<split_configurable_products>1</split_configurable_products>
+				<show_price>1</show_price>
+			</product>
+			<breadcrumbs>
+				<enabled>1</enabled>
+			</breadcrumbs>
+		</blugento_richsnippets>
+	</default>
+</config>

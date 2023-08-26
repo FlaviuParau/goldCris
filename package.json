@@ -1,0 +1,37 @@
+{
+  "name": "blugento-theme",
+  "version": "1.0.0",
+  "description": "Blugento main theme",
+  "author": {
+    "name": "Mind Magnet",
+    "email": "office@mindmagnetsoftware.com",
+    "url": "http://www.mindmagnetsoftware.com"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/blugento/theme"
+  },
+  "licence": "GPL",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-autoprefixer": "3.0.4",
+    "grunt-contrib-clean": "1.1.0",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-cssmin": "2.2.1",
+    "grunt-contrib-imagemin": "^3.1.0",
+    "grunt-contrib-jshint": "1.1.0",
+    "grunt-contrib-uglify": "2.1.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-newer": "1.2.0",
+    "grunt-sass": "2.0.0",
+    "grunt-sass-lint": "0.2.2",
+    "grunt-sync": "0.6.2",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^7.0.0",
+    "jit-grunt": "0.10.0",
+    "node-sass": "4.5.3",
+    "time-grunt": "1.4.0",
+    "vinyl-fs": "2.4.4"
+  }
+}
